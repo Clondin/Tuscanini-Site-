@@ -5,6 +5,7 @@ import ProductBreadcrumb from "../components/product/ProductBreadcrumb";
 import ProductHero from "../components/product/ProductHero";
 import ProductStory from "../components/product/ProductStory";
 import RelatedProducts from "../components/product/RelatedProducts";
+import RecipeSuggestions from "../components/product/RecipeSuggestions";
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -30,6 +31,7 @@ export default function ProductPage() {
         categorySlug={category.slug}
       />
       <ProductStory productName={product.name} />
+      <RecipeSuggestions productId={product.id} />
       <RelatedProducts products={relatedProducts} categoryName={category.name} />
     </div>
   );

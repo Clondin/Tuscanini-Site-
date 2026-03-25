@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import MagneticButton from "../ui/MagneticButton";
 
 export default function NewsletterSignup() {
   return (
@@ -11,13 +12,13 @@ export default function NewsletterSignup() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+          <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             Stay Connected
           </span>
           <h2 className="font-headline text-5xl md:text-6xl text-heading leading-tight mb-6">
             Join the Italian Table
           </h2>
-          <p className="font-serif-alt text-on-surface/60 text-lg italic max-w-lg mx-auto mb-12">
+          <p className="font-script text-on-surface/60 text-xl italic max-w-lg mx-auto mb-12">
             Recipes, stories from the field, and first access to new
             arrivals&nbsp;&mdash; delivered to your inbox.
           </p>
@@ -31,14 +32,16 @@ export default function NewsletterSignup() {
               placeholder="your@email.com"
               required
               aria-label="Email address"
-              className="flex-1 px-5 py-4 bg-white border border-on-surface/15 text-on-surface placeholder:text-on-surface/30 text-sm tracking-wide focus:outline-none focus:border-primary/60 rounded-sm"
+              className="flex-1 px-5 py-4 bg-white border border-on-surface/15 text-on-surface placeholder:text-on-surface/30 text-sm tracking-wide focus:outline-none focus:border-gold/60 rounded-sm"
             />
-            <button
-              type="submit"
-              className="px-8 py-4 bg-primary text-white font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-primary/90 transition-colors whitespace-nowrap"
-            >
-              Subscribe
-            </button>
+            <MagneticButton className="inline-block">
+              <button
+                type="submit"
+                className="px-8 py-4 bg-gold text-dark font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-gold-light transition-colors whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </MagneticButton>
           </form>
 
           <p className="text-on-surface/30 text-[10px] tracking-widest uppercase mt-6">

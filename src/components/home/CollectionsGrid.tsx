@@ -1,6 +1,10 @@
 import type { ComponentType, SVGProps, MouseEvent } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import TextReveal from "../ui/TextReveal";
+import MagneticButton from "../ui/MagneticButton";
+import TiltCard from "../ui/TiltCard";
+import ImageWithSkeleton from "../ui/ImageWithSkeleton";
 import {
   Utensils,
   ArrowRight,
@@ -136,16 +140,19 @@ export default function CollectionsGrid() {
     <section id="collections" className="py-28 px-6 bg-aged-cream relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
-          <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+          <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             The Pantry
           </span>
-          <h2 className="font-headline text-5xl md:text-6xl text-heading italic mb-6">
-            Curated Collections
-          </h2>
+          <TextReveal
+            text="Curated Collections"
+            as="h2"
+            mode="word"
+            className="font-headline text-5xl md:text-6xl text-heading italic mb-6"
+          />
           <div className="flex justify-center items-center gap-4">
-            <div className="w-16 h-px bg-primary/30" />
-            <Utensils className="w-5 h-5 text-primary/40" />
-            <div className="w-16 h-px bg-primary/30" />
+            <div className="w-16 h-px bg-gold/30" />
+            <Utensils className="w-5 h-5 text-gold/40" />
+            <div className="w-16 h-px bg-gold/30" />
           </div>
         </div>
 
@@ -160,19 +167,26 @@ export default function CollectionsGrid() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: idx * 0.08, duration: 0.6 }}
               >
+                <TiltCard>
                 <Link
                   to={`/category/${cat.slug}`}
                   className="still-life-frame group block cursor-pointer"
                 >
                   <div className="aspect-square overflow-hidden mb-6 bg-surface ring-1 ring-on-surface/10">
                     {cat.image ? (
-                      <motion.img
+                      <motion.div
                         whileHover={{ scale: 1.08 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                        src={cat.image}
-                        alt={cat.name}
-                      />
+                        className="w-full h-full"
+                      >
+                        <ImageWithSkeleton
+                          className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                          wrapperClassName="w-full h-full"
+                          skeletonClassName="aspect-auto"
+                          src={cat.image}
+                          alt={cat.name}
+                        />
+                      </motion.div>
                     ) : (
                       <motion.div
                         whileHover={{ scale: 1.04 }}
@@ -193,30 +207,33 @@ export default function CollectionsGrid() {
                   </div>
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <h3 className="font-headline text-2xl text-primary mb-2 group-hover:text-heading transition-colors">
+                      <h3 className="font-headline text-2xl text-heading mb-2 group-hover:text-gold transition-colors">
                         {cat.name}
                       </h3>
                       <p className="text-on-surface/60 text-sm leading-relaxed">
                         {cat.tagline}
                       </p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all shrink-0" />
                   </div>
                 </Link>
+                </TiltCard>
               </motion.div>
             );
           })}
         </div>
 
         <div className="text-center mt-16">
-          <a
-            href="#collections"
-            onClick={(e) => handleSmoothScroll(e, "collections")}
-            className="inline-flex items-center gap-3 text-primary text-sm uppercase tracking-widest font-semibold hover:gap-4 transition-all border border-primary/20 px-8 py-4 rounded-sm hover:border-primary/50"
-          >
-            View All Categories
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <MagneticButton className="inline-block">
+            <a
+              href="#collections"
+              onClick={(e) => handleSmoothScroll(e, "collections")}
+              className="inline-flex items-center gap-3 text-gold text-sm uppercase tracking-widest font-semibold hover:gap-4 transition-all border border-gold/20 px-8 py-4 rounded-sm hover:border-gold/50"
+            >
+              View All Categories
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </MagneticButton>
         </div>
       </div>
     </section>

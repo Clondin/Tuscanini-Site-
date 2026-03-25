@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-import { ArrowLeft, Package, MapPin } from "lucide-react";
+import { ArrowLeft, Package, MapPin, Expand } from "lucide-react";
 import { Product } from "../../data/products";
 import TrustBadges from "./TrustBadges";
+import ImageWithSkeleton from "../ui/ImageWithSkeleton";
+import ImageLightbox from "../ui/ImageLightbox";
 
 interface ProductHeroProps {
   product: Product;
@@ -11,6 +14,8 @@ interface ProductHeroProps {
 }
 
 export default function ProductHero({ product, categoryName, categorySlug }: ProductHeroProps) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <section className="px-6 md:px-10 pb-24 pt-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -20,13 +25,26 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="still-life-frame"
         >
-          <div className="aspect-square overflow-hidden bg-surface">
+          <div
+            className="aspect-square overflow-hidden bg-surface relative group cursor-zoom-in"
+            onClick={() => product.image && setLightboxOpen(true)}
+          >
             {product.image ? (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+              <>
+                <ImageWithSkeleton
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
+                  skeletonClassName="aspect-auto"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-heading/10">
+                  <span className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/90 backdrop-blur-sm border border-on-surface/10 text-on-surface text-xs uppercase tracking-widest font-body font-semibold shadow-lg">
+                    <Expand className="w-4 h-4" />
+                    View Image
+                  </span>
+                </div>
+              </>
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4] p-8">
                 <span className="font-headline text-3xl text-heading/30 text-center">{product.name}</span>
@@ -93,6 +111,15 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
           </motion.a>
         </motion.div>
       </div>
+
+      {product.image && (
+        <ImageLightbox
+          src={product.image}
+          alt={product.name}
+          isOpen={lightboxOpen}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </section>
   );
 }

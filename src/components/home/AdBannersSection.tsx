@@ -37,13 +37,13 @@ const adBanners = [
 
 export default function AdBannersSection() {
   return (
-    <section className="py-16 px-6 bg-surface overflow-hidden">
+    <section className="py-16 px-6 bg-dark-surface overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-2">
+          <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-2">
             From Our Campaigns
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl text-heading italic">
+          <h2 className="font-script text-4xl md:text-5xl text-italia-white italic">
             As Seen Across Italy
           </h2>
         </div>
@@ -58,7 +58,7 @@ export default function AdBannersSection() {
             >
               <Link
                 to={`/category/${banner.slug}`}
-                className="group block relative overflow-hidden rounded-sm aspect-[16/9] bg-surface shadow-md"
+                className="group block relative overflow-hidden rounded-sm aspect-[16/9] bg-dark shadow-md"
               >
                 <motion.img
                   src={banner.src}
@@ -69,8 +69,8 @@ export default function AdBannersSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400">
-                  <span className="font-headline text-white text-lg">{banner.label}</span>
-                  <ArrowRight className="inline ml-2 w-4 h-4 text-white" />
+                  <span className="font-headline text-gold text-lg">{banner.label}</span>
+                  <ArrowRight className="inline ml-2 w-4 h-4 text-gold" />
                 </div>
               </Link>
             </motion.div>

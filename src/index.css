@@ -1,10 +1,11 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @theme {
   --font-headline: "Playfair Display", serif;
   --font-body: "Manrope", sans-serif;
   --font-serif-alt: "Noto Serif", serif;
+  --font-script: "Cormorant Garamond", serif;
 
   --color-earth-dark: #f0e8db;
   --color-hearth-stone: #e0d5c5;
@@ -15,6 +16,14 @@
   --color-on-surface: #3b2c20;
   --color-primary: #b85c38;
   --color-heading: #2a1f16;
+  --color-gold: #c9a84c;
+  --color-gold-light: #d4b966;
+  --color-tuscanini-red: #c0392b;
+  --color-dark: #1a1209;
+  --color-dark-surface: #2a1f16;
+  --color-italia-green: #1a6b37;
+  --color-italia-red: #ce2b37;
+  --color-italia-white: #f0ede8;
 }
 
 @layer utilities {
@@ -38,6 +47,19 @@
   }
   .image-placeholder {
     background: linear-gradient(135deg, #e0d0c0 0%, #d4bfad 50%, #f0e2d4 100%);
+  }
+  .italia-stripe {
+    background: linear-gradient(to right, #1a6b37 33.33%, #f0ede8 33.33%, #f0ede8 66.66%, #ce2b37 66.66%);
+    height: 3px;
+  }
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #c9a84c 0%, #d4b966 50%, #c9a84c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark-section {
+    background: linear-gradient(to bottom, #1a1209, #2a1f16);
   }
 }
 

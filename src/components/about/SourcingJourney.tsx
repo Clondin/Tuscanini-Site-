@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Grape, TreePine, Sun } from "lucide-react";
+import SourcingMap from "./SourcingMap";
 
 const journeySteps = [
   {
@@ -38,6 +39,22 @@ export default function SourcingJourney() {
           <p className="font-serif-alt text-on-surface/60 text-lg italic max-w-2xl mx-auto">
             We travel so you don't have to — traversing Italy's diverse regions to bring you the finest each has to offer.
           </p>
+        </motion.div>
+
+        {/* Interactive Sourcing Map */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-24"
+        >
+          <div className="text-center mb-8">
+            <p className="text-on-surface/50 text-sm font-body tracking-wide">
+              Hover or tap the pins to explore our sourcing regions
+            </p>
+          </div>
+          <SourcingMap />
         </motion.div>
 
         <div className="space-y-20">

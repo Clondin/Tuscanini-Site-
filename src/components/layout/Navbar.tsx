@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { categories } from "../../data/products";
 import TuscaniniLogo from "../TuscaniniLogo";
+import SearchOverlay from "../ui/SearchOverlay";
 
 const topNavLinks = [
   { label: "The Pantry", to: "/#collections" },
@@ -42,6 +43,7 @@ function isActive(linkTo: string, pathname: string): boolean {
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
 
   const handleScroll = useCallback(() => {
@@ -70,10 +72,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md border-b border-on-surface/10 transition-colors duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md transition-colors duration-300 ${
         scrolled ? "bg-surface" : "bg-surface/90"
       }`}
     >
+      <div className="italia-stripe w-full" />
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" className="select-none text-heading">
           <TuscaniniLogo className="h-8 w-auto" />
@@ -88,23 +91,39 @@ export default function Navbar() {
                 to={link.to}
                 className={`uppercase tracking-[0.2em] text-[10px] transition-colors ${
                   active
-                    ? "text-primary"
-                    : "text-on-surface/70 hover:text-primary"
+                    ? "text-gold"
+                    : "text-on-surface/70 hover:text-gold"
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
+          <button
+            className="text-on-surface/70 hover:text-gold transition-colors"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+          >
+            <Search size={18} />
+          </button>
         </div>
 
-        <button
-          className="lg:hidden text-on-surface/70 hover:text-primary transition-colors"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <button
+            className="text-on-surface/70 hover:text-gold transition-colors"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+          >
+            <Search size={20} />
+          </button>
+          <button
+            className="text-on-surface/70 hover:text-gold transition-colors"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -126,8 +145,8 @@ export default function Navbar() {
                       to={link.to}
                       className={`uppercase tracking-[0.2em] text-[11px] transition-colors ${
                         active
-                          ? "text-primary"
-                          : "text-on-surface/70 hover:text-primary"
+                          ? "text-gold"
+                          : "text-on-surface/70 hover:text-gold"
                       }`}
                     >
                       {link.label}
@@ -151,8 +170,8 @@ export default function Navbar() {
                       to={link.to}
                       className={`uppercase tracking-[0.2em] text-[11px] transition-colors ${
                         active
-                          ? "text-primary"
-                          : "text-on-surface/70 hover:text-primary"
+                          ? "text-gold"
+                          : "text-on-surface/70 hover:text-gold"
                       }`}
                     >
                       {link.label}
@@ -164,6 +183,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </nav>
   );
 }

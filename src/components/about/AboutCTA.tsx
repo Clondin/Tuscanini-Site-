@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import MagneticButton from "../ui/MagneticButton";
 
 export default function AboutCTA() {
   return (
@@ -27,13 +28,15 @@ export default function AboutCTA() {
         <p className="font-serif-alt text-on-surface/60 text-xl italic mb-12 max-w-2xl mx-auto">
           From our family to yours — discover the full range of authentic Italian products crafted with generations of expertise.
         </p>
-        <Link
-          to="/#collections"
-          className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-white font-body uppercase tracking-[0.2em] text-xs hover:bg-primary/85 transition-colors shadow-lg shadow-primary/20"
-        >
-          Explore Our Collections
-          <ArrowRight className="w-4 h-4" />
-        </Link>
+        <MagneticButton className="inline-block">
+          <Link
+            to="/#collections"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-white font-body uppercase tracking-[0.2em] text-xs hover:bg-primary/85 transition-colors shadow-lg shadow-primary/20"
+          >
+            Explore Our Collections
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </MagneticButton>
         <p className="font-serif-alt text-primary italic text-2xl tracking-wide mt-16">
           Benvenuti alla nostra tavola.
         </p>

@@ -32,9 +32,9 @@ export default function TrustBadges() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15, duration: 0.6 }}
-              className="stone-texture p-12 text-center border border-on-surface/8 shadow-lg hover:border-primary/20 transition-colors"
+              className="stone-texture p-12 text-center border border-on-surface/8 shadow-lg hover:border-gold/30 transition-colors"
             >
-              <badge.icon className="w-12 h-12 text-primary mx-auto mb-6" />
+              <badge.icon className="w-12 h-12 text-gold mx-auto mb-6" />
               <h3 className="font-headline text-2xl text-heading mb-4">
                 {badge.title}
               </h3>

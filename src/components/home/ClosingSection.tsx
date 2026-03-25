@@ -1,40 +1,34 @@
-import { useState } from "react";
 import { motion } from "motion/react";
 
 export default function ClosingSection() {
-  const [oliveBranchVisible, setOliveBranchVisible] = useState(true);
-
   return (
-    <section className="py-36 px-8 bg-earth-dark relative overflow-hidden">
-      <div className="absolute inset-0 sketch-overlay opacity-10" />
+    <section className="py-36 px-8 dark-section relative overflow-hidden">
+      <div className="absolute inset-0 sketch-overlay opacity-5" />
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        {oliveBranchVisible && (
-          <div className="mb-16">
-            <img
-              alt="Olive Branch"
-              className="mx-auto h-32 w-auto opacity-40"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCosI5jZjacVrJBNWbXh-YBOMdgr-dyzta3uQaRIdUkwuF-o-7DhIy6IaYW-l2av887VF-JOVA7qeOUzEXVlJyMHOz0kglm0qxF0Js8OaMD_PfTyY4BjWw8ELZPaqAy45nB3SvYeZPzuNPbIljtEcw5a3rMU06017eFjeozsbV9oXg6vw7P0MHJxrxQOd67bW0z4H4LFpBuxAbxJH4uRwJOuG3qJCKWkTLSJKCDxU5t9YfHX5UByy9MAA4RfUhlaFaVy-U-Ye0X-C0s"
-              referrerPolicy="no-referrer"
-              onError={() => setOliveBranchVisible(false)}
-            />
-          </div>
-        )}
+        <div className="mb-12 flex justify-center items-center gap-4">
+          <div className="w-20 h-px bg-gold/30" />
+          <div className="w-2 h-2 rounded-full bg-gold/40" />
+          <div className="w-20 h-px bg-gold/30" />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9 }}
         >
-          <h2 className="font-headline text-5xl md:text-6xl text-heading leading-tight mb-10">
+          <h2 className="font-headline text-5xl md:text-6xl text-italia-white leading-tight mb-10">
             Food connects people. Every Tuscanini product is made to bring
             your table to life.
           </h2>
-          <p className="font-serif-alt text-primary italic text-2xl tracking-wide">
+          <p className="font-script italic text-gold text-3xl tracking-wide mb-4">
             Benvenuti alla nostra tavola.
+          </p>
+          <p className="font-body uppercase tracking-[0.3em] text-italia-white/40 text-xs">
+            Taste Tuscanini. Know Italy.
           </p>
         </motion.div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-4 wood-grain" />
+      <div className="absolute bottom-0 left-0 w-full italia-stripe" />
     </section>
   );
 }
