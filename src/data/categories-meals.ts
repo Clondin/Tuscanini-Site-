@@ -8,14 +8,14 @@ export const mealCategories: Category[] = [
     tagline: "Bronze-Cut Perfection",
     description:
       "Traditional Italian pasta, bronze-die cut and slow-dried for the perfect al dente texture, alongside authentic potato gnocchi in classic and modern varieties.",
-    heroImage: "",
+    heroImage: "/assets/Pasta/Tuscanini Bronze Cut Spaghetti Comp copy.png",
     products: [
       {
         id: "spaghetti",
         name: "Spaghetti",
         description:
           "Classic Italian spaghetti, bronze-die cut for a rough texture that clings beautifully to sauces. A timeless staple of the Italian table.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Bronze Cut Spaghetti Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Spaghetti is crafted using traditional bronze dies that create a rough, porous surface ideal for holding sauce. Slow-dried at low temperatures to preserve flavor and ensure the perfect al dente bite every time.",
@@ -28,7 +28,7 @@ export const mealCategories: Category[] = [
         name: "Fettuccine",
         description:
           "Broad, flat ribbons of bronze-cut pasta perfect for rich, creamy sauces. A cornerstone of Roman cuisine.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Bronze Cut Fettuccine Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Fettuccine features wide, elegant ribbons with a textured surface from bronze-die extrusion. Slow-dried to lock in authentic flavor, these noodles are the ideal partner for Alfredo, Bolognese, and butter-based sauces.",
@@ -41,7 +41,7 @@ export const mealCategories: Category[] = [
         name: "Penne",
         description:
           "Diagonally cut tubes with ridged surfaces that trap sauce inside and out. A versatile pasta for baked dishes and hearty sauces.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Bronze Cut Penne Rigate Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Penne is bronze-die cut with distinctive ridges and angled ends that capture sauce in every bite. Slow-dried for superior texture, it excels in baked pasta dishes, arrabbiata, and chunky vegetable sauces.",
@@ -80,7 +80,7 @@ export const mealCategories: Category[] = [
         name: "Fusilli",
         description:
           "Corkscrew-shaped pasta with a spiral design that captures sauce in every twist. Delightful in both hot and cold dishes.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Bronze Cut Fusili Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Fusilli features tightly wound spirals created with bronze dies for maximum sauce adhesion. Slow-dried to preserve its springy texture, this versatile shape is equally at home in warm pasta dishes and chilled summer salads.",
@@ -106,7 +106,7 @@ export const mealCategories: Category[] = [
         name: "Cauliflower Gnocchi",
         description:
           "Light, pillowy gnocchi made with real cauliflower for a modern twist on the Italian classic. A delicious lower-carb alternative.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Cauliflower Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our shelf-stable Cauliflower Gnocchi blends premium Italian potatoes with real cauliflower for a lighter take on traditional gnocchi. Each dumpling is soft and pillowy, ready to pan-fry, boil, or bake with your favorite sauce.",
@@ -132,7 +132,7 @@ export const mealCategories: Category[] = [
         name: "Potato Gnocchi",
         description:
           "Classic Italian potato gnocchi made with real potatoes for a soft, pillowy texture. A comforting staple ready in minutes.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Classic Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our shelf-stable Potato Gnocchi are made with premium Italian potatoes and flour, delivering the same soft, melt-in-your-mouth texture as homemade. Simply boil until they float and toss with your favorite sauce for an authentic Italian meal.",
@@ -145,7 +145,7 @@ export const mealCategories: Category[] = [
         name: "Gluten Free Potato Gnocchi",
         description:
           "All the pillowy goodness of traditional gnocchi, crafted without gluten. Made with real Italian potatoes for an inclusive Italian dining experience.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Gluten Free Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Gluten Free Potato Gnocchi prove that dietary restrictions need not compromise flavor or texture. Made with premium Italian potatoes and gluten-free flour, these tender dumplings deliver the same authentic experience as our classic variety.",
@@ -162,7 +162,7 @@ export const mealCategories: Category[] = [
     tagline: "Straight From the Italian Pizzeria",
     description:
       "Authentic Italian frozen pizzas crafted with premium ingredients, from classic Margherita to our exclusive Reserve collection with hand-stretched dough and San Marzano-style sauce.",
-    heroImage: "/assets/Pizza/730101.png",
+    heroImage: "/assets/Pizza/Tuscanini Pizza Comp 3.png",
     products: [
       {
         id: "four-cheese-pizza",
@@ -479,7 +479,7 @@ export const mealCategories: Category[] = [
         name: "Frozen Potato Gnocchi",
         description:
           "Soft, pillowy frozen potato gnocchi ready to cook straight from the freezer. Authentic Italian comfort at its simplest.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Classic Gnocci Mockup.png",
         categoryId: "frozen-meals",
         details:
           "Our Frozen Potato Gnocchi are flash-frozen at peak freshness to preserve their soft, cloud-like texture. Made with real Italian potatoes, they cook in minutes from frozen and pair beautifully with any sauce from pesto to marinara.",
@@ -492,7 +492,7 @@ export const mealCategories: Category[] = [
         name: "Frozen Gluten Free Potato Gnocchi",
         description:
           "Gluten-free frozen gnocchi with the same tender, pillowy texture as the original. Inclusive Italian comfort food.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Gluten Free Gnocci Mockup.png",
         categoryId: "frozen-meals",
         details:
           "Our Frozen Gluten Free Potato Gnocchi deliver the same cloud-like softness as our classic variety, crafted without gluten so everyone can enjoy authentic Italian gnocchi. Flash-frozen for convenience and ready to cook in minutes.",
@@ -505,7 +505,7 @@ export const mealCategories: Category[] = [
         name: "Frozen Potato Gnocchi with Spinach",
         description:
           "Tender potato gnocchi blended with vibrant spinach for added flavor and color. A nutritious twist on the Italian classic.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Spinach Gnocci Mockup.png",
         categoryId: "frozen-meals",
         details:
           "Our Frozen Potato Gnocchi with Spinach fold real spinach into our classic potato dough, adding a mild, earthy flavor and beautiful green hue. Flash-frozen for freshness, they are a delicious way to add greens to your Italian meals.",
@@ -518,7 +518,7 @@ export const mealCategories: Category[] = [
         name: "Frozen Cauliflower Gnocchi",
         description:
           "Light and tender frozen cauliflower gnocchi for a lower-carb Italian indulgence. Ready to cook from frozen.",
-        image: "",
+        image: "/assets/Pasta/Tuscanini Cauliflower Gnocci Mockup.png",
         categoryId: "frozen-meals",
         details:
           "Our Frozen Cauliflower Gnocchi blend real cauliflower with potato for a lighter take on traditional gnocchi. Flash-frozen to lock in freshness and flavor, they offer a delicious way to enjoy Italian comfort food with fewer carbs.",

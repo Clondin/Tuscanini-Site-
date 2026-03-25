@@ -8,7 +8,7 @@ export const snackCategories: Category[] = [
     tagline: "Artisan Italian Snacking",
     description:
       "From delicate parchment crackers to hearty spelt crostini and crispy grissini breadsticks — our snack collection brings the Italian aperitivo tradition to your home.",
-    heroImage: "/assets/Chips/IMG_0022-2.jpg",
+    heroImage: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
     products: [
       // Parchment Crackers
       {
@@ -174,7 +174,7 @@ export const snackCategories: Category[] = [
         name: "Classic Olive Oil Potato Chips",
         description:
           "Premium Italian potato chips cooked in extra virgin olive oil for a rich, golden flavor. Simply seasoned and perfectly crispy.",
-        image: "/assets/Chips/IMG_0022-2.jpg",
+        image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
         categoryId: "crackers-snacks",
         details:
           "Crafted from select potatoes and cooked in genuine Italian extra virgin olive oil, these chips deliver a clean, savory taste with a satisfying crunch. A simple yet elevated take on the classic potato chip.",
@@ -187,7 +187,7 @@ export const snackCategories: Category[] = [
         name: "Rosemary Olive Oil Potato Chips",
         description:
           "Italian potato chips infused with fragrant rosemary and cooked in extra virgin olive oil. Herbaceous, crispy, and irresistible.",
-        image: "/assets/Chips/IMG_0022-2.jpg",
+        image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rosemary-4.6oz-730341.png",
         categoryId: "crackers-snacks",
         details:
           "The aromatic warmth of Italian rosemary meets the richness of extra virgin olive oil in these premium kettle-style chips. Each golden chip is packed with herbal flavor and a deeply satisfying crunch.",
@@ -200,7 +200,7 @@ export const snackCategories: Category[] = [
         name: "Rippled Olive Oil Potato Chips",
         description:
           "Thick-cut rippled potato chips cooked in Italian extra virgin olive oil. Extra crunchy ridges for maximum flavor.",
-        image: "/assets/Chips/IMG_0032.jpg",
+        image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rippled-4.6oz-730342-web.png",
         categoryId: "crackers-snacks",
         details:
           "Our rippled chips feature deep ridges that deliver an extra-satisfying crunch and hold onto every bit of olive oil flavor. Cooked in premium Italian extra virgin olive oil for a chip that stands above the rest.",
@@ -213,7 +213,7 @@ export const snackCategories: Category[] = [
         name: "Classic Potato Chips Snack Bag",
         description:
           "A perfectly portioned snack bag of our classic olive oil potato chips. Ideal for lunchboxes and on-the-go enjoyment.",
-        image: "/assets/Chips/IMG_0022-2.jpg",
+        image: "/assets/Chips/Tuscanini-Classic-Potato-Chips-1oz-730350.png",
         categoryId: "crackers-snacks",
         details:
           "All the premium quality of our classic olive oil potato chips in a convenient single-serve bag. Perfect for tucking into a lunchbox, backpack, or desk drawer for an Italian snacking moment anytime.",
@@ -226,7 +226,7 @@ export const snackCategories: Category[] = [
         name: "Rippled Potato Chips Snack Bag",
         description:
           "A grab-and-go snack bag of our extra-crunchy rippled olive oil chips. Big flavor in a perfectly portioned pack.",
-        image: "/assets/Chips/IMG_0032.jpg",
+        image: "/assets/Chips/Tuscanini-Rippled-Potato-Chips-1oz-730351.png",
         categoryId: "crackers-snacks",
         details:
           "Enjoy the satisfying crunch of our rippled olive oil potato chips wherever you go. This single-serve bag is portioned for the perfect snack break, delivering premium Italian quality in every bite.",
@@ -240,7 +240,7 @@ export const snackCategories: Category[] = [
         name: "Roasted Chestnuts",
         description:
           "Tender, naturally sweet Italian roasted chestnuts ready to enjoy straight from the pouch. A wholesome and comforting snack.",
-        image: "",
+        image: "/assets/Chestnuts/Tuscanini Chestnuts_Original.png",
         categoryId: "crackers-snacks",
         details:
           "Our Italian roasted chestnuts are peeled, roasted, and vacuum-sealed to lock in their natural sweetness and creamy texture. Enjoy them as a nourishing snack, or add them to stuffings, salads, and desserts.",
@@ -253,7 +253,7 @@ export const snackCategories: Category[] = [
         name: "Roasted Chestnuts with Salt & Black Pepper",
         description:
           "Italian roasted chestnuts with a savory twist of sea salt and cracked black pepper. A bold, satisfying snack.",
-        image: "",
+        image: "/assets/Chestnuts/Tuscanini Chestnuts_Salt & Pepper.png",
         categoryId: "crackers-snacks",
         details:
           "We take our tender Italian chestnuts and season them with a balanced blend of sea salt and freshly cracked black pepper. The result is a savory, warming snack that combines natural chestnut sweetness with a peppery kick.",
@@ -435,14 +435,14 @@ export const snackCategories: Category[] = [
     tagline: "Mediterranean Catch",
     description:
       "Premium Italian tuna, sustainably sourced and packed in quality olive oil or water. From everyday cans to luxurious ventresca belly cuts in elegant glass jars.",
-    heroImage: "",
+    heroImage: "/assets/Tuna/Tusc_Tuna_Final_for_Web.png",
     products: [
       {
         id: "solid-light-tuna-olive-oil-small-jar",
         name: "Solid Light Tuna in Olive Oil - Small Jar",
         description:
           "Premium solid light tuna packed in Italian olive oil in a convenient glass jar. Tender, flavorful, and ready to enjoy.",
-        image: "",
+        image: "/assets/Tuna/Tuscanini tuna in Olive Oil.png",
         categoryId: "tuna-seafood",
         details:
           "Our solid light tuna is carefully selected and packed in quality Italian olive oil in an elegant glass jar. The olive oil infuses the tuna with a rich, smooth flavor that elevates salads, pasta, and antipasto plates.",
@@ -468,7 +468,7 @@ export const snackCategories: Category[] = [
         name: "Tuna Solid Light in Olive Oil - Can",
         description:
           "Classic Italian solid light tuna packed in olive oil. A versatile pantry staple with premium quality and flavor.",
-        image: "",
+        image: "/assets/Tuna/Tuscanini Yellowfin Tuna in Olive Oil.jpg",
         categoryId: "tuna-seafood",
         details:
           "This everyday essential features premium solid light tuna packed in Italian olive oil for a rich, satisfying flavor. Keep a few cans on hand for quick pasta dishes, hearty salads, and satisfying sandwiches.",
@@ -481,7 +481,7 @@ export const snackCategories: Category[] = [
         name: "Tuna Solid Light in Water - Can",
         description:
           "Lean and protein-rich solid light tuna packed in water. Clean flavor and a lighter option for health-conscious meals.",
-        image: "",
+        image: "/assets/Tuna/Tuscanini Tuna in Water.png",
         categoryId: "tuna-seafood",
         details:
           "Our solid light tuna in water offers a lean, clean-tasting option without sacrificing quality. Packed with protein and ready to use, it is a wholesome choice for salads, wraps, and light Italian dishes.",
@@ -494,7 +494,7 @@ export const snackCategories: Category[] = [
         name: "Tuna Fillet in Olive Oil - Tall Jar",
         description:
           "Hand-packed tuna fillets in Italian olive oil presented in an elegant tall glass jar. A premium cut for refined palates.",
-        image: "",
+        image: "/assets/Tuna/Tusc_Tuna_Fillet_Final.png",
         categoryId: "tuna-seafood",
         details:
           "These carefully hand-packed tuna fillets are immersed in premium Italian olive oil inside an elegant tall jar. The superior cut and beautiful presentation make this a centerpiece for antipasto platters and gourmet preparations.",
@@ -507,7 +507,7 @@ export const snackCategories: Category[] = [
         name: "Tuna Ventresca in Olive Oil - Tall Jar",
         description:
           "The prized belly cut of tuna — silky, rich, and melt-in-your-mouth tender. Packed in olive oil in a stunning glass jar.",
-        image: "",
+        image: "/assets/Tuna/Tuscanini Ventresca Tuna.jpg",
         categoryId: "tuna-seafood",
         details:
           "Ventresca is the most coveted cut of tuna, taken from the belly where the flesh is richest and most tender. Our ventresca is hand-packed in Italian olive oil, delivering an unparalleled silky texture and depth of flavor.",

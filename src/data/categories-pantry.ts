@@ -8,14 +8,14 @@ export const pantryCategories: Category[] = [
     tagline: "Liquid Gold from Ancient Groves",
     description:
       "From cold-pressed extra virgin olive oil to aged balsamic vinegar of Modena, our collection captures centuries of Italian tradition in every bottle.",
-    heroImage: "",
+    heroImage: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-1L-730400.png",
     products: [
       {
         id: "extra-light-olive-oil-1l",
         name: "Extra Light Olive Oil 1L",
         description:
           "A delicately refined olive oil with a mild, neutral flavor perfect for high-heat cooking and baking. Versatile enough for every kitchen task.",
-        image: "",
+        image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-1L-730400.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Extra Light Olive Oil is crafted from premium Italian olives and refined for a light taste and higher smoke point. Ideal for frying, sautéing, and recipes where a subtle oil flavor is desired.",
@@ -28,7 +28,7 @@ export const pantryCategories: Category[] = [
         name: "Extra Light Olive Oil 2L",
         description:
           "The same refined, mild olive oil in a generous two-liter bottle for everyday cooking needs. Perfect for busy kitchens that go through oil quickly.",
-        image: "",
+        image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-2L-730410.png",
         categoryId: "olive-oil-vinegars",
         details:
           "A larger format of our popular Extra Light Olive Oil, offering exceptional value without compromising on Italian quality. Its neutral profile makes it the go-to choice for high-heat cooking and baking.",
@@ -41,7 +41,7 @@ export const pantryCategories: Category[] = [
         name: "Extra Light Olive Oil 3L",
         description:
           "Our largest extra light olive oil for households and entertaining enthusiasts who demand quality in every dish. An Italian pantry staple in a value-sized bottle.",
-        image: "",
+        image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-3L-730415.png",
         categoryId: "olive-oil-vinegars",
         details:
           "The three-liter bottle of our Extra Light Olive Oil ensures you always have premium Italian oil on hand. With its clean, mild flavor and high smoke point, it's the workhorse of any serious kitchen.",
@@ -54,7 +54,7 @@ export const pantryCategories: Category[] = [
         name: "Extra Virgin Olive Oil",
         description:
           "Cold-pressed extra virgin olive oil with a robust, peppery finish and golden-green hue. The cornerstone of authentic Italian cooking.",
-        image: "",
+        image: "/assets/Olive Oil/730406 Large.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Extra Virgin Olive Oil is cold-pressed from hand-harvested Italian olives, preserving the full depth of flavor and natural antioxidants. Its fruity aroma and peppery finish make it ideal for drizzling, dipping, and finishing dishes.",
@@ -262,7 +262,7 @@ export const pantryCategories: Category[] = [
         name: "Lemon Juice Large",
         description:
           "A larger bottle of pure Sicilian lemon juice for kitchens that can't get enough citrus. Same bright, authentic flavor in a value size.",
-        image: "",
+        image: "/assets/Peppers/730286.png",
         categoryId: "olive-oil-vinegars",
         details:
           "The larger format of our Sicilian Lemon Juice is perfect for avid cooks and entertainers. Pure, tart, and intensely flavorful — a versatile ingredient that brightens everything it touches.",
@@ -416,7 +416,7 @@ export const pantryCategories: Category[] = [
         name: "Calabrian Chili Peppers in Oil",
         description:
           "Fiery Calabrian chili peppers preserved in olive oil, bringing the bold heat of Southern Italy to your kitchen. Smoky, fruity, and intensely flavorful.",
-        image: "",
+        image: "/assets/Peppers/730438.png",
         categoryId: "olives-condiments",
         details:
           "Sourced from Calabria, the spice capital of Italy, these whole chili peppers are preserved in olive oil to maintain their vibrant heat and fruity complexity. Add them to pasta, pizza, sandwiches, and marinades for authentic Southern Italian fire.",
@@ -429,7 +429,7 @@ export const pantryCategories: Category[] = [
         name: "Chopped Calabrian Chili Peppers in Oil",
         description:
           "Finely chopped Calabrian chili peppers in olive oil, ready to stir into any dish for an instant burst of smoky heat.",
-        image: "",
+        image: "/assets/Peppers/730443.png",
         categoryId: "olives-condiments",
         details:
           "Pre-chopped for ultimate convenience, our Calabrian Chili Peppers in Oil deliver the same authentic Southern Italian heat in a ready-to-use format. Spoon them into sauces, spread on sandwiches, or mix into dips for effortless flavor.",
@@ -481,7 +481,7 @@ export const pantryCategories: Category[] = [
         name: "Original Pitted Olives Pouch",
         description:
           "Convenient single-serve pouches of premium pitted Italian olives. A healthy, flavorful snack for on-the-go enjoyment.",
-        image: "",
+        image: "/assets/Olive/Pouches/olive_origin.jpg",
         categoryId: "olives-condiments",
         details:
           "Our Original Pitted Olives Pouches put premium Italian olives in a perfectly portioned, grab-and-go format. Each pouch is sealed for freshness, making them ideal for lunchboxes, travel, and healthy snacking anytime.",
@@ -494,7 +494,7 @@ export const pantryCategories: Category[] = [
         name: "Spicy Pitted Olives Pouch",
         description:
           "Single-serve pouches of spicy seasoned Italian olives. Bold, fiery flavor in a convenient on-the-go format.",
-        image: "",
+        image: "/assets/Olive/Pouches/olive_spicy.jpg",
         categoryId: "olives-condiments",
         details:
           "Our Spicy Pitted Olives Pouches deliver a kick of heat in every bite. Premium Italian olives are seasoned with a fiery spice blend and packed in convenient single-serve pouches for bold snacking anywhere.",
@@ -507,7 +507,7 @@ export const pantryCategories: Category[] = [
         name: "Garlic Pitted Olives Pouch",
         description:
           "Single-serve pouches of garlic-seasoned Italian olives. Savory, aromatic, and perfectly portable.",
-        image: "",
+        image: "/assets/Olive/Pouches/olive_garlic.jpg",
         categoryId: "olives-condiments",
         details:
           "Our Garlic Pitted Olives Pouches combine premium Italian olives with the bold, savory flavor of garlic in convenient single-serve packs. A delicious, wholesome snack that satisfies on the go.",
@@ -550,14 +550,14 @@ export const pantryCategories: Category[] = [
     tagline: "The Soul of Italian Cooking",
     description:
       "From our signature pasta sauces to premium canned tomatoes and concentrated paste, these are the building blocks of authentic Italian cuisine.",
-    heroImage: "",
+    heroImage: "/assets/Sauces/Tuscanini Peeled Tomato Sauce Comp 4 copy.png",
     products: [
       {
         id: "traditional-pizza-sauce",
         name: "Traditional Pizza Sauce",
         description:
           "A classic Italian pizza sauce made from vine-ripened tomatoes with aromatic herbs and a touch of garlic. Ready to spread on your favorite dough.",
-        image: "",
+        image: "/assets/Sauces/730205 Traditional Pizza Sauce.jpg",
         categoryId: "sauces-tomatoes",
         details:
           "Our Traditional Pizza Sauce is slow-cooked from premium Italian tomatoes with oregano, basil, and garlic for an authentic pizzeria flavor. Its perfectly seasoned, spreadable consistency makes homemade pizza night effortless and delicious.",
@@ -570,7 +570,7 @@ export const pantryCategories: Category[] = [
         name: "Napoletana Pasta Sauce",
         description:
           "A rich, slow-simmered Neapolitan-style pasta sauce with the deep, sweet flavor of San Marzano-style tomatoes. The taste of Naples in every spoonful.",
-        image: "",
+        image: "/assets/Sauces/730206 Napoletana Pasta Sauce.jpg",
         categoryId: "sauces-tomatoes",
         details:
           "Inspired by the Napoletana tradition, this sauce is slow-cooked from ripe Italian tomatoes with onion, garlic, and fresh basil. Its robust flavor and silky texture coat pasta beautifully, making every weeknight dinner feel like Sunday supper in Naples.",
@@ -583,7 +583,7 @@ export const pantryCategories: Category[] = [
         name: "Classic Marinara Sauce",
         description:
           "A timeless Italian marinara made with ripe tomatoes, garlic, and fresh basil. Simple, pure, and bursting with flavor.",
-        image: "",
+        image: "/assets/Sauces/730207 Classic Marinara Sauce.jpg",
         categoryId: "sauces-tomatoes",
         details:
           "Our Classic Marinara captures the essence of Italian home cooking — ripe tomatoes, fragrant garlic, and fresh basil simmered to perfection. Its versatile flavor makes it ideal for pasta, dipping, layering in lasagna, and more.",
@@ -596,7 +596,7 @@ export const pantryCategories: Category[] = [
         name: "Zesty Marinara Sauce",
         description:
           "Our classic marinara kicked up with a lively blend of spices and a hint of heat. Bold, vibrant, and full of character.",
-        image: "",
+        image: "/assets/Sauces/730208 Zesty Marinara Sauce.jpg",
         categoryId: "sauces-tomatoes",
         details:
           "For those who like a little fire, our Zesty Marinara adds red pepper flakes and extra garlic to our beloved marinara base. The result is a spirited sauce that brings excitement to pasta, eggplant parmigiana, and pizza alike.",
@@ -609,7 +609,7 @@ export const pantryCategories: Category[] = [
         name: "Tomato Sauce Box",
         description:
           "Smooth, strained Italian tomato sauce in a convenient carton. A versatile base for countless Italian recipes.",
-        image: "",
+        image: "/assets/Sauces/Tuscanini Tomato Sauce Carton_730210.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Tomato Sauce is made from ripe Italian tomatoes, strained to a smooth, pourable consistency. Packaged in a convenient carton, it's the perfect starting point for homemade pasta sauces, soups, and braises.",
@@ -622,7 +622,7 @@ export const pantryCategories: Category[] = [
         name: "Tomato Paste Tube",
         description:
           "Concentrated Italian tomato paste in a resealable tube for easy, waste-free use. Adds deep, rich tomato intensity to any dish.",
-        image: "",
+        image: "/assets/Sauces/Tuscanini Tomato Paste Tube_730211.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our double-concentrated Tomato Paste is made from sun-ripened Italian tomatoes and packaged in a convenient squeezable tube. Use a small amount to build depth in sauces, stews, and soups — the resealable tube keeps the rest fresh.",
@@ -674,7 +674,7 @@ export const pantryCategories: Category[] = [
         name: "Crushed Tomatoes 24.7oz",
         description:
           "Coarsely crushed Italian tomatoes with a hearty, rustic texture. Perfect for chunky sauces, chili, and baked dishes.",
-        image: "",
+        image: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Crushed Tomatoes are coarsely processed to retain a satisfying rustic texture with plenty of tomato flavor. They're the go-to choice for hearty pasta sauces, shakshuka, chili, and any recipe that benefits from chunky tomato goodness.",
@@ -1047,7 +1047,7 @@ export const pantryCategories: Category[] = [
         name: "High Gluten Flour 5LB",
         description:
           "High-protein Italian flour designed for artisan bread, chewy pizza crusts, and fresh pasta. Superior elasticity and structure for professional results.",
-        image: "/assets/Flour/730307.png",
+        image: "/assets/Flour/730307-Big.png",
         categoryId: "flour-baking",
         details:
           "Our High Gluten Flour is milled from hard durum wheat with a high protein content that creates exceptional dough elasticity and strength. Ideal for Neapolitan-style pizza, sourdough bread, bagels, and fresh pasta that holds its shape perfectly.",
@@ -1073,7 +1073,7 @@ export const pantryCategories: Category[] = [
         name: "Spelt White Flour 5LB",
         description:
           "Ancient grain spelt flour with a mild, nutty flavor and naturally lighter texture. A nutritious alternative for modern Italian baking.",
-        image: "/assets/Flour/730308.png",
+        image: "/assets/Flour/730308-Big.png",
         categoryId: "flour-baking",
         details:
           "Made from ancient spelt wheat, our White Spelt Flour offers a delicate nuttiness and slightly sweeter profile compared to conventional wheat flour. Rich in fiber and nutrients, it works beautifully in pasta, pizza, focaccia, and rustic breads with a wholesome twist.",

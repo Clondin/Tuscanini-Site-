@@ -223,13 +223,15 @@ export default function HomePage() {
       {/*  HERO                                                         */}
       {/* ============================================================ */}
       <section className="relative h-screen flex items-end justify-center overflow-hidden bg-surface">
-        {/* Background image */}
+        {/* Background video */}
         <div className="absolute inset-0 z-0">
-          <img
-            alt="Rustic Italian Kitchen"
-            className="w-full h-full object-cover opacity-50 scale-105"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3dpJr_PnM2euKbVqQCNZqB_ihZacD-vDGfggDQWNZffyyxzw-I3pf-g7syozd_NMrMn83JWlk0RbO_SBlrGz8fjcdC6feq08-11S5ebarhT3bn8SoOnrxW2mNjN_lEBNQ-OfnRRxG9Xs6H25k4-KyWoqiYYAwEkrtX4XpBenpMfSXsdOCGVAq9gqaih_oZATMcPHeSHRGWB-Nqv1GJHmQFqCnVPDOevVGxNHMDdnygE9u-2p4NLAiNyjhLabCg6Cvhy7RzApE0Wgc"
-            referrerPolicy="no-referrer"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-60"
+            src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-black/20" />
           <div className="absolute inset-0 sketch-overlay pointer-events-none" />
