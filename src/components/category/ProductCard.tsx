@@ -38,7 +38,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           <div className="aspect-[4/3] overflow-hidden mb-5 bg-surface ring-1 ring-on-surface/10 relative">
             {product.image ? (
               <ImageWithSkeleton
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
                 wrapperClassName="w-full h-full"
                 skeletonClassName="aspect-auto"
                 src={product.image}

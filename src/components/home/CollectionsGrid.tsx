@@ -1,8 +1,7 @@
-import type { ComponentType, SVGProps, MouseEvent } from "react";
+import type { ComponentType, SVGProps } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import TextReveal from "../ui/TextReveal";
-import MagneticButton from "../ui/MagneticButton";
 import TiltCard from "../ui/TiltCard";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
 import {
@@ -63,13 +62,13 @@ const featuredCategories = [
     name: "Olives & Condiments",
     slug: "olives-condiments",
     tagline: "Mediterranean Essentials",
-    image: "/assets/ads/ketchup-banner.jpg",
+    image: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
   },
   {
     name: "Crackers & Snacks",
     slug: "crackers-snacks",
     tagline: "Artisan Italian Snacking",
-    image: "/assets/ads/lemon-juice-focused.jpg",
+    image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
   },
   {
     name: "Tuna & Seafood",
@@ -94,6 +93,48 @@ const featuredCategories = [
     slug: "frozen-meals",
     tagline: "Italian Convenience, No Compromise",
     image: "/assets/ads/chef-pasta.jpg",
+  },
+  {
+    name: "Flour & Baking",
+    slug: "flour-baking",
+    tagline: "Professional Grade Italian Flour",
+    image: "/assets/Flour/High gluten TUSCANINI_2,27Kg_2501013_facing.png",
+  },
+  {
+    name: "Pesto",
+    slug: "pesto",
+    tagline: "Fresh Basil, Italian Tradition",
+    image: "/assets/Pesto/730231.png",
+  },
+  {
+    name: "Seasonings & Truffles",
+    slug: "seasonings-truffles",
+    tagline: "The Essence of Italian Flavor",
+    image: "/assets/Truffles/730580.png",
+  },
+  {
+    name: "Biscotti",
+    slug: "biscotti",
+    tagline: "Classic Italian Cookies",
+    image: "/assets/Biscotti/730575.png",
+  },
+  {
+    name: "Fruit Spreads",
+    slug: "fruit-spreads",
+    tagline: "Pure Italian Fruit Preserves",
+    image: "/assets/Jam/730270.png",
+  },
+  {
+    name: "Cheese",
+    slug: "cheese",
+    tagline: "Aged Italian Excellence",
+    image: "/assets/Parmesan Cheese/730170.png",
+  },
+  {
+    name: "Beans & Legumes",
+    slug: "beans-legumes",
+    tagline: "Hearty Italian Staples",
+    image: "/assets/Fruits/Beans/730450.png",
   },
 ];
 
@@ -125,17 +166,16 @@ const categoryIconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = 
   gelato: IceCreamBowl,
   bakery: Croissant,
   "frozen-meals": Snowflake,
+  "flour-baking": Wheat,
+  pesto: Leaf,
+  "seasonings-truffles": Flame,
+  biscotti: Cookie,
+  "fruit-spreads": Candy,
+  cheese: Utensils,
+  "beans-legumes": Leaf,
 };
 
 export default function CollectionsGrid() {
-  const handleSmoothScroll = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const el = document.getElementById(targetId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="collections" className="py-28 px-6 bg-aged-cream relative">
       <div className="max-w-7xl mx-auto">
@@ -223,18 +263,6 @@ export default function CollectionsGrid() {
           })}
         </div>
 
-        <div className="text-center mt-16">
-          <MagneticButton className="inline-block">
-            <a
-              href="#collections"
-              onClick={(e) => handleSmoothScroll(e, "collections")}
-              className="inline-flex items-center gap-3 text-gold text-sm uppercase tracking-widest font-semibold hover:gap-4 transition-all border border-gold/20 px-8 py-4 rounded-sm hover:border-gold/50"
-            >
-              View All Categories
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </MagneticButton>
-        </div>
       </div>
     </section>
   );

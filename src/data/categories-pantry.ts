@@ -351,7 +351,7 @@ export const pantryCategories: Category[] = [
         name: "Pitted Bella Italia Mix Olives",
         description:
           "A colorful medley of premium Italian olive varieties, pitted and ready to enjoy. A taste of Italy in every handful.",
-        image: "/assets/Olive/Tuscanini-Bella-Italia-Mix-Pitted-Olivs-730182.png",
+        image: "/assets/Olive/Tuscanini-Bella-Italia-Mix-Pitted-Olives-730182.png",
         categoryId: "olives-condiments",
         details:
           "Our Bella Italia Mix brings together a curated selection of Italy's finest olive varieties in one convenient jar. Each olive is pitted for effortless enjoyment, making this mix perfect for antipasti, salads, and cocktail hour.",
@@ -958,7 +958,7 @@ export const pantryCategories: Category[] = [
         name: "Minced Black Truffle",
         description:
           "Finely minced Italian black truffles, ready to fold into sauces, butters, and dressings. Pure truffle flavor in every spoonful.",
-        image: "/assets/Truffles/730586.png",
+        image: "/assets/Truffles/730585.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Minced Black Truffle offers the full intensity of Italian truffles in a ready-to-use format. Mix into compound butters, cream sauces, vinaigrettes, and mashed potatoes for effortless truffle indulgence.",

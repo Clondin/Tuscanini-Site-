@@ -7,8 +7,7 @@ export default function AboutHero() {
         <img
           alt="Italian Countryside"
           className="w-full h-full object-cover opacity-40 scale-105"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuADU3knnkYzqfogwvrEJtCaRmpf3fNBKPOo3BwcHA2-RStaPhFITXR4UrfPdPOKYZ37DkAxFn5f_GO8WcMpbjIwnHI1MZf207HfKDbGpUAnfId_PUWryYSwknegiCBbaWYv1vCkwxrMUoGblpnNgDv9Vmz3d7S_tzNanq3zZ_kS4lkHpkwA_ZVkEg8kNcjHrhdIsW4A3SfZyHeVGeLpWHDfDjuV7kUUv2cLSe21cneVdcgucQPGWBy11tOy76xqBizAV5wxzy8ZOPbk"
-          referrerPolicy="no-referrer"
+          src="/assets/Photos/backgrounds/italian-village.jpg"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-black/15"></div>
         <div className="absolute inset-0 sketch-overlay pointer-events-none"></div>

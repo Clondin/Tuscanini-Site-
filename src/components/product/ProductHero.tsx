@@ -34,7 +34,7 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
                 <ImageWithSkeleton
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   wrapperClassName="w-full h-full"
                   skeletonClassName="aspect-auto"
                 />
@@ -101,7 +101,9 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
           <TrustBadges madeInItaly={product.madeInItaly} kosher={product.kosher} />
 
           <motion.a
-            href="#"
+            href="https://tuscaninifoods.com"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-3 px-10 py-4 bg-primary text-white font-body uppercase tracking-[0.2em] text-xs hover:bg-primary/85 transition-colors shadow-lg shadow-primary/20 mt-4 cursor-pointer"

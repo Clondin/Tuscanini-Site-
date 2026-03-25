@@ -11,8 +11,7 @@ export default function AboutCTA() {
         <img
           alt="Italian Coast"
           className="w-full h-full object-cover opacity-15"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN5mUX9JZGjnSsvYEYqUhuJgKDqZp0SgCmy4ZBcB1MSb0tHXakUnUchTzLazRZlStxn6p9mZhDBdisboWQ9YXoIcXuznI6FO0s63LGO9VDh9Rb2DonXgx_S57OkccH5pHEk-ZU2tc9TP7WAkqEjtDmjLyI5IWe0sVw_RQfxTsy_s_3VATENtqlBrKKPPcaOG8t9D7qKXd9L32Lm7G-3007Mvvc-1fR6wLTGmoW5gIPQ6gOQbf1a_NVCM2_ACKirgw8sdCiqQ2z5Y7i"
-          referrerPolicy="no-referrer"
+          src="/assets/Photos/backgrounds/italian-coast.jpg"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-earth-dark via-earth-dark/80 to-earth-dark"></div>
       </div>

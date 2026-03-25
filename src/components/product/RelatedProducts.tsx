@@ -44,7 +44,7 @@ export default function RelatedProducts({ products, categoryName }: RelatedProdu
                 <div className="aspect-square overflow-hidden mb-6 bg-surface ring-1 ring-on-surface/10">
                   {related.image ? (
                     <img
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 opacity-90"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000 opacity-90"
                       src={related.image}
                       alt={related.name}
                     />

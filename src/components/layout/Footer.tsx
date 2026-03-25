@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, Share2 } from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
 import { categories } from "../../data/products";
 import TuscaniniLogo from "../TuscaniniLogo";
 
@@ -60,7 +60,7 @@ export default function Footer() {
             </h4>
             <div className="flex items-center gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/tuscaninifoods/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-italia-white/50 hover:text-gold transition-colors"
@@ -69,20 +69,13 @@ export default function Footer() {
                 <Instagram size={20} />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@TuscaniniFoods"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-italia-white/50 hover:text-gold transition-colors"
                 aria-label="Youtube"
               >
                 <Youtube size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-italia-white/50 hover:text-gold transition-colors"
-                aria-label="Share"
-              >
-                <Share2 size={20} />
               </a>
             </div>
           </div>

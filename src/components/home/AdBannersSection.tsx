@@ -26,7 +26,7 @@ const adBanners = [
   {
     src: "/assets/ads/lemon-juice-parallax.jpg",
     label: "Lemon Juice",
-    slug: "olives-condiments",
+    slug: "beverages",
   },
   {
     src: "/assets/ads/marinara-banner2.jpg",

@@ -110,7 +110,7 @@ export default function FeaturedProducts() {
                     className="w-full h-full"
                   >
                     <ImageWithSkeleton
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                       wrapperClassName="w-full h-full"
                       skeletonClassName="aspect-auto"
                       src={product.image}
