@@ -279,14 +279,14 @@ export const pantryCategories: Category[] = [
     tagline: "Mediterranean Treasures",
     description:
       "Hand-picked Italian olives and authentic condiments that transform every dish into a Mediterranean masterpiece.",
-    heroImage: "",
+    heroImage: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
     products: [
       {
         id: "pitted-green-castelvetrano",
         name: "Pitted Green Castelvetrano Olives",
         description:
           "Buttery, mild Castelvetrano olives from Sicily, carefully pitted for effortless snacking. Their bright green color and sweet flavor make them a crowd favorite.",
-        image: "",
+        image: "/assets/Olive/730190.png",
         categoryId: "olives-condiments",
         details:
           "Harvested in the Castelvetrano region of Sicily, these prized olives are known for their firm, meaty texture and distinctively mild, buttery taste. Pitted for convenience, they're perfect for antipasti platters, salads, and snacking.",
@@ -299,7 +299,7 @@ export const pantryCategories: Category[] = [
         name: "Green Cerignola Olives",
         description:
           "Large, plump Cerignola olives from Puglia with a crisp bite and subtly sweet flavor. A showstopper on any olive board.",
-        image: "",
+        image: "/assets/Olive/730191-PRIMARY-SHOT.png",
         categoryId: "olives-condiments",
         details:
           "Cerignola olives from Puglia are among the largest olive varieties in the world. Their firm flesh, mild brininess, and elegant appearance make them a favorite for entertaining and Italian appetizer spreads.",
@@ -312,7 +312,7 @@ export const pantryCategories: Category[] = [
         name: "Pitted Kalamata Olives",
         description:
           "Rich, fruity Kalamata olives with a deep purple hue, pitted for easy enjoyment. A classic Mediterranean staple with bold flavor.",
-        image: "",
+        image: "/assets/Olive/730192.png",
         categoryId: "olives-condiments",
         details:
           "Our Kalamata olives deliver an intense, wine-like fruitiness with a smooth, meaty texture. Pitted for convenience, they're ideal for Greek salads, pasta dishes, tapenade, and charcuterie boards.",
@@ -325,7 +325,7 @@ export const pantryCategories: Category[] = [
         name: "Sweet Sicilian Castelvetrano",
         description:
           "Generously sized Sicilian Castelvetrano olives in a larger jar, marinated for a sweeter, more complex flavor profile.",
-        image: "",
+        image: "/assets/Olive/Tuscanini-Sweet-Sicilian-Castelvetrano-Olives-730180.png",
         categoryId: "olives-condiments",
         details:
           "These sweet Sicilian Castelvetrano olives are gently marinated to enhance their natural buttery sweetness. The larger jar ensures you have plenty for gatherings, cooking, and everyday snacking.",
@@ -338,7 +338,7 @@ export const pantryCategories: Category[] = [
         name: "Kalamata Olives",
         description:
           "Premium Kalamata olives in a larger jar, perfect for families and olive lovers. Deep, rich flavor with a satisfying meaty texture.",
-        image: "",
+        image: "/assets/Olive/Tuscanini-Kalamata-Olives-730181.png",
         categoryId: "olives-condiments",
         details:
           "Our larger Kalamata olive jar brings the bold, fruity character of these beloved olives to your table in generous quantity. Ideal for cooking, entertaining, or keeping stocked in your Mediterranean pantry.",
@@ -351,7 +351,7 @@ export const pantryCategories: Category[] = [
         name: "Pitted Bella Italia Mix Olives",
         description:
           "A colorful medley of premium Italian olive varieties, pitted and ready to enjoy. A taste of Italy in every handful.",
-        image: "",
+        image: "/assets/Olive/Tuscanini-Bella-Italia-Mix-Pitted-Olivs-730182.png",
         categoryId: "olives-condiments",
         details:
           "Our Bella Italia Mix brings together a curated selection of Italy's finest olive varieties in one convenient jar. Each olive is pitted for effortless enjoyment, making this mix perfect for antipasti, salads, and cocktail hour.",
@@ -364,7 +364,7 @@ export const pantryCategories: Category[] = [
         name: "Pitted Olives with Crushed Garlic",
         description:
           "Savory Italian olives marinated with crushed garlic for an irresistible flavor combination. Bold, aromatic, and ready to serve.",
-        image: "",
+        image: "/assets/Olive/730183 - Pitted Olives w-Crushed Garlic.jpg",
         categoryId: "olives-condiments",
         details:
           "Our pitted olives are infused with crushed Italian garlic, creating a deeply savory and aromatic snack. They add instant Mediterranean flair to pasta, pizza, and appetizer platters.",
@@ -377,7 +377,7 @@ export const pantryCategories: Category[] = [
         name: "Cracked Marinated Olives",
         description:
           "Traditional cracked olives marinated in herbs and olive oil. The cracking allows the marinade to penetrate for maximum flavor.",
-        image: "",
+        image: "/assets/Olive/730184 -Cracked Marinated Olives.jpg",
         categoryId: "olives-condiments",
         details:
           "Following an age-old Mediterranean technique, these olives are gently cracked before marinating in aromatic herbs and extra virgin olive oil. The result is a deeply flavorful olive that bursts with every bite.",
@@ -390,7 +390,7 @@ export const pantryCategories: Category[] = [
         name: "Italian Olives Trio Platter",
         description:
           "Three varieties of premium Italian olives presented in an elegant divided platter. The perfect ready-to-serve appetizer for any occasion.",
-        image: "",
+        image: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
         categoryId: "olives-condiments",
         details:
           "Our Trio Platter features three distinct Italian olive varieties, each in its own compartment for a beautiful presentation. Simply open and serve for an instant, elegant appetizer that impresses every time.",
@@ -403,7 +403,7 @@ export const pantryCategories: Category[] = [
         name: "Spicy Pimiento Stuffed Olives",
         description:
           "Plump Italian olives stuffed with fiery pimiento peppers for a spicy kick. A bold twist on the classic stuffed olive.",
-        image: "",
+        image: "/assets/Olive/Tuscanini-Spicy-Stuffed-Pimento-olives-8.5oz-730187.png",
         categoryId: "olives-condiments",
         details:
           "These Italian olives are hand-stuffed with spicy pimiento peppers, delivering a satisfying heat balanced by the olive's natural brininess. Perfect for martinis, appetizer boards, and adding punch to salads.",
@@ -1002,6 +1002,95 @@ export const pantryCategories: Category[] = [
         details:
           "Our Large Minced Black Truffle jar is the choice of professional chefs and truffle aficionados who demand both quality and quantity. Fold it generously into sauces, risottos, and butters without worrying about running out.",
         size: "17.6 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+    ],
+  },
+  {
+    id: "flour-baking",
+    name: "Flour & Baking",
+    slug: "flour-baking",
+    tagline: "The Foundation of Italian Cooking",
+    description:
+      "Premium Italian flours crafted from the finest wheat, perfect for homemade pasta, bread, pizza, and pastry. From classic all-purpose to specialty spelt and high-gluten varieties.",
+    heroImage: "/assets/Flour/High gluten TUSCANINI_2,27Kg_2501013_facing.png",
+    products: [
+      {
+        id: "all-purpose-flour-2-2lb",
+        name: "All Purpose Flour 2.2LB",
+        description:
+          "Finely milled Italian all-purpose flour, versatile for pasta, bread, pizza dough, and pastry. The essential foundation of authentic Italian cooking.",
+        image: "/assets/Flour/730306.png",
+        categoryId: "flour-baking",
+        details:
+          "Our All Purpose Flour is milled from premium Italian wheat to a fine, consistent texture ideal for a wide range of baking applications. Whether you are making fresh pasta, pizza dough, or classic Italian breads, this flour delivers authentic results every time.",
+        size: "2.2 LB (1 kg)",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "all-purpose-flour-1kg",
+        name: "All Purpose Flour 1KG",
+        description:
+          "Classic Italian all-purpose flour in a generous 1KG bag. Perfect for everyday baking, from homemade pasta to rustic loaves.",
+        image: "/assets/Flour/All purpose TUSCANINI_1Kg_2501011_facing.png",
+        categoryId: "flour-baking",
+        details:
+          "A larger format of our premium Italian all-purpose flour, providing excellent value for frequent bakers. Its balanced protein content makes it suitable for pasta, pizza, focaccia, and a wide variety of traditional Italian recipes.",
+        size: "1 KG (2.2 LB)",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "high-gluten-flour-5lb",
+        name: "High Gluten Flour 5LB",
+        description:
+          "High-protein Italian flour designed for artisan bread, chewy pizza crusts, and fresh pasta. Superior elasticity and structure for professional results.",
+        image: "/assets/Flour/730307.png",
+        categoryId: "flour-baking",
+        details:
+          "Our High Gluten Flour is milled from hard durum wheat with a high protein content that creates exceptional dough elasticity and strength. Ideal for Neapolitan-style pizza, sourdough bread, bagels, and fresh pasta that holds its shape perfectly.",
+        size: "5 LB",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "high-gluten-flour-2-27kg",
+        name: "High Gluten Flour 2.27KG",
+        description:
+          "Professional-grade Italian high-gluten flour in a large 2.27KG format. The preferred choice for artisan bakers and serious home cooks.",
+        image: "/assets/Flour/High gluten TUSCANINI_2,27Kg_2501013_facing.png",
+        categoryId: "flour-baking",
+        details:
+          "The large-format version of our high-gluten flour, perfect for frequent bakers who demand professional-quality results. Its high protein content delivers superior dough strength and elasticity for pizzas, breads, and fresh pasta.",
+        size: "2.27 KG (5 LB)",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "spelt-white-flour-5lb",
+        name: "Spelt White Flour 5LB",
+        description:
+          "Ancient grain spelt flour with a mild, nutty flavor and naturally lighter texture. A nutritious alternative for modern Italian baking.",
+        image: "/assets/Flour/730308.png",
+        categoryId: "flour-baking",
+        details:
+          "Made from ancient spelt wheat, our White Spelt Flour offers a delicate nuttiness and slightly sweeter profile compared to conventional wheat flour. Rich in fiber and nutrients, it works beautifully in pasta, pizza, focaccia, and rustic breads with a wholesome twist.",
+        size: "5 LB",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "spelt-white-flour-2-27kg",
+        name: "Spelt White Flour 2.27KG",
+        description:
+          "Premium Italian spelt flour in a large 2.27KG format, perfect for bakers who love the nutty complexity of ancient grains.",
+        image: "/assets/Flour/Spelt TUSCANINI_2,27Kg_2501009_facing.png",
+        categoryId: "flour-baking",
+        details:
+          "Our large-format White Spelt Flour brings the ancient grain goodness of spelt to your kitchen in generous quantity. With its mild, nutty flavor and excellent baking properties, it is the go-to choice for health-conscious bakers who do not want to sacrifice authenticity.",
+        size: "2.27 KG (5 LB)",
         kosher: true,
         madeInItaly: true,
       },

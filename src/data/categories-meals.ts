@@ -162,14 +162,14 @@ export const mealCategories: Category[] = [
     tagline: "Straight From the Italian Pizzeria",
     description:
       "Authentic Italian frozen pizzas crafted with premium ingredients, from classic Margherita to our exclusive Reserve collection with hand-stretched dough and San Marzano-style sauce.",
-    heroImage: "",
+    heroImage: "/assets/Pizza/730101.png",
     products: [
       {
         id: "four-cheese-pizza",
         name: "Four Cheese Pizza",
         description:
           "A generous blend of four Italian cheeses melted over a crispy crust with savory tomato sauce. Rich, gooey, and irresistible.",
-        image: "",
+        image: "/assets/Pizza/730100.png",
         categoryId: "pizza",
         details:
           "Our Four Cheese Pizza layers mozzarella, fontina, gorgonzola, and Parmigiano-Reggiano over a perfectly baked Italian crust with traditional tomato sauce. Each slice delivers a harmonious medley of creamy, tangy, and sharp flavors.",
@@ -182,7 +182,7 @@ export const mealCategories: Category[] = [
         name: "Classico Margherita Pizza",
         description:
           "The timeless Neapolitan classic with tomato sauce, fresh mozzarella, and fragrant basil on a golden crust.",
-        image: "",
+        image: "/assets/Pizza/730101.png",
         categoryId: "pizza",
         details:
           "Our Classico Margherita honors the original Neapolitan recipe with San Marzano-style tomato sauce, creamy mozzarella, and aromatic basil on a crispy Italian crust. Simple perfection that lets each premium ingredient shine.",
@@ -195,7 +195,7 @@ export const mealCategories: Category[] = [
         name: "Mushroom Pizza",
         description:
           "Earthy, savory mushrooms scattered over melted mozzarella and rich tomato sauce. A pizza for mushroom lovers everywhere.",
-        image: "",
+        image: "/assets/Pizza/730102.png",
         categoryId: "pizza",
         details:
           "Our Mushroom Pizza features a generous topping of sliced mushrooms over mozzarella and Italian tomato sauce on a golden crust. The earthy depth of the mushrooms pairs beautifully with the tangy sauce for a satisfying vegetarian pizza.",
@@ -208,7 +208,7 @@ export const mealCategories: Category[] = [
         name: "Grilled Vegetable Pizza",
         description:
           "A colorful medley of flame-grilled vegetables atop melted cheese and a crisp Italian crust. Garden-fresh flavor in every bite.",
-        image: "",
+        image: "/assets/Pizza/730103.png",
         categoryId: "pizza",
         details:
           "Our Grilled Vegetable Pizza showcases a vibrant mix of char-grilled peppers, zucchini, eggplant, and onions over mozzarella and tomato sauce. The smoky grilled flavor adds depth to this hearty vegetarian pizza crafted in Italy.",
@@ -221,7 +221,7 @@ export const mealCategories: Category[] = [
         name: "Personal Pie Thin Crust Pizza",
         description:
           "A perfectly portioned thin-crust pizza for one, with a satisfying crunch and classic Italian toppings.",
-        image: "",
+        image: "/assets/Pizza/730115.png",
         categoryId: "pizza",
         details:
           "Our Personal Pie Thin Crust Pizza delivers all the flavor of a full-sized pizza in a perfectly portioned individual serving. The ultra-thin, crispy crust is topped with tomato sauce and melted mozzarella for a quick and satisfying meal.",
@@ -234,7 +234,7 @@ export const mealCategories: Category[] = [
         name: "Bianca White Thin Crust Pizza",
         description:
           "A sauce-free thin crust pizza with creamy white cheeses and aromatic herbs. Elegant simplicity on a crispy base.",
-        image: "",
+        image: "/assets/Pizza/Tuscanini-Bianca-White-Pizza.png",
         categoryId: "pizza",
         details:
           "Our Bianca White Pizza skips the tomato sauce in favor of a luscious blend of creamy Italian cheeses on an ultra-thin, crispy crust. Finished with aromatic herbs, it is a sophisticated take on the classic white pizza tradition.",
@@ -247,7 +247,7 @@ export const mealCategories: Category[] = [
         name: "Creamy Ricotta and Cheddar Thin Crust Pizza",
         description:
           "A decadent thin crust pizza blending creamy ricotta with sharp cheddar for a rich, indulgent cheese experience.",
-        image: "",
+        image: "/assets/Pizza/Tuscanini-Creamy-ricotta.png",
         categoryId: "pizza",
         details:
           "Our Creamy Ricotta and Cheddar Thin Crust Pizza pairs velvety ricotta with melted cheddar on an ultra-thin, crispy Italian crust. The combination of mild creaminess and sharp tang creates a cheese lover's dream in every slice.",
@@ -260,7 +260,7 @@ export const mealCategories: Category[] = [
         name: "Reserve Margherita Pizza",
         description:
           "Our premium Margherita with hand-stretched dough, San Marzano-style sauce, and fresh mozzarella. The pinnacle of pizza perfection.",
-        image: "",
+        image: "/assets/Pizza/730126.png",
         categoryId: "pizza",
         details:
           "The Reserve Margherita elevates our classic with hand-stretched dough, premium San Marzano-style tomato sauce, and fresh Italian mozzarella. Every element is crafted to deliver an authentic Neapolitan pizzeria experience at home.",
@@ -273,7 +273,7 @@ export const mealCategories: Category[] = [
         name: "Reserve Supermargherita Pizza",
         description:
           "An elevated Margherita loaded with extra mozzarella, cherry tomatoes, and fresh basil on hand-stretched dough. Our most indulgent pizza.",
-        image: "",
+        image: "/assets/Pizza/730127.png",
         categoryId: "pizza",
         details:
           "The Reserve Supermargherita takes our beloved Margherita to new heights with an extra-generous layer of fresh mozzarella, sweet cherry tomatoes, and fragrant basil on hand-stretched dough with San Marzano-style sauce. A truly premium pizza experience.",
@@ -312,7 +312,7 @@ export const mealCategories: Category[] = [
         name: "Reserve BBQ Pulled Brisket Meat Pizza",
         description:
           "Tender pulled brisket with smoky BBQ sauce on hand-stretched dough. A bold fusion of Italian craft and American flavor.",
-        image: "",
+        image: "/assets/Pizza/730500.png",
         categoryId: "pizza",
         details:
           "Our Reserve BBQ Pulled Brisket Pizza brings together slow-cooked, tender brisket and smoky BBQ sauce on our premium hand-stretched Italian dough. This bold creation marries Italian pizza craftsmanship with rich, smoky American barbecue flavors.",
@@ -325,7 +325,7 @@ export const mealCategories: Category[] = [
         name: "Reserve BBQ Ground Beef Meat Pizza",
         description:
           "Seasoned ground beef with tangy BBQ sauce on hand-stretched dough. Hearty, smoky, and satisfying.",
-        image: "",
+        image: "/assets/Pizza/730501.png",
         categoryId: "pizza",
         details:
           "Our Reserve BBQ Ground Beef Pizza tops hand-stretched Italian dough with seasoned ground beef and a tangy BBQ sauce. The result is a hearty, flavor-packed pizza that combines Italian artistry with bold, smoky barbecue character.",
