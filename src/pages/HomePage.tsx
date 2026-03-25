@@ -264,10 +264,10 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover opacity-85"
             src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
           <div className="absolute inset-0 sketch-overlay pointer-events-none" />
         </div>
 
@@ -434,7 +434,7 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="relative h-[50vh] min-h-[320px] overflow-hidden">
         <img
-          src="/assets/ads/tomato-group.jpg"
+          src="/assets/ads/tomato-group-tuscanini-web.jpg"
           alt="Tuscanini Tomato Products"
           className="w-full h-full object-cover scale-105"
         />
