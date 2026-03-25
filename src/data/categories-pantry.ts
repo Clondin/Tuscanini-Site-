@@ -8,7 +8,7 @@ export const pantryCategories: Category[] = [
     tagline: "Liquid Gold from Ancient Groves",
     description:
       "From cold-pressed extra virgin olive oil to aged balsamic vinegar of Modena, our collection captures centuries of Italian tradition in every bottle.",
-    heroImage: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-1L-730400.png",
+    heroImage: "/assets/ads/balsamic-parallax.jpg",
     products: [
       {
         id: "extra-light-olive-oil-1l",
@@ -67,7 +67,7 @@ export const pantryCategories: Category[] = [
         name: "Extra Virgin Olive Oil with Garlic",
         description:
           "Premium extra virgin olive oil naturally infused with aromatic Italian garlic. Adds instant depth to pasta, bruschetta, and roasted vegetables.",
-        image: "",
+        image: "/assets/Olive Oil/730254.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our garlic-infused EVOO combines cold-pressed Italian olive oil with the bold, savory essence of fresh garlic. A single drizzle transforms simple dishes into flavorful Italian creations.",
@@ -80,7 +80,7 @@ export const pantryCategories: Category[] = [
         name: "Extra Virgin Olive Oil with Lemon",
         description:
           "Bright and zesty extra virgin olive oil infused with fresh Sicilian lemons. A vibrant finishing oil for seafood, salads, and grilled dishes.",
-        image: "",
+        image: "/assets/Olive Oil/730256-PRIMARY-SHOT.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Sun-ripened Sicilian lemons lend their bright citrus essence to our cold-pressed extra virgin olive oil. The result is a lively, aromatic oil that elevates fish, vegetables, and desserts alike.",
@@ -93,7 +93,7 @@ export const pantryCategories: Category[] = [
         name: "Extra Virgin Olive Oil with Black Truffle",
         description:
           "Luxurious extra virgin olive oil infused with prized Italian black truffles. An indulgent finishing oil with an earthy, intoxicating aroma.",
-        image: "",
+        image: "/assets/Olive Oil/730257.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our truffle-infused EVOO marries the richness of cold-pressed Italian olive oil with the unmistakable earthy depth of black truffles. A few drops elevate pasta, risotto, eggs, and popcorn to gourmet status.",
@@ -106,7 +106,7 @@ export const pantryCategories: Category[] = [
         name: "Balsamic Vinegar of Modena",
         description:
           "Aged balsamic vinegar from Modena with a rich, complex sweetness and velvety texture. A timeless Italian condiment.",
-        image: "",
+        image: "/assets/Vinegar/Tuscanini-Balsamic-Vinegar-8.45-oz.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Crafted in Modena using traditional methods, our Balsamic Vinegar offers a harmonious balance of sweetness and acidity. Aged to develop its signature dark color and syrupy consistency, it's perfect for dressings, marinades, and finishing drizzles.",
@@ -119,7 +119,7 @@ export const pantryCategories: Category[] = [
         name: "Balsamic Vinegar of Modena 500ml",
         description:
           "A generous bottle of our authentic Modena balsamic vinegar for those who use this Italian essential every day. Rich, nuanced, and endlessly versatile.",
-        image: "",
+        image: "/assets/Vinegar/730260.png",
         categoryId: "olive-oil-vinegars",
         details:
           "The larger format of our Balsamic Vinegar of Modena ensures you never run out of this kitchen staple. Its complex sweetness and silky body enhance everything from caprese salads to roasted meats and even strawberries.",
@@ -132,7 +132,7 @@ export const pantryCategories: Category[] = [
         name: "Balsamic Vinegar Glaze of Modena",
         description:
           "A thick, syrupy reduction of balsamic vinegar perfect for drizzling over salads, grilled meats, and fresh fruit. Beautiful presentation and intense flavor.",
-        image: "",
+        image: "/assets/Vinegar/730261.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Balsamic Glaze is slow-reduced from authentic Modena balsamic vinegar into a luxuriously thick, sweet-tangy syrup. Its easy-squeeze bottle makes artful plating effortless for both home cooks and professional chefs.",
@@ -145,7 +145,7 @@ export const pantryCategories: Category[] = [
         name: "Balsamic Vinegar Spray",
         description:
           "Authentic Modena balsamic vinegar in a convenient spray bottle for effortless, even drizzling. Perfect for salads, grilled meats, and finishing touches.",
-        image: "",
+        image: "/assets/Vinegar/730247.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Balsamic Vinegar Spray puts the rich, complex flavor of Modena balsamic vinegar at your fingertips. The fine mist spray delivers an even coating with minimal effort — ideal for salads, appetizers, and artful plating.",
@@ -158,7 +158,7 @@ export const pantryCategories: Category[] = [
         name: "Caramel Balsamic Vinegar Glaze of Modena",
         description:
           "A luscious caramel-infused balsamic glaze with a sweet, buttery depth. An indulgent finishing touch for desserts, cheeses, and roasted meats.",
-        image: "",
+        image: "/assets/Vinegar/730251.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Caramel Balsamic Glaze blends the rich complexity of Modena balsamic vinegar with smooth, buttery caramel for a luxuriously sweet drizzle. Stunning over vanilla gelato, aged cheeses, roasted pears, and grilled meats.",
@@ -171,7 +171,7 @@ export const pantryCategories: Category[] = [
         name: "Raspberry Balsamic Vinegar Glaze of Modena",
         description:
           "A fruity, tangy balsamic glaze infused with bright Italian raspberries. A vibrant finishing drizzle for salads, desserts, and cheese boards.",
-        image: "",
+        image: "/assets/Vinegar/730252.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Raspberry Balsamic Glaze marries the depth of Modena balsamic with the bright, tangy sweetness of Italian raspberries. Its jewel-toned color and fruity character make it a stunning addition to salads, goat cheese, and fresh fruit.",
@@ -184,7 +184,7 @@ export const pantryCategories: Category[] = [
         name: "Red Cooking Wine",
         description:
           "Full-bodied Italian red cooking wine that adds depth and richness to sauces, braises, and stews. An essential ingredient in classic Italian recipes.",
-        image: "",
+        image: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Red Cooking Wine is made from quality Italian grapes, selected for their ability to enhance savory dishes. It deglazes pans beautifully and adds complex, wine-rich flavor to ragùs, osso buco, and hearty sauces.",
@@ -197,7 +197,7 @@ export const pantryCategories: Category[] = [
         name: "White Cooking Wine",
         description:
           "A crisp Italian white cooking wine that brings brightness and acidity to seafood, risotto, and cream sauces. Light and aromatic.",
-        image: "",
+        image: "/assets/Vinegar/730266-PRIMARY-SHOT.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Made from select Italian white grapes, our White Cooking Wine adds a clean, bright acidity to your cooking. Perfect for deglazing, steaming mussels, enriching risottos, and lightening cream-based sauces.",
@@ -210,7 +210,7 @@ export const pantryCategories: Category[] = [
         name: "Organic Apple Cider Vinegar",
         description:
           "Organic, unfiltered apple cider vinegar with a tangy, crisp flavor. Made in Italy from premium organic apples.",
-        image: "",
+        image: "/assets/Vinegar/Tuscanini-Apple-Cider-Vinegar-with-Mother-730245.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Organic Apple Cider Vinegar is crafted from Italian organic apples using traditional fermentation. Its sharp, fruity acidity is ideal for salad dressings, marinades, and health-conscious recipes.",
@@ -223,7 +223,7 @@ export const pantryCategories: Category[] = [
         name: "Red Wine Vinegar",
         description:
           "Bold and robust Italian red wine vinegar with a sharp, fruity character. A staple for vinaigrettes and Mediterranean cooking.",
-        image: "",
+        image: "/assets/Vinegar/730248.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Fermented from quality Italian red wine, our Red Wine Vinegar brings a robust tang and deep ruby color to dressings, marinades, and sauces. An indispensable ingredient in any Italian pantry.",
@@ -236,7 +236,7 @@ export const pantryCategories: Category[] = [
         name: "White Wine Vinegar",
         description:
           "Clean, bright Italian white wine vinegar with a subtle grape undertone. Ideal for light dressings, pickling, and delicate sauces.",
-        image: "",
+        image: "/assets/Vinegar/730249.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Made from Italian white wine, this vinegar offers a clean, crisp acidity that complements seafood, salads, and lighter dishes. Its subtle flavor won't overpower delicate ingredients.",
@@ -249,7 +249,7 @@ export const pantryCategories: Category[] = [
         name: "Lemon Juice",
         description:
           "Pure squeezed lemon juice from sun-ripened Sicilian lemons. Bright, tart, and ready to add a burst of citrus to any dish.",
-        image: "",
+        image: "/assets/Lemon Juice/730285-PRIMARY-SHOT.png",
         categoryId: "olive-oil-vinegars",
         details:
           "Our Lemon Juice is pressed from the finest Sicilian lemons, capturing their vibrant acidity and fragrant zest. Keep it on hand for dressings, seafood, cocktails, and baking.",
@@ -262,7 +262,7 @@ export const pantryCategories: Category[] = [
         name: "Lemon Juice Large",
         description:
           "A larger bottle of pure Sicilian lemon juice for kitchens that can't get enough citrus. Same bright, authentic flavor in a value size.",
-        image: "/assets/Peppers/730286.png",
+        image: "/assets/Lemon Juice/730286.png",
         categoryId: "olive-oil-vinegars",
         details:
           "The larger format of our Sicilian Lemon Juice is perfect for avid cooks and entertainers. Pure, tart, and intensely flavorful — a versatile ingredient that brightens everything it touches.",
@@ -442,7 +442,7 @@ export const pantryCategories: Category[] = [
         name: "Sun Dried Tomatoes",
         description:
           "Intensely flavored Italian sun-dried tomatoes, plump and tender with concentrated sweetness. A Mediterranean pantry essential.",
-        image: "",
+        image: "/assets/Fruits/SundriedTomatoes/730439.png",
         categoryId: "olives-condiments",
         details:
           "Our sun-dried tomatoes are slowly dried under the Italian sun to concentrate their natural sweetness and umami depth. Rehydrate them for pasta and salads, or enjoy them straight from the jar on antipasti platters.",
@@ -455,7 +455,7 @@ export const pantryCategories: Category[] = [
         name: "Calabrian Chili Hot Pepper Jam",
         description:
           "A sweet and spicy jam made from Calabrian chili peppers, perfect for glazing, spreading, and pairing with cheese. Addictively delicious.",
-        image: "",
+        image: "/assets/Jam/730242.png",
         categoryId: "olives-condiments",
         details:
           "Our Hot Pepper Jam balances the smoky heat of Calabrian chilies with a touch of sweetness for a versatile condiment. Spread it on crostini with fresh cheese, glaze meats, or stir into sauces for a sweet-heat kick.",
@@ -468,7 +468,7 @@ export const pantryCategories: Category[] = [
         name: "Capers in Brine",
         description:
           "Tiny, tangy Italian capers preserved in brine for a burst of Mediterranean flavor. A classic ingredient in Italian and French cuisine.",
-        image: "",
+        image: "/assets/Fruits/Capers/730375.png",
         categoryId: "olives-condiments",
         details:
           "Our Capers in Brine are hand-picked in Italy and preserved in a delicate brine that maintains their firm texture and sharp, tangy flavor. Add them to pasta puttanesca, chicken piccata, salads, and smoked salmon for an authentic Mediterranean touch.",
@@ -520,7 +520,7 @@ export const pantryCategories: Category[] = [
         name: "Tomato Savory Jam",
         description:
           "A sweet and savory Italian jam made from ripe tomatoes. A versatile condiment that pairs beautifully with cheese, crostini, and grilled meats.",
-        image: "",
+        image: "/assets/Jam/730276.png",
         categoryId: "olives-condiments",
         details:
           "Our Tomato Savory Jam transforms ripe Italian tomatoes into a sophisticated sweet-savory spread. Its unique flavor profile makes it a standout accompaniment for aged cheeses, charcuterie boards, crostini, and grilled meats.",
@@ -533,7 +533,7 @@ export const pantryCategories: Category[] = [
         name: "Truffle Ketchup",
         description:
           "A gourmet twist on a classic condiment, blending ripe Italian tomatoes with luxurious black truffle. Elevates burgers, fries, and everything in between.",
-        image: "",
+        image: "/assets/Truffle Ketchup/730233-PRIMARY-SHOT.png",
         categoryId: "olives-condiments",
         details:
           "Our Truffle Ketchup combines the familiar tang of premium tomato ketchup with the earthy sophistication of Italian black truffles. It transforms everyday favorites into gourmet experiences — try it with fries, burgers, or as a dipping sauce.",
@@ -550,7 +550,7 @@ export const pantryCategories: Category[] = [
     tagline: "The Soul of Italian Cooking",
     description:
       "From our signature pasta sauces to premium canned tomatoes and concentrated paste, these are the building blocks of authentic Italian cuisine.",
-    heroImage: "/assets/Sauces/Tuscanini Peeled Tomato Sauce Comp 4 copy.png",
+    heroImage: "/assets/ads/marinara-banner.jpg",
     products: [
       {
         id: "traditional-pizza-sauce",
@@ -635,7 +635,7 @@ export const pantryCategories: Category[] = [
         name: "Organic Tomato Paste Tube",
         description:
           "Certified organic concentrated tomato paste made from Italian organic tomatoes. Pure, rich, and sustainably produced.",
-        image: "",
+        image: "/assets/Sauces/730220-PRIMARY-SHOT.png",
         categoryId: "sauces-tomatoes",
         details:
           "Made exclusively from certified organic Italian tomatoes, our Organic Tomato Paste delivers the same deep, concentrated flavor with the assurance of organic farming practices. Squeezable tube format for zero waste.",
@@ -648,7 +648,7 @@ export const pantryCategories: Category[] = [
         name: "Tomato Paste with Basil Tube",
         description:
           "Italian tomato paste infused with fragrant basil in a convenient tube. A shortcut to rich, herbaceous tomato flavor.",
-        image: "",
+        image: "/assets/Sauces/730234-PRIMARY-SHOT.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Tomato Paste with Basil combines concentrated Italian tomatoes with aromatic fresh basil for an instant flavor boost. The squeezable tube makes it easy to add just the right amount to sauces, soups, and braises.",
@@ -661,7 +661,7 @@ export const pantryCategories: Category[] = [
         name: "Tomato Puree",
         description:
           "Velvety smooth Italian tomato puree made from vine-ripened tomatoes. The ideal base for silky sauces and soups.",
-        image: "",
+        image: "/assets/Sauces/Tomato-Puree.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Tomato Puree is crafted from premium Italian tomatoes, blended to a smooth, luscious consistency. It provides a clean tomato flavor and uniform texture that forms the perfect foundation for pasta sauces, bisques, and braised dishes.",
@@ -687,7 +687,7 @@ export const pantryCategories: Category[] = [
         name: "Diced Tomatoes 24.3oz",
         description:
           "Uniformly diced Italian tomatoes that hold their shape in cooking. Ideal for sauces, stews, and casseroles.",
-        image: "",
+        image: "/assets/Sauces/Tuscanini-Diced-Tomatoes-24.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Diced Tomatoes are cut to a consistent size from ripe Italian tomatoes, ensuring even cooking and a pleasing texture in finished dishes. They're perfect for chunky sauces, soups, and Mediterranean-style stews.",
@@ -700,7 +700,7 @@ export const pantryCategories: Category[] = [
         name: "Peeled Tomatoes",
         description:
           "Whole peeled Italian tomatoes, hand-selected for ripeness and packed at peak flavor. The gold standard for homemade sauces.",
-        image: "",
+        image: "/assets/Sauces/Tuscanini-Peeled-Tomatoes-28.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Whole Peeled Tomatoes are carefully selected and peeled at the height of ripeness, preserving their sweet, vibrant flavor. Crush them by hand for a rustic sauce or blend them smooth — the choice is yours.",
@@ -713,7 +713,7 @@ export const pantryCategories: Category[] = [
         name: "Diced Tomatoes 14.1oz",
         description:
           "Perfectly diced Italian tomatoes in a convenient smaller can. Great for quick sauces, side dishes, and recipes that call for a measured amount.",
-        image: "",
+        image: "/assets/Sauces/730221-PRIMARY-SHOT.png",
         categoryId: "sauces-tomatoes",
         details:
           "The smaller format of our Diced Tomatoes is ideal for quick weeknight meals, single-batch sauces, and recipes where you need just the right amount. Same premium Italian quality in a more compact size.",
@@ -726,7 +726,7 @@ export const pantryCategories: Category[] = [
         name: "Whole Cherry Tomatoes",
         description:
           "Sweet, whole Italian cherry tomatoes preserved at peak ripeness. Bursting with concentrated sweetness and bright acidity.",
-        image: "",
+        image: "/assets/Sauces/730222-PRIMARY-SHOT.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Whole Cherry Tomatoes are picked at the peak of sweetness and packed whole to preserve their jewel-like shape and intense flavor. They're stunning in pasta, roasted in the oven, or tossed into quick pan sauces.",
@@ -739,7 +739,7 @@ export const pantryCategories: Category[] = [
         name: "Crushed Tomatoes 14.1oz",
         description:
           "Rustic crushed Italian tomatoes in a handy smaller can. Perfect for personal-sized batches of sauce and quick meals.",
-        image: "",
+        image: "/assets/Sauces/730223-PRIMARY-SHOT.png",
         categoryId: "sauces-tomatoes",
         details:
           "All the hearty, chunky goodness of our crushed tomatoes in a convenient smaller format. Ideal for quick pasta sauces for one or two, pizza topping, and recipes that don't require a full large can.",
@@ -752,7 +752,7 @@ export const pantryCategories: Category[] = [
         name: "Tomato Juice",
         description:
           "Pure Italian tomato juice made from sun-ripened tomatoes. Refreshing on its own or as a base for cocktails and cooking.",
-        image: "",
+        image: "/assets/Sauces/Tomato-Juice-2.png",
         categoryId: "sauces-tomatoes",
         details:
           "Our Tomato Juice is pressed from premium Italian tomatoes for a pure, vibrant flavor. Enjoy it chilled as a refreshing beverage, use it as a base for Bloody Marys, or incorporate it into soups and sauces for added depth.",
@@ -769,14 +769,14 @@ export const pantryCategories: Category[] = [
     tagline: "The Finishing Touch",
     description:
       "Premium Mediterranean sea salts, artisan spice grinders, and luxurious Italian truffle products to elevate every dish.",
-    heroImage: "",
+    heroImage: "/assets/Truffles/730580.png",
     products: [
       {
         id: "coarse-mediterranean-sea-salt",
         name: "Coarse Mediterranean Sea Salt",
         description:
           "Naturally harvested coarse sea salt from the Mediterranean, perfect for salt mills, finishing, and brining. Pure and mineral-rich.",
-        image: "",
+        image: "/assets/Salt/730280.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Coarse Mediterranean Sea Salt is harvested from pristine Mediterranean waters using traditional methods. Its large, crunchy crystals dissolve slowly, making it ideal for grinding, roasting, and adding a satisfying crunch to finished dishes.",
@@ -789,7 +789,7 @@ export const pantryCategories: Category[] = [
         name: "Fine Mediterranean Sea Salt",
         description:
           "Finely ground Mediterranean sea salt for everyday cooking and baking. Dissolves quickly and seasons evenly.",
-        image: "",
+        image: "/assets/Salt/730281.png",
         categoryId: "seasonings-truffles",
         details:
           "Milled to a fine, free-flowing grain, our Fine Mediterranean Sea Salt is the everyday workhorse of any kitchen. It dissolves instantly and distributes evenly, making it perfect for seasoning during cooking and baking.",
@@ -802,7 +802,7 @@ export const pantryCategories: Category[] = [
         name: "Sea Salt Flakes",
         description:
           "Delicate, pyramid-shaped sea salt flakes that add a beautiful crunch and clean salinity as a finishing touch. A chef's favorite.",
-        image: "",
+        image: "/assets/Salt/730282.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Sea Salt Flakes form naturally into delicate, crunchy pyramids that melt on the tongue with a burst of pure saltiness. Pinch them over steaks, chocolate, salads, and baked goods for an elevated finishing touch.",
@@ -815,7 +815,7 @@ export const pantryCategories: Category[] = [
         name: "Smoked Sea Salt Flakes",
         description:
           "Naturally smoked sea salt flakes with a deep, woodsy aroma. Adds instant smokiness and crunch to grilled meats, vegetables, and more.",
-        image: "",
+        image: "/assets/Salt/730283.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Smoked Sea Salt Flakes are naturally smoked over wood to infuse each delicate crystal with a rich, smoky depth. Sprinkle them over grilled steaks, roasted vegetables, eggs, or even caramel for a sophisticated smoky finish.",
@@ -828,7 +828,7 @@ export const pantryCategories: Category[] = [
         name: "Kosher Salt Bulk",
         description:
           "Premium Italian kosher salt in a generous three-pound bag. The versatile, all-purpose salt for serious home cooks and professionals.",
-        image: "",
+        image: "/assets/Salt/730284.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Kosher Salt features large, flat crystals that are easy to pinch and distribute evenly. The three-pound bulk size ensures you always have plenty on hand for seasoning, brining, and preserving.",
@@ -841,7 +841,7 @@ export const pantryCategories: Category[] = [
         name: "Black Pepper Spice Grinder",
         description:
           "Whole black peppercorns in a convenient built-in grinder. Freshly ground pepper with bold, aromatic heat at the twist of a wrist.",
-        image: "",
+        image: "/assets/Spice Grinder/730290.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Black Pepper Grinder is filled with premium whole peppercorns that release their bold, complex flavor only when freshly ground. The adjustable ceramic grinder lets you choose from coarse to fine for any dish.",
@@ -854,7 +854,7 @@ export const pantryCategories: Category[] = [
         name: "Peppercorn Medley Spice Grinder",
         description:
           "A colorful blend of black, white, green, and pink peppercorns in an easy-grind mill. Complex, layered pepper flavor for the adventurous cook.",
-        image: "",
+        image: "/assets/Spice Grinder/730291.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Peppercorn Medley combines four distinct peppercorn varieties for a multidimensional pepper experience. Each color brings its own character — from the heat of black to the floral sweetness of pink — creating a sophisticated blend.",
@@ -867,7 +867,7 @@ export const pantryCategories: Category[] = [
         name: "Garlic & Chili Spice Grinder",
         description:
           "A fiery blend of dried garlic and chili in a handy grinder. Adds instant savory heat to pasta, pizza, and everything in between.",
-        image: "",
+        image: "/assets/Spice Grinder/730292.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Garlic & Chili Grinder delivers a bold combination of pungent garlic and spicy chili flakes at the twist of a cap. Keep it at the table for a quick flavor boost on Italian dishes, grilled meats, and snacks.",
@@ -880,7 +880,7 @@ export const pantryCategories: Category[] = [
         name: "Garlic Spice Grinder",
         description:
           "Pure dried garlic granules in a convenient grinder for quick, even garlic flavor. A time-saving kitchen essential.",
-        image: "",
+        image: "/assets/Spice Grinder/730293.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Garlic Spice Grinder puts the savory depth of Italian garlic at your fingertips. The adjustable grinder produces everything from fine powder to coarse granules, making it perfect for rubs, dressings, and last-minute seasoning.",
@@ -893,7 +893,7 @@ export const pantryCategories: Category[] = [
         name: "Chili Pepper Spice Grinder",
         description:
           "Dried Italian chili peppers in a built-in grinder for freshly ground heat whenever you need it. Vibrant, fruity spice with a lingering warmth.",
-        image: "",
+        image: "/assets/Spice Grinder/730294.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Chili Pepper Grinder is packed with dried Italian chili peppers that release their vibrant, fruity heat when freshly ground. Perfect for adding a controlled kick to pasta, soups, and grilled dishes.",
@@ -906,7 +906,7 @@ export const pantryCategories: Category[] = [
         name: "Italian Medley Spice Grinder",
         description:
           "A harmonious blend of classic Italian herbs and spices in a convenient grinder. Instant Italian seasoning with a fresh-ground difference.",
-        image: "",
+        image: "/assets/Spice Grinder/730295.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Italian Medley Grinder combines the essential herbs and spices of Italian cuisine into one convenient mill. Freshly ground for maximum aroma and flavor, it's the shortcut to authentic Italian seasoning on any dish.",
@@ -919,7 +919,7 @@ export const pantryCategories: Category[] = [
         name: "Truffle Salt",
         description:
           "Premium sea salt blended with real Italian black truffle for an indulgent finishing salt. A pinch transforms any dish into something extraordinary.",
-        image: "",
+        image: "/assets/Truffles/730580.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Truffle Salt marries the clean minerality of Mediterranean sea salt with the intoxicating earthy aroma of Italian black truffles. Sprinkle it over eggs, fries, popcorn, pasta, and risotto for an instant touch of luxury.",
@@ -932,7 +932,7 @@ export const pantryCategories: Category[] = [
         name: "Black Truffle Sauce",
         description:
           "A rich, savory sauce made from Italian black truffles and mushrooms. Stir into pasta, spread on crostini, or use as a luxurious condiment.",
-        image: "",
+        image: "/assets/Truffles/730581.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Black Truffle Sauce blends finely chopped Italian black truffles with mushrooms and olive oil for a deeply savory, umami-rich condiment. A spoonful elevates pasta, risotto, bruschetta, and grilled meats to gourmet status.",
@@ -945,7 +945,7 @@ export const pantryCategories: Category[] = [
         name: "Sliced Black Truffle",
         description:
           "Thinly sliced Italian black truffles preserved in their natural juices. An elegant garnish and ingredient for truffle lovers.",
-        image: "",
+        image: "/assets/Truffles/730585.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Sliced Black Truffles are carefully cut and preserved to maintain their delicate texture and intense earthy flavor. Lay them over pasta, risotto, eggs, or carpaccio for a stunning presentation and unforgettable taste.",
@@ -958,7 +958,7 @@ export const pantryCategories: Category[] = [
         name: "Minced Black Truffle",
         description:
           "Finely minced Italian black truffles, ready to fold into sauces, butters, and dressings. Pure truffle flavor in every spoonful.",
-        image: "",
+        image: "/assets/Truffles/730586.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Minced Black Truffle offers the full intensity of Italian truffles in a ready-to-use format. Mix into compound butters, cream sauces, vinaigrettes, and mashed potatoes for effortless truffle indulgence.",
@@ -971,7 +971,7 @@ export const pantryCategories: Category[] = [
         name: "Large Black Truffle Sauce",
         description:
           "Our signature black truffle sauce in a generous professional-sized jar. Perfect for restaurants, caterers, and devoted truffle enthusiasts.",
-        image: "",
+        image: "/assets/Truffles/730587.png",
         categoryId: "seasonings-truffles",
         details:
           "The large format of our Black Truffle Sauce provides exceptional value for those who use truffle products regularly. Same artisan recipe with Italian black truffles, mushrooms, and olive oil — just more to love.",
@@ -984,7 +984,7 @@ export const pantryCategories: Category[] = [
         name: "Large Sliced Black Truffle",
         description:
           "Premium sliced Italian black truffles in a large jar for professional kitchens and serious home cooks. Luxurious and versatile.",
-        image: "",
+        image: "/assets/Truffles/730588.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Large Sliced Black Truffle jar provides generous portions of thinly sliced Italian truffles, ideal for high-volume use in professional kitchens or for home cooks who entertain frequently.",
@@ -997,7 +997,7 @@ export const pantryCategories: Category[] = [
         name: "Large Minced Black Truffle",
         description:
           "Finely minced Italian black truffles in a large format jar. The ultimate pantry staple for truffle-obsessed cooks and professionals.",
-        image: "",
+        image: "/assets/Truffles/730589.png",
         categoryId: "seasonings-truffles",
         details:
           "Our Large Minced Black Truffle jar is the choice of professional chefs and truffle aficionados who demand both quality and quantity. Fold it generously into sauces, risottos, and butters without worrying about running out.",
@@ -1091,6 +1091,38 @@ export const pantryCategories: Category[] = [
         details:
           "Our large-format White Spelt Flour brings the ancient grain goodness of spelt to your kitchen in generous quantity. With its mild, nutty flavor and excellent baking properties, it is the go-to choice for health-conscious bakers who do not want to sacrifice authenticity.",
         size: "2.27 KG (5 LB)",
+        kosher: true,
+        madeInItaly: true,
+      },
+    ],
+  },,
+  {
+    id: "pesto",
+    name: "Pesto",
+    slug: "pesto",
+    tagline: "The Taste of Liguria",
+    description: "Authentic Italian pesto sauces made with fresh basil, premium olive oil, and traditional recipes. Ready to toss with pasta, spread on sandwiches, or use as a vibrant dip.",
+    heroImage: "/assets/Pesto/730231.png",
+    products: [
+      {
+        id: "basil-pesto",
+        name: "Basil Pesto",
+        description: "Classic Ligurian basil pesto made with fresh basil, Parmigiano-Reggiano, pine nuts, and extra virgin olive oil. Rich, aromatic, and authentically Italian.",
+        image: "/assets/Pesto/730231.png",
+        categoryId: "pesto",
+        details: "Our Basil Pesto follows the traditional Ligurian recipe, blending fresh Italian basil with aged Parmigiano-Reggiano, toasted pine nuts, and cold-pressed extra virgin olive oil. A versatile sauce that transforms pasta, pizza, and sandwiches in seconds.",
+        size: "6.7 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "sun-dried-tomato-pesto",
+        name: "Sun-Dried Tomato Pesto",
+        description: "Intensely flavored pesto made from Italian sun-dried tomatoes, olive oil, and herbs. A vibrant, boldly savory sauce with a deep Mediterranean character.",
+        image: "/assets/Pesto/730230.png",
+        categoryId: "pesto",
+        details: "Our Sun-Dried Tomato Pesto captures the concentrated sweetness and umami depth of slow-dried Italian tomatoes, blended with olive oil, garlic, and herbs. Swirl it into pasta, spread on bruschetta, or use as a bold pizza sauce.",
+        size: "6.7 oz",
         kosher: true,
         madeInItaly: true,
       },

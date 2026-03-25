@@ -31,31 +31,31 @@ const featuredCategories = [
     name: "Beverages",
     slug: "beverages",
     tagline: "Sparkling Celebrations",
-    image: "/assets/Beverage/Moscato Juice/Mockups/71006931470.jpg",
+    image: "/assets/ads/sparkling-parallax.jpg",
   },
   {
     name: "Pasta & Gnocchi",
     slug: "pasta-gnocchi",
     tagline: "The Heart of Italian Cuisine",
-    image: "",
+    image: "/assets/ads/gnocchi-recipe.jpg",
   },
   {
     name: "Pizza",
     slug: "pizza",
     tagline: "Authentic Neapolitan Tradition",
-    image: "",
+    image: "/assets/ads/pizza-banner.jpg",
   },
   {
     name: "Olive Oil & Vinegars",
     slug: "olive-oil-vinegars",
     tagline: "Liquid Gold of Italy",
-    image: "",
+    image: "/assets/ads/balsamic-glaze.jpg",
   },
   {
     name: "Sauces & Tomato Products",
     slug: "sauces-tomatoes",
     tagline: "Sun-Ripened Perfection",
-    image: "",
+    image: "/assets/ads/marinara-banner.jpg",
   },
   {
     name: "Chocolate",
@@ -67,25 +67,25 @@ const featuredCategories = [
     name: "Olives & Condiments",
     slug: "olives-condiments",
     tagline: "Mediterranean Essentials",
-    image: "",
+    image: "/assets/ads/ketchup-banner.jpg",
   },
   {
     name: "Crackers & Snacks",
     slug: "crackers-snacks",
     tagline: "Artisan Italian Snacking",
-    image: "",
+    image: "/assets/ads/lemon-juice-focused.jpg",
   },
   {
     name: "Tuna & Seafood",
     slug: "tuna-seafood",
     tagline: "Treasures of the Italian Sea",
-    image: "",
+    image: "/assets/ads/tuna-parallax.jpg",
   },
   {
     name: "Gelato & Sorbetto",
     slug: "gelato",
     tagline: "Frozen Italian Indulgence",
-    image: "",
+    image: "/assets/Gelato/730520-chocolate-gelato.png",
   },
   {
     name: "Bakery",
@@ -97,7 +97,41 @@ const featuredCategories = [
     name: "Frozen & Ready Meals",
     slug: "frozen-meals",
     tagline: "Italian Convenience, No Compromise",
-    image: "",
+    image: "/assets/ads/chef-pasta.jpg",
+  },
+];
+
+/* Ad campaign banners for the landing page strip */
+const adBanners = [
+  {
+    src: "/assets/ads/beverages-wide.jpg",
+    label: "Sparkling Drinks",
+    slug: "beverages",
+  },
+  {
+    src: "/assets/ads/tomatoes-parallax.jpg",
+    label: "Tomato Products",
+    slug: "sauces-tomatoes",
+  },
+  {
+    src: "/assets/ads/balsamic-parallax.jpg",
+    label: "Balsamic Glaze",
+    slug: "olive-oil-vinegars",
+  },
+  {
+    src: "/assets/ads/tuna-parallax2.jpg",
+    label: "Tuna & Seafood",
+    slug: "tuna-seafood",
+  },
+  {
+    src: "/assets/ads/lemon-juice-parallax.jpg",
+    label: "Lemon Juice",
+    slug: "olives-condiments",
+  },
+  {
+    src: "/assets/ads/marinara-banner2.jpg",
+    label: "Pasta Sauces",
+    slug: "sauces-tomatoes",
   },
 ];
 
@@ -351,6 +385,84 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
+      {/*  AD BANNERS STRIP                                             */}
+      {/* ============================================================ */}
+      <section className="py-16 px-6 bg-surface overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-2">
+              From Our Campaigns
+            </span>
+            <h2 className="font-headline text-4xl md:text-5xl text-heading italic">
+              As Seen Across Italy
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {adBanners.map((banner, idx) => (
+              <motion.div
+                key={banner.src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: idx * 0.07, duration: 0.6 }}
+              >
+                <Link
+                  to={`/category/${banner.slug}`}
+                  className="group block relative overflow-hidden rounded-sm aspect-[16/9] bg-surface shadow-md"
+                >
+                  <motion.img
+                    src={banner.src}
+                    alt={banner.label}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400">
+                    <span className="font-headline text-white text-lg">{banner.label}</span>
+                    <ArrowRight className="inline ml-2 w-4 h-4 text-white" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  FULL-WIDTH BRAND BANNER                                     */}
+      {/* ============================================================ */}
+      <section className="relative h-[50vh] min-h-[320px] overflow-hidden">
+        <img
+          src="/assets/ads/tomato-group.jpg"
+          alt="Tuscanini Tomato Products"
+          className="w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="absolute inset-0 flex flex-col justify-center px-10 md:px-24 max-w-3xl"
+        >
+          <span className="text-white/70 font-bold tracking-[0.3em] text-[10px] uppercase mb-3">
+            Made in Italy
+          </span>
+          <h2 className="font-headline text-4xl md:text-6xl text-white leading-tight mb-6">
+            Sun-Ripened. Slow-Cooked. Authentically Italian.
+          </h2>
+          <Link
+            to="/category/sauces-tomatoes"
+            className="inline-flex items-center gap-3 px-7 py-3 bg-primary text-white font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-primary/90 transition-colors w-fit"
+          >
+            Shop Tomato Products
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* ============================================================ */}
       {/*  FEATURED CATEGORIES GRID                                     */}
       {/* ============================================================ */}
       {/* Issue #9: py-32 -> py-28 */}
@@ -511,6 +623,41 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  BEVERAGES FULL-WIDTH BANNER                                  */}
+      {/* ============================================================ */}
+      <section className="relative h-[50vh] min-h-[320px] overflow-hidden">
+        <img
+          src="/assets/ads/beverages-wide.jpg"
+          alt="Tuscanini Sparkling Beverages"
+          className="w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-black/65 via-black/20 to-transparent" />
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="absolute inset-0 flex flex-col justify-center items-end px-10 md:px-24"
+        >
+          <div className="max-w-md text-right">
+            <span className="text-white/70 font-bold tracking-[0.3em] text-[10px] uppercase mb-3 block">
+              Sparkling &amp; Refreshing
+            </span>
+            <h2 className="font-headline text-4xl md:text-6xl text-white leading-tight mb-6">
+              Real. Organic. Refreshing.
+            </h2>
+            <Link
+              to="/category/beverages"
+              className="inline-flex items-center gap-3 px-7 py-3 bg-white text-primary font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-white/90 transition-colors"
+            >
+              Explore Beverages
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </motion.div>
       </section>
 
       {/* ============================================================ */}

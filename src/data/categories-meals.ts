@@ -8,7 +8,7 @@ export const mealCategories: Category[] = [
     tagline: "Bronze-Cut Perfection",
     description:
       "Traditional Italian pasta, bronze-die cut and slow-dried for the perfect al dente texture, alongside authentic potato gnocchi in classic and modern varieties.",
-    heroImage: "/assets/Pasta/Tuscanini Bronze Cut Spaghetti Comp copy.png",
+    heroImage: "/assets/ads/gnocchi-recipe.jpg",
     products: [
       {
         id: "spaghetti",
@@ -54,7 +54,7 @@ export const mealCategories: Category[] = [
         name: "Rigatoni",
         description:
           "Large ridged tubes built to hold the boldest sauces. A favorite for hearty, rustic Italian dishes.",
-        image: "",
+        image: "/assets/Pasta/730323.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Rigatoni features wide, ridged tubes with a generous cavity that holds chunky meat sauces, creamy bakes, and robust vegetable ragus. Bronze-die cut and slow-dried for an authentic Italian texture that stands up to the heartiest preparations.",
@@ -67,7 +67,7 @@ export const mealCategories: Category[] = [
         name: "Elbows",
         description:
           "Curved, ridged pasta tubes perfect for mac and cheese, salads, and soups. A family-friendly Italian classic.",
-        image: "",
+        image: "/assets/Pasta/730324.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Elbow pasta combines the beloved curved shape with the superior texture of bronze-die cutting. Slow-dried for the perfect bite, these elbows are ideal for creamy mac and cheese, pasta salads, and comforting soups.",
@@ -93,7 +93,7 @@ export const mealCategories: Category[] = [
         name: "Oven Ready Lasagna",
         description:
           "No-boil lasagna sheets ready to layer straight into the pan. Perfectly thin and tender after baking.",
-        image: "",
+        image: "/assets/Pasta/730326.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Oven Ready Lasagna sheets eliminate the boiling step without sacrificing quality. Made from premium Italian durum wheat and slow-dried, they absorb moisture from your sauce as they bake, emerging perfectly tender with an authentic homemade texture.",
@@ -119,7 +119,7 @@ export const mealCategories: Category[] = [
         name: "Mini Gnocchi",
         description:
           "Petite potato gnocchi perfect for soups, salads, and quick sautés. Bite-sized comfort in every spoonful.",
-        image: "",
+        image: "/assets/Gnocchi/Tuscanini-Mi-ni-Gnocchi-16oz-730312.png",
         categoryId: "pasta-gnocchi",
         details:
           "Our Mini Gnocchi are small, tender potato dumplings crafted in Italy using traditional methods. Their petite size makes them ideal for adding hearty substance to soups, tossing into salads, or quickly sautéing with butter and sage.",
@@ -162,7 +162,7 @@ export const mealCategories: Category[] = [
     tagline: "Straight From the Italian Pizzeria",
     description:
       "Authentic Italian frozen pizzas crafted with premium ingredients, from classic Margherita to our exclusive Reserve collection with hand-stretched dough and San Marzano-style sauce.",
-    heroImage: "/assets/Pizza/Tuscanini Pizza Comp 3.png",
+    heroImage: "/assets/ads/pizza-banner.jpg",
     products: [
       {
         id: "four-cheese-pizza",
@@ -286,7 +286,7 @@ export const mealCategories: Category[] = [
         name: "Mini Margherita Calzones",
         description:
           "Bite-sized calzones stuffed with mozzarella and tomato sauce. Perfect as appetizers or a fun snack.",
-        image: "",
+        image: "/assets/Frozen/Mini Calzones/730128.png",
         categoryId: "pizza",
         details:
           "Our Mini Margherita Calzones wrap golden Italian dough around a filling of melted mozzarella and savory tomato sauce. These perfectly portioned pockets of pizza flavor are ideal for appetizers, parties, or anytime snacking.",
@@ -299,7 +299,7 @@ export const mealCategories: Category[] = [
         name: "Mini Mushroom Pizza Calzones",
         description:
           "Savory mini calzones filled with mushrooms, mozzarella, and rich tomato sauce. An earthy, cheesy handheld treat.",
-        image: "",
+        image: "/assets/Frozen/Mini Calzones/730129.png",
         categoryId: "pizza",
         details:
           "Our Mini Mushroom Pizza Calzones encase a delicious filling of sautéed mushrooms, melted mozzarella, and tomato sauce inside crispy Italian dough. These handheld bites bring all the flavors of a mushroom pizza in a fun, portable format.",
@@ -342,14 +342,14 @@ export const mealCategories: Category[] = [
     tagline: "Italian Comfort, Ready in Minutes",
     description:
       "From crispy breaded appetizers to hearty ready-to-eat pasta dishes, frozen gnocchi, and artisan ravioli — authentic Italian comfort food ready for your table in minutes.",
-    heroImage: "",
+    heroImage: "/assets/Frozen/Mozzarella Sticks/730140.png",
     products: [
       {
         id: "breaded-mozzarella-sticks",
         name: "Breaded Mozzarella Sticks",
         description:
           "Golden, crispy breaded mozzarella sticks with a stretchy, melted cheese center. The ultimate crowd-pleasing appetizer.",
-        image: "",
+        image: "/assets/Frozen/Mozzarella Sticks/730140.png",
         categoryId: "frozen-meals",
         details:
           "Our Breaded Mozzarella Sticks feature creamy Italian mozzarella coated in seasoned breadcrumbs and fried to golden perfection. Bake or air-fry for a crispy outside and an irresistibly gooey, stretchy center.",
@@ -362,7 +362,7 @@ export const mealCategories: Category[] = [
         name: "Family Pack Breaded Mozzarella Sticks",
         description:
           "Our beloved mozzarella sticks in a generous family-sized pack. Enough crispy, cheesy goodness for the whole table.",
-        image: "",
+        image: "/assets/Frozen/Mozzarella Sticks/730141.png",
         categoryId: "frozen-meals",
         details:
           "The Family Pack of our Breaded Mozzarella Sticks brings over twice as many golden, crispy cheese sticks to share. Perfect for game nights, parties, or whenever the family craves an authentic Italian appetizer.",
@@ -375,7 +375,7 @@ export const mealCategories: Category[] = [
         name: "Breaded Eggplant Cutlets",
         description:
           "Tender eggplant slices in a crispy Italian breadcrumb coating. A versatile vegetarian favorite ready to bake or fry.",
-        image: "",
+        image: "/assets/Frozen/Mozzarella Sticks/730142.png",
         categoryId: "frozen-meals",
         details:
           "Our Breaded Eggplant Cutlets take tender slices of eggplant and coat them in seasoned Italian breadcrumbs for a satisfying crunch. Serve as a side, stack into eggplant Parmesan, or enjoy on their own with marinara sauce.",
@@ -388,7 +388,7 @@ export const mealCategories: Category[] = [
         name: "Battered Zucchini Blossoms",
         description:
           "Delicate zucchini blossoms in a light, crispy batter. A cherished Italian delicacy brought straight to your freezer.",
-        image: "",
+        image: "/assets/Zucchini Blossoms/730156-Zucchini-Battered-Blossoms.png",
         categoryId: "frozen-meals",
         details:
           "Our Battered Zucchini Blossoms capture one of Italy's most prized seasonal treats in a convenient frozen format. Each blossom is encased in a light, airy batter that fries to a delicate golden crisp, revealing the tender flower within.",
@@ -401,7 +401,7 @@ export const mealCategories: Category[] = [
         name: "Mac and Cheese",
         description:
           "Creamy, cheesy Italian-style macaroni and cheese made with premium aged cheeses. Comfort food elevated to Italian standards.",
-        image: "",
+        image: "/assets/Frozen/Meals/730030.png",
         categoryId: "frozen-meals",
         details:
           "Our Mac and Cheese brings Italian flair to the ultimate comfort food, featuring tender pasta coated in a rich, velvety sauce of premium aged cheeses. Ready in minutes, it delivers the warmth and satisfaction of a homemade meal.",
@@ -414,7 +414,7 @@ export const mealCategories: Category[] = [
         name: "Truffle Mac and Cheese",
         description:
           "Luxurious mac and cheese infused with real Italian truffle. An indulgent twist on the beloved classic.",
-        image: "",
+        image: "/assets/Frozen/Meals/730031.png",
         categoryId: "frozen-meals",
         details:
           "Our Truffle Mac and Cheese elevates the classic with the intoxicating aroma and earthy depth of real Italian truffle. Premium aged cheeses and tender pasta combine with truffle for a sophisticated, indulgent dish that is ready in minutes.",
@@ -427,7 +427,7 @@ export const mealCategories: Category[] = [
         name: "Fettuccini Alfredo",
         description:
           "Silky fettuccine ribbons in a rich, buttery Alfredo sauce. A Roman classic ready to enjoy in minutes.",
-        image: "",
+        image: "/assets/Frozen/Meals/730032.png",
         categoryId: "frozen-meals",
         details:
           "Our Fettuccini Alfredo features broad pasta ribbons enveloped in a luxuriously creamy, buttery Alfredo sauce made with premium Italian cheeses. This beloved Roman dish is ready to heat and serve for an authentic Italian dining experience at home.",
@@ -440,7 +440,7 @@ export const mealCategories: Category[] = [
         name: "Lasagna",
         description:
           "Layers of tender pasta, rich meat sauce, creamy béchamel, and melted cheese. A hearty Italian classic straight from Italy.",
-        image: "",
+        image: "/assets/Frozen/Meals/730033.png",
         categoryId: "frozen-meals",
         details:
           "Our Lasagna stacks layers of tender pasta sheets with savory sauce, velvety béchamel, and melted Italian cheeses. Crafted in Italy using traditional methods, it delivers the depth and comfort of a homemade Sunday lasagna in a convenient frozen format.",
@@ -453,7 +453,7 @@ export const mealCategories: Category[] = [
         name: "Cheese Tortelloni with Mushroom Alfredo",
         description:
           "Plump cheese-filled tortelloni in a rich mushroom Alfredo sauce. A decadent Italian pasta dish ready in minutes.",
-        image: "",
+        image: "/assets/Frozen/Meals/730034.png",
         categoryId: "frozen-meals",
         details:
           "Our Cheese Tortelloni with Mushroom Alfredo pairs tender, cheese-stuffed pasta pillows with a luscious sauce of sautéed mushrooms and creamy Alfredo. Each bite delivers a harmonious blend of earthy mushroom flavor and rich Italian cheese.",
@@ -466,7 +466,7 @@ export const mealCategories: Category[] = [
         name: "Spinach Tortelloni with Basil Pesto",
         description:
           "Delicate spinach-filled tortelloni tossed in vibrant basil pesto. A fresh, herbaceous Italian meal ready to heat and serve.",
-        image: "",
+        image: "/assets/Frozen/Meals/730035.png",
         categoryId: "frozen-meals",
         details:
           "Our Spinach Tortelloni with Basil Pesto combines tender pasta filled with seasoned spinach and ricotta with a bright, aromatic basil pesto sauce. This vibrant dish brings the fresh flavors of the Italian garden to your table in minutes.",
@@ -531,7 +531,7 @@ export const mealCategories: Category[] = [
         name: "Cheese Ravioli",
         description:
           "Classic Italian ravioli generously filled with a blend of premium Italian cheeses. A beloved pasta tradition in every bite.",
-        image: "",
+        image: "/assets/Frozen/Ravioli/730061.png",
         categoryId: "frozen-meals",
         details:
           "Our Cheese Ravioli feature delicate pasta parcels stuffed with a rich blend of Italian cheeses including ricotta and Parmigiano-Reggiano. Flash-frozen to preserve freshness, they cook to tender perfection in just minutes.",
@@ -544,7 +544,7 @@ export const mealCategories: Category[] = [
         name: "Ricotta & Spinach Ravioli",
         description:
           "Tender ravioli filled with creamy ricotta and fresh spinach. A classic Italian combination that never goes out of style.",
-        image: "",
+        image: "/assets/Frozen/Ravioli/730062.png",
         categoryId: "frozen-meals",
         details:
           "Our Ricotta & Spinach Ravioli pair silky ricotta cheese with tender spinach in delicate pasta pockets. This timeless Italian filling delivers a perfect balance of creamy richness and fresh, earthy greens in every bite.",
@@ -557,7 +557,7 @@ export const mealCategories: Category[] = [
         name: "Mushroom Ravioli",
         description:
           "Ravioli stuffed with a savory blend of Italian mushrooms for deep, earthy flavor. A gourmet treat ready in minutes.",
-        image: "",
+        image: "/assets/Frozen/Ravioli/730063.png",
         categoryId: "frozen-meals",
         details:
           "Our Mushroom Ravioli encase a rich, savory filling of blended Italian mushrooms in thin, tender pasta. The deep, earthy umami flavor of the mushrooms makes these ravioli a sophisticated meal with minimal effort.",
@@ -570,7 +570,7 @@ export const mealCategories: Category[] = [
         name: "Pizza Ravioli",
         description:
           "Fun, pizza-flavored ravioli filled with mozzarella and tomato sauce. All the joy of pizza wrapped in pasta.",
-        image: "",
+        image: "/assets/Frozen/Ravioli/730064.png",
         categoryId: "frozen-meals",
         details:
           "Our Pizza Ravioli bring the beloved flavors of Italian pizza into a fun ravioli format. Each pasta pocket is filled with melty mozzarella and zesty tomato sauce, delivering a playful fusion that kids and adults alike will love.",
@@ -587,14 +587,14 @@ export const mealCategories: Category[] = [
     tagline: "Artisan Italian Frozen Desserts",
     description:
       "Authentic Italian gelato and sorbetto crafted with traditional methods. Creamier than ice cream, richer in flavor, and made with premium Italian ingredients.",
-    heroImage: "",
+    heroImage: "/assets/Gelato/730521-vanilla-gelato.png",
     products: [
       {
         id: "dairy-chocolate-gelato",
         name: "Dairy Chocolate Gelato",
         description:
           "Rich, velvety Italian chocolate gelato with an intense cocoa flavor. Creamier and denser than ordinary ice cream.",
-        image: "",
+        image: "/assets/Gelato/730520-chocolate-gelato.png",
         categoryId: "gelato",
         details:
           "Our Dairy Chocolate Gelato is crafted using traditional Italian methods with premium cocoa for a deeply rich, velvety smooth chocolate experience. Churned slowly with less air than ice cream, it delivers an intensely flavorful and luxuriously creamy dessert.",
@@ -607,7 +607,7 @@ export const mealCategories: Category[] = [
         name: "Dairy Vanilla Gelato",
         description:
           "Classic Italian vanilla gelato with a pure, creamy flavor and silky smooth texture. Simple elegance in every scoop.",
-        image: "",
+        image: "/assets/Gelato/730521-vanilla-gelato.png",
         categoryId: "gelato",
         details:
           "Our Dairy Vanilla Gelato showcases the beauty of simplicity, crafted with real vanilla and premium Italian dairy. The slow-churned process creates a dense, creamy texture that lets the warm, aromatic vanilla flavor take center stage.",
@@ -620,7 +620,7 @@ export const mealCategories: Category[] = [
         name: "Dairy Hazelnut Gelato",
         description:
           "Luscious hazelnut gelato made with roasted Italian hazelnuts. A beloved flavor straight from the gelaterias of Piedmont.",
-        image: "",
+        image: "/assets/Gelato/730522-hazelnut-gelato.png",
         categoryId: "gelato",
         details:
           "Our Dairy Hazelnut Gelato celebrates the prized hazelnuts of Piedmont, roasted to perfection and blended into a luxuriously smooth, nutty gelato. Each scoop delivers the toasty, buttery richness that makes this flavor an Italian gelateria staple.",
@@ -633,7 +633,7 @@ export const mealCategories: Category[] = [
         name: "Dairy Strawberry Banana Gelato",
         description:
           "A refreshing blend of sweet strawberries and ripe bananas in creamy Italian gelato. Bright, fruity, and irresistible.",
-        image: "",
+        image: "/assets/Gelato/730523-strawberry-banana-gelato.png",
         categoryId: "gelato",
         details:
           "Our Dairy Strawberry Banana Gelato combines the sweetness of ripe strawberries with the mellow creaminess of banana in a smooth, luscious gelato base. This fruity combination is crafted in Italy for a refreshing, naturally flavored frozen treat.",
@@ -646,7 +646,7 @@ export const mealCategories: Category[] = [
         name: "Parve Vanilla Gelato",
         description:
           "Dairy-free vanilla gelato with the same creamy richness as our dairy version. A parve indulgence for everyone to enjoy.",
-        image: "",
+        image: "/assets/Gelato/730531-vanilla-gelato-p.png",
         categoryId: "gelato",
         details:
           "Our Parve Vanilla Gelato delivers all the creamy, aromatic pleasure of traditional vanilla gelato without any dairy. Crafted in Italy with premium ingredients, it offers a luscious frozen dessert that fits seamlessly into dairy-free and parve meals.",
@@ -659,7 +659,7 @@ export const mealCategories: Category[] = [
         name: "Parve Chocolate Gelato",
         description:
           "Rich, dairy-free Italian chocolate gelato with an intense cocoa flavor. All the indulgence of traditional gelato in a parve format.",
-        image: "",
+        image: "/assets/Gelato/730530-chocolate-gelato-p.png",
         categoryId: "gelato",
         details:
           "Our Parve Chocolate Gelato delivers a deeply rich, velvety chocolate experience without any dairy. Crafted in Italy with premium cocoa, it offers a luscious frozen dessert that fits seamlessly into dairy-free and parve meals.",
@@ -672,7 +672,7 @@ export const mealCategories: Category[] = [
         name: "Parve Lemon Sorbet",
         description:
           "Bright, tangy Italian lemon sorbetto made with real Sicilian lemons. A refreshing palate cleanser and dairy-free delight.",
-        image: "",
+        image: "/assets/Gelato/Sorbetto/730533-lemon-sorbetto.png",
         categoryId: "gelato",
         details:
           "Our Parve Lemon Sorbet captures the vibrant zest of Sicilian lemons in a smooth, refreshing frozen treat. Naturally dairy-free and light, it serves as a perfect palate cleanser between courses or a bright, guilt-free dessert on its own.",
@@ -685,7 +685,7 @@ export const mealCategories: Category[] = [
         name: "Strawberry Sorbet",
         description:
           "A vibrant, fruity Italian strawberry sorbetto bursting with the flavor of sun-ripened strawberries. Naturally dairy-free and refreshingly sweet.",
-        image: "",
+        image: "/assets/Gelato/Sorbetto/730532-strawberry-sorbetto.png",
         categoryId: "gelato",
         details:
           "Our Strawberry Sorbet is crafted from ripe Italian strawberries for a naturally sweet, intensely fruity frozen treat. Dairy-free and refreshing, it captures the essence of summer in every scoop.",
@@ -702,14 +702,14 @@ export const mealCategories: Category[] = [
     tagline: "Authentic Italian Fromage",
     description:
       "Premium Italian cheeses crafted with centuries of tradition. From aged Parmigiano to fresh varieties, our cheese collection brings the dairy artistry of Italy to your table.",
-    heroImage: "",
+    heroImage: "/assets/Parmesan Cheese/730170.png",
     products: [
       {
         id: "parmesan-cheese-wedge-5oz",
         name: "Parmesan Cheese Wedge 5.29oz",
         description:
           "A hand-cut wedge of authentic Italian Parmesan cheese, aged for rich, complex flavor. A timeless Italian staple for grating, shaving, and snacking.",
-        image: "",
+        image: "/assets/Parmesan Cheese/730170.png",
         categoryId: "cheese",
         details:
           "Our Parmesan Cheese Wedge is crafted in Italy using traditional methods, aged to develop a deep, nutty complexity and granular texture. Perfect for grating over pasta, shaving onto salads, or enjoying on its own with a drizzle of balsamic.",
@@ -722,7 +722,7 @@ export const mealCategories: Category[] = [
         name: "Parmesan Cheese Wedge 8.8oz",
         description:
           "A generous wedge of premium Italian Parmesan cheese for families and cooking enthusiasts. Rich, nutty, and endlessly versatile.",
-        image: "",
+        image: "/assets/Parmesan Cheese/730171.png",
         categoryId: "cheese",
         details:
           "The larger format of our Parmesan Cheese Wedge ensures you always have this essential Italian ingredient on hand. Aged in Italy for a deep, complex flavor that elevates pasta, risotto, soups, and charcuterie boards.",
