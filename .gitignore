@@ -6,3 +6,16 @@ coverage/
 *.log
 .env*
 !.env.example
+package-lock.json
+
+# Design source files - not needed for the website
+*.ai
+*.psd
+*.eps
+*.tif
+*.tiff
+*.otf
+*.ttf
+*.woff
+*.woff2
+Thumbs.db

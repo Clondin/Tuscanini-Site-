@@ -6,35 +6,81 @@
   --font-body: "Manrope", sans-serif;
   --font-serif-alt: "Noto Serif", serif;
 
-  --color-earth-dark: #2d241e;
-  --color-hearth-stone: #4a443f;
+  --color-earth-dark: #f0e8db;
+  --color-hearth-stone: #e0d5c5;
   --color-burnt-terracotta: #8c3b24;
   --color-olive-deep: #3d4230;
-  --color-aged-cream: #f2e8d5;
-  --color-surface: #1a1614;
-  --color-on-surface: #e5ddd3;
+  --color-aged-cream: #f5efe4;
+  --color-surface: #faf7f2;
+  --color-on-surface: #3b2c20;
   --color-primary: #b85c38;
+  --color-heading: #2a1f16;
 }
 
 @layer utilities {
   .stone-texture {
-    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), linear-gradient(to bottom, #4a443f, #2d241e);
+    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), linear-gradient(to bottom, #e0d5c5, #f0e8db);
     background-blend-mode: overlay;
   }
   .wood-grain {
     background-image: url('https://www.transparenttextures.com/patterns/wood-pattern-with-twigs.png');
-    background-color: #3d2b1f;
+    background-color: #e0d0c0;
   }
   .sketch-overlay {
     background-image: url('https://www.transparenttextures.com/patterns/food.png');
     opacity: 0.05;
   }
   .still-life-frame {
-    border: 1px solid rgba(184, 92, 56, 0.3);
+    border: 1px solid rgba(59, 44, 32, 0.12);
     padding: 1rem;
-    background: rgba(45, 36, 30, 0.6);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(4px);
   }
+  .image-placeholder {
+    background: linear-gradient(135deg, #e0d0c0 0%, #d4bfad 50%, #f0e2d4 100%);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Global selection color */
+::selection {
+  background-color: #8c3b24;
+  color: #f5efe4;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0e8db;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5b8a8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0a393;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c5b8a8 #f0e8db;
 }
 
 body {
