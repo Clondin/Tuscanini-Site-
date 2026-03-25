@@ -1095,7 +1095,7 @@ export const pantryCategories: Category[] = [
         madeInItaly: true,
       },
     ],
-  },,
+  },
   {
     id: "pesto",
     name: "Pesto",
