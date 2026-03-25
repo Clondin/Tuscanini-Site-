@@ -8,7 +8,7 @@ export const snackCategories: Category[] = [
     tagline: "Artisan Italian Snacking",
     description:
       "From delicate parchment crackers to hearty spelt crostini and crispy grissini breadsticks — our snack collection brings the Italian aperitivo tradition to your home.",
-    heroImage: "",
+    heroImage: "/assets/Chips/IMG_0022-2.jpg",
     products: [
       // Parchment Crackers
       {
@@ -174,7 +174,7 @@ export const snackCategories: Category[] = [
         name: "Classic Olive Oil Potato Chips",
         description:
           "Premium Italian potato chips cooked in extra virgin olive oil for a rich, golden flavor. Simply seasoned and perfectly crispy.",
-        image: "",
+        image: "/assets/Chips/IMG_0022-2.jpg",
         categoryId: "crackers-snacks",
         details:
           "Crafted from select potatoes and cooked in genuine Italian extra virgin olive oil, these chips deliver a clean, savory taste with a satisfying crunch. A simple yet elevated take on the classic potato chip.",
@@ -187,7 +187,7 @@ export const snackCategories: Category[] = [
         name: "Rosemary Olive Oil Potato Chips",
         description:
           "Italian potato chips infused with fragrant rosemary and cooked in extra virgin olive oil. Herbaceous, crispy, and irresistible.",
-        image: "",
+        image: "/assets/Chips/IMG_0022-2.jpg",
         categoryId: "crackers-snacks",
         details:
           "The aromatic warmth of Italian rosemary meets the richness of extra virgin olive oil in these premium kettle-style chips. Each golden chip is packed with herbal flavor and a deeply satisfying crunch.",
@@ -200,7 +200,7 @@ export const snackCategories: Category[] = [
         name: "Rippled Olive Oil Potato Chips",
         description:
           "Thick-cut rippled potato chips cooked in Italian extra virgin olive oil. Extra crunchy ridges for maximum flavor.",
-        image: "",
+        image: "/assets/Chips/IMG_0032.jpg",
         categoryId: "crackers-snacks",
         details:
           "Our rippled chips feature deep ridges that deliver an extra-satisfying crunch and hold onto every bit of olive oil flavor. Cooked in premium Italian extra virgin olive oil for a chip that stands above the rest.",
@@ -213,7 +213,7 @@ export const snackCategories: Category[] = [
         name: "Classic Potato Chips Snack Bag",
         description:
           "A perfectly portioned snack bag of our classic olive oil potato chips. Ideal for lunchboxes and on-the-go enjoyment.",
-        image: "",
+        image: "/assets/Chips/IMG_0022-2.jpg",
         categoryId: "crackers-snacks",
         details:
           "All the premium quality of our classic olive oil potato chips in a convenient single-serve bag. Perfect for tucking into a lunchbox, backpack, or desk drawer for an Italian snacking moment anytime.",
@@ -226,7 +226,7 @@ export const snackCategories: Category[] = [
         name: "Rippled Potato Chips Snack Bag",
         description:
           "A grab-and-go snack bag of our extra-crunchy rippled olive oil chips. Big flavor in a perfectly portioned pack.",
-        image: "",
+        image: "/assets/Chips/IMG_0032.jpg",
         categoryId: "crackers-snacks",
         details:
           "Enjoy the satisfying crunch of our rippled olive oil potato chips wherever you go. This single-serve bag is portioned for the perfect snack break, delivering premium Italian quality in every bite.",
