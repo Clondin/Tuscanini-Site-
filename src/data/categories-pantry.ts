@@ -2,13 +2,13 @@ import { Category, Product } from "./products";
 
 export const pantryCategories: Category[] = [
   {
-    id: "olive-oil-vinegars",
-    name: "Olive Oil & Vinegars",
-    slug: "olive-oil-vinegars",
+    id: "olive-oil",
+    name: "Olive Oil",
+    slug: "olive-oil",
     tagline: "Liquid Gold from Ancient Groves",
     description:
-      "From cold-pressed extra virgin olive oil to aged balsamic vinegar of Modena, our collection captures centuries of Italian tradition in every bottle.",
-    heroImage: "/assets/ads/balsamic-parallax.jpg",
+      "From cold-pressed extra virgin olive oil to delicately refined light olive oil, our collection captures centuries of Italian tradition in every bottle.",
+    heroImage: "/assets/Olive Oil/730406 Large.png",
     products: [
       {
         id: "extra-light-olive-oil-1l",
@@ -16,7 +16,7 @@ export const pantryCategories: Category[] = [
         description:
           "A delicately refined olive oil with a mild, neutral flavor perfect for high-heat cooking and baking. Versatile enough for every kitchen task.",
         image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-1L-730400.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "Our Extra Light Olive Oil is crafted from premium Italian olives and refined for a light taste and higher smoke point. Ideal for frying, sautéing, and recipes where a subtle oil flavor is desired.",
         size: "33.8 oz (1L)",
@@ -29,7 +29,7 @@ export const pantryCategories: Category[] = [
         description:
           "The same refined, mild olive oil in a generous two-liter bottle for everyday cooking needs. Perfect for busy kitchens that go through oil quickly.",
         image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-2L-730410.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "A larger format of our popular Extra Light Olive Oil, offering exceptional value without compromising on Italian quality. Its neutral profile makes it the go-to choice for high-heat cooking and baking.",
         size: "67.6 oz (2L)",
@@ -42,7 +42,7 @@ export const pantryCategories: Category[] = [
         description:
           "Our largest extra light olive oil for households and entertaining enthusiasts who demand quality in every dish. An Italian pantry staple in a value-sized bottle.",
         image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-3L-730415.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "The three-liter bottle of our Extra Light Olive Oil ensures you always have premium Italian oil on hand. With its clean, mild flavor and high smoke point, it's the workhorse of any serious kitchen.",
         size: "101.4 oz (3L)",
@@ -55,7 +55,7 @@ export const pantryCategories: Category[] = [
         description:
           "Cold-pressed extra virgin olive oil with a robust, peppery finish and golden-green hue. The cornerstone of authentic Italian cooking.",
         image: "/assets/Olive Oil/730406 Large.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "Our Extra Virgin Olive Oil is cold-pressed from hand-harvested Italian olives, preserving the full depth of flavor and natural antioxidants. Its fruity aroma and peppery finish make it ideal for drizzling, dipping, and finishing dishes.",
         size: "750ml",
@@ -68,7 +68,7 @@ export const pantryCategories: Category[] = [
         description:
           "Premium extra virgin olive oil naturally infused with aromatic Italian garlic. Adds instant depth to pasta, bruschetta, and roasted vegetables.",
         image: "/assets/Olive Oil/730254.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "Our garlic-infused EVOO combines cold-pressed Italian olive oil with the bold, savory essence of fresh garlic. A single drizzle transforms simple dishes into flavorful Italian creations.",
         size: "250ml",
@@ -81,7 +81,7 @@ export const pantryCategories: Category[] = [
         description:
           "Bright and zesty extra virgin olive oil infused with fresh Sicilian lemons. A vibrant finishing oil for seafood, salads, and grilled dishes.",
         image: "/assets/Olive Oil/730256-PRIMARY-SHOT.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "Sun-ripened Sicilian lemons lend their bright citrus essence to our cold-pressed extra virgin olive oil. The result is a lively, aromatic oil that elevates fish, vegetables, and desserts alike.",
         size: "250ml",
@@ -94,20 +94,31 @@ export const pantryCategories: Category[] = [
         description:
           "Luxurious extra virgin olive oil infused with prized Italian black truffles. An indulgent finishing oil with an earthy, intoxicating aroma.",
         image: "/assets/Olive Oil/730257.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "olive-oil",
         details:
           "Our truffle-infused EVOO marries the richness of cold-pressed Italian olive oil with the unmistakable earthy depth of black truffles. A few drops elevate pasta, risotto, eggs, and popcorn to gourmet status.",
         size: "250ml",
         kosher: true,
         madeInItaly: true,
       },
+    ],
+  },
+  {
+    id: "vinegars-glazes",
+    name: "Vinegars & Glazes",
+    slug: "vinegars-glazes",
+    tagline: "The Art of Italian Acidity",
+    description:
+      "Aged balsamic vinegar of Modena, artisan glazes, and premium wine vinegars — the essential finishing touches of Italian cuisine.",
+    heroImage: "/assets/ads/balsamic-parallax.jpg",
+    products: [
       {
         id: "balsamic-vinegar-modena-8oz",
         name: "Balsamic Vinegar of Modena",
         description:
           "Aged balsamic vinegar from Modena with a rich, complex sweetness and velvety texture. A timeless Italian condiment.",
         image: "/assets/Vinegar/Tuscanini-Balsamic-Vinegar-8.45-oz.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Crafted in Modena using traditional methods, our Balsamic Vinegar offers a harmonious balance of sweetness and acidity. Aged to develop its signature dark color and syrupy consistency, it's perfect for dressings, marinades, and finishing drizzles.",
         size: "8.45 oz",
@@ -120,7 +131,7 @@ export const pantryCategories: Category[] = [
         description:
           "A generous bottle of our authentic Modena balsamic vinegar for those who use this Italian essential every day. Rich, nuanced, and endlessly versatile.",
         image: "/assets/Vinegar/730260.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "The larger format of our Balsamic Vinegar of Modena ensures you never run out of this kitchen staple. Its complex sweetness and silky body enhance everything from caprese salads to roasted meats and even strawberries.",
         size: "16.9 oz (500ml)",
@@ -133,7 +144,7 @@ export const pantryCategories: Category[] = [
         description:
           "A thick, syrupy reduction of balsamic vinegar perfect for drizzling over salads, grilled meats, and fresh fruit. Beautiful presentation and intense flavor.",
         image: "/assets/Vinegar/730261.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Our Balsamic Glaze is slow-reduced from authentic Modena balsamic vinegar into a luxuriously thick, sweet-tangy syrup. Its easy-squeeze bottle makes artful plating effortless for both home cooks and professional chefs.",
         size: "8.5 oz",
@@ -146,7 +157,7 @@ export const pantryCategories: Category[] = [
         description:
           "Authentic Modena balsamic vinegar in a convenient spray bottle for effortless, even drizzling. Perfect for salads, grilled meats, and finishing touches.",
         image: "/assets/Vinegar/730247.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Our Balsamic Vinegar Spray puts the rich, complex flavor of Modena balsamic vinegar at your fingertips. The fine mist spray delivers an even coating with minimal effort — ideal for salads, appetizers, and artful plating.",
         size: "8.5 oz",
@@ -159,7 +170,7 @@ export const pantryCategories: Category[] = [
         description:
           "A luscious caramel-infused balsamic glaze with a sweet, buttery depth. An indulgent finishing touch for desserts, cheeses, and roasted meats.",
         image: "/assets/Vinegar/730251.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Our Caramel Balsamic Glaze blends the rich complexity of Modena balsamic vinegar with smooth, buttery caramel for a luxuriously sweet drizzle. Stunning over vanilla gelato, aged cheeses, roasted pears, and grilled meats.",
         size: "8.5 oz",
@@ -172,36 +183,10 @@ export const pantryCategories: Category[] = [
         description:
           "A fruity, tangy balsamic glaze infused with bright Italian raspberries. A vibrant finishing drizzle for salads, desserts, and cheese boards.",
         image: "/assets/Vinegar/730252.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Our Raspberry Balsamic Glaze marries the depth of Modena balsamic with the bright, tangy sweetness of Italian raspberries. Its jewel-toned color and fruity character make it a stunning addition to salads, goat cheese, and fresh fruit.",
         size: "8.5 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "red-cooking-wine",
-        name: "Red Cooking Wine",
-        description:
-          "Full-bodied Italian red cooking wine that adds depth and richness to sauces, braises, and stews. An essential ingredient in classic Italian recipes.",
-        image: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
-        categoryId: "olive-oil-vinegars",
-        details:
-          "Our Red Cooking Wine is made from quality Italian grapes, selected for their ability to enhance savory dishes. It deglazes pans beautifully and adds complex, wine-rich flavor to ragùs, osso buco, and hearty sauces.",
-        size: "16.9 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "white-cooking-wine",
-        name: "White Cooking Wine",
-        description:
-          "A crisp Italian white cooking wine that brings brightness and acidity to seafood, risotto, and cream sauces. Light and aromatic.",
-        image: "/assets/Vinegar/730266-PRIMARY-SHOT.png",
-        categoryId: "olive-oil-vinegars",
-        details:
-          "Made from select Italian white grapes, our White Cooking Wine adds a clean, bright acidity to your cooking. Perfect for deglazing, steaming mussels, enriching risottos, and lightening cream-based sauces.",
-        size: "16.9 oz",
         kosher: true,
         madeInItaly: true,
       },
@@ -211,7 +196,7 @@ export const pantryCategories: Category[] = [
         description:
           "Organic, unfiltered apple cider vinegar with a tangy, crisp flavor. Made in Italy from premium organic apples.",
         image: "/assets/Vinegar/Tuscanini-Apple-Cider-Vinegar-with-Mother-730245.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Our Organic Apple Cider Vinegar is crafted from Italian organic apples using traditional fermentation. Its sharp, fruity acidity is ideal for salad dressings, marinades, and health-conscious recipes.",
         size: "16.9 oz",
@@ -224,7 +209,7 @@ export const pantryCategories: Category[] = [
         description:
           "Bold and robust Italian red wine vinegar with a sharp, fruity character. A staple for vinaigrettes and Mediterranean cooking.",
         image: "/assets/Vinegar/730248.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Fermented from quality Italian red wine, our Red Wine Vinegar brings a robust tang and deep ruby color to dressings, marinades, and sauces. An indispensable ingredient in any Italian pantry.",
         size: "16.9 oz",
@@ -237,9 +222,46 @@ export const pantryCategories: Category[] = [
         description:
           "Clean, bright Italian white wine vinegar with a subtle grape undertone. Ideal for light dressings, pickling, and delicate sauces.",
         image: "/assets/Vinegar/730249.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "vinegars-glazes",
         details:
           "Made from Italian white wine, this vinegar offers a clean, crisp acidity that complements seafood, salads, and lighter dishes. Its subtle flavor won't overpower delicate ingredients.",
+        size: "16.9 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+    ],
+  },
+  {
+    id: "cooking-wines-citrus",
+    name: "Cooking Wines & Citrus",
+    slug: "cooking-wines-citrus",
+    tagline: "Essential Italian Kitchen Staples",
+    description:
+      "Quality Italian cooking wines and pure Sicilian citrus juices to bring brightness and depth to your recipes.",
+    heroImage: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
+    products: [
+      {
+        id: "red-cooking-wine",
+        name: "Red Cooking Wine",
+        description:
+          "Full-bodied Italian red cooking wine that adds depth and richness to sauces, braises, and stews. An essential ingredient in classic Italian recipes.",
+        image: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
+        categoryId: "cooking-wines-citrus",
+        details:
+          "Our Red Cooking Wine is made from quality Italian grapes, selected for their ability to enhance savory dishes. It deglazes pans beautifully and adds complex, wine-rich flavor to ragùs, osso buco, and hearty sauces.",
+        size: "16.9 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "white-cooking-wine",
+        name: "White Cooking Wine",
+        description:
+          "A crisp Italian white cooking wine that brings brightness and acidity to seafood, risotto, and cream sauces. Light and aromatic.",
+        image: "/assets/Vinegar/730266-PRIMARY-SHOT.png",
+        categoryId: "cooking-wines-citrus",
+        details:
+          "Made from select Italian white grapes, our White Cooking Wine adds a clean, bright acidity to your cooking. Perfect for deglazing, steaming mussels, enriching risottos, and lightening cream-based sauces.",
         size: "16.9 oz",
         kosher: true,
         madeInItaly: true,
@@ -250,7 +272,7 @@ export const pantryCategories: Category[] = [
         description:
           "Pure squeezed lemon juice from sun-ripened Sicilian lemons. Bright, tart, and ready to add a burst of citrus to any dish.",
         image: "/assets/Lemon Juice/730285-PRIMARY-SHOT.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "cooking-wines-citrus",
         details:
           "Our Lemon Juice is pressed from the finest Sicilian lemons, capturing their vibrant acidity and fragrant zest. Keep it on hand for dressings, seafood, cocktails, and baking.",
         size: "6.7 oz",
@@ -263,7 +285,7 @@ export const pantryCategories: Category[] = [
         description:
           "A larger bottle of pure Sicilian lemon juice for kitchens that can't get enough citrus. Same bright, authentic flavor in a value size.",
         image: "/assets/Lemon Juice/730286.png",
-        categoryId: "olive-oil-vinegars",
+        categoryId: "cooking-wines-citrus",
         details:
           "The larger format of our Sicilian Lemon Juice is perfect for avid cooks and entertainers. Pure, tart, and intensely flavorful — a versatile ingredient that brightens everything it touches.",
         size: "16.9 oz",
@@ -273,12 +295,12 @@ export const pantryCategories: Category[] = [
     ],
   },
   {
-    id: "olives-condiments",
-    name: "Olives & Condiments",
-    slug: "olives-condiments",
+    id: "olives",
+    name: "Olives",
+    slug: "olives",
     tagline: "Mediterranean Treasures",
     description:
-      "Hand-picked Italian olives and authentic condiments that transform every dish into a Mediterranean masterpiece.",
+      "Hand-picked Italian olives in every style — from buttery Castelvetrano to bold Kalamata, in jars and convenient on-the-go pouches.",
     heroImage: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
     products: [
       {
@@ -287,7 +309,7 @@ export const pantryCategories: Category[] = [
         description:
           "Buttery, mild Castelvetrano olives from Sicily, carefully pitted for effortless snacking. Their bright green color and sweet flavor make them a crowd favorite.",
         image: "/assets/Olive/730190.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Harvested in the Castelvetrano region of Sicily, these prized olives are known for their firm, meaty texture and distinctively mild, buttery taste. Pitted for convenience, they're perfect for antipasti platters, salads, and snacking.",
         size: "10.6 oz",
@@ -300,7 +322,7 @@ export const pantryCategories: Category[] = [
         description:
           "Large, plump Cerignola olives from Puglia with a crisp bite and subtly sweet flavor. A showstopper on any olive board.",
         image: "/assets/Olive/730191-PRIMARY-SHOT.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Cerignola olives from Puglia are among the largest olive varieties in the world. Their firm flesh, mild brininess, and elegant appearance make them a favorite for entertaining and Italian appetizer spreads.",
         size: "10.6 oz",
@@ -313,7 +335,7 @@ export const pantryCategories: Category[] = [
         description:
           "Rich, fruity Kalamata olives with a deep purple hue, pitted for easy enjoyment. A classic Mediterranean staple with bold flavor.",
         image: "/assets/Olive/730192.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our Kalamata olives deliver an intense, wine-like fruitiness with a smooth, meaty texture. Pitted for convenience, they're ideal for Greek salads, pasta dishes, tapenade, and charcuterie boards.",
         size: "10.6 oz",
@@ -326,7 +348,7 @@ export const pantryCategories: Category[] = [
         description:
           "Generously sized Sicilian Castelvetrano olives in a larger jar, marinated for a sweeter, more complex flavor profile.",
         image: "/assets/Olive/Tuscanini-Sweet-Sicilian-Castelvetrano-Olives-730180.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "These sweet Sicilian Castelvetrano olives are gently marinated to enhance their natural buttery sweetness. The larger jar ensures you have plenty for gatherings, cooking, and everyday snacking.",
         size: "14.1 oz",
@@ -339,7 +361,7 @@ export const pantryCategories: Category[] = [
         description:
           "Premium Kalamata olives in a larger jar, perfect for families and olive lovers. Deep, rich flavor with a satisfying meaty texture.",
         image: "/assets/Olive/Tuscanini-Kalamata-Olives-730181.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our larger Kalamata olive jar brings the bold, fruity character of these beloved olives to your table in generous quantity. Ideal for cooking, entertaining, or keeping stocked in your Mediterranean pantry.",
         size: "14.1 oz",
@@ -352,7 +374,7 @@ export const pantryCategories: Category[] = [
         description:
           "A colorful medley of premium Italian olive varieties, pitted and ready to enjoy. A taste of Italy in every handful.",
         image: "/assets/Olive/Tuscanini-Bella-Italia-Mix-Pitted-Olives-730182.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our Bella Italia Mix brings together a curated selection of Italy's finest olive varieties in one convenient jar. Each olive is pitted for effortless enjoyment, making this mix perfect for antipasti, salads, and cocktail hour.",
         size: "7.8 oz",
@@ -365,7 +387,7 @@ export const pantryCategories: Category[] = [
         description:
           "Savory Italian olives marinated with crushed garlic for an irresistible flavor combination. Bold, aromatic, and ready to serve.",
         image: "/assets/Olive/730183 - Pitted Olives w-Crushed Garlic.jpg",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our pitted olives are infused with crushed Italian garlic, creating a deeply savory and aromatic snack. They add instant Mediterranean flair to pasta, pizza, and appetizer platters.",
         size: "8.5 oz",
@@ -378,7 +400,7 @@ export const pantryCategories: Category[] = [
         description:
           "Traditional cracked olives marinated in herbs and olive oil. The cracking allows the marinade to penetrate for maximum flavor.",
         image: "/assets/Olive/730184 -Cracked Marinated Olives.jpg",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Following an age-old Mediterranean technique, these olives are gently cracked before marinating in aromatic herbs and extra virgin olive oil. The result is a deeply flavorful olive that bursts with every bite.",
         size: "7.8 oz",
@@ -391,7 +413,7 @@ export const pantryCategories: Category[] = [
         description:
           "Three varieties of premium Italian olives presented in an elegant divided platter. The perfect ready-to-serve appetizer for any occasion.",
         image: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our Trio Platter features three distinct Italian olive varieties, each in its own compartment for a beautiful presentation. Simply open and serve for an instant, elegant appetizer that impresses every time.",
         size: "12.7 oz",
@@ -404,75 +426,10 @@ export const pantryCategories: Category[] = [
         description:
           "Plump Italian olives stuffed with fiery pimiento peppers for a spicy kick. A bold twist on the classic stuffed olive.",
         image: "/assets/Olive/Tuscanini-Spicy-Stuffed-Pimento-olives-8.5oz-730187.png",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "These Italian olives are hand-stuffed with spicy pimiento peppers, delivering a satisfying heat balanced by the olive's natural brininess. Perfect for martinis, appetizer boards, and adding punch to salads.",
         size: "8.5 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "calabrian-chili-peppers",
-        name: "Calabrian Chili Peppers in Oil",
-        description:
-          "Fiery Calabrian chili peppers preserved in olive oil, bringing the bold heat of Southern Italy to your kitchen. Smoky, fruity, and intensely flavorful.",
-        image: "/assets/Peppers/730438.png",
-        categoryId: "olives-condiments",
-        details:
-          "Sourced from Calabria, the spice capital of Italy, these whole chili peppers are preserved in olive oil to maintain their vibrant heat and fruity complexity. Add them to pasta, pizza, sandwiches, and marinades for authentic Southern Italian fire.",
-        size: "9.2 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "chopped-calabrian-chili-peppers",
-        name: "Chopped Calabrian Chili Peppers in Oil",
-        description:
-          "Finely chopped Calabrian chili peppers in olive oil, ready to stir into any dish for an instant burst of smoky heat.",
-        image: "/assets/Peppers/730443.png",
-        categoryId: "olives-condiments",
-        details:
-          "Pre-chopped for ultimate convenience, our Calabrian Chili Peppers in Oil deliver the same authentic Southern Italian heat in a ready-to-use format. Spoon them into sauces, spread on sandwiches, or mix into dips for effortless flavor.",
-        size: "10.9 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "sun-dried-tomatoes",
-        name: "Sun Dried Tomatoes",
-        description:
-          "Intensely flavored Italian sun-dried tomatoes, plump and tender with concentrated sweetness. A Mediterranean pantry essential.",
-        image: "/assets/Fruits/SundriedTomatoes/730439.png",
-        categoryId: "olives-condiments",
-        details:
-          "Our sun-dried tomatoes are slowly dried under the Italian sun to concentrate their natural sweetness and umami depth. Rehydrate them for pasta and salads, or enjoy them straight from the jar on antipasti platters.",
-        size: "10.6 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "calabrian-chili-hot-pepper-jam",
-        name: "Calabrian Chili Hot Pepper Jam",
-        description:
-          "A sweet and spicy jam made from Calabrian chili peppers, perfect for glazing, spreading, and pairing with cheese. Addictively delicious.",
-        image: "/assets/Jam/730242.png",
-        categoryId: "olives-condiments",
-        details:
-          "Our Hot Pepper Jam balances the smoky heat of Calabrian chilies with a touch of sweetness for a versatile condiment. Spread it on crostini with fresh cheese, glaze meats, or stir into sauces for a sweet-heat kick.",
-        size: "4.59 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "capers-in-brine",
-        name: "Capers in Brine",
-        description:
-          "Tiny, tangy Italian capers preserved in brine for a burst of Mediterranean flavor. A classic ingredient in Italian and French cuisine.",
-        image: "/assets/Fruits/Capers/730375.png",
-        categoryId: "olives-condiments",
-        details:
-          "Our Capers in Brine are hand-picked in Italy and preserved in a delicate brine that maintains their firm texture and sharp, tangy flavor. Add them to pasta puttanesca, chicken piccata, salads, and smoked salmon for an authentic Mediterranean touch.",
-        size: "4.59 oz",
         kosher: true,
         madeInItaly: true,
       },
@@ -482,7 +439,7 @@ export const pantryCategories: Category[] = [
         description:
           "Convenient single-serve pouches of premium pitted Italian olives. A healthy, flavorful snack for on-the-go enjoyment.",
         image: "/assets/Olive/Pouches/olive_origin.jpg",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our Original Pitted Olives Pouches put premium Italian olives in a perfectly portioned, grab-and-go format. Each pouch is sealed for freshness, making them ideal for lunchboxes, travel, and healthy snacking anytime.",
         size: "1.06 oz",
@@ -495,7 +452,7 @@ export const pantryCategories: Category[] = [
         description:
           "Single-serve pouches of spicy seasoned Italian olives. Bold, fiery flavor in a convenient on-the-go format.",
         image: "/assets/Olive/Pouches/olive_spicy.jpg",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our Spicy Pitted Olives Pouches deliver a kick of heat in every bite. Premium Italian olives are seasoned with a fiery spice blend and packed in convenient single-serve pouches for bold snacking anywhere.",
         size: "1.06 oz",
@@ -508,10 +465,86 @@ export const pantryCategories: Category[] = [
         description:
           "Single-serve pouches of garlic-seasoned Italian olives. Savory, aromatic, and perfectly portable.",
         image: "/assets/Olive/Pouches/olive_garlic.jpg",
-        categoryId: "olives-condiments",
+        categoryId: "olives",
         details:
           "Our Garlic Pitted Olives Pouches combine premium Italian olives with the bold, savory flavor of garlic in convenient single-serve packs. A delicious, wholesome snack that satisfies on the go.",
         size: "1.06 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+    ],
+  },
+  {
+    id: "italian-condiments",
+    name: "Italian Condiments",
+    slug: "italian-condiments",
+    tagline: "Bold Flavors of Italy",
+    description:
+      "Fiery Calabrian chili peppers, sun-dried tomatoes, artisan jams, capers, and gourmet condiments that transform every dish into a Mediterranean masterpiece.",
+    heroImage: "/assets/Peppers/730438.png",
+    products: [
+      {
+        id: "calabrian-chili-peppers",
+        name: "Calabrian Chili Peppers in Oil",
+        description:
+          "Fiery Calabrian chili peppers preserved in olive oil, bringing the bold heat of Southern Italy to your kitchen. Smoky, fruity, and intensely flavorful.",
+        image: "/assets/Peppers/730438.png",
+        categoryId: "italian-condiments",
+        details:
+          "Sourced from Calabria, the spice capital of Italy, these whole chili peppers are preserved in olive oil to maintain their vibrant heat and fruity complexity. Add them to pasta, pizza, sandwiches, and marinades for authentic Southern Italian fire.",
+        size: "9.2 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "chopped-calabrian-chili-peppers",
+        name: "Chopped Calabrian Chili Peppers in Oil",
+        description:
+          "Finely chopped Calabrian chili peppers in olive oil, ready to stir into any dish for an instant burst of smoky heat.",
+        image: "/assets/Peppers/730443.png",
+        categoryId: "italian-condiments",
+        details:
+          "Pre-chopped for ultimate convenience, our Calabrian Chili Peppers in Oil deliver the same authentic Southern Italian heat in a ready-to-use format. Spoon them into sauces, spread on sandwiches, or mix into dips for effortless flavor.",
+        size: "10.9 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "sun-dried-tomatoes",
+        name: "Sun Dried Tomatoes",
+        description:
+          "Intensely flavored Italian sun-dried tomatoes, plump and tender with concentrated sweetness. A Mediterranean pantry essential.",
+        image: "/assets/Fruits/SundriedTomatoes/730439.png",
+        categoryId: "italian-condiments",
+        details:
+          "Our sun-dried tomatoes are slowly dried under the Italian sun to concentrate their natural sweetness and umami depth. Rehydrate them for pasta and salads, or enjoy them straight from the jar on antipasti platters.",
+        size: "10.6 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "calabrian-chili-hot-pepper-jam",
+        name: "Calabrian Chili Hot Pepper Jam",
+        description:
+          "A sweet and spicy jam made from Calabrian chili peppers, perfect for glazing, spreading, and pairing with cheese. Addictively delicious.",
+        image: "/assets/Jam/730242.png",
+        categoryId: "italian-condiments",
+        details:
+          "Our Hot Pepper Jam balances the smoky heat of Calabrian chilies with a touch of sweetness for a versatile condiment. Spread it on crostini with fresh cheese, glaze meats, or stir into sauces for a sweet-heat kick.",
+        size: "4.59 oz",
+        kosher: true,
+        madeInItaly: true,
+      },
+      {
+        id: "capers-in-brine",
+        name: "Capers in Brine",
+        description:
+          "Tiny, tangy Italian capers preserved in brine for a burst of Mediterranean flavor. A classic ingredient in Italian and French cuisine.",
+        image: "/assets/Fruits/Capers/730375.png",
+        categoryId: "italian-condiments",
+        details:
+          "Our Capers in Brine are hand-picked in Italy and preserved in a delicate brine that maintains their firm texture and sharp, tangy flavor. Add them to pasta puttanesca, chicken piccata, salads, and smoked salmon for an authentic Mediterranean touch.",
+        size: "4.59 oz",
         kosher: true,
         madeInItaly: true,
       },
@@ -521,7 +554,7 @@ export const pantryCategories: Category[] = [
         description:
           "A sweet and savory Italian jam made from ripe tomatoes. A versatile condiment that pairs beautifully with cheese, crostini, and grilled meats.",
         image: "/assets/Jam/730276.png",
-        categoryId: "olives-condiments",
+        categoryId: "italian-condiments",
         details:
           "Our Tomato Savory Jam transforms ripe Italian tomatoes into a sophisticated sweet-savory spread. Its unique flavor profile makes it a standout accompaniment for aged cheeses, charcuterie boards, crostini, and grilled meats.",
         size: "12.17 oz",
@@ -534,7 +567,7 @@ export const pantryCategories: Category[] = [
         description:
           "A gourmet twist on a classic condiment, blending ripe Italian tomatoes with luxurious black truffle. Elevates burgers, fries, and everything in between.",
         image: "/assets/Truffle Ketchup/730233-PRIMARY-SHOT.png",
-        categoryId: "olives-condiments",
+        categoryId: "italian-condiments",
         details:
           "Our Truffle Ketchup combines the familiar tang of premium tomato ketchup with the earthy sophistication of Italian black truffles. It transforms everyday favorites into gourmet experiences — try it with fries, burgers, or as a dipping sauce.",
         size: "10 oz",
@@ -544,12 +577,12 @@ export const pantryCategories: Category[] = [
     ],
   },
   {
-    id: "sauces-tomatoes",
-    name: "Sauces & Tomato Products",
-    slug: "sauces-tomatoes",
+    id: "pasta-sauces",
+    name: "Pasta Sauces",
+    slug: "pasta-sauces",
     tagline: "The Soul of Italian Cooking",
     description:
-      "From our signature pasta sauces to premium canned tomatoes and concentrated paste, these are the building blocks of authentic Italian cuisine.",
+      "Signature pasta and pizza sauces crafted from vine-ripened Italian tomatoes with aromatic herbs. Ready to pour over your favorite pasta or spread on homemade pizza.",
     heroImage: "/assets/ads/marinara-banner.jpg",
     products: [
       {
@@ -558,7 +591,7 @@ export const pantryCategories: Category[] = [
         description:
           "A classic Italian pizza sauce made from vine-ripened tomatoes with aromatic herbs and a touch of garlic. Ready to spread on your favorite dough.",
         image: "/assets/Sauces/730205 Traditional Pizza Sauce.jpg",
-        categoryId: "sauces-tomatoes",
+        categoryId: "pasta-sauces",
         details:
           "Our Traditional Pizza Sauce is slow-cooked from premium Italian tomatoes with oregano, basil, and garlic for an authentic pizzeria flavor. Its perfectly seasoned, spreadable consistency makes homemade pizza night effortless and delicious.",
         size: "24 oz",
@@ -571,7 +604,7 @@ export const pantryCategories: Category[] = [
         description:
           "A rich, slow-simmered Neapolitan-style pasta sauce with the deep, sweet flavor of San Marzano-style tomatoes. The taste of Naples in every spoonful.",
         image: "/assets/Sauces/730206 Napoletana Pasta Sauce.jpg",
-        categoryId: "sauces-tomatoes",
+        categoryId: "pasta-sauces",
         details:
           "Inspired by the Napoletana tradition, this sauce is slow-cooked from ripe Italian tomatoes with onion, garlic, and fresh basil. Its robust flavor and silky texture coat pasta beautifully, making every weeknight dinner feel like Sunday supper in Naples.",
         size: "24 oz",
@@ -584,7 +617,7 @@ export const pantryCategories: Category[] = [
         description:
           "A timeless Italian marinara made with ripe tomatoes, garlic, and fresh basil. Simple, pure, and bursting with flavor.",
         image: "/assets/Sauces/730207 Classic Marinara Sauce.jpg",
-        categoryId: "sauces-tomatoes",
+        categoryId: "pasta-sauces",
         details:
           "Our Classic Marinara captures the essence of Italian home cooking — ripe tomatoes, fragrant garlic, and fresh basil simmered to perfection. Its versatile flavor makes it ideal for pasta, dipping, layering in lasagna, and more.",
         size: "24 oz",
@@ -597,20 +630,31 @@ export const pantryCategories: Category[] = [
         description:
           "Our classic marinara kicked up with a lively blend of spices and a hint of heat. Bold, vibrant, and full of character.",
         image: "/assets/Sauces/730208 Zesty Marinara Sauce.jpg",
-        categoryId: "sauces-tomatoes",
+        categoryId: "pasta-sauces",
         details:
           "For those who like a little fire, our Zesty Marinara adds red pepper flakes and extra garlic to our beloved marinara base. The result is a spirited sauce that brings excitement to pasta, eggplant parmigiana, and pizza alike.",
         size: "24 oz",
         kosher: true,
         madeInItaly: true,
       },
+    ],
+  },
+  {
+    id: "canned-tomatoes",
+    name: "Canned Tomatoes & Paste",
+    slug: "canned-tomatoes",
+    tagline: "Premium Italian Tomato Essentials",
+    description:
+      "From concentrated paste to whole peeled tomatoes, these premium Italian tomato products are the building blocks of authentic Italian cooking.",
+    heroImage: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
+    products: [
       {
         id: "tomato-sauce-box",
         name: "Tomato Sauce Box",
         description:
           "Smooth, strained Italian tomato sauce in a convenient carton. A versatile base for countless Italian recipes.",
         image: "/assets/Sauces/Tuscanini Tomato Sauce Carton_730210.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Tomato Sauce is made from ripe Italian tomatoes, strained to a smooth, pourable consistency. Packaged in a convenient carton, it's the perfect starting point for homemade pasta sauces, soups, and braises.",
         size: "17.6 oz",
@@ -623,7 +667,7 @@ export const pantryCategories: Category[] = [
         description:
           "Concentrated Italian tomato paste in a resealable tube for easy, waste-free use. Adds deep, rich tomato intensity to any dish.",
         image: "/assets/Sauces/Tuscanini Tomato Paste Tube_730211.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our double-concentrated Tomato Paste is made from sun-ripened Italian tomatoes and packaged in a convenient squeezable tube. Use a small amount to build depth in sauces, stews, and soups — the resealable tube keeps the rest fresh.",
         size: "7.05 oz",
@@ -636,7 +680,7 @@ export const pantryCategories: Category[] = [
         description:
           "Certified organic concentrated tomato paste made from Italian organic tomatoes. Pure, rich, and sustainably produced.",
         image: "/assets/Sauces/730220-PRIMARY-SHOT.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Made exclusively from certified organic Italian tomatoes, our Organic Tomato Paste delivers the same deep, concentrated flavor with the assurance of organic farming practices. Squeezable tube format for zero waste.",
         size: "4.6 oz",
@@ -649,7 +693,7 @@ export const pantryCategories: Category[] = [
         description:
           "Italian tomato paste infused with fragrant basil in a convenient tube. A shortcut to rich, herbaceous tomato flavor.",
         image: "/assets/Sauces/730234-PRIMARY-SHOT.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Tomato Paste with Basil combines concentrated Italian tomatoes with aromatic fresh basil for an instant flavor boost. The squeezable tube makes it easy to add just the right amount to sauces, soups, and braises.",
         size: "4.6 oz",
@@ -662,7 +706,7 @@ export const pantryCategories: Category[] = [
         description:
           "Velvety smooth Italian tomato puree made from vine-ripened tomatoes. The ideal base for silky sauces and soups.",
         image: "/assets/Sauces/Tomato-Puree.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Tomato Puree is crafted from premium Italian tomatoes, blended to a smooth, luscious consistency. It provides a clean tomato flavor and uniform texture that forms the perfect foundation for pasta sauces, bisques, and braised dishes.",
         size: "24.7 oz",
@@ -675,7 +719,7 @@ export const pantryCategories: Category[] = [
         description:
           "Coarsely crushed Italian tomatoes with a hearty, rustic texture. Perfect for chunky sauces, chili, and baked dishes.",
         image: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Crushed Tomatoes are coarsely processed to retain a satisfying rustic texture with plenty of tomato flavor. They're the go-to choice for hearty pasta sauces, shakshuka, chili, and any recipe that benefits from chunky tomato goodness.",
         size: "24.7 oz",
@@ -688,7 +732,7 @@ export const pantryCategories: Category[] = [
         description:
           "Uniformly diced Italian tomatoes that hold their shape in cooking. Ideal for sauces, stews, and casseroles.",
         image: "/assets/Sauces/Tuscanini-Diced-Tomatoes-24.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Diced Tomatoes are cut to a consistent size from ripe Italian tomatoes, ensuring even cooking and a pleasing texture in finished dishes. They're perfect for chunky sauces, soups, and Mediterranean-style stews.",
         size: "24.3 oz",
@@ -701,7 +745,7 @@ export const pantryCategories: Category[] = [
         description:
           "Whole peeled Italian tomatoes, hand-selected for ripeness and packed at peak flavor. The gold standard for homemade sauces.",
         image: "/assets/Sauces/Tuscanini-Peeled-Tomatoes-28.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Whole Peeled Tomatoes are carefully selected and peeled at the height of ripeness, preserving their sweet, vibrant flavor. Crush them by hand for a rustic sauce or blend them smooth — the choice is yours.",
         size: "14.1 oz",
@@ -714,7 +758,7 @@ export const pantryCategories: Category[] = [
         description:
           "Perfectly diced Italian tomatoes in a convenient smaller can. Great for quick sauces, side dishes, and recipes that call for a measured amount.",
         image: "/assets/Sauces/730221-PRIMARY-SHOT.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "The smaller format of our Diced Tomatoes is ideal for quick weeknight meals, single-batch sauces, and recipes where you need just the right amount. Same premium Italian quality in a more compact size.",
         size: "14.1 oz",
@@ -727,7 +771,7 @@ export const pantryCategories: Category[] = [
         description:
           "Sweet, whole Italian cherry tomatoes preserved at peak ripeness. Bursting with concentrated sweetness and bright acidity.",
         image: "/assets/Sauces/730222-PRIMARY-SHOT.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Whole Cherry Tomatoes are picked at the peak of sweetness and packed whole to preserve their jewel-like shape and intense flavor. They're stunning in pasta, roasted in the oven, or tossed into quick pan sauces.",
         size: "14.1 oz",
@@ -740,7 +784,7 @@ export const pantryCategories: Category[] = [
         description:
           "Rustic crushed Italian tomatoes in a handy smaller can. Perfect for personal-sized batches of sauce and quick meals.",
         image: "/assets/Sauces/730223-PRIMARY-SHOT.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "All the hearty, chunky goodness of our crushed tomatoes in a convenient smaller format. Ideal for quick pasta sauces for one or two, pizza topping, and recipes that don't require a full large can.",
         size: "14.1 oz",
@@ -753,7 +797,7 @@ export const pantryCategories: Category[] = [
         description:
           "Pure Italian tomato juice made from sun-ripened tomatoes. Refreshing on its own or as a base for cocktails and cooking.",
         image: "/assets/Sauces/Tomato-Juice-2.png",
-        categoryId: "sauces-tomatoes",
+        categoryId: "canned-tomatoes",
         details:
           "Our Tomato Juice is pressed from premium Italian tomatoes for a pure, vibrant flavor. Enjoy it chilled as a refreshing beverage, use it as a base for Bloody Marys, or incorporate it into soups and sauces for added depth.",
         size: "33.8 oz",

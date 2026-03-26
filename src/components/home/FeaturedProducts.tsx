@@ -20,12 +20,11 @@ const featuredProducts = [
     categorySlug: "beverages",
   },
   {
-    id: "focaccia-bread",
-    name: "Focaccia Bread",
-    tagline: "Double-risen with extra virgin olive oil",
-    image:
-      "/assets/Focaccia Bread/Comps/Tuscasnini Focaccia Comp 6 copy.jpg",
-    categorySlug: "bakery",
+    id: "evoo-750ml",
+    name: "Extra Virgin Olive Oil",
+    tagline: "Cold-pressed from Italian groves",
+    image: "/assets/Olive Oil/730406 Large.png",
+    categorySlug: "olive-oil",
   },
   {
     id: "chocolate-bar-collection",
@@ -50,11 +49,11 @@ const featuredProducts = [
     categorySlug: "beverages",
   },
   {
-    id: "panini-bread",
-    name: "Panini Bread",
-    tagline: "Classic Italian pressed sandwiches",
-    image: "/assets/Focaccia Bread/Comps/Tuscasnini Panini Comp 3 copy.jpg",
-    categorySlug: "bakery",
+    id: "classic-marinara-sauce",
+    name: "Classic Marinara Sauce",
+    tagline: "Simple, pure, bursting with flavor",
+    image: "/assets/Sauces/730207 Classic Marinara Sauce.jpg",
+    categorySlug: "pasta-sauces",
   },
 ];
 

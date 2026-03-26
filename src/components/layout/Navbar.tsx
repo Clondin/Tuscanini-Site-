@@ -11,7 +11,7 @@ const topNavLinks = [
   { label: "Beverages", to: "/category/beverages" },
   { label: "Pasta", to: "/category/pasta-gnocchi" },
   { label: "Pizza", to: "/category/pizza" },
-  { label: "Olive Oil", to: "/category/olive-oil-vinegars" },
+  { label: "Olive Oil", to: "/category/olive-oil" },
   { label: "Chocolate", to: "/category/chocolate" },
   { label: "Gelato", to: "/category/gelato" },
   { label: "Our Story", to: "/about" },

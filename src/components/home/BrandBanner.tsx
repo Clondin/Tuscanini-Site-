@@ -39,7 +39,7 @@ export default function BrandBanner() {
           Taste Tuscanini. Know Italy.
         </p>
         <Link
-          to="/category/sauces-tomatoes"
+          to="/category/pasta-sauces"
           className="inline-flex items-center gap-3 px-7 py-3 bg-gold text-dark font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-gold-light transition-colors w-fit"
         >
           Shop Tomato Products

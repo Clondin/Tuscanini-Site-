@@ -11,12 +11,12 @@ const adBanners = [
   {
     src: "/assets/ads/tomatoes-parallax.jpg",
     label: "Tomato Products",
-    slug: "sauces-tomatoes",
+    slug: "pasta-sauces",
   },
   {
     src: "/assets/ads/balsamic-parallax.jpg",
     label: "Balsamic Glaze",
-    slug: "olive-oil-vinegars",
+    slug: "vinegars-glazes",
   },
   {
     src: "/assets/ads/tuna-parallax2.jpg",
@@ -26,12 +26,12 @@ const adBanners = [
   {
     src: "/assets/ads/lemon-juice-parallax.jpg",
     label: "Lemon Juice",
-    slug: "beverages",
+    slug: "cooking-wines-citrus",
   },
   {
     src: "/assets/ads/marinara-banner2.jpg",
     label: "Pasta Sauces",
-    slug: "sauces-tomatoes",
+    slug: "pasta-sauces",
   },
 ];
 

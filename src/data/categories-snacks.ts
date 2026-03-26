@@ -2,13 +2,13 @@ import { Category, Product } from "./products";
 
 export const snackCategories: Category[] = [
   {
-    id: "crackers-snacks",
-    name: "Crackers & Snacks",
-    slug: "crackers-snacks",
+    id: "crackers-breadsticks",
+    name: "Crackers & Breadsticks",
+    slug: "crackers-breadsticks",
     tagline: "Artisan Italian Snacking",
     description:
-      "From delicate parchment crackers to hearty spelt crostini and crispy grissini breadsticks — our snack collection brings the Italian aperitivo tradition to your home.",
-    heroImage: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
+      "From delicate parchment crackers to hearty spelt crostini and crispy grissini breadsticks — our collection brings the Italian aperitivo tradition to your home.",
+    heroImage: "/assets/Crackers/730330.png",
     products: [
       // Parchment Crackers
       {
@@ -17,7 +17,7 @@ export const snackCategories: Category[] = [
         description:
           "Delicate and flaky parchment crackers with a light, crispy texture. A versatile Italian cracker perfect for pairing with cheeses, spreads, or enjoying on their own.",
         image: "/assets/Crackers/730330.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Our Original Parchment Crackers are baked to a delicate crispness using traditional Italian methods. Their light, flaky texture makes them the ideal companion for artisan cheeses, charcuterie boards, and gourmet dips.",
         size: "3.5 oz",
@@ -30,7 +30,7 @@ export const snackCategories: Category[] = [
         description:
           "Fragrant oregano-seasoned parchment crackers with a herbaceous Italian character. Thin, crispy, and bursting with Mediterranean flavor.",
         image: "/assets/Crackers/730331.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Infused with aromatic Italian oregano, these parchment crackers deliver a savory herb flavor in every bite. Their paper-thin crispness and bold seasoning make them a standout addition to any antipasto spread.",
         size: "3.5 oz",
@@ -43,7 +43,7 @@ export const snackCategories: Category[] = [
         description:
           "Fragrant rosemary-infused parchment crackers with an earthy, aromatic profile. A refined Italian snack for discerning palates.",
         image: "/assets/Crackers/730332.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Fresh rosemary lends its woodsy, pine-like aroma to these ultra-thin parchment crackers. Baked in Italy to a perfect golden crispness, they pair beautifully with soft cheeses, olive tapenade, or a glass of wine.",
         size: "3.5 oz",
@@ -56,21 +56,21 @@ export const snackCategories: Category[] = [
         description:
           "Luxurious truffle-flavored parchment crackers with an earthy, umami-rich taste. An elegant Italian snack for special occasions.",
         image: "/assets/Crackers/730333.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "These indulgent parchment crackers are kissed with the unmistakable aroma of Italian truffles. Each wafer-thin cracker delivers an earthy sophistication that elevates any appetizer course or cheese pairing.",
         size: "3.5 oz",
         kosher: true,
         madeInItaly: true,
       },
-      // Spelt Snacks
+      // Spelt Crostini
       {
         id: "spelt-sea-salt-crostini-crackers",
         name: "Spelt Sea Salt Crostini Crackers",
         description:
           "Crunchy spelt crostini seasoned with natural sea salt. A wholesome Italian cracker with a satisfying nutty bite.",
         image: "/assets/Crackers/730560.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Made with ancient spelt grain and a touch of sea salt, these crostini crackers offer a hearty crunch and subtle nuttiness. They are twice-baked in the Italian tradition for an irresistibly crispy texture.",
         size: "6.2 oz",
@@ -83,7 +83,7 @@ export const snackCategories: Category[] = [
         description:
           "Aromatic rosemary spelt crostini with a rustic Italian character. Hearty, crunchy, and full of herbal flavor.",
         image: "/assets/Crackers/730561.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "These spelt crostini combine the wholesome nuttiness of ancient grain with fragrant Italian rosemary. Twice-baked for a satisfying crunch, they bring rustic Italian flavor to your snacking moments.",
         size: "6.2 oz",
@@ -96,7 +96,7 @@ export const snackCategories: Category[] = [
         description:
           "Decadent truffle-infused spelt crostini with an earthy depth of flavor. A gourmet Italian snack crafted from ancient grains.",
         image: "/assets/Crackers/730562.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "The rich earthiness of Italian truffles meets the wholesome character of spelt in these twice-baked crostini. Each bite delivers a luxurious umami richness that pairs perfectly with aged cheeses and fine wines.",
         size: "6.2 oz",
@@ -109,7 +109,7 @@ export const snackCategories: Category[] = [
         description:
           "Convenient individually wrapped portions of our beloved spelt sea salt crostini. Perfect for lunchboxes, on-the-go snacking, and portion control.",
         image: "/assets/Crackers/730565.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "All the wholesome crunch of our spelt sea salt crostini in perfectly portioned snack packs. Each multipack contains six individually sealed bags, keeping every serving fresh and ready for wherever your day takes you.",
         size: "6 x 1.41 oz",
@@ -122,20 +122,21 @@ export const snackCategories: Category[] = [
         description:
           "Individually portioned packs of rosemary spelt crostini for easy snacking. Aromatic, crunchy, and always fresh.",
         image: "/assets/Crackers/730566.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Enjoy the herbal fragrance of rosemary spelt crostini anywhere with these convenient snack-sized portions. Six individually wrapped bags per box ensure every serving delivers the same fresh-from-the-oven crunch.",
         size: "6 x 1.41 oz",
         kosher: true,
         madeInItaly: true,
       },
+      // Grissini
       {
         id: "sea-salt-grissini",
         name: "Sea Salt Grissini",
         description:
           "Classic Italian breadstick grissini with a delicate sea salt finish. Slim, crispy, and perfect for the aperitivo hour.",
         image: "/assets/Crackers/730570.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Our Sea Salt Grissini are hand-stretched and baked in the Piedmontese tradition, yielding slender breadsticks with a satisfying snap. Lightly dusted with sea salt, they are the quintessential Italian appetizer accompaniment.",
         size: "4.4 oz",
@@ -148,7 +149,7 @@ export const snackCategories: Category[] = [
         description:
           "Fragrant rosemary-studded Italian grissini breadsticks. Thin, crunchy, and wonderfully aromatic.",
         image: "/assets/Crackers/730571.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "These aromatic grissini are infused with fresh Italian rosemary, lending a woodsy herbal note to every crispy bite. Hand-stretched and baked in the traditional style, they bring authentic Piedmontese flair to your table.",
         size: "4.4 oz",
@@ -161,21 +162,31 @@ export const snackCategories: Category[] = [
         description:
           "Nutty sesame-coated Italian grissini breadsticks with a golden, toasty crunch. A timeless Italian snack.",
         image: "/assets/Crackers/730572.png",
-        categoryId: "crackers-snacks",
+        categoryId: "crackers-breadsticks",
         details:
           "Generously coated with toasted sesame seeds, these grissini offer a rich, nutty flavor and irresistible crunch. Baked in the Italian tradition, they pair beautifully with hummus, soft cheeses, or prosciutto.",
         size: "4.4 oz",
         kosher: true,
         madeInItaly: true,
       },
-      // Chips
+    ],
+  },
+  {
+    id: "potato-chips",
+    name: "Potato Chips",
+    slug: "potato-chips",
+    tagline: "Italian Olive Oil Crunch",
+    description:
+      "Premium Italian potato chips cooked in extra virgin olive oil. Simply seasoned and perfectly crispy, in full-size and snack bags.",
+    heroImage: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
+    products: [
       {
         id: "classic-olive-oil-potato-chips",
         name: "Classic Olive Oil Potato Chips",
         description:
           "Premium Italian potato chips cooked in extra virgin olive oil for a rich, golden flavor. Simply seasoned and perfectly crispy.",
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
-        categoryId: "crackers-snacks",
+        categoryId: "potato-chips",
         details:
           "Crafted from select potatoes and cooked in genuine Italian extra virgin olive oil, these chips deliver a clean, savory taste with a satisfying crunch. A simple yet elevated take on the classic potato chip.",
         size: "4.6 oz",
@@ -188,7 +199,7 @@ export const snackCategories: Category[] = [
         description:
           "Italian potato chips infused with fragrant rosemary and cooked in extra virgin olive oil. Herbaceous, crispy, and irresistible.",
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rosemary-4.6oz-730341.png",
-        categoryId: "crackers-snacks",
+        categoryId: "potato-chips",
         details:
           "The aromatic warmth of Italian rosemary meets the richness of extra virgin olive oil in these premium kettle-style chips. Each golden chip is packed with herbal flavor and a deeply satisfying crunch.",
         size: "4.6 oz",
@@ -201,7 +212,7 @@ export const snackCategories: Category[] = [
         description:
           "Thick-cut rippled potato chips cooked in Italian extra virgin olive oil. Extra crunchy ridges for maximum flavor.",
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rippled-4.6oz-730342-web.png",
-        categoryId: "crackers-snacks",
+        categoryId: "potato-chips",
         details:
           "Our rippled chips feature deep ridges that deliver an extra-satisfying crunch and hold onto every bit of olive oil flavor. Cooked in premium Italian extra virgin olive oil for a chip that stands above the rest.",
         size: "4.6 oz",
@@ -214,7 +225,7 @@ export const snackCategories: Category[] = [
         description:
           "A perfectly portioned snack bag of our classic olive oil potato chips. Ideal for lunchboxes and on-the-go enjoyment.",
         image: "/assets/Chips/Tuscanini-Classic-Potato-Chips-1oz-730350.png",
-        categoryId: "crackers-snacks",
+        categoryId: "potato-chips",
         details:
           "All the premium quality of our classic olive oil potato chips in a convenient single-serve bag. Perfect for tucking into a lunchbox, backpack, or desk drawer for an Italian snacking moment anytime.",
         size: "1 oz",
@@ -227,21 +238,31 @@ export const snackCategories: Category[] = [
         description:
           "A grab-and-go snack bag of our extra-crunchy rippled olive oil chips. Big flavor in a perfectly portioned pack.",
         image: "/assets/Chips/Tuscanini-Rippled-Potato-Chips-1oz-730351.png",
-        categoryId: "crackers-snacks",
+        categoryId: "potato-chips",
         details:
           "Enjoy the satisfying crunch of our rippled olive oil potato chips wherever you go. This single-serve bag is portioned for the perfect snack break, delivering premium Italian quality in every bite.",
         size: "1 oz",
         kosher: true,
         madeInItaly: true,
       },
-      // Chestnuts
+    ],
+  },
+  {
+    id: "chestnuts",
+    name: "Chestnuts",
+    slug: "chestnuts",
+    tagline: "Italian Roasted Goodness",
+    description:
+      "Tender, naturally sweet Italian roasted chestnuts in a variety of flavors. A wholesome and comforting snack, ready to enjoy straight from the pouch.",
+    heroImage: "/assets/Chestnuts/Tuscanini Chestnuts_Original.png",
+    products: [
       {
         id: "roasted-chestnuts",
         name: "Roasted Chestnuts",
         description:
           "Tender, naturally sweet Italian roasted chestnuts ready to enjoy straight from the pouch. A wholesome and comforting snack.",
         image: "/assets/Chestnuts/Tuscanini Chestnuts_Original.png",
-        categoryId: "crackers-snacks",
+        categoryId: "chestnuts",
         details:
           "Our Italian roasted chestnuts are peeled, roasted, and vacuum-sealed to lock in their natural sweetness and creamy texture. Enjoy them as a nourishing snack, or add them to stuffings, salads, and desserts.",
         size: "3.5 oz",
@@ -254,7 +275,7 @@ export const snackCategories: Category[] = [
         description:
           "Italian roasted chestnuts with a savory twist of sea salt and cracked black pepper. A bold, satisfying snack.",
         image: "/assets/Chestnuts/Tuscanini Chestnuts_Salt & Pepper.png",
-        categoryId: "crackers-snacks",
+        categoryId: "chestnuts",
         details:
           "We take our tender Italian chestnuts and season them with a balanced blend of sea salt and freshly cracked black pepper. The result is a savory, warming snack that combines natural chestnut sweetness with a peppery kick.",
         size: "3.5 oz",
@@ -267,7 +288,7 @@ export const snackCategories: Category[] = [
         description:
           "Warm cinnamon-dusted Italian roasted chestnuts with a sweet, cozy flavor. A delightful autumn-inspired treat.",
         image: "/assets/Chestnuts/730462.png",
-        categoryId: "crackers-snacks",
+        categoryId: "chestnuts",
         details:
           "Fragrant cinnamon transforms our tender Italian chestnuts into an irresistible sweet snack. Each chestnut is gently roasted and dusted with warm cinnamon, evoking the charm of a European autumn market.",
         size: "3.5 oz",
@@ -520,7 +541,7 @@ export const snackCategories: Category[] = [
         name: "Solid Light Tuna in Olive Oil - Three Pack",
         description:
           "A convenient three-pack of our premium solid light tuna in olive oil. Stock your pantry with Italian quality.",
-        image: "/assets/Tuna/730420.png",
+        image: "/assets/Tuna/730430.png",
         categoryId: "tuna-seafood",
         details:
           "Three perfectly portioned cans of our solid light tuna in Italian olive oil, bundled for convenience and value. Always have premium Italian tuna on hand for quick weeknight meals and impromptu entertaining.",
@@ -533,74 +554,11 @@ export const snackCategories: Category[] = [
         name: "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack",
         description:
           "A three-pack of our spicy chili pepper tuna in olive oil. Bold Italian flavor, always within reach.",
-        image: "/assets/Tuna/730420.png",
+        image: "/assets/Tuna/730431.png",
         categoryId: "tuna-seafood",
         details:
           "Three cans of our fiery chili pepper tuna in olive oil, ready to add a kick of Italian heat to any meal. A must-have pantry trio for spice lovers who appreciate premium quality and convenience.",
         size: "3 x 2.82 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-    ],
-  },
-  {
-    id: "beans-legumes",
-    name: "Beans & Legumes",
-    slug: "beans-legumes",
-    tagline: "Italian Pantry Essentials",
-    description:
-      "Premium Italian beans and legumes in convenient Tetra Pak packaging. Ready to use in soups, salads, and classic Italian dishes.",
-    heroImage: "/assets/Fruits/Beans/730450.png",
-    products: [
-      {
-        id: "chickpeas-tetra-pak",
-        name: "Chickpeas Tetra Pak",
-        description:
-          "Tender Italian chickpeas in convenient Tetra Pak packaging. Ready to use in hummus, salads, soups, and classic Italian recipes.",
-        image: "/assets/Fruits/Beans/730450.png",
-        categoryId: "beans-legumes",
-        details:
-          "Our Italian chickpeas are packed at peak tenderness in eco-friendly Tetra Pak cartons that preserve freshness without the metallic taste of cans. Simply drain and add to your favorite dishes for instant Mediterranean flavor.",
-        size: "13.4 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "cannellini-beans-tetra-pak",
-        name: "Cannellini Beans Tetra Pak",
-        description:
-          "Creamy Italian cannellini beans in a convenient Tetra Pak. The essential white bean for Tuscan soups, salads, and side dishes.",
-        image: "/assets/Fruits/Beans/730451.png",
-        categoryId: "beans-legumes",
-        details:
-          "These velvety cannellini beans are a cornerstone of Tuscan cuisine, prized for their creamy texture and mild, nutty flavor. Packed in Tetra Pak for freshness, they are ready to star in ribollita, minestrone, and white bean salads.",
-        size: "13.4 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "organic-chickpeas-tetra-pak",
-        name: "Organic Chickpeas Tetra Pak",
-        description:
-          "Certified organic Italian chickpeas in Tetra Pak packaging. Premium quality beans grown without synthetic pesticides or fertilizers.",
-        image: "/assets/Fruits/Beans/730452.png",
-        categoryId: "beans-legumes",
-        details:
-          "Our organic chickpeas are grown on certified Italian farms using sustainable practices, then packed in convenient Tetra Pak cartons. Enjoy the same tender texture and rich flavor with the added assurance of organic certification.",
-        size: "13.4 oz",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "red-kidney-beans-tetra-pak",
-        name: "Red Kidney Beans Tetra Pak",
-        description:
-          "Hearty Italian red kidney beans in Tetra Pak packaging. A protein-rich staple for chili, stews, and hearty salads.",
-        image: "/assets/Fruits/Beans/730454.png",
-        categoryId: "beans-legumes",
-        details:
-          "These robust red kidney beans bring Italian quality to your heartiest dishes. Packed in convenient Tetra Pak cartons, they retain their firm texture and deep, earthy flavor — perfect for chili, bean salads, and rustic Italian soups.",
-        size: "13.4 oz",
         kosher: true,
         madeInItaly: true,
       },
