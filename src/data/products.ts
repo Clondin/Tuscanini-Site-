@@ -327,7 +327,7 @@ const excludedProductIds = new Set([
   "focaccia-bulk-foodservice",
 ]);
 
-export const categories: Category[] = catalogCategories
+export let categories: Category[] = catalogCategories
   .filter((category) => !excludedCategoryIds.has(category.id))
   .map((category) => ({
     ...category,
@@ -336,6 +336,10 @@ export const categories: Category[] = catalogCategories
         !excludedProductIds.has(product.id)
     ),
   }));
+
+export function setCatalogCategories(nextCategories: Category[]): void {
+  if (nextCategories.length > 0) categories = nextCategories;
+}
 
 export function getCategoryBySlug(slug: string): Category | undefined {
   return categories.find((c) => c.slug === slug);
