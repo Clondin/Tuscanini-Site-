@@ -8,7 +8,7 @@ import { mealCategories } from "../../data/categories-meals";
 import { snackCategories } from "../../data/categories-snacks";
 import { foodserviceCategories } from "../../data/categories-foodservice";
 import { getCategoryAccent } from "../../data/category-accents";
-import { getCmsLinks } from "../../data/cms";
+import { getCmsData, getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
 import SearchOverlay from "../ui/SearchOverlay";
 
@@ -55,6 +55,9 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const location = useLocation();
+  const siteSettings = getCmsData("site_settings", "general");
+  const siteTitle = typeof siteSettings?.site_title === "string" ? siteSettings.site_title : "Tuscanini";
+  const logo = typeof siteSettings?.logo === "string" ? siteSettings.logo : "";
   const cmsNavLinks = getCmsLinks("navigation", "primary");
   const displayedTopNavLinks = cmsNavLinks.length > 0 ? cmsNavLinks : topNavLinks;
   const mobileCategoryLinks = categories.map((category) => ({
@@ -116,8 +119,12 @@ export default function Navbar() {
     >
       <div className="italia-stripe w-full" />
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="select-none text-heading">
-          <TuscaniniLogo className="h-8 w-auto" />
+        <Link to="/" className="select-none text-heading" aria-label={`${siteTitle} home`}>
+          {logo ? (
+            <img src={logo} alt={siteTitle} className="h-8 max-w-[180px] w-auto object-contain" />
+          ) : (
+            <TuscaniniLogo className="h-8 w-auto" />
+          )}
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">

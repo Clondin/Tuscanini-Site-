@@ -7,7 +7,13 @@ import TuscaniniLogo from "../TuscaniniLogo";
 export default function Footer() {
   const footerCategories = categories.slice(0, 8);
   const cms = getCmsData("footer", "main");
+  const siteSettings = getCmsData("site_settings", "general");
   const cmsLinks = getCmsLinks("footer", "main");
+  const siteTitle = typeof siteSettings?.site_title === "string" ? siteSettings.site_title : "Tuscanini";
+  const tagline = typeof siteSettings?.tagline === "string"
+    ? siteSettings.tagline
+    : "Taste Tuscanini. Know Italy.";
+  const logo = typeof siteSettings?.logo === "string" ? siteSettings.logo : "";
   const body = typeof cms?.body === "string"
     ? cms.body
     : "Authentic Italian excellence, from our family to yours. Every product tells a story of tradition, quality, and the Italian art of living well.";
@@ -17,12 +23,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <TuscaniniLogo className="h-7 w-auto text-italia-white" />
+            {logo ? (
+              <img src={logo} alt={siteTitle} className="h-7 max-w-[180px] w-auto object-contain" />
+            ) : (
+              <TuscaniniLogo className="h-7 w-auto text-italia-white" />
+            )}
             <p className="mt-3 text-italia-white/50 text-sm leading-relaxed max-w-xs">
               {body}
             </p>
             <p className="mt-3 font-script italic text-gold text-lg">
-              Taste Tuscanini. Know Italy.
+              {tagline}
             </p>
             <div className="mt-4 flex items-center gap-3">
               <span className="text-italia-white/40 text-xs tracking-wide">TuscaniniFoods.com</span>
@@ -98,7 +108,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-italia-white/10 text-center">
           <p className="text-italia-white/30 text-xs tracking-wide">
-            &copy; {new Date().getFullYear()} Tuscanini. All rights reserved. Authentic Italian
+            &copy; {new Date().getFullYear()} {siteTitle}. All rights reserved. Authentic Italian
             Excellence.
           </p>
         </div>

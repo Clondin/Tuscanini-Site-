@@ -13,6 +13,10 @@ export default function HeroSection() {
     ? cms.body
     : "Authentic flavors, sourced from the heart of Italy — crafted for your home kitchen.";
   const buttonLabel = typeof cms?.cta_label === "string" ? cms.cta_label : "Explore Our Collections";
+  const buttonUrl = typeof cms?.cta_url === "string" && cms.cta_url.trim()
+    ? cms.cta_url
+    : "/#collections";
+  const heroImage = typeof cms?.hero_image === "string" ? cms.hero_image : "";
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -21,10 +25,17 @@ export default function HeroSection() {
 
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
-  const handleSmoothScroll = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
+  const handleCtaClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    const hashIndex = buttonUrl.indexOf("#");
+    if (hashIndex < 0) return;
+
+    const targetPath = buttonUrl.slice(0, hashIndex);
+    const targetId = buttonUrl.slice(hashIndex + 1);
+    if (!targetId || (targetPath && targetPath !== "/" && targetPath !== window.location.pathname)) return;
+
     const el = document.getElementById(targetId);
     if (el) {
+      e.preventDefault();
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -32,14 +43,22 @@ export default function HeroSection() {
   return (
     <section ref={sectionRef} className="relative h-screen flex items-end justify-center overflow-hidden bg-dark">
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-[120%] object-cover opacity-90"
-          src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
-        />
+        {heroImage ? (
+          <img
+            src={heroImage}
+            alt=""
+            className="w-full h-[120%] object-cover opacity-90"
+          />
+        ) : (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-[120%] object-cover opacity-90"
+            src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
+          />
+        )}
         <div className="absolute inset-0 film-grain opacity-[0.07] mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
       </motion.div>
@@ -79,8 +98,8 @@ export default function HeroSection() {
 
         <MagneticButton className="inline-block">
           <motion.a
-            href="#collections"
-            onClick={(e: MouseEvent<HTMLAnchorElement>) => handleSmoothScroll(e, "collections")}
+            href={buttonUrl}
+            onClick={handleCtaClick}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-dark font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-gold-light transition-colors"

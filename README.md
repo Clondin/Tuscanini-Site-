@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Tuscanini Site
 
-# Run and deploy your AI Studio app
+Tuscanini's public React site, backed by the Kayco Sites CMS.
 
-This contains everything you need to run your app locally.
+## Production
 
-View your app in AI Studio: https://ai.studio/apps/9389fcea-514a-49c3-b31a-126042013f6e
+- Website: <https://tuscanini-site.vercel.app>
+- Admin: <https://kayco-sites-admin.vercel.app>
+- Content API: <https://qkatfirzwukmgdrytbue.supabase.co/functions/v1/content-api>
 
-## Run Locally
+The site loads published categories, products, recipes, pages, navigation, footer content, and global settings before React renders. If the content API is temporarily unavailable, the bundled catalog remains available as a fallback.
 
-**Prerequisites:**  Node.js
+Editors can use the admin to update catalog wording and images, reorder content, publish page hero content and CTA links, replace the site logo, and change the site title, tagline, and primary color.
 
+## Local development
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Requirements: Node.js 22+ and pnpm.
+
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+The development server runs at <http://127.0.0.1:3000>. To use another CMS environment, set `VITE_KAYCO_CONTENT_API_URL` in `.env.local`; otherwise the hosted Kayco content API is used.
+
+Run the quality gates before publishing:
+
+```bash
+pnpm lint
+pnpm build
+```
+
+## Deployment
+
+The Vercel project is connected to the GitHub repository. Merges to `main` create the production deployment, while pull requests receive preview deployments.
+
+The `/admin` route redirects editors to the shared Kayco Sites admin.

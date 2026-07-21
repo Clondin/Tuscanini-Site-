@@ -132,6 +132,32 @@ export function getCmsLinks(type: "navigation" | "footer", slug: string): Array<
     .filter((item): item is { label: string; to: string } => item !== null);
 }
 
+function applySiteSettings(): void {
+  if (typeof document === "undefined") return;
+
+  const settings = getCmsData("site_settings", "general");
+  if (!settings) return;
+
+  const siteTitle = text(settings, "site_title");
+  if (siteTitle) document.title = siteTitle;
+
+  const tagline = text(settings, "tagline");
+  if (tagline) {
+    let description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (!description) {
+      description = document.createElement("meta");
+      description.name = "description";
+      document.head.append(description);
+    }
+    description.content = tagline;
+  }
+
+  const primaryColor = text(settings, "primary_color");
+  if (/^#[0-9a-f]{6}$/i.test(primaryColor)) {
+    document.documentElement.style.setProperty("--color-primary", primaryColor);
+  }
+}
+
 export async function initializeCmsContent(): Promise<boolean> {
   const configuredUrl = import.meta.env.VITE_KAYCO_CONTENT_API_URL?.trim() || defaultContentApiUrl;
   const baseUrl = configuredUrl.replace(/\/+$/, "");
@@ -151,6 +177,7 @@ export async function initializeCmsContent(): Promise<boolean> {
     for (const [type, items] of byType) {
       for (const item of items) contentByKey.set(contentKey(type, item.slug), item);
     }
+    applySiteSettings();
     return mappedCategories.length > 0;
   } catch (error) {
     console.warn("Kayco CMS is unavailable; using the bundled Tuscanini content.", error);
