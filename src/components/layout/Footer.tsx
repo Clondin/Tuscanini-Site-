@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube } from "lucide-react";
 import { categories } from "../../data/products";
+import { getCmsData, getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
 
-const footerCategories = categories.slice(0, 8);
-
 export default function Footer() {
+  const footerCategories = categories.slice(0, 8);
+  const cms = getCmsData("footer", "main");
+  const cmsLinks = getCmsLinks("footer", "main");
+  const body = typeof cms?.body === "string"
+    ? cms.body
+    : "Authentic Italian excellence, from our family to yours. Every product tells a story of tradition, quality, and the Italian art of living well.";
   return (
     <footer className="dark-section text-italia-white">
       <div className="italia-stripe w-full" />
@@ -14,8 +19,7 @@ export default function Footer() {
           <div>
             <TuscaniniLogo className="h-7 w-auto text-italia-white" />
             <p className="mt-3 text-italia-white/50 text-sm leading-relaxed max-w-xs">
-              Authentic Italian excellence, from our family to yours. Every product tells a story
-              of tradition, quality, and the Italian art of living well.
+              {body}
             </p>
             <p className="mt-3 font-script italic text-gold text-lg">
               Taste Tuscanini. Know Italy.
@@ -78,6 +82,17 @@ export default function Footer() {
                 <Youtube size={20} />
               </a>
             </div>
+            {cmsLinks.length > 0 ? (
+              <ul className="mt-5 space-y-2">
+                {cmsLinks.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className="text-xs text-italia-white/50 hover:text-gold transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </div>
 

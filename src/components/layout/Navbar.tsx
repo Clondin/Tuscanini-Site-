@@ -8,6 +8,7 @@ import { mealCategories } from "../../data/categories-meals";
 import { snackCategories } from "../../data/categories-snacks";
 import { foodserviceCategories } from "../../data/categories-foodservice";
 import { getCategoryAccent } from "../../data/category-accents";
+import { getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
 import SearchOverlay from "../ui/SearchOverlay";
 
@@ -19,22 +20,21 @@ const topNavLinks = [
   { label: "Our Story", to: "/about" },
 ];
 
-const megaGroups = [
-  { label: "The Pantry", items: pantryCategories },
-  { label: "Meals", items: mealCategories },
-  { label: "Snacks & Sweets", items: snackCategories },
-  { label: "Foodservice", items: foodserviceCategories },
-];
-
 const mobilePageLinks = [
   { label: "The Pantry", to: "/#collections" },
   { label: "Our Story", to: "/about" },
 ];
 
-const mobileCategoryLinks = categories.map((c) => ({
-  label: c.name,
-  to: `/category/${c.slug}`,
-}));
+const pantryCategoryIds = new Set(pantryCategories.map((category) => category.id));
+const mealCategoryIds = new Set(mealCategories.map((category) => category.id));
+const snackCategoryIds = new Set(snackCategories.map((category) => category.id));
+const foodserviceCategoryIds = new Set(foodserviceCategories.map((category) => category.id));
+const knownGroupIds = new Set([
+  ...pantryCategoryIds,
+  ...mealCategoryIds,
+  ...snackCategoryIds,
+  ...foodserviceCategoryIds,
+]);
 
 function isActive(linkTo: string, pathname: string): boolean {
   if (linkTo === "/#collections") {
@@ -55,6 +55,23 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const location = useLocation();
+  const cmsNavLinks = getCmsLinks("navigation", "primary");
+  const displayedTopNavLinks = cmsNavLinks.length > 0 ? cmsNavLinks : topNavLinks;
+  const mobileCategoryLinks = categories.map((category) => ({
+    label: category.name,
+    to: `/category/${category.slug}`,
+  }));
+  const megaGroups = [
+    {
+      label: "The Pantry",
+      items: categories.filter(
+        (category) => pantryCategoryIds.has(category.id) || !knownGroupIds.has(category.id),
+      ),
+    },
+    { label: "Meals", items: categories.filter((category) => mealCategoryIds.has(category.id)) },
+    { label: "Snacks & Sweets", items: categories.filter((category) => snackCategoryIds.has(category.id)) },
+    { label: "Foodservice", items: categories.filter((category) => foodserviceCategoryIds.has(category.id)) },
+  ];
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -118,7 +135,7 @@ export default function Navbar() {
               className={`w-3 h-3 transition-transform duration-300 ${megaOpen ? "rotate-180" : ""}`}
             />
           </button>
-          {topNavLinks.map((link) => {
+          {displayedTopNavLinks.map((link) => {
             const active = isActive(link.to, location.pathname);
             return (
               <Link

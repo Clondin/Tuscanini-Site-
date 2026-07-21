@@ -10,7 +10,7 @@ export interface Recipe {
   image?: string;
 }
 
-export const recipes: Recipe[] = [
+export let recipes: Recipe[] = [
   {
     id: "classic-margherita-pizza",
     name: "Classic Margherita Pizza",
@@ -248,6 +248,10 @@ export const recipes: Recipe[] = [
     servings: 4,
   },
 ];
+
+export function setRecipes(nextRecipes: Recipe[]): void {
+  if (nextRecipes.length > 0) recipes = nextRecipes;
+}
 
 /** Return all recipes that reference a given product ID. */
 export function getRecipesForProduct(productId: string): Recipe[] {

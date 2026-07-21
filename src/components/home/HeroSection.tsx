@@ -4,8 +4,15 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import TextReveal from "../ui/TextReveal";
 import MagneticButton from "../ui/MagneticButton";
+import { getCmsData } from "../../data/cms";
 
 export default function HeroSection() {
+  const cms = getCmsData("page", "home");
+  const headline = typeof cms?.headline === "string" ? cms.headline : "Italy at Your Table";
+  const body = typeof cms?.body === "string"
+    ? cms.body
+    : "Authentic flavors, sourced from the heart of Italy — crafted for your home kitchen.";
+  const buttonLabel = typeof cms?.cta_label === "string" ? cms.cta_label : "Explore Our Collections";
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -55,7 +62,7 @@ export default function HeroSection() {
         </motion.div>
 
         <TextReveal
-          text="Italy at Your Table"
+          text={headline}
           as="h1"
           mode="word"
           delay={0.5}
@@ -63,8 +70,7 @@ export default function HeroSection() {
         />
 
         <p className="font-script text-xl md:text-3xl text-italia-white/70 max-w-2xl mx-auto italic mb-4">
-          Authentic flavors, sourced from the heart of Italy&nbsp;&mdash;
-          crafted for your home kitchen.
+          {body}
         </p>
 
         <p className="font-body uppercase tracking-[0.3em] text-gold/80 text-xs mb-12">
@@ -79,7 +85,7 @@ export default function HeroSection() {
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-dark font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-gold-light transition-colors"
           >
-            Explore Our Collections
+            {buttonLabel}
             <ArrowRight className="w-4 h-4" />
           </motion.a>
         </MagneticButton>
