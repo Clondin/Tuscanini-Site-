@@ -3,11 +3,11 @@ import MagneticButton from "../ui/MagneticButton";
 
 export default function NewsletterSignup() {
   return (
-    <section className="py-28 px-6 bg-aged-cream relative overflow-hidden">
+    <section className="py-16 md:py-20 px-6 bg-aged-cream relative overflow-hidden">
       <div className="absolute inset-0 sketch-overlay opacity-[0.04]" />
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
@@ -15,10 +15,10 @@ export default function NewsletterSignup() {
           <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             Stay Connected
           </span>
-          <h2 className="font-headline text-5xl md:text-6xl text-heading leading-tight mb-6">
+          <h2 className="font-headline text-4xl md:text-5xl text-heading leading-tight mb-5">
             Join the Italian Table
           </h2>
-          <p className="font-script text-on-surface/60 text-xl italic max-w-lg mx-auto mb-12">
+          <p className="font-script text-on-surface/70 text-xl italic max-w-lg mx-auto mb-8">
             Recipes, stories from the field, and first access to new
             arrivals&nbsp;&mdash; delivered to your inbox.
           </p>

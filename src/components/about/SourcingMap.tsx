@@ -16,7 +16,7 @@ const regions: Region[] = [
   {
     id: "piedmont",
     name: "Piedmont",
-    products: ["Chocolate", "Hazelnuts", "Gelato"],
+    products: ["Chocolate", "Hazelnuts", "Truffles"],
     description: "World-renowned chocolate and confectionery",
     x: 115,
     y: 115,

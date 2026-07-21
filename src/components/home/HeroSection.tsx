@@ -33,6 +33,7 @@ export default function HeroSection() {
           className="w-full h-[120%] object-cover opacity-90"
           src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
         />
+        <div className="absolute inset-0 film-grain opacity-[0.07] mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
       </motion.div>
 

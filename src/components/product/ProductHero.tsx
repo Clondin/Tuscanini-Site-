@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import { motion } from "motion/react";
-import { ArrowLeft, Package, MapPin, Expand } from "lucide-react";
+import { Package, MapPin, Expand } from "lucide-react";
 import { Product } from "../../data/products";
+import { CategoryAccent } from "../../data/category-accents";
 import TrustBadges from "./TrustBadges";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
 import ImageLightbox from "../ui/ImageLightbox";
@@ -10,23 +11,29 @@ import ImageLightbox from "../ui/ImageLightbox";
 interface ProductHeroProps {
   product: Product;
   categoryName: string;
-  categorySlug: string;
+  accent: CategoryAccent;
+  /** Extra content (e.g. the craft story) rendered in the scrolling column
+      while the product image stays pinned alongside it. */
+  children?: ReactNode;
 }
 
-export default function ProductHero({ product, categoryName, categorySlug }: ProductHeroProps) {
+export default function ProductHero({ product, categoryName, accent, children }: ProductHeroProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
-    <section className="px-6 md:px-10 pb-24 pt-8 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section className="px-6 md:px-10 pb-14 md:pb-18 pt-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="still-life-frame"
+          className="still-life-frame lg:sticky lg:top-28"
         >
           <div
-            className="aspect-square overflow-hidden bg-surface relative group cursor-zoom-in"
+            className="aspect-square overflow-hidden relative group cursor-zoom-in"
+            style={{
+              background: `radial-gradient(ellipse at 50% 42%, ${accent.soft} 0%, #faf7f2 78%)`,
+            }}
             onClick={() => product.image && setLightboxOpen(true)}
           >
             {product.image ? (
@@ -46,30 +53,32 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
                 </div>
               </>
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4] p-8">
+              <div className="w-full h-full flex flex-col items-center justify-center p-8">
                 <span className="font-headline text-3xl text-heading/30 text-center">{product.name}</span>
                 <span className="text-primary/40 text-xs uppercase tracking-[0.3em] mt-3">Image Coming Soon</span>
               </div>
             )}
           </div>
+          <div
+            aria-hidden
+            className="h-0.5 mt-4 opacity-50"
+            style={{
+              background: `linear-gradient(to right, ${accent.accent}, transparent)`,
+            }}
+          />
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-          className="space-y-8"
+          className="space-y-6"
         >
-          <Link
-            to={`/category/${categorySlug}`}
-            className="inline-flex items-center gap-2 text-on-surface/50 hover:text-primary transition-colors text-xs font-body uppercase tracking-widest"
-          >
-            <ArrowLeft className="w-3 h-3" />
-            Back to {categoryName}
-          </Link>
-
           <div>
-            <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+            <span
+              className="font-bold tracking-[0.3em] text-[10px] uppercase block mb-4"
+              style={{ color: accent.deep }}
+            >
               {categoryName}
             </span>
             <h1 className="font-headline text-4xl md:text-5xl text-heading leading-tight mb-6">
@@ -83,7 +92,10 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
           <div className="w-full h-px bg-on-surface/10"></div>
 
           {product.details && (
-            <div className="border-l-2 border-primary/30 pl-6">
+            <div
+              className="border-l-2 pl-6"
+              style={{ borderColor: `${accent.accent}55` }}
+            >
               <p className="text-on-surface/60 leading-relaxed font-serif-alt italic">
                 {product.details}
               </p>
@@ -92,7 +104,7 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
 
           {product.size && (
             <div className="flex items-center gap-3">
-              <Package className="w-4 h-4 text-primary/60" />
+              <Package className="w-4 h-4" style={{ color: accent.accent }} />
               <span className="text-on-surface/40 uppercase tracking-widest text-[10px] font-bold">Size</span>
               <span className="text-on-surface/70 text-sm">{product.size}</span>
             </div>
@@ -106,11 +118,14 @@ export default function ProductHero({ product, categoryName, categorySlug }: Pro
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-4 bg-primary text-white font-body uppercase tracking-[0.2em] text-xs hover:bg-primary/85 transition-colors shadow-lg shadow-primary/20 mt-4 cursor-pointer"
+            className="inline-flex min-h-11 items-center gap-3 px-8 py-3.5 text-white font-body uppercase tracking-[0.16em] text-xs transition-opacity hover:opacity-85 shadow-lg mt-2 cursor-pointer"
+            style={{ backgroundColor: accent.deep, boxShadow: `0 10px 25px -5px ${accent.deep}40` }}
           >
             <MapPin className="w-4 h-4" />
             Where to Buy
           </motion.a>
+
+          {children}
         </motion.div>
       </div>
 

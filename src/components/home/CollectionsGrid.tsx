@@ -13,7 +13,6 @@ import {
   Flame,
   Cookie,
   Fish,
-  IceCreamBowl,
   Wine,
   Candy,
   Leaf,
@@ -24,19 +23,25 @@ const featuredCategories = [
     name: "Beverages",
     slug: "beverages",
     tagline: "Sparkling Celebrations",
-    image: "/assets/ads/sparkling-parallax.jpg",
+    image: "/assets/Beverage/Moscato Juice/Mockups/71006931470.jpg",
   },
   {
     name: "Pasta & Gnocchi",
     slug: "pasta-gnocchi",
     tagline: "The Heart of Italian Cuisine",
-    image: "/assets/ads/gnocchi-recipe.jpg",
+    image: "/assets/Pasta/Tuscanini Classic Gnocci Mockup.png",
   },
   {
     name: "Pizza",
     slug: "pizza",
     tagline: "Authentic Neapolitan Tradition",
-    image: "/assets/ads/pizza-banner.jpg",
+    image: "/assets/Pizza/730100.png",
+  },
+  {
+    name: "Frozen Sides & Appetizers",
+    slug: "bread-frozen-appetizers",
+    tagline: "Crisp Italian Favorites",
+    image: "/assets/Foodservice/730142-eggplant-cutlets.webp",
   },
   {
     name: "Olive Oil",
@@ -48,13 +53,13 @@ const featuredCategories = [
     name: "Vinegars & Glazes",
     slug: "vinegars-glazes",
     tagline: "The Art of Italian Acidity",
-    image: "/assets/ads/balsamic-parallax.jpg",
+    image: "/assets/Vinegar/Tuscanini-Balsamic-Vinegar-8.45-oz.png",
   },
   {
     name: "Pasta Sauces",
     slug: "pasta-sauces",
     tagline: "Sun-Ripened Perfection",
-    image: "/assets/ads/marinara-banner.jpg",
+    image: "/assets/Sauces/730207.png",
   },
   {
     name: "Canned Tomatoes & Paste",
@@ -66,7 +71,7 @@ const featuredCategories = [
     name: "Chocolate",
     slug: "chocolate",
     tagline: "Italian Chocolate Excellence",
-    image: "/assets/Chocolate Bars/pisa large 3 LARGER OPTION Topaz Gigapixel 2x scale copy.jpg",
+    image: "/assets/Chocolate/Chocolate Bars/730590.png",
   },
   {
     name: "Olives",
@@ -79,12 +84,6 @@ const featuredCategories = [
     slug: "italian-condiments",
     tagline: "Bold Flavors of Italy",
     image: "/assets/Peppers/730438.png",
-  },
-  {
-    name: "Crackers & Breadsticks",
-    slug: "crackers-breadsticks",
-    tagline: "Artisan Italian Snacking",
-    image: "/assets/Crackers/730330.png",
   },
   {
     name: "Potato Chips",
@@ -103,12 +102,6 @@ const featuredCategories = [
     slug: "tuna-seafood",
     tagline: "Treasures of the Italian Sea",
     image: "/assets/ads/tuna-parallax.jpg",
-  },
-  {
-    name: "Gelato & Sorbetto",
-    slug: "gelato",
-    tagline: "Frozen Italian Indulgence",
-    image: "/assets/Gelato/730520-chocolate-gelato.png",
   },
   {
     name: "Cooking Wines & Citrus",
@@ -133,12 +126,6 @@ const featuredCategories = [
     slug: "seasonings-truffles",
     tagline: "The Essence of Italian Flavor",
     image: "/assets/Truffles/730580.png",
-  },
-  {
-    name: "Biscotti",
-    slug: "biscotti",
-    tagline: "Classic Italian Cookies",
-    image: "/assets/Biscotti/730575.png",
   },
   {
     name: "Fruit Spreads",
@@ -173,6 +160,7 @@ const categoryIconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = 
   beverages: Wine,
   "pasta-gnocchi": Wheat,
   pizza: UtensilsCrossed,
+  "bread-frozen-appetizers": UtensilsCrossed,
   "olive-oil": Droplets,
   "vinegars-glazes": Droplets,
   "cooking-wines-citrus": Wine,
@@ -181,24 +169,21 @@ const categoryIconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = 
   chocolate: Candy,
   olives: Leaf,
   "italian-condiments": Flame,
-  "crackers-breadsticks": Cookie,
   "potato-chips": Cookie,
   chestnuts: Leaf,
   "tuna-seafood": Fish,
-  gelato: IceCreamBowl,
   "flour-baking": Wheat,
   pesto: Leaf,
   "seasonings-truffles": Flame,
-  biscotti: Cookie,
   "fruit-spreads": Candy,
   cheese: Utensils,
 };
 
 export default function CollectionsGrid() {
   return (
-    <section id="collections" className="py-28 px-6 bg-aged-cream relative">
+    <section id="collections" className="py-16 md:py-20 px-6 bg-aged-cream relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-24">
+        <div className="text-center mb-12 md:mb-14">
           <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             The Pantry
           </span>
@@ -206,7 +191,7 @@ export default function CollectionsGrid() {
             text="Curated Collections"
             as="h2"
             mode="word"
-            className="font-headline text-5xl md:text-6xl text-heading italic mb-6"
+            className="font-headline text-4xl md:text-5xl text-heading italic mb-6"
           />
           <div className="flex justify-center items-center gap-4">
             <div className="w-16 h-px bg-gold/30" />
@@ -215,13 +200,13 @@ export default function CollectionsGrid() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {featuredCategories.map((cat, idx) => {
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7">
+          {featuredCategories.slice(0, 9).map((cat, idx) => {
             const CategoryIcon = categoryIconMap[cat.slug] || Utensils;
             return (
               <motion.div
                 key={cat.slug}
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: idx * 0.08, duration: 0.6 }}
@@ -231,15 +216,18 @@ export default function CollectionsGrid() {
                   to={`/category/${cat.slug}`}
                   className="still-life-frame group block cursor-pointer"
                 >
-                  <div className="aspect-square overflow-hidden mb-6 bg-surface ring-1 ring-on-surface/10">
+                  <div
+                    className="aspect-[4/3] overflow-hidden mb-4 bg-earth-dark/50 ring-1 ring-on-surface/10 relative"
+                  >
                     {cat.image ? (
                       <motion.div
-                        whileHover={{ scale: 1.08 }}
+                        whileHover={{ scale: 1.035 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="w-full h-full"
+                        className="absolute inset-3 md:inset-4 bg-white/80 border border-on-surface/8 shadow-sm overflow-hidden"
                       >
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.95),rgba(255,255,255,0.45))]" />
                         <ImageWithSkeleton
-                          className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                          className="relative z-10 w-full h-full object-contain p-3 md:p-5 opacity-95 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_10px_14px_rgba(42,31,22,0.14)]"
                           wrapperClassName="w-full h-full"
                           skeletonClassName="aspect-auto"
                           src={cat.image}
@@ -266,10 +254,10 @@ export default function CollectionsGrid() {
                   </div>
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <h3 className="font-headline text-2xl text-heading mb-2 group-hover:text-gold transition-colors">
+                      <h3 className="font-headline text-lg md:text-2xl text-heading mb-1 group-hover:text-primary transition-colors">
                         {cat.name}
                       </h3>
-                      <p className="text-on-surface/60 text-sm leading-relaxed">
+                      <p className="hidden sm:block text-on-surface/70 text-sm leading-relaxed">
                         {cat.tagline}
                       </p>
                     </div>

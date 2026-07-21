@@ -14,11 +14,11 @@ export default function HeritageSection() {
   };
 
   return (
-    <section className="py-28 px-6 md:px-24 bg-earth-dark relative overflow-hidden">
+    <section className="py-16 md:py-20 px-6 md:px-16 bg-earth-dark relative overflow-hidden">
       <div className="absolute inset-0 sketch-overlay opacity-5" />
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center relative z-10">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-14 items-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={false}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
@@ -35,11 +35,11 @@ export default function HeritageSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={false}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="space-y-10 order-1 md:order-2"
+          className="min-w-0 space-y-6 order-1 md:order-2"
         >
           <header>
             <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
@@ -49,10 +49,10 @@ export default function HeritageSection() {
               text="A Legacy Born in the Tuscan Pantry"
               as="h2"
               mode="word"
-              className="font-headline text-5xl md:text-6xl text-heading leading-tight"
+              className="font-headline text-4xl md:text-5xl text-heading leading-tight"
             />
           </header>
-          <div className="space-y-6 text-on-surface/70 text-lg leading-relaxed font-light">
+          <div className="space-y-5 text-on-surface/75 text-base md:text-lg leading-relaxed font-light">
             <p>
               Tuscanini was founded on a singular obsession: to bottle the
               ephemeral magic of a Sunday afternoon in an Italian village. We
@@ -60,7 +60,7 @@ export default function HeritageSection() {
               bite of first-press olive oil, the perfect snap of bronze-cut
               pasta.
             </p>
-            <p className="font-script italic text-2xl text-on-surface/80 border-l-2 border-gold/40 pl-6 py-2">
+            <p className="font-script italic text-xl md:text-2xl text-on-surface/85 border-l-2 border-gold/40 pl-5 py-1">
               Every product in our archive is a tribute to the families who
               have perfected their craft over generations. We don&rsquo;t just
               import food; we preserve the soul of the Italian kitchen.

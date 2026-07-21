@@ -74,17 +74,15 @@ export const recipes: Recipe[] = [
     id: "chocolate-truffle-fondue",
     name: "Chocolate Truffle Fondue",
     description:
-      "A luxurious melted chocolate fondue using Italian truffles, served with fresh fruit, biscotti, and roasted chestnuts.",
+      "A luxurious melted chocolate fondue using Italian truffles, served with fresh fruit and roasted chestnuts.",
     ingredients: [
       "Dark chocolate truffles",
       "Heavy cream",
-      "Almond biscotti",
       "Roasted chestnuts",
       "Fresh strawberries and bananas",
     ],
     products: [
       "chocolate-truffle-dark",
-      "almond-biscotti",
       "roasted-chestnuts",
     ],
     prepTime: "5 min",
@@ -118,19 +116,15 @@ export const recipes: Recipe[] = [
     id: "italian-antipasto-board",
     name: "Italian Antipasto Board",
     description:
-      "A stunning spread of olives, crackers, sun-dried tomatoes, and Calabrian chili jam arranged on a rustic board.",
+      "A stunning spread of olives, sun-dried tomatoes, and Calabrian chili jam arranged on a rustic board.",
     ingredients: [
       "Italian olives trio platter",
-      "Truffle parchment crackers",
-      "Sea salt grissini",
       "Sun-dried tomatoes",
       "Calabrian chili hot pepper jam",
       "Fresh cheeses and cured meats",
     ],
     products: [
       "italian-olives-trio-platter",
-      "truffle-parchment-crackers",
-      "sea-salt-grissini",
       "sun-dried-tomatoes",
       "calabrian-chili-hot-pepper-jam",
     ],

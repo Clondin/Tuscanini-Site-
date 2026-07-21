@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 
 interface MapTooltipProps {
+  key?: string;
   region: string;
   products: string[];
   description: string;

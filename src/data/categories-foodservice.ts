@@ -1,0 +1,158 @@
+import type { Category, Product } from "./products";
+
+type Item = [id: string, name: string, size: string, image: string];
+
+// Only use a product shot after its SKU/format has been confirmed in the
+// Product Shots library. The fallback prevents a retail or different-size pack
+// from being presented as the requested foodservice item.
+const confirmedProductShots = new Set([
+  "focaccia-bulk-foodservice",
+  "breaded-eggplant-cutlets",
+  "original-pitted-olive-pouch-bulk",
+  "red-wine-vinegar-bulk",
+  "regular-spaghetti",
+  "regular-fettuccine",
+  "regular-penne",
+  "regular-rigatoni",
+  "regular-elbows",
+  "regular-fusilli",
+  "potato-chips-80-count-shipper",
+  "solid-light-tuna-oil-small-jar",
+  "yellowfin-tuna-water-bulk",
+  "yellowfin-tuna-oil-bulk",
+  "caramel-sauce",
+  "raspberry-sauce",
+]);
+
+const makeProducts = (categoryId: string, items: Item[]): Product[] =>
+  items.map(([id, name, size, image]) => ({
+    id,
+    name,
+    size,
+    image: confirmedProductShots.has(id) ? image : "/assets/pack-shot-pending.svg",
+    categoryId,
+    description: `${name} in a convenient ${size} package for authentic Italian meals at home.`,
+    details: `Tuscanini ${name}, packaged as ${size}. See the package label for preparation, storage, ingredients, and certification details.`,
+    kosher: true,
+    madeInItaly: true,
+  }));
+
+export const foodserviceCategories: Category[] = [
+  {
+    id: "bread-frozen-appetizers",
+    name: "Frozen Sides & Appetizers",
+    slug: "bread-frozen-appetizers",
+    tagline: "Crisp Italian Favorites",
+    description: "Crispy premium fries and breaded Italian appetizers ready for easy, satisfying meals at home.",
+    heroImage: "/assets/Foodservice/730142-eggplant-cutlets.webp",
+    products: makeProducts("bread-frozen-appetizers", [
+      ["pizza-crust-bulk-16-5", "Pizza Crust Bulk 16.5\"", "35 count", "/assets/Pizza/730501.png"],
+      ["pizza-crust-bulk-9-8", "Pizza Crust Bulk 9.8\"", "20 count", "/assets/Pizza/730500.png"],
+      ["focaccia-bulk-foodservice", "Focaccia Bulk Foodservice", "12 count", "/assets/Foodservice/730009-focaccia-foodservice.webp"],
+      ["fries-gondola", "Gondola Fries", "24 oz", "/assets/Frozen/Mozzarella Sticks/730141.png"],
+      ["fries-crinkle-cut", "Crinkle Cut Fries", "24 oz", "/assets/Frozen/Mozzarella Sticks/730142.png"],
+      ["fries-shoestring", "Shoestring Fries", "32 oz", "/assets/Frozen/Mozzarella Sticks/730143.png"],
+      ["fries-straight-cut", "Straight Cut Fries", "32 oz", "/assets/Frozen/Mozzarella Sticks/730140.png"],
+      ["breaded-eggplant-cutlets", "Breaded Eggplant Cutlets", "10 oz", "/assets/Foodservice/730142-eggplant-cutlets.webp"],
+    ]),
+  },
+  {
+    id: "foodservice-olives",
+    name: "Bulk Olives & Trays",
+    slug: "foodservice-olives",
+    tagline: "Mediterranean Variety at Scale",
+    description: "Bulk pitted olives, portion pouches, and ready-to-serve olive trays for foodservice and merchandising.",
+    heroImage: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
+    products: makeProducts("foodservice-olives", [
+      ["castelvetrano-pitted-bulk", "Castelvetrano Pitted Bulk", "7.05 lb", "/assets/Olive/Tuscanini-Sweet-Sicilian-Castelvetrano-Olives-730180.png"],
+      ["green-cerignola-bulk", "Green Cerignola Bulk", "7.05 lb", "/assets/Olive/730190.png"],
+      ["kalamata-black-pitted-bulk", "Kalamata Black Pitted Bulk", "7.05 lb", "/assets/Olive/Tuscanini-Kalamata-Olives-730181.png"],
+      ["halkidiki-giant-pitted-bulk", "Halkidiki Giant Pitted Bulk", "7.05 lb", "/assets/Olive/730192.png"],
+      ["original-pitted-olive-pouch-bulk", "Original Pitted Olive Pouch Bulk", "1 oz", "/assets/Foodservice/730197-original-olive-pouch.webp"],
+      ["castelvetrano-tray", "Castelvetrano Tray", "6.35 oz", "/assets/pack-shot-pending.svg"],
+      ["kalamata-pitted-tray", "Kalamata Pitted Tray", "6 oz", "/assets/pack-shot-pending.svg"],
+      ["bella-italia-mix-pitted-tray", "Bella Italia Mix Pitted Tray", "6 oz", "/assets/pack-shot-pending.svg"],
+      ["cerignola-green-tray", "Cerignola Green Tray", "6.35 oz", "/assets/pack-shot-pending.svg"],
+      ["mini-trio-pitted-trays", "Mini Trio Pitted Trays", "7.5 oz", "/assets/pack-shot-pending.svg"],
+      ["mini-trio-unpitted-trays", "Mini Trio Unpitted Trays", "7.5 oz", "/assets/pack-shot-pending.svg"],
+    ]),
+  },
+  {
+    id: "dairy-sauces",
+    name: "Dairy Sauces",
+    slug: "dairy-sauces",
+    tagline: "Creamy Italian Comfort",
+    description: "Rich, ready-to-use Italian dairy sauces for pasta, casseroles, and fast meal preparation.",
+    heroImage: "/assets/Sauces/730205.png",
+    products: makeProducts("dairy-sauces", [
+      ["mac-cheese-sauce", "Mac and Cheese Sauce", "14.5 oz", "/assets/Sauces/730205.png"],
+      ["alfredo-sauce", "Alfredo Sauce", "14.5 oz", "/assets/Sauces/730206.png"],
+      ["mushroom-alfredo-sauce", "Mushroom Alfredo Sauce", "14.5 oz", "/assets/Sauces/730207.png"],
+      ["vodka-sauce-14-5", "Vodka Sauce", "14.5 oz", "/assets/Sauces/730208.png"],
+    ]),
+  },
+  {
+    id: "foodservice-vinegar-citrus",
+    name: "Foodservice Vinegar & Citrus",
+    slug: "foodservice-vinegar-citrus",
+    tagline: "Kitchen Essentials in Larger Formats",
+    description: "Cooking wines, vinegar, and real citrus juices for professional kitchens and high-volume preparation.",
+    heroImage: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
+    products: makeProducts("foodservice-vinegar-citrus", [
+      ["red-wine-vinegar-bulk", "Red Wine Vinegar Bulk", "5 L", "/assets/Foodservice/730267-red-bulk.webp"],
+      ["red-cooking-wine-bulk", "Red Cooking Wine Bulk", "5 L", "/assets/Vinegar/730266-PRIMARY-SHOT.png"],
+      ["white-cooking-wine-bulk", "White Cooking Wine Bulk", "5 L", "/assets/Vinegar/730265-PRIMARY-SHOT.png"],
+      ["lime-juice-6-7", "Lime Juice", "6.7 oz", "/assets/Lemon Juice/730285-PRIMARY-SHOT.png"],
+      ["lime-juice-16-9", "Lime Juice", "16.9 oz", "/assets/Lemon Juice/730286.png"],
+    ]),
+  },
+  {
+    id: "pasta-foodservice",
+    name: "Pasta & Bulk Pasta",
+    slug: "pasta-foodservice",
+    tagline: "Classic and Bronze-Cut Formats",
+    description: "Regular retail pasta and large-format bronze-cut pasta, clearly separated by cut and pack size.",
+    heroImage: "/assets/Pasta/Tuscanini Bronze Cut Spaghetti Comp copy.png",
+    products: makeProducts("pasta-foodservice", [
+      ["regular-spaghetti", "Regular Spaghetti", "16 oz", "/assets/Pasta/730320.png"], ["regular-fettuccine", "Regular Fettuccine", "16 oz", "/assets/Pasta/730321.png"],
+      ["regular-penne", "Regular Penne", "16 oz", "/assets/Pasta/730322.png"], ["regular-rigatoni", "Regular Rigatoni", "16 oz", "/assets/Pasta/730323.png"],
+      ["regular-elbows", "Regular Elbows", "16 oz", "/assets/Pasta/730324.png"], ["regular-fusilli", "Regular Fusilli", "16 oz", "/assets/Pasta/730325.png"],
+      ["bronze-spaghetti-bulk", "Bronze Cut Spaghetti Bulk", "20 lb", "/assets/Pasta/Tuscanini Bronze Cut Spaghetti Comp copy.png"],
+      ["bronze-fettuccine-bulk", "Bronze Cut Fettuccine Bulk", "20 lb", "/assets/Pasta/Tuscanini Bronze Cut Fettuccine Comp copy.png"],
+      ["bronze-fusilli-bulk", "Bronze Cut Fusilli Bulk", "20 lb", "/assets/Pasta/Tuscanini Bronze Cut Fusili Comp copy.png"],
+      ["bronze-penne-bulk", "Bronze Cut Penne Bulk", "20 lb", "/assets/Pasta/Tuscanini Bronze Cut Penne Rigate Comp copy.png"],
+    ]),
+  },
+  {
+    id: "chips-merchandising",
+    name: "Chips & Merchandising Packs",
+    slug: "chips-merchandising",
+    tagline: "Bold Flavors, Shelf-Ready Formats",
+    description: "Full-size and snack-size potato chips plus merchandising shippers for high-traffic displays.",
+    heroImage: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
+    products: makeProducts("chips-merchandising", [
+      ["potato-chips-80-count-shipper", "Potato Chips 80-Count Shipper", "80 count", "/assets/Foodservice/730349-potato-chips-shipper.webp"],
+      ["ketchup-potato-chips", "Ketchup Potato Chips", "4.6 oz", "/assets/Chips/IMG_0022-2.jpg"], ["hot-sauce-potato-chips", "Hot Sauce Potato Chips", "4.6 oz", "/assets/Chips/IMG_0032.jpg"],
+      ["salt-vinegar-potato-chips", "Salt & Vinegar Potato Chips", "4.6 oz", "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rippled-4.6oz-730342-web.png"],
+      ["ketchup-snack-bag", "Ketchup Snack Bag", "1.1 oz", "/assets/Chips/Tuscanini-Classic-Potato-Chips-1oz-730350.png"], ["hot-sauce-snack-bag", "Hot Sauce Snack Bag", "1.1 oz", "/assets/Chips/Tuscanini-Rippled-Potato-Chips-1oz-730351.png"],
+      ["salt-vinegar-snack-bag", "Salt & Vinegar Snack Bag", "1.1 oz", "/assets/Chips/Tuscanini-Rippled-Potato-Chips-1oz-730351.png"],
+    ]),
+  },
+  {
+    id: "foodservice-tuna-tomato-dessert",
+    name: "Foodservice Tuna, Tomato & Dessert Sauces",
+    slug: "foodservice-tuna-tomato-dessert",
+    tagline: "Pantry Staples for High-Volume Service",
+    description: "Prepared tuna, bulk tomato essentials, and finishing sauces for foodservice menus.",
+    heroImage: "/assets/ads/tuna-parallax.jpg",
+    products: makeProducts("foodservice-tuna-tomato-dessert", [
+      ["solid-light-tuna-oil-small-jar", "Solid Light Tuna in Oil, Small Jar", "5.6 oz", "/assets/Foodservice/730420-tuna-jar.webp"], ["solid-light-tuna-oil-six-pack", "Solid Light Tuna in Oil Six-Pack", "6 pack", "/assets/Foodservice/730422-tuna-multipack.webp"],
+      ["yellowfin-tuna-water-bulk", "Yellowfin Tuna in Water Bulk", "58.2 oz", "/assets/Foodservice/730435-bulk-tuna-water.webp"], ["yellowfin-tuna-oil-bulk", "Yellowfin Tuna in Oil Bulk", "58.2 oz", "/assets/Foodservice/730436-bulk-tuna-oil.webp"],
+      ["solid-light-tuna-olive-oil-bulk", "Solid Light Tuna in Olive Oil Bulk", "60 oz", "/assets/Tuna/730436.png"], ["tuna-salad-corn-beans-peppers", "Tuna Salad with Corn, Beans and Peppers", "Prepared meal", "/assets/Tuna/730425.png"],
+      ["tuna-salad-quinoa-chickpeas-tomatoes", "Tuna Salad with Quinoa, Chickpeas and Tomatoes", "Prepared meal", "/assets/Tuna/730426.png"],
+      ["tomato-paste-bulk-74", "Tomato Paste Bulk", "74 oz", "/assets/Sauces/Tuscanini-Tomato-Paste-Tube-730211.png"], ["crushed-tomatoes-bulk-88", "Crushed Tomatoes Bulk", "88 oz", "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png"],
+      ["pizza-sauce-bulk-90", "Pizza Sauce Bulk", "90 oz", "/assets/Sauces/730200.png"], ["chocolate-sauce", "Chocolate Sauce", "8.8 oz", "/assets/Vinegar/730260.png"],
+      ["caramel-sauce", "Caramel Sauce", "8.8 oz", "/assets/Foodservice/730251-caramel.webp"], ["raspberry-sauce", "Raspberry Sauce", "8.8 oz", "/assets/Foodservice/730252-raspberry.webp"],
+    ]),
+  },
+];

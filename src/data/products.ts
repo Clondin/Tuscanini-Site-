@@ -1,6 +1,7 @@
 import { pantryCategories } from "./categories-pantry";
 import { mealCategories } from "./categories-meals";
 import { snackCategories } from "./categories-snacks";
+import { foodserviceCategories } from "./categories-foodservice";
 
 export interface Product {
   id: string;
@@ -29,13 +30,13 @@ export interface Category {
 //   - Sun-Dried Tomato Chips: /assets/Chips/IMG_0022-2.jpg
 //   - Italian Potato Chips:   /assets/Chips/IMG_0032.jpg
 
-export const categories: Category[] = [
+const catalogCategories: Category[] = [
   {
     id: "beverages",
     name: "Beverages",
     slug: "beverages",
     tagline: "Sparkling Celebrations",
-    description: "From our iconic Moscato Grape Juice to artisan sparkling lemonades and Italian sodas, Tuscanini beverages bring the effervescence of Italian celebrations to your table. Every bottle is crafted with authentic Italian ingredients for a taste that transports you to the heart of Tuscany.",
+    description: "From our iconic Moscato Grape Juice to sparkling lemonades, colas, and vibrant Italian fruit juices, Tuscanini beverages bring the spirit of Italian celebrations to your table. Every bottle is crafted with authentic Italian ingredients.",
     heroImage: "/assets/ads/sparkling-parallax2.jpg",
     products: [
       {
@@ -64,7 +65,7 @@ export const categories: Category[] = [
         id: "sparkling-lemonade",
         name: "Sparkling Lemonade",
         description: "Bright and refreshing Italian sparkling lemonade made with real Sicilian lemons. A crisp, effervescent thirst quencher.",
-        image: "/assets/Beverage/Sparkling Beverage/Tuscanini Flavored Seltzer Water_Mockups/Tuscanini Flavored Seltzer 0.5L 1.jpg",
+        image: "/assets/Beverage/730380.png",
         categoryId: "beverages",
         details: "Made with sun-ripened Sicilian lemons, our Sparkling Lemonade captures the bright, zesty spirit of Southern Italy. Lightly sweetened and vibrantly fizzy.",
         size: "Available in 9.3 fl oz and 25.3 fl oz",
@@ -291,7 +292,50 @@ export const categories: Category[] = [
   ...pantryCategories,
   ...mealCategories,
   ...snackCategories,
+  ...foodserviceCategories,
 ];
+
+// Catalog exclusions retained for discontinued or intentionally hidden consumer lines.
+const excludedCategoryIds = new Set([
+  "gelato",
+  "crackers-breadsticks",
+  "biscotti",
+  "foodservice-olives",
+  "dairy-sauces",
+  "foodservice-vinegar-citrus",
+  "pasta-foodservice",
+  "chips-merchandising",
+  "foodservice-tuna-tomato-dessert",
+]);
+
+const excludedProductIds = new Set([
+  "flavored-seltzer",
+  "sparkling-soda",
+  "natural-water",
+  "chocolate-bar-collection",
+  "truffle-ketchup",
+  "tomato-paste-basil-tube",
+  "garlic-chili-grinder",
+  "garlic-grinder",
+  "large-sliced-black-truffle",
+  "large-minced-black-truffle",
+  "creamy-ricotta-cheddar-thin-crust-pizza",
+  "reserve-bbq-pulled-brisket-pizza",
+  "cinnamon-chestnuts",
+  "pizza-crust-bulk-16-5",
+  "pizza-crust-bulk-9-8",
+  "focaccia-bulk-foodservice",
+]);
+
+export const categories: Category[] = catalogCategories
+  .filter((category) => !excludedCategoryIds.has(category.id))
+  .map((category) => ({
+    ...category,
+    products: category.products.filter(
+      (product) =>
+        !excludedProductIds.has(product.id)
+    ),
+  }));
 
 export function getCategoryBySlug(slug: string): Category | undefined {
   return categories.find((c) => c.slug === slug);

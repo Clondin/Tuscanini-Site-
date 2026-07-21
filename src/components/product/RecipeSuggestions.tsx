@@ -36,9 +36,9 @@ export default function RecipeSuggestions({
     if (sameCategoryProducts.length === 0) return null;
 
     return (
-      <section className="px-6 md:px-10 pb-24 max-w-7xl mx-auto">
+      <section className="px-6 md:px-10 py-14 md:py-18 max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
@@ -51,10 +51,10 @@ export default function RecipeSuggestions({
   }
 
   return (
-    <section className="px-6 md:px-10 pb-24 max-w-7xl mx-auto space-y-16">
+    <section className="px-6 md:px-10 py-14 md:py-18 max-w-7xl mx-auto space-y-12">
       {/* Recipe cards */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.6 }}
@@ -70,7 +70,7 @@ export default function RecipeSuggestions({
       {/* Paired products */}
       {pairedProducts.length > 0 && (
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
@@ -99,7 +99,7 @@ function SectionHeading({ title }: { title: string }) {
   );
 }
 
-function RecipeCard({ recipe, index }: { recipe: Recipe; index: number }) {
+function RecipeCard({ recipe, index }: { key?: string; recipe: Recipe; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -161,15 +161,15 @@ function RecipeCard({ recipe, index }: { recipe: Recipe; index: number }) {
 
 function ProductPairingsRow({ products }: { products: Product[] }) {
   return (
-    <div className="flex gap-5 overflow-x-auto pb-4 -mx-2 px-2 snap-x snap-mandatory scrollbar-hide">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
       {products.map((product, idx) => (
         <motion.div
           key={product.id}
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: idx * 0.06, duration: 0.4 }}
-          className="min-w-[180px] max-w-[200px] flex-shrink-0 snap-start"
+          className="min-w-0"
         >
           <Link
             to={`/product/${product.id}`}
@@ -180,7 +180,7 @@ function ProductPairingsRow({ products }: { products: Product[] }) {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out opacity-95 group-hover:opacity-100"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4]">

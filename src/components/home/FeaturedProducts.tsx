@@ -27,14 +27,6 @@ const featuredProducts = [
     categorySlug: "olive-oil",
   },
   {
-    id: "chocolate-bar-collection",
-    name: "Italian Chocolate Bars",
-    tagline: "Art you can taste",
-    image:
-      "/assets/Chocolate Bars/pisa large 3 LARGER OPTION Topaz Gigapixel 2x scale copy.jpg",
-    categorySlug: "chocolate",
-  },
-  {
     id: "chocolate-truffle-pistachio",
     name: "Pistachio Chocolate Truffles",
     tagline: "Sicilian pistachios meet fine chocolate",
@@ -45,7 +37,7 @@ const featuredProducts = [
     id: "sparkling-lemonade",
     name: "Sparkling Lemonade",
     tagline: "Bright Sicilian citrus in every sip",
-    image: "/assets/Beverage/Sparkling Beverage/Tuscanini Flavored Seltzer Water_Mockups/Tuscanini Flavored Seltzer 0.5L 1.jpg",
+    image: "/assets/Beverage/730380.png",
     categorySlug: "beverages",
   },
   {
@@ -68,10 +60,10 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <section className="py-28 px-6 bg-earth-dark relative overflow-hidden">
+    <section className="py-16 md:py-20 px-6 bg-earth-dark relative overflow-hidden">
       <div className="absolute inset-0 sketch-overlay opacity-[0.03]" />
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             Spotlight
           </span>
@@ -79,7 +71,7 @@ export default function FeaturedProducts() {
             text="Standout Selections"
             as="h2"
             mode="word"
-            className="font-headline text-5xl md:text-6xl text-heading italic mb-6"
+            className="font-headline text-4xl md:text-5xl text-heading italic mb-4"
           />
           <p className="font-script text-on-surface/60 text-xl max-w-xl mx-auto italic">
             A hand-picked curation of our most beloved products.
@@ -92,7 +84,7 @@ export default function FeaturedProducts() {
             .map((product, idx) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: idx * 0.08, duration: 0.5 }}
@@ -102,14 +94,15 @@ export default function FeaturedProducts() {
                 to={`/product/${product.id}`}
                 className="group block bg-white/60 border border-on-surface/8 rounded-sm overflow-hidden hover:border-gold/30 transition-colors"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-surface relative">
+                <div className="aspect-[4/3] overflow-hidden bg-earth-dark/50 p-3 md:p-4 relative">
                   <motion.div
-                    whileHover={{ scale: 1.06 }}
+                    whileHover={{ scale: 1.035 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
-                    className="w-full h-full"
+                    className="relative w-full h-full bg-white/80 border border-on-surface/8 shadow-sm overflow-hidden"
                   >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.95),rgba(255,255,255,0.45))]" />
                     <ImageWithSkeleton
-                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                      className="relative z-10 w-full h-full object-contain p-3 md:p-5 opacity-95 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_10px_14px_rgba(42,31,22,0.14)]"
                       wrapperClassName="w-full h-full"
                       skeletonClassName="aspect-auto"
                       src={product.image}

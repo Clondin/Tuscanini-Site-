@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Pack shot pending</title>
+  <desc id="desc">A neutral Tuscanini catalog placeholder used where product packaging has not yet been confirmed.</desc>
+  <rect width="900" height="900" fill="#f3ede2"/>
+  <rect x="175" y="140" width="550" height="620" rx="28" fill="#fffdf8" stroke="#b79a5b" stroke-width="4"/>
+  <path d="M175 220h550" stroke="#b79a5b" stroke-width="8"/>
+  <rect x="270" y="300" width="360" height="120" rx="6" fill="#151515"/>
+  <text x="450" y="375" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="58">TUSCANINI</text>
+  <text x="450" y="525" text-anchor="middle" fill="#664b2e" font-family="Arial,sans-serif" font-size="30" letter-spacing="4">PACK SHOT</text>
+  <text x="450" y="575" text-anchor="middle" fill="#664b2e" font-family="Arial,sans-serif" font-size="30" letter-spacing="4">PENDING</text>
+</svg>

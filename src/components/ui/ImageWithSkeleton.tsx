@@ -3,6 +3,10 @@ import { useState } from "react";
 import { SkeletonImage } from "./Skeleton";
 
 interface ImageWithSkeletonProps extends ImgHTMLAttributes<HTMLImageElement> {
+  src: string;
+  alt: string;
+  referrerPolicy?: HTMLImageElement["referrerPolicy"];
+  onLoad?: ImgHTMLAttributes<HTMLImageElement>["onLoad"];
   /** Extra classes applied to the outer wrapper div. */
   wrapperClassName?: string;
   /** Extra classes applied to the skeleton placeholder. */
@@ -18,6 +22,10 @@ export default function ImageWithSkeleton({
   wrapperClassName = "",
   skeletonClassName = "",
   className = "",
+  src,
+  alt,
+  referrerPolicy,
+  onLoad,
   ...imgProps
 }: ImageWithSkeletonProps) {
   const [loaded, setLoaded] = useState(false);
@@ -34,10 +42,13 @@ export default function ImageWithSkeleton({
       {/* The actual image — starts transparent and fades in once loaded */}
       <img
         {...imgProps}
+        src={src}
+        alt={alt}
+        referrerPolicy={referrerPolicy}
         className={`transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
         onLoad={(e) => {
           setLoaded(true);
-          imgProps.onLoad?.(e);
+          onLoad?.(e);
         }}
       />
     </div>
