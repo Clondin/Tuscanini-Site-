@@ -1,8 +1,9 @@
 import type { TouchEvent as ReactTouchEvent } from "react";
-import { useEffect, useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
+import { useModalDialog } from "../../hooks/useModalDialog";
 
 interface ImageLightboxProps {
   src: string;
@@ -15,27 +16,13 @@ export default function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightb
   const [scale, setScale] = useState(1);
   const imageRef = useRef<HTMLDivElement>(null);
   const lastDistance = useRef(0);
+  const handleClose = useCallback(() => {
+    setScale(1);
+    onClose();
+  }, [onClose]);
+  const dialogRef = useModalDialog<HTMLDivElement>({ isOpen, onClose: handleClose, inertAppRoot: true });
 
-  const handleEscape = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    },
-    [onClose]
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      document.addEventListener("keydown", handleEscape);
-      setScale(1);
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [isOpen, handleEscape]);
-
-  const getDistance = (touches: TouchList) => {
+  const getDistance = (touches: ReactTouchEvent<HTMLDivElement>["touches"]) => {
     if (touches.length < 2) return 0;
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
@@ -71,6 +58,11 @@ export default function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightb
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Expanded image: ${alt}`}
+          tabIndex={-1}
           className="fixed inset-0 z-[9999] flex items-center justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -80,7 +72,7 @@ export default function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightb
           {/* Backdrop */}
           <motion.div
             className="absolute inset-0 bg-heading/90"
-            onClick={onClose}
+            onClick={handleClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -88,7 +80,7 @@ export default function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightb
 
           {/* Close button */}
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="absolute top-5 right-5 z-20 w-12 h-12 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/80 hover:text-white hover:bg-white/20 transition-colors"
             aria-label="Close lightbox"
           >
@@ -112,6 +104,7 @@ export default function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightb
             <img
               src={src}
               alt={alt}
+              decoding="async"
               className="max-w-full max-h-[90vh] object-contain transition-transform duration-200 ease-out"
               style={{ transform: `scale(${scale})` }}
               draggable={false}

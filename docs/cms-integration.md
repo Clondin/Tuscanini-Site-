@@ -21,14 +21,14 @@ The public site needs only the browser-safe Content API URL. It does not need a 
 
 ## Runtime data flow
 
-`src/main.tsx` waits for `initializeCmsContent()` in `src/data/cms.ts` before rendering React. On each new document load, the loader:
+`src/main.tsx` renders the bundled fallback experience immediately, starts `initializeCmsContent()` in `src/data/cms.ts` in parallel, and re-renders after the CMS settles. On each new document load, the loader:
 
 1. Requests every published `category`, `product`, `recipe`, `page`, `site_settings`, `navigation`, and `footer` entry through the public list endpoints.
 2. Follows the API cursor until it has loaded all entries of each type.
 3. Maps categories, products, and recipes into the data models used by the existing components.
 4. Stores the other entries by `type:slug` for direct component lookups.
-5. Applies the global document title, meta description, and primary-color CSS variable.
-6. Renders the app only after loading finishes or the request fails.
+5. Applies the primary-color CSS variable. `RouteMetadata.tsx` combines CMS settings and route content into route-specific title, description, canonical, social, robots, and structured metadata.
+6. Re-renders once after the independent requests settle, using every successful collection and retaining the bundled fallback for unavailable collection groups.
 
 The list route used for each type is:
 
@@ -42,7 +42,8 @@ Only published versions are public. Drafts and review versions never appear in t
 
 This behavior is important when editing or debugging the site:
 
-- If any of the seven type requests fails, CMS initialization fails as a unit. The site logs a warning and uses the bundled catalog. Direct page, settings, navigation, and footer lookups then use their hardcoded component fallbacks.
+- The seven type requests settle independently. A failed page, settings, navigation, footer, or recipe request keeps only that type's hardcoded fallback while successful types still load.
+- Categories and products are a coordinated catalog pair. If either request fails—or the mapped catalog is empty—the complete bundled catalog remains active so the site never exposes category shells with missing products.
 - If the CMS returns one or more categories, the CMS category list replaces the entire bundled category catalog. It is not merged with the fallback categories.
 - Products whose `category_slug` does not exactly match a published category slug are skipped from the visible catalog.
 - If the CMS returns one or more recipes, those recipes replace the entire bundled recipe list. An empty recipe list leaves the bundled recipes in place.
@@ -56,7 +57,7 @@ The API response has top-level `slug`, `title`, and `description` values plus th
 
 | Public component | CMS type and slug | Fields consumed | Missing-value behavior |
 | --- | --- | --- | --- |
-| Homepage hero | `page:home` | `data.headline`, `data.body`, `data.hero_image`, `data.cta_label`, `data.cta_url` | Uses bundled headline/body/CTA. A missing image restores the bundled hero video. |
+| Homepage hero | `page:home` | `data.headline`, `data.body`, `data.hero_image`, `data.cta_label`, `data.cta_url` | Uses bundled headline/body/CTA. A missing image uses the bundled optimized poster; the bundled film loads only after a desktop visitor presses Play. |
 | About hero | `page:about` | `data.headline`, `data.body` | Uses bundled headline and body. The background image and label remain hardcoded. |
 | Navbar and document metadata | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo`, `data.primary_color` | Uses the Tuscanini wordmark/title and existing CSS color. |
 | Footer branding | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo` | Uses the Tuscanini wordmark, title, and bundled tagline. |
@@ -65,8 +66,8 @@ The API response has top-level `slug`, `title`, and `description` values plus th
 
 `site_settings:general` has these effects:
 
-- `site_title` sets `document.title` and the title shown in the navbar, footer, image alternative text, and copyright.
-- `tagline` sets the document meta description and footer script line.
+- `site_title` supplies the route-title brand suffix and the title shown in the navbar, footer, image alternative text, and copyright.
+- `tagline` supplies the default route description and footer script line. Route-specific category, product, home, and about descriptions take precedence where available.
 - `logo` replaces the bundled Tuscanini wordmark in both the navbar and footer.
 - `primary_color` sets `--color-primary` only when it is a six-digit hex value such as `#1F5A44`.
 
@@ -180,7 +181,11 @@ Published versions are immutable. Editing a live entry creates a new draft; the 
 
 ## Publishing, caching, and deployments
 
-A content-only publish does not require a GitHub commit or Vercel rebuild. A new document load requests CMS data before React renders; the running page does not poll or update itself after a publish.
+A content-only publish does not require a GitHub commit or Vercel rebuild. A new document load renders bundled fallback content immediately, requests CMS data, and refreshes the React tree when those requests settle; the running page does not poll or update itself after that initial load.
+
+The production build generates `public/sitemap.xml` plus clean-URL HTML entry files for every live published category and product, with the bundled catalog as an offline fallback. Those entry files carry route-specific canonical, social, and structured metadata. Vercel serves only generated slugs and lets an unmatched direct request fall through to `404.html` with HTTP 404 instead of rewriting every URL to the SPA shell.
+
+Visible content still refreshes from the public Content API on each new document load, so editing an existing field does not require a deploy for the React interface. A rebuild is required when adding, removing, or changing a public slug so the route file and sitemap stay current. A rebuild is also required when static/social metadata must immediately reflect a changed title, description, category relationship, or image; without it, JavaScript updates browser metadata after loading, but non-JavaScript link-preview crawlers can see the previous build's values.
 
 The Content API currently sends list/item cache headers with a 30-second browser maximum age, a 300-second shared-cache maximum age, and stale-while-revalidate behavior. Therefore a normal reload can briefly show the previous published version. There is no public-site webhook, rebuild hook, or client-side cache invalidation implemented in this repository.
 
@@ -259,8 +264,7 @@ Before completing CMS-related work:
 - Run the public-site checks:
 
 ```bash
-pnpm lint
-pnpm build
+pnpm check
 ```
 
 - If the CMS editor, preview, API, schema, or SDK changed, also run the Kayco Sites CMS repository's `pnpm check` and follow its deployment instructions.
@@ -273,7 +277,7 @@ pnpm build
 | --- | --- |
 | A saved edit is not live | Confirm the draft was published, not only saved, and inspect the Publishing event. |
 | API is correct but the page is old | Use a fresh document load and allow for the Content API cache; an open tab does not refetch. |
-| All CMS content appears to be ignored | Check the browser warning and all seven list endpoints. One failed type request makes initialization fall back as a unit. |
+| Some CMS content appears to be ignored | Check the browser warning for that content type and its list endpoint. Category and product failures intentionally keep the catalog fallback as a coordinated pair. |
 | A product is missing | Confirm it is published and `category_slug` exactly matches a published category slug. |
 | A product URL or recipe pairing broke | Check `source_id`, slug, and every `related_products` or hardcoded featured reference. |
 | A homepage card did not change | Confirm whether it is in hardcoded `CollectionsGrid.tsx` or `FeaturedProducts.tsx`, not the CMS-driven catalog. |

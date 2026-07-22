@@ -13,7 +13,9 @@ export default function AboutHero() {
         <img
           alt="Italian Countryside"
           className="w-full h-full object-cover opacity-40 scale-105"
-          src="/assets/Photos/backgrounds/italian-village.jpg"
+          src="/assets/Photos/backgrounds/italian-village-hero.webp"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-black/15"></div>
         <div className="absolute inset-0 sketch-overlay pointer-events-none"></div>

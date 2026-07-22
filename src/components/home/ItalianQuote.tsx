@@ -18,6 +18,8 @@ export default function ItalianQuote() {
           alt="Italian Coast"
           className="w-full h-[130%] object-cover opacity-15"
           src="/assets/ads/balsamic-glaze.jpg"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-dark/90 via-transparent to-dark/90" />
       </motion.div>

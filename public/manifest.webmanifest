@@ -1,0 +1,17 @@
+{
+  "name": "Tuscanini — Authentic Italian Excellence",
+  "short_name": "Tuscanini",
+  "description": "Authentic Italian foods sourced from the heart of Italy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#3d4230",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

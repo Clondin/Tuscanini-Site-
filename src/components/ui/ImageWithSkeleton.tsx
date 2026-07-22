@@ -5,7 +5,6 @@ import { SkeletonImage } from "./Skeleton";
 interface ImageWithSkeletonProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
-  referrerPolicy?: HTMLImageElement["referrerPolicy"];
   onLoad?: ImgHTMLAttributes<HTMLImageElement>["onLoad"];
   /** Extra classes applied to the outer wrapper div. */
   wrapperClassName?: string;
@@ -26,9 +25,12 @@ export default function ImageWithSkeleton({
   alt,
   referrerPolicy,
   onLoad,
+  loading = "lazy",
+  decoding = "async",
   ...imgProps
 }: ImageWithSkeletonProps) {
-  const [loaded, setLoaded] = useState(false);
+  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
+  const loaded = loadedSrc === src;
 
   return (
     <div className={`relative overflow-hidden ${wrapperClassName}`}>
@@ -45,9 +47,11 @@ export default function ImageWithSkeleton({
         src={src}
         alt={alt}
         referrerPolicy={referrerPolicy}
+        loading={loading}
+        decoding={decoding}
         className={`transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
         onLoad={(e) => {
-          setLoaded(true);
+          setLoadedSrc(src);
           onLoad?.(e);
         }}
       />

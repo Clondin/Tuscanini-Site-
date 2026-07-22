@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             {logo ? (
-              <img src={logo} alt={siteTitle} className="h-7 max-w-[180px] w-auto object-contain" />
+              <img src={logo} alt={siteTitle} loading="lazy" decoding="async" className="h-7 max-w-[180px] w-auto object-contain" />
             ) : (
               <TuscaniniLogo className="h-7 w-auto text-italia-white" />
             )}
@@ -43,15 +43,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/40 mb-4">
+            <h3 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/60 mb-4">
               Categories
-            </h4>
+            </h3>
             <ul className="space-y-2 columns-2 gap-x-8">
               {footerCategories.map((c) => (
                 <li key={c.slug}>
                   <Link
                     to={`/category/${c.slug}`}
-                    className="text-sm text-italia-white/60 hover:text-gold transition-colors"
+                    className="inline-flex min-h-6 items-center text-sm text-italia-white/70 hover:text-gold transition-colors"
                   >
                     {c.name}
                   </Link>
@@ -69,15 +69,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/40 mb-4">
+            <h3 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/60 mb-4">
               Connect
-            </h4>
+            </h3>
             <div className="flex items-center gap-4">
               <a
                 href="https://www.instagram.com/tuscaninifoods/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-italia-white/50 hover:text-gold transition-colors"
+                className="inline-flex h-11 w-11 items-center justify-center text-italia-white/60 hover:text-gold transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -86,7 +86,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@TuscaniniFoods"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-italia-white/50 hover:text-gold transition-colors"
+                className="inline-flex h-11 w-11 items-center justify-center text-italia-white/60 hover:text-gold transition-colors"
                 aria-label="Youtube"
               >
                 <Youtube size={20} />
@@ -96,7 +96,7 @@ export default function Footer() {
               <ul className="mt-5 space-y-2">
                 {cmsLinks.map((link) => (
                   <li key={link.to}>
-                    <Link to={link.to} className="text-xs text-italia-white/50 hover:text-gold transition-colors">
+                    <Link to={link.to} className="inline-flex min-h-6 items-center text-xs text-italia-white/60 hover:text-gold transition-colors">
                       {link.label}
                     </Link>
                   </li>

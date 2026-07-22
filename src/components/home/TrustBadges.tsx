@@ -34,7 +34,7 @@ export default function TrustBadges() {
               transition={{ delay: idx * 0.15, duration: 0.6 }}
               className="stone-texture p-7 md:p-9 text-center border border-on-surface/10 shadow-lg hover:border-gold/30 transition-colors"
             >
-              <badge.icon className="w-10 h-10 text-gold mx-auto mb-4" />
+              <badge.icon className="w-10 h-10 text-primary mx-auto mb-4" />
               <h3 className="font-headline text-2xl text-heading mb-4">
                 {badge.title}
               </h3>

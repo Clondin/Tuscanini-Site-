@@ -19,6 +19,8 @@ export default function BeveragesBanner() {
           src="/assets/ads/beverages-wide.jpg"
           alt="Tuscanini Sparkling Beverages"
           className="w-full h-[130%] object-cover scale-105"
+          loading="lazy"
+          decoding="async"
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-l from-dark/75 via-dark/30 to-transparent" />

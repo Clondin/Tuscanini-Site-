@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Search, ChevronDown, ArrowRight } from "lucide-react";
@@ -11,6 +11,7 @@ import { getCategoryAccent } from "../../data/category-accents";
 import { getCmsData, getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
 import SearchOverlay from "../ui/SearchOverlay";
+import { useModalDialog } from "../../hooks/useModalDialog";
 
 const topNavLinks = [
   { label: "Beverages", to: "/category/beverages" },
@@ -54,6 +55,14 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeMobileMenu = useCallback(() => setMobileOpen(false), []);
+  const mobileDialogRef = useModalDialog<HTMLDivElement>({
+    isOpen: mobileOpen,
+    onClose: closeMobileMenu,
+    returnFocusRef: mobileMenuButtonRef,
+    inertPageContent: true,
+  });
   const location = useLocation();
   const siteSettings = getCmsData("site_settings", "general");
   const siteTitle = typeof siteSettings?.site_title === "string" ? siteSettings.site_title : "Tuscanini";
@@ -86,11 +95,6 @@ export default function Navbar() {
   }, [handleScroll]);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setMegaOpen(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
     if (!megaOpen) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMegaOpen(false);
@@ -99,29 +103,23 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [megaOpen]);
 
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [mobileOpen]);
-
   return (
     <nav
+      aria-label="Primary navigation"
       className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md transition-colors duration-300 ${
         scrolled ? "bg-surface" : "bg-surface/90"
       }`}
       onMouseLeave={() => setMegaOpen(false)}
     >
       <div className="italia-stripe w-full" />
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div
+        aria-hidden={mobileOpen ? "true" : undefined}
+        inert={mobileOpen ? true : undefined}
+        className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4"
+      >
         <Link to="/" className="select-none text-heading" aria-label={`${siteTitle} home`}>
           {logo ? (
-            <img src={logo} alt={siteTitle} className="h-8 max-w-[180px] w-auto object-contain" />
+            <img src={logo} alt={siteTitle} decoding="async" className="h-8 max-w-[180px] w-auto object-contain" />
           ) : (
             <TuscaniniLogo className="h-8 w-auto" />
           )}
@@ -136,6 +134,7 @@ export default function Navbar() {
             onClick={() => setMegaOpen((v) => !v)}
             aria-expanded={megaOpen}
             aria-haspopup="true"
+            aria-controls="desktop-shop-menu"
           >
             Shop
             <ChevronDown
@@ -148,6 +147,7 @@ export default function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
+                onClick={() => setMegaOpen(false)}
                 onMouseEnter={() => setMegaOpen(false)}
                 className={`uppercase tracking-[0.2em] text-[10px] transition-colors ${
                   active
@@ -163,6 +163,8 @@ export default function Navbar() {
             className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/75 hover:text-primary transition-colors"
             onClick={() => setSearchOpen(true)}
             aria-label="Search"
+            aria-expanded={searchOpen}
+            aria-haspopup="dialog"
           >
             <Search size={18} />
           </button>
@@ -173,13 +175,18 @@ export default function Navbar() {
             className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/75 hover:text-primary transition-colors"
             onClick={() => setSearchOpen(true)}
             aria-label="Search"
+            aria-expanded={searchOpen}
+            aria-haspopup="dialog"
           >
             <Search size={20} />
           </button>
           <button
+            ref={mobileMenuButtonRef}
             className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/75 hover:text-primary transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation-dialog"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -190,6 +197,7 @@ export default function Navbar() {
       <AnimatePresence>
         {megaOpen && (
           <motion.div
+            id="desktop-shop-menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
@@ -199,9 +207,9 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-[1fr_1fr_1fr_1fr_280px] gap-10">
               {megaGroups.map((group) => (
                 <div key={group.label}>
-                  <h4 className="uppercase tracking-[0.25em] text-[9px] text-on-surface/40 font-bold mb-4">
+                  <p className="uppercase tracking-[0.25em] text-[9px] text-on-surface/60 font-bold mb-4">
                     {group.label}
-                  </h4>
+                  </p>
                   <ul className="space-y-2.5">
                     {group.items.map((cat) => {
                       const accent = getCategoryAccent(cat.slug);
@@ -209,7 +217,8 @@ export default function Navbar() {
                         <li key={cat.slug}>
                           <Link
                             to={`/category/${cat.slug}`}
-                            className="group/item inline-flex items-center gap-2.5 text-[13px] text-on-surface/75 hover:text-heading transition-colors"
+                            onClick={() => setMegaOpen(false)}
+                            className="group/item min-h-6 inline-flex items-center gap-2.5 text-[13px] text-on-surface/75 hover:text-heading transition-colors"
                           >
                             <span
                               aria-hidden
@@ -234,7 +243,9 @@ export default function Navbar() {
                 <img
                   src="/assets/ads/marinara-banner.jpg"
                   alt="Tuscanini pantry collection"
-                  className="absolute inset-0 w-full h-full object-cover group-hover/feature:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover object-[80%_50%] group-hover/feature:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/25 to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-5">
@@ -259,13 +270,30 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            ref={mobileDialogRef}
+            id="mobile-navigation-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            tabIndex={-1}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden overflow-hidden bg-surface/95 backdrop-blur-md border-t border-on-surface/10"
+            className="lg:hidden fixed inset-x-0 top-[75px] h-[calc(100dvh-75px)] overflow-y-auto bg-surface border-t border-on-surface/10 shadow-2xl"
           >
-            <div className="px-6 py-6 max-h-[70vh] overflow-y-auto">
+            <div className="px-6 py-6">
+              <div className="mb-4 flex items-center justify-between border-b border-on-surface/10 pb-4">
+                <p className="font-headline text-2xl text-heading">Menu</p>
+                <button
+                  type="button"
+                  onClick={closeMobileMenu}
+                  className="inline-flex h-11 w-11 items-center justify-center text-on-surface/70 transition-colors hover:text-primary"
+                  aria-label="Close menu"
+                >
+                  <X size={24} />
+                </button>
+              </div>
               <div className="flex flex-col gap-3 mb-4">
                 {mobilePageLinks.map((link) => {
                   const active = isActive(link.to, location.pathname);
@@ -273,7 +301,8 @@ export default function Navbar() {
                     <Link
                       key={link.to}
                       to={link.to}
-                      className={`uppercase tracking-[0.2em] text-[11px] transition-colors ${
+                      onClick={closeMobileMenu}
+                      className={`min-h-8 inline-flex items-center uppercase tracking-[0.2em] text-[11px] transition-colors ${
                         active
                           ? "text-gold"
                           : "text-on-surface/70 hover:text-gold"
@@ -287,9 +316,9 @@ export default function Navbar() {
 
               <div className="border-t border-on-surface/10 my-4" />
 
-              <h4 className="uppercase tracking-[0.2em] text-[9px] text-on-surface/40 mb-3">
+              <p className="uppercase tracking-[0.2em] text-[9px] text-on-surface/60 mb-3">
                 Categories
-              </h4>
+              </p>
 
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                 {mobileCategoryLinks.map((link) => {
@@ -298,7 +327,8 @@ export default function Navbar() {
                     <Link
                       key={link.to}
                       to={link.to}
-                      className={`uppercase tracking-[0.2em] text-[11px] transition-colors ${
+                      onClick={closeMobileMenu}
+                      className={`min-h-8 inline-flex items-center uppercase tracking-[0.2em] text-[11px] transition-colors ${
                         active
                           ? "text-gold"
                           : "text-on-surface/70 hover:text-gold"

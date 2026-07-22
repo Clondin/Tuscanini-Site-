@@ -17,6 +17,8 @@ export default function OriginStory() {
               alt="Italian Heritage"
               className="w-full h-full object-cover sepia-[0.2] contrast-125"
               src="/assets/Photos/PHOTO-2020-11-27-15-44-52.jpg"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/5 blur-3xl rounded-full"></div>

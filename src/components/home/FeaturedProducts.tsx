@@ -64,7 +64,7 @@ export default function FeaturedProducts() {
       <div className="absolute inset-0 sketch-overlay opacity-[0.03]" />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+          <span className="text-burnt-terracotta font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             Spotlight
           </span>
           <TextReveal
@@ -118,7 +118,7 @@ export default function FeaturedProducts() {
                   <p className="text-on-surface/50 text-sm italic mb-4">
                     {product.tagline}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-semibold group-hover:gap-3 transition-all">
+                  <span className="inline-flex items-center gap-2 text-burnt-terracotta text-xs uppercase tracking-widest font-semibold group-hover:gap-3 transition-all">
                     View Product
                     <ChevronRight className="w-3.5 h-3.5" />
                   </span>

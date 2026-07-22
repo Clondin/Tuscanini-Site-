@@ -1,4 +1,4 @@
-import { Category, Product } from "./products";
+import { Category } from "./products";
 
 export const pantryCategories: Category[] = [
   {

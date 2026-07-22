@@ -138,20 +138,6 @@ function applySiteSettings(): void {
   const settings = getCmsData("site_settings", "general");
   if (!settings) return;
 
-  const siteTitle = text(settings, "site_title");
-  if (siteTitle) document.title = siteTitle;
-
-  const tagline = text(settings, "tagline");
-  if (tagline) {
-    let description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    if (!description) {
-      description = document.createElement("meta");
-      description.name = "description";
-      document.head.append(description);
-    }
-    description.content = tagline;
-  }
-
   const primaryColor = text(settings, "primary_color");
   if (/^#[0-9a-f]{6}$/i.test(primaryColor)) {
     document.documentElement.style.setProperty("--color-primary", primaryColor);
@@ -162,26 +148,44 @@ export async function initializeCmsContent(): Promise<boolean> {
   const configuredUrl = import.meta.env.VITE_KAYCO_CONTENT_API_URL?.trim() || defaultContentApiUrl;
   const baseUrl = configuredUrl.replace(/\/+$/, "");
 
-  try {
-    const types: ContentType[] = ["category", "product", "recipe", "page", "site_settings", "navigation", "footer"];
-    const results = await Promise.all(types.map((type) => listAll(baseUrl, type)));
-    const byType = new Map(types.map((type, index) => [type, results[index]]));
-    const categoryItems = byType.get("category") ?? [];
-    const productItems = byType.get("product") ?? [];
-    const mappedCategories = mapCatalog(categoryItems, productItems);
-    if (mappedCategories.length > 0) setCatalogCategories(mappedCategories);
+  const types: ContentType[] = ["category", "product", "recipe", "page", "site_settings", "navigation", "footer"];
+  const results = await Promise.allSettled(types.map((type) => listAll(baseUrl, type)));
+  const byType = new Map<ContentType, PublishedContent[]>();
 
-    const mappedRecipes = mapRecipes(byType.get("recipe") ?? []);
-    if (mappedRecipes.length > 0) setRecipes(mappedRecipes);
-
-    for (const [type, items] of byType) {
-      for (const item of items) contentByKey.set(contentKey(type, item.slug), item);
+  results.forEach((result, index) => {
+    const type = types[index];
+    if (result.status === "fulfilled") {
+      byType.set(type, result.value);
+    } else {
+      console.warn(`Kayco CMS ${type} content is unavailable; keeping its bundled fallback.`, result.reason);
     }
-    applySiteSettings();
-    return mappedCategories.length > 0;
-  } catch (error) {
-    console.warn("Kayco CMS is unavailable; using the bundled Tuscanini content.", error);
+  });
+
+  const categoryItems = byType.get("category");
+  const productItems = byType.get("product");
+  let catalogLoaded = false;
+
+  if (categoryItems && productItems) {
+    const mappedCategories = mapCatalog(categoryItems, productItems);
+    if (mappedCategories.length > 0) {
+      setCatalogCategories(mappedCategories);
+      catalogLoaded = true;
+    } else {
+      setCatalogCategories(fallbackCategories);
+    }
+  } else {
     setCatalogCategories(fallbackCategories);
-    return false;
   }
+
+  const recipeItems = byType.get("recipe");
+  if (recipeItems) {
+    const mappedRecipes = mapRecipes(recipeItems);
+    if (mappedRecipes.length > 0) setRecipes(mappedRecipes);
+  }
+
+  for (const [type, items] of byType) {
+    for (const item of items) contentByKey.set(contentKey(type, item.slug), item);
+  }
+  applySiteSettings();
+  return catalogLoaded;
 }

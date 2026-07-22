@@ -180,6 +180,8 @@ function ProductPairingsRow({ products }: { products: Product[] }) {
                 <img
                   src={product.image}
                   alt={product.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out opacity-95 group-hover:opacity-100"
                 />
               ) : (
@@ -190,9 +192,9 @@ function ProductPairingsRow({ products }: { products: Product[] }) {
                 </div>
               )}
             </div>
-            <h4 className="font-headline text-sm text-heading group-hover:text-primary transition-colors leading-tight mb-1">
+            <h3 className="font-headline text-sm text-heading group-hover:text-primary transition-colors leading-tight mb-1">
               {product.name}
-            </h4>
+            </h3>
             <span className="inline-flex items-center gap-1 text-primary text-[10px] uppercase tracking-widest font-body group-hover:gap-2 transition-all">
               View
               <ChevronRight className="w-3 h-3" />
