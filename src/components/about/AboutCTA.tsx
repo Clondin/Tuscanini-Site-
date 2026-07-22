@@ -12,6 +12,8 @@ export default function AboutCTA() {
           alt="Italian Coast"
           className="w-full h-full object-cover opacity-15"
           src="/assets/Photos/backgrounds/italian-coast.jpg"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-earth-dark via-earth-dark/80 to-earth-dark"></div>
       </div>

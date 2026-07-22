@@ -1,9 +1,11 @@
 import type { ReactNode, MouseEvent as ReactMouseEvent } from "react";
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Search } from "lucide-react";
 import { categories, type Category, type Product } from "../../data/products";
+import { useModalDialog } from "../../hooks/useModalDialog";
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -19,6 +21,18 @@ interface ProductResult {
   product: Product;
   categorySlug: string;
   matchField: "name" | "description";
+  score: number;
+}
+
+function productMatchScore(product: Product, query: string): { score: number; field: "name" | "description" } | null {
+  const name = product.name.toLowerCase();
+  const description = product.description.toLowerCase();
+  if (name === query) return { score: 0, field: "name" };
+  if (name.startsWith(query)) return { score: 1, field: "name" };
+  if (name.split(/\s+/).some((word) => word.startsWith(query))) return { score: 2, field: "name" };
+  if (name.includes(query)) return { score: 3, field: "name" };
+  if (description.includes(query)) return { score: 4, field: "description" };
+  return null;
 }
 
 function highlightMatch(text: string, query: string): ReactNode {
@@ -50,45 +64,23 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const debouncedQuery = useDebounce(query, 300);
-
-  // Focus input when overlay opens
-  useEffect(() => {
-    if (isOpen) {
-      setQuery("");
-      // Small delay to let animation start, then focus
-      const timer = setTimeout(() => inputRef.current?.focus(), 100);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
-
-  // Close on Escape
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
-
-  // Lock body scroll when open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [isOpen]);
+  const handleClose = useCallback(() => {
+    setQuery("");
+    onClose();
+  }, [onClose]);
+  const dialogRef = useModalDialog<HTMLDivElement>({
+    isOpen,
+    onClose: handleClose,
+    initialFocusRef: inputRef,
+    inertAppRoot: true,
+  });
 
   // Click outside to close
   const handleBackdropClick = useCallback(
     (e: ReactMouseEvent) => {
-      if (e.target === overlayRef.current) onClose();
+      if (e.target === overlayRef.current) handleClose();
     },
-    [onClose]
+    [handleClose]
   );
 
   // Search logic
@@ -97,8 +89,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
     if (!q) return { categoryResults: [], productResults: [] };
 
     const catResults: CategoryResult[] = [];
-    const prodNameResults: ProductResult[] = [];
-    const prodDescResults: ProductResult[] = [];
+    const matchedProducts: ProductResult[] = [];
 
     for (const cat of categories) {
       // Match category name
@@ -108,38 +99,32 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
       // Match products
       for (const product of cat.products) {
-        const nameMatch = product.name.toLowerCase().includes(q);
-        const descMatch = product.description.toLowerCase().includes(q);
-
-        if (nameMatch) {
-          prodNameResults.push({
+        const match = productMatchScore(product, q);
+        if (match) {
+          matchedProducts.push({
             product,
             categorySlug: cat.slug,
-            matchField: "name",
-          });
-        } else if (descMatch) {
-          prodDescResults.push({
-            product,
-            categorySlug: cat.slug,
-            matchField: "description",
+            matchField: match.field,
+            score: match.score,
           });
         }
       }
     }
 
-    // Sort: name matches first, then description matches
-    const allProducts = [...prodNameResults, ...prodDescResults];
+    matchedProducts.sort((left, right) =>
+      left.score - right.score || left.product.name.localeCompare(right.product.name),
+    );
 
     return {
       categoryResults: catResults.slice(0, 5),
-      productResults: allProducts.slice(0, 10),
+      productResults: matchedProducts.slice(0, 10),
     };
   }, [debouncedQuery]);
 
   const hasResults = categoryResults.length > 0 || productResults.length > 0;
   const hasQuery = debouncedQuery.trim().length > 0;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -152,12 +137,18 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
           onClick={handleBackdropClick}
         >
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="search-dialog-title"
+            tabIndex={-1}
             initial={{ y: -40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="w-full max-w-2xl mx-auto mt-20 sm:mt-28 bg-surface rounded-lg shadow-2xl border border-on-surface/10 overflow-hidden"
           >
+            <h2 id="search-dialog-title" className="sr-only">Search Tuscanini products and categories</h2>
             {/* Search input */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-on-surface/10">
               <Search size={20} className="text-on-surface/40 shrink-0" />
@@ -166,12 +157,13 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                aria-label="Search products and categories"
                 placeholder="Search products and categories..."
                 className="flex-1 bg-transparent text-on-surface text-base placeholder:text-on-surface/40 outline-none font-body"
               />
               <button
-                onClick={onClose}
-                className="text-on-surface/40 hover:text-on-surface transition-colors shrink-0"
+                onClick={handleClose}
+                className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/60 hover:text-on-surface transition-colors shrink-0"
                 aria-label="Close search"
               >
                 <X size={20} />
@@ -210,13 +202,15 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                       <Link
                         key={result.category.id}
                         to={`/category/${result.category.slug}`}
-                        onClick={onClose}
+                        onClick={handleClose}
                         className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-on-surface/5 transition-colors group"
                       >
                         <div className="w-10 h-10 rounded-md overflow-hidden bg-hearth-stone shrink-0">
                           <img
                             src={result.category.heroImage}
                             alt={result.category.name}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                           />
                         </div>
@@ -245,13 +239,15 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                       <Link
                         key={result.product.id}
                         to={`/product/${result.product.id}`}
-                        onClick={onClose}
+                        onClick={handleClose}
                         className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-on-surface/5 transition-colors group"
                       >
                         <div className="w-10 h-10 rounded-md overflow-hidden bg-hearth-stone shrink-0">
                           <img
                             src={result.product.image}
                             alt={result.product.name}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover"
                           />
                         </div>
@@ -274,6 +270,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

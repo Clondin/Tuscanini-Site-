@@ -1,7 +1,9 @@
 import type { RefObject } from "react";
-import { motion, useInView, AnimatePresence } from "motion/react";
-import { useRef, useState, useCallback } from "react";
+import { motion, useInView, useReducedMotion, AnimatePresence } from "motion/react";
+import { useRef, useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import MapTooltip from "./MapTooltip";
+import { useModalDialog } from "../../hooks/useModalDialog";
 
 interface Region {
   id: string;
@@ -89,8 +91,19 @@ export default function SourcingMap() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(mapRef, { once: true, amount: 0.3 });
+  const shouldReduceMotion = useReducedMotion();
+  const showMap = isInView || shouldReduceMotion;
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
 
   const handlePinClick = useCallback((regionId: string) => {
     setSelectedRegion((prev) => (prev === regionId ? null : regionId));
@@ -101,28 +114,25 @@ export default function SourcingMap() {
   }, []);
 
   const selectedData = regions.find((r) => r.id === selectedRegion);
+  const closeSelectedRegion = useCallback(() => setSelectedRegion(null), []);
+  const mobileDialogRef = useModalDialog<HTMLDivElement>({
+    isOpen: Boolean(selectedData) && isMobile,
+    onClose: closeSelectedRegion,
+    inertAppRoot: true,
+  });
 
   return (
     <div ref={mapRef} className="relative w-full max-w-2xl mx-auto">
-      {/* Mobile bottom sheet backdrop */}
-      <AnimatePresence>
-        {selectedRegion && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 z-40 md:hidden"
-            onClick={() => setSelectedRegion(null)}
-          />
-        )}
-      </AnimatePresence>
-
       <div ref={containerRef as RefObject<HTMLDivElement>} className="relative aspect-[3/4] w-full">
         <svg
           viewBox="0 0 380 480"
           className="w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
+          role="group"
+          aria-labelledby="sourcing-map-title sourcing-map-description"
         >
+          <title id="sourcing-map-title">Tuscanini Italian sourcing regions</title>
+          <desc id="sourcing-map-description">Choose a region to learn which Tuscanini products are sourced there.</desc>
           <defs>
             <linearGradient id="italyGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#3d4230" stopOpacity="0.15" />
@@ -142,8 +152,8 @@ export default function SourcingMap() {
             stroke="url(#italyStroke)"
             strokeWidth="1.5"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 2, ease: "easeInOut" }}
+            animate={showMap ? { pathLength: 1, opacity: 1 } : {}}
+            transition={{ duration: shouldReduceMotion ? 0 : 1, ease: "easeInOut" }}
           />
 
           {/* Sicily */}
@@ -153,8 +163,8 @@ export default function SourcingMap() {
             stroke="url(#italyStroke)"
             strokeWidth="1.5"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
+            animate={showMap ? { pathLength: 1, opacity: 1 } : {}}
+            transition={{ duration: shouldReduceMotion ? 0 : 1, ease: "easeInOut", delay: shouldReduceMotion ? 0 : 0.15 }}
           />
 
           {/* Sardinia */}
@@ -164,8 +174,8 @@ export default function SourcingMap() {
             stroke="url(#italyStroke)"
             strokeWidth="1.5"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 2, ease: "easeInOut", delay: 0.2 }}
+            animate={showMap ? { pathLength: 1, opacity: 1 } : {}}
+            transition={{ duration: shouldReduceMotion ? 0 : 1, ease: "easeInOut", delay: shouldReduceMotion ? 0 : 0.1 }}
           />
 
           {/* Dotted lines from pins to center badge */}
@@ -181,10 +191,10 @@ export default function SourcingMap() {
               strokeDasharray="3 4"
               strokeOpacity="0.25"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+              animate={showMap ? { pathLength: 1, opacity: 1 } : {}}
               transition={{
-                duration: 0.8,
-                delay: 1.5 + idx * 0.15,
+                duration: shouldReduceMotion ? 0 : 0.45,
+                delay: shouldReduceMotion ? 0 : 0.65 + idx * 0.08,
                 ease: "easeOut",
               }}
             />
@@ -193,8 +203,8 @@ export default function SourcingMap() {
           {/* Center Tuscanini badge */}
           <motion.g
             initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ delay: 1.2, duration: 0.5, type: "spring" }}
+            animate={showMap ? { scale: 1, opacity: 1 } : {}}
+            transition={{ delay: shouldReduceMotion ? 0 : 0.5, duration: shouldReduceMotion ? 0 : 0.35, type: "spring" }}
             style={{ transformOrigin: `${CENTER_X}px ${CENTER_Y}px` }}
           >
             <circle
@@ -235,18 +245,30 @@ export default function SourcingMap() {
             <motion.g
               key={region.id}
               initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : {}}
+              animate={showMap ? { scale: 1, opacity: 1 } : {}}
               transition={{
-                delay: 2 + idx * 0.2,
-                duration: 0.4,
+                delay: shouldReduceMotion ? 0 : 0.85 + idx * 0.08,
+                duration: shouldReduceMotion ? 0 : 0.3,
                 type: "spring",
                 stiffness: 300,
               }}
               style={{ transformOrigin: `${region.x}px ${region.y}px` }}
-              className="cursor-pointer"
+              className="sourcing-pin cursor-pointer"
+              role="button"
+              tabIndex={0}
+              aria-label={`${region.name}: ${region.description}. Products: ${region.products.join(", ")}`}
+              aria-pressed={selectedRegion === region.id}
               onMouseEnter={() => handlePinHover(region.id)}
               onMouseLeave={() => handlePinHover(null)}
+              onFocus={() => handlePinHover(region.id)}
+              onBlur={() => handlePinHover(null)}
               onClick={() => handlePinClick(region.id)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  handlePinClick(region.id);
+                }
+              }}
             >
               {/* Pulse ring */}
               <motion.circle
@@ -256,7 +278,7 @@ export default function SourcingMap() {
                 fill="none"
                 stroke="#b85c38"
                 strokeWidth="1"
-                animate={{
+                animate={shouldReduceMotion ? undefined : {
                   r: [10, 16, 10],
                   opacity: [0.4, 0, 0.4],
                 }}
@@ -303,8 +325,8 @@ export default function SourcingMap() {
                 region={region.name}
                 products={region.products}
                 description={region.description}
-                x={(xPercent / 100) * (containerRef.current?.clientWidth ?? 600)}
-                y={(yPercent / 100) * (containerRef.current?.clientHeight ?? 800)}
+                x={xPercent}
+                y={yPercent}
                 visible={hoveredRegion === region.id && selectedRegion !== region.id}
                 containerRef={containerRef}
               />
@@ -329,7 +351,8 @@ export default function SourcingMap() {
                   </h3>
                   <button
                     onClick={() => setSelectedRegion(null)}
-                    className="text-on-surface/40 hover:text-on-surface transition-colors text-lg leading-none"
+                    className="inline-flex h-11 w-11 items-center justify-center text-on-surface/60 hover:text-on-surface transition-colors text-lg leading-none"
+                    aria-label={`Close ${selectedData.name} details`}
                   >
                     &times;
                   </button>
@@ -358,51 +381,70 @@ export default function SourcingMap() {
         </AnimatePresence>
       </div>
 
-      {/* Mobile bottom sheet */}
-      <AnimatePresence>
-        {selectedData && (
-          <motion.div
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
-          >
-            <div className="bg-earth-dark border-t border-on-surface/10 rounded-t-2xl shadow-2xl p-6 pb-8">
-              <div className="w-10 h-1 bg-on-surface/20 rounded-full mx-auto mb-4" />
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-headline text-heading text-2xl font-bold">
-                  {selectedData.name}
-                </h3>
-                <button
-                  onClick={() => setSelectedRegion(null)}
-                  className="text-on-surface/40 hover:text-on-surface transition-colors text-xl"
-                >
-                  &times;
-                </button>
-              </div>
-              <p className="text-on-surface/60 text-sm leading-relaxed italic font-serif-alt mb-4">
-                {selectedData.description}
-              </p>
-              <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/40 block">
-                  Products Sourced
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {selectedData.products.map((product) => (
-                    <span
-                      key={product}
-                      className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full"
+      {createPortal(
+        <AnimatePresence>
+          {selectedData && isMobile && (
+            <>
+              <motion.div
+                key="region-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-40 bg-black/20"
+                onClick={closeSelectedRegion}
+              />
+              <motion.div
+                key="region-sheet"
+                ref={mobileDialogRef}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="fixed bottom-0 left-0 right-0 z-50"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="mobile-region-title"
+                tabIndex={-1}
+              >
+                <div className="bg-earth-dark border-t border-on-surface/10 rounded-t-2xl shadow-2xl p-6 pb-8">
+                  <div className="w-10 h-1 bg-on-surface/20 rounded-full mx-auto mb-4" />
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 id="mobile-region-title" className="font-headline text-heading text-2xl font-bold">
+                      {selectedData.name}
+                    </h3>
+                    <button
+                      onClick={closeSelectedRegion}
+                      className="inline-flex h-11 w-11 items-center justify-center text-on-surface/60 hover:text-on-surface transition-colors text-xl"
+                      aria-label={`Close ${selectedData.name} details`}
                     >
-                      {product}
+                      &times;
+                    </button>
+                  </div>
+                  <p className="text-on-surface/60 text-sm leading-relaxed italic font-serif-alt mb-4">
+                    {selectedData.description}
+                  </p>
+                  <div className="space-y-2">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-on-surface/40 block">
+                      Products Sourced
                     </span>
-                  ))}
+                    <div className="flex flex-wrap gap-2">
+                      {selectedData.products.map((product) => (
+                        <span
+                          key={product}
+                          className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full"
+                        >
+                          {product}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </div>
   );
 }

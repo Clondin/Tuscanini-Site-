@@ -9,7 +9,8 @@ export default function HeritageSection() {
     e.preventDefault();
     const el = document.getElementById(targetId);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
     }
   };
 
@@ -26,9 +27,11 @@ export default function HeritageSection() {
         >
           <div className="aspect-[4/5] wood-grain p-4 shadow-2xl rounded-sm transform -rotate-1 border-b-8 border-gold/30">
             <img
-              alt="Tuscanini Italian Market"
+              alt="Italian coastal landscape overlooking the Mediterranean"
               className="w-full h-full object-cover"
               src="/assets/ads/sparkling-parallax.jpg"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-gold/5 blur-3xl rounded-full" />
@@ -42,7 +45,7 @@ export default function HeritageSection() {
           className="min-w-0 space-y-6 order-1 md:order-2"
         >
           <header>
-            <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+            <span className="text-burnt-terracotta font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
               Our Heritage
             </span>
             <TextReveal
@@ -70,7 +73,7 @@ export default function HeritageSection() {
             <a
               href="#collections"
               onClick={(e) => handleSmoothScroll(e, "collections")}
-              className="inline-flex items-center gap-2 text-gold text-sm uppercase tracking-widest font-semibold hover:gap-4 transition-all"
+              className="inline-flex min-h-11 items-center gap-2 text-burnt-terracotta text-sm uppercase tracking-widest font-semibold hover:gap-4 transition-all"
             >
               Discover our collections
               <ChevronRight className="w-4 h-4" />

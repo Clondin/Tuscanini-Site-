@@ -38,6 +38,8 @@ export default function CategoryHeroBanner({ category }: CategoryHeroBannerProps
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
+          fetchPriority="high"
+          decoding="async"
           src={category.heroImage}
           style={{ objectPosition: imagePosition }}
           referrerPolicy="no-referrer"
@@ -67,6 +69,8 @@ export default function CategoryHeroBanner({ category }: CategoryHeroBannerProps
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl opacity-15"
+        fetchPriority="high"
+        decoding="async"
         src={category.heroImage}
         referrerPolicy="no-referrer"
       />
@@ -89,6 +93,8 @@ export default function CategoryHeroBanner({ category }: CategoryHeroBannerProps
             alt={`${category.name} collection`}
             className="relative z-10 h-full w-full object-contain drop-shadow-[0_24px_30px_rgba(42,31,22,0.18)]"
             src={category.heroImage}
+            fetchPriority="high"
+            decoding="async"
             referrerPolicy="no-referrer"
           />
         </div>

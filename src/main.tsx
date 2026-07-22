@@ -1,7 +1,9 @@
-import { lazy, StrictMode, Suspense, useEffect } from "react";
+import { lazy, StrictMode, Suspense, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MotionConfig } from "motion/react";
 import Layout from "./components/Layout";
+import RouteMetadata from "./components/RouteMetadata";
 import { initializeCmsContent } from "./data/cms";
 import "./index.css";
 
@@ -19,26 +21,44 @@ function AdminRedirect() {
   return <div className="min-h-screen bg-surface" aria-label="Opening Kayco Sites admin" />;
 }
 
-async function start() {
-  await initializeCmsContent();
-  createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-      <BrowserRouter>
-        <Suspense fallback={<div className="min-h-screen bg-surface" aria-label="Loading page" />}>
-          <Routes>
-            <Route path="/admin" element={<AdminRedirect />} />
-            <Route element={<Layout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/category/:slug" element={<CategoryPage />} />
-              <Route path="/product/:id" element={<ProductPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </StrictMode>,
+const cmsInitialization = initializeCmsContent();
+
+function App() {
+  const [cmsVersion, setCmsVersion] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+    void cmsInitialization.finally(() => {
+      if (active) setCmsVersion((version) => version + 1);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <RouteMetadata contentVersion={cmsVersion} />
+      <Suspense fallback={<div className="min-h-screen bg-surface" role="status" aria-label="Loading page" />}>
+        <Routes>
+          <Route path="/admin" element={<AdminRedirect />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/category/:slug" element={<CategoryPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </MotionConfig>
   );
 }
 
-void start();
+createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>,
+);

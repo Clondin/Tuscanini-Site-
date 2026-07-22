@@ -184,7 +184,7 @@ export default function CollectionsGrid() {
     <section id="collections" className="py-16 md:py-20 px-6 bg-aged-cream relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-14">
-          <span className="text-gold font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+          <span className="text-burnt-terracotta font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
             The Pantry
           </span>
           <TextReveal
@@ -195,7 +195,7 @@ export default function CollectionsGrid() {
           />
           <div className="flex justify-center items-center gap-4">
             <div className="w-16 h-px bg-gold/30" />
-            <Utensils className="w-5 h-5 text-gold/40" />
+            <Utensils className="w-5 h-5 text-primary" />
             <div className="w-16 h-px bg-gold/30" />
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function CollectionsGrid() {
                         {cat.tagline}
                       </p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-primary/70 group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                   </div>
                 </Link>
                 </TiltCard>

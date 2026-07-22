@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Pause, Play } from "lucide-react";
 import TextReveal from "../ui/TextReveal";
 import MagneticButton from "../ui/MagneticButton";
 import { getCmsData } from "../../data/cms";
@@ -18,6 +18,9 @@ export default function HeroSection() {
     : "/#collections";
   const heroImage = typeof cms?.hero_image === "string" ? cms.hero_image : "";
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoEnabled, setVideoEnabled] = useState(false);
+  const [videoPaused, setVideoPaused] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -36,32 +39,77 @@ export default function HeroSection() {
     const el = document.getElementById(targetId);
     if (el) {
       e.preventDefault();
-      el.scrollIntoView({ behavior: "smooth" });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
     }
   };
 
+  const toggleVideo = () => {
+    if (!videoEnabled) {
+      setVideoEnabled(true);
+      setVideoPaused(false);
+      return;
+    }
+
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) void video.play();
+    else video.pause();
+  };
+
   return (
-    <section ref={sectionRef} className="relative h-screen flex items-end justify-center overflow-hidden bg-dark">
+    <section
+      ref={sectionRef}
+      className="relative h-[calc(100svh-72px)] min-h-[620px] flex items-end justify-center overflow-hidden bg-dark"
+    >
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         {heroImage ? (
           <img
             src={heroImage}
             alt=""
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-[120%] object-cover opacity-90"
           />
-        ) : (
+        ) : videoEnabled ? (
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
+            preload="none"
+            poster="/assets/Photos/backgrounds/italian-coast-hero.webp"
+            onPlay={() => setVideoPaused(false)}
+            onPause={() => setVideoPaused(true)}
             className="w-full h-[120%] object-cover opacity-90"
             src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
+          />
+        ) : (
+          <img
+            src="/assets/Photos/backgrounds/italian-coast-hero.webp"
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-[120%] object-cover opacity-90"
           />
         )}
         <div className="absolute inset-0 film-grain opacity-[0.07] mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
       </motion.div>
+
+      {!heroImage && (
+        <button
+          type="button"
+          onClick={toggleVideo}
+          aria-pressed={videoEnabled && !videoPaused}
+          aria-label={videoEnabled && !videoPaused ? "Pause background film" : "Play background film"}
+          className="absolute bottom-5 right-5 z-30 hidden min-h-11 items-center gap-2 border border-white/30 bg-dark/55 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm transition-colors hover:bg-dark/75 md:inline-flex"
+        >
+          {videoEnabled && !videoPaused ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+          {videoEnabled && !videoPaused ? "Pause film" : "Play film"}
+        </button>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}

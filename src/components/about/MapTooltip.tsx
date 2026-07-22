@@ -31,8 +31,10 @@ export default function MapTooltip({
     const container = containerRef.current.getBoundingClientRect();
     const tooltip = tooltipRef.current.getBoundingClientRect();
 
-    let left = x;
-    let top = y - tooltip.height - 12;
+    const pinX = (x / 100) * container.width;
+    const pinY = (y / 100) * container.height;
+    let left = pinX;
+    let top = pinY - tooltip.height - 12;
 
     // If tooltip overflows right
     if (left + tooltip.width / 2 > container.width) {
@@ -44,7 +46,7 @@ export default function MapTooltip({
     }
     // If tooltip overflows top, show below pin
     if (top < 0) {
-      top = y + 20;
+      top = pinY + 20;
     }
 
     setPosition({ left, top });
@@ -63,9 +65,9 @@ export default function MapTooltip({
           style={{ left: position.left, top: position.top }}
         >
           <div className="bg-earth-dark/95 backdrop-blur-sm border border-on-surface/10 rounded-lg shadow-xl px-4 py-3 min-w-[200px] max-w-[260px]">
-            <h4 className="font-headline text-heading text-base font-bold mb-1">
+            <p className="font-headline text-heading text-base font-bold mb-1">
               {region}
-            </h4>
+            </p>
             <div className="flex flex-wrap gap-1.5 mb-2">
               {products.map((product) => (
                 <span

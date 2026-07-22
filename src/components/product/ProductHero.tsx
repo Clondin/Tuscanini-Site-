@@ -23,14 +23,28 @@ export default function ProductHero({ product, categoryName, accent, children }:
   return (
     <section className="px-6 md:px-10 pb-14 md:pb-18 pt-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="order-1 lg:col-start-2 lg:row-start-1 lg:order-none">
+          <span
+            className="font-bold tracking-[0.3em] text-[10px] uppercase block mb-3"
+            style={{ color: accent.deep }}
+          >
+            {categoryName}
+          </span>
+          <h1 className="font-headline text-4xl text-heading leading-tight mb-4">{product.name}</h1>
+          <p className="text-on-surface/70 text-base leading-relaxed font-light">{product.description}</p>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="still-life-frame lg:sticky lg:top-28"
+          className="still-life-frame order-2 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:order-none lg:sticky lg:top-28"
         >
-          <div
-            className="aspect-square overflow-hidden relative group cursor-zoom-in"
+          <button
+            type="button"
+            disabled={!product.image}
+            aria-label={product.image ? `Open larger image of ${product.name}` : undefined}
+            className="aspect-square w-full overflow-hidden relative group cursor-zoom-in text-left disabled:cursor-default"
             style={{
               background: `radial-gradient(ellipse at 50% 42%, ${accent.soft} 0%, #faf7f2 78%)`,
             }}
@@ -41,6 +55,9 @@ export default function ProductHero({ product, categoryName, accent, children }:
                 <ImageWithSkeleton
                   src={product.image}
                   alt={product.name}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-full object-contain"
                   wrapperClassName="w-full h-full"
                   skeletonClassName="aspect-auto"
@@ -58,7 +75,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
                 <span className="text-primary/40 text-xs uppercase tracking-[0.3em] mt-3">Image Coming Soon</span>
               </div>
             )}
-          </div>
+          </button>
           <div
             aria-hidden
             className="h-0.5 mt-4 opacity-50"
@@ -72,23 +89,8 @@ export default function ProductHero({ product, categoryName, accent, children }:
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-          className="space-y-6"
+          className="order-3 space-y-6 lg:col-start-2 lg:row-start-2 lg:order-none"
         >
-          <div>
-            <span
-              className="font-bold tracking-[0.3em] text-[10px] uppercase block mb-4"
-              style={{ color: accent.deep }}
-            >
-              {categoryName}
-            </span>
-            <h1 className="font-headline text-4xl md:text-5xl text-heading leading-tight mb-6">
-              {product.name}
-            </h1>
-            <p className="text-on-surface/70 text-lg leading-relaxed font-light">
-              {product.description}
-            </p>
-          </div>
-
           <div className="w-full h-px bg-on-surface/10"></div>
 
           {product.details && (
@@ -122,7 +124,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
             style={{ backgroundColor: accent.deep, boxShadow: `0 10px 25px -5px ${accent.deep}40` }}
           >
             <MapPin className="w-4 h-4" />
-            Where to Buy
+            Visit TuscaniniFoods.com
           </motion.a>
 
           {children}

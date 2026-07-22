@@ -1,9 +1,9 @@
-import { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Package, ShieldCheck, Award, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Product } from "../../data/products";
+import { useModalDialog } from "../../hooks/useModalDialog";
 
 interface QuickViewModalProps {
   product: Product | null;
@@ -12,23 +12,7 @@ interface QuickViewModalProps {
 }
 
 export default function QuickViewModal({ product, isOpen, onClose }: QuickViewModalProps) {
-  const handleEscape = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    },
-    [onClose]
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      document.addEventListener("keydown", handleEscape);
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [isOpen, handleEscape]);
+  const dialogRef = useModalDialog<HTMLDivElement>({ isOpen, onClose, inertAppRoot: true });
 
   return createPortal(
     <AnimatePresence>
@@ -51,6 +35,11 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
 
           {/* Modal content */}
           <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="quick-view-title"
+            tabIndex={-1}
             className="relative z-10 bg-surface w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-on-surface/10 shadow-2xl
                        md:rounded-sm"
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -62,7 +51,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm border border-on-surface/10 rounded-full text-on-surface/60 hover:text-on-surface hover:bg-white transition-colors"
+              className="absolute top-4 right-4 z-20 w-11 h-11 flex items-center justify-center bg-white/80 backdrop-blur-sm border border-on-surface/10 rounded-full text-on-surface/60 hover:text-on-surface hover:bg-white transition-colors"
               aria-label="Close quick view"
             >
               <X className="w-5 h-5" />
@@ -75,6 +64,8 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -92,7 +83,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
                   Quick View
                 </span>
 
-                <h2 className="font-headline text-3xl md:text-4xl text-heading leading-tight mb-4">
+                <h2 id="quick-view-title" className="font-headline text-3xl md:text-4xl text-heading leading-tight mb-4">
                   {product.name}
                 </h2>
 

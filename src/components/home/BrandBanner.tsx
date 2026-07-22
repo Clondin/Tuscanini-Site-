@@ -19,6 +19,8 @@ export default function BrandBanner() {
           src="/assets/ads/tomato-group-tuscanini-web.jpg"
           alt="Tuscanini Tomato Products"
           className="w-full h-[130%] object-cover scale-105"
+          loading="lazy"
+          decoding="async"
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-r from-tuscanini-red/85 via-tuscanini-red/40 to-transparent" />

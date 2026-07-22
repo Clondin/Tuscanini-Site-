@@ -10,9 +10,12 @@ interface RelatedCategoriesProps {
 
 export default function RelatedCategories({ currentCategoryId, allCategories }: RelatedCategoriesProps) {
   const relatedCategories = useMemo(() => {
-    const others = allCategories.filter((c) => c.id !== currentCategoryId);
-    const shuffled = [...others].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 4);
+    const others = allCategories
+      .filter((category) => category.id !== currentCategoryId)
+      .sort((left, right) => left.name.localeCompare(right.name));
+    const offset = [...currentCategoryId].reduce((total, character) => total + character.charCodeAt(0), 0);
+    return [...others.slice(offset % Math.max(others.length, 1)), ...others.slice(0, offset % Math.max(others.length, 1))]
+      .slice(0, 4);
   }, [currentCategoryId, allCategories]);
 
   if (relatedCategories.length === 0) return null;
@@ -49,6 +52,8 @@ export default function RelatedCategories({ currentCategoryId, allCategories }: 
                   <img
                     src={cat.heroImage}
                     alt={cat.name}
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
                     referrerPolicy="no-referrer"
                   />

@@ -47,6 +47,8 @@ export default function RelatedProducts({ products, categoryName }: RelatedProdu
                       className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-1000 opacity-90"
                       src={related.image}
                       alt={related.name}
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4] p-8">
