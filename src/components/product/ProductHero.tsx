@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
-import { Package, MapPin, Expand } from "lucide-react";
+import { Package, MapPin, Expand, ShoppingCart } from "lucide-react";
 import { Product } from "../../data/products";
 import { CategoryAccent } from "../../data/category-accents";
 import TrustBadges from "./TrustBadges";
@@ -17,8 +17,14 @@ interface ProductHeroProps {
   children?: ReactNode;
 }
 
+const frozenCategoryIds = new Set(["pizza", "gelato", "bread-frozen-appetizers"]);
+const amazonStoreUrl =
+  "https://www.amazon.com/stores/Tuscanini/page/63CC7208-7FF4-4C25-B5F7-CAC5D4CA1C9A?lp_asin=B07KYWQ22X&store_ref=bl_ast_dp_brandlogo_sto&linkCode=ll2&tag=kaycopromo-20&linkId=723bc4fbe21f9f690cf8fd07d0c98802&language=en_US&ref_=as_li_ss_tl";
+
 export default function ProductHero({ product, categoryName, accent, children }: ProductHeroProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const isFrozen = frozenCategoryIds.has(product.categoryId);
+  const buyUrl = isFrozen ? "https://tuscaninifoods.com" : amazonStoreUrl;
 
   return (
     <section className="px-6 md:px-10 pb-14 md:pb-18 pt-6 max-w-7xl mx-auto">
@@ -115,17 +121,23 @@ export default function ProductHero({ product, categoryName, accent, children }:
           <TrustBadges madeInItaly={product.madeInItaly} kosher={product.kosher} />
 
           <motion.a
-            href="https://tuscaninifoods.com"
+            href={buyUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={isFrozen ? "noopener noreferrer" : "sponsored noopener noreferrer"}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex min-h-11 items-center gap-3 px-8 py-3.5 text-white font-body uppercase tracking-[0.16em] text-xs transition-opacity hover:opacity-85 shadow-lg mt-2 cursor-pointer"
             style={{ backgroundColor: accent.deep, boxShadow: `0 10px 25px -5px ${accent.deep}40` }}
           >
-            <MapPin className="w-4 h-4" />
-            Visit TuscaniniFoods.com
+            {isFrozen ? <MapPin className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
+            {isFrozen ? "Visit TuscaniniFoods.com" : "Buy on Amazon"}
           </motion.a>
+
+          {!isFrozen && (
+            <p className="text-on-surface/45 text-[10px] leading-relaxed">
+              As an Amazon Associate, Tuscanini may earn from qualifying purchases.
+            </p>
+          )}
 
           {children}
         </motion.div>
