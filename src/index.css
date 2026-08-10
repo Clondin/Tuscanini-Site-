@@ -79,9 +79,23 @@
   --color-italia-green: #1a6b37;
   --color-italia-red: #ce2b37;
   --color-italia-white: #f0ede8;
+
+  /* v2 accents */
+  --color-olive-accent: #5e6226;
+  --color-olive-accent-dark: #4c4f1f;
+  --color-olive-wash: #eff0dd;
 }
 
 @layer utilities {
+  /* v2 shelf: the lip of a wooden shelf, lit from above */
+  .shelf-edge {
+    background: linear-gradient(to bottom, #c9b8a2 0%, #d9cdba 45%, #e0d5c5 100%);
+    box-shadow: 0 -10px 20px rgba(42, 31, 22, 0.16);
+  }
+  /* v2 product well: soft olive halo behind a pack shot */
+  .pack-well {
+    background: radial-gradient(ellipse at 50% 45%, var(--color-olive-wash) 0%, transparent 78%);
+  }
   .stone-texture {
     background-image: url('/assets/textures/carbon-fibre.png'), linear-gradient(to bottom, #e0d5c5, #f0e8db);
     background-blend-mode: overlay;

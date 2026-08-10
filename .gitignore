@@ -2,7 +2,7 @@ node_modules/
 build/
 dist/
 coverage/
-tmp/
+scripts/.geo-cache/
 .DS_Store
 *.log
 .env*

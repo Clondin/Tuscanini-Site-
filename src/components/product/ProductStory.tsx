@@ -1,59 +1,37 @@
-import { CategoryAccent } from "../../data/category-accents";
-
 interface ProductStoryProps {
   productName: string;
-  accent?: CategoryAccent;
-  /** Compact block that lives inside the product page's scrolling column
-      (next to the pinned image) instead of a standalone full-width section. */
-  inline?: boolean;
+  /** The catalogue's own notes on this product, shown alongside the craft narrative. */
+  details?: string;
 }
 
-export default function ProductStory({ productName, accent, inline }: ProductStoryProps) {
-  if (inline) {
-    return (
-      <div className="mt-10 pt-8 border-t border-on-surface/10">
-        <span
-          className="font-bold tracking-[0.3em] text-[10px] uppercase block mb-3"
-          style={{ color: accent?.deep }}
-        >
-          The Craft
-        </span>
-        <h2 className="font-headline text-2xl md:text-3xl text-heading italic mb-4">
-          A Story of Italian Mastery
-        </h2>
-        <p className="text-on-surface/70 text-base leading-relaxed font-light">
-          Our {productName} is crafted by generations of Italian artisans who share a reverence for authenticity.
-          From sun-drenched fields to meticulous production, every step honors the belief that the finest
-          ingredients need only the simplest preparations. When you choose Tuscanini, you choose to preserve
-          the soul of the Italian kitchen.
-        </p>
-      </div>
-    );
-  }
-
+export default function ProductStory({ productName, details }: ProductStoryProps) {
   return (
-    <section className="py-16 md:py-20 bg-earth-dark relative overflow-hidden">
-      <div className="absolute inset-0 sketch-overlay opacity-[0.03]"></div>
-      <div className="max-w-3xl mx-auto px-6 md:px-10 relative z-10">
-        <div className="text-center">
-          <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
+    <section className="bg-dark-surface text-italia-white py-16 md:py-16 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-14 items-start">
+        <div>
+          <span className="block mb-3.5 text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
             The Craft
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl text-heading italic mb-4">
-            A Story of Italian Mastery
+          <h2 className="mb-4 font-headline font-normal italic text-[clamp(1.75rem,3.2vw,2.25rem)] leading-[1.12]">
+            A story of Italian mastery
           </h2>
-          <div className="flex justify-center items-center gap-4 mt-5 mb-8">
-            <div className="w-16 h-px bg-primary/30"></div>
-            <div className="w-2 h-2 rounded-full bg-primary/40"></div>
-            <div className="w-16 h-px bg-primary/30"></div>
-          </div>
-          <p className="text-on-surface/80 text-base md:text-lg leading-relaxed font-light">
-            Our {productName} is crafted by generations of Italian artisans who share a reverence for authenticity.
-            From sun-drenched fields to meticulous production, every step honors the belief that the finest
-            ingredients need only the simplest preparations. When you choose Tuscanini, you choose to preserve
-            the soul of the Italian kitchen.
+          <p className="font-serif-alt text-base leading-[1.85] text-italia-white/72 text-pretty">
+            Our {productName} is crafted by generations of Italian artisans who share a reverence for
+            authenticity. From sun-drenched fields to meticulous production, every step honors the
+            belief that the finest ingredients need only the simplest preparations.
           </p>
         </div>
+
+        {details && (
+          <div className="border-t border-gold/22 pt-5">
+            <span className="block mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-italia-white/50">
+              On this product
+            </span>
+            <p className="font-serif-alt text-[15px] leading-[1.85] text-italia-white/72 text-pretty">
+              {details}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,163 @@
+.sourcing-atlas {
+  isolation: isolate;
+}
+
+.sourcing-atlas::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  opacity: 0.085;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' seed='11'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.sourcing-atlas__zoom {
+  transform-box: view-box;
+}
+
+.sourcing-atlas__zoom--animated {
+  transition: transform 720ms cubic-bezier(0.22, 0.78, 0.16, 1);
+}
+
+.sourcing-atlas__region {
+  outline: none;
+  transition:
+    fill 240ms ease,
+    filter 240ms ease,
+    opacity 240ms ease;
+}
+
+.sourcing-atlas__region--active {
+  cursor: pointer;
+}
+
+.sourcing-atlas__region--active:hover,
+.sourcing-atlas__region--active:focus-visible,
+.sourcing-atlas__region--hovered {
+  fill: #e3bd92;
+  filter: brightness(1.025) saturate(1.08) drop-shadow(0 3px 4px rgb(73 50 31 / 0.2));
+}
+
+.sourcing-atlas__region--active:focus-visible {
+  stroke: #8c3b24;
+  stroke-width: 2.4;
+}
+
+.sourcing-atlas__region--selected:hover,
+.sourcing-atlas__region--selected:focus-visible {
+  fill: #9a4228;
+}
+
+.sourcing-atlas__marker-position {
+  pointer-events: none;
+}
+
+.sourcing-atlas__marker {
+  pointer-events: none;
+  outline: none;
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: atlas-marker-arrive 520ms cubic-bezier(0.2, 0.85, 0.25, 1.25) both;
+}
+
+.sourcing-atlas__marker--selected {
+  filter: drop-shadow(0 3px 4px rgb(59 44 32 / 0.28));
+}
+
+.sourcing-atlas__pin-body {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.sourcing-atlas__marker--selected .sourcing-atlas__pin-body {
+  transform: translateY(-2px) scale(1.2);
+}
+
+.sourcing-atlas__marker-hit {
+  pointer-events: auto;
+  cursor: pointer;
+  outline: none;
+}
+
+.sourcing-atlas__marker-hit:focus-visible {
+  stroke: #8c3b24;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+}
+
+.sourcing-atlas__pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-pulse 3.2s ease-out infinite;
+}
+
+.sourcing-atlas__marker--selected .sourcing-atlas__pulse {
+  animation-duration: 1.9s;
+}
+
+.sourcing-atlas__tooltip {
+  animation: atlas-tooltip-in 180ms ease-out both;
+}
+
+.sourcing-atlas__survey {
+  animation: atlas-survey-march 1.15s linear infinite;
+}
+
+@keyframes atlas-marker-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes atlas-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.55);
+  }
+
+  72%,
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes atlas-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes atlas-survey-march {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sourcing-atlas__zoom--animated,
+  .sourcing-atlas__region,
+  .sourcing-atlas__marker,
+  .sourcing-atlas__pin-body,
+  .sourcing-atlas__pulse,
+  .sourcing-atlas__tooltip,
+  .sourcing-atlas__survey {
+    animation: none;
+    transition: none;
+  }
+}

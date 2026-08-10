@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { getProductById, getCategoryForProduct } from "../data/products";
-import { getCategoryAccent } from "../data/category-accents";
 import ProductNotFound from "../components/product/ProductNotFound";
 import ProductBreadcrumb from "../components/product/ProductBreadcrumb";
-import ProductHero from "../components/product/ProductHero";
+import ProductDossier from "../components/product/ProductDossier";
 import ProductStory from "../components/product/ProductStory";
+import RelatedProducts from "../components/product/RelatedProducts";
 import RecipeSuggestions from "../components/product/RecipeSuggestions";
+import NewsletterSignup from "../components/home/NewsletterSignup";
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -16,7 +17,7 @@ export default function ProductPage() {
     return <ProductNotFound />;
   }
 
-  const accent = getCategoryAccent(category.slug);
+  const siblings = category.products.filter((p) => p.id !== product.id);
 
   return (
     <div className="min-h-screen bg-surface">
@@ -25,10 +26,21 @@ export default function ProductPage() {
         categorySlug={category.slug}
         productName={product.name}
       />
-      <ProductHero product={product} categoryName={category.name} accent={accent}>
-        <ProductStory productName={product.name} accent={accent} inline />
-      </ProductHero>
+      <ProductDossier
+        key={product.id}
+        product={product}
+        categoryName={category.name}
+        categorySlug={category.slug}
+        siblings={siblings}
+      />
+      <ProductStory productName={product.name} details={product.details} />
+      <RelatedProducts
+        products={siblings}
+        categorySlug={category.slug}
+        totalInCategory={category.products.length}
+      />
       <RecipeSuggestions productId={product.id} />
+      <NewsletterSignup />
     </div>
   );
 }

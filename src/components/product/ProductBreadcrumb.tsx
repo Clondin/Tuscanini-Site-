@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
 
 interface ProductBreadcrumbProps {
@@ -10,26 +9,26 @@ interface ProductBreadcrumbProps {
 
 export default function ProductBreadcrumb({ categoryName, categorySlug, productName }: ProductBreadcrumbProps) {
   return (
-    <div className="pt-28 pb-4 px-6 md:px-10 max-w-7xl mx-auto">
-      <motion.nav
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex items-center gap-2 text-xs font-body uppercase tracking-widest"
-      >
-        <Link to="/" className="text-on-surface/50 hover:text-primary transition-colors">
+    <div className="bg-aged-cream border-b border-on-surface/10">
+      <nav className="max-w-7xl mx-auto px-6 md:px-10 py-3.5 flex items-center gap-2 overflow-x-auto">
+        <Link
+          to="/"
+          className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/55 hover:text-primary transition-colors"
+        >
           Home
         </Link>
-        <ChevronRight className="w-3 h-3 text-on-surface/30" />
+        <ChevronRight className="w-3 h-3 shrink-0 text-on-surface/35" />
         <Link
           to={`/category/${categorySlug}`}
-          className="text-on-surface/50 hover:text-primary transition-colors"
+          className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/55 hover:text-primary transition-colors"
         >
           {categoryName}
         </Link>
-        <ChevronRight className="w-3 h-3 text-on-surface/30" />
-        <span className="text-primary">{productName}</span>
-      </motion.nav>
+        <ChevronRight className="w-3 h-3 shrink-0 text-on-surface/35" />
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-olive-accent">
+          {productName}
+        </span>
+      </nav>
     </div>
   );
 }

@@ -1,80 +1,90 @@
-import { Link } from "react-router-dom";
-import { motion } from "motion/react";
-import { Category } from "../../data/products";
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
+import type { Category } from "../../data/products";
+import { shelfSizing } from "../../lib/packSize";
+import SectionHeading from "../ui/SectionHeading";
 
 interface RelatedCategoriesProps {
   currentCategoryId: string;
   allCategories: Category[];
 }
 
+const PREVIEW_COUNT = 4;
+
+function MiniShelf({ category }: { category: Category }) {
+  const preview = category.products.slice(0, PREVIEW_COUNT);
+  const sizing = useMemo(() => shelfSizing(preview, { base: 150, min: 100, max: 200 }), [preview]);
+
+  if (preview.length === 0) return null;
+
+  return (
+    <div className="pt-[30px]">
+      <div className="mb-3 flex items-end justify-between gap-6">
+        <Link
+          to={`/category/${category.slug}`}
+          className="font-headline text-[23px] text-heading hover:text-primary transition-colors"
+        >
+          {category.name}
+        </Link>
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/45">
+          {category.products.length} {category.products.length === 1 ? "item" : "items"}
+        </span>
+      </div>
+
+      <div className="flex items-end overflow-x-auto px-1">
+        {preview.map((product) => {
+          const { height, width } = sizing[product.id];
+          return (
+            <Link
+              key={product.id}
+              to={`/product/${product.id}`}
+              aria-label={product.name}
+              style={{ width, height: 200 }}
+              className="flex shrink-0 items-end justify-center px-3.5 group"
+            >
+              <img
+                src={product.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                style={{ maxHeight: height }}
+                className="max-w-full w-auto object-contain drop-shadow-[0_12px_16px_rgba(42,31,22,0.2)] group-hover:-translate-y-1 transition-transform duration-300"
+              />
+            </Link>
+          );
+        })}
+      </div>
+      <div className="h-3 shelf-edge" />
+    </div>
+  );
+}
+
 export default function RelatedCategories({ currentCategoryId, allCategories }: RelatedCategoriesProps) {
   const relatedCategories = useMemo(() => {
+    // Deterministic rotation, not a shuffle — a random order would differ between
+    // the server-rendered HTML and the client, and re-order on every re-render.
     const others = allCategories
-      .filter((category) => category.id !== currentCategoryId)
+      .filter((category) => category.id !== currentCategoryId && category.products.length > 0)
       .sort((left, right) => left.name.localeCompare(right.name));
-    const offset = [...currentCategoryId].reduce((total, character) => total + character.charCodeAt(0), 0);
-    return [...others.slice(offset % Math.max(others.length, 1)), ...others.slice(0, offset % Math.max(others.length, 1))]
-      .slice(0, 4);
+    const offset = [...currentCategoryId].reduce((total, char) => total + char.charCodeAt(0), 0);
+    const pivot = offset % Math.max(others.length, 1);
+    return [...others.slice(pivot), ...others.slice(0, pivot)].slice(0, 3);
   }, [currentCategoryId, allCategories]);
 
   if (relatedCategories.length === 0) return null;
 
   return (
-    <section className="py-14 md:py-18 px-6 md:px-10 bg-earth-dark relative">
-      <div className="absolute inset-0 sketch-overlay opacity-[0.03] pointer-events-none" />
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-10">
-          <h2 className="font-headline text-4xl md:text-5xl text-heading italic mb-6">
-            Explore More Collections
-          </h2>
-          <div className="flex justify-center items-center gap-4">
-            <div className="w-16 h-px bg-primary/30" />
-            <div className="w-2 h-2 rounded-full bg-primary/40" />
-            <div className="w-16 h-px bg-primary/30" />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {relatedCategories.map((cat, idx) => (
-            <motion.div
-              key={cat.id}
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: Math.min(idx * 0.08, 0.5), duration: 0.5 }}
-            >
-              <Link
-                to={`/category/${cat.slug}`}
-                className="block group relative overflow-hidden aspect-[16/9] stone-texture border border-on-surface/8"
-              >
-                {cat.heroImage ? (
-                  <img
-                    src={cat.heroImage}
-                    alt={cat.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4] opacity-60" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5">
-                  <h3 className="font-headline text-lg md:text-2xl text-white group-hover:text-primary transition-colors mb-1">
-                    {cat.name}
-                  </h3>
-                  <p className="hidden sm:block font-serif-alt italic text-white/80 text-sm">
-                    {cat.tagline}
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+    <section className="bg-earth-dark py-16 md:py-[72px] px-6 md:px-10">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeading
+          title="Other shelves in the pantry"
+          rule="ink"
+          action={{ label: `All ${allCategories.length}`, to: "/#collections" }}
+        />
+        {relatedCategories.map((category) => (
+          <MiniShelf key={category.id} category={category} />
+        ))}
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-4 wood-grain" />
     </section>
   );
 }

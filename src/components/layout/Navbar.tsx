@@ -107,7 +107,7 @@ export default function Navbar() {
     <nav
       aria-label="Primary navigation"
       className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md transition-colors duration-300 ${
-        scrolled ? "bg-surface" : "bg-surface/90"
+        scrolled ? "bg-dark" : "bg-dark/94"
       }`}
       onMouseLeave={() => setMegaOpen(false)}
     >
@@ -117,7 +117,7 @@ export default function Navbar() {
         inert={mobileOpen ? true : undefined}
         className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4"
       >
-        <Link to="/" className="select-none text-heading" aria-label={`${siteTitle} home`}>
+        <Link to="/" className="select-none text-italia-white" aria-label={`${siteTitle} home`}>
           {logo ? (
             <img src={logo} alt={siteTitle} decoding="async" className="h-8 max-w-[180px] w-auto object-contain" />
           ) : (
@@ -128,7 +128,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-6">
           <button
             className={`inline-flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] transition-colors ${
-              megaOpen ? "text-gold" : "text-on-surface/70 hover:text-gold"
+              megaOpen ? "text-gold" : "text-italia-white/70 hover:text-gold"
             }`}
             onMouseEnter={() => setMegaOpen(true)}
             onClick={() => setMegaOpen((v) => !v)}
@@ -152,7 +152,7 @@ export default function Navbar() {
                 className={`uppercase tracking-[0.2em] text-[10px] transition-colors ${
                   active
                     ? "text-gold"
-                    : "text-on-surface/70 hover:text-gold"
+                    : "text-italia-white/70 hover:text-gold"
                 }`}
               >
                 {link.label}
@@ -160,7 +160,7 @@ export default function Navbar() {
             );
           })}
           <button
-            className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/75 hover:text-primary transition-colors"
+            className="min-w-11 min-h-11 inline-flex items-center justify-center text-italia-white/75 hover:text-gold transition-colors"
             onClick={() => setSearchOpen(true)}
             aria-label="Search"
             aria-expanded={searchOpen}
@@ -172,7 +172,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3 lg:hidden">
           <button
-            className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/75 hover:text-primary transition-colors"
+            className="min-w-11 min-h-11 inline-flex items-center justify-center text-italia-white/75 hover:text-gold transition-colors"
             onClick={() => setSearchOpen(true)}
             aria-label="Search"
             aria-expanded={searchOpen}
@@ -182,7 +182,7 @@ export default function Navbar() {
           </button>
           <button
             ref={mobileMenuButtonRef}
-            className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/75 hover:text-primary transition-colors"
+            className="min-w-11 min-h-11 inline-flex items-center justify-center text-italia-white/75 hover:text-gold transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -202,12 +202,12 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="hidden lg:block absolute inset-x-0 top-full bg-surface border-t border-on-surface/10 shadow-[0_30px_60px_rgba(42,31,22,0.18)]"
+            className="hidden lg:block absolute inset-x-0 top-full bg-dark-surface border-t border-gold/20 shadow-[0_30px_60px_rgba(0,0,0,0.45)]"
           >
             <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-[1fr_1fr_1fr_1fr_280px] gap-10">
               {megaGroups.map((group) => (
                 <div key={group.label}>
-                  <p className="uppercase tracking-[0.25em] text-[9px] text-on-surface/60 font-bold mb-4">
+                  <p className="uppercase tracking-[0.25em] text-[9px] text-italia-white/60 font-bold mb-4">
                     {group.label}
                   </p>
                   <ul className="space-y-2.5">
@@ -218,7 +218,7 @@ export default function Navbar() {
                           <Link
                             to={`/category/${cat.slug}`}
                             onClick={() => setMegaOpen(false)}
-                            className="group/item min-h-6 inline-flex items-center gap-2.5 text-[13px] text-on-surface/75 hover:text-heading transition-colors"
+                            className="group/item min-h-6 inline-flex items-center gap-2.5 text-[13px] text-italia-white/70 hover:text-gold transition-colors"
                           >
                             <span
                               aria-hidden
@@ -238,7 +238,7 @@ export default function Navbar() {
 
               <Link
                 to="/#collections"
-                className="group/feature relative overflow-hidden ring-1 ring-on-surface/10 self-stretch min-h-[260px] block"
+                className="group/feature relative overflow-hidden ring-1 ring-gold/20 self-stretch min-h-[260px] block"
               >
                 <img
                   src="/assets/ads/marinara-banner.jpg"
@@ -280,15 +280,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden fixed inset-x-0 top-[75px] h-[calc(100dvh-75px)] overflow-y-auto bg-surface border-t border-on-surface/10 shadow-2xl"
+            className="lg:hidden fixed inset-x-0 top-[75px] h-[calc(100dvh-75px)] overflow-y-auto bg-dark border-t border-gold/20 shadow-2xl"
           >
             <div className="px-6 py-6">
-              <div className="mb-4 flex items-center justify-between border-b border-on-surface/10 pb-4">
-                <p className="font-headline text-2xl text-heading">Menu</p>
+              <div className="mb-4 flex items-center justify-between border-b border-gold/15 pb-4">
+                <p className="font-headline text-2xl text-italia-white">Menu</p>
                 <button
                   type="button"
                   onClick={closeMobileMenu}
-                  className="inline-flex h-11 w-11 items-center justify-center text-on-surface/70 transition-colors hover:text-primary"
+                  className="inline-flex h-11 w-11 items-center justify-center text-italia-white/70 transition-colors hover:text-gold"
                   aria-label="Close menu"
                 >
                   <X size={24} />
@@ -305,7 +305,7 @@ export default function Navbar() {
                       className={`min-h-8 inline-flex items-center uppercase tracking-[0.2em] text-[11px] transition-colors ${
                         active
                           ? "text-gold"
-                          : "text-on-surface/70 hover:text-gold"
+                          : "text-italia-white/70 hover:text-gold"
                       }`}
                     >
                       {link.label}
@@ -314,9 +314,9 @@ export default function Navbar() {
                 })}
               </div>
 
-              <div className="border-t border-on-surface/10 my-4" />
+              <div className="border-t border-gold/15 my-4" />
 
-              <p className="uppercase tracking-[0.2em] text-[9px] text-on-surface/60 mb-3">
+              <p className="uppercase tracking-[0.2em] text-[9px] text-italia-white/60 mb-3">
                 Categories
               </p>
 
@@ -331,7 +331,7 @@ export default function Navbar() {
                       className={`min-h-8 inline-flex items-center uppercase tracking-[0.2em] text-[11px] transition-colors ${
                         active
                           ? "text-gold"
-                          : "text-on-surface/70 hover:text-gold"
+                          : "text-italia-white/70 hover:text-gold"
                       }`}
                     >
                       {link.label}

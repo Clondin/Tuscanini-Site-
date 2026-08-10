@@ -1,40 +1,44 @@
-import type { MouseEvent } from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import TextReveal from "../ui/TextReveal";
-import MagneticButton from "../ui/MagneticButton";
 
 export default function HeritageSection() {
-  const handleSmoothScroll = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const el = document.getElementById(targetId);
-    if (el) {
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-    }
-  };
-
   return (
-    <section className="py-16 md:py-20 px-6 md:px-16 bg-earth-dark relative overflow-hidden">
-      <div className="absolute inset-0 sketch-overlay opacity-5" />
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-14 items-center relative z-10">
+    <section id="heritage" className="bg-earth-dark py-20 md:py-24 px-6 md:px-10">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <motion.div
           initial={false}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative order-2 md:order-1"
+          className="min-w-0"
         >
-          <div className="aspect-[4/5] wood-grain p-4 shadow-2xl rounded-sm transform -rotate-1 border-b-8 border-gold/30">
-            <img
-              alt="Italian coastal landscape overlooking the Mediterranean"
-              className="w-full h-full object-cover"
-              src="/assets/ads/sparkling-parallax.jpg"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-gold/5 blur-3xl rounded-full" />
+          <span className="block mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-burnt-terracotta">
+            Our Heritage
+          </span>
+          <TextReveal
+            text="We don’t just import food; we preserve the soul of the Italian kitchen."
+            as="h2"
+            mode="word"
+            className="font-headline font-normal text-heading text-[clamp(2rem,3.8vw,2.875rem)] leading-[1.14] max-w-[22ch] mb-5"
+          />
+          <p className="mb-[18px] text-[17px] leading-[1.75] text-on-surface/70 max-w-[52ch] text-pretty">
+            Tuscanini was founded on a singular obsession: to bottle the ephemeral magic of a Sunday
+            afternoon in an Italian village. True luxury lies in simplicity &mdash; the peppery bite
+            of first-press olive oil, the perfect snap of bronze-cut pasta.
+          </p>
+          <p className="font-script italic text-[22px] leading-[1.55] text-on-surface/85 border-l-2 border-gold/50 pl-[22px] py-1.5 max-w-[46ch]">
+            Every product in our archive is a tribute to the families who have perfected their craft
+            over generations.
+          </p>
+          <Link
+            to="/about"
+            className="mt-7 inline-flex min-h-11 items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-burnt-terracotta hover:text-primary hover:gap-3.5 transition-all"
+          >
+            Read the full story
+            <ChevronRight className="w-3.5 h-3.5" />
+          </Link>
         </motion.div>
 
         <motion.div
@@ -42,43 +46,15 @@ export default function HeritageSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="min-w-0 space-y-6 order-1 md:order-2"
+          className="aspect-[4/5] overflow-hidden border-b-8 border-gold/30"
         >
-          <header>
-            <span className="text-burnt-terracotta font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">
-              Our Heritage
-            </span>
-            <TextReveal
-              text="A Legacy Born in the Tuscan Pantry"
-              as="h2"
-              mode="word"
-              className="font-headline text-4xl md:text-5xl text-heading leading-tight"
-            />
-          </header>
-          <div className="space-y-5 text-on-surface/75 text-base md:text-lg leading-relaxed font-light">
-            <p>
-              Tuscanini was founded on a singular obsession: to bottle the
-              ephemeral magic of a Sunday afternoon in an Italian village. We
-              believe that true luxury lies in simplicity&mdash;the peppery
-              bite of first-press olive oil, the perfect snap of bronze-cut
-              pasta.
-            </p>
-            <p className="font-script italic text-xl md:text-2xl text-on-surface/85 border-l-2 border-gold/40 pl-5 py-1">
-              Every product in our archive is a tribute to the families who
-              have perfected their craft over generations. We don&rsquo;t just
-              import food; we preserve the soul of the Italian kitchen.
-            </p>
-          </div>
-          <MagneticButton className="inline-block">
-            <a
-              href="#collections"
-              onClick={(e) => handleSmoothScroll(e, "collections")}
-              className="inline-flex min-h-11 items-center gap-2 text-burnt-terracotta text-sm uppercase tracking-widest font-semibold hover:gap-4 transition-all"
-            >
-              Discover our collections
-              <ChevronRight className="w-4 h-4" />
-            </a>
-          </MagneticButton>
+          <img
+            alt="Italian coastal landscape overlooking the Mediterranean"
+            className="w-full h-full object-cover block"
+            loading="lazy"
+            decoding="async"
+            src="/assets/ads/sparkling-parallax.jpg"
+          />
         </motion.div>
       </div>
     </section>

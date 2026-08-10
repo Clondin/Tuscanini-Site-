@@ -11,9 +11,9 @@ export default function HomePage() {
     <div className="selection:bg-burnt-terracotta selection:text-white">
       <HeroSection />
       <MarqueeStrip />
-      <HeritageSection />
-      <CollectionsGrid />
       <FeaturedProducts />
+      <CollectionsGrid />
+      <HeritageSection />
       <TrustBadges />
       <NewsletterSignup />
     </div>

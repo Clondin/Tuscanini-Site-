@@ -5,44 +5,43 @@ import MagneticButton from "../ui/MagneticButton";
 
 export default function AboutCTA() {
   return (
-    <section className="py-48 px-8 bg-earth-dark relative overflow-hidden">
-      <div className="absolute inset-0 sketch-overlay opacity-10"></div>
-      <div className="absolute inset-0 z-0">
-        <img
-          alt="Italian Coast"
-          className="w-full h-full object-cover opacity-15"
-          src="/assets/Photos/backgrounds/italian-coast.jpg"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-earth-dark via-earth-dark/80 to-earth-dark"></div>
-      </div>
+    <section className="relative overflow-hidden bg-dark py-24 md:py-[120px] px-6 md:px-10">
+      <img
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        src="/assets/Photos/backgrounds/italian-coast.jpg"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/70 to-dark/95" />
+
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.97 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto text-center relative z-10"
+        className="relative z-10 max-w-[820px] mx-auto text-center"
       >
-        <h2 className="font-headline text-5xl md:text-6xl text-heading leading-tight mb-8">
+        <h2 className="mb-5 font-headline font-normal text-italia-white text-[clamp(2.25rem,4.6vw,3.625rem)] leading-[1.1]">
           Taste the Tradition
         </h2>
-        <p className="font-serif-alt text-on-surface/60 text-xl italic mb-12 max-w-2xl mx-auto">
-          From our family to yours — discover the full range of authentic Italian products crafted with generations of expertise.
+        <p className="mx-auto mb-10 max-w-[600px] font-serif-alt italic text-xl leading-[1.65] text-italia-white/70">
+          From our family to yours &mdash; discover the full range of authentic Italian products
+          crafted with generations of expertise.
         </p>
         <MagneticButton className="inline-block">
           <Link
             to="/#collections"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-white font-body uppercase tracking-[0.2em] text-xs hover:bg-primary/85 transition-colors shadow-lg shadow-primary/20"
+            className="inline-flex items-center gap-3 px-10 py-[19px] bg-gold text-dark text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-gold-light transition-colors"
           >
-            Explore Our Collections
-            <ArrowRight className="w-4 h-4" />
+            Explore our collections
+            <ArrowRight className="w-[15px] h-[15px]" />
           </Link>
         </MagneticButton>
-        <p className="font-serif-alt text-primary italic text-2xl tracking-wide mt-16">
+        <p className="mt-14 font-script italic text-[26px] tracking-wide text-gold">
           Benvenuti alla nostra tavola.
         </p>
       </motion.div>
-      <div className="absolute bottom-0 left-0 w-full h-4 wood-grain"></div>
     </section>
   );
 }

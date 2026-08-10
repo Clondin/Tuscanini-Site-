@@ -12,7 +12,7 @@ export default function HeroSection() {
   const body = typeof cms?.body === "string"
     ? cms.body
     : "Authentic flavors, sourced from the heart of Italy — crafted for your home kitchen.";
-  const buttonLabel = typeof cms?.cta_label === "string" ? cms.cta_label : "Explore Our Collections";
+  const buttonLabel = typeof cms?.cta_label === "string" ? cms.cta_label : "Enter the pantry";
   const buttonUrl = typeof cms?.cta_url === "string" && cms.cta_url.trim()
     ? cms.cta_url
     : "/#collections";
@@ -28,12 +28,12 @@ export default function HeroSection() {
 
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
-  const handleCtaClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    const hashIndex = buttonUrl.indexOf("#");
+  const smoothScrollTo = (e: MouseEvent<HTMLAnchorElement>, url: string) => {
+    const hashIndex = url.indexOf("#");
     if (hashIndex < 0) return;
 
-    const targetPath = buttonUrl.slice(0, hashIndex);
-    const targetId = buttonUrl.slice(hashIndex + 1);
+    const targetPath = url.slice(0, hashIndex);
+    const targetId = url.slice(hashIndex + 1);
     if (!targetId || (targetPath && targetPath !== "/" && targetPath !== window.location.pathname)) return;
 
     const el = document.getElementById(targetId);
@@ -60,7 +60,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[calc(100svh-72px)] min-h-[620px] flex items-end justify-center overflow-hidden bg-dark"
+      className="relative h-[calc(100svh-72px)] min-h-[620px] flex items-center justify-center overflow-hidden bg-dark"
     >
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         {heroImage ? (
@@ -95,7 +95,7 @@ export default function HeroSection() {
           />
         )}
         <div className="absolute inset-0 film-grain opacity-[0.07] mix-blend-overlay pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/25 to-dark/40" />
       </motion.div>
 
       {!heroImage && (
@@ -115,50 +115,48 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-6xl mx-auto mb-28 px-6 text-center"
+        className="relative z-10 w-full max-w-[1000px] mx-auto px-6 md:px-10 text-center"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="inline-block px-6 py-2 border border-gold/40 mb-8"
-        >
-          <p className="font-script italic tracking-widest text-gold text-lg">
-            Dal cuore dell&rsquo;Italia
-          </p>
-        </motion.div>
+        <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.4em] text-gold">
+          Taste Tuscanini. Know Italy.
+        </p>
 
         <TextReveal
           text={headline}
           as="h1"
           mode="word"
-          delay={0.5}
-          className="font-headline text-6xl md:text-8xl lg:text-9xl text-italia-white mb-6 leading-tight"
+          delay={0.35}
+          className="font-headline font-normal text-italia-white text-[clamp(3.5rem,8vw,6.5rem)] leading-none"
         />
 
-        <p className="font-script text-xl md:text-3xl text-italia-white/70 max-w-2xl mx-auto italic mb-4">
+        <div className="w-20 h-px bg-gold/60 mx-auto my-[34px]" />
+
+        <p className="font-script italic text-italia-white/88 text-[clamp(1.25rem,2.2vw,1.625rem)] leading-relaxed max-w-[560px] mx-auto">
           {body}
         </p>
 
-        <p className="font-body uppercase tracking-[0.3em] text-gold/80 text-xs mb-12">
-          Taste Tuscanini. Know Italy.
-        </p>
-
-        <MagneticButton className="inline-block">
-          <motion.a
-            href={buttonUrl}
-            onClick={handleCtaClick}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-dark font-body font-semibold uppercase tracking-widest text-xs rounded-sm hover:bg-gold-light transition-colors"
+        <div className="mt-9 flex flex-wrap justify-center gap-4">
+          <MagneticButton className="inline-block">
+            <motion.a
+              href={buttonUrl}
+              onClick={(e) => smoothScrollTo(e, buttonUrl)}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2.5 px-[34px] py-[17px] bg-gold text-dark text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-gold-light transition-colors"
+            >
+              {buttonLabel}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </motion.a>
+          </MagneticButton>
+          <a
+            href="#heritage"
+            onClick={(e) => smoothScrollTo(e, "#heritage")}
+            className="inline-flex items-center gap-2.5 px-[34px] py-[17px] border border-italia-white/35 text-italia-white/90 text-[11px] font-semibold uppercase tracking-[0.2em] hover:border-gold hover:text-gold transition-colors"
           >
-            {buttonLabel}
-            <ArrowRight className="w-4 h-4" />
-          </motion.a>
-        </MagneticButton>
+            Our story
+          </a>
+        </div>
       </motion.div>
-
-      <div className="absolute bottom-0 left-0 w-full italia-stripe z-20" />
     </section>
   );
 }

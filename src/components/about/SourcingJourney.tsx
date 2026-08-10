@@ -25,19 +25,23 @@ const journeySteps = [
 
 export default function SourcingJourney() {
   return (
-    <section className="py-32 px-6 md:px-24 bg-earth-dark relative overflow-hidden">
-      <div className="absolute inset-0 sketch-overlay opacity-5"></div>
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section className="bg-earth-dark py-20 md:py-22 px-6 md:px-10">
+      <div className="max-w-[1100px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-14"
         >
-          <span className="text-primary font-bold tracking-[0.3em] text-[10px] uppercase block mb-4">From Farm to Table</span>
-          <h2 className="font-headline text-5xl text-heading italic mb-6">The Italian Sourcing Journey</h2>
-          <p className="font-serif-alt text-on-surface/60 text-lg italic max-w-2xl mx-auto">
-            We travel so you don't have to — traversing Italy's diverse regions to bring you the finest each has to offer.
+          <span className="block mb-3.5 text-[10px] font-bold uppercase tracking-[0.3em] text-burnt-terracotta">
+            From Farm to Table
+          </span>
+          <h2 className="mb-4 font-headline font-normal italic text-heading text-[clamp(1.875rem,3.6vw,2.75rem)]">
+            The Italian Sourcing Journey
+          </h2>
+          <p className="mx-auto max-w-[620px] font-serif-alt italic text-lg leading-[1.7] text-on-surface/62">
+            We travel so you don&rsquo;t have to &mdash; traversing Italy&rsquo;s diverse regions to
+            bring you the finest each has to offer.
           </p>
         </motion.div>
 
@@ -47,35 +51,35 @@ export default function SourcingJourney() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-24"
+          className="mb-16"
         >
-          <div className="text-center mb-8">
-            <p className="text-on-surface/50 text-sm font-body tracking-wide">
-              Hover or tap the pins to explore our sourcing regions
-            </p>
-          </div>
+          <p className="mb-6 text-center text-[10px] uppercase tracking-[0.2em] text-on-surface/45">
+            Hover or tap the pins to explore our sourcing regions
+          </p>
           <SourcingMap />
         </motion.div>
 
-        <div className="space-y-20">
-          {journeySteps.map((step, idx) => (
+        <div className="flex flex-col">
+          {journeySteps.map((step) => (
             <motion.div
               key={step.region}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className={`flex flex-col md:flex-row items-center gap-12 ${idx % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+              transition={{ duration: 0.7 }}
+              className="grid grid-cols-[64px_1fr] md:grid-cols-[88px_1fr] gap-6 md:gap-9 items-start py-8 md:py-9 border-t border-on-surface/14"
             >
-              <div className="flex-shrink-0 w-32 h-32 rounded-full stone-texture border border-on-surface/10 flex items-center justify-center shadow-lg">
-                <step.icon className="w-14 h-14 text-primary" />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <span className="text-primary/70 font-bold tracking-[0.3em] text-[10px] uppercase block mb-2">
+              <span className="w-16 h-16 md:w-[88px] md:h-[88px] shrink-0 border border-on-surface/15 bg-gradient-to-b from-hearth-stone to-earth-dark flex items-center justify-center">
+                <step.icon className="w-7 h-7 md:w-[34px] md:h-[34px] text-primary" />
+              </span>
+              <div>
+                <span className="block mb-2 text-[10px] font-bold uppercase tracking-[0.3em] text-primary/75">
                   {step.region}
                 </span>
-                <h3 className="font-headline text-3xl text-heading mb-4">{step.title}</h3>
-                <p className="text-on-surface/60 text-lg leading-relaxed font-light max-w-xl">
+                <h3 className="mb-3 font-headline font-normal text-2xl md:text-[29px] text-heading">
+                  {step.title}
+                </h3>
+                <p className="text-[17px] leading-[1.8] font-light text-on-surface/65 max-w-[62ch] text-pretty">
                   {step.description}
                 </p>
               </div>

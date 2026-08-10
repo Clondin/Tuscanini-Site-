@@ -18,9 +18,8 @@ export default function Footer() {
     ? cms.body
     : "Authentic Italian excellence, from our family to yours. Every product tells a story of tradition, quality, and the Italian art of living well.";
   return (
-    <footer className="dark-section text-italia-white">
-      <div className="italia-stripe w-full" />
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <footer className="bg-dark-surface text-italia-white">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             {logo ? (
@@ -28,24 +27,18 @@ export default function Footer() {
             ) : (
               <TuscaniniLogo className="h-7 w-auto text-italia-white" />
             )}
-            <p className="mt-3 text-italia-white/50 text-sm leading-relaxed max-w-xs">
+            <p className="mt-4 text-italia-white/50 text-sm leading-relaxed max-w-xs">
               {body}
             </p>
-            <p className="mt-3 font-script italic text-gold text-lg">
+            <p className="mt-3.5 font-script italic text-gold text-lg">
               {tagline}
             </p>
-            <div className="mt-4 flex items-center gap-3">
-              <span className="text-italia-white/40 text-xs tracking-wide">TuscaniniFoods.com</span>
-              <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] text-gold/80 border border-gold/30 rounded-full px-2.5 py-0.5">
-                <span>Made in Italy</span>
-              </span>
-            </div>
           </div>
 
           <div>
-            <h3 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/60 mb-4">
+            <h4 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/60 mb-4">
               Categories
-            </h3>
+            </h4>
             <ul className="space-y-2 columns-2 gap-x-8">
               {footerCategories.map((c) => (
                 <li key={c.slug}>
@@ -69,31 +62,32 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/60 mb-4">
+            <h4 className="uppercase tracking-[0.2em] text-[10px] text-italia-white/60 mb-4">
               Connect
-            </h3>
-            <div className="flex items-center gap-4">
+            </h4>
+            <div className="flex items-center gap-3">
               <a
                 href="https://www.instagram.com/tuscaninifoods/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 w-11 items-center justify-center text-italia-white/60 hover:text-gold transition-colors"
+                className="inline-flex h-11 w-11 items-center justify-center border border-italia-white/18 text-italia-white/70 hover:text-gold hover:border-gold/50 transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram size={18} />
               </a>
               <a
                 href="https://www.youtube.com/@TuscaniniFoods"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 w-11 items-center justify-center text-italia-white/60 hover:text-gold transition-colors"
+                className="inline-flex h-11 w-11 items-center justify-center border border-italia-white/18 text-italia-white/70 hover:text-gold hover:border-gold/50 transition-colors"
                 aria-label="Youtube"
               >
-                <Youtube size={20} />
+                <Youtube size={18} />
               </a>
             </div>
+            <p className="mt-5 text-xs text-italia-white/40">TuscaniniFoods.com</p>
             {cmsLinks.length > 0 ? (
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-4 space-y-2">
                 {cmsLinks.map((link) => (
                   <li key={link.to}>
                     <Link to={link.to} className="inline-flex min-h-6 items-center text-xs text-italia-white/60 hover:text-gold transition-colors">
@@ -106,13 +100,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-italia-white/10 text-center">
-          <p className="text-italia-white/30 text-xs tracking-wide">
-            &copy; {new Date().getFullYear()} {siteTitle}. All rights reserved. Authentic Italian
-            Excellence.
+        <div className="mt-11 pt-7 border-t border-italia-white/10 flex flex-wrap justify-between gap-6">
+          <p className="text-italia-white/35 text-xs">
+            &copy; {new Date().getFullYear()} {siteTitle}. All rights reserved.
           </p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-gold/70">Made in Italy</p>
         </div>
       </div>
+      <div className="italia-stripe w-full" />
     </footer>
   );
 }
