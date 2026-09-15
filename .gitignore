@@ -2,6 +2,8 @@ node_modules/
 build/
 dist/
 coverage/
+.artifacts/
+tmp/
 scripts/.geo-cache/
 .DS_Store
 *.log

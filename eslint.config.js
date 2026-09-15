@@ -5,9 +5,13 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "tmp", "public"] },
+  { ignores: ["**/dist/**", "tmp", "public", ".artifacts/**", "scripts/.geo-cache/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: { globals: globals.node },
+  },
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {

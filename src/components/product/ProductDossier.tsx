@@ -29,13 +29,13 @@ export default function ProductDossier({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [tab, setTab] = useState(0);
 
-  const isFrozen = frozenCategoryIds.has(product.categoryId);
+  const isFrozen = product.frozen || frozenCategoryIds.has(product.categoryId);
   const buyUrl = isFrozen ? "https://tuscaninifoods.com" : amazonStoreUrl;
 
   const detailRows: SpecRow[] = [
     product.size ? { label: "Format", value: product.size } : null,
     { label: "Collection", value: categoryName },
-    product.madeInItaly ? { label: "Origin", value: "Produced and bottled in Italy" } : null,
+    product.madeInItaly ? { label: "Origin", value: "Made in Italy" } : null,
     product.kosher ? { label: "Certification", value: "Certified kosher" } : null,
   ].filter((r): r is SpecRow => r !== null);
 

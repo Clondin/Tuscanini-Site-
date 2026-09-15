@@ -10,7 +10,8 @@ Keep that document accurate in the same change whenever a component starts or st
 
 ## Choose the correct source of truth
 
-- Use the CMS for the published catalog, recipes, the `home` and `about` page fields currently mapped in code, desktop primary navigation, footer body and links, and global site settings.
+- Use the Kayco product API for mapped catalog names, images, package sizes, origin, and reviewed active retail additions. New products must have images. Follow `docs/kayco-product-api.md`; keep the API key server-side.
+- Use the CMS for catalog editorial fields and categories, recipes, the `home` and `about` page fields currently mapped in code, desktop primary navigation, footer body and links, and global site settings.
 - Use this repository for layout, styling, behavior, routes, and every section marked as hardcoded in the CMS integration document.
 - Treat `src/data/products.ts` and `src/data/recipes.ts` as emergency fallback content, not the normal production editing path.
 - Do not imply that a code deployment changes CMS content or that publishing CMS content changes a component that has not been built to consume it.
@@ -22,7 +23,7 @@ Keep that document accurate in the same change whenever a component starts or st
 - For a new or changed field, update the Kayco Sites CMS editor/preview and API or SDK contract when needed, `src/data/cms.ts`, the consuming component, fallback behavior, tests, and this repository's CMS documentation.
 - For a new content type, coordinate the database/schema, Content API allowlist, admin editor and preview, public-site loader, seed or migration data, tests, and documentation.
 - For a rename or removal, support both versions until existing published content has migrated.
-- For an editable image, upload through the CMS to the site's Supabase `site-media` area and save its public URL in content. Do not replace it with a hardcoded public-site asset.
+- For an editable CMS image, upload through the CMS to the site's Supabase `site-media` area and save its public URL in content. API-owned product images use the reviewed Kayco product source described in the contract.
 - Preserve stable slugs and `source_id` values unless redirects and all cross-references are migrated.
 
 ## Completion checks

@@ -1002,10 +1002,7 @@ export default function SourcingMap() {
               hoverTip.below ? "translate-y-4" : "-translate-y-[calc(100%+18px)]"
             }`}
             style={{
-              left: Math.min(
-                Math.max(hoverTip.x, 125),
-                (containerRef.current?.clientWidth ?? 900) - 125,
-              ),
+              left: `clamp(125px, ${hoverTip.x}px, calc(100% - 125px))`,
               top: hoverTip.y,
             }}
           >

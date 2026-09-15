@@ -1,5 +1,7 @@
-import { categories as fallbackCategories, setCatalogCategories, type Category, type Product } from "./products";
+import { bundledCategories as fallbackCategories, setCatalogCategories, type Category, type Product } from "./products";
 import { setRecipes, type Recipe } from "./recipes";
+import { isKaycoProduct, mergeKaycoCatalog, type KaycoProduct } from "./kayco-catalog";
+import { kaycoSnapshot } from "./kayco-catalog.generated";
 
 type ContentType = "page" | "category" | "product" | "recipe" | "site_settings" | "navigation" | "footer";
 
@@ -61,7 +63,7 @@ async function listAll(baseUrl: string, type: ContentType): Promise<PublishedCon
   return items;
 }
 
-function mapCatalog(categoryItems: PublishedContent[], productItems: PublishedContent[]): Category[] {
+export function mapCatalog(categoryItems: PublishedContent[], productItems: PublishedContent[]): Category[] {
   const productsByCategory = new Map<string, Product[]>();
   const sortedProducts = [...productItems].sort(
     (left, right) => number(left.data, "display_order") - number(right.data, "display_order"),
@@ -149,7 +151,16 @@ export async function initializeCmsContent(): Promise<boolean> {
   const baseUrl = configuredUrl.replace(/\/+$/, "");
 
   const types: ContentType[] = ["category", "product", "recipe", "page", "site_settings", "navigation", "footer"];
-  const results = await Promise.allSettled(types.map((type) => listAll(baseUrl, type)));
+  const catalogRequest = fetch('/api/catalog', { signal: AbortSignal.timeout(10_000) })
+    .then(async response => {
+      if (!response.ok) throw new Error('Catalog unavailable');
+      const payload = await response.json() as { data: KaycoProduct[] };
+      if (!Array.isArray(payload.data) || payload.data.length === 0 || !payload.data.every(isKaycoProduct)) throw new Error('Invalid catalog');
+      return payload.data;
+    }).catch(() => kaycoSnapshot);
+  const [results, kaycoProducts] = await Promise.all([
+    Promise.allSettled(types.map((type) => listAll(baseUrl, type))), catalogRequest,
+  ]);
   const byType = new Map<ContentType, PublishedContent[]>();
 
   results.forEach((result, index) => {
@@ -164,18 +175,16 @@ export async function initializeCmsContent(): Promise<boolean> {
   const categoryItems = byType.get("category");
   const productItems = byType.get("product");
   let catalogLoaded = false;
+  let baseCategories = fallbackCategories;
 
   if (categoryItems && productItems) {
     const mappedCategories = mapCatalog(categoryItems, productItems);
-    if (mappedCategories.length > 0) {
-      setCatalogCategories(mappedCategories);
+    if (mappedCategories.some(category => category.products.length > 0)) {
+      baseCategories = mappedCategories;
       catalogLoaded = true;
-    } else {
-      setCatalogCategories(fallbackCategories);
     }
-  } else {
-    setCatalogCategories(fallbackCategories);
   }
+  setCatalogCategories(mergeKaycoCatalog(baseCategories, kaycoProducts));
 
   const recipeItems = byType.get("recipe");
   if (recipeItems) {

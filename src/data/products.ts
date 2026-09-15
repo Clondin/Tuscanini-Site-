@@ -2,6 +2,8 @@ import { pantryCategories } from "./categories-pantry";
 import { mealCategories } from "./categories-meals";
 import { snackCategories } from "./categories-snacks";
 import { foodserviceCategories } from "./categories-foodservice";
+import { mergeKaycoCatalog } from "./kayco-catalog";
+import { kaycoSnapshot } from "./kayco-catalog.generated";
 
 export interface Product {
   id: string;
@@ -14,6 +16,8 @@ export interface Product {
   size?: string;
   kosher?: boolean;
   madeInItaly?: boolean;
+  frozen?: boolean;
+  sku?: string;
 }
 
 export interface Category {
@@ -327,7 +331,7 @@ const excludedProductIds = new Set([
   "focaccia-bulk-foodservice",
 ]);
 
-export let categories: Category[] = catalogCategories
+export const bundledCategories: Category[] = catalogCategories
   .filter((category) => !excludedCategoryIds.has(category.id))
   .map((category) => ({
     ...category,
@@ -336,6 +340,8 @@ export let categories: Category[] = catalogCategories
         !excludedProductIds.has(product.id)
     ),
   }));
+
+export let categories: Category[] = mergeKaycoCatalog(bundledCategories, kaycoSnapshot);
 
 export function setCatalogCategories(nextCategories: Category[]): void {
   if (nextCategories.length > 0) categories = nextCategories;

@@ -28,7 +28,7 @@ const mobilePageLinks = [
 
 const pantryCategoryIds = new Set(pantryCategories.map((category) => category.id));
 const mealCategoryIds = new Set(mealCategories.map((category) => category.id));
-const snackCategoryIds = new Set(snackCategories.map((category) => category.id));
+const snackCategoryIds = new Set([...snackCategories.map((category) => category.id), 'dessert-sauces']);
 const foodserviceCategoryIds = new Set(foodserviceCategories.map((category) => category.id));
 const knownGroupIds = new Set([
   ...pantryCategoryIds,

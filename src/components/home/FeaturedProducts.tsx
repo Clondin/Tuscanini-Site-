@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
+import { getProductById } from "../../data/products";
 
 const spotlight = [
   {
@@ -26,6 +27,10 @@ const spotlight = [
 ];
 
 export default function FeaturedProducts() {
+  const featured = spotlight.map(item => {
+    const product = getProductById(item.id);
+    return product ? { ...item, name: product.name, image: product.image } : item;
+  });
   return (
     <section id="spotlight" className="bg-surface py-20 md:py-24 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
@@ -37,7 +42,7 @@ export default function FeaturedProducts() {
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {spotlight.map((product, idx) => (
+          {featured.map((product, idx) => (
             <motion.div
               key={product.id}
               initial={false}

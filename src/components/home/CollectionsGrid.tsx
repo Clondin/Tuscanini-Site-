@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
+import { categories } from "../../data/products";
 
 const featuredCategories = [
   {
@@ -128,18 +129,25 @@ const featuredCategories = [
 ];
 
 export default function CollectionsGrid() {
+  const featured = featuredCategories.slice(0, 9).flatMap(item => {
+    const category = categories.find(entry => entry.slug === item.slug);
+    if (!category) return [];
+    const product = category.products.find(entry => entry.sku && entry.image);
+    return [{ ...item, name: category.name, image: product?.image || item.image }];
+  });
+  const otherCategories = categories.filter(category => !featured.some(item => item.slug === category.slug));
   return (
     <section id="collections" className="bg-aged-cream py-20 md:py-24 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           eyebrow="The Pantry"
           title="Curated Collections"
-          action={{ label: `All ${featuredCategories.length} collections`, to: "/#collections" }}
+          action={{ label: `All ${categories.length} collections`, to: "/#more-collections" }}
           className="mb-11"
         />
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-9">
-          {featuredCategories.slice(0, 9).map((cat, idx) => (
+          {featured.map((cat, idx) => (
             <motion.div
               key={cat.slug}
               initial={false}
@@ -170,6 +178,18 @@ export default function CollectionsGrid() {
             </motion.div>
           ))}
         </div>
+        {otherCategories.length > 0 && (
+          <nav id="more-collections" aria-label="More product collections" className="mt-12 pt-8 border-t border-on-surface/15 scroll-mt-28">
+            <h3 className="font-headline text-2xl text-heading mb-5">More to discover</h3>
+            <div className="flex flex-wrap gap-3">
+              {otherCategories.map(category => (
+                <Link key={category.slug} to={`/category/${category.slug}`} className="inline-flex min-h-11 items-center gap-3 border border-primary/25 px-4 py-3 text-sm text-primary hover:bg-primary/5 transition-colors">
+                  {category.name}<ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              ))}
+            </div>
+          </nav>
+        )}
       </div>
     </section>
   );

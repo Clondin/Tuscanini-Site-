@@ -2,7 +2,15 @@
 
 This is the site-specific content contract for the Tuscanini public website. Read it before changing the catalog, content fields, images, navigation, branding, or the code that renders them. Update it in the same pull request whenever that contract changes.
 
-Last verified against the implementation on July 21, 2026.
+Last verified against the implementation on September 15, 2026.
+
+## Product API precedence
+
+The requested Kayco product API integration now supplies reviewed product names, images, package sizes, origin, and active retail additions. The CMS remains the editorial source for descriptions, details, ingredients, certification, category copy, recipes, pages, and global content. Read [the complete product API contract](kayco-product-api.md) for exact endpoints, filtering, secret handling, fallback behavior, caching, and deployment.
+
+The public endpoint is `/api/catalog`; its private key is the server-only `KAYCO_API_KEY`. The reviewed SKU map and outage snapshot are in `src/data/kayco-catalog.generated.ts`. New products require an image. Existing IDs and recipe references remain stable. For mapped products, editing a CMS title, image, size, or origin does not override the API-owned values.
+
+This integration needs a public-site deployment and server-side key configuration for live refresh, with no CMS publish required. The configured CMS hostname failed to resolve from the development machine during this work; bundled editorial fallback behavior was verified.
 
 ## Connection
 
@@ -21,14 +29,15 @@ The public site needs only the browser-safe Content API URL. It does not need a 
 
 ## Runtime data flow
 
-`src/main.tsx` renders the bundled fallback experience immediately, starts `initializeCmsContent()` in `src/data/cms.ts` in parallel, and re-renders after the CMS settles. On each new document load, the loader:
+`src/main.tsx` immediately renders bundled editorial content merged with the reviewed Kayco snapshot. `initializeCmsContent()` in `src/data/cms.ts` loads CMS content and `/api/catalog` concurrently. On each new document load, the loader:
 
 1. Requests every published `category`, `product`, `recipe`, `page`, `site_settings`, `navigation`, and `footer` entry through the public list endpoints.
 2. Follows the API cursor until it has loaded all entries of each type.
 3. Maps categories, products, and recipes into the data models used by the existing components.
 4. Stores the other entries by `type:slug` for direct component lookups.
 5. Applies the primary-color CSS variable. `RouteMetadata.tsx` combines CMS settings and route content into route-specific title, description, canonical, social, robots, and structured metadata.
-6. Re-renders once after the independent requests settle, using every successful collection and retaining the bundled fallback for unavailable collection groups.
+6. Merges the public Kayco catalog (or reviewed snapshot) over the editorial catalog according to the precedence above.
+7. Re-renders once after the independent requests settle, using every successful collection and retaining the bundled fallback for unavailable collection groups.
 
 The list route used for each type is:
 
@@ -43,8 +52,8 @@ Only published versions are public. Drafts and review versions never appear in t
 This behavior is important when editing or debugging the site:
 
 - The seven type requests settle independently. A failed page, settings, navigation, footer, or recipe request keeps only that type's hardcoded fallback while successful types still load.
-- Categories and products are a coordinated catalog pair. If either request fails—or the mapped catalog is empty—the complete bundled catalog remains active so the site never exposes category shells with missing products.
-- If the CMS returns one or more categories, the CMS category list replaces the entire bundled category catalog. It is not merged with the fallback categories.
+- CMS categories and products are a coordinated editorial pair. If either request fails—or the mapped catalog has no products—the bundled editorial catalog is used before applying the Kayco product merge.
+- A valid CMS catalog replaces the bundled editorial base; reviewed Kayco additions and their new categories are then merged into that base.
 - Products whose `category_slug` does not exactly match a published category slug are skipped from the visible catalog.
 - If the CMS returns one or more recipes, those recipes replace the entire bundled recipe list. An empty recipe list leaves the bundled recipes in place.
 - The fallback catalog lives in `src/data/products.ts` and related category files. Fallback recipes live in `src/data/recipes.ts`. They exist for resilience; editors should not use code changes as their normal content workflow.
@@ -100,6 +109,8 @@ New categories default into the desktop mega-menu's **The Pantry** group. The Me
 
 ### Products
 
+This table describes the CMS editorial input. For API-mapped products, name, image, package size, and origin follow the Kayco precedence above. CMS edits to those fields alone do not change their displayed API-owned values.
+
 All published products are sorted by `data.display_order`, ascending, before being attached to their categories.
 
 | CMS value | Public model/use |
@@ -145,8 +156,8 @@ Recipes are not standalone routes. They appear on product detail pages when `dat
 Do not tell an editor these areas are CMS-managed without first changing the code and content contract:
 
 - The homepage sections below the hero: marquee, heritage story, collections heading/cards, featured-products presentation, trust badges, and newsletter copy.
-- The homepage collections in `src/components/home/CollectionsGrid.tsx`. Their names, images, taglines, and first-nine selection are separate from CMS categories.
-- The homepage featured cards in `src/components/home/FeaturedProducts.tsx`. Their copy and images are hardcoded; only Quick View resolves the matching product ID from the loaded catalog.
+- Homepage collections retain code-selected first-nine ordering and taglines. Names and representative product images come from the merged catalog, with bundled card art as a fallback. All remaining categories appear in the additional collection links.
+- Homepage featured cards retain code-selected product IDs and taglines. Names, images, and links resolve against the merged catalog.
 - The Italian eyebrow and tagline inside the homepage hero.
 - The About page background image and all sections below its hero.
 - Mobile page links, mega-menu group membership, mega-menu promotional art, and category accent/color rules.
@@ -183,7 +194,7 @@ Published versions are immutable. Editing a live entry creates a new draft; the 
 
 A content-only publish does not require a GitHub commit or Vercel rebuild. A new document load renders bundled fallback content immediately, requests CMS data, and refreshes the React tree when those requests settle; the running page does not poll or update itself after that initial load.
 
-The production build generates `public/sitemap.xml` plus clean-URL HTML entry files for every live published category and product, with the bundled catalog as an offline fallback. Those entry files carry route-specific canonical, social, and structured metadata. Vercel serves only generated slugs and lets an unmatched direct request fall through to `404.html` with HTTP 404 instead of rewriting every URL to the SPA shell.
+The production build generates `public/sitemap.xml` plus clean-URL HTML entry files from one merged CMS/Kayco catalog, with bundled editorial content and the reviewed Kayco snapshot as an offline fallback. Those entry files carry route-specific canonical, social, and structured metadata. Vercel serves only generated slugs and lets an unmatched direct request fall through to `404.html` with HTTP 404 instead of rewriting every URL to the SPA shell.
 
 Visible content still refreshes from the public Content API on each new document load, so editing an existing field does not require a deploy for the React interface. A rebuild is required when adding, removing, or changing a public slug so the route file and sitemap stay current. A rebuild is also required when static/social metadata must immediately reflect a changed title, description, category relationship, or image; without it, JavaScript updates browser metadata after loading, but non-JavaScript link-preview crawlers can see the previous build's values.
 
@@ -280,7 +291,7 @@ pnpm check
 | Some CMS content appears to be ignored | Check the browser warning for that content type and its list endpoint. Category and product failures intentionally keep the catalog fallback as a coordinated pair. |
 | A product is missing | Confirm it is published and `category_slug` exactly matches a published category slug. |
 | A product URL or recipe pairing broke | Check `source_id`, slug, and every `related_products` or hardcoded featured reference. |
-| A homepage card did not change | Confirm whether it is in hardcoded `CollectionsGrid.tsx` or `FeaturedProducts.tsx`, not the CMS-driven catalog. |
+| A homepage card did not change | Selection and taglines remain code-managed; names and product images follow the merged catalog. |
 | A new page entry has no URL | Add a React route and a component that reads that type/slug. |
 | An uploaded image is not used | Select the asset in the field, save the draft, publish it, and confirm the API returns the public URL. |
 | The whole catalog unexpectedly shrank | The published CMS category/product lists replace the bundled catalog; confirm all intended entries are published. |
