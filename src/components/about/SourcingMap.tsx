@@ -155,7 +155,7 @@ function InfoCard({
     >
       <div className="mb-4 flex items-start justify-between gap-5">
         <div>
-          <span className="mb-1.5 block text-[9px] font-bold uppercase tracking-[0.28em] text-primary">
+          <span className="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.28em] text-primary">
             {region.eyebrow}
           </span>
           <h3 className="font-headline text-2xl font-semibold text-heading">
@@ -175,7 +175,7 @@ function InfoCard({
               onClick={onBack}
               aria-label="Back to the full map of Italy"
               title="Back to Italy"
-              className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-on-surface/10 bg-white/50 text-on-surface/45 transition-colors hover:bg-white hover:text-heading"
+              className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-on-surface/10 bg-white/50 text-on-surface/80 transition-colors hover:bg-white hover:text-heading"
             >
               <X className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -183,12 +183,12 @@ function InfoCard({
         </div>
       </div>
 
-      <p className="font-serif-alt text-sm italic leading-relaxed text-on-surface/65">
+      <p className="font-serif-alt text-sm italic leading-relaxed text-on-surface/80">
         {region.description}
       </p>
 
       <div className="mt-5 border-t border-on-surface/10 pt-4">
-        <span className="mb-2 block text-[9px] font-bold uppercase tracking-[0.24em] text-on-surface/45">
+        <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.24em] text-on-surface/80">
           Regional specialties
         </span>
         <div className="flex flex-wrap gap-1.5">
@@ -235,7 +235,7 @@ function ControlButton({
       title={label}
       disabled={disabled}
       onClick={onClick}
-      className="flex h-9 w-9 items-center justify-center bg-aged-cream/90 text-on-surface/60 transition-colors hover:bg-white hover:text-heading disabled:cursor-not-allowed disabled:opacity-30"
+      className="flex h-9 w-9 items-center justify-center bg-aged-cream/90 text-on-surface/80 transition-colors hover:bg-white hover:text-heading disabled:cursor-not-allowed disabled:opacity-30"
     >
       {children}
     </button>
@@ -984,7 +984,7 @@ export default function SourcingMap() {
 
         <div className="pointer-events-none absolute left-4 top-4 select-none rounded-2xl border border-white/55 bg-aged-cream/80 px-4 py-3 shadow-lg backdrop-blur-md md:left-6 md:top-6 md:px-5 md:py-4">
           <TuscaniniLogo className="h-5 w-auto text-heading md:h-6" />
-          <div className="mt-2 flex items-center gap-2 text-[8px] font-bold uppercase tracking-[0.26em] text-on-surface/55 md:text-[9px]">
+          <div className="mt-2 flex items-center gap-2 text-[8px] font-bold uppercase tracking-[0.26em] text-on-surface/80 md:text-[11px]">
             <Compass className="h-3 w-3 text-primary" aria-hidden="true" />
             Atlas of Italian flavor
           </div>
@@ -1007,7 +1007,7 @@ export default function SourcingMap() {
             }}
           >
             <div className="sourcing-atlas__tooltip w-60 rounded-2xl border border-on-surface/10 bg-heading/95 px-4 py-3.5 text-aged-cream shadow-2xl backdrop-blur-md">
-              <span className="block text-[9px] font-bold uppercase tracking-[0.22em] text-aged-cream/50">
+              <span className="block text-[11px] font-bold uppercase tracking-[0.22em] text-aged-cream/50">
                 {hoverTip.region.eyebrow}
               </span>
               <span className="block font-headline text-base font-semibold">
@@ -1016,7 +1016,7 @@ export default function SourcingMap() {
               <span className="mt-0.5 block text-[10px] uppercase tracking-[0.18em] text-aged-cream/60">
                 {hoverTip.region.products.join(" · ")}
               </span>
-              <span className="mt-2 block text-[9px] font-bold uppercase tracking-[0.18em] text-[#edbf8a]">
+              <span className="mt-2 block text-[11px] font-bold uppercase tracking-[0.18em] text-[#edbf8a]">
                 {selectedId === hoverTip.region.id
                   ? "Selected · click again for Italy"
                   : hoverTip.kind === "marker"
@@ -1027,7 +1027,7 @@ export default function SourcingMap() {
           </div>
         )}
 
-        <div className="absolute bottom-4 left-4 hidden items-center gap-2 rounded-full border border-white/60 bg-aged-cream/80 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-on-surface/55 shadow-md backdrop-blur md:flex">
+        <div className="absolute bottom-4 left-4 hidden items-center gap-2 rounded-full border border-white/60 bg-aged-cream/80 px-3 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface/80 shadow-md backdrop-blur md:flex">
           <Sparkles className="h-3 w-3 text-primary" aria-hidden="true" />
           Click a region · hover a pin · scroll to zoom
         </div>
@@ -1061,7 +1061,7 @@ export default function SourcingMap() {
 
         <div className="absolute bottom-4 right-4 flex flex-col items-end gap-1.5">
           {k > 1.01 && (
-            <span className="rounded-full border border-on-surface/10 bg-aged-cream/90 px-2 py-0.5 text-[10px] font-bold tabular-nums text-on-surface/55 shadow-md backdrop-blur">
+            <span className="rounded-full border border-on-surface/10 bg-aged-cream/90 px-2 py-0.5 text-[10px] font-bold tabular-nums text-on-surface/80 shadow-md backdrop-blur">
               {k.toFixed(1)}×
             </span>
           )}
@@ -1088,7 +1088,7 @@ export default function SourcingMap() {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full border border-white/60 bg-aged-cream/80 px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-on-surface/45 shadow-sm backdrop-blur md:hidden">
+        <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full border border-white/60 bg-aged-cream/80 px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-on-surface/80 shadow-sm backdrop-blur md:hidden">
           <Move className="h-3 w-3" aria-hidden="true" />
           Drag · pinch · tap
         </div>
@@ -1103,7 +1103,7 @@ export default function SourcingMap() {
             className={`shrink-0 snap-start rounded-full border px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.16em] transition-all ${
               selectedId === region.id
                 ? "border-primary bg-primary text-white shadow-md"
-                : "border-on-surface/10 bg-white/45 text-on-surface/60 hover:border-primary/30 hover:bg-white/70 hover:text-heading"
+                : "border-on-surface/10 bg-white/45 text-on-surface/80 hover:border-primary/30 hover:bg-white/70 hover:text-heading"
             }`}
           >
             {region.name}
@@ -1115,7 +1115,7 @@ export default function SourcingMap() {
         {selectedRegion && <InfoCard region={selectedRegion} onBack={resetMap} />}
       </div>
 
-      <p className="mt-4 text-center text-[9px] leading-relaxed tracking-wide text-on-surface/35">
+      <p className="mt-4 text-center text-[11px] leading-relaxed tracking-wide text-on-surface/80">
         Regional map data © Openpolis and ISTAT, licensed CC BY 4.0. Context data from Natural Earth.
       </p>
     </div>

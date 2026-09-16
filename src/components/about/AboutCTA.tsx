@@ -31,7 +31,7 @@ export default function AboutCTA() {
         </p>
         <MagneticButton className="inline-block">
           <Link
-            to="/#collections"
+            to="/products?view=collections"
             className="inline-flex items-center gap-3 px-10 py-[19px] bg-gold text-dark text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-gold-light transition-colors"
           >
             Explore our collections

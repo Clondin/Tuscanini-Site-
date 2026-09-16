@@ -18,19 +18,17 @@ export default function HeritageSection() {
             Our Heritage
           </span>
           <TextReveal
-            text="We don’t just import food; we preserve the soul of the Italian kitchen."
+            text="Make room for a little Italy."
             as="h2"
             mode="word"
             className="font-headline font-normal text-heading text-[clamp(2rem,3.8vw,2.875rem)] leading-[1.14] max-w-[22ch] mb-5"
           />
           <p className="mb-[18px] text-[17px] leading-[1.75] text-on-surface/70 max-w-[52ch] text-pretty">
-            Tuscanini was founded on a singular obsession: to bottle the ephemeral magic of a Sunday
-            afternoon in an Italian village. True luxury lies in simplicity &mdash; the peppery bite
-            of first-press olive oil, the perfect snap of bronze-cut pasta.
+            A pot of pasta, a splash of olive oil, something good to share.
+            Explore the ingredients that bring Italian cooking into your everyday meals.
           </p>
           <p className="font-script italic text-[22px] leading-[1.55] text-on-surface/85 border-l-2 border-gold/50 pl-[22px] py-1.5 max-w-[46ch]">
-            Every product in our archive is a tribute to the families who have perfected their craft
-            over generations.
+            From the first course to the last bite.
           </p>
           <Link
             to="/about"

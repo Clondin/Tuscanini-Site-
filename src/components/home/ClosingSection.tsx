@@ -23,7 +23,7 @@ export default function ClosingSection() {
           <p className="font-script italic text-gold text-3xl tracking-wide mb-4">
             Benvenuti alla nostra tavola.
           </p>
-          <p className="font-body uppercase tracking-[0.3em] text-italia-white/40 text-xs">
+          <p className="font-body uppercase tracking-[0.3em] text-italia-white/85 text-xs">
             Taste Tuscanini. Know Italy.
           </p>
         </motion.div>

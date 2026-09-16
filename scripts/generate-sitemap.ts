@@ -14,7 +14,7 @@ function escapeXml(value: string): string {
   })[character] ?? character);
 }
 
-const paths = new Set<string>(["/", "/about"]);
+const paths = new Set<string>(["/", "/about", "/products"]);
 
 const catalog = await prepareBuildCatalog();
 for (const category of catalog) {

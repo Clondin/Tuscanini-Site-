@@ -1,37 +1,20 @@
-interface ProductStoryProps {
+export default function ProductStory({
+  productName,
+  details,
+}: {
   productName: string;
-  /** The catalogue's own notes on this product, shown alongside the craft narrative. */
   details?: string;
-}
-
-export default function ProductStory({ productName, details }: ProductStoryProps) {
+}) {
+  if (!details) return null;
   return (
-    <section className="bg-dark-surface text-italia-white py-16 md:py-16 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-14 items-start">
-        <div>
-          <span className="block mb-3.5 text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
-            The Craft
-          </span>
-          <h2 className="mb-4 font-headline font-normal italic text-[clamp(1.75rem,3.2vw,2.25rem)] leading-[1.12]">
-            A story of Italian mastery
-          </h2>
-          <p className="font-serif-alt text-base leading-[1.85] text-italia-white/72 text-pretty">
-            Our {productName} is crafted by generations of Italian artisans who share a reverence for
-            authenticity. From sun-drenched fields to meticulous production, every step honors the
-            belief that the finest ingredients need only the simplest preparations.
-          </p>
-        </div>
-
-        {details && (
-          <div className="border-t border-gold/22 pt-5">
-            <span className="block mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-italia-white/50">
-              On this product
-            </span>
-            <p className="font-serif-alt text-[15px] leading-[1.85] text-italia-white/72 text-pretty">
-              {details}
-            </p>
-          </div>
-        )}
+    <section className="bg-olive-deep text-white py-12 px-5 md:px-10">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-7">
+        <h2 className="font-headline text-3xl">
+          A closer look at {productName}
+        </h2>
+        <p className="text-base leading-relaxed text-white/90 max-w-2xl">
+          {details}
+        </p>
       </div>
     </section>
   );

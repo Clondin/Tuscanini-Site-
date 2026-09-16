@@ -78,7 +78,7 @@ export default function MapTooltip({
                 </span>
               ))}
             </div>
-            <p className="text-on-surface/60 text-xs leading-relaxed italic font-serif-alt">
+            <p className="text-on-surface/80 text-xs leading-relaxed italic font-serif-alt">
               {description}
             </p>
           </div>

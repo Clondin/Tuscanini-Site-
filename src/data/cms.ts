@@ -79,6 +79,12 @@ export function mapCatalog(categoryItems: PublishedContent[], productItems: Publ
       description: item.description ?? "",
       image: text(item.data, "image"),
       categoryId: categorySlug,
+      storage: text(item.data, 'storage') || undefined,
+      preparation: stringList(item.data, 'prep'),
+      nutritionImage: text(item.data, 'nfp_image') || undefined,
+      nutritionFacts: stringList(item.data, 'nutrition_facts'),
+      nutritionServing: text(item.data, 'nutrition_serving') || undefined,
+      nutritionCalories: text(item.data, 'nutrition_calories') || undefined,
       details: text(item.data, "body", item.description ?? ""),
       ingredients: Array.isArray(ingredientsValue)
         ? ingredientsValue.filter((value): value is string => typeof value === "string").join(", ")
@@ -103,7 +109,7 @@ export function mapCatalog(categoryItems: PublishedContent[], productItems: Publ
     }));
 }
 
-function mapRecipes(items: PublishedContent[]): Recipe[] {
+export function mapRecipes(items: PublishedContent[]): Recipe[] {
   return [...items]
     .sort((left, right) => number(left.data, "display_order") - number(right.data, "display_order"))
     .map((item) => ({
@@ -111,10 +117,11 @@ function mapRecipes(items: PublishedContent[]): Recipe[] {
       name: item.title,
       description: text(item.data, "body", item.description ?? ""),
       ingredients: stringList(item.data, "ingredients"),
+      instructions: stringList(item.data, 'instructions').map(step => step.trim()).filter(Boolean),
       products: stringList(item.data, "related_products"),
       prepTime: text(item.data, "prep_time"),
       cookTime: text(item.data, "cook_time"),
-      servings: number(item.data, "servings", 1),
+      servings: number(item.data, "servings") > 0 ? number(item.data, "servings") : undefined,
       image: text(item.data, "hero_image") || undefined,
     }));
 }

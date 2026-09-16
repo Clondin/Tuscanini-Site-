@@ -205,3 +205,7 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Keep section destinations clear of the fixed navigation. */
+[id] { scroll-margin-top: 96px; }
+input::placeholder { color: #74685b; opacity: 1; }

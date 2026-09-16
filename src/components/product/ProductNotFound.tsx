@@ -11,7 +11,7 @@ export default function ProductNotFound() {
         className="text-center max-w-md"
       >
         <h1 className="font-headline text-5xl text-heading mb-6">Product Not Found</h1>
-        <p className="text-on-surface/60 mb-10 font-body text-lg">
+        <p className="text-on-surface/80 mb-10 font-body text-lg">
           We couldn't find the product you're looking for. It may have been removed or the link is incorrect.
         </p>
         <Link

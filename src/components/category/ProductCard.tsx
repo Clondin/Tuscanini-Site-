@@ -70,7 +70,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <h3 className="font-headline text-xl text-heading mb-2 group-hover:text-[var(--card-accent)] transition-colors">
             {product.name}
           </h3>
-          <p className="hidden sm:block text-on-surface/65 text-sm leading-relaxed font-body mb-4 line-clamp-2">
+          <p className="hidden sm:block text-on-surface/80 text-sm leading-relaxed font-body mb-4 line-clamp-2">
             {product.description}
           </p>
 

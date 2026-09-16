@@ -26,7 +26,7 @@ The API returned 301 Tuscanini items, of which 254 had images. The reviewed snap
 - Existing IDs, URLs, and recipe references remain stable. Additions use a readable slug followed by the SKU.
 - Previously unreviewed SKUs require an explicit mapping and rebuild, so new routes and the sitemap are available when products appear.
 
-New categories are Crackers & Breadsticks, Gelato & Sorbetto, and Dessert Sauces. Starter category copy is code-managed until corresponding CMS categories are published. Frozen products use the existing “Where to buy” link.
+New categories are Crackers & Breadsticks, Gelato & Sorbetto, and Dessert Sauces. Starter category copy is code-managed until corresponding CMS categories are published. Frozen products use an accurately labeled “Visit Tuscanini” link to the brand website; non-frozen products use “Visit Amazon store.” These are general destinations, not verified product-specific listings.
 
 ## Source precedence
 

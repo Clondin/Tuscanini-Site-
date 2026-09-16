@@ -26,7 +26,7 @@ function MiniShelf({ category }: { category: Category }) {
         >
           {category.name}
         </Link>
-        <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/45">
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/80">
           {category.products.length} {category.products.length === 1 ? "item" : "items"}
         </span>
       </div>
@@ -79,7 +79,7 @@ export default function RelatedCategories({ currentCategoryId, allCategories }: 
         <SectionHeading
           title="Other shelves in the pantry"
           rule="ink"
-          action={{ label: `All ${allCategories.length}`, to: "/#collections" }}
+          action={{ label: `All ${allCategories.length}`, to: "/products?view=collections" }}
         />
         {relatedCategories.map((category) => (
           <MiniShelf key={category.id} category={category} />

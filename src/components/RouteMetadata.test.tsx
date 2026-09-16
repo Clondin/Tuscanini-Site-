@@ -9,6 +9,28 @@ afterEach(() => {
 });
 
 describe("RouteMetadata", () => {
+  it("recognizes the new catalog route and canonicalizes filtered URLs", async () => {
+    render(
+      <MemoryRouter initialEntries={["/products?q=olive&format=frozen"]}>
+        <RouteMetadata contentVersion={0} />
+      </MemoryRouter>,
+    );
+    await waitFor(() =>
+      expect(document.title).toContain("Explore Our Products"),
+    );
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex, follow",
+    );
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://tuscanini-site.vercel.app/products",
+    );
+    expect(
+      document.getElementById("route-structured-data")?.textContent,
+    ).toContain('"@type":"CollectionPage"');
+  });
+
   it("writes unique product metadata and structured data", async () => {
     const { rerender } = render(
       <MemoryRouter initialEntries={["/product/moscato-grape-juice"]}>
@@ -16,7 +38,9 @@ describe("RouteMetadata", () => {
       </MemoryRouter>,
     );
 
-    await waitFor(() => expect(document.title).toContain("Moscato Sparkling Grape Juice"));
+    await waitFor(() =>
+      expect(document.title).toContain("Moscato Sparkling Grape Juice"),
+    );
     expect(document.querySelector('meta[name="description"]')).toHaveAttribute(
       "content",
       expect.stringContaining("Moscato"),
@@ -25,7 +49,8 @@ describe("RouteMetadata", () => {
       "href",
       "https://tuscanini-site.vercel.app/product/moscato-grape-juice",
     );
-    const structuredData = document.getElementById("route-structured-data")?.textContent ?? "";
+    const structuredData =
+      document.getElementById("route-structured-data")?.textContent ?? "";
     expect(structuredData).toContain('"@type":"Product"');
 
     document.title = "Stale metadata";
@@ -34,7 +59,9 @@ describe("RouteMetadata", () => {
         <RouteMetadata contentVersion={1} />
       </MemoryRouter>,
     );
-    await waitFor(() => expect(document.title).toContain("Moscato Sparkling Grape Juice"));
+    await waitFor(() =>
+      expect(document.title).toContain("Moscato Sparkling Grape Juice"),
+    );
   });
 
   it("marks unknown routes as noindex", async () => {
@@ -45,6 +72,9 @@ describe("RouteMetadata", () => {
     );
 
     await waitFor(() => expect(document.title).toContain("Page Not Found"));
-    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      "content",
+      "noindex, nofollow",
+    );
   });
 });

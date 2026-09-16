@@ -9,6 +9,7 @@ import "./index.css";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
 const ProductPage = lazy(() => import("./pages/ProductPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
@@ -45,6 +46,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
+            <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<NotFoundPage />} />

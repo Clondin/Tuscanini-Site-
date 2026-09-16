@@ -5,17 +5,17 @@ const trustBadges = [
   {
     icon: Award,
     title: "Made in Italy",
-    text: "Sourced directly from regional cooperatives and family-owned farms across Italy.",
+    text: "Discover regional flavors. Find origin details on each product page.",
   },
   {
     icon: ShieldCheck,
     title: "Certified Kosher",
-    text: "Uncompromising quality meeting the highest standards of dietary tradition.",
+    text: "Look for certification on individual products and check the packaging.",
   },
   {
     icon: Leaf,
-    title: "Pure Ingredients",
-    text: "No unnecessary additives. Just the raw, honest flavor of the earth.",
+    title: "Make it your own",
+    text: "Find a familiar favorite, try a new pairing, and bring it to your table.",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function TrustBadges() {
             <h3 className="mt-[18px] mb-2.5 font-headline font-normal text-[22px] text-heading">
               {badge.title}
             </h3>
-            <p className="text-sm leading-[1.75] text-on-surface/65 max-w-[38ch]">{badge.text}</p>
+            <p className="text-sm leading-[1.75] text-on-surface/80 max-w-[38ch]">{badge.text}</p>
           </motion.div>
         ))}
       </div>

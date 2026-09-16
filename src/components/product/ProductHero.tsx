@@ -104,7 +104,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
               className="border-l-2 pl-6"
               style={{ borderColor: `${accent.accent}55` }}
             >
-              <p className="text-on-surface/60 leading-relaxed font-serif-alt italic">
+              <p className="text-on-surface/80 leading-relaxed font-serif-alt italic">
                 {product.details}
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
           {product.size && (
             <div className="flex items-center gap-3">
               <Package className="w-4 h-4" style={{ color: accent.accent }} />
-              <span className="text-on-surface/40 uppercase tracking-widest text-[10px] font-bold">Size</span>
+              <span className="text-on-surface/80 uppercase tracking-widest text-[10px] font-bold">Size</span>
               <span className="text-on-surface/70 text-sm">{product.size}</span>
             </div>
           )}
@@ -134,7 +134,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
           </motion.a>
 
           {!isFrozen && (
-            <p className="text-on-surface/45 text-[10px] leading-relaxed">
+            <p className="text-on-surface/80 text-[10px] leading-relaxed">
               As an Amazon Associate, Tuscanini may earn from qualifying purchases.
             </p>
           )}

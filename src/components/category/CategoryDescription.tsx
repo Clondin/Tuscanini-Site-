@@ -7,7 +7,6 @@ interface CategoryDescriptionProps {
 export default function CategoryDescription({ category }: CategoryDescriptionProps) {
   const products = category.products;
   const italian = products.filter((p) => p.madeInItaly).length;
-  const kosher = products.filter((p) => p.kosher).length;
   const formats = new Set(products.map((p) => p.size).filter(Boolean)).size;
 
   const allOrCount = (n: number) => (n === products.length ? "All" : `${n} of ${products.length}`);
@@ -16,7 +15,6 @@ export default function CategoryDescription({ category }: CategoryDescriptionPro
     { label: "On this shelf", value: `${products.length} ${products.length === 1 ? "item" : "items"}` },
     formats > 0 ? { label: "Formats", value: `${formats}` } : null,
     italian > 0 ? { label: "Made in Italy", value: allOrCount(italian) } : null,
-    kosher > 0 ? { label: "Certified kosher", value: allOrCount(kosher) } : null,
   ].filter((f): f is { label: string; value: string } => f !== null);
 
   return (
@@ -40,7 +38,7 @@ export default function CategoryDescription({ category }: CategoryDescriptionPro
               key={fact.label}
               className="flex items-baseline justify-between gap-5 py-3.5 border-t border-gold/22"
             >
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-italia-white/50">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-italia-white/85">
                 {fact.label}
               </span>
               <span className="font-headline text-xl text-gold">{fact.value}</span>

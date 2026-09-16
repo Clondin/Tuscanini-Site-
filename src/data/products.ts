@@ -18,6 +18,12 @@ export interface Product {
   madeInItaly?: boolean;
   frozen?: boolean;
   sku?: string;
+  storage?: string;
+  preparation?: string[];
+  nutritionImage?: string;
+  nutritionFacts?: string[];
+  nutritionServing?: string;
+  nutritionCalories?: string;
 }
 
 export interface Category {

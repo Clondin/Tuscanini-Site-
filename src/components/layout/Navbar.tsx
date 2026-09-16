@@ -1,350 +1,264 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Search, ChevronDown, ArrowRight } from "lucide-react";
 import { categories } from "../../data/products";
-import { pantryCategories } from "../../data/categories-pantry";
-import { mealCategories } from "../../data/categories-meals";
-import { snackCategories } from "../../data/categories-snacks";
-import { foodserviceCategories } from "../../data/categories-foodservice";
-import { getCategoryAccent } from "../../data/category-accents";
+import { collectionGroups } from "../../data/collection-groups";
 import { getCmsData, getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
 import SearchOverlay from "../ui/SearchOverlay";
 import { useModalDialog } from "../../hooks/useModalDialog";
 
 const topNavLinks = [
-  { label: "Beverages", to: "/category/beverages" },
   { label: "Pasta", to: "/category/pasta-gnocchi" },
   { label: "Olive Oil", to: "/category/olive-oil" },
   { label: "Chocolate", to: "/category/chocolate" },
   { label: "Our Story", to: "/about" },
 ];
-
-const mobilePageLinks = [
-  { label: "The Pantry", to: "/#collections" },
-  { label: "Our Story", to: "/about" },
-];
-
-const pantryCategoryIds = new Set(pantryCategories.map((category) => category.id));
-const mealCategoryIds = new Set(mealCategories.map((category) => category.id));
-const snackCategoryIds = new Set([...snackCategories.map((category) => category.id), 'dessert-sauces']);
-const foodserviceCategoryIds = new Set(foodserviceCategories.map((category) => category.id));
-const knownGroupIds = new Set([
-  ...pantryCategoryIds,
-  ...mealCategoryIds,
-  ...snackCategoryIds,
-  ...foodserviceCategoryIds,
-]);
-
-function isActive(linkTo: string, pathname: string): boolean {
-  if (linkTo === "/#collections") {
-    return pathname === "/";
-  }
-  if (linkTo === "/about") {
-    return pathname === "/about";
-  }
-  if (linkTo.startsWith("/category/")) {
-    return pathname === linkTo;
-  }
-  return false;
-}
-
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopMenuButtonRef = useRef<HTMLButtonElement>(null);
   const closeMobileMenu = useCallback(() => setMobileOpen(false), []);
-  const mobileDialogRef = useModalDialog<HTMLDivElement>({
+  const dialogRef = useModalDialog<HTMLDivElement>({
     isOpen: mobileOpen,
     onClose: closeMobileMenu,
     returnFocusRef: mobileMenuButtonRef,
     inertPageContent: true,
   });
-  const location = useLocation();
-  const siteSettings = getCmsData("site_settings", "general");
-  const siteTitle = typeof siteSettings?.site_title === "string" ? siteSettings.site_title : "Tuscanini";
-  const logo = typeof siteSettings?.logo === "string" ? siteSettings.logo : "";
-  const cmsNavLinks = getCmsLinks("navigation", "primary");
-  const displayedTopNavLinks = cmsNavLinks.length > 0 ? cmsNavLinks : topNavLinks;
-  const mobileCategoryLinks = categories.map((category) => ({
-    label: category.name,
-    to: `/category/${category.slug}`,
-  }));
-  const megaGroups = [
-    {
-      label: "The Pantry",
-      items: categories.filter(
-        (category) => pantryCategoryIds.has(category.id) || !knownGroupIds.has(category.id),
-      ),
-    },
-    { label: "Meals", items: categories.filter((category) => mealCategoryIds.has(category.id)) },
-    { label: "Snacks & Sweets", items: categories.filter((category) => snackCategoryIds.has(category.id)) },
-    { label: "Foodservice", items: categories.filter((category) => foodserviceCategoryIds.has(category.id)) },
-  ];
-
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  useEffect(() => {
-    if (!megaOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMegaOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [megaOpen]);
-
+  const { pathname } = useLocation();
+  const settings = getCmsData("site_settings", "general");
+  const siteTitle =
+    typeof settings?.site_title === "string"
+      ? settings.site_title
+      : "Tuscanini";
+  const logo = typeof settings?.logo === "string" ? settings.logo : "";
+  const cmsLinks = getCmsLinks("navigation", "primary");
+  const links = cmsLinks.length ? cmsLinks : topNavLinks;
+  const groups = collectionGroups(categories);
+  const closeMenus = () => {
+    setMegaOpen(false);
+    setMobileOpen(false);
+  };
+  const active = (to: string) => pathname === to;
   return (
-    <nav
-      aria-label="Primary navigation"
-      className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md transition-colors duration-300 ${
-        scrolled ? "bg-dark" : "bg-dark/94"
-      }`}
-      onMouseLeave={() => setMegaOpen(false)}
-    >
-      <div className="italia-stripe w-full" />
-      <div
-        aria-hidden={mobileOpen ? "true" : undefined}
-        inert={mobileOpen ? true : undefined}
-        className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4"
+    <>
+      <nav
+        aria-label="Primary navigation"
+        className="fixed top-0 inset-x-0 z-50 bg-dark text-italia-white shadow-sm"
+        onKeyDown={(event) => {
+          if (event.key === "Escape" && megaOpen) {
+            setMegaOpen(false);
+            desktopMenuButtonRef.current?.focus();
+          }
+        }}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget))
+            setMegaOpen(false);
+        }}
       >
-        <Link to="/" className="select-none text-italia-white" aria-label={`${siteTitle} home`}>
-          {logo ? (
-            <img src={logo} alt={siteTitle} decoding="async" className="h-8 max-w-[180px] w-auto object-contain" />
-          ) : (
-            <TuscaniniLogo className="h-8 w-auto" />
-          )}
-        </Link>
-
-        <div className="hidden lg:flex items-center gap-6">
-          <button
-            className={`inline-flex items-center gap-1.5 uppercase tracking-[0.2em] text-[10px] transition-colors ${
-              megaOpen ? "text-gold" : "text-italia-white/70 hover:text-gold"
-            }`}
-            onMouseEnter={() => setMegaOpen(true)}
-            onClick={() => setMegaOpen((v) => !v)}
-            aria-expanded={megaOpen}
-            aria-haspopup="true"
-            aria-controls="desktop-shop-menu"
+        <div className="italia-stripe" />
+        <div
+          aria-hidden={mobileOpen || undefined}
+          inert={mobileOpen || undefined}
+          className="max-w-7xl mx-auto px-5 md:px-6 h-[72px] flex items-center justify-between gap-5"
+        >
+          <Link
+            to="/"
+            onClick={closeMenus}
+            aria-label={`${siteTitle} home`}
+            className="shrink-0"
           >
-            Shop
-            <ChevronDown
-              className={`w-3 h-3 transition-transform duration-300 ${megaOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-          {displayedTopNavLinks.map((link) => {
-            const active = isActive(link.to, location.pathname);
-            return (
+            {logo ? (
+              <img
+                src={logo}
+                alt={siteTitle}
+                className="h-8 max-w-[180px] object-contain"
+              />
+            ) : (
+              <TuscaniniLogo className="h-8 w-auto" />
+            )}
+          </Link>
+          <div className="hidden lg:flex items-center gap-6">
+            <button
+              ref={desktopMenuButtonRef}
+              aria-expanded={megaOpen}
+              aria-controls="desktop-shop-menu"
+              onClick={() => setMegaOpen((value) => !value)}
+              className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-gold"
+            >
+              Explore products <ChevronDown size={15} />
+            </button>
+            {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                onClick={() => setMegaOpen(false)}
-                onMouseEnter={() => setMegaOpen(false)}
-                className={`uppercase tracking-[0.2em] text-[10px] transition-colors ${
-                  active
-                    ? "text-gold"
-                    : "text-italia-white/70 hover:text-gold"
-                }`}
+                onClick={closeMenus}
+                aria-current={active(link.to) ? "page" : undefined}
+                className={`inline-flex min-h-11 items-center text-sm ${active(link.to) ? "text-gold" : "text-italia-white/90 hover:text-gold"}`}
               >
                 {link.label}
               </Link>
-            );
-          })}
-          <button
-            className="min-w-11 min-h-11 inline-flex items-center justify-center text-italia-white/75 hover:text-gold transition-colors"
-            onClick={() => setSearchOpen(true)}
-            aria-label="Search"
-            aria-expanded={searchOpen}
-            aria-haspopup="dialog"
-          >
-            <Search size={18} />
-          </button>
+            ))}
+            <button
+              aria-label="Search"
+              aria-haspopup="dialog"
+              aria-expanded={searchOpen}
+              onClick={() => {
+                setMegaOpen(false);
+                setSearchOpen(true);
+              }}
+              className="inline-flex min-h-11 items-center gap-2 border border-white/30 px-4 text-sm hover:border-gold"
+            >
+              <Search size={17} />
+              Search
+            </button>
+          </div>
+          <div className="lg:hidden flex items-center gap-1">
+            <button
+              aria-label="Search"
+              aria-haspopup="dialog"
+              aria-expanded={searchOpen}
+              onClick={() => setSearchOpen(true)}
+              className="w-11 h-11 flex items-center justify-center"
+            >
+              <Search size={21} />
+            </button>
+            <button
+              ref={mobileMenuButtonRef}
+              aria-label="Open menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation-dialog"
+              onClick={() => setMobileOpen(true)}
+              className="w-11 h-11 flex items-center justify-center"
+            >
+              <Menu size={23} />
+            </button>
+          </div>
         </div>
-
-        <div className="flex items-center gap-3 lg:hidden">
-          <button
-            className="min-w-11 min-h-11 inline-flex items-center justify-center text-italia-white/75 hover:text-gold transition-colors"
-            onClick={() => setSearchOpen(true)}
-            aria-label="Search"
-            aria-expanded={searchOpen}
-            aria-haspopup="dialog"
-          >
-            <Search size={20} />
-          </button>
-          <button
-            ref={mobileMenuButtonRef}
-            className="min-w-11 min-h-11 inline-flex items-center justify-center text-italia-white/75 hover:text-gold transition-colors"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-navigation-dialog"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Desktop mega menu */}
-      <AnimatePresence>
         {megaOpen && (
-          <motion.div
+          <div
             id="desktop-shop-menu"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="hidden lg:block absolute inset-x-0 top-full bg-dark-surface border-t border-gold/20 shadow-[0_30px_60px_rgba(0,0,0,0.45)]"
+            className="hidden lg:block absolute top-full inset-x-0 max-h-[calc(100dvh-75px)] overflow-y-auto bg-dark-surface border-t border-white/20 shadow-xl"
           >
-            <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-[1fr_1fr_1fr_1fr_280px] gap-10">
-              {megaGroups.map((group) => (
-                <div key={group.label}>
-                  <p className="uppercase tracking-[0.25em] text-[9px] text-italia-white/60 font-bold mb-4">
-                    {group.label}
-                  </p>
-                  <ul className="space-y-2.5">
-                    {group.items.map((cat) => {
-                      const accent = getCategoryAccent(cat.slug);
-                      return (
-                        <li key={cat.slug}>
+            <div className="max-w-7xl mx-auto px-7 py-8">
+              <div className="flex justify-between items-center border-b border-white/20 pb-5 mb-7">
+                <Link
+                  to="/products"
+                  onClick={closeMenus}
+                  className="font-headline text-3xl text-italia-white inline-flex items-center gap-4"
+                >
+                  Explore the pantry <ArrowRight size={21} />
+                </Link>
+                <Link
+                  to="/products?view=collections"
+                  onClick={closeMenus}
+                  className="text-sm text-gold underline underline-offset-4"
+                >
+                  All {categories.length} collections
+                </Link>
+              </div>
+              <div className="grid grid-cols-5 gap-7">
+                {groups.map((group) => (
+                  <div key={group.label}>
+                    <h2 className="text-sm font-semibold text-gold mb-3">
+                      {group.label}
+                    </h2>
+                    <ul>
+                      {group.items.map((category) => (
+                        <li key={category.slug}>
                           <Link
-                            to={`/category/${cat.slug}`}
-                            onClick={() => setMegaOpen(false)}
-                            className="group/item min-h-6 inline-flex items-center gap-2.5 text-[13px] text-italia-white/70 hover:text-gold transition-colors"
+                            to={`/category/${category.slug}`}
+                            onClick={closeMenus}
+                            className="inline-flex min-h-10 items-center py-1 text-sm text-italia-white/90 hover:text-gold"
                           >
-                            <span
-                              aria-hidden
-                              className="w-1.5 h-1.5 rounded-full shrink-0 opacity-60 group-hover/item:opacity-100 group-hover/item:scale-125 transition-all"
-                              style={{ backgroundColor: accent.accent }}
-                            />
-                            <span className="group-hover/item:translate-x-0.5 transition-transform">
-                              {cat.name}
-                            </span>
+                            {category.name}
                           </Link>
                         </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-
-              <Link
-                to="/#collections"
-                className="group/feature relative overflow-hidden ring-1 ring-gold/20 self-stretch min-h-[260px] block"
-              >
-                <img
-                  src="/assets/ads/marinara-banner.jpg"
-                  alt="Tuscanini pantry collection"
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-[80%_50%] group-hover/feature:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/25 to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-5">
-                  <span className="text-gold uppercase tracking-[0.25em] text-[9px] font-bold block mb-1.5">
-                    The Full Pantry
-                  </span>
-                  <span className="font-headline text-xl text-italia-white block mb-2 leading-snug">
-                    Explore Every Collection
-                  </span>
-                  <span className="inline-flex items-center gap-2 text-italia-white/80 text-[10px] uppercase tracking-[0.2em] group-hover/feature:gap-3 transition-all">
-                    Browse All
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </Link>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="italia-stripe w-full" />
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-
-      <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            ref={mobileDialogRef}
+          <div
+            ref={dialogRef}
             id="mobile-navigation-dialog"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
             tabIndex={-1}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden fixed inset-x-0 top-[75px] h-[calc(100dvh-75px)] overflow-y-auto bg-dark border-t border-gold/20 shadow-2xl"
+            className="lg:hidden fixed inset-0 bg-dark overflow-y-auto overscroll-contain"
           >
-            <div className="px-6 py-6">
-              <div className="mb-4 flex items-center justify-between border-b border-gold/15 pb-4">
-                <p className="font-headline text-2xl text-italia-white">Menu</p>
+            <div className="px-6 py-5">
+              <div className="flex items-center justify-between mb-6">
+                <p className="font-headline text-3xl">Explore Tuscanini</p>
                 <button
-                  type="button"
-                  onClick={closeMobileMenu}
-                  className="inline-flex h-11 w-11 items-center justify-center text-italia-white/70 transition-colors hover:text-gold"
                   aria-label="Close menu"
+                  onClick={closeMobileMenu}
+                  className="w-11 h-11 flex items-center justify-center"
                 >
-                  <X size={24} />
+                  <X size={23} />
                 </button>
               </div>
-              <div className="flex flex-col gap-3 mb-4">
-                {mobilePageLinks.map((link) => {
-                  const active = isActive(link.to, location.pathname);
-                  return (
-                    <Link
-                      key={link.to}
-                      to={link.to}
-                      onClick={closeMobileMenu}
-                      className={`min-h-8 inline-flex items-center uppercase tracking-[0.2em] text-[11px] transition-colors ${
-                        active
-                          ? "text-gold"
-                          : "text-italia-white/70 hover:text-gold"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              <div className="border-t border-gold/15 my-4" />
-
-              <p className="uppercase tracking-[0.2em] text-[9px] text-italia-white/60 mb-3">
-                Categories
-              </p>
-
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-                {mobileCategoryLinks.map((link) => {
-                  const active = isActive(link.to, location.pathname);
-                  return (
-                    <Link
-                      key={link.to}
-                      to={link.to}
-                      onClick={closeMobileMenu}
-                      className={`min-h-8 inline-flex items-center uppercase tracking-[0.2em] text-[11px] transition-colors ${
-                        active
-                          ? "text-gold"
-                          : "text-italia-white/70 hover:text-gold"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </div>
+              <Link
+                to="/products"
+                onClick={closeMenus}
+                className="flex items-center justify-between min-h-12 mb-3 px-4 bg-gold text-dark text-sm font-semibold"
+              >
+                All products <ArrowRight size={18} />
+              </Link>
+              {groups.map((group) => (
+                <details key={group.label} className="border-b border-white/20">
+                  <summary className="cursor-pointer py-5 text-lg font-headline">
+                    {group.label}
+                  </summary>
+                  <ul className="pb-4">
+                    {group.items.map((category) => (
+                      <li key={category.slug}>
+                        <Link
+                          to={`/category/${category.slug}`}
+                          onClick={closeMenus}
+                          className="flex min-h-11 items-center px-3 text-sm text-italia-white/90"
+                        >
+                          {category.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
+              <Link
+                to="/products?view=collections"
+                onClick={closeMenus}
+                className="flex min-h-12 items-center mt-4 text-gold"
+              >
+                All {categories.length} collections
+              </Link>
+              <Link
+                to="/about"
+                onClick={closeMenus}
+                className="flex min-h-12 items-center"
+              >
+                Our story
+              </Link>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-
+      </nav>
+      {megaOpen && (
+        <button
+          aria-label="Close product menu"
+          tabIndex={-1}
+          onClick={() => setMegaOpen(false)}
+          className="hidden lg:block fixed inset-0 bg-black/25 z-40 cursor-default"
+        />
+      )}
       <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
-    </nav>
+    </>
   );
 }

@@ -6,8 +6,9 @@ export interface Recipe {
   products: string[];
   prepTime: string;
   cookTime: string;
-  servings: number;
+  servings?: number;
   image?: string;
+  instructions?: string[];
 }
 
 export let recipes: Recipe[] = [

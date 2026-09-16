@@ -165,6 +165,7 @@ const about: RouteHtml = {
 
 const routes = catalogRoutes(await readBuildCatalog());
 routes.push(about);
+routes.push({ path: '/products', title: 'Explore Our Products | Tuscanini', description: 'Explore Tuscanini pasta, pantry staples, drinks, and more. Find a favorite by collection or product name.', type: 'website', structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });
 
 await writeFile(resolve("dist/index.html"), renderRouteHtml(baseHtml, home), "utf8");
 let written = 1;

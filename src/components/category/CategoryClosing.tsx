@@ -30,7 +30,7 @@ export default function CategoryClosing({ category }: CategoryClosingProps) {
           {closingLine(category)}
         </p>
         <Link
-          to="/#collections"
+          to="/products?view=collections"
           className="inline-flex items-center gap-2.5 whitespace-nowrap px-8 py-[17px] bg-gold text-dark text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-gold-light transition-colors"
         >
           Browse the pantry

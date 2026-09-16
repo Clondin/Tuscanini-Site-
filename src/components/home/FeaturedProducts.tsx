@@ -67,7 +67,7 @@ export default function FeaturedProducts() {
                 <p className="mt-[22px] font-headline text-[23px] leading-tight text-heading group-hover:text-primary transition-colors">
                   {product.name}
                 </p>
-                <p className="mt-2 font-script italic text-[17px] text-on-surface/62">
+                <p className="mt-2 font-script italic text-[17px] text-on-surface/80">
                   {product.tagline}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-burnt-terracotta group-hover:gap-3 transition-all">

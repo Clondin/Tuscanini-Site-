@@ -51,7 +51,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-20 w-11 h-11 flex items-center justify-center bg-white/80 backdrop-blur-sm border border-on-surface/10 rounded-full text-on-surface/60 hover:text-on-surface hover:bg-white transition-colors"
+              className="absolute top-4 right-4 z-20 w-11 h-11 flex items-center justify-center bg-white/80 backdrop-blur-sm border border-on-surface/10 rounded-full text-on-surface/80 hover:text-on-surface hover:bg-white transition-colors"
               aria-label="Close quick view"
             >
               <X className="w-5 h-5" />
@@ -93,7 +93,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
 
                 {product.details && (
                   <div className="border-l-2 border-primary/30 pl-5 mb-6">
-                    <p className="text-on-surface/55 text-sm leading-relaxed font-serif-alt italic">
+                    <p className="text-on-surface/80 text-sm leading-relaxed font-serif-alt italic">
                       {product.details}
                     </p>
                   </div>
@@ -102,7 +102,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
                 {product.size && (
                   <div className="flex items-center gap-3 mb-4">
                     <Package className="w-4 h-4 text-primary/60" />
-                    <span className="text-on-surface/40 uppercase tracking-widest text-[10px] font-bold">
+                    <span className="text-on-surface/80 uppercase tracking-widest text-[10px] font-bold">
                       Size
                     </span>
                     <span className="text-on-surface/70 text-sm">{product.size}</span>
@@ -111,10 +111,10 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
 
                 {product.ingredients && (
                   <div className="mb-4">
-                    <span className="text-on-surface/40 uppercase tracking-widest text-[10px] font-bold block mb-1">
+                    <span className="text-on-surface/80 uppercase tracking-widest text-[10px] font-bold block mb-1">
                       Ingredients
                     </span>
-                    <p className="text-on-surface/60 text-xs leading-relaxed">
+                    <p className="text-on-surface/80 text-xs leading-relaxed">
                       {product.ingredients}
                     </p>
                   </div>

@@ -39,7 +39,7 @@ export default function SourcingJourney() {
           <h2 className="mb-4 font-headline font-normal italic text-heading text-[clamp(1.875rem,3.6vw,2.75rem)]">
             The Italian Sourcing Journey
           </h2>
-          <p className="mx-auto max-w-[620px] font-serif-alt italic text-lg leading-[1.7] text-on-surface/62">
+          <p className="mx-auto max-w-[620px] font-serif-alt italic text-lg leading-[1.7] text-on-surface/80">
             We travel so you don&rsquo;t have to &mdash; traversing Italy&rsquo;s diverse regions to
             bring you the finest each has to offer.
           </p>
@@ -53,7 +53,7 @@ export default function SourcingJourney() {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <p className="mb-6 text-center text-[10px] uppercase tracking-[0.2em] text-on-surface/45">
+          <p className="mb-6 text-center text-[10px] uppercase tracking-[0.2em] text-on-surface/80">
             Hover or tap the pins to explore our sourcing regions
           </p>
           <SourcingMap />
@@ -79,7 +79,7 @@ export default function SourcingJourney() {
                 <h3 className="mb-3 font-headline font-normal text-2xl md:text-[29px] text-heading">
                   {step.title}
                 </h3>
-                <p className="text-[17px] leading-[1.8] font-light text-on-surface/65 max-w-[62ch] text-pretty">
+                <p className="text-[17px] leading-[1.8] font-light text-on-surface/80 max-w-[62ch] text-pretty">
                   {step.description}
                 </p>
               </div>

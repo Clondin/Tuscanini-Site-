@@ -2,7 +2,7 @@
 
 This is the site-specific content contract for the Tuscanini public website. Read it before changing the catalog, content fields, images, navigation, branding, or the code that renders them. Update it in the same pull request whenever that contract changes.
 
-Last verified against the implementation on September 15, 2026.
+Last verified against the implementation on September 16, 2026.
 
 ## Product API precedence
 
@@ -70,7 +70,7 @@ The API response has top-level `slug`, `title`, and `description` values plus th
 | About hero | `page:about` | `data.headline`, `data.body` | Uses bundled headline and body. The background image and label remain hardcoded. |
 | Navbar and document metadata | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo`, `data.primary_color` | Uses the Tuscanini wordmark/title and existing CSS color. |
 | Footer branding | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo` | Uses the Tuscanini wordmark, title, and bundled tagline. |
-| Desktop top navigation | `navigation:primary` | `data.links` | Uses the five bundled desktop links. Mobile page links remain hardcoded. |
+| Desktop top navigation | `navigation:primary` | `data.links` | Uses bundled desktop links. Mobile page links and shared collection groups remain code-managed. |
 | Footer introduction and links | `footer:main` | `data.body`, `data.links` | Uses the bundled introduction and hides the optional link list. |
 
 `site_settings:general` has these effects:
@@ -100,12 +100,12 @@ All published category entries are sorted by `data.display_order`, ascending.
 | `data.source_id` | Internal category ID; falls back to the slug |
 | `data.tagline` | Category hero and search result tagline |
 | `data.body` | Category description section |
-| `data.hero_image` | Category hero and search thumbnail |
+| `data.hero_image` | Category metadata and editorial image fallback |
 | `data.display_order` | Catalog order, mega-menu order, related categories, and the first eight footer categories |
 
-Use a non-empty hero image for every category. The category page assumes it can render that URL.
+Collection cards use a product image from the merged catalog. The category hero image remains available for metadata; it is no longer required to render the category grid.
 
-New categories default into the desktop mega-menu's **The Pantry** group. The Meals, Snacks & Sweets, and Foodservice assignments are still determined by hardcoded IDs in `src/data/categories-*.ts`. Changing those groups or adding a category to a homepage collection requires code.
+Desktop and mobile navigation share `src/data/collection-groups.ts`: Pasta & Sauces, Pantry, Snacks & Sweets, Drinks, and Frozen. Unknown CMS categories default to Pantry. Homepage featured collection selection remains code-managed; every image-bearing collection appears at `/products?view=collections`.
 
 ### Products
 
@@ -122,8 +122,13 @@ All published products are sorted by `data.display_order`, ascending, before bei
 | `data.category_slug` | Required parent category slug; products with no matching category are not shown |
 | `data.image` | Product cards, search, pairings, quick view, detail image, and lightbox |
 | `data.body` | Long product story/details; falls back to the top-level description |
-| `data.ingredients` | Quick-view ingredients; an array is joined with commas and a string is used as-is |
+| `data.ingredients` | Product-detail Ingredients disclosure and quick view; an array is joined with commas and a string is used as-is |
 | `data.size` | Product size/package information |
+| `data.storage` | Product-detail preparation/storage disclosure; omitted when absent |
+| `data.prep` | Preparation entries, array or newline-separated text; `method \| instructions` displays as a labeled step |
+| `data.nfp_image` | Nutrition label image inside the Nutrition facts disclosure |
+| `data.nutrition_serving`, `data.nutrition_calories` | Serving size and calories; missing values stay hidden and numeric zero is preserved |
+| `data.nutrition_facts` | Nutrition rows, array or newline-separated text; `label \| value` displays as a labeled row |
 | `data.kosher` | Shows the Kosher badge only when the JSON value is boolean `true` |
 | `data.made_in_italy` | Shows the Made in Italy badge only when the JSON value is boolean `true` |
 | `data.display_order` | Order within the parent category |
@@ -137,35 +142,54 @@ Recipes are not standalone routes. They appear on product detail pages when `dat
 | CMS value | Public model/use |
 | --- | --- |
 | top-level `slug` | Fallback recipe ID |
-| top-level `title` | Recipe card name |
+| top-level `title` | Recipe or serving-idea title |
 | top-level `description` | Fallback description when `data.body` is missing |
 | `data.source_id` | Preferred internal recipe ID |
-| `data.body` | Recipe card description |
+| `data.body` | Recipe or serving-idea introduction |
 | `data.ingredients` | Ingredient list; accepts a string array or newline-separated text |
 | `data.related_products` | Product IDs; accepts a string array or newline-separated text |
 | `data.prep_time` | Preparation-time label |
 | `data.cook_time` | Cooking-time label; exactly `0 min` hides the cook-time label |
-| `data.servings` | Numeric serving count; invalid/missing values become `1` |
-| `data.hero_image` | Mapped into the recipe model but not rendered by the current recipe card |
+| `data.servings` | Positive numeric serving count; invalid/missing values remain absent |
+| `data.hero_image` | Rendered as the recipe/serving-idea image when supplied |
 | `data.display_order` | Recipe-card order |
 
-`instructions` is not consumed by the current public site. Publishing it in the CMS alone will not display recipe directions.
+`data.instructions` now supplies recipe directions (string array or newline-separated text). An entry with nonempty ingredients and instructions renders as a **Recipe**, with all ingredients and the method available in a native disclosure. An older entry without directions renders as a **Serving idea**, with the complete ingredient list and no invented method or cooking-time claim. Empty direction entries are ignored.
+
+The existing CMS recipe editor, preview, and publish validation already support `instructions`; the product editor already supports preparation, storage, and nutrition fields. No backend/schema/editor change is needed for these additive consumers. Publish verified values through those existing editors. Missing fields remain hidden.
+
+Only recipe-linked products form **Bring these together** recommendations. Products without recipes do not get arbitrary same-category "pairings"; siblings appear once under **More in this collection**.
 
 ## What is still hardcoded
 
 Do not tell an editor these areas are CMS-managed without first changing the code and content contract:
 
 - The homepage sections below the hero: marquee, heritage story, collections heading/cards, featured-products presentation, trust badges, and newsletter copy.
-- Homepage collections retain code-selected first-nine ordering and taglines. Names and representative product images come from the merged catalog, with bundled card art as a fallback. All remaining categories appear in the additional collection links.
-- Homepage featured cards retain code-selected product IDs and taglines. Names, images, and links resolve against the merged catalog.
-- The Italian eyebrow and tagline inside the homepage hero.
+- Homepage collections feature six code-selected categories. Names, counts, and representative product images come from the merged catalog. All collections use the same card layout on `/products?view=collections`.
+- The homepage hero shows three code-selected products using merged names, images, and links. The separate FeaturedProducts section is no longer mounted.
+- The Italian eyebrow, product selection, and secondary story link inside the homepage hero.
 - The About page background image and all sections below its hero.
-- Mobile page links, mega-menu group membership, mega-menu promotional art, and category accent/color rules.
+- Mobile page links, shared menu group membership, and category accent/color rules. The former mega-menu promotional image is no longer rendered.
 - Footer social URLs, `TuscaniniFoods.com`, the Made in Italy label, headings, and copyright suffix.
 - Routes themselves. Publishing a new `page` entry does not create a URL or component automatically.
 - Layout, styling, animations, accessibility behavior, and responsive rules.
 
 Changing a hardcoded area requires a public-site code deployment. To make it editable, implement a CMS field or entry, add editor and preview support in the CMS when needed, map it in this repository, add a safe fallback, publish content, and update this document.
+
+
+## Catalog browsing and UI behavior
+
+- `/products` is the all-products route, included in build HTML and the sitemap. `?view=collections` displays all image-bearing collections. Search/filter URLs canonicalize to `/products` and use `noindex, follow`.
+- Category pages default to a product grid, with optional `?view=shelf`. Shelf items link directly to products; arrows and native horizontal scrolling replace the former selection panel and drag instruction.
+- Search and filters use URL state (`q`, `category`, `format`, `diet`, `sort`, `view`). Search normalizes accents and punctuation, accepts common shorthand, includes size/SKU and frozen attributes, and marks approximate spelling matches. The overlay previews six products and links to all results.
+- Frozen classification uses the API flag or established frozen category. The Gluten-free filter matches explicit gluten-free product names, not missing certification fields. `kosher` is displayed only for confirmed product values; no partial category certification fraction is rendered.
+- Products without images do not render in the new browsing cards or search. The upstream image-required addition rule remains unchanged.
+- Product pages show only the current product image in the main image area. Siblings are clearly labeled separate product cards. Mobile pages put the title and size before the image and show a sticky retailer action after the main action scrolls away.
+- The current retailer destinations are general stores: **Visit Amazon store** for non-frozen items, **Visit Tuscanini** for frozen items. They are not represented as exact listings or a store locator. Exact retailer listings still require verified data and a coordinated CMS field if added later.
+- `VITE_NEWSLETTER_ENDPOINT`, when configured, enables the existing labeled signup and success/error handling. Without it, the section links directly to Instagram; it no longer advertises an unavailable signup.
+- Section hash navigation waits for lazy-rendered destinations and respects the fixed header offset.
+
+This UI change requires a public-site deployment. Existing published editorial fields appear when the CMS is reachable; creating or correcting editorial content requires a separate CMS publish. No production CMS content was changed during implementation.
 
 ## Editor workflow
 

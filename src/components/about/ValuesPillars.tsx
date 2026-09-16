@@ -6,17 +6,17 @@ const values = [
   {
     icon: Award,
     title: "Authenticity",
-    description: "Every product traces back to Italian soil. We source directly from regional cooperatives and family-owned farms who have cultivated their land for generations.",
+    description: "Explore Italian favorites from pasta and olive oil to chocolate and sparkling drinks. Check each product for its origin.",
   },
   {
     icon: ShieldCheck,
     title: "Quality",
-    description: "Certified Kosher, uncompromising standards. Every ingredient is vetted, every process verified, every product held to the highest benchmarks of excellence.",
+    description: "Find product details and available certification information alongside each item. Always refer to the packaging for the latest information.",
   },
   {
     icon: Landmark,
     title: "Heritage",
-    description: "Preserving centuries-old culinary traditions. We honor the recipes and methods that have defined Italian cooking through the ages.",
+    description: "Explore the map below to discover regional flavors and find your next collection to try.",
   },
 ];
 
@@ -40,7 +40,7 @@ export default function ValuesPillars() {
               <h3 className="mt-[22px] mb-3 font-headline font-normal text-[25px] text-heading">
                 {value.title}
               </h3>
-              <p className="text-sm leading-[1.8] text-on-surface/65">{value.description}</p>
+              <p className="text-sm leading-[1.8] text-on-surface/80">{value.description}</p>
             </motion.div>
           ))}
         </div>

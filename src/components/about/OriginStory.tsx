@@ -31,23 +31,18 @@ export default function OriginStory() {
             Our Origins
           </span>
           <h2 className="mb-6 font-headline font-normal text-heading text-[clamp(2.125rem,4.2vw,3.375rem)] leading-[1.1] max-w-[20ch]">
-            Born of a Love for Italy&rsquo;s Table
+            Food worth gathering around
           </h2>
           <div className="flex flex-col gap-5 text-[17px] leading-[1.8] font-light text-on-surface/70 max-w-[54ch]">
             <p className="text-pretty">
-              Tuscanini was founded on a singular obsession: to bring the soul of the Italian kitchen
-              to homes everywhere. Not through imitation, but through authenticity &mdash; sourcing
-              directly from the families, cooperatives, and artisans who have perfected their craft
-              over centuries.
+              Tuscanini brings together the foods that make an Italian table:
+              pasta and sauces, olive oils, sparkling drinks, and something
+              sweet to finish.
             </p>
             <p className="text-pretty">
-              Our founders traveled the length of Italy, from the sun-baked olive groves of Puglia to
-              the alpine dairies of Trentino, forging relationships built on shared values: quality
-              without compromise, tradition without shortcuts, and a deep respect for the land.
-            </p>
-            <p className="font-script italic text-[23px] leading-[1.55] text-on-surface/85 border-l-2 border-gold/50 pl-[22px] py-1.5">
-              &ldquo;We don&rsquo;t just import Italian food. We carry forward the stories, the
-              traditions, and the generations of knowledge that make each product extraordinary.&rdquo;
+              Start with a favorite, try a new pairing, and discover the regions
+              behind the flavors. There is always another way to bring a little
+              Italy to your kitchen.
             </p>
           </div>
         </motion.div>

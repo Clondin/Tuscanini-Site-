@@ -18,7 +18,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
               {products.length === 1 ? "Product" : "Products"}
             </h2>
           </div>
-          <span className="text-on-surface/65 text-sm font-body">
+          <span className="text-on-surface/80 text-sm font-body">
             {products.length} {products.length === 1 ? "item" : "items"}
           </span>
         </div>

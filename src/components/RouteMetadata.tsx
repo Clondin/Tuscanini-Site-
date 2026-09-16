@@ -75,6 +75,8 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
           ],
         },
       };
+    } else if (pathname === '/products') {
+      metadata = { title: `Explore Our Products | ${siteTitle}`, description: 'Explore Tuscanini pasta, pantry staples, drinks, and more. Find a favorite by collection or product name.', robots: location.search ? 'noindex, follow' : 'index, follow', structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } };
     } else if (pathname === "/about") {
       const page = getCmsData("page", "about");
       metadata = {
@@ -177,7 +179,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
     } else {
       structuredData?.remove();
     }
-  }, [contentVersion, location.pathname, siteTitle, siteUrl, tagline]);
+  }, [contentVersion, location.pathname, location.search, siteTitle, siteUrl, tagline]);
 
   return null;
 }

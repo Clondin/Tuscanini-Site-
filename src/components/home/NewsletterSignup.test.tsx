@@ -14,7 +14,7 @@ describe("NewsletterSignup", () => {
     render(<NewsletterSignup />);
 
     expect(screen.queryByRole("textbox", { name: /email address/i })).not.toBeInTheDocument();
-    expect(screen.getByRole("status")).toHaveTextContent("Email signup is not available yet");
+    expect(screen.queryByText(/signup is not available/i)).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Tuscanini on Instagram/i })).toHaveAttribute(
       "href",
       "https://www.instagram.com/tuscaninifoods/",

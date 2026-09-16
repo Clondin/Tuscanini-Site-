@@ -31,9 +31,8 @@ export default function ProductPage() {
         product={product}
         categoryName={category.name}
         categorySlug={category.slug}
-        siblings={siblings}
       />
-      <ProductStory productName={product.name} details={product.details} />
+      {product.details && product.details !== product.description && <ProductStory productName={product.name} details={product.details} />}
       <RelatedProducts
         products={siblings}
         categorySlug={category.slug}

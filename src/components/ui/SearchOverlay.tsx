@@ -1,276 +1,206 @@
-import type { ReactNode, MouseEvent as ReactMouseEvent } from "react";
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
-import { X, Search } from "lucide-react";
-import { categories, type Category, type Product } from "../../data/products";
+import { Search, X, ArrowRight } from "lucide-react";
+import { categories } from "../../data/products";
+import { normalizeSearch, searchCatalog } from "../../lib/catalog-search";
 import { useModalDialog } from "../../hooks/useModalDialog";
 
-interface SearchOverlayProps {
+export default function SearchOverlay({
+  isOpen,
+  onClose,
+}: {
   isOpen: boolean;
   onClose: () => void;
-}
-
-interface CategoryResult {
-  category: Category;
-  matchField: "name";
-}
-
-interface ProductResult {
-  product: Product;
-  categorySlug: string;
-  matchField: "name" | "description";
-  score: number;
-}
-
-function productMatchScore(product: Product, query: string): { score: number; field: "name" | "description" } | null {
-  const name = product.name.toLowerCase();
-  const description = product.description.toLowerCase();
-  if (name === query) return { score: 0, field: "name" };
-  if (name.startsWith(query)) return { score: 1, field: "name" };
-  if (name.split(/\s+/).some((word) => word.startsWith(query))) return { score: 2, field: "name" };
-  if (name.includes(query)) return { score: 3, field: "name" };
-  if (description.includes(query)) return { score: 4, field: "description" };
-  return null;
-}
-
-function highlightMatch(text: string, query: string): ReactNode {
-  if (!query.trim()) return text;
-  const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi");
-  const parts = text.split(regex);
-  return parts.map((part, i) =>
-    regex.test(part) ? (
-      <mark key={i} className="bg-primary/20 text-primary rounded-sm px-0.5">
-        {part}
-      </mark>
-    ) : (
-      part
-    )
-  );
-}
-
-function useDebounce<T>(value: T, delay: number): T {
-  const [debounced, setDebounced] = useState(value);
-  useEffect(() => {
-    const timer = setTimeout(() => setDebounced(value), delay);
-    return () => clearTimeout(timer);
-  }, [value, delay]);
-  return debounced;
-}
-
-export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
+}) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const debouncedQuery = useDebounce(query, 300);
-  const handleClose = useCallback(() => {
+  const close = useCallback(() => {
     setQuery("");
     onClose();
   }, [onClose]);
   const dialogRef = useModalDialog<HTMLDivElement>({
     isOpen,
-    onClose: handleClose,
+    onClose: close,
     initialFocusRef: inputRef,
     inertAppRoot: true,
   });
-
-  // Click outside to close
-  const handleBackdropClick = useCallback(
-    (e: ReactMouseEvent) => {
-      if (e.target === overlayRef.current) handleClose();
-    },
-    [handleClose]
-  );
-
-  // Search logic
-  const { categoryResults, productResults } = useMemo(() => {
-    const q = debouncedQuery.trim().toLowerCase();
-    if (!q) return { categoryResults: [], productResults: [] };
-
-    const catResults: CategoryResult[] = [];
-    const matchedProducts: ProductResult[] = [];
-
-    for (const cat of categories) {
-      // Match category name
-      if (cat.name.toLowerCase().includes(q)) {
-        catResults.push({ category: cat, matchField: "name" });
-      }
-
-      // Match products
-      for (const product of cat.products) {
-        const match = productMatchScore(product, q);
-        if (match) {
-          matchedProducts.push({
-            product,
-            categorySlug: cat.slug,
-            matchField: match.field,
-            score: match.score,
-          });
-        }
-      }
-    }
-
-    matchedProducts.sort((left, right) =>
-      left.score - right.score || left.product.name.localeCompare(right.product.name),
-    );
-
-    return {
-      categoryResults: catResults.slice(0, 5),
-      productResults: matchedProducts.slice(0, 10),
-    };
-  }, [debouncedQuery]);
-
-  const hasResults = categoryResults.length > 0 || productResults.length > 0;
-  const hasQuery = debouncedQuery.trim().length > 0;
-
+  const q = normalizeSearch(query);
+  const products = q ? searchCatalog(categories, query) : [];
+  const collections = q
+    ? categories
+        .filter((category) => normalizeSearch(category.name).includes(q))
+        .slice(0, 4)
+    : [];
+  if (!isOpen) return null;
   return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          ref={overlayRef}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[60] bg-on-surface/40 backdrop-blur-sm"
-          onClick={handleBackdropClick}
-        >
-          <motion.div
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="search-dialog-title"
-            tabIndex={-1}
-            initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -40, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="w-full max-w-2xl mx-auto mt-20 sm:mt-28 bg-surface rounded-lg shadow-2xl border border-on-surface/10 overflow-hidden"
-          >
-            <h2 id="search-dialog-title" className="sr-only">Search Tuscanini products and categories</h2>
-            {/* Search input */}
-            <div className="flex items-center gap-3 px-5 py-4 border-b border-on-surface/10">
-              <Search size={20} className="text-on-surface/40 shrink-0" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                aria-label="Search products and categories"
-                placeholder="Search products and categories..."
-                className="flex-1 bg-transparent text-on-surface text-base placeholder:text-on-surface/40 outline-none font-body"
-              />
-              <button
-                onClick={handleClose}
-                className="min-w-11 min-h-11 inline-flex items-center justify-center text-on-surface/60 hover:text-on-surface transition-colors shrink-0"
-                aria-label="Close search"
+    <div
+      className="fixed inset-0 z-[60] bg-dark/60 backdrop-blur-sm px-3 sm:px-5"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) close();
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="search-title"
+        tabIndex={-1}
+        className="w-full max-w-2xl mx-auto mt-5 sm:mt-24 bg-surface shadow-2xl max-h-[calc(100dvh-40px)] sm:max-h-[80dvh] flex flex-col"
+      >
+        <div className="p-5 border-b border-on-surface/20">
+          <div className="flex items-center justify-between gap-4 mb-3">
+            <h2 id="search-title" className="font-headline text-2xl">
+              What’s on your table?
+            </h2>
+            <button
+              onClick={close}
+              aria-label="Close search"
+              className="h-11 w-11 flex items-center justify-center shrink-0"
+            >
+              <X size={21} />
+            </button>
+          </div>
+          <label className="flex items-center gap-3 border border-on-surface/40 px-3">
+            <Search size={19} aria-hidden="true" />
+            <input
+              ref={inputRef}
+              type="search"
+              aria-label="Search products and categories"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search pasta, olive oil, chocolate…"
+              className="min-w-0 w-full bg-transparent py-3 text-base"
+            />
+          </label>
+        </div>
+        <div className="overflow-y-auto p-5">
+          {!q ? (
+            <>
+              <p className="text-sm text-on-surface/80 mb-4">
+                A few places to start
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Pasta", "Olive oil", "Chocolate", "Frozen"].map((term) => (
+                  <button
+                    key={term}
+                    onClick={() => setQuery(term)}
+                    className="min-h-11 px-4 border border-on-surface/25 text-sm hover:bg-aged-cream"
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
+              <Link
+                to="/products?view=collections"
+                onClick={close}
+                className="inline-flex min-h-11 items-center gap-2 mt-5 text-olive-deep font-semibold"
               >
-                <X size={20} />
-              </button>
-            </div>
-
-            {/* Results */}
-            <div className="max-h-[60vh] overflow-y-auto">
-              {hasQuery && !hasResults && (
-                <div className="px-5 py-12 text-center">
-                  <p className="text-on-surface/50 text-sm font-body">
-                    No results found for "{debouncedQuery}"
-                  </p>
-                  <p className="text-on-surface/30 text-xs mt-2 font-body">
-                    Try a different search term
-                  </p>
-                </div>
-              )}
-
-              {!hasQuery && (
-                <div className="px-5 py-12 text-center">
-                  <p className="text-on-surface/40 text-sm font-body">
-                    Start typing to search products and categories
-                  </p>
-                </div>
-              )}
-
-              {/* Category results */}
-              {categoryResults.length > 0 && (
-                <div className="px-5 pt-4 pb-2">
-                  <h3 className="uppercase tracking-[0.2em] text-[9px] text-on-surface/40 mb-3 font-body">
-                    Categories
+                Explore all collections <ArrowRight size={17} />
+              </Link>
+            </>
+          ) : (
+            <>
+              <p role="status" className="text-sm text-on-surface/85 mb-4">
+                {products.length}{" "}
+                {products.length === 1 ? "product" : "products"}
+                {products.some((result) => result.approximate)
+                  ? " · Including close matches"
+                  : ""}
+              </p>
+              {collections.length > 0 && (
+                <div className="mb-5">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-olive-deep mb-2">
+                    Collections
                   </h3>
-                  <div className="space-y-1">
-                    {categoryResults.map((result) => (
+                  <div className="flex flex-wrap gap-2">
+                    {collections.map((category) => (
                       <Link
-                        key={result.category.id}
-                        to={`/category/${result.category.slug}`}
-                        onClick={handleClose}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-on-surface/5 transition-colors group"
+                        key={category.slug}
+                        to={`/category/${category.slug}`}
+                        onClick={close}
+                        className="inline-flex min-h-11 items-center px-3 border border-on-surface/25 text-sm"
                       >
-                        <div className="w-10 h-10 rounded-md overflow-hidden bg-hearth-stone shrink-0">
-                          <img
-                            src={result.category.heroImage}
-                            alt={result.category.name}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <ul>
+                {products
+                  .slice(0, 6)
+                  .map(({ product, category, approximate }) => (
+                    <li key={product.id}>
+                      <Link
+                        to={`/product/${product.id}`}
+                        onClick={close}
+                        className="flex items-center gap-4 p-3 -mx-3 hover:bg-aged-cream border-b border-on-surface/10"
+                      >
+                        <img
+                          src={product.image}
+                          alt=""
+                          className="w-14 h-16 object-contain shrink-0"
+                        />
                         <div className="min-w-0">
-                          <p className="text-sm text-on-surface font-body group-hover:text-primary transition-colors truncate">
-                            {highlightMatch(result.category.name, debouncedQuery)}
+                          <p className="text-base text-heading leading-snug">
+                            {product.name}
                           </p>
-                          <p className="text-xs text-on-surface/50 font-body truncate">
-                            {result.category.tagline}
+                          <p className="text-sm text-on-surface/80 mt-1">
+                            {product.size} · {category.name}
                           </p>
+                          {approximate && (
+                            <span className="text-xs text-olive-deep">
+                              Close match
+                            </span>
+                          )}
                         </div>
+                        <ArrowRight
+                          size={17}
+                          className="ml-auto shrink-0 text-olive-deep"
+                        />
                       </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Product results */}
-              {productResults.length > 0 && (
-                <div className="px-5 pt-4 pb-4">
-                  <h3 className="uppercase tracking-[0.2em] text-[9px] text-on-surface/40 mb-3 font-body">
-                    Products
+                    </li>
+                  ))}
+              </ul>
+              {!products.length && (
+                <div className="py-5">
+                  <h3 className="font-headline text-2xl">
+                    No products found for “{query}”
                   </h3>
-                  <div className="space-y-1">
-                    {productResults.map((result) => (
+                  <p className="text-sm mt-3">
+                    Try a shorter name, or explore a collection below.
+                  </p>
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {categories.slice(0, 4).map((category) => (
                       <Link
-                        key={result.product.id}
-                        to={`/product/${result.product.id}`}
-                        onClick={handleClose}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-on-surface/5 transition-colors group"
+                        key={category.slug}
+                        to={`/category/${category.slug}`}
+                        onClick={close}
+                        className="text-sm underline min-h-11 inline-flex items-center text-olive-deep"
                       >
-                        <div className="w-10 h-10 rounded-md overflow-hidden bg-hearth-stone shrink-0">
-                          <img
-                            src={result.product.image}
-                            alt={result.product.name}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="text-sm text-on-surface font-body group-hover:text-primary transition-colors truncate">
-                            {highlightMatch(result.product.name, debouncedQuery)}
-                          </p>
-                          <p className="text-xs text-on-surface/50 font-body truncate">
-                            {result.matchField === "description"
-                              ? highlightMatch(result.product.description, debouncedQuery)
-                              : result.product.description}
-                          </p>
-                        </div>
+                        {category.name}
                       </Link>
                     ))}
                   </div>
                 </div>
               )}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>,
+            </>
+          )}
+        </div>
+        {q && (
+          <Link
+            to={`/products?q=${encodeURIComponent(query.trim())}`}
+            onClick={close}
+            className="flex items-center justify-between gap-3 bg-olive-deep text-white px-5 py-4 font-semibold text-sm"
+          >
+            View all {products.length}{" "}
+            {products.length === 1 ? "result" : "results"}{" "}
+            <ArrowRight size={18} />
+          </Link>
+        )}
+      </div>
+    </div>,
     document.body,
   );
 }
