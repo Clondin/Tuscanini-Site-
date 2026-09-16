@@ -185,6 +185,7 @@ Changing a hardcoded area requires a public-site code deployment. To make it edi
 
 - `/products` is the all-products route, included in build HTML and the sitemap. `?view=collections` displays all image-bearing collections. Search/filter URLs canonicalize to `/products` and use `noindex, follow`.
 - Category pages default to Shelf view. `?view=grid` selects Grid, and existing `?view=shelf` links still open Shelf. Clearing filters preserves the chosen view. The all-products/search page continues to use a grid. Shelf items link directly to products; arrows and native horizontal scrolling replace the former selection panel and drag instruction.
+- Category collection descriptions display the editorial tagline and description without item-count, format-count, or country-of-origin summary statistics.
 - Search and filters use URL state (`q`, `category`, `format`, `diet`, `sort`, `view`). Search normalizes accents and punctuation, accepts common shorthand, includes size/SKU and frozen attributes, and marks approximate spelling matches. The overlay previews six products and links to all results.
 - Frozen classification uses the API flag or established frozen category. The Gluten-free filter matches explicit gluten-free product names, not missing certification fields. `kosher` is displayed only for confirmed product values; no partial category certification fraction is rendered.
 - Products without images do not render in the new browsing cards or search. The upstream image-required addition rule remains unchanged.
