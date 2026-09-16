@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Pause, Play } from "lucide-react";
 import { getCmsData } from "../../data/cms";
-import { getProductById } from "../../data/products";
 
 export default function HeroSection() {
   const cms = getCmsData("page", "home");
@@ -22,14 +21,6 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [videoPaused, setVideoPaused] = useState(false);
-  const picks = [
-    "evoo-750ml",
-    "sparkling-lemonade",
-    "chocolate-truffle-pistachio",
-  ].flatMap((id) => {
-    const product = getProductById(id);
-    return product?.image ? [product] : [];
-  });
   const toggleVideo = () => {
     if (!videoEnabled) {
       setVideoEnabled(true);
@@ -64,7 +55,7 @@ export default function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover opacity-35"
         />
       )}
-      <div className="relative max-w-7xl mx-auto px-5 md:px-10 py-10 md:py-16 grid lg:grid-cols-[1fr_1fr] items-center gap-8 lg:gap-14">
+      <div className="relative max-w-7xl mx-auto px-5 md:px-10 py-10 md:py-16">
         <div>
           <p className="text-gold text-xs uppercase tracking-[0.2em] mb-5">
             Taste Tuscanini. Know Italy.
@@ -109,32 +100,6 @@ export default function HeroSection() {
               {videoEnabled && !videoPaused ? "Pause film" : "Watch our film"}
             </button>
           )}
-        </div>
-        <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-white/90 mb-4">
-            A taste of Tuscanini
-          </p>
-          <div className="grid grid-cols-3 gap-2 md:gap-3">
-            {picks.map((product) => (
-              <Link
-                key={product.id}
-                to={`/product/${product.id}`}
-                className="group bg-aged-cream text-heading border border-white/30 p-3 md:p-4"
-              >
-                <div className="h-24 sm:h-40 lg:h-64 mb-3">
-                  <img
-                    src={product.image}
-                    alt=""
-                    className="h-full w-full object-contain transition-transform group-hover:scale-105 motion-reduce:transform-none"
-                  />
-                </div>
-                <h2 className="font-headline text-sm md:text-lg leading-snug">
-                  {product.name}
-                </h2>
-                <ArrowRight size={16} className="mt-3 text-olive-deep" />
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
     </section>

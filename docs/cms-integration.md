@@ -164,10 +164,10 @@ Only recipe-linked products form **Bring these together** recommendations. Produ
 
 Do not tell an editor these areas are CMS-managed without first changing the code and content contract:
 
-- The homepage sections below the hero: marquee, heritage story, collections heading/cards, featured-products presentation, trust badges, and newsletter copy.
+- The homepage sections below the hero: marquee, heritage story, collections heading/cards, trust badges, and newsletter copy.
 - Homepage collections feature six code-selected categories. Names, counts, and representative product images come from the merged catalog. All collections use the same card layout on `/products?view=collections`.
-- The homepage hero shows three code-selected products using merged names, images, and links. The separate FeaturedProducts section is no longer mounted.
-- The Italian eyebrow, product selection, and secondary story link inside the homepage hero.
+- The homepage hero contains no product cards. The separate FeaturedProducts section is not mounted.
+- The Italian eyebrow and secondary story link inside the homepage hero.
 - The About page background image and all sections below its hero.
 - Mobile page links, shared menu group membership, and category accent/color rules. The former mega-menu promotional image is no longer rendered.
 - Footer social URLs, `TuscaniniFoods.com`, the Made in Italy label, headings, and copyright suffix.
