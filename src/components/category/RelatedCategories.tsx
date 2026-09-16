@@ -13,7 +13,10 @@ const PREVIEW_COUNT = 4;
 
 function MiniShelf({ category }: { category: Category }) {
   const preview = category.products.slice(0, PREVIEW_COUNT);
-  const sizing = useMemo(() => shelfSizing(preview, { base: 150, min: 100, max: 200 }), [preview]);
+  const sizing = useMemo(
+    () => shelfSizing(preview, { base: 150, min: 100, max: 200 }),
+    [preview],
+  );
 
   if (preview.length === 0) return null;
 
@@ -27,7 +30,8 @@ function MiniShelf({ category }: { category: Category }) {
           {category.name}
         </Link>
         <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/80">
-          {category.products.length} {category.products.length === 1 ? "item" : "items"}
+          {category.products.length}{" "}
+          {category.products.length === 1 ? "item" : "items"}
         </span>
       </div>
 
@@ -59,14 +63,23 @@ function MiniShelf({ category }: { category: Category }) {
   );
 }
 
-export default function RelatedCategories({ currentCategoryId, allCategories }: RelatedCategoriesProps) {
+export default function RelatedCategories({
+  currentCategoryId,
+  allCategories,
+}: RelatedCategoriesProps) {
   const relatedCategories = useMemo(() => {
     // Deterministic rotation, not a shuffle — a random order would differ between
     // the server-rendered HTML and the client, and re-order on every re-render.
     const others = allCategories
-      .filter((category) => category.id !== currentCategoryId && category.products.length > 0)
+      .filter(
+        (category) =>
+          category.id !== currentCategoryId && category.products.length > 0,
+      )
       .sort((left, right) => left.name.localeCompare(right.name));
-    const offset = [...currentCategoryId].reduce((total, char) => total + char.charCodeAt(0), 0);
+    const offset = [...currentCategoryId].reduce(
+      (total, char) => total + char.charCodeAt(0),
+      0,
+    );
     const pivot = offset % Math.max(others.length, 1);
     return [...others.slice(pivot), ...others.slice(0, pivot)].slice(0, 3);
   }, [currentCategoryId, allCategories]);
@@ -77,9 +90,12 @@ export default function RelatedCategories({ currentCategoryId, allCategories }: 
     <section className="bg-earth-dark py-16 md:py-[72px] px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          title="Other shelves in the pantry"
+          title="More collections"
           rule="ink"
-          action={{ label: `All ${allCategories.length}`, to: "/products?view=collections" }}
+          action={{
+            label: `All ${allCategories.length}`,
+            to: "/products?view=collections",
+          }}
         />
         {relatedCategories.map((category) => (
           <MiniShelf key={category.id} category={category} />

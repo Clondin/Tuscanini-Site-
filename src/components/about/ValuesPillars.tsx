@@ -5,18 +5,21 @@ import SectionHeading from "../ui/SectionHeading";
 const values = [
   {
     icon: Award,
-    title: "Authenticity",
-    description: "Explore Italian favorites from pasta and olive oil to chocolate and sparkling drinks. Check each product for its origin.",
+    title: "Italian food",
+    description:
+      "Pasta, olive oil, chocolate, and sparkling drinks. See each product for its country of origin.",
   },
   {
     icon: ShieldCheck,
-    title: "Quality",
-    description: "Find product details and available certification information alongside each item. Always refer to the packaging for the latest information.",
+    title: "Product information",
+    description:
+      "Find pack sizes, ingredients, and certification details on product pages. Check the packaging for the latest information.",
   },
   {
     icon: Landmark,
-    title: "Heritage",
-    description: "Explore the map below to discover regional flavors and find your next collection to try.",
+    title: "Regional foods",
+    description:
+      "The map below introduces Italian regions and their foods, with links to related products.",
   },
 ];
 
@@ -24,7 +27,11 @@ export default function ValuesPillars() {
   return (
     <section className="bg-aged-cream py-20 md:py-22 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
-        <SectionHeading eyebrow="What We Stand For" title="Our Pillars" className="mb-12" />
+        <SectionHeading
+          eyebrow="About the range"
+          title="Food and product details"
+          className="mb-12"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3">
           {values.map((value, idx) => (
@@ -40,7 +47,9 @@ export default function ValuesPillars() {
               <h3 className="mt-[22px] mb-3 font-headline font-normal text-[25px] text-heading">
                 {value.title}
               </h3>
-              <p className="text-sm leading-[1.8] text-on-surface/80">{value.description}</p>
+              <p className="text-sm leading-[1.8] text-on-surface/80">
+                {value.description}
+              </p>
             </motion.div>
           ))}
         </div>

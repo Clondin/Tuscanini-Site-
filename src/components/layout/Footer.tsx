@@ -21,7 +21,7 @@ export default function Footer() {
   const body =
     typeof cms?.body === "string"
       ? cms.body
-      : "Italian favorites for everyday meals and tables full of friends. Explore pasta, pantry staples, drinks, and more.";
+      : "Pasta, sauces, olive oils, drinks, snacks, and frozen foods from Tuscanini.";
   return (
     <footer className="bg-dark-surface text-italia-white">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">

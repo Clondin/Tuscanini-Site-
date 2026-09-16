@@ -5,9 +5,9 @@ export const snackCategories: Category[] = [
     id: "crackers-breadsticks",
     name: "Crackers & Breadsticks",
     slug: "crackers-breadsticks",
-    tagline: "Artisan Italian Snacking",
+    tagline: "Crackers, crostini, and breadsticks",
     description:
-      "From delicate parchment crackers to hearty spelt crostini and crispy grissini breadsticks — our collection brings the Italian aperitivo tradition to your home.",
+      "Parchment crackers, spelt crostini, and grissini breadsticks. Serve with cheese, dips, or antipasto.",
     heroImage: "/assets/Crackers/730330.png",
     products: [
       // Parchment Crackers
@@ -58,7 +58,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730333.png",
         categoryId: "crackers-breadsticks",
         details:
-          "These indulgent parchment crackers are kissed with the unmistakable aroma of Italian truffles. Each wafer-thin cracker delivers an earthy sophistication that elevates any appetizer course or cheese pairing.",
+          "Thin parchment crackers with truffle flavor. Serve with cheese or appetizers.",
         size: "3.5 oz",
         kosher: true,
         madeInItaly: true,
@@ -111,7 +111,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730565.png",
         categoryId: "crackers-breadsticks",
         details:
-          "All the wholesome crunch of our spelt sea salt crostini in perfectly portioned snack packs. Each multipack contains six individually sealed bags, keeping every serving fresh and ready for wherever your day takes you.",
+          "Spelt sea salt crostini in six individually sealed snack bags.",
         size: "6 x 1.41 oz",
         kosher: true,
         madeInItaly: true,
@@ -175,9 +175,9 @@ export const snackCategories: Category[] = [
     id: "potato-chips",
     name: "Potato Chips",
     slug: "potato-chips",
-    tagline: "Italian Olive Oil Crunch",
+    tagline: "Potato chips",
     description:
-      "Premium Italian potato chips cooked in extra virgin olive oil. Simply seasoned and perfectly crispy, in full-size and snack bags.",
+      "Potato chips cooked in olive oil, available in full-size and snack bags.",
     heroImage: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
     products: [
       {
@@ -188,7 +188,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
         categoryId: "potato-chips",
         details:
-          "Crafted from select potatoes and cooked in genuine Italian extra virgin olive oil, these chips deliver a clean, savory taste with a satisfying crunch. A simple yet elevated take on the classic potato chip.",
+          "Potato chips cooked in extra virgin olive oil for a crisp, savory snack.",
         size: "4.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -240,7 +240,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Chips/Tuscanini-Rippled-Potato-Chips-1oz-730351.png",
         categoryId: "potato-chips",
         details:
-          "Enjoy the satisfying crunch of our rippled olive oil potato chips wherever you go. This single-serve bag is portioned for the perfect snack break, delivering premium Italian quality in every bite.",
+          "Rippled olive oil potato chips in a single-serve bag.",
         size: "1 oz",
         kosher: true,
         madeInItaly: true,
@@ -251,9 +251,9 @@ export const snackCategories: Category[] = [
     id: "chestnuts",
     name: "Chestnuts",
     slug: "chestnuts",
-    tagline: "Italian Roasted Goodness",
+    tagline: "Roasted chestnuts",
     description:
-      "Tender, naturally sweet Italian roasted chestnuts in a variety of flavors. A wholesome and comforting snack, ready to enjoy straight from the pouch.",
+      "Roasted chestnuts in several flavors, ready to eat from the pouch.",
     heroImage: "/assets/Chestnuts/Tuscanini Chestnuts_Original.png",
     products: [
       {
@@ -303,7 +303,7 @@ export const snackCategories: Category[] = [
     slug: "biscotti",
     tagline: "Traditional Italian Cookies",
     description:
-      "Semi-soft biscotti baked in the traditional Italian style. Perfect for dipping in coffee, tea, or enjoying on their own as an elegant Italian treat.",
+      "Semi-soft Italian biscotti. Serve with coffee or tea, or eat on their own.",
     heroImage: "/assets/Biscotti/730575.png",
     products: [
       {
@@ -353,7 +353,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Biscotti/730578.png",
         categoryId: "biscotti",
         details:
-          "Buttery pistachios and sun-dried apricots create a stunning Mediterranean flavor profile in these semi-soft biscotti. The nutty richness of pistachio paired with sweet, fruity apricot makes every bite a sophisticated indulgence.",
+          "Semi-soft biscotti with pistachios and dried apricots.",
         size: "8.8 oz",
         kosher: true,
         madeInItaly: true,
@@ -377,9 +377,9 @@ export const snackCategories: Category[] = [
     id: "fruit-spreads",
     name: "Fruit Spreads",
     slug: "fruit-spreads",
-    tagline: "Sun-Ripened Italian Preserves",
+    tagline: "Fruit spreads",
     description:
-      "Luxurious fruit spread preserves made with sun-ripened Italian fruits. No artificial flavors, just pure fruit goodness in every jar.",
+      "Fruit spreads for toast, pastries, and desserts. Choose from the flavors below.",
     heroImage: "/assets/Jam/730270.png",
     products: [
       {
@@ -453,9 +453,9 @@ export const snackCategories: Category[] = [
     id: "tuna-seafood",
     name: "Tuna & Seafood",
     slug: "tuna-seafood",
-    tagline: "Mediterranean Catch",
+    tagline: "Tuna in cans and jars",
     description:
-      "Premium Italian tuna, sustainably sourced and packed in quality olive oil or water. From everyday cans to luxurious ventresca belly cuts in elegant glass jars.",
+      "Tuna packed in olive oil or water, including ventresca belly cuts. Available in cans and glass jars.",
     heroImage: "/assets/ads/tuna-parallax.jpg",
     products: [
       {
@@ -466,7 +466,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/Tuscanini tuna in Olive Oil.png",
         categoryId: "tuna-seafood",
         details:
-          "Our solid light tuna is carefully selected and packed in quality Italian olive oil in an elegant glass jar. The olive oil infuses the tuna with a rich, smooth flavor that elevates salads, pasta, and antipasto plates.",
+          "Solid light tuna packed in olive oil in a glass jar. Use in salads, pasta, or antipasto.",
         size: "5.6 oz",
         kosher: true,
         madeInItaly: true,

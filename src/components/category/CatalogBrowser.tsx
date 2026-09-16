@@ -24,7 +24,7 @@ export default function CatalogBrowser({
   const format = params.get("format") || "";
   const glutenFree = params.get("diet") === "gluten-free";
   const sort = params.get("sort") || "featured";
-  const shelf = Boolean(category && params.get("view") === "shelf");
+  const shelf = Boolean(category && params.get("view") !== "grid");
   const update = (name: string, value: string) => {
     const next = new URLSearchParams(params);
     if (value) next.set(name, value);
@@ -156,7 +156,9 @@ export default function CatalogBrowser({
           {filtered && (
             <button
               onClick={() =>
-                setParams(shelf ? { view: "shelf" } : {}, { replace: true })
+                setParams(category && !shelf ? { view: "grid" } : {}, {
+                  replace: true,
+                })
               }
               className="inline-flex items-center gap-2 min-h-11 text-sm underline underline-offset-4"
             >
@@ -179,7 +181,7 @@ export default function CatalogBrowser({
           >
             <button
               aria-pressed={!shelf}
-              onClick={() => update("view", "")}
+              onClick={() => update("view", "grid")}
               className={`inline-flex items-center gap-2 px-4 min-h-11 text-sm ${!shelf ? "bg-olive-deep text-white" : ""}`}
             >
               <Grid2X2 size={16} />
@@ -187,7 +189,7 @@ export default function CatalogBrowser({
             </button>
             <button
               aria-pressed={shelf}
-              onClick={() => update("view", "shelf")}
+              onClick={() => update("view", "")}
               className={`inline-flex items-center gap-2 px-4 min-h-11 text-sm ${shelf ? "bg-olive-deep text-white" : ""}`}
             >
               <Columns3 size={16} />
@@ -215,15 +217,15 @@ export default function CatalogBrowser({
         )
       ) : (
         <div className="border border-on-surface/20 bg-surface py-14 px-6 text-center">
-          <h2 className="font-headline text-3xl">No products match just yet</h2>
+          <h2 className="font-headline text-3xl">No products found</h2>
           <p className="mt-3 text-on-surface/80">
-            Try a shorter name or clear a filter to see more.
+            Try another search or clear your filters.
           </p>
           <Link
             to="/products?view=collections"
             className="inline-flex min-h-11 items-center mt-5 text-olive-deep font-semibold underline underline-offset-4"
           >
-            Explore all collections
+            Browse all collections
           </Link>
         </div>
       )}

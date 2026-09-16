@@ -10,14 +10,13 @@ export default function ProductsPage() {
     <div className="bg-aged-cream min-h-screen">
       <div className="max-w-7xl mx-auto px-5 md:px-10 pt-9 pb-16">
         <p className="text-xs uppercase tracking-[0.18em] text-olive-deep mb-4">
-          The Tuscanini pantry
+          Tuscanini
         </p>
         <h1 className="font-headline text-4xl md:text-6xl text-heading">
-          Good food starts here.
+          Our products
         </h1>
         <p className="max-w-xl mt-5 text-on-surface/85 leading-relaxed">
-          Find a familiar favorite or something new for your table. Explore our
-          pasta, pantry staples, drinks, and more.
+          Browse pasta, sauces, olive oils, drinks, snacks, and frozen foods.
         </p>
         <nav
           aria-label="Browse the catalog"

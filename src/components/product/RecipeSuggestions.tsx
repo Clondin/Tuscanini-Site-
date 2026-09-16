@@ -16,10 +16,10 @@ export default function RecipeSuggestions({
   return (
     <section className="px-5 md:px-10 py-12 max-w-7xl mx-auto">
       <p className="text-xs tracking-[0.16em] uppercase text-olive-deep font-semibold mb-3">
-        Bring it to the table
+        Recipes & serving ideas
       </p>
       <h2 className="font-headline text-3xl md:text-4xl text-heading mb-8">
-        A little inspiration for your next meal
+        Ways to use this product
       </h2>
       <div
         className={`grid gap-6 ${recipes.length > 1 ? "md:grid-cols-2" : ""}`}
@@ -79,7 +79,7 @@ export default function RecipeSuggestions({
                       ({recipe.ingredients.length})
                     </summary>
                     <h4 className="font-semibold mt-3 mb-3 text-sm">
-                      {complete ? "Ingredients" : "What goes together"}
+                      {complete ? "Ingredients" : "Ingredients"}
                     </h4>
                     <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
                       {recipe.ingredients.map((ingredient, index) => (
@@ -108,7 +108,7 @@ export default function RecipeSuggestions({
       {pairs.length > 0 && (
         <div className="mt-12">
           <h2 className="font-headline text-3xl text-heading mb-6">
-            Bring these together
+            Products used here
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {pairs.slice(0, 4).map((product) => (

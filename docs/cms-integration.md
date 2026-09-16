@@ -158,7 +158,7 @@ Recipes are not standalone routes. They appear on product detail pages when `dat
 
 The existing CMS recipe editor, preview, and publish validation already support `instructions`; the product editor already supports preparation, storage, and nutrition fields. No backend/schema/editor change is needed for these additive consumers. Publish verified values through those existing editors. Missing fields remain hidden.
 
-Only recipe-linked products form **Bring these together** recommendations. Products without recipes do not get arbitrary same-category "pairings"; siblings appear once under **More in this collection**.
+Only recipe-linked products form **Products used here** recommendations. Products without recipes do not get arbitrary same-category "pairings"; siblings appear once under **More in this collection**.
 
 ## What is still hardcoded
 
@@ -174,13 +174,17 @@ Do not tell an editor these areas are CMS-managed without first changing the cod
 - Routes themselves. Publishing a new `page` entry does not create a URL or component automatically.
 - Layout, styling, animations, accessibility behavior, and responsive rules.
 
+The September 16 copy pass uses direct product, category, and action labels instead of generic slogans. It updates code-managed sections, static metadata, and the editorial fallback displayed during the CMS outage. Product names, product images, sizes, origin flags, certification values, IDs, and recipe references remain unchanged. Published CMS fields retain precedence over fallback wording; these code edits do not publish or override CMS content. Matching published copy changes require a CMS publish when the service is available.
+
+The About page uses six code-managed WebP images in `public/assets/Photos/story/` for its hero, story portrait, gallery, and closing background. These were created with ImageGen as editorial scenes of Italian life; depicted people are fictional and are not identified as Tuscanini employees or suppliers. They replace the previous About images without adding or changing a CMS field. The original assets remain available. This image refresh requires a public-site deployment only.
+
 Changing a hardcoded area requires a public-site code deployment. To make it editable, implement a CMS field or entry, add editor and preview support in the CMS when needed, map it in this repository, add a safe fallback, publish content, and update this document.
 
 
 ## Catalog browsing and UI behavior
 
 - `/products` is the all-products route, included in build HTML and the sitemap. `?view=collections` displays all image-bearing collections. Search/filter URLs canonicalize to `/products` and use `noindex, follow`.
-- Category pages default to a product grid, with optional `?view=shelf`. Shelf items link directly to products; arrows and native horizontal scrolling replace the former selection panel and drag instruction.
+- Category pages default to Shelf view. `?view=grid` selects Grid, and existing `?view=shelf` links still open Shelf. Clearing filters preserves the chosen view. The all-products/search page continues to use a grid. Shelf items link directly to products; arrows and native horizontal scrolling replace the former selection panel and drag instruction.
 - Search and filters use URL state (`q`, `category`, `format`, `diet`, `sort`, `view`). Search normalizes accents and punctuation, accepts common shorthand, includes size/SKU and frozen attributes, and marks approximate spelling matches. The overlay previews six products and links to all results.
 - Frozen classification uses the API flag or established frozen category. The Gluten-free filter matches explicit gluten-free product names, not missing certification fields. `kosher` is displayed only for confirmed product values; no partial category certification fraction is rendered.
 - Products without images do not render in the new browsing cards or search. The upstream image-required addition rule remains unchanged.

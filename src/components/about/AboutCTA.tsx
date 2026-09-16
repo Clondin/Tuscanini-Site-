@@ -9,10 +9,12 @@ export default function AboutCTA() {
       <img
         alt=""
         aria-hidden="true"
+        width={1672}
+        height={941}
         loading="lazy"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover opacity-30"
-        src="/assets/Photos/backgrounds/italian-coast.jpg"
+        src="/assets/Photos/story/italian-hillside-village-hero.webp"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/70 to-dark/95" />
 
@@ -23,11 +25,10 @@ export default function AboutCTA() {
         className="relative z-10 max-w-[820px] mx-auto text-center"
       >
         <h2 className="mb-5 font-headline font-normal text-italia-white text-[clamp(2.25rem,4.6vw,3.625rem)] leading-[1.1]">
-          Taste the Tradition
+          Browse our products
         </h2>
         <p className="mx-auto mb-10 max-w-[600px] font-serif-alt italic text-xl leading-[1.65] text-italia-white/70">
-          From our family to yours &mdash; discover the full range of authentic Italian products
-          crafted with generations of expertise.
+          See the full range of pasta, sauces, olive oils, drinks, and snacks.
         </p>
         <MagneticButton className="inline-block">
           <Link
@@ -39,7 +40,7 @@ export default function AboutCTA() {
           </Link>
         </MagneticButton>
         <p className="mt-14 font-script italic text-[26px] tracking-wide text-gold">
-          Benvenuti alla nostra tavola.
+          Taste Tuscanini. Know Italy.
         </p>
       </motion.div>
     </section>

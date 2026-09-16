@@ -10,7 +10,7 @@ export default function HeroSection() {
   const body =
     typeof cms?.body === "string"
       ? cms.body
-      : "Pasta for Sunday lunch. Olive oil for the finishing touch. Something sweet to share.";
+      : "Pasta, sauces, olive oils, drinks, and more from Tuscanini.";
   const buttonLabel =
     typeof cms?.cta_label === "string" ? cms.cta_label : "Explore products";
   const buttonUrl =

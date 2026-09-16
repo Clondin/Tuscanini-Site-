@@ -9,7 +9,7 @@ interface CategoryClosingProps {
 /** Only claims what the catalogue actually records for every item on the shelf. */
 function closingLine(category: Category): string {
   const products = category.products;
-  if (products.length === 0) return "More of Italy, one shelf at a time.";
+  if (products.length === 0) return "Browse more Tuscanini products.";
 
   const allItalian = products.every((p) => p.madeInItaly);
   const allKosher = products.every((p) => p.kosher);
@@ -19,7 +19,7 @@ function closingLine(category: Category): string {
   }
   if (allItalian) return "Everything on this shelf is made in Italy.";
   if (allKosher) return "Everything on this shelf is certified kosher.";
-  return "More of Italy, one shelf at a time.";
+  return "Browse more Tuscanini products.";
 }
 
 export default function CategoryClosing({ category }: CategoryClosingProps) {
@@ -33,7 +33,7 @@ export default function CategoryClosing({ category }: CategoryClosingProps) {
           to="/products?view=collections"
           className="inline-flex items-center gap-2.5 whitespace-nowrap px-8 py-[17px] bg-gold text-dark text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-gold-light transition-colors"
         >
-          Browse the pantry
+          All collections
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>

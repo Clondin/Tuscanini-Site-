@@ -577,7 +577,7 @@ export default function SourcingMap() {
         ref={containerRef}
         tabIndex={0}
         onKeyDown={handleMapKeyDown}
-        aria-label="Interactive map of Tuscanini sourcing regions in Italy. Use arrow keys to pan, plus and minus to zoom, and zero to reset."
+        aria-label="Interactive map of Italian food regions. Use arrow keys to pan, plus and minus to zoom, and zero to reset."
         className="sourcing-atlas group relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-on-surface/10 bg-aged-cream shadow-[0_35px_90px_rgba(59,44,32,0.16)] outline-none focus-visible:ring-2 focus-visible:ring-primary md:aspect-[16/10]"
       >
         <svg
@@ -585,7 +585,7 @@ export default function SourcingMap() {
           preserveAspectRatio="xMidYMid meet"
           className={`h-full w-full touch-none select-none ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
           role="img"
-          aria-label="An illustrated atlas of Italy with seven highlighted sourcing regions"
+          aria-label="A map of Italy with seven food regions"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -615,12 +615,41 @@ export default function SourcingMap() {
               <stop offset="0%" stopColor="#c56f48" />
               <stop offset="100%" stopColor="#8c3b24" />
             </linearGradient>
-            <filter id="atlas-shadow" x="-20%" y="-20%" width="140%" height="150%">
-              <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#3b2c20" floodOpacity="0.18" />
+            <filter
+              id="atlas-shadow"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="150%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="6"
+                stdDeviation="6"
+                floodColor="#3b2c20"
+                floodOpacity="0.18"
+              />
             </filter>
-            <filter id="atlas-paper" x="-10%" y="-10%" width="120%" height="120%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" seed="8" result="noise" />
-              <feColorMatrix in="noise" type="saturate" values="0" result="mono" />
+            <filter
+              id="atlas-paper"
+              x="-10%"
+              y="-10%"
+              width="120%"
+              height="120%"
+            >
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.65"
+                numOctaves="2"
+                seed="8"
+                result="noise"
+              />
+              <feColorMatrix
+                in="noise"
+                type="saturate"
+                values="0"
+                result="mono"
+              />
               <feComponentTransfer in="mono" result="faintNoise">
                 <feFuncA type="table" tableValues="0 0.065" />
               </feComponentTransfer>
@@ -667,7 +696,11 @@ export default function SourcingMap() {
 
           <g
             transform={transform}
-            className={animated ? "sourcing-atlas__zoom sourcing-atlas__zoom--animated" : "sourcing-atlas__zoom"}
+            className={
+              animated
+                ? "sourcing-atlas__zoom sourcing-atlas__zoom--animated"
+                : "sourcing-atlas__zoom"
+            }
           >
             <g aria-hidden="true">
               {NEIGHBORS.map((neighbor) => (
@@ -738,14 +771,18 @@ export default function SourcingMap() {
                     role={interactive ? "button" : undefined}
                     aria-label={
                       source
-                        ? `${source.name} sourcing region. ${source.products.join(", ")}.`
+                        ? `${source.name} food region. ${source.products.join(", ")}.`
                         : undefined
                     }
                     onPointerEnter={
-                      source ? (event) => updateRegionTip(source, event) : undefined
+                      source
+                        ? (event) => updateRegionTip(source, event)
+                        : undefined
                     }
                     onPointerMove={
-                      source ? (event) => updateRegionTip(source, event) : undefined
+                      source
+                        ? (event) => updateRegionTip(source, event)
+                        : undefined
                     }
                     onPointerLeave={source ? clearHover : undefined}
                     onClick={
@@ -775,8 +812,7 @@ export default function SourcingMap() {
             {selectedRegion &&
               (() => {
                 const geometry = ITALY_REGIONS.find(
-                  (candidate) =>
-                    candidate.name === selectedRegion.geometryName,
+                  (candidate) => candidate.name === selectedRegion.geometryName,
                 );
                 return geometry ? (
                   <path
@@ -834,7 +870,12 @@ export default function SourcingMap() {
             <g aria-hidden="true" opacity={k > 1.45 ? 0.72 : 0}>
               {PROJECTED_CITIES.map((city) => (
                 <g key={city.name}>
-                  <circle cx={city.point[0]} cy={city.point[1]} r={1.45 / k} fill="#55483c" />
+                  <circle
+                    cx={city.point[0]}
+                    cy={city.point[1]}
+                    r={1.45 / k}
+                    fill="#55483c"
+                  />
                   <text
                     x={city.point[0] + 4 / k}
                     y={city.point[1] + 2 / k}
@@ -973,10 +1014,22 @@ export default function SourcingMap() {
           />
 
           <g transform="translate(651 82)" aria-hidden="true" opacity="0.72">
-            <circle r="25" fill="#f8f2e7" fillOpacity="0.72" stroke="#725a45" strokeOpacity="0.4" />
+            <circle
+              r="25"
+              fill="#f8f2e7"
+              fillOpacity="0.72"
+              stroke="#725a45"
+              strokeOpacity="0.4"
+            />
             <path d="M0 -17 L5 0 L0 17 L-5 0 Z" fill="#8c3b24" opacity="0.84" />
             <path d="M-17 0 L0 -5 L17 0 L0 5 Z" fill="#4e665b" opacity="0.52" />
-            <text y="-31" textAnchor="middle" fontSize="8" fontWeight="700" fill="#4b3b2f">
+            <text
+              y="-31"
+              textAnchor="middle"
+              fontSize="8"
+              fontWeight="700"
+              fill="#4b3b2f"
+            >
               N
             </text>
           </g>
@@ -999,7 +1052,9 @@ export default function SourcingMap() {
         {hoverTip && (
           <div
             className={`pointer-events-none absolute z-30 hidden -translate-x-1/2 md:block ${
-              hoverTip.below ? "translate-y-4" : "-translate-y-[calc(100%+18px)]"
+              hoverTip.below
+                ? "translate-y-4"
+                : "-translate-y-[calc(100%+18px)]"
             }`}
             style={{
               left: `clamp(125px, ${hoverTip.x}px, calc(100% - 125px))`,
@@ -1112,11 +1167,14 @@ export default function SourcingMap() {
       </div>
 
       <div className="mt-3 min-h-[1px] md:hidden">
-        {selectedRegion && <InfoCard region={selectedRegion} onBack={resetMap} />}
+        {selectedRegion && (
+          <InfoCard region={selectedRegion} onBack={resetMap} />
+        )}
       </div>
 
       <p className="mt-4 text-center text-[11px] leading-relaxed tracking-wide text-on-surface/80">
-        Regional map data © Openpolis and ISTAT, licensed CC BY 4.0. Context data from Natural Earth.
+        Regional map data © Openpolis and ISTAT, licensed CC BY 4.0. Context
+        data from Natural Earth.
       </p>
     </div>
   );

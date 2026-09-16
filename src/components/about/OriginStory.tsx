@@ -12,11 +12,13 @@ export default function OriginStory() {
           className="aspect-[4/5] overflow-hidden border-b-8 border-gold/30"
         >
           <img
-            alt="Italian heritage"
+            alt="Craftsperson coiling rope beside blue fishing boats in a coastal Italian harbor."
+            width={1122}
+            height={1402}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover block"
-            src="/assets/Photos/PHOTO-2020-11-27-15-44-52.jpg"
+            className="w-full h-full object-cover object-[50%_45%] block"
+            src="/assets/Photos/story/coastal-craftsperson-lead.webp"
           />
         </motion.div>
 
@@ -28,21 +30,19 @@ export default function OriginStory() {
           className="min-w-0"
         >
           <span className="block mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-burnt-terracotta">
-            Our Origins
+            Tuscanini
           </span>
           <h2 className="mb-6 font-headline font-normal text-heading text-[clamp(2.125rem,4.2vw,3.375rem)] leading-[1.1] max-w-[20ch]">
-            Food worth gathering around
+            What we make
           </h2>
           <div className="flex flex-col gap-5 text-[17px] leading-[1.8] font-light text-on-surface/70 max-w-[54ch]">
             <p className="text-pretty">
-              Tuscanini brings together the foods that make an Italian table:
-              pasta and sauces, olive oils, sparkling drinks, and something
-              sweet to finish.
+              Our range includes pasta, sauces, olive oils, sparkling drinks,
+              snacks, chocolate, and frozen foods.
             </p>
             <p className="text-pretty">
-              Start with a favorite, try a new pairing, and discover the regions
-              behind the flavors. There is always another way to bring a little
-              Italy to your kitchen.
+              Choose from different pasta shapes, sauce varieties, drink
+              flavors, and pack sizes. Each product page has the details.
             </p>
           </div>
         </motion.div>

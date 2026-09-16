@@ -51,7 +51,7 @@ export default function SearchOverlay({
         <div className="p-5 border-b border-on-surface/20">
           <div className="flex items-center justify-between gap-4 mb-3">
             <h2 id="search-title" className="font-headline text-2xl">
-              What’s on your table?
+              Search products
             </h2>
             <button
               onClick={close}
@@ -78,7 +78,7 @@ export default function SearchOverlay({
           {!q ? (
             <>
               <p className="text-sm text-on-surface/80 mb-4">
-                A few places to start
+                Search by category
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Pasta", "Olive oil", "Chocolate", "Frozen"].map((term) => (

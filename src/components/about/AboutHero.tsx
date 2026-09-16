@@ -3,19 +3,23 @@ import { getCmsData } from "../../data/cms";
 
 export default function AboutHero() {
   const cms = getCmsData("page", "about");
-  const headline = typeof cms?.headline === "string" ? cms.headline : "Our Story";
-  const body = typeof cms?.body === "string"
-    ? cms.body
-    : "A journey rooted in tradition, driven by an unwavering passion for authentic Italian flavors.";
+  const headline =
+    typeof cms?.headline === "string" ? cms.headline : "Our Story";
+  const body =
+    typeof cms?.body === "string"
+      ? cms.body
+      : "Italian pasta, sauces, olive oils, drinks, and more. This is Tuscanini.";
 
   return (
     <section className="relative h-[62vh] min-h-[520px] flex items-center justify-center overflow-hidden bg-dark">
       <img
-        alt="Italian countryside"
+        alt="Stone village lane overlooking olive-covered Italian hills at sunset."
+        width={1672}
+        height={941}
         fetchPriority="high"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover opacity-80"
-        src="/assets/Photos/backgrounds/italian-village-hero.webp"
+        src="/assets/Photos/story/italian-hillside-village-hero.webp"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-dark/88 via-dark/30 to-dark/45" />
 
@@ -26,7 +30,9 @@ export default function AboutHero() {
         className="relative z-10 text-center px-6 md:px-10 max-w-[900px] mx-auto"
       >
         <div className="inline-block px-6 py-2 border border-gold/45 mb-[30px]">
-          <p className="font-serif-alt italic tracking-[0.12em] text-gold text-sm">La Nostra Storia</p>
+          <p className="font-serif-alt italic tracking-[0.12em] text-gold text-sm">
+            La Nostra Storia
+          </p>
         </div>
         <h1 className="font-headline font-normal text-italia-white text-[clamp(3.25rem,7.5vw,6rem)] leading-none">
           {headline}

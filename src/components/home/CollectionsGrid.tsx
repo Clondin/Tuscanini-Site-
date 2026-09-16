@@ -22,8 +22,8 @@ export default function CollectionsGrid() {
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          eyebrow="Find your favorites"
-          title="Explore the pantry"
+          eyebrow="Our products"
+          title="Browse by category"
           action={{
             label: `All ${categories.length} collections`,
             to: "/products?view=collections",
@@ -36,7 +36,7 @@ export default function CollectionsGrid() {
             href="/products?view=collections"
             className="min-h-11 inline-flex items-center text-sm font-semibold text-olive-deep underline underline-offset-4"
           >
-            Discover all {categories.length} collections
+            View all {categories.length} collections
           </a>
         </div>
       </div>

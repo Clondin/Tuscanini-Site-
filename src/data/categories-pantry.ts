@@ -5,16 +5,16 @@ export const pantryCategories: Category[] = [
     id: "olive-oil",
     name: "Olive Oil",
     slug: "olive-oil",
-    tagline: "Liquid Gold from Ancient Groves",
+    tagline: "Olive oils for cooking and dressing",
     description:
-      "From cold-pressed extra virgin olive oil to delicately refined light olive oil, our collection captures centuries of Italian tradition in every bottle.",
+      "Extra virgin and light olive oils, including flavored varieties for cooking, salad dressings, and finishing dishes.",
     heroImage: "/assets/Olive Oil/730406 Large.png",
     products: [
       {
         id: "extra-light-olive-oil-1l",
         name: "Extra Light Olive Oil 1L",
         description:
-          "A delicately refined olive oil with a mild, neutral flavor perfect for high-heat cooking and baking. Versatile enough for every kitchen task.",
+          "Refined olive oil with a mild flavor for cooking and baking.",
         image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-1L-730400.png",
         categoryId: "olive-oil",
         details:
@@ -83,7 +83,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Olive Oil/730256-PRIMARY-SHOT.png",
         categoryId: "olive-oil",
         details:
-          "Sun-ripened Sicilian lemons lend their bright citrus essence to our cold-pressed extra virgin olive oil. The result is a lively, aromatic oil that elevates fish, vegetables, and desserts alike.",
+          "Lemon-flavored extra virgin olive oil for fish, vegetables, dressings, and baking.",
         size: "250ml",
         kosher: true,
         madeInItaly: true,
@@ -92,11 +92,11 @@ export const pantryCategories: Category[] = [
         id: "evoo-black-truffle-250ml",
         name: "Extra Virgin Olive Oil with Black Truffle",
         description:
-          "Luxurious extra virgin olive oil infused with prized Italian black truffles. An indulgent finishing oil with an earthy, intoxicating aroma.",
+          "Extra virgin olive oil with black truffle flavor.",
         image: "/assets/Olive Oil/730257.png",
         categoryId: "olive-oil",
         details:
-          "Our truffle-infused EVOO marries the richness of cold-pressed Italian olive oil with the unmistakable earthy depth of black truffles. A few drops elevate pasta, risotto, eggs, and popcorn to gourmet status.",
+          "Use this black truffle olive oil to finish pasta, risotto, eggs, or popcorn.",
         size: "250ml",
         kosher: true,
         madeInItaly: true,
@@ -107,9 +107,9 @@ export const pantryCategories: Category[] = [
     id: "vinegars-glazes",
     name: "Vinegars & Glazes",
     slug: "vinegars-glazes",
-    tagline: "The Art of Italian Acidity",
+    tagline: "Vinegars and glazes",
     description:
-      "Aged balsamic vinegar of Modena, artisan glazes, and premium wine vinegars — the essential finishing touches of Italian cuisine.",
+      "Balsamic vinegar, wine vinegars, and glazes for dressings, marinades, and sauces.",
     heroImage: "/assets/ads/balsamic-parallax.jpg",
     products: [
       {
@@ -168,7 +168,7 @@ export const pantryCategories: Category[] = [
         id: "caramel-balsamic-glaze-modena",
         name: "Caramel Balsamic Vinegar Glaze of Modena",
         description:
-          "A luscious caramel-infused balsamic glaze with a sweet, buttery depth. An indulgent finishing touch for desserts, cheeses, and roasted meats.",
+          "Caramel balsamic glaze for desserts, cheese, and roasted meats.",
         image: "/assets/Vinegar/730251.png",
         categoryId: "vinegars-glazes",
         details:
@@ -235,9 +235,9 @@ export const pantryCategories: Category[] = [
     id: "cooking-wines-citrus",
     name: "Cooking Wines & Citrus",
     slug: "cooking-wines-citrus",
-    tagline: "Essential Italian Kitchen Staples",
+    tagline: "Cooking wines and citrus juices",
     description:
-      "Quality Italian cooking wines and pure Sicilian citrus juices to bring brightness and depth to your recipes.",
+      "Cooking wines, lemon juice, and lime juice for sauces, marinades, and baking.",
     heroImage: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
     products: [
       {
@@ -287,7 +287,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Lemon Juice/730286.png",
         categoryId: "cooking-wines-citrus",
         details:
-          "The larger format of our Sicilian Lemon Juice is perfect for avid cooks and entertainers. Pure, tart, and intensely flavorful — a versatile ingredient that brightens everything it touches.",
+          "Sicilian lemon juice in a larger bottle for cooking, baking, and drinks.",
         size: "16.9 oz",
         kosher: true,
         madeInItaly: true,
@@ -298,9 +298,9 @@ export const pantryCategories: Category[] = [
     id: "olives",
     name: "Olives",
     slug: "olives",
-    tagline: "Mediterranean Treasures",
+    tagline: "Olives in jars and pouches",
     description:
-      "Hand-picked Italian olives in every style — from buttery Castelvetrano to bold Kalamata, in jars and convenient on-the-go pouches.",
+      "Castelvetrano, Kalamata, and other olive varieties, available in jars, pouches, and platters.",
     heroImage: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
     products: [
       {
@@ -478,9 +478,9 @@ export const pantryCategories: Category[] = [
     id: "italian-condiments",
     name: "Italian Condiments",
     slug: "italian-condiments",
-    tagline: "Bold Flavors of Italy",
+    tagline: "Peppers, capers, and condiments",
     description:
-      "Fiery Calabrian chili peppers, sun-dried tomatoes, artisan jams, capers, and gourmet condiments that transform every dish into a Mediterranean masterpiece.",
+      "Calabrian chili peppers, sun-dried tomatoes, jams, capers, and other condiments for cooking and serving.",
     heroImage: "/assets/Peppers/730438.png",
     products: [
       {
@@ -556,7 +556,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Jam/730276.png",
         categoryId: "italian-condiments",
         details:
-          "Our Tomato Savory Jam transforms ripe Italian tomatoes into a sophisticated sweet-savory spread. Its unique flavor profile makes it a standout accompaniment for aged cheeses, charcuterie boards, crostini, and grilled meats.",
+          "A sweet-savory tomato spread for cheese, crostini, or grilled meat.",
         size: "12.17 oz",
         kosher: true,
         madeInItaly: true,
@@ -565,11 +565,11 @@ export const pantryCategories: Category[] = [
         id: "truffle-ketchup",
         name: "Truffle Ketchup",
         description:
-          "A gourmet twist on a classic condiment, blending ripe Italian tomatoes with luxurious black truffle. Elevates burgers, fries, and everything in between.",
+          "Tomato ketchup with black truffle. Serve with burgers and fries, or use as a dip.",
         image: "/assets/Truffle Ketchup/730233-PRIMARY-SHOT.png",
         categoryId: "italian-condiments",
         details:
-          "Our Truffle Ketchup combines the familiar tang of premium tomato ketchup with the earthy sophistication of Italian black truffles. It transforms everyday favorites into gourmet experiences — try it with fries, burgers, or as a dipping sauce.",
+          "Black truffle adds an earthy flavor to this tomato ketchup.",
         size: "10 oz",
         kosher: true,
         madeInItaly: true,
@@ -580,9 +580,9 @@ export const pantryCategories: Category[] = [
     id: "pasta-sauces",
     name: "Pasta Sauces",
     slug: "pasta-sauces",
-    tagline: "The Soul of Italian Cooking",
+    tagline: "Pasta and pizza sauces",
     description:
-      "Signature pasta and pizza sauces crafted from vine-ripened Italian tomatoes with aromatic herbs. Ready to pour over your favorite pasta or spread on homemade pizza.",
+      "Tomato sauces for pasta and pizza, including marinara, Napoletana, and spicy varieties.",
     heroImage: "/assets/ads/marinara-banner.jpg",
     products: [
       {
@@ -643,9 +643,9 @@ export const pantryCategories: Category[] = [
     id: "canned-tomatoes",
     name: "Canned Tomatoes & Paste",
     slug: "canned-tomatoes",
-    tagline: "Premium Italian Tomato Essentials",
+    tagline: "Tomatoes and tomato paste",
     description:
-      "From concentrated paste to whole peeled tomatoes, these premium Italian tomato products are the building blocks of authentic Italian cooking.",
+      "Whole, chopped, and crushed tomatoes, passata, and tomato paste for sauces, soups, and stews.",
     heroImage: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
     products: [
       {
@@ -810,9 +810,9 @@ export const pantryCategories: Category[] = [
     id: "seasonings-truffles",
     name: "Seasonings & Truffles",
     slug: "seasonings-truffles",
-    tagline: "The Finishing Touch",
+    tagline: "Salt, spices, and truffles",
     description:
-      "Premium Mediterranean sea salts, artisan spice grinders, and luxurious Italian truffle products to elevate every dish.",
+      "Sea salts, spice grinders, truffle oils, and sauces for cooking and seasoning.",
     heroImage: "/assets/Truffles/730580.png",
     products: [
       {
@@ -849,7 +849,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Salt/730282.png",
         categoryId: "seasonings-truffles",
         details:
-          "Our Sea Salt Flakes form naturally into delicate, crunchy pyramids that melt on the tongue with a burst of pure saltiness. Pinch them over steaks, chocolate, salads, and baked goods for an elevated finishing touch.",
+          "Crunchy, pyramid-shaped sea salt flakes. Sprinkle over cooked food, salads, or baked goods.",
         size: "4.4 oz",
         kosher: true,
         madeInItaly: true,
@@ -862,7 +862,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Salt/730283.png",
         categoryId: "seasonings-truffles",
         details:
-          "Our Smoked Sea Salt Flakes are naturally smoked over wood to infuse each delicate crystal with a rich, smoky depth. Sprinkle them over grilled steaks, roasted vegetables, eggs, or even caramel for a sophisticated smoky finish.",
+          "Smoked sea salt flakes for grilled food, roasted vegetables, eggs, or caramel.",
         size: "4.4 oz",
         kosher: true,
         madeInItaly: true,
@@ -901,7 +901,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Spice Grinder/730291.png",
         categoryId: "seasonings-truffles",
         details:
-          "Our Peppercorn Medley combines four distinct peppercorn varieties for a multidimensional pepper experience. Each color brings its own character — from the heat of black to the floral sweetness of pink — creating a sophisticated blend.",
+          "A blend of four peppercorn varieties, combining heat with floral notes.",
         size: "1.41 oz",
         kosher: true,
         madeInItaly: true,
@@ -962,7 +962,7 @@ export const pantryCategories: Category[] = [
         id: "truffle-salt",
         name: "Truffle Salt",
         description:
-          "Premium sea salt blended with real Italian black truffle for an indulgent finishing salt. A pinch transforms any dish into something extraordinary.",
+          "Sea salt blended with black truffle for seasoning cooked dishes.",
         image: "/assets/Truffles/730580.png",
         categoryId: "seasonings-truffles",
         details:
@@ -979,7 +979,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Truffles/730581.png",
         categoryId: "seasonings-truffles",
         details:
-          "Our Black Truffle Sauce blends finely chopped Italian black truffles with mushrooms and olive oil for a deeply savory, umami-rich condiment. A spoonful elevates pasta, risotto, bruschetta, and grilled meats to gourmet status.",
+          "Chopped black truffles, mushrooms, and olive oil in a sauce for pasta, risotto, bruschetta, or grilled meat.",
         size: "6.35 oz",
         kosher: true,
         madeInItaly: true,
@@ -1005,7 +1005,7 @@ export const pantryCategories: Category[] = [
         image: "/assets/Truffles/730585.png",
         categoryId: "seasonings-truffles",
         details:
-          "Our Minced Black Truffle offers the full intensity of Italian truffles in a ready-to-use format. Mix into compound butters, cream sauces, vinaigrettes, and mashed potatoes for effortless truffle indulgence.",
+          "Ready-to-use minced black truffle. Mix into butter, sauces, vinaigrettes, or mashed potatoes.",
         size: "2.82 oz",
         kosher: true,
         madeInItaly: true,
@@ -1055,9 +1055,9 @@ export const pantryCategories: Category[] = [
     id: "flour-baking",
     name: "Flour & Baking",
     slug: "flour-baking",
-    tagline: "The Foundation of Italian Cooking",
+    tagline: "Flour for pasta, bread, and pizza",
     description:
-      "Premium Italian flours crafted from the finest wheat, perfect for homemade pasta, bread, pizza, and pastry. From classic all-purpose to specialty spelt and high-gluten varieties.",
+      "All-purpose, spelt, high-gluten, and other flours for pasta, bread, pizza, and pastry.",
     heroImage: "/assets/Flour/High gluten TUSCANINI_2,27Kg_2501013_facing.png",
     products: [
       {
@@ -1144,8 +1144,8 @@ export const pantryCategories: Category[] = [
     id: "pesto",
     name: "Pesto",
     slug: "pesto",
-    tagline: "The Taste of Liguria",
-    description: "Authentic Italian pesto sauces made with fresh basil, premium olive oil, and traditional recipes. Ready to toss with pasta, spread on sandwiches, or use as a vibrant dip.",
+    tagline: "Pesto for pasta and sandwiches",
+    description: "Basil and sun-dried tomato pesto. Toss with pasta, spread on sandwiches, or serve as a dip.",
     heroImage: "/assets/Pesto/730231.png",
     products: [
       {

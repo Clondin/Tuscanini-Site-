@@ -149,7 +149,7 @@ export default function Navbar() {
                   onClick={closeMenus}
                   className="font-headline text-3xl text-italia-white inline-flex items-center gap-4"
                 >
-                  Explore the pantry <ArrowRight size={21} />
+                  All products <ArrowRight size={21} />
                 </Link>
                 <Link
                   to="/products?view=collections"
@@ -196,7 +196,7 @@ export default function Navbar() {
           >
             <div className="px-6 py-5">
               <div className="flex items-center justify-between mb-6">
-                <p className="font-headline text-3xl">Explore Tuscanini</p>
+                <p className="font-headline text-3xl">Tuscanini</p>
                 <button
                   aria-label="Close menu"
                   onClick={closeMobileMenu}

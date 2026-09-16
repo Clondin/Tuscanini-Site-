@@ -6,20 +6,23 @@ const journeySteps = [
   {
     icon: Sun,
     region: "Tuscany",
-    title: "Tuscan Olive Groves",
-    description: "From century-old olive trees nestled in the rolling hills of Tuscany, we source the finest extra virgin olive oil — cold-pressed within hours of harvest to capture the peppery, fruity essence of the land.",
+    title: "Olive oil",
+    description:
+      "Tuscany is known for olive oil with fruity and peppery flavors. Browse our olive oils for cooking, dressings, and finishing dishes.",
   },
   {
     icon: Grape,
     region: "Sicily",
-    title: "Sicilian Citrus Orchards",
-    description: "The volcanic soils of Sicily yield blood oranges and lemons of extraordinary intensity. Our citrus beverages and flavors draw directly from these sun-drenched orchards, carrying the vibrant spirit of the island.",
+    title: "Citrus",
+    description:
+      "Sicilian lemons and blood oranges appear throughout the drink range. Browse lemonades, sparkling drinks, and citrus juices.",
   },
   {
     icon: TreePine,
     region: "Piedmont",
-    title: "Piedmont Hazelnut Farms",
-    description: "The prized Tonda Gentile hazelnut of Piedmont forms the heart of our chocolate truffles. Roasted slowly and blended with Italian cocoa, these nuts contribute a depth of flavor found nowhere else on earth.",
+    title: "Chocolate and hazelnuts",
+    description:
+      "Piedmont is known for chocolate and hazelnuts. Browse chocolate bars, gianduiotti, and truffles in our chocolate collection.",
   },
 ];
 
@@ -34,14 +37,13 @@ export default function SourcingJourney() {
           className="text-center mb-14"
         >
           <span className="block mb-3.5 text-[10px] font-bold uppercase tracking-[0.3em] text-burnt-terracotta">
-            From Farm to Table
+            Regional foods
           </span>
           <h2 className="mb-4 font-headline font-normal italic text-heading text-[clamp(1.875rem,3.6vw,2.75rem)]">
-            The Italian Sourcing Journey
+            A map of Italian food
           </h2>
           <p className="mx-auto max-w-[620px] font-serif-alt italic text-lg leading-[1.7] text-on-surface/80">
-            We travel so you don&rsquo;t have to &mdash; traversing Italy&rsquo;s diverse regions to
-            bring you the finest each has to offer.
+            Select a region to read about its foods and browse related products.
           </p>
         </motion.div>
 
@@ -54,7 +56,7 @@ export default function SourcingJourney() {
           className="mb-16"
         >
           <p className="mb-6 text-center text-[10px] uppercase tracking-[0.2em] text-on-surface/80">
-            Hover or tap the pins to explore our sourcing regions
+            Select a region or a pin
           </p>
           <SourcingMap />
         </motion.div>

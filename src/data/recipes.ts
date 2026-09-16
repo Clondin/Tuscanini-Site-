@@ -16,7 +16,7 @@ export let recipes: Recipe[] = [
     id: "classic-margherita-pizza",
     name: "Classic Margherita Pizza",
     description:
-      "The quintessential Neapolitan pizza with fresh mozzarella, basil, and a rich tomato sauce on a golden crust.",
+      "Pizza with tomato sauce, fresh mozzarella, and basil.",
     ingredients: [
       "Pizza crust",
       "Traditional pizza sauce",
@@ -34,7 +34,7 @@ export let recipes: Recipe[] = [
     id: "pasta-al-pomodoro",
     name: "Pasta al Pomodoro",
     description:
-      "A beautifully simple Italian classic — spaghetti tossed in a vibrant, garlicky tomato sauce finished with fresh basil.",
+      "Spaghetti with tomato sauce, garlic, olive oil, and fresh basil.",
     ingredients: [
       "Spaghetti",
       "Classic marinara sauce",
@@ -75,7 +75,7 @@ export let recipes: Recipe[] = [
     id: "chocolate-truffle-fondue",
     name: "Chocolate Truffle Fondue",
     description:
-      "A luxurious melted chocolate fondue using Italian truffles, served with fresh fruit and roasted chestnuts.",
+      "Melted chocolate truffles with cream, served with fruit and roasted chestnuts.",
     ingredients: [
       "Dark chocolate truffles",
       "Heavy cream",
@@ -94,7 +94,7 @@ export let recipes: Recipe[] = [
     id: "seafood-pasta",
     name: "Seafood Pasta with Tuna",
     description:
-      "Italian tuna in olive oil tossed with penne, capers, Calabrian chili, and a splash of white wine. A quick Mediterranean feast.",
+      "Penne with tuna in olive oil, capers, Calabrian chili, and white cooking wine.",
     ingredients: [
       "Penne",
       "Solid light tuna in olive oil",
@@ -117,7 +117,7 @@ export let recipes: Recipe[] = [
     id: "italian-antipasto-board",
     name: "Italian Antipasto Board",
     description:
-      "A stunning spread of olives, sun-dried tomatoes, and Calabrian chili jam arranged on a rustic board.",
+      "An antipasto board with olives, sun-dried tomatoes, and Calabrian chili jam.",
     ingredients: [
       "Italian olives trio platter",
       "Sun-dried tomatoes",
@@ -137,7 +137,7 @@ export let recipes: Recipe[] = [
     id: "gnocchi-al-pesto",
     name: "Gnocchi al Pesto",
     description:
-      "Pillowy potato gnocchi tossed in fragrant basil pesto with toasted pine nuts and a drizzle of fine olive oil.",
+      "Potato gnocchi with basil pesto, pine nuts, and olive oil.",
     ingredients: [
       "Potato gnocchi",
       "Basil pesto",
@@ -154,7 +154,7 @@ export let recipes: Recipe[] = [
     id: "balsamic-caprese-salad",
     name: "Balsamic Caprese Salad",
     description:
-      "Fresh mozzarella and ripe tomatoes drizzled with balsamic glaze and lemon-infused olive oil. Simple Italian elegance.",
+      "Fresh mozzarella and tomatoes with balsamic glaze and lemon olive oil.",
     ingredients: [
       "Fresh mozzarella",
       "Ripe tomatoes",
@@ -172,7 +172,7 @@ export let recipes: Recipe[] = [
     id: "truffle-fettuccine",
     name: "Truffle Fettuccine",
     description:
-      "Silky fettuccine ribbons finished with black truffle olive oil, butter, and a shower of Parmigiano. Pure indulgence.",
+      "Fettuccine with black truffle olive oil, butter, and Parmigiano-Reggiano.",
     ingredients: [
       "Fettuccine",
       "Extra virgin olive oil with black truffle",
@@ -229,7 +229,7 @@ export let recipes: Recipe[] = [
     id: "rigatoni-arrabbiata",
     name: "Rigatoni all'Arrabbiata",
     description:
-      "Bold rigatoni in a fiery tomato sauce with Calabrian chili peppers and garlic olive oil. A spicy Roman classic.",
+      "Rigatoni with spicy tomato sauce, Calabrian chili peppers, and garlic olive oil.",
     ingredients: [
       "Rigatoni",
       "Zesty marinara sauce",

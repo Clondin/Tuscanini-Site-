@@ -5,20 +5,20 @@ export const mealCategories: Category[] = [
     id: "pasta-gnocchi",
     name: "Pasta & Gnocchi",
     slug: "pasta-gnocchi",
-    tagline: "Bronze-Cut Perfection",
+    tagline: "Pasta shapes and gnocchi",
     description:
-      "Traditional Italian pasta, bronze-die cut and slow-dried for the perfect al dente texture, alongside authentic potato gnocchi in classic and modern varieties.",
+      "Spaghetti, penne, and other pasta shapes, plus potato and vegetable gnocchi. Compare dry, frozen, and gluten-free options.",
     heroImage: "/assets/ads/gnocchi-recipe.jpg",
     products: [
       {
         id: "spaghetti",
         name: "Spaghetti",
         description:
-          "Classic Italian spaghetti, bronze-die cut for a rough texture that clings beautifully to sauces. A timeless staple of the Italian table.",
+          "Bronze-cut spaghetti with a rough surface that holds sauce.",
         image: "/assets/Pasta/Tuscanini Bronze Cut Spaghetti Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Spaghetti is crafted using traditional bronze dies that create a rough, porous surface ideal for holding sauce. Slow-dried at low temperatures to preserve flavor and ensure the perfect al dente bite every time.",
+          "Bronze dies give this spaghetti a textured surface. The pasta is slow-dried.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -27,11 +27,11 @@ export const mealCategories: Category[] = [
         id: "fettuccine",
         name: "Fettuccine",
         description:
-          "Broad, flat ribbons of bronze-cut pasta perfect for rich, creamy sauces. A cornerstone of Roman cuisine.",
+          "Broad, flat ribbons of bronze-cut pasta for creamy or tomato-based sauces.",
         image: "/assets/Pasta/Tuscanini Bronze Cut Fettuccine Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Fettuccine features wide, elegant ribbons with a textured surface from bronze-die extrusion. Slow-dried to lock in authentic flavor, these noodles are the ideal partner for Alfredo, Bolognese, and butter-based sauces.",
+          "Wide pasta ribbons with a textured surface. Serve with Alfredo, Bolognese, or butter-based sauces.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -44,7 +44,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pasta/Tuscanini Bronze Cut Penne Rigate Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Penne is bronze-die cut with distinctive ridges and angled ends that capture sauce in every bite. Slow-dried for superior texture, it excels in baked pasta dishes, arrabbiata, and chunky vegetable sauces.",
+          "Bronze-cut penne with ridges and angled ends. Use in pasta bakes, arrabbiata, or vegetable sauces.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -53,11 +53,11 @@ export const mealCategories: Category[] = [
         id: "rigatoni",
         name: "Rigatoni",
         description:
-          "Large ridged tubes built to hold the boldest sauces. A favorite for hearty, rustic Italian dishes.",
+          "Large, ridged pasta tubes for chunky sauces and baked pasta dishes.",
         image: "/assets/Pasta/730323.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Rigatoni features wide, ridged tubes with a generous cavity that holds chunky meat sauces, creamy bakes, and robust vegetable ragus. Bronze-die cut and slow-dried for an authentic Italian texture that stands up to the heartiest preparations.",
+          "Wide tubes hold meat or vegetable sauces. Also suited to creamy pasta bakes.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -66,11 +66,11 @@ export const mealCategories: Category[] = [
         id: "elbows",
         name: "Elbows",
         description:
-          "Curved, ridged pasta tubes perfect for mac and cheese, salads, and soups. A family-friendly Italian classic.",
+          "Curved pasta tubes for mac and cheese, pasta salads, and soups.",
         image: "/assets/Pasta/730324.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Elbow pasta combines the beloved curved shape with the superior texture of bronze-die cutting. Slow-dried for the perfect bite, these elbows are ideal for creamy mac and cheese, pasta salads, and comforting soups.",
+          "Elbow-shaped pasta for creamy sauces, salads, or soup.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -79,11 +79,11 @@ export const mealCategories: Category[] = [
         id: "fusilli",
         name: "Fusilli",
         description:
-          "Corkscrew-shaped pasta with a spiral design that captures sauce in every twist. Delightful in both hot and cold dishes.",
+          "Corkscrew-shaped pasta for warm dishes or pasta salads.",
         image: "/assets/Pasta/Tuscanini Bronze Cut Fusili Comp copy.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Fusilli features tightly wound spirals created with bronze dies for maximum sauce adhesion. Slow-dried to preserve its springy texture, this versatile shape is equally at home in warm pasta dishes and chilled summer salads.",
+          "The spirals hold sauce between their turns. Serve warm or in a cold pasta salad.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -92,11 +92,11 @@ export const mealCategories: Category[] = [
         id: "oven-ready-lasagna",
         name: "Oven Ready Lasagna",
         description:
-          "No-boil lasagna sheets ready to layer straight into the pan. Perfectly thin and tender after baking.",
+          "No-boil lasagna sheets ready to layer straight into the pan.",
         image: "/assets/Pasta/730326.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Oven Ready Lasagna sheets eliminate the boiling step without sacrificing quality. Made from premium Italian durum wheat and slow-dried, they absorb moisture from your sauce as they bake, emerging perfectly tender with an authentic homemade texture.",
+          "These lasagna sheets absorb moisture from the sauce while baking, so no separate boiling is needed.",
         size: "17.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -105,11 +105,11 @@ export const mealCategories: Category[] = [
         id: "cauliflower-gnocchi",
         name: "Cauliflower Gnocchi",
         description:
-          "Light, pillowy gnocchi made with real cauliflower for a modern twist on the Italian classic. A delicious lower-carb alternative.",
+          "Potato gnocchi made with cauliflower.",
         image: "/assets/Pasta/Tuscanini Cauliflower Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our shelf-stable Cauliflower Gnocchi blends premium Italian potatoes with real cauliflower for a lighter take on traditional gnocchi. Each dumpling is soft and pillowy, ready to pan-fry, boil, or bake with your favorite sauce.",
+          "Shelf-stable gnocchi made with potatoes and cauliflower. Follow the package directions for cooking.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -118,7 +118,7 @@ export const mealCategories: Category[] = [
         id: "mini-gnocchi",
         name: "Mini Gnocchi",
         description:
-          "Petite potato gnocchi perfect for soups, salads, and quick sautés. Bite-sized comfort in every spoonful.",
+          "Small potato gnocchi for soups, salads, and pan-cooked dishes.",
         image: "/assets/Gnocchi/Tuscanini-Mi-ni-Gnocchi-16oz-730312.png",
         categoryId: "pasta-gnocchi",
         details:
@@ -144,11 +144,11 @@ export const mealCategories: Category[] = [
         id: "gluten-free-potato-gnocchi",
         name: "Gluten Free Potato Gnocchi",
         description:
-          "All the pillowy goodness of traditional gnocchi, crafted without gluten. Made with real Italian potatoes for an inclusive Italian dining experience.",
+          "Gluten-free potato gnocchi.",
         image: "/assets/Pasta/Tuscanini Gluten Free Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Gluten Free Potato Gnocchi prove that dietary restrictions need not compromise flavor or texture. Made with premium Italian potatoes and gluten-free flour, these tender dumplings deliver the same authentic experience as our classic variety.",
+          "Gnocchi made with potatoes and gluten-free flour. See the packaging for ingredients and cooking directions.",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -159,9 +159,9 @@ export const mealCategories: Category[] = [
     id: "pizza",
     name: "Pizza",
     slug: "pizza",
-    tagline: "Straight From the Italian Pizzeria",
+    tagline: "Frozen pizza",
     description:
-      "Authentic Italian frozen pizzas crafted with premium ingredients, from classic Margherita to our exclusive Reserve collection with hand-stretched dough and San Marzano-style sauce.",
+      "Frozen pizzas in Margherita, cheese, mushroom, and other varieties, including the Reserve range.",
     heroImage: "/assets/ads/pizza-banner.jpg",
     products: [
       {
@@ -237,7 +237,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/Tuscanini-Bianca-White-Pizza.png",
         categoryId: "pizza",
         details:
-          "Our Bianca White Pizza skips the tomato sauce in favor of a luscious blend of creamy Italian cheeses on an ultra-thin, crispy crust. Finished with aromatic herbs, it is a sophisticated take on the classic white pizza tradition.",
+          "White pizza with a blend of cheeses and herbs on a thin crust, without tomato sauce.",
         size: "7.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -246,7 +246,7 @@ export const mealCategories: Category[] = [
         id: "creamy-ricotta-cheddar-thin-crust-pizza",
         name: "Creamy Ricotta and Cheddar Thin Crust Pizza",
         description:
-          "A decadent thin crust pizza blending creamy ricotta with sharp cheddar for a rich, indulgent cheese experience.",
+          "Thin-crust pizza with ricotta and cheddar.",
         image: "/assets/Pizza/Tuscanini-Creamy-ricotta.png",
         categoryId: "pizza",
         details:
@@ -259,11 +259,11 @@ export const mealCategories: Category[] = [
         id: "reserve-margherita-pizza",
         name: "Reserve Margherita Pizza",
         description:
-          "Our premium Margherita with hand-stretched dough, San Marzano-style sauce, and fresh mozzarella. The pinnacle of pizza perfection.",
+          "Margherita pizza with hand-stretched dough, tomato sauce, and mozzarella.",
         image: "/assets/Pizza/730126.png",
         categoryId: "pizza",
         details:
-          "The Reserve Margherita elevates our classic with hand-stretched dough, premium San Marzano-style tomato sauce, and fresh Italian mozzarella. Every element is crafted to deliver an authentic Neapolitan pizzeria experience at home.",
+          "The Reserve Margherita has hand-stretched dough, San Marzano-style tomato sauce, and mozzarella.",
         size: "16.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -272,11 +272,11 @@ export const mealCategories: Category[] = [
         id: "reserve-supermargherita-pizza",
         name: "Reserve Supermargherita Pizza",
         description:
-          "An elevated Margherita loaded with extra mozzarella, cherry tomatoes, and fresh basil on hand-stretched dough. Our most indulgent pizza.",
+          "Margherita pizza with extra mozzarella, cherry tomatoes, and basil.",
         image: "/assets/Pizza/730127.png",
         categoryId: "pizza",
         details:
-          "The Reserve Supermargherita takes our beloved Margherita to new heights with an extra-generous layer of fresh mozzarella, sweet cherry tomatoes, and fragrant basil on hand-stretched dough with San Marzano-style sauce. A truly premium pizza experience.",
+          "The Reserve Supermargherita adds extra mozzarella, cherry tomatoes, and basil to hand-stretched dough and tomato sauce.",
         size: "17.28 oz",
         kosher: true,
         madeInItaly: true,
@@ -315,7 +315,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730500.png",
         categoryId: "pizza",
         details:
-          "Our Reserve BBQ Pulled Brisket Pizza brings together slow-cooked, tender brisket and smoky BBQ sauce on our premium hand-stretched Italian dough. This bold creation marries Italian pizza craftsmanship with rich, smoky American barbecue flavors.",
+          "Pulled brisket and smoky barbecue sauce on hand-stretched pizza dough.",
         size: "13.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -339,9 +339,9 @@ export const mealCategories: Category[] = [
     id: "gelato",
     name: "Gelato & Sorbetto",
     slug: "gelato",
-    tagline: "Artisan Italian Frozen Desserts",
+    tagline: "Gelato and sorbetto",
     description:
-      "Authentic Italian gelato and sorbetto crafted with traditional methods. Creamier than ice cream, richer in flavor, and made with premium Italian ingredients.",
+      "Italian gelato and sorbetto. See the available flavors and pack sizes below.",
     heroImage: "/assets/Gelato/730521-vanilla-gelato.png",
     products: [
       {
@@ -352,7 +352,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/730520-chocolate-gelato.png",
         categoryId: "gelato",
         details:
-          "Our Dairy Chocolate Gelato is crafted using traditional Italian methods with premium cocoa for a deeply rich, velvety smooth chocolate experience. Churned slowly with less air than ice cream, it delivers an intensely flavorful and luxuriously creamy dessert.",
+          "Chocolate gelato made with cocoa. A smooth, creamy frozen dessert.",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -400,7 +400,7 @@ export const mealCategories: Category[] = [
         id: "parve-vanilla-gelato",
         name: "Parve Vanilla Gelato",
         description:
-          "Dairy-free vanilla gelato with the same creamy richness as our dairy version. A parve indulgence for everyone to enjoy.",
+          "Dairy-free vanilla gelato.",
         image: "/assets/Gelato/730531-vanilla-gelato-p.png",
         categoryId: "gelato",
         details:
@@ -413,11 +413,11 @@ export const mealCategories: Category[] = [
         id: "parve-chocolate-gelato",
         name: "Parve Chocolate Gelato",
         description:
-          "Rich, dairy-free Italian chocolate gelato with an intense cocoa flavor. All the indulgence of traditional gelato in a parve format.",
+          "Dairy-free chocolate gelato with a rich cocoa flavor.",
         image: "/assets/Gelato/730530-chocolate-gelato-p.png",
         categoryId: "gelato",
         details:
-          "Our Parve Chocolate Gelato delivers a deeply rich, velvety chocolate experience without any dairy. Crafted in Italy with premium cocoa, it offers a luscious frozen dessert that fits seamlessly into dairy-free and parve meals.",
+          "Chocolate gelato made without dairy. See the packaging for ingredients and certification.",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -430,7 +430,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/Sorbetto/730533-lemon-sorbetto.png",
         categoryId: "gelato",
         details:
-          "Our Parve Lemon Sorbet captures the vibrant zest of Sicilian lemons in a smooth, refreshing frozen treat. Naturally dairy-free and light, it serves as a perfect palate cleanser between courses or a bright, guilt-free dessert on its own.",
+          "Lemon sorbet made with Sicilian lemons. Serve on its own or between courses.",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -454,9 +454,9 @@ export const mealCategories: Category[] = [
     id: "cheese",
     name: "Cheese",
     slug: "cheese",
-    tagline: "Authentic Italian Fromage",
+    tagline: "Italian cheese",
     description:
-      "Premium Italian cheeses crafted with centuries of tradition. From aged Parmigiano to fresh varieties, our cheese collection brings the dairy artistry of Italy to your table.",
+      "Italian cheeses for cooking, grating, and serving. See individual products for varieties and pack sizes.",
     heroImage: "/assets/Parmesan Cheese/730170.png",
     products: [
       {
@@ -480,7 +480,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Parmesan Cheese/730171.png",
         categoryId: "cheese",
         details:
-          "The larger format of our Parmesan Cheese Wedge ensures you always have this essential Italian ingredient on hand. Aged in Italy for a deep, complex flavor that elevates pasta, risotto, soups, and charcuterie boards.",
+          "A larger Parmesan wedge for grating over pasta, risotto, and soup, or serving sliced.",
         size: "8.8 oz",
         kosher: true,
         madeInItaly: true,
