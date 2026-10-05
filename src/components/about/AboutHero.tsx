@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { getCmsData } from "../../data/cms";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 export default function AboutHero() {
   const cms = getCmsData("page", "about");
@@ -15,7 +16,7 @@ export default function AboutHero() {
         fetchPriority="high"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover opacity-80"
-        src="/assets/Photos/backgrounds/italian-village-hero.webp"
+        {...getResponsiveImageProps("/assets/Photos/backgrounds/italian-village-hero.webp", "100vw")}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-dark/88 via-dark/30 to-dark/45" />
 

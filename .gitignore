@@ -19,4 +19,5 @@ package-lock.json
 *.ttf
 *.woff
 *.woff2
+!public/assets/fonts/*.woff2
 Thumbs.db

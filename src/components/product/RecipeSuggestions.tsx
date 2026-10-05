@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Clock, Users, ChevronRight } from "lucide-react";
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
+import ProductImagePlaceholder from "../ui/ProductImagePlaceholder";
 import {
   getRecipesForProduct,
   getPairedProductIds,
@@ -176,20 +178,16 @@ function ProductPairingsRow({ products }: { products: Product[] }) {
             className="group block still-life-frame"
           >
             <div className="aspect-square overflow-hidden mb-3 bg-surface ring-1 ring-on-surface/10">
-              {product.image ? (
+              {!isMissingProductImage(product.image) ? (
                 <img
-                  src={product.image}
+                  {...getResponsiveImageProps(product.image, "(min-width: 1024px) 180px, 45vw")}
                   alt={product.name}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out opacity-95 group-hover:opacity-100"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4]">
-                  <span className="font-headline text-sm text-heading/40 text-center px-2">
-                    {product.name}
-                  </span>
-                </div>
+                <ProductImagePlaceholder productName={product.name} className="w-full h-full" />
               )}
             </div>
             <h3 className="font-headline text-sm text-heading group-hover:text-primary transition-colors leading-tight mb-1">

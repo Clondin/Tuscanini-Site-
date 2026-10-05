@@ -341,18 +341,38 @@ export function setCatalogCategories(nextCategories: Category[]): void {
   if (nextCategories.length > 0) categories = nextCategories;
 }
 
+// The metric and imperial flour listings used the same retail packages.
+// Preserve their former URLs while showing one product per SKU.
+export const productAliases: Record<string, string> = {
+  "all-purpose-flour-1kg": "all-purpose-flour-2-2lb",
+  "high-gluten-flour-2-27kg": "high-gluten-flour-5lb",
+  "spelt-white-flour-2-27kg": "spelt-white-flour-5lb",
+};
+
+export function canonicalProductId(id: string): string {
+  return productAliases[id] ?? id;
+}
+
+export function resolveProductId(id: string): string {
+  // Published CMS IDs take precedence if an editor intentionally uses an alias.
+  if (categories.some((category) => category.products.some((product) => product.id === id))) return id;
+  return canonicalProductId(id);
+}
+
 export function getCategoryBySlug(slug: string): Category | undefined {
   return categories.find((c) => c.slug === slug);
 }
 
 export function getProductById(id: string): Product | undefined {
+  const resolvedId = resolveProductId(id);
   for (const cat of categories) {
-    const product = cat.products.find((p) => p.id === id);
+    const product = cat.products.find((p) => p.id === resolvedId);
     if (product) return product;
   }
   return undefined;
 }
 
 export function getCategoryForProduct(productId: string): Category | undefined {
-  return categories.find((cat) => cat.products.some((p) => p.id === productId));
+  const resolvedId = resolveProductId(productId);
+  return categories.find((cat) => cat.products.some((p) => p.id === resolvedId));
 }

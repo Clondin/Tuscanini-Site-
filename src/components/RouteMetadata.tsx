@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getCmsData } from "../data/cms";
 import { getCategoryBySlug, getCategoryForProduct, getProductById } from "../data/products";
+import { productRouteTitle } from "../lib/routeTitle";
+import { getOptimizedImageUrl, isMissingProductImage } from "../lib/productImage";
 
 const defaultSiteUrl = "https://tuscanini-site.vercel.app";
 const defaultBrand = "Tuscanini";
@@ -50,6 +52,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
 
   useEffect(() => {
     const pathname = location.pathname.replace(/\/+$/, "") || "/";
+    let canonicalPath = pathname;
     let metadata: Metadata;
 
     if (pathname === "/") {
@@ -104,11 +107,12 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
       const id = decodeURIComponent(pathname.slice("/product/".length));
       const product = getProductById(id);
       const category = product ? getCategoryForProduct(product.id) : undefined;
+      if (product) canonicalPath = `/product/${product.id}`;
       metadata = product
         ? {
-            title: `${product.name} | ${siteTitle}`,
+            title: productRouteTitle(product.name, siteTitle),
             description: product.description,
-            image: product.image,
+            image: isMissingProductImage(product.image) ? undefined : product.image,
             type: "product",
             structuredData: [
               {
@@ -116,7 +120,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
                 "@type": "Product",
                 name: product.name,
                 description: product.description,
-                image: product.image ? [absoluteUrl(product.image, siteUrl)] : undefined,
+                image: !isMissingProductImage(product.image) ? [absoluteUrl(getOptimizedImageUrl(product.image), siteUrl)] : undefined,
                 category: category?.name,
                 brand: { "@type": "Brand", name: siteTitle },
               },
@@ -128,7 +132,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
                   ...(category
                     ? [{ "@type": "ListItem", position: 2, name: category.name, item: `${siteUrl}/category/${category.slug}` }]
                     : []),
-                  { "@type": "ListItem", position: category ? 3 : 2, name: product.name, item: `${siteUrl}${pathname}` },
+                  { "@type": "ListItem", position: category ? 3 : 2, name: product.name, item: `${siteUrl}${canonicalPath}` },
                 ],
               },
             ],
@@ -142,8 +146,8 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
       };
     }
 
-    const canonical = `${siteUrl}${pathname === "/" ? "/" : pathname}`;
-    const socialImage = absoluteUrl(metadata.image || "/assets/Photos/backgrounds/italian-coast.jpg", siteUrl);
+    const canonical = `${siteUrl}${canonicalPath}`;
+    const socialImage = absoluteUrl(getOptimizedImageUrl(metadata.image || "/assets/Photos/backgrounds/italian-coast.jpg"), siteUrl);
     document.title = metadata.title;
     setMeta('meta[name="description"]', { name: "description", content: metadata.description });
     setMeta('meta[name="robots"]', { name: "robots", content: metadata.robots || "index, follow" });

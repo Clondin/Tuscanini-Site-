@@ -1,145 +1,59 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
+import { categories } from "../../data/products";
 
-const featuredCategories = [
-  {
-    name: "Olive Oil",
-    slug: "olive-oil",
-    tagline: "Liquid gold of Italy",
-    image: "/assets/Olive Oil/730406 Large.png",
-  },
-  {
-    name: "Pasta & Gnocchi",
-    slug: "pasta-gnocchi",
-    tagline: "The heart of Italian cuisine",
-    image: "/assets/Pasta/Tuscanini Classic Gnocci Mockup.png",
-  },
-  {
-    name: "Pasta Sauces",
-    slug: "pasta-sauces",
-    tagline: "Sun-ripened perfection",
-    image: "/assets/Sauces/730207.png",
-  },
-  {
-    name: "Canned Tomatoes & Paste",
-    slug: "canned-tomatoes",
-    tagline: "Premium Italian tomato essentials",
-    image: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
-  },
-  {
-    name: "Vinegars & Glazes",
-    slug: "vinegars-glazes",
-    tagline: "The art of Italian acidity",
-    image: "/assets/Vinegar/Tuscanini-Balsamic-Vinegar-8.45-oz.png",
-  },
-  {
-    name: "Chocolate",
-    slug: "chocolate",
-    tagline: "Italian chocolate excellence",
-    image: "/assets/Chocolate/Chocolate Bars/730590.png",
-  },
-  {
-    name: "Pizza",
-    slug: "pizza",
-    tagline: "Authentic Neapolitan tradition",
-    image: "/assets/Pizza/730100.png",
-  },
-  {
-    name: "Beverages",
-    slug: "beverages",
-    tagline: "Sparkling celebrations",
-    image: "/assets/Beverage/730380.png",
-  },
-  {
-    name: "Frozen Sides & Appetizers",
-    slug: "bread-frozen-appetizers",
-    tagline: "Crisp Italian favorites",
-    image: "/assets/Foodservice/730142-eggplant-cutlets.webp",
-  },
-  {
-    name: "Olives",
-    slug: "olives",
-    tagline: "Mediterranean treasures",
-    image: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
-  },
-  {
-    name: "Italian Condiments",
-    slug: "italian-condiments",
-    tagline: "Bold flavors of Italy",
-    image: "/assets/Peppers/730438.png",
-  },
-  {
-    name: "Potato Chips",
-    slug: "potato-chips",
-    tagline: "Italian olive oil crunch",
-    image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
-  },
-  {
-    name: "Chestnuts",
-    slug: "chestnuts",
-    tagline: "Italian roasted goodness",
-    image: "/assets/Chestnuts/Tuscanini Chestnuts_Original.png",
-  },
-  {
-    name: "Tuna & Seafood",
-    slug: "tuna-seafood",
-    tagline: "Treasures of the Italian sea",
-    image: "/assets/ads/tuna-parallax.jpg",
-  },
-  {
-    name: "Cooking Wines & Citrus",
-    slug: "cooking-wines-citrus",
-    tagline: "Essential Italian kitchen staples",
-    image: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
-  },
-  {
-    name: "Flour & Baking",
-    slug: "flour-baking",
-    tagline: "Professional grade Italian flour",
-    image: "/assets/Flour/High gluten TUSCANINI_2,27Kg_2501013_facing.png",
-  },
-  {
-    name: "Pesto",
-    slug: "pesto",
-    tagline: "Fresh basil, Italian tradition",
-    image: "/assets/Pesto/730231.png",
-  },
-  {
-    name: "Seasonings & Truffles",
-    slug: "seasonings-truffles",
-    tagline: "The essence of Italian flavor",
-    image: "/assets/Truffles/730580.png",
-  },
-  {
-    name: "Fruit Spreads",
-    slug: "fruit-spreads",
-    tagline: "Pure Italian fruit preserves",
-    image: "/assets/Jam/730270.png",
-  },
-  {
-    name: "Cheese",
-    slug: "cheese",
-    tagline: "Aged Italian excellence",
-    image: "/assets/Parmesan Cheese/730170.png",
-  },
+const featuredCategorySlugs = [
+  "olive-oil",
+  "pasta-gnocchi",
+  "pasta-sauces",
+  "canned-tomatoes",
+  "vinegars-glazes",
+  "chocolate",
+  "pizza",
+  "beverages",
+  "bread-frozen-appetizers",
+  "olives",
+  "italian-condiments",
+  "potato-chips",
+  "chestnuts",
+  "tuna-seafood",
+  "cooking-wines-citrus",
+  "flour-baking",
+  "pesto",
+  "seasonings-truffles",
+  "fruit-spreads",
+  "cheese",
 ];
+const featuredOrder = new Map(featuredCategorySlugs.map((slug, index) => [slug, index]));
 
 export default function CollectionsGrid() {
+  const [showAll, setShowAll] = useState(false);
+  const collections = [...categories].sort(
+    (left, right) => (featuredOrder.get(left.slug) ?? Number.MAX_SAFE_INTEGER) - (featuredOrder.get(right.slug) ?? Number.MAX_SAFE_INTEGER),
+  );
+  const visibleCollections = showAll ? collections : collections.slice(0, 9);
+
   return (
     <section id="collections" className="bg-aged-cream py-20 md:py-24 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           eyebrow="The Pantry"
           title="Curated Collections"
-          action={{ label: `All ${featuredCategories.length} collections`, to: "/#collections" }}
+          action={collections.length > 9 ? {
+            label: showAll ? "Show fewer collections" : `All ${collections.length} collections`,
+            onClick: () => setShowAll((expanded) => !expanded),
+            expanded: showAll,
+            controls: "collection-cards",
+          } : undefined}
           className="mb-11"
         />
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-9">
-          {featuredCategories.slice(0, 9).map((cat, idx) => (
+        <div id="collection-cards" className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-9">
+          {visibleCollections.map((cat, idx) => (
             <motion.div
               key={cat.slug}
               initial={false}
@@ -153,8 +67,9 @@ export default function CollectionsGrid() {
                     className="w-full h-full object-contain p-5 md:p-[26px] drop-shadow-[0_12px_18px_rgba(42,31,22,0.14)] group-hover:scale-[1.04] transition-transform duration-700 ease-out"
                     wrapperClassName="w-full h-full"
                     skeletonClassName="aspect-auto"
-                    src={cat.image}
+                    src={cat.heroImage}
                     alt={cat.name}
+                    sizes="(min-width: 1024px) 400px, 50vw"
                   />
                 </div>
                 <div className="mt-4 flex items-end justify-between gap-4">

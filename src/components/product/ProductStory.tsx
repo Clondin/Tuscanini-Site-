@@ -16,9 +16,7 @@ export default function ProductStory({ productName, details }: ProductStoryProps
             A story of Italian mastery
           </h2>
           <p className="font-serif-alt text-base leading-[1.85] text-italia-white/72 text-pretty">
-            Our {productName} is crafted by generations of Italian artisans who share a reverence for
-            authenticity. From sun-drenched fields to meticulous production, every step honors the
-            belief that the finest ingredients need only the simplest preparations.
+            Discover {productName} and bring the flavors of the Italian table to your kitchen.
           </p>
         </div>
 

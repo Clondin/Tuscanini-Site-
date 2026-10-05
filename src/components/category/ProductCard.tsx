@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, ShieldCheck, Award } from "lucide-react";
 import { Product } from "../../data/products";
 import { getCategoryAccent } from "../../data/category-accents";
+import { formatProductSize } from "../../lib/formatProductSize";
 import TiltCard from "../ui/TiltCard";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
 import QuickViewButton from "../ui/QuickViewButton";
@@ -70,6 +71,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           <h3 className="font-headline text-xl text-heading mb-2 group-hover:text-[var(--card-accent)] transition-colors">
             {product.name}
           </h3>
+          {product.size && (
+            <p className="mb-3 text-xs text-on-surface/55">{formatProductSize(product.size)}</p>
+          )}
           <p className="hidden sm:block text-on-surface/65 text-sm leading-relaxed font-body mb-4 line-clamp-2">
             {product.description}
           </p>

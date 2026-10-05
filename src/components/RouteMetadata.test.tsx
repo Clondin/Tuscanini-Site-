@@ -47,4 +47,54 @@ describe("RouteMetadata", () => {
     await waitFor(() => expect(document.title).toContain("Page Not Found"));
     expect(document.querySelector('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
   });
+
+  it.each([
+    ["solid-light-tuna-olive-oil-chili-peppers-can", "Can"],
+    ["solid-light-tuna-olive-oil-chili-peppers-three-pack", "3 Pack"],
+  ])("keeps %s metadata concise without losing the full product name", async (id, packageName) => {
+    render(
+      <MemoryRouter initialEntries={[`/product/${id}`]}>
+        <RouteMetadata contentVersion={0} />
+      </MemoryRouter>,
+    );
+
+    await waitFor(() => expect(document.title).toContain(packageName));
+    expect(document.title.length).toBeLessThanOrEqual(60);
+    expect(document.querySelector('meta[property="og:title"]')).toHaveAttribute("content", document.title);
+    expect(document.querySelector('meta[name="twitter:title"]')).toHaveAttribute("content", document.title);
+    expect(document.getElementById("route-structured-data")?.textContent).toContain(
+      "Solid Light Tuna in Olive Oil with Chili Peppers",
+    );
+  });
+
+  it.each([
+    ["all-purpose-flour-1kg", "all-purpose-flour-2-2lb"],
+    ["high-gluten-flour-2-27kg", "high-gluten-flour-5lb"],
+    ["spelt-white-flour-2-27kg", "spelt-white-flour-5lb"],
+  ])("uses the surviving product URL for the former %s listing", async (alias, canonicalId) => {
+    render(
+      <MemoryRouter initialEntries={[`/product/${alias}`]}>
+        <RouteMetadata contentVersion={0} />
+      </MemoryRouter>,
+    );
+
+    const canonicalUrl = `https://tuscanini-site.vercel.app/product/${canonicalId}`;
+    await waitFor(() => expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute("href", canonicalUrl));
+    expect(document.querySelector('meta[property="og:url"]')).toHaveAttribute("content", canonicalUrl);
+    expect(document.getElementById("route-structured-data")?.textContent).toContain(canonicalUrl);
+  });
+
+  it("does not advertise an unavailable pack shot as a product image", async () => {
+    render(
+      <MemoryRouter initialEntries={["/product/fries-gondola"]}>
+        <RouteMetadata contentVersion={0} />
+      </MemoryRouter>,
+    );
+
+    await waitFor(() => expect(document.title).toContain("Gondola Fries"));
+    const socialImage = document.querySelector('meta[property="og:image"]')?.getAttribute("content") ?? "";
+    expect(socialImage).not.toContain("pack-shot-pending");
+    const structuredData = JSON.parse(document.getElementById("route-structured-data")?.textContent ?? "[]");
+    expect(structuredData.find((entry: { "@type": string }) => entry["@type"] === "Product").image).toBeUndefined();
+  });
 });

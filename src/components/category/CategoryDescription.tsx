@@ -1,4 +1,5 @@
 import type { Category } from "../../data/products";
+import { formatProductSize } from "../../lib/formatProductSize";
 
 interface CategoryDescriptionProps {
   category: Category;
@@ -8,7 +9,7 @@ export default function CategoryDescription({ category }: CategoryDescriptionPro
   const products = category.products;
   const italian = products.filter((p) => p.madeInItaly).length;
   const kosher = products.filter((p) => p.kosher).length;
-  const formats = new Set(products.map((p) => p.size).filter(Boolean)).size;
+  const formats = new Set(products.map((p) => formatProductSize(p.size)).filter(Boolean)).size;
 
   const allOrCount = (n: number) => (n === products.length ? "All" : `${n} of ${products.length}`);
 

@@ -1,4 +1,5 @@
 import { Category } from "../../data/products";
+import { getResponsiveImageProps } from "../../lib/productImage";
 import CategoryBreadcrumbs from "./CategoryBreadcrumbs";
 
 interface CategoryHeroBannerProps {
@@ -40,7 +41,7 @@ export default function CategoryHeroBanner({ category }: CategoryHeroBannerProps
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
           decoding="async"
-          src={category.heroImage}
+          {...getResponsiveImageProps(category.heroImage, "100vw")}
           style={{ objectPosition: imagePosition }}
           referrerPolicy="no-referrer"
         />
@@ -71,7 +72,7 @@ export default function CategoryHeroBanner({ category }: CategoryHeroBannerProps
         className="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl opacity-15"
         fetchPriority="high"
         decoding="async"
-        src={category.heroImage}
+        {...getResponsiveImageProps(category.heroImage, "320px")}
         referrerPolicy="no-referrer"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-aged-cream via-aged-cream/95 to-aged-cream/65" />
@@ -92,7 +93,7 @@ export default function CategoryHeroBanner({ category }: CategoryHeroBannerProps
           <img
             alt={`${category.name} collection`}
             className="relative z-10 h-full w-full object-contain drop-shadow-[0_24px_30px_rgba(42,31,22,0.18)]"
-            src={category.heroImage}
+            {...getResponsiveImageProps(category.heroImage, "(min-width: 768px) 50vw, 45vw")}
             fetchPriority="high"
             decoding="async"
             referrerPolicy="no-referrer"

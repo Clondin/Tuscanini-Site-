@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import TextReveal from "../ui/TextReveal";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 export default function ItalianQuote() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,7 +18,7 @@ export default function ItalianQuote() {
         <img
           alt="Italian Coast"
           className="w-full h-[130%] object-cover opacity-15"
-          src="/assets/ads/balsamic-glaze.jpg"
+          {...getResponsiveImageProps("/assets/ads/balsamic-glaze.jpg", "100vw")}
           loading="lazy"
           decoding="async"
         />

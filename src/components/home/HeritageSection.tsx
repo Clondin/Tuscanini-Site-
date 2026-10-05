@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import TextReveal from "../ui/TextReveal";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 export default function HeritageSection() {
   return (
@@ -53,7 +54,7 @@ export default function HeritageSection() {
             className="w-full h-full object-cover block"
             loading="lazy"
             decoding="async"
-            src="/assets/ads/sparkling-parallax.jpg"
+            {...getResponsiveImageProps("/assets/ads/sparkling-parallax.jpg", "(min-width: 768px) 50vw, 100vw")}
           />
         </motion.div>
       </div>

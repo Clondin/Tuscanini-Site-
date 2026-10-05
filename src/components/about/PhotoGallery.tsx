@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import SectionHeading from "../ui/SectionHeading";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 const leadPhoto = "/assets/Photos/PHOTO-2020-11-27-15-44-52.jpg";
 
@@ -25,7 +26,7 @@ export default function PhotoGallery() {
             className="col-span-2 row-span-2 overflow-hidden group"
           >
             <img
-              src={leadPhoto}
+              {...getResponsiveImageProps(leadPhoto, "50vw")}
               alt="Tuscanini lifestyle"
               loading="lazy"
               decoding="async"
@@ -43,7 +44,7 @@ export default function PhotoGallery() {
               className="aspect-square overflow-hidden group"
             >
               <img
-                src={photo}
+                {...getResponsiveImageProps(photo, "(min-width: 768px) 25vw, 50vw")}
                 alt="Tuscanini lifestyle"
                 loading="lazy"
                 className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-1000"

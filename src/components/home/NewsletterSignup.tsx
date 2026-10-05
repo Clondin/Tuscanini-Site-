@@ -33,13 +33,13 @@ export default function NewsletterSignup() {
           </h2>
           <p className="font-script italic text-xl text-italia-white/65 max-w-[46ch]">
             {endpoint
-              ? "Recipes, stories from the field, and first access to new arrivals."
-              : "Recipes and stories from the field are coming soon."}
+              ? "Subscribe for Tuscanini news and updates."
+              : "Find recipe inspiration and the latest from Tuscanini."}
           </p>
         </div>
 
         {endpoint ? (
-          <div className="flex-1 min-w-[320px] max-w-md">
+          <div className="w-full min-w-0 sm:flex-1 sm:basis-80 max-w-md">
             <form
               onSubmit={handleSubmit}
               className="flex items-center gap-6 border-b border-gold/50 pb-3"
@@ -80,19 +80,16 @@ export default function NewsletterSignup() {
           </div>
         ) : (
           <p
-            className="max-w-md flex-1 min-w-[320px] text-sm leading-relaxed text-italia-white/65"
-            role="status"
+            className="w-full min-w-0 sm:flex-1 sm:basis-80 max-w-md text-sm leading-relaxed text-italia-white/65"
           >
-            Email signup is not available yet. Follow{" "}
             <a
               href="https://www.instagram.com/tuscaninifoods/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-gold underline decoration-gold/35 underline-offset-4 hover:decoration-gold"
             >
-              Tuscanini on Instagram
-            </a>{" "}
-            for new products and recipes.
+              Follow Tuscanini on Instagram
+            </a>
           </p>
         )}
       </div>

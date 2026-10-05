@@ -2,6 +2,8 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import type { Product } from "../../data/products";
 import { shelfSizing } from "../../lib/packSize";
+import { formatProductSize } from "../../lib/formatProductSize";
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
 import SectionHeading from "../ui/SectionHeading";
 
 interface RelatedProductsProps {
@@ -17,7 +19,7 @@ export default function RelatedProducts({
   categorySlug,
   totalInCategory,
 }: RelatedProductsProps) {
-  const shelf = products.filter((p) => p.image).slice(0, 8);
+  const shelf = products.filter((p) => !isMissingProductImage(p.image)).slice(0, 8);
   const sizing = useMemo(() => shelfSizing(shelf, { base: 185, min: 120, max: 240 }), [shelf]);
 
   if (shelf.length === 0) return null;
@@ -45,8 +47,8 @@ export default function RelatedProducts({
                     className="group flex shrink-0 items-end justify-center px-4"
                   >
                     <img
-                      src={product.image}
-                      alt=""
+                      {...getResponsiveImageProps(product.image, "200px")}
+                      alt={product.name}
                       loading="lazy"
                       decoding="async"
                       style={{ maxHeight: height }}
@@ -68,8 +70,8 @@ export default function RelatedProducts({
                       {product.name}
                     </span>
                     {product.size && (
-                      <span className="mt-1 block text-[10px] uppercase tracking-[0.16em] text-on-surface/45">
-                        {product.size}
+                      <span className="mt-1 block text-[10px] tracking-[0.16em] text-on-surface/45">
+                        {formatProductSize(product.size)}
                       </span>
                     )}
                   </span>
