@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 const adBanners = [
   {
@@ -61,7 +62,7 @@ export default function AdBannersSection() {
                 className="group block relative overflow-hidden rounded-sm aspect-[16/9] bg-dark shadow-md"
               >
                 <motion.img
-                  src={banner.src}
+                  {...getResponsiveImageProps(banner.src, "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw")}
                   alt={banner.label}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.7, ease: "easeOut" }}

@@ -45,7 +45,7 @@ export default function NewsletterSignup() {
         </div>
 
         {endpoint ? (
-          <div className="flex-1 w-full min-w-0 sm:min-w-[280px] max-w-md">
+          <div className="w-full min-w-0 sm:flex-1 sm:basis-80 max-w-md">
             <label
               htmlFor="newsletter-email"
               className="block text-sm text-white mb-3"
@@ -91,7 +91,7 @@ export default function NewsletterSignup() {
             </p>
           </div>
         ) : (
-          <p className="max-w-md text-sm leading-relaxed text-italia-white/90">
+          <p className="w-full min-w-0 sm:flex-1 sm:basis-80 max-w-md text-sm leading-relaxed text-italia-white/90">
             <a
               href="https://www.instagram.com/tuscaninifoods/"
               target="_blank"

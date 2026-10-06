@@ -1,3 +1,7 @@
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
+import { formatProductSize } from "../../lib/formatProductSize";
+import { getProductPurchaseLink } from "../../lib/productPurchaseLink";
+import ProductImagePlaceholder from "../ui/ProductImagePlaceholder";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -11,8 +15,6 @@ import type { Product } from "../../data/products";
 import { isFrozenProduct } from "../../lib/catalog-search";
 import ImageLightbox from "../ui/ImageLightbox";
 
-const amazonStore =
-  "https://www.amazon.com/stores/Tuscanini/page/63CC7208-7FF4-4C25-B5F7-CAC5D4CA1C9A?tag=kaycopromo-20";
 export default function ProductDossier({
   product,
   categoryName,
@@ -26,8 +28,11 @@ export default function ProductDossier({
   const [showSticky, setShowSticky] = useState(false);
   const buyingRef = useRef<HTMLAnchorElement>(null);
   const frozen = isFrozenProduct(product);
-  const url = frozen ? "https://www.tuscaninifoods.com/" : amazonStore;
-  const label = frozen ? "Visit Tuscanini" : "Visit Amazon store";
+  const purchaseLink = getProductPurchaseLink(product);
+  const url = purchaseLink.href;
+  const label = purchaseLink.label;
+  const hasImage = !isMissingProductImage(product.image);
+  const size = formatProductSize(product.size);
   useEffect(() => {
     const button = buyingRef.current;
     if (!button) return;
@@ -42,7 +47,7 @@ export default function ProductDossier({
     return () => observer.disconnect();
   }, []);
   const rows = [
-    { label: "Pack size", value: product.size },
+    { label: "Pack size", value: size },
     { label: "Collection", value: categoryName },
     {
       label: "Origin",
@@ -66,17 +71,17 @@ export default function ProductDossier({
           <h1 className="font-headline text-[clamp(2rem,4vw,3.25rem)] leading-[1.1] text-heading mt-3 mb-3">
             {product.name}
           </h1>
-          <p className="text-base text-on-surface/85">{product.size}</p>
+          <p className="text-base text-on-surface/85">{size}</p>
         </div>
         <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 bg-aged-cream border border-on-surface/15">
-          <button
+          {hasImage ? <button
             type="button"
             onClick={() => setLightboxOpen(true)}
             aria-label={`View larger image of ${product.name}`}
             className="group relative w-full h-[260px] sm:h-[340px] lg:h-[530px] flex items-center justify-center px-8 py-6 cursor-zoom-in"
           >
             <img
-              src={product.image}
+              {...getResponsiveImageProps(product.image, "100vw")}
               alt={product.name}
               fetchPriority="high"
               className="w-full h-full object-contain"
@@ -85,7 +90,7 @@ export default function ProductDossier({
               <Expand size={16} />
               Enlarge
             </span>
-          </button>
+          </button> : <div className="h-[260px] sm:h-[340px] lg:h-[530px] flex items-center justify-center"><ProductImagePlaceholder productName={product.name} /></div>}
         </div>
         <div className="lg:col-start-2 lg:row-start-2">
           <a
@@ -93,7 +98,7 @@ export default function ProductDossier({
             href={url}
             target="_blank"
             rel={
-              frozen ? "noopener noreferrer" : "sponsored noopener noreferrer"
+              purchaseLink.sponsored ? "sponsored noopener noreferrer" : "noopener noreferrer"
             }
             className="inline-flex justify-center w-full sm:w-auto min-h-12 items-center gap-3 px-7 py-3.5 bg-olive-deep hover:bg-olive-accent text-white text-sm font-semibold"
           >
@@ -201,7 +206,7 @@ export default function ProductDossier({
                 ))}
                 {product.nutritionImage && (
                   <img
-                    src={product.nutritionImage}
+                    {...getResponsiveImageProps(product.nutritionImage, "100vw")}
                     alt={`Nutrition facts for ${product.name}`}
                     loading="lazy"
                     className="mt-4 w-full max-w-md h-auto"
@@ -213,7 +218,7 @@ export default function ProductDossier({
               </details>
             ) : null}
           </div>
-          {!frozen && (
+          {purchaseLink.sponsored && (
             <p className="mt-5 text-xs leading-relaxed text-on-surface/80">
               As an Amazon Associate, Tuscanini may earn from qualifying
               purchases.
@@ -231,13 +236,13 @@ export default function ProductDossier({
         <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-surface border-t border-on-surface/25 px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))] shadow-lg flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="text-sm text-heading truncate">{product.name}</p>
-            <p className="text-xs text-on-surface/80">{product.size}</p>
+            <p className="text-xs text-on-surface/80">{size}</p>
           </div>
           <a
             href={url}
             target="_blank"
             rel={
-              frozen ? "noopener noreferrer" : "sponsored noopener noreferrer"
+              purchaseLink.sponsored ? "sponsored noopener noreferrer" : "noopener noreferrer"
             }
             className="min-h-11 shrink-0 inline-flex items-center gap-2 bg-olive-deep text-white px-4 text-xs font-semibold"
           >
@@ -246,7 +251,7 @@ export default function ProductDossier({
           </a>
         </div>
       )}
-      {lightboxOpen && (
+      {lightboxOpen && hasImage && (
         <ImageLightbox
           src={product.image}
           alt={product.name}

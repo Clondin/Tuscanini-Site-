@@ -2,7 +2,9 @@
 
 This is the site-specific content contract for the Tuscanini public website. Read it before changing the catalog, content fields, images, navigation, branding, or the code that renders them. Update it in the same pull request whenever that contract changes.
 
-Last verified against the implementation on September 16, 2026.
+Last verified against the combined implementation on October 6, 2026.
+
+On October 5 the CMS project was reported inactive. This code update does not resume the project or publish CMS content.
 
 ## Product API precedence
 
@@ -55,6 +57,8 @@ This behavior is important when editing or debugging the site:
 - CMS categories and products are a coordinated editorial pair. If either request fails—or the mapped catalog has no products—the bundled editorial catalog is used before applying the Kayco product merge.
 - A valid CMS catalog replaces the bundled editorial base; reviewed Kayco additions and their new categories are then merged into that base.
 - Products whose `category_slug` does not exactly match a published category slug are skipped from the visible catalog.
+- Category slugs, product IDs, and category references are trimmed and must form safe route segments. Repeated pagination cursors stop loading that type and use its fallback rather than looping.
+- Three verified duplicate flour IDs normalize to their surviving SKU IDs in both the browser and generated routes: `all-purpose-flour-1kg` → `all-purpose-flour-2-2lb`, `high-gluten-flour-2-27kg` → `high-gluten-flour-5lb`, and `spelt-white-flour-2-27kg` → `spelt-white-flour-5lb`. Existing published `source_id` values need no mutation. If both versions are published, the canonical entry wins. Recipe references normalize to the same IDs. Permanent redirects preserve the former URLs.
 - If the CMS returns one or more recipes, those recipes replace the entire bundled recipe list. An empty recipe list leaves the bundled recipes in place.
 - The fallback catalog lives in `src/data/products.ts` and related category files. Fallback recipes live in `src/data/recipes.ts`. They exist for resilience; editors should not use code changes as their normal content workflow.
 
@@ -66,7 +70,7 @@ The API response has top-level `slug`, `title`, and `description` values plus th
 
 | Public component | CMS type and slug | Fields consumed | Missing-value behavior |
 | --- | --- | --- | --- |
-| Homepage hero | `page:home` | `data.headline`, `data.body`, `data.hero_image`, `data.cta_label`, `data.cta_url` | Uses bundled headline/body/CTA. A missing image uses the bundled optimized poster; the bundled film loads only after a desktop visitor presses Play. |
+| Homepage hero | `page:home` | `data.headline`, `data.body`, `data.hero_image`, `data.cta_label`, `data.cta_url` | Uses bundled headline/body/CTA. A missing image uses the bundled optimized poster; the compressed bundled film loads only after a desktop visitor presses Play. |
 | About hero | `page:about` | `data.headline`, `data.body` | Uses bundled headline and body. The background image and label remain hardcoded. |
 | Navbar and document metadata | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo`, `data.primary_color` | Uses the Tuscanini wordmark/title and existing CSS color. |
 | Footer branding | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo` | Uses the Tuscanini wordmark, title, and bundled tagline. |
@@ -135,6 +139,10 @@ All published products are sorted by `data.display_order`, ascending, before bei
 
 Stable product IDs matter. Recipe `related_products`, homepage featured quick views, and internal links refer to product IDs. If `source_id` or a slug changes, migrate every reference and add a redirect before removing the old URL.
 
+Size labels are formatted for display only: unit spacing/case is normalized across cards, shelves, quick views, and product details without changing the stored amount or converting units. Origin text and badges remain conditional on `made_in_italy`; the public UI does not add a universal bottled-origin claim.
+
+Product buying links are currently code-managed in `src/lib/productPurchaseLink.ts`. Three canonical flour SKUs use direct Amazon links verified on Tuscanini's official flour page. Other products use accurately named Amazon brand-store or Tuscanini Foods links. No `purchase_url` or other new CMS field is introduced by this audit change.
+
 ### Recipes
 
 Recipes are not standalone routes. They appear on product detail pages when `data.related_products` contains that product's ID. The same references also create the **Pairs Well With** product list.
@@ -171,6 +179,7 @@ Do not tell an editor these areas are CMS-managed without first changing the cod
 - The About page background image and all sections below its hero.
 - Mobile page links, shared menu group membership, and category accent/color rules. The former mega-menu promotional image is no longer rendered.
 - Footer social URLs, `TuscaniniFoods.com`, the Made in Italy label, headings, and copyright suffix.
+- Product purchase destinations and their verified SKU overrides. A configured newsletter endpoint enables the subscription form; with no endpoint the section offers the existing Instagram link without promising unavailable features.
 - Routes themselves. Publishing a new `page` entry does not create a URL or component automatically.
 - Layout, styling, animations, accessibility behavior, and responsive rules.
 
@@ -217,6 +226,7 @@ Published versions are immutable. Editing a live entry creates a new draft; the 
 - Add useful alternative text when uploading. The file is stored in the site's area of the public Supabase `site-media` bucket, and its public URL is saved in the CMS field.
 - After uploading, save the draft and publish it. Uploading a file makes it available in Media but does not publish the content change by itself.
 - Reuse the CMS asset URL for editable images. Do not download the file into `public/assets` unless it is intentionally becoming a code-managed fallback asset.
+- Bundled photographs have generated WebP variants under `public/assets/optimized`, selected by an explicit source-image manifest. External CMS image URLs remain unchanged. A missing image or the former `pack-shot-pending.svg` value renders a text-based unavailable-photo state; it is excluded from sibling thumbnails and zoom controls.
 - Test the crop on the actual component. Product images generally use `object-contain`; category and page heroes use cover-style presentation and need suitable aspect ratios and safe focal areas.
 
 ## Publishing, caching, and deployments
@@ -246,7 +256,7 @@ Presentation or component changes do require a public-site deployment. The Verce
 2. Add its title, tagline, body, hero image, and display order.
 3. Publish it before publishing products that reference it.
 4. If it belongs outside The Pantry, update the hardcoded group data in this repository and deploy the site.
-5. If it should appear in the homepage collections, update `CollectionsGrid.tsx`; CMS publication alone will not add it there.
+5. The category automatically becomes available through the homepage's **All N collections** button. Update the curated slug priority in `CollectionsGrid.tsx` only if it should receive a specific featured position.
 
 ### Add a product
 

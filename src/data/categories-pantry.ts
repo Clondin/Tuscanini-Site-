@@ -1002,7 +1002,7 @@ export const pantryCategories: Category[] = [
         name: "Minced Black Truffle",
         description:
           "Finely minced Italian black truffles, ready to fold into sauces, butters, and dressings. Pure truffle flavor in every spoonful.",
-        image: "/assets/Truffles/730585.png",
+        image: "/assets/Truffles/730586.webp",
         categoryId: "seasonings-truffles",
         details:
           "Ready-to-use minced black truffle. Mix into butter, sauces, vinaigrettes, or mashed potatoes.",
@@ -1041,7 +1041,8 @@ export const pantryCategories: Category[] = [
         name: "Large Minced Black Truffle",
         description:
           "Finely minced Italian black truffles in a large format jar. The ultimate pantry staple for truffle-obsessed cooks and professionals.",
-        image: "/assets/Truffles/730589.png",
+        // The former 730589.png file contains only zero bytes, not a photo.
+        image: "/assets/pack-shot-pending.svg",
         categoryId: "seasonings-truffles",
         details:
           "Our Large Minced Black Truffle jar is the choice of professional chefs and truffle aficionados who demand both quality and quantity. Fold it generously into sauces, risottos, and butters without worrying about running out.",
@@ -1062,79 +1063,40 @@ export const pantryCategories: Category[] = [
     products: [
       {
         id: "all-purpose-flour-2-2lb",
-        name: "All Purpose Flour 2.2LB",
+        name: "All Purpose Flour",
         description:
-          "Finely milled Italian all-purpose flour, versatile for pasta, bread, pizza dough, and pastry. The essential foundation of authentic Italian cooking.",
+          "Pre-sifted Italian white Type 00 all-purpose flour, finely milled for everyday baking, pasta, and pastry.",
         image: "/assets/Flour/730306.png",
         categoryId: "flour-baking",
         details:
-          "Our All Purpose Flour is milled from premium Italian wheat to a fine, consistent texture ideal for a wide range of baking applications. Whether you are making fresh pasta, pizza dough, or classic Italian breads, this flour delivers authentic results every time.",
-        size: "2.2 LB (1 kg)",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "all-purpose-flour-1kg",
-        name: "All Purpose Flour 1KG",
-        description:
-          "Classic Italian all-purpose flour in a generous 1KG bag. Perfect for everyday baking, from homemade pasta to rustic loaves.",
-        image: "/assets/Flour/All purpose TUSCANINI_1Kg_2501011_facing.png",
-        categoryId: "flour-baking",
-        details:
-          "A larger format of our premium Italian all-purpose flour, providing excellent value for frequent bakers. Its balanced protein content makes it suitable for pasta, pizza, focaccia, and a wide variety of traditional Italian recipes.",
-        size: "1 KG (2.2 LB)",
+          "Tuscanini All Purpose Flour is pre-sifted and milled in Italy to fine Type 00 standards. Made from soft wheat, it is a versatile flour for baked goods, homemade pasta, and your favorite everyday recipes.",
+        size: "1 kg (2.2 lb)",
         kosher: true,
         madeInItaly: true,
       },
       {
         id: "high-gluten-flour-5lb",
-        name: "High Gluten Flour 5LB",
+        name: "High Gluten Flour",
         description:
-          "High-protein Italian flour designed for artisan bread, chewy pizza crusts, and fresh pasta. Superior elasticity and structure for professional results.",
+          "Pre-sifted Italian high-gluten bread flour for challah, breads, bagels, rolls, and rustic loaves.",
         image: "/assets/Flour/730307-Big.png",
         categoryId: "flour-baking",
         details:
-          "Our High Gluten Flour is milled from hard durum wheat with a high protein content that creates exceptional dough elasticity and strength. Ideal for Neapolitan-style pizza, sourdough bread, bagels, and fresh pasta that holds its shape perfectly.",
-        size: "5 LB",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "high-gluten-flour-2-27kg",
-        name: "High Gluten Flour 2.27KG",
-        description:
-          "Professional-grade Italian high-gluten flour in a large 2.27KG format. The preferred choice for artisan bakers and serious home cooks.",
-        image: "/assets/Flour/High gluten TUSCANINI_2,27Kg_2501013_facing.png",
-        categoryId: "flour-baking",
-        details:
-          "The large-format version of our high-gluten flour, perfect for frequent bakers who demand professional-quality results. Its high protein content delivers superior dough strength and elasticity for pizzas, breads, and fresh pasta.",
-        size: "2.27 KG (5 LB)",
+          "Milled in Italy and pre-sifted, Tuscanini High Gluten Flour is made for bread and challah baking. Its high gluten content helps build dough structure for bagels, rolls, and artisan-style loaves.",
+        size: "2.27 kg (5 lb)",
         kosher: true,
         madeInItaly: true,
       },
       {
         id: "spelt-white-flour-5lb",
-        name: "Spelt White Flour 5LB",
+        name: "Spelt White Flour",
         description:
-          "Ancient grain spelt flour with a mild, nutty flavor and naturally lighter texture. A nutritious alternative for modern Italian baking.",
+          "Pre-sifted Italian white spelt flour for challah, sourdough, and a wide range of baked goods.",
         image: "/assets/Flour/730308-Big.png",
         categoryId: "flour-baking",
         details:
-          "Made from ancient spelt wheat, our White Spelt Flour offers a delicate nuttiness and slightly sweeter profile compared to conventional wheat flour. Rich in fiber and nutrients, it works beautifully in pasta, pizza, focaccia, and rustic breads with a wholesome twist.",
-        size: "5 LB",
-        kosher: true,
-        madeInItaly: true,
-      },
-      {
-        id: "spelt-white-flour-2-27kg",
-        name: "Spelt White Flour 2.27KG",
-        description:
-          "Premium Italian spelt flour in a large 2.27KG format, perfect for bakers who love the nutty complexity of ancient grains.",
-        image: "/assets/Flour/Spelt TUSCANINI_2,27Kg_2501009_facing.png",
-        categoryId: "flour-baking",
-        details:
-          "Our large-format White Spelt Flour brings the ancient grain goodness of spelt to your kitchen in generous quantity. With its mild, nutty flavor and excellent baking properties, it is the go-to choice for health-conscious bakers who do not want to sacrifice authenticity.",
-        size: "2.27 KG (5 LB)",
+          "Tuscanini White Spelt Flour is milled in Italy and pre-sifted for convenient baking. Use it in your favorite challah, sourdough, bread, cookie, and cake recipes.",
+        size: "2.27 kg (5 lb)",
         kosher: true,
         madeInItaly: true,
       },

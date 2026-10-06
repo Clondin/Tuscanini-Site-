@@ -1,3 +1,4 @@
+import { getResponsiveImageProps } from "../../lib/productImage";
 import { useState, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Search, ChevronDown, ArrowRight } from "lucide-react";
@@ -72,7 +73,7 @@ export default function Navbar() {
           >
             {logo ? (
               <img
-                src={logo}
+                {...getResponsiveImageProps(logo, "100vw")}
                 alt={siteTitle}
                 className="h-8 max-w-[180px] object-contain"
               />

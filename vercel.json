@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/product/all-purpose-flour-1kg", "destination": "/product/all-purpose-flour-2-2lb", "permanent": true },
+    { "source": "/product/high-gluten-flour-2-27kg", "destination": "/product/high-gluten-flour-5lb", "permanent": true },
+    { "source": "/product/spelt-white-flour-2-27kg", "destination": "/product/spelt-white-flour-5lb", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/admin", "destination": "/" }
   ],

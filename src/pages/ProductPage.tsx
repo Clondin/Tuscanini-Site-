@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { getProductById, getCategoryForProduct } from "../data/products";
 import ProductNotFound from "../components/product/ProductNotFound";
 import ProductBreadcrumb from "../components/product/ProductBreadcrumb";
@@ -15,6 +15,10 @@ export default function ProductPage() {
 
   if (!product || !category) {
     return <ProductNotFound />;
+  }
+
+  if (id !== product.id) {
+    return <Navigate replace to={`/product/${product.id}`} />;
   }
 
   const siblings = category.products.filter((p) => p.id !== product.id);

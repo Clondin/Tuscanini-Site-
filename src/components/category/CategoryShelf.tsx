@@ -1,3 +1,4 @@
+import { getResponsiveImageProps } from "../../lib/productImage";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -83,7 +84,7 @@ export default function CategoryShelf({
               >
                 <div className="h-[270px] px-5 flex items-end justify-center pb-3">
                   <img
-                    src={product.image}
+                    {...getResponsiveImageProps(product.image, "100vw")}
                     alt=""
                     loading="lazy"
                     style={{ maxHeight: sizing[product.id].height }}

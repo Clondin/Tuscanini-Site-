@@ -1,3 +1,4 @@
+import { getResponsiveImageProps } from "../../lib/productImage";
 import { getRecipesForProduct, getPairedProductIds } from "../../data/recipes";
 import { getProductById, type Product } from "../../data/products";
 import CatalogCard from "../category/CatalogCard";
@@ -35,7 +36,7 @@ export default function RecipeSuggestions({
             >
               {recipe.image && (
                 <img
-                  src={recipe.image}
+                  {...getResponsiveImageProps(recipe.image, "100vw")}
                   alt={recipe.name}
                   loading="lazy"
                   className="w-full max-h-[480px] aspect-[16/9] object-cover"

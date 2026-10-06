@@ -4,6 +4,7 @@ import { snackCategories } from "./categories-snacks";
 import { foodserviceCategories } from "./categories-foodservice";
 import { mergeKaycoCatalog } from "./kayco-catalog";
 import { kaycoSnapshot } from "./kayco-catalog.generated";
+import { canonicalProductId } from '../lib/productAliases';
 
 export interface Product {
   id: string;
@@ -353,18 +354,30 @@ export function setCatalogCategories(nextCategories: Category[]): void {
   if (nextCategories.length > 0) categories = nextCategories;
 }
 
+// The metric and imperial flour listings used the same retail packages.
+// Preserve their former URLs while showing one product per SKU.
+export { productAliases, canonicalProductId } from '../lib/productAliases';
+
+export function resolveProductId(id: string): string {
+  // Published CMS IDs take precedence if an editor intentionally uses an alias.
+  if (categories.some((category) => category.products.some((product) => product.id === id))) return id;
+  return canonicalProductId(id);
+}
+
 export function getCategoryBySlug(slug: string): Category | undefined {
   return categories.find((c) => c.slug === slug);
 }
 
 export function getProductById(id: string): Product | undefined {
+  const resolvedId = resolveProductId(id);
   for (const cat of categories) {
-    const product = cat.products.find((p) => p.id === id);
+    const product = cat.products.find((p) => p.id === resolvedId);
     if (product) return product;
   }
   return undefined;
 }
 
 export function getCategoryForProduct(productId: string): Category | undefined {
-  return categories.find((cat) => cat.products.some((p) => p.id === productId));
+  const resolvedId = resolveProductId(productId);
+  return categories.find((cat) => cat.products.some((p) => p.id === resolvedId));
 }

@@ -17,7 +17,7 @@ The dashboard's `pages.dev/api/v1/overview` URL returns HTML. Authenticated API 
 
 ## Selection
 
-The API returned 301 Tuscanini items, of which 254 had images. The reviewed snapshot refreshes 135 existing products and adds 67, for 210 products in 23 categories. The other eight existing products retain their original content and URLs. All 199 distinct API image URLs returned successful image responses during integration.
+The API returned 301 Tuscanini items, of which 254 had images. The reviewed snapshot originally yielded 210 products in 23 categories. After consolidating the three duplicate flour listings, the combined catalog has 207 products in 23 categories. All 199 distinct Kayco image URLs returned successful image responses on October 6, 2026 without an API key. The key is required for upstream catalog refresh, not for reading these public image URLs.
 
 - Add only active Tuscanini retail items (`status: A`) with images. Never add a product without an image.
 - Exclude bulk, foodservice, club/Costco, Canadian duplicate, display, shipper, and empty-bin records from additions.

@@ -45,9 +45,9 @@ interface View {
 
 interface HoverTip {
   region: SourcingRegion;
+  /** Anchor coordinates as fractions of the container, retained across resizes. */
   x: number;
   y: number;
-  below: boolean;
   kind: "region" | "marker";
 }
 
@@ -261,6 +261,7 @@ export default function SourcingMap() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [hoverTip, setHoverTip] = useState<HoverTip | null>(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
   const selectedRegion = useMemo(
     () => sourcingRegions.find((region) => region.id === selectedId) ?? null,
@@ -391,6 +392,12 @@ export default function SourcingMap() {
     const element = containerRef.current;
     if (!element) return;
 
+    const resizeObserver = new ResizeObserver(() => {
+      const rectangle = element.getBoundingClientRect();
+      setContainerSize({ width: rectangle.width, height: rectangle.height });
+    });
+    resizeObserver.observe(element);
+
     const handleWheel = (event: WheelEvent) => {
       event.preventDefault();
       setHoverTip(null);
@@ -398,7 +405,10 @@ export default function SourcingMap() {
     };
 
     element.addEventListener("wheel", handleWheel, { passive: false });
-    return () => element.removeEventListener("wheel", handleWheel);
+    return () => {
+      resizeObserver.disconnect();
+      element.removeEventListener("wheel", handleWheel);
+    };
   }, [zoomAt]);
 
   const handlePointerDown = (event: ReactPointerEvent<SVGSVGElement>) => {
@@ -529,13 +539,13 @@ export default function SourcingMap() {
   ) => {
     if (event.pointerType !== "mouse") return;
     const rectangle = containerRef.current?.getBoundingClientRect();
-    if (!rectangle) return;
+    if (!rectangle || rectangle.width <= 0 || rectangle.height <= 0) return;
+    setContainerSize({ width: rectangle.width, height: rectangle.height });
     setHoveredId(region.id);
     setHoverTip({
       region,
-      x: event.clientX - rectangle.left,
-      y: event.clientY - rectangle.top,
-      below: event.clientY - rectangle.top < 180,
+      x: (event.clientX - rectangle.left) / rectangle.width,
+      y: (event.clientY - rectangle.top) / rectangle.height,
       kind: "region",
     });
   };
@@ -547,16 +557,16 @@ export default function SourcingMap() {
   ) => {
     if (pointerType && pointerType !== "mouse") return;
     const container = containerRef.current?.getBoundingClientRect();
-    if (!container) return;
+    if (!container || container.width <= 0 || container.height <= 0) return;
     const marker = target.getBoundingClientRect();
     const x = marker.left - container.left + marker.width / 2;
     const y = marker.top - container.top;
+    setContainerSize({ width: container.width, height: container.height });
     setHoveredId(region.id);
     setHoverTip({
       region,
-      x: Math.min(container.width - 120, Math.max(120, x)),
-      y,
-      below: y < 205,
+      x: x / container.width,
+      y: y / container.height,
       kind: "marker",
     });
   };
@@ -570,6 +580,10 @@ export default function SourcingMap() {
   const translateX = MAP_W / 2 - k * cx;
   const translateY = MAP_H / 2 - k * cy;
   const transform = `translate(${translateX} ${translateY}) scale(${k})`;
+  const hoverTipY = hoverTip
+    ? Math.min(containerSize.height, Math.max(0, hoverTip.y * containerSize.height))
+    : 0;
+  const hoverTipBelow = hoverTipY < (hoverTip?.kind === "marker" ? 205 : 180);
 
   return (
     <div className="mx-auto w-full max-w-6xl">
@@ -1052,13 +1066,14 @@ export default function SourcingMap() {
         {hoverTip && (
           <div
             className={`pointer-events-none absolute z-30 hidden -translate-x-1/2 md:block ${
-              hoverTip.below
-                ? "translate-y-4"
-                : "-translate-y-[calc(100%+18px)]"
+              hoverTipBelow ? "translate-y-4" : "-translate-y-[calc(100%+18px)]"
             }`}
             style={{
-              left: `clamp(125px, ${hoverTip.x}px, calc(100% - 125px))`,
-              top: hoverTip.y,
+              left: Math.min(
+                Math.max(hoverTip.x * containerSize.width, 125),
+                containerSize.width - 125,
+              ),
+              top: hoverTipY,
             }}
           >
             <div className="sourcing-atlas__tooltip w-60 rounded-2xl border border-on-surface/10 bg-heading/95 px-4 py-3.5 text-aged-cream shadow-2xl backdrop-blur-md">

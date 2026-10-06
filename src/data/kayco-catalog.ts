@@ -1,4 +1,5 @@
 import type { Category, Product } from './products';
+import { canonicalProductId } from '../lib/productAliases';
 
 /** The only product fields allowed across the private API boundary. */
 export interface KaycoProduct {
@@ -57,9 +58,13 @@ export function isKaycoProduct(value: unknown): value is KaycoProduct {
 
 export function mergeKaycoCatalog(base: Category[], products: KaycoProduct[]): Category[] {
   const result = base.map(category => ({ ...category, products: [...category.products] }));
-  for (const item of products) {
+  const seen = new Set<string>();
+  for (const source of [...products].sort((a, b) => Number(a.id !== canonicalProductId(a.id)) - Number(b.id !== canonicalProductId(b.id)))) {
+    const item = { ...source, id: canonicalProductId(source.id) };
     // An image is mandatory for every API addition; keep originals on missing data.
     if (!isKaycoImage(item.image)) continue;
+    if (seen.has(item.id)) continue;
+    seen.add(item.id);
     let category = result.find(entry => entry.products.some(product => product.id === item.id));
     category ??= result.find(entry => entry.slug === item.categoryId);
     if (!category) {

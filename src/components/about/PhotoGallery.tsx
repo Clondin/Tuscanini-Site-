@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import SectionHeading from "../ui/SectionHeading";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 const leadPhoto = "/assets/Photos/story/coastal-craftsperson-lead.webp";
 
@@ -41,7 +42,7 @@ export default function PhotoGallery() {
             className="relative col-span-2 aspect-[4/5] md:aspect-square md:row-span-2 overflow-hidden group"
           >
             <img
-              src={leadPhoto}
+              {...getResponsiveImageProps(leadPhoto, "100vw")}
               alt="Craftsperson coiling rope beside blue fishing boats in a coastal Italian harbor."
               width={1122}
               height={1402}
@@ -61,7 +62,7 @@ export default function PhotoGallery() {
               className="aspect-square overflow-hidden group"
             >
               <img
-                src={photo.src}
+                {...getResponsiveImageProps(photo.src, "100vw")}
                 alt={photo.alt}
                 width={1254}
                 height={1254}

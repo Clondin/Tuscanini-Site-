@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import type { Category } from "../../data/products";
+import { getResponsiveImageProps, isMissingProductImage } from '../../lib/productImage';
 
 export default function CollectionCards({
   categories,
@@ -10,9 +11,9 @@ export default function CollectionCards({
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7">
       {categories.map((category) => {
-        const image = category.products.find((product) => product.image)?.image;
+        const image = category.products.find((product) => !isMissingProductImage(product.image))?.image;
         const count = category.products.filter(
-          (product) => product.image,
+          (product) => !isMissingProductImage(product.image),
         ).length;
         if (!image) return null;
         return (
@@ -23,7 +24,7 @@ export default function CollectionCards({
           >
             <div className="aspect-[4/3] p-5 md:p-8 bg-aged-cream/50">
               <img
-                src={image}
+                {...getResponsiveImageProps(image)}
                 alt=""
                 loading="lazy"
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform motion-reduce:transform-none"

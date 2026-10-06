@@ -1,4 +1,4 @@
-import { bundledCategories as fallbackCategories, setCatalogCategories, type Category, type Product } from "./products";
+import { canonicalProductId, bundledCategories as fallbackCategories, setCatalogCategories, type Category, type Product } from "./products";
 import { setRecipes, type Recipe } from "./recipes";
 import { isKaycoProduct, mergeKaycoCatalog, type KaycoProduct } from "./kayco-catalog";
 import { kaycoSnapshot } from "./kayco-catalog.generated";
@@ -47,6 +47,7 @@ function contentKey(type: ContentType, slug: string): string {
 
 async function listAll(baseUrl: string, type: ContentType): Promise<PublishedContent[]> {
   const items: PublishedContent[] = [];
+  const cursors = new Set<string>();
   let cursor: string | null = null;
   do {
     const params = new URLSearchParams({ limit: "100" });
@@ -59,22 +60,38 @@ async function listAll(baseUrl: string, type: ContentType): Promise<PublishedCon
     const payload = (await response.json()) as ListResponse;
     items.push(...payload.data);
     cursor = payload.meta.nextCursor;
+    if (cursor) {
+      if (cursors.has(cursor)) throw new Error(`Kayco content API repeated a ${type} cursor`);
+      cursors.add(cursor);
+    }
   } while (cursor);
   return items;
 }
 
 export function mapCatalog(categoryItems: PublishedContent[], productItems: PublishedContent[]): Category[] {
   const productsByCategory = new Map<string, Product[]>();
+  const validCategories = categoryItems.filter((item) => /^[a-z0-9][a-z0-9-]*$/i.test(item.slug.trim()));
+  const categorySlugs = new Set(validCategories.map((item) => item.slug.trim()));
   const sortedProducts = [...productItems].sort(
     (left, right) => number(left.data, "display_order") - number(right.data, "display_order"),
   );
 
+  const canonicalItems = new Map<string, PublishedContent>();
   for (const item of sortedProducts) {
-    const categorySlug = text(item.data, "category_slug");
-    if (!categorySlug) continue;
+    const sourceId = text(item.data, "source_id").trim() || item.slug.trim();
+    const id = canonicalProductId(sourceId);
+    const categorySlug = text(item.data, "category_slug").trim();
+    if (!/^[a-z0-9][a-z0-9-]*$/i.test(id) || !categorySlugs.has(categorySlug)) continue;
+    const existing = canonicalItems.get(id);
+    const existingId = existing ? text(existing.data, "source_id").trim() || existing.slug.trim() : "";
+    if (!existing || (sourceId === id && existingId !== id)) canonicalItems.set(id, item);
+  }
+
+  for (const [id, item] of canonicalItems) {
+    const categorySlug = text(item.data, "category_slug").trim();
     const ingredientsValue = item.data.ingredients;
     const product: Product = {
-      id: text(item.data, "source_id", item.slug),
+      id,
       name: item.title,
       description: item.description ?? "",
       image: text(item.data, "image"),
@@ -96,16 +113,16 @@ export function mapCatalog(categoryItems: PublishedContent[], productItems: Publ
     productsByCategory.set(categorySlug, [...(productsByCategory.get(categorySlug) ?? []), product]);
   }
 
-  return [...categoryItems]
+  return validCategories
     .sort((left, right) => number(left.data, "display_order") - number(right.data, "display_order"))
     .map((item) => ({
-      id: text(item.data, "source_id", item.slug),
+      id: text(item.data, "source_id").trim() || item.slug.trim(),
       name: item.title,
-      slug: item.slug,
+      slug: item.slug.trim(),
       tagline: text(item.data, "tagline"),
       description: text(item.data, "body", item.description ?? ""),
       heroImage: text(item.data, "hero_image"),
-      products: productsByCategory.get(item.slug) ?? [],
+      products: productsByCategory.get(item.slug.trim()) ?? [],
     }));
 }
 
@@ -118,7 +135,7 @@ export function mapRecipes(items: PublishedContent[]): Recipe[] {
       description: text(item.data, "body", item.description ?? ""),
       ingredients: stringList(item.data, "ingredients"),
       instructions: stringList(item.data, 'instructions').map(step => step.trim()).filter(Boolean),
-      products: stringList(item.data, "related_products"),
+      products: [...new Set(stringList(item.data, "related_products").map(id => canonicalProductId(id.trim())))],
       prepTime: text(item.data, "prep_time"),
       cookTime: text(item.data, "cook_time"),
       servings: number(item.data, "servings") > 0 ? number(item.data, "servings") : undefined,

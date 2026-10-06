@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import type { Product } from "../../data/products";
 import { isFrozenProduct } from "../../lib/catalog-search";
+import { getResponsiveImageProps, isMissingProductImage } from '../../lib/productImage';
+import { formatProductSize } from '../../lib/formatProductSize';
 
 export default function CatalogCard({ product }: { product: Product }) {
-  if (!product.image) return null;
+  if (isMissingProductImage(product.image)) return null;
   return (
     <Link
       to={`/product/${product.id}`}
@@ -17,7 +19,7 @@ export default function CatalogCard({ product }: { product: Product }) {
           </span>
         )}
         <img
-          src={product.image}
+          {...getResponsiveImageProps(product.image)}
           alt=""
           loading="lazy"
           decoding="async"
@@ -26,7 +28,7 @@ export default function CatalogCard({ product }: { product: Product }) {
       </div>
       <div className="p-4 sm:p-5 border-t border-on-surface/10">
         <p className="text-xs sm:text-sm text-on-surface/75 mb-2">
-          {product.size || "Tuscanini"}
+          {formatProductSize(product.size) || "Tuscanini"}
         </p>
         <h3 className="font-headline text-lg sm:text-xl leading-snug text-heading group-hover:text-olive-accent">
           {product.name}

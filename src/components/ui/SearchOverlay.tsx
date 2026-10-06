@@ -1,3 +1,4 @@
+import { getResponsiveImageProps } from "../../lib/productImage";
 import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -138,7 +139,7 @@ export default function SearchOverlay({
                         className="flex items-center gap-4 p-3 -mx-3 hover:bg-aged-cream border-b border-on-surface/10"
                       >
                         <img
-                          src={product.image}
+                          {...getResponsiveImageProps(product.image, "100vw")}
                           alt=""
                           className="w-14 h-16 object-contain shrink-0"
                         />

@@ -1,5 +1,8 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import { productRouteTitle } from "../src/lib/routeTitle";
+import { getOptimizedImageUrl, isMissingProductImage } from "../src/lib/productImage";
+import { renderSitemap } from "./sitemap-xml";
 import type { Category } from "../src/data/products";
 import { readBuildCatalog } from "./load-build-catalog";
 
@@ -20,9 +23,9 @@ function safeSlug(value: string): string | null {
 }
 
 function absoluteUrl(value: string | undefined): string {
-  if (!value) return defaultImage;
+  if (!value || isMissingProductImage(value)) return defaultImage;
   try {
-    return new URL(value, `${siteUrl}/`).toString();
+    return new URL(getOptimizedImageUrl(value), `${siteUrl}/`).toString();
   } catch {
     return defaultImage;
   }
@@ -94,7 +97,7 @@ function catalogRoutes(categories: Category[]): RouteHtml[] {
     for (const product of category.products) {
       routes.push({
         path: `/product/${product.id}`,
-        title: `${product.name} | Tuscanini`,
+        title: productRouteTitle(product.name),
         description: product.description,
         type: "product",
         image: product.image,
@@ -119,7 +122,7 @@ function productStructuredData(
       "@type": "Product",
       name,
       description,
-      image: image ? [absoluteUrl(image)] : undefined,
+      image: image && !isMissingProductImage(image) ? [absoluteUrl(image)] : undefined,
       category: categoryName,
       brand: { "@type": "Brand", name: "Tuscanini" },
     },
@@ -169,14 +172,17 @@ routes.push(about);
 routes.push({ path: '/products', title: 'Explore Our Products | Tuscanini', description: 'Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.', type: 'website', structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });
 
 await writeFile(resolve("dist/index.html"), renderRouteHtml(baseHtml, home), "utf8");
-let written = 1;
+const writtenPaths = new Set<string>(["/"]);
 for (const route of routes) {
   const segments = route.path.split("/").filter(Boolean);
   if (segments.some((segment) => !safeSlug(segment))) continue;
   const outputPath = resolve("dist", `${segments.join("/")}.html`);
   await mkdir(dirname(outputPath), { recursive: true });
   await writeFile(outputPath, renderRouteHtml(baseHtml, route), "utf8");
-  written += 1;
+  writtenPaths.add(route.path);
 }
 
-console.log(`Generated ${written} clean-URL route HTML files.`);
+// The deployed sitemap must use the same catalog snapshot as these route files,
+// even if CMS publication or availability changes after prebuild.
+await writeFile(resolve("dist/sitemap.xml"), renderSitemap(writtenPaths, siteUrl), "utf8");
+console.log(`Generated ${writtenPaths.size} clean-URL route HTML files and matching sitemap.`);

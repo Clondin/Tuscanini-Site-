@@ -1,3 +1,4 @@
+import { getResponsiveImageProps } from "../../lib/productImage";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Pause, Play } from "lucide-react";
@@ -43,13 +44,13 @@ export default function HeroSection() {
           onPlay={() => setVideoPaused(false)}
           onPause={() => setVideoPaused(true)}
           className="absolute inset-0 w-full h-full object-cover opacity-35"
-          src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
+          src="/assets/Trailer/Tuscanini_Trailer_Web.mp4"
         />
       ) : (
         <img
-          src={
+          {...getResponsiveImageProps(
             heroImage || "/assets/Photos/backgrounds/italian-coast-hero.webp"
-          }
+          , "100vw")}
           alt=""
           fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover opacity-35"

@@ -4,6 +4,9 @@ import { X, Package, ShieldCheck, Award, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { Product } from "../../data/products";
 import { useModalDialog } from "../../hooks/useModalDialog";
+import { formatProductSize } from "../../lib/formatProductSize";
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
+import ProductImagePlaceholder from "./ProductImagePlaceholder";
 
 interface QuickViewModalProps {
   product: Product | null;
@@ -60,20 +63,16 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
             <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
               {/* Image */}
               <div className="aspect-square md:aspect-auto md:min-h-[400px] overflow-hidden bg-earth-dark">
-                {product.image ? (
+                {!isMissingProductImage(product.image) ? (
                   <img
-                    src={product.image}
+                    {...getResponsiveImageProps(product.image, "(min-width: 768px) 450px, 90vw")}
                     alt={product.name}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e0d0c0] via-[#d4bfad] to-[#f0e2d4]">
-                    <span className="font-headline text-2xl text-heading/30 text-center px-4">
-                      {product.name}
-                    </span>
-                  </div>
+                  <ProductImagePlaceholder productName={product.name} className="w-full h-full text-2xl" />
                 )}
               </div>
 
@@ -105,7 +104,7 @@ export default function QuickViewModal({ product, isOpen, onClose }: QuickViewMo
                     <span className="text-on-surface/80 uppercase tracking-widest text-[10px] font-bold">
                       Size
                     </span>
-                    <span className="text-on-surface/70 text-sm">{product.size}</span>
+                    <span className="text-on-surface/70 text-sm">{formatProductSize(product.size)}</span>
                   </div>
                 )}
 

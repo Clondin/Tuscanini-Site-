@@ -51,15 +51,16 @@ export function useModalDialog<T extends HTMLElement>({
       inert: element.inert,
       ariaHidden: element.getAttribute("aria-hidden"),
     }));
-    for (const element of inertTargets) {
-      element.inert = true;
-      element.setAttribute("aria-hidden", "true");
-    }
-
     const focusTimer = window.setTimeout(() => {
       const preferred = initialFocusRef?.current;
       const firstFocusable = dialog.querySelector<HTMLElement>(focusableSelector);
       (preferred ?? firstFocusable ?? dialog).focus();
+
+      // Move focus out of the background before hiding it from assistive technology.
+      for (const element of inertTargets) {
+        element.inert = true;
+        element.setAttribute("aria-hidden", "true");
+      }
     }, 0);
 
     const handleKeyDown = (event: KeyboardEvent) => {
