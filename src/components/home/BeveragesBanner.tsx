@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 export default function BeveragesBanner() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -16,7 +17,7 @@ export default function BeveragesBanner() {
     <section ref={sectionRef} className="relative h-[50vh] min-h-[320px] overflow-hidden">
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
-          src="/assets/ads/beverages-wide.jpg"
+          {...getResponsiveImageProps("/assets/ads/beverages-wide.jpg", "100vw")}
           alt="Tuscanini Sparkling Beverages"
           className="w-full h-[130%] object-cover scale-105"
           loading="lazy"

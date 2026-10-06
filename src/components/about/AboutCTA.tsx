@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 export default function AboutCTA() {
   return (
@@ -12,7 +13,7 @@ export default function AboutCTA() {
         loading="lazy"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover opacity-30"
-        src="/assets/Photos/backgrounds/italian-coast.jpg"
+        {...getResponsiveImageProps("/assets/Photos/backgrounds/italian-coast.jpg", "100vw")}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/70 to-dark/95" />
 

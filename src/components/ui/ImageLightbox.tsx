@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { useModalDialog } from "../../hooks/useModalDialog";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 interface ImageLightboxProps {
   src: string;
@@ -102,7 +103,7 @@ export default function ImageLightbox({ src, alt, isOpen, onClose }: ImageLightb
             onDoubleClick={handleDoubleClick}
           >
             <img
-              src={src}
+              {...getResponsiveImageProps(src, "90vw")}
               alt={alt}
               decoding="async"
               className="max-w-full max-h-[90vh] object-contain transition-transform duration-200 ease-out"

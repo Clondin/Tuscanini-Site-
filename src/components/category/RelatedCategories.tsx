@@ -2,7 +2,9 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import type { Category } from "../../data/products";
 import { shelfSizing } from "../../lib/packSize";
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
 import SectionHeading from "../ui/SectionHeading";
+import ProductImagePlaceholder from "../ui/ProductImagePlaceholder";
 
 interface RelatedCategoriesProps {
   currentCategoryId: string;
@@ -42,14 +44,18 @@ function MiniShelf({ category }: { category: Category }) {
               style={{ width, height: 200 }}
               className="flex shrink-0 items-end justify-center px-3.5 group"
             >
-              <img
-                src={product.image}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                style={{ maxHeight: height }}
-                className="max-w-full w-auto object-contain drop-shadow-[0_12px_16px_rgba(42,31,22,0.2)] group-hover:-translate-y-1 transition-transform duration-300"
-              />
+              {isMissingProductImage(product.image) ? (
+                <ProductImagePlaceholder productName={product.name} className="w-full min-h-32 border border-on-surface/10" />
+              ) : (
+                <img
+                  {...getResponsiveImageProps(product.image, "200px")}
+                  alt={product.name}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ maxHeight: height }}
+                  className="max-w-full w-auto object-contain drop-shadow-[0_12px_16px_rgba(42,31,22,0.2)] group-hover:-translate-y-1 transition-transform duration-300"
+                />
+              )}
             </Link>
           );
         })}

@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 export default function OriginStory() {
   return (
@@ -16,7 +17,7 @@ export default function OriginStory() {
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover block"
-            src="/assets/Photos/PHOTO-2020-11-27-15-44-52.jpg"
+            {...getResponsiveImageProps("/assets/Photos/PHOTO-2020-11-27-15-44-52.jpg", "(min-width: 768px) 50vw, 100vw")}
           />
         </motion.div>
 

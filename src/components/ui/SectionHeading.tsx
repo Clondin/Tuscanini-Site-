@@ -7,8 +7,13 @@ type Props = {
   title: ReactNode;
   /** v2 sets most section titles in italic Playfair; page-level headings stay upright. */
   italic?: boolean;
-  /** Trailing "View all →" style link, right-aligned on the baseline. */
-  action?: { label: string; to: string };
+  /** Trailing action, right-aligned on the baseline. */
+  action?: { label: string; to: string } | {
+    label: string;
+    onClick: () => void;
+    expanded?: boolean;
+    controls?: string;
+  };
   /** Hairline under the heading. Gold on cream sections, ink on the deeper earth tones. */
   rule?: "gold" | "ink";
   className?: string;
@@ -24,7 +29,7 @@ export default function SectionHeading({
 }: Props) {
   return (
     <div
-      className={`flex items-baseline justify-between gap-8 pb-5 border-b ${
+      className={`flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 pb-5 border-b ${
         rule === "gold" ? "border-gold/50" : "border-on-surface/16"
       } ${className}`}
     >
@@ -42,14 +47,24 @@ export default function SectionHeading({
           {title}
         </h2>
       </div>
-      {action && (
+      {action && ("to" in action ? (
         <Link
           to={action.to}
           className="shrink-0 whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.2em] text-burnt-terracotta hover:text-primary transition-colors"
         >
           {action.label} &rarr;
         </Link>
-      )}
+      ) : (
+        <button
+          type="button"
+          onClick={action.onClick}
+          aria-expanded={action.expanded}
+          aria-controls={action.controls}
+          className="min-h-11 shrink-0 whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.2em] text-burnt-terracotta hover:text-primary transition-colors cursor-pointer"
+        >
+          {action.label} &rarr;
+        </button>
+      ))}
     </div>
   );
 }

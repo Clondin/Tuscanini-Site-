@@ -12,6 +12,7 @@ import { getCmsData, getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
 import SearchOverlay from "../ui/SearchOverlay";
 import { useModalDialog } from "../../hooks/useModalDialog";
+import { getResponsiveImageProps } from "../../lib/productImage";
 
 const topNavLinks = [
   { label: "Beverages", to: "/category/beverages" },
@@ -241,7 +242,7 @@ export default function Navbar() {
                 className="group/feature relative overflow-hidden ring-1 ring-gold/20 self-stretch min-h-[260px] block"
               >
                 <img
-                  src="/assets/ads/marinara-banner.jpg"
+                  {...getResponsiveImageProps("/assets/ads/marinara-banner.jpg", "320px")}
                   alt="Tuscanini pantry collection"
                   loading="lazy"
                   decoding="async"

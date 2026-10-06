@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, MoveHorizontal } from "lucide-react";
 import type { Category } from "../../data/products";
 import { shelfSizing } from "../../lib/packSize";
+import { formatProductSize } from "../../lib/formatProductSize";
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
 import CategoryBreadcrumbs from "./CategoryBreadcrumbs";
+import ProductImagePlaceholder from "../ui/ProductImagePlaceholder";
 
 interface CategoryShelfProps {
   category: Category;
@@ -19,7 +22,7 @@ export default function CategoryShelf({ category }: CategoryShelfProps) {
   if (!selected) return null;
 
   const facts = [
-    selected.size ? { label: "Size", value: selected.size } : null,
+    selected.size ? { label: "Size", value: formatProductSize(selected.size) } : null,
     selected.madeInItaly ? { label: "Origin", value: "Italy" } : null,
     selected.kosher ? { label: "Certification", value: "Kosher" } : null,
   ].filter((f): f is { label: string; value: string } => f !== null);
@@ -67,13 +70,17 @@ export default function CategoryShelf({ category }: CategoryShelfProps) {
                       isSelected ? "opacity-100" : "opacity-60 hover:opacity-85"
                     }`}
                   >
-                    <img
-                      src={product.image}
-                      alt=""
-                      loading="lazy"
-                      style={{ maxHeight: height }}
-                      className="max-w-full w-auto object-contain drop-shadow-[0_16px_20px_rgba(42,31,22,0.24)]"
-                    />
+                    {isMissingProductImage(product.image) ? (
+                      <ProductImagePlaceholder productName={product.name} className="w-full min-h-40 border border-on-surface/10" />
+                    ) : (
+                      <img
+                        {...getResponsiveImageProps(product.image, "240px")}
+                        alt={product.name}
+                        loading="lazy"
+                        style={{ maxHeight: height }}
+                        className="max-w-full w-auto object-contain drop-shadow-[0_16px_20px_rgba(42,31,22,0.24)]"
+                      />
+                    )}
                   </button>
                 );
               })}
@@ -99,8 +106,8 @@ export default function CategoryShelf({ category }: CategoryShelfProps) {
                       {product.name}
                     </span>
                     {product.size && (
-                      <span className="mt-1.5 block text-[10px] uppercase tracking-[0.16em] text-on-surface/45">
-                        {product.size}
+                      <span className="mt-1.5 block text-[10px] tracking-[0.16em] text-on-surface/45">
+                        {formatProductSize(product.size)}
                       </span>
                     )}
                   </span>
@@ -114,11 +121,15 @@ export default function CategoryShelf({ category }: CategoryShelfProps) {
       <section className="bg-earth-dark px-6 md:px-10 pt-8 pb-14">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-11 items-center bg-surface border border-on-surface/12 p-9 md:px-10">
           <div className="aspect-square max-w-[280px] w-full mx-auto md:mx-0 flex items-center justify-center p-6 pack-well">
-            <img
-              src={selected.image}
-              alt={selected.name}
-              className="w-full h-full object-contain drop-shadow-[0_16px_22px_rgba(42,31,22,0.18)]"
-            />
+            {isMissingProductImage(selected.image) ? (
+              <ProductImagePlaceholder productName={selected.name} className="w-full h-full text-xl" />
+            ) : (
+              <img
+                {...getResponsiveImageProps(selected.image, "280px")}
+                alt={selected.name}
+                className="w-full h-full object-contain drop-shadow-[0_16px_22px_rgba(42,31,22,0.18)]"
+              />
+            )}
           </div>
 
           <div>

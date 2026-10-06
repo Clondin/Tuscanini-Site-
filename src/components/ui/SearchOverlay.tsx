@@ -3,9 +3,10 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Search } from "lucide-react";
+import { X, Search, ImageOff } from "lucide-react";
 import { categories, type Category, type Product } from "../../data/products";
 import { useModalDialog } from "../../hooks/useModalDialog";
+import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
 
 interface SearchOverlayProps {
   isOpen: boolean;
@@ -207,7 +208,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                       >
                         <div className="w-10 h-10 rounded-md overflow-hidden bg-hearth-stone shrink-0">
                           <img
-                            src={result.category.heroImage}
+                            {...getResponsiveImageProps(result.category.heroImage, "40px")}
                             alt={result.category.name}
                             loading="lazy"
                             decoding="async"
@@ -243,13 +244,19 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                         className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-on-surface/5 transition-colors group"
                       >
                         <div className="w-10 h-10 rounded-md overflow-hidden bg-hearth-stone shrink-0">
-                          <img
-                            src={result.product.image}
-                            alt={result.product.name}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                          />
+                          {!isMissingProductImage(result.product.image) ? (
+                            <img
+                              {...getResponsiveImageProps(result.product.image, "40px")}
+                              alt={result.product.name}
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <span role="img" aria-label="Product image unavailable" className="flex h-full w-full items-center justify-center text-on-surface/45">
+                              <ImageOff aria-hidden="true" className="h-5 w-5" />
+                            </span>
+                          )}
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="text-sm text-on-surface font-body group-hover:text-primary transition-colors truncate">

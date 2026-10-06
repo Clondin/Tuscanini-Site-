@@ -1,18 +1,10 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import { categories as fallbackCategories } from "../src/data/products";
-
-interface PublishedContent {
-  slug: string;
-  title: string;
-  description: string | null;
-  data: Record<string, unknown>;
-}
-
-interface ListResponse {
-  data: PublishedContent[];
-  meta: { nextCursor: string | null };
-}
+import { type Category } from "../src/data/products";
+import { productRouteTitle } from "../src/lib/routeTitle";
+import { getOptimizedImageUrl, isMissingProductImage } from "../src/lib/productImage";
+import { loadBuildCatalog, safeSlug } from "./load-build-catalog";
+import { renderSitemap } from "./sitemap-xml";
 
 interface RouteHtml {
   path: string;
@@ -23,42 +15,13 @@ interface RouteHtml {
   structuredData: unknown;
 }
 
-const defaultApiUrl = "https://qkatfirzwukmgdrytbue.supabase.co/functions/v1/content-api";
 const siteUrl = (process.env.VITE_SITE_URL || "https://tuscanini-site.vercel.app").replace(/\/+$/, "");
-const apiUrl = (process.env.VITE_KAYCO_CONTENT_API_URL || defaultApiUrl).replace(/\/+$/, "");
 const defaultImage = `${siteUrl}/assets/Photos/backgrounds/italian-coast.jpg`;
 
-async function listAll(type: "category" | "product"): Promise<PublishedContent[]> {
-  const items: PublishedContent[] = [];
-  let cursor: string | null = null;
-  do {
-    const params = new URLSearchParams({ limit: "100" });
-    if (cursor) params.set("cursor", cursor);
-    const response = await fetch(`${apiUrl}/sites/tuscanini/content/${type}?${params}`, {
-      headers: { Accept: "application/json" },
-      signal: AbortSignal.timeout(10_000),
-    });
-    if (!response.ok) throw new Error(`Content API returned ${response.status} for ${type}`);
-    const payload = (await response.json()) as ListResponse;
-    items.push(...payload.data);
-    cursor = payload.meta.nextCursor;
-  } while (cursor);
-  return items;
-}
-
-function text(data: Record<string, unknown>, key: string, fallback = ""): string {
-  const value = data[key];
-  return typeof value === "string" || typeof value === "number" ? String(value) : fallback;
-}
-
-function safeSlug(value: string): string | null {
-  return /^[a-z0-9][a-z0-9-]*$/i.test(value) ? value : null;
-}
-
 function absoluteUrl(value: string | undefined): string {
-  if (!value) return defaultImage;
+  if (!value || isMissingProductImage(value)) return defaultImage;
   try {
-    return new URL(value, `${siteUrl}/`).toString();
+    return new URL(getOptimizedImageUrl(value), `${siteUrl}/`).toString();
   } catch {
     return defaultImage;
   }
@@ -110,9 +73,9 @@ function renderRouteHtml(baseHtml: string, route: RouteHtml): string {
   return html;
 }
 
-function fallbackRoutes(): RouteHtml[] {
+function catalogRoutes(categories: Category[]): RouteHtml[] {
   const routes: RouteHtml[] = [];
-  for (const category of fallbackCategories) {
+  for (const category of categories) {
     routes.push({
       path: `/category/${category.slug}`,
       title: `${category.name} | Tuscanini`,
@@ -130,7 +93,7 @@ function fallbackRoutes(): RouteHtml[] {
     for (const product of category.products) {
       routes.push({
         path: `/product/${product.id}`,
-        title: `${product.name} | Tuscanini`,
+        title: productRouteTitle(product.name),
         description: product.description,
         type: "product",
         image: product.image,
@@ -155,7 +118,7 @@ function productStructuredData(
       "@type": "Product",
       name,
       description,
-      image: image ? [absoluteUrl(image)] : undefined,
+      image: image && !isMissingProductImage(image) ? [absoluteUrl(image)] : undefined,
       category: categoryName,
       brand: { "@type": "Brand", name: "Tuscanini" },
     },
@@ -169,49 +132,6 @@ function productStructuredData(
       ],
     },
   ];
-}
-
-async function cmsRoutes(): Promise<RouteHtml[]> {
-  const [categories, products] = await Promise.all([listAll("category"), listAll("product")]);
-  const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
-  const routes: RouteHtml[] = [];
-
-  for (const category of categories) {
-    if (!safeSlug(category.slug)) continue;
-    const description = text(category.data, "body", category.description || text(category.data, "tagline"));
-    routes.push({
-      path: `/category/${category.slug}`,
-      title: `${category.title} | Tuscanini`,
-      description,
-      type: "website",
-      image: text(category.data, "hero_image"),
-      structuredData: {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: category.title,
-        description,
-        url: `${siteUrl}/category/${category.slug}`,
-      },
-    });
-  }
-
-  for (const product of products) {
-    const id = text(product.data, "source_id", product.slug);
-    const categorySlug = text(product.data, "category_slug");
-    const category = categoryBySlug.get(categorySlug);
-    if (!safeSlug(id) || !category) continue;
-    const description = product.description || text(product.data, "body");
-    const image = text(product.data, "image");
-    routes.push({
-      path: `/product/${id}`,
-      title: `${product.title} | Tuscanini`,
-      description,
-      type: "product",
-      image,
-      structuredData: productStructuredData(product.title, description, image, id, category.title, categorySlug),
-    });
-  }
-  return routes;
 }
 
 const baseHtml = await readFile(resolve("dist/index.html"), "utf8");
@@ -242,24 +162,21 @@ const about: RouteHtml = {
   },
 };
 
-let routes: RouteHtml[];
-try {
-  routes = await cmsRoutes();
-} catch (error) {
-  console.warn("CMS route generation failed; using the bundled catalog.", error);
-  routes = fallbackRoutes();
-}
+const routes = catalogRoutes(await loadBuildCatalog());
 routes.push(about);
 
 await writeFile(resolve("dist/index.html"), renderRouteHtml(baseHtml, home), "utf8");
-let written = 1;
+const writtenPaths = new Set<string>(["/"]);
 for (const route of routes) {
   const segments = route.path.split("/").filter(Boolean);
   if (segments.some((segment) => !safeSlug(segment))) continue;
   const outputPath = resolve("dist", `${segments.join("/")}.html`);
   await mkdir(dirname(outputPath), { recursive: true });
   await writeFile(outputPath, renderRouteHtml(baseHtml, route), "utf8");
-  written += 1;
+  writtenPaths.add(route.path);
 }
 
-console.log(`Generated ${written} clean-URL route HTML files.`);
+// The deployed sitemap must use the same catalog snapshot as these route files,
+// even if CMS publication or availability changes after prebuild.
+await writeFile(resolve("dist/sitemap.xml"), renderSitemap(writtenPaths, siteUrl), "utf8");
+console.log(`Generated ${writtenPaths.size} clean-URL route HTML files and matching sitemap.`);

@@ -5,6 +5,7 @@ import { ArrowRight, Pause, Play } from "lucide-react";
 import TextReveal from "../ui/TextReveal";
 import MagneticButton from "../ui/MagneticButton";
 import { getCmsData } from "../../data/cms";
+import { getOptimizedImageUrl, getResponsiveImageProps } from "../../lib/productImage";
 
 export default function HeroSection() {
   const cms = getCmsData("page", "home");
@@ -65,7 +66,7 @@ export default function HeroSection() {
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         {heroImage ? (
           <img
-            src={heroImage}
+            {...getResponsiveImageProps(heroImage, "100vw")}
             alt=""
             fetchPriority="high"
             decoding="async"
@@ -79,15 +80,15 @@ export default function HeroSection() {
             loop
             playsInline
             preload="none"
-            poster="/assets/Photos/backgrounds/italian-coast-hero.webp"
+            poster={getOptimizedImageUrl("/assets/Photos/backgrounds/italian-coast-hero.webp")}
             onPlay={() => setVideoPaused(false)}
             onPause={() => setVideoPaused(true)}
             className="w-full h-[120%] object-cover opacity-90"
-            src="/assets/Trailer/Tuscanini_Trailer_Screens_Final.mp4"
+            src="/assets/Trailer/Tuscanini_Trailer_Web.mp4"
           />
         ) : (
           <img
-            src="/assets/Photos/backgrounds/italian-coast-hero.webp"
+            {...getResponsiveImageProps("/assets/Photos/backgrounds/italian-coast-hero.webp", "100vw")}
             alt=""
             fetchPriority="high"
             decoding="async"

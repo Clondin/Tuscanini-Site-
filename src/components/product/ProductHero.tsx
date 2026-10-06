@@ -1,12 +1,16 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
-import { Package, MapPin, Expand, ShoppingCart } from "lucide-react";
+import { Package, ExternalLink, Expand, ShoppingCart } from "lucide-react";
 import { Product } from "../../data/products";
 import { CategoryAccent } from "../../data/category-accents";
+import { formatProductSize } from "../../lib/formatProductSize";
+import { getProductPurchaseLink } from "../../lib/productPurchaseLink";
+import { isMissingProductImage } from "../../lib/productImage";
 import TrustBadges from "./TrustBadges";
 import ImageWithSkeleton from "../ui/ImageWithSkeleton";
 import ImageLightbox from "../ui/ImageLightbox";
+import ProductImagePlaceholder from "../ui/ProductImagePlaceholder";
 
 interface ProductHeroProps {
   product: Product;
@@ -17,14 +21,10 @@ interface ProductHeroProps {
   children?: ReactNode;
 }
 
-const frozenCategoryIds = new Set(["pizza", "gelato", "bread-frozen-appetizers"]);
-const amazonStoreUrl =
-  "https://www.amazon.com/stores/Tuscanini/page/63CC7208-7FF4-4C25-B5F7-CAC5D4CA1C9A?lp_asin=B07KYWQ22X&store_ref=bl_ast_dp_brandlogo_sto&linkCode=ll2&tag=kaycopromo-20&linkId=723bc4fbe21f9f690cf8fd07d0c98802&language=en_US&ref_=as_li_ss_tl";
-
 export default function ProductHero({ product, categoryName, accent, children }: ProductHeroProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const isFrozen = frozenCategoryIds.has(product.categoryId);
-  const buyUrl = isFrozen ? "https://tuscaninifoods.com" : amazonStoreUrl;
+  const purchaseLink = getProductPurchaseLink(product);
+  const hasProductImage = !isMissingProductImage(product.image);
 
   return (
     <section className="px-6 md:px-10 pb-14 md:pb-18 pt-6 max-w-7xl mx-auto">
@@ -48,15 +48,15 @@ export default function ProductHero({ product, categoryName, accent, children }:
         >
           <button
             type="button"
-            disabled={!product.image}
-            aria-label={product.image ? `Open larger image of ${product.name}` : undefined}
+            disabled={!hasProductImage}
+            aria-label={hasProductImage ? `Open larger image of ${product.name}` : undefined}
             className="aspect-square w-full overflow-hidden relative group cursor-zoom-in text-left disabled:cursor-default"
             style={{
               background: `radial-gradient(ellipse at 50% 42%, ${accent.soft} 0%, #faf7f2 78%)`,
             }}
-            onClick={() => product.image && setLightboxOpen(true)}
+            onClick={() => hasProductImage && setLightboxOpen(true)}
           >
-            {product.image ? (
+            {hasProductImage ? (
               <>
                 <ImageWithSkeleton
                   src={product.image}
@@ -76,10 +76,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
                 </div>
               </>
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center p-8">
-                <span className="font-headline text-3xl text-heading/30 text-center">{product.name}</span>
-                <span className="text-primary/40 text-xs uppercase tracking-[0.3em] mt-3">Image Coming Soon</span>
-              </div>
+              <ProductImagePlaceholder productName={product.name} className="w-full h-full text-3xl" />
             )}
           </button>
           <div
@@ -114,26 +111,26 @@ export default function ProductHero({ product, categoryName, accent, children }:
             <div className="flex items-center gap-3">
               <Package className="w-4 h-4" style={{ color: accent.accent }} />
               <span className="text-on-surface/40 uppercase tracking-widest text-[10px] font-bold">Size</span>
-              <span className="text-on-surface/70 text-sm">{product.size}</span>
+              <span className="text-on-surface/70 text-sm">{formatProductSize(product.size)}</span>
             </div>
           )}
 
           <TrustBadges madeInItaly={product.madeInItaly} kosher={product.kosher} />
 
           <motion.a
-            href={buyUrl}
+            href={purchaseLink.href}
             target="_blank"
-            rel={isFrozen ? "noopener noreferrer" : "sponsored noopener noreferrer"}
+            rel={purchaseLink.sponsored ? "sponsored noopener noreferrer" : "noopener noreferrer"}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex min-h-11 items-center gap-3 px-8 py-3.5 text-white font-body uppercase tracking-[0.16em] text-xs transition-opacity hover:opacity-85 shadow-lg mt-2 cursor-pointer"
             style={{ backgroundColor: accent.deep, boxShadow: `0 10px 25px -5px ${accent.deep}40` }}
           >
-            {isFrozen ? <MapPin className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
-            {isFrozen ? "Visit TuscaniniFoods.com" : "Buy on Amazon"}
+            {purchaseLink.amazon ? <ShoppingCart className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
+            {purchaseLink.label}
           </motion.a>
 
-          {!isFrozen && (
+          {purchaseLink.sponsored && (
             <p className="text-on-surface/45 text-[10px] leading-relaxed">
               As an Amazon Associate, Tuscanini may earn from qualifying purchases.
             </p>
@@ -143,7 +140,7 @@ export default function ProductHero({ product, categoryName, accent, children }:
         </motion.div>
       </div>
 
-      {product.image && (
+      {hasProductImage && (
         <ImageLightbox
           src={product.image}
           alt={product.name}
