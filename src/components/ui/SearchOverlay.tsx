@@ -1,4 +1,5 @@
 import { getResponsiveImageProps } from "../../lib/productImage";
+import { formatProductSize } from "../../lib/formatProductSize";
 import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
@@ -141,14 +142,16 @@ export default function SearchOverlay({
                         <img
                           {...getResponsiveImageProps(product.image, "100vw")}
                           alt=""
-                          className="w-14 h-16 object-contain shrink-0"
+                          className="w-14 h-16 object-contain shrink-0 mix-blend-multiply"
                         />
                         <div className="min-w-0">
                           <p className="text-base text-heading leading-snug">
                             {product.name}
                           </p>
                           <p className="text-sm text-on-surface/80 mt-1">
-                            {product.size} · {category.name}
+                            {[formatProductSize(product.size), category.name]
+                              .filter(Boolean)
+                              .join(" · ")}
                           </p>
                           {approximate && (
                             <span className="text-xs text-olive-deep">

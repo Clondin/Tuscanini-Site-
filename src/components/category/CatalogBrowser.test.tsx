@@ -3,7 +3,9 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import { categories } from "../../data/products";
-import CatalogBrowser from "./CatalogBrowser";
+import CatalogBrowser, { CATALOG_PAGE_SIZE } from "./CatalogBrowser";
+
+const SHOW_MORE = /^Show \d+ more products$/;
 
 function Location() {
   return <output data-testid="location">{useLocation().search}</output>;
@@ -98,9 +100,54 @@ describe("catalog filters", () => {
     ).not.toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Clear filters" }));
     expect(screen.getByTestId("location").textContent).toBe("");
+    let more = screen.queryByRole("button", { name: SHOW_MORE });
+    while (more) {
+      await user.click(more);
+      more = screen.queryByRole("button", { name: SHOW_MORE });
+    }
     expect(
       screen.getByRole("link", { name: /Bronze Cut Spaghetti/ }),
     ).toBeInTheDocument();
+  });
+  it("reveals the catalog in pages and moves focus to the first new product", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/products"]}>
+        <CatalogBrowser categories={categories} />
+      </MemoryRouter>,
+    );
+    const productLinks = () =>
+      screen
+        .getAllByRole("link")
+        .filter((link) => link.getAttribute("href")?.startsWith("/product/"));
+    expect(productLinks()).toHaveLength(CATALOG_PAGE_SIZE);
+    await user.click(
+      screen.getByRole("button", { name: SHOW_MORE }),
+    );
+    expect(productLinks().length).toBeGreaterThan(CATALOG_PAGE_SIZE);
+    expect(document.activeElement).toBe(productLinks()[CATALOG_PAGE_SIZE]);
+  });
+  it("filters by collection chip with live counts and toggles back to all", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/products"]}>
+        <CatalogBrowser categories={categories} />
+        <Location />
+      </MemoryRouter>,
+    );
+    const group = screen.getByRole("group", { name: "Filter by collection" });
+    const chip = Array.from(group.querySelectorAll("button")).find((button) =>
+      button.textContent?.startsWith("Pasta & Gnocchi"),
+    )!;
+    const count = Number(chip.querySelector("span")!.textContent);
+    await user.click(chip);
+    expect(screen.getByTestId("location").textContent).toBe(
+      "?category=pasta-gnocchi",
+    );
+    expect(chip).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByText(`${count} products`, { selector: "p" })).toBeInTheDocument();
+    await user.click(chip);
+    expect(screen.getByTestId("location").textContent).toBe("");
   });
   it("updates URL state while searching and supports a useful empty state", async () => {
     const user = userEvent.setup();

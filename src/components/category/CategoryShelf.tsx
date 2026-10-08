@@ -1,9 +1,26 @@
 import { getResponsiveImageProps } from "../../lib/productImage";
+import type { ImgHTMLAttributes } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Category } from "../../data/products";
 import { shelfSizing } from "../../lib/packSize";
+import { formatProductSize } from "../../lib/formatProductSize";
+
+/** Settles each pack onto the shelf as it arrives instead of popping in. */
+function ShelfImage({ className = "", ...props }: ImgHTMLAttributes<HTMLImageElement>) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <img
+      {...props}
+      ref={(image) => {
+        if (image?.complete && image.naturalWidth > 0) setLoaded(true);
+      }}
+      onLoad={() => setLoaded(true)}
+      className={`${className} transition duration-500 ease-out motion-reduce:transition-none ${loaded ? "opacity-100" : "opacity-0 translate-y-2"}`}
+    />
+  );
+}
 
 export default function CategoryShelf({
   category,
@@ -83,12 +100,13 @@ export default function CategoryShelf({
                 className="group shrink-0 snap-start text-center"
               >
                 <div className="h-[270px] px-5 flex items-end justify-center pb-3">
-                  <img
+                  <ShelfImage
                     {...getResponsiveImageProps(product.image, "100vw")}
                     alt=""
                     loading="lazy"
+                    decoding="async"
                     style={{ maxHeight: sizing[product.id].height }}
-                    className="max-w-full w-auto object-contain group-hover:-translate-y-2 transition-transform motion-reduce:transform-none"
+                    className="max-w-full w-auto object-contain mix-blend-multiply group-hover:-translate-y-2 motion-reduce:transform-none"
                   />
                 </div>
                 <div className="h-4 shelf-edge" />
@@ -97,7 +115,7 @@ export default function CategoryShelf({
                     {product.name}
                   </h3>
                   <p className="mt-2 text-sm text-on-surface/80">
-                    {product.size}
+                    {formatProductSize(product.size)}
                   </p>
                 </div>
               </Link>

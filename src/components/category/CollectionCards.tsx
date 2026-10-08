@@ -27,7 +27,7 @@ export default function CollectionCards({
                 {...getResponsiveImageProps(image)}
                 alt=""
                 loading="lazy"
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform motion-reduce:transform-none"
+                className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform motion-reduce:transform-none"
               />
             </div>
             <div className="p-4 md:p-5 flex justify-between gap-2">

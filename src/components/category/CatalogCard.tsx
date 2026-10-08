@@ -23,7 +23,7 @@ export default function CatalogCard({ product }: { product: Product }) {
           alt=""
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 motion-reduce:transform-none"
+          className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300 motion-reduce:transform-none"
         />
       </div>
       <div className="p-4 sm:p-5 border-t border-on-surface/10">

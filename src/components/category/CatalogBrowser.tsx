@@ -1,5 +1,5 @@
 import { useSearchParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Search, Grid2X2, Columns3, X } from "lucide-react";
 import type { Category } from "../../data/products";
 import {
@@ -7,8 +7,12 @@ import {
   isGlutenFreeProduct,
   searchCatalog,
 } from "../../lib/catalog-search";
+import { isMissingProductImage } from "../../lib/productImage";
 import CatalogCard from "./CatalogCard";
 import CategoryShelf from "./CategoryShelf";
+
+/** Cards revealed per step, so the full catalog is not one endless wall. */
+export const CATALOG_PAGE_SIZE = 24;
 
 export default function CatalogBrowser({
   categories,
@@ -32,16 +36,27 @@ export default function CatalogBrowser({
     setParams(next, { replace: true });
   };
   const base = category ? [category] : categories;
-  const results = searchCatalog(base, query).filter(
+  // Cards without a photo are not rendered, so they must not be counted either.
+  const matches = searchCatalog(base, query).filter(
     (result) =>
-      (!selectedCategory ||
-        category ||
-        result.category.slug === selectedCategory) &&
+      !isMissingProductImage(result.product.image) &&
       (!format ||
         (format === "frozen"
           ? isFrozenProduct(result.product)
           : !isFrozenProduct(result.product))) &&
       (!glutenFree || isGlutenFreeProduct(result.product)),
+  );
+  const collectionCounts = new Map<string, number>();
+  for (const result of matches)
+    collectionCounts.set(
+      result.category.slug,
+      (collectionCounts.get(result.category.slug) ?? 0) + 1,
+    );
+  const results = matches.filter(
+    (result) =>
+      !selectedCategory ||
+      category ||
+      result.category.slug === selectedCategory,
   );
   if (sort === "az")
     results.sort((a, b) => a.product.name.localeCompare(b.product.name));
@@ -52,6 +67,34 @@ export default function CatalogBrowser({
     entry.products.some(isGlutenFreeProduct),
   );
   const filtered = Boolean(query || selectedCategory || format || glutenFree);
+
+  // Reveal the grid in steps. Any change to the filters starts over at one page.
+  const revealKey = [query, selectedCategory, format, glutenFree, sort].join("|");
+  const [reveal, setReveal] = useState({ key: revealKey, count: CATALOG_PAGE_SIZE });
+  const limit = reveal.key === revealKey ? reveal.count : CATALOG_PAGE_SIZE;
+  const grid = useRef<HTMLDivElement>(null);
+  const focusIndex = useRef<number | null>(null);
+  useEffect(() => {
+    if (focusIndex.current === null) return;
+    const card = grid.current?.children[focusIndex.current];
+    focusIndex.current = null;
+    if (card instanceof HTMLElement) card.focus({ preventScroll: true });
+  }, [limit]);
+  const showMore = () => {
+    focusIndex.current = limit;
+    setReveal({ key: revealKey, count: limit + CATALOG_PAGE_SIZE });
+  };
+  const remaining = Math.max(results.length - limit, 0);
+  const chips = categories.filter(
+    (entry) =>
+      collectionCounts.has(entry.slug) || entry.slug === selectedCategory,
+  );
+  const chipClass = (active: boolean) =>
+    `shrink-0 snap-start inline-flex items-center gap-2 min-h-11 px-4 border text-sm whitespace-nowrap transition-colors ${
+      active
+        ? "bg-olive-deep border-olive-deep text-white"
+        : "bg-surface border-on-surface/20 text-heading hover:border-olive-accent"
+    }`;
   const approximate = results.some((result) => result.approximate);
   const selectClass =
     "min-h-11 border border-on-surface/25 bg-surface px-3 py-2 text-sm text-heading w-full";
@@ -88,25 +131,6 @@ export default function CatalogBrowser({
             id="catalog-filters"
             className={`${filtersOpen ? "flex" : "hidden"} md:flex flex-wrap items-end gap-3`}
           >
-            {!category && (
-              <label className="flex-1 min-w-[160px]">
-                <span className="block text-xs font-semibold mb-2">
-                  Collection
-                </span>
-                <select
-                  className={selectClass}
-                  value={selectedCategory}
-                  onChange={(event) => update("category", event.target.value)}
-                >
-                  <option value="">All collections</option>
-                  {categories.map((entry) => (
-                    <option key={entry.slug} value={entry.slug}>
-                      {entry.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            )}
             {hasFrozen && (
               <label className="flex-1 min-w-[130px]">
                 <span className="block text-xs font-semibold mb-2">
@@ -168,6 +192,40 @@ export default function CatalogBrowser({
           )}
         </div>
       </div>
+      {!category && (
+        <div
+          role="group"
+          aria-label="Filter by collection"
+          className="-mx-5 md:mx-0 mb-6 flex gap-2 overflow-x-auto snap-x scroll-px-5 md:scroll-px-0 px-5 md:px-0 pb-2 md:[mask-image:linear-gradient(to_right,black_calc(100%-48px),transparent)]"
+        >
+          <button
+            type="button"
+            aria-pressed={!selectedCategory}
+            onClick={() => update("category", "")}
+            className={chipClass(!selectedCategory)}
+          >
+            All
+            <span className="text-xs opacity-75">{matches.length}</span>
+          </button>
+          {chips.map((entry) => {
+            const active = entry.slug === selectedCategory;
+            return (
+              <button
+                key={entry.slug}
+                type="button"
+                aria-pressed={active}
+                onClick={() => update("category", active ? "" : entry.slug)}
+                className={chipClass(active)}
+              >
+                {entry.name}
+                <span className="text-xs opacity-75">
+                  {collectionCounts.get(entry.slug) ?? 0}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
       <div className="flex flex-wrap gap-4 justify-between items-center mb-6">
         <p role="status" className="text-sm text-on-surface/85">
           {results.length} {results.length === 1 ? "product" : "products"}
@@ -209,11 +267,39 @@ export default function CatalogBrowser({
             compact
           />
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-            {results.map(({ product }) => (
-              <CatalogCard key={product.id} product={product} />
-            ))}
-          </div>
+          <>
+            <div
+              ref={grid}
+              className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
+            >
+              {results.slice(0, limit).map(({ product }) => (
+                <CatalogCard key={product.id} product={product} />
+              ))}
+            </div>
+            {remaining > 0 && (
+              <div className="mt-10 flex flex-col items-center gap-4">
+                <p className="text-sm text-on-surface/80">
+                  Showing {limit} of {results.length}
+                </p>
+                <div
+                  aria-hidden="true"
+                  className="h-1 w-48 bg-on-surface/10 overflow-hidden"
+                >
+                  <div
+                    className="h-full bg-olive-accent"
+                    style={{ width: `${(limit / results.length) * 100}%` }}
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={showMore}
+                  className="min-h-12 px-8 border border-olive-deep text-olive-deep text-sm font-semibold hover:bg-olive-deep hover:text-white transition-colors"
+                >
+                  Show {Math.min(remaining, CATALOG_PAGE_SIZE)} more products
+                </button>
+              </div>
+            )}
+          </>
         )
       ) : (
         <div className="border border-on-surface/20 bg-surface py-14 px-6 text-center">

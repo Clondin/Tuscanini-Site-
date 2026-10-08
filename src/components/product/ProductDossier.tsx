@@ -84,7 +84,7 @@ export default function ProductDossier({
               {...getResponsiveImageProps(product.image, "100vw")}
               alt={product.name}
               fetchPriority="high"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none"
             />
             <span className="absolute right-3 bottom-3 inline-flex gap-2 items-center px-3 py-2 bg-surface border border-on-surface/20 text-sm text-olive-deep">
               <Expand size={16} />

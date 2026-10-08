@@ -2,7 +2,7 @@
 
 This is the site-specific content contract for the Tuscanini public website. Read it before changing the catalog, content fields, images, navigation, branding, or the code that renders them. Update it in the same pull request whenever that contract changes.
 
-Last verified against the combined implementation on October 6, 2026.
+Last verified against the combined implementation on October 8, 2026.
 
 On October 5 the CMS project was reported inactive. This code update does not resume the project or publish CMS content.
 
@@ -137,7 +137,7 @@ All published products are sorted by `data.display_order`, ascending, before bei
 | `data.made_in_italy` | Shows the Made in Italy badge only when the JSON value is boolean `true` |
 | `data.display_order` | Order within the parent category |
 
-Stable product IDs matter. Recipe `related_products`, homepage featured quick views, and internal links refer to product IDs. If `source_id` or a slug changes, migrate every reference and add a redirect before removing the old URL.
+Stable product IDs matter. Recipe `related_products`, the homepage **Pantry favorites** spotlight, and internal links refer to product IDs. If `source_id` or a slug changes, migrate every reference and add a redirect before removing the old URL.
 
 Size labels are formatted for display only: unit spacing/case is normalized across cards, shelves, quick views, and product details without changing the stored amount or converting units. Origin text and badges remain conditional on `made_in_italy`; the public UI does not add a universal bottled-origin claim.
 
@@ -174,7 +174,9 @@ Do not tell an editor these areas are CMS-managed without first changing the cod
 
 - The homepage sections below the hero: marquee, heritage story, collections heading/cards, trust badges, and newsletter copy.
 - Homepage collections feature six code-selected categories. Names, counts, and representative product images come from the merged catalog. All collections use the same card layout on `/products?view=collections`.
-- The homepage hero contains no product cards. The separate FeaturedProducts section is not mounted.
+- The homepage hero contains no product cards.
+- The homepage **Pantry favorites** spotlight (`src/components/home/FeaturedProducts.tsx`) shows four code-selected product IDs: `evoo-750ml`, `napoletana-pasta-sauce`, `sparkling-lemonade`, and `chocolate-truffle-pistachio`. Names, images, sizes, and collection labels come from the merged catalog. An unknown ID or a product without a photo is skipped. The heading, eyebrow, and selection are code-managed; the section adds no taglines or origin claims.
+- `/products` catalog presentation: collection filter chips (counts reflect the active search and filters, and only include products with photos) and progressive loading of 24 products per step. Collection chips use the same category list and URL parameter (`?category={slug}`) as before.
 - The Italian eyebrow and secondary story link inside the homepage hero.
 - The About page background image and all sections below its hero.
 - Mobile page links, shared menu group membership, and category accent/color rules. The former mega-menu promotional image is no longer rendered.

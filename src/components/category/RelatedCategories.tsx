@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import type { Category } from "../../data/products";
 import { shelfSizing } from "../../lib/packSize";
 import { getResponsiveImageProps, isMissingProductImage } from "../../lib/productImage";
@@ -31,10 +32,16 @@ function MiniShelf({ category }: { category: Category }) {
         >
           {category.name}
         </Link>
-        <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/80">
+        <Link
+          to={`/category/${category.slug}`}
+          aria-label={`View all ${category.products.length} ${category.name} products`}
+          className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/80 hover:text-primary transition-colors"
+        >
+          {category.products.length > PREVIEW_COUNT ? "View all " : ""}
           {category.products.length}{" "}
           {category.products.length === 1 ? "item" : "items"}
-        </span>
+          <ArrowRight size={12} aria-hidden="true" />
+        </Link>
       </div>
 
       <div className="flex items-end overflow-x-auto px-1">
