@@ -36,11 +36,10 @@ export default function ProductPage() {
         categoryName={category.name}
         categorySlug={category.slug}
       />
-      {product.details && product.details !== product.description && <ProductStory productName={product.name} details={product.details} />}
+      {product.details && product.details !== product.description && <ProductStory details={product.details} />}
       <RelatedProducts
         products={siblings}
         categorySlug={category.slug}
-        totalInCategory={category.products.length}
       />
       <RecipeSuggestions productId={product.id} />
       <NewsletterSignup />

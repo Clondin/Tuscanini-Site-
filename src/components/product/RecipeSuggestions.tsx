@@ -16,11 +16,8 @@ export default function RecipeSuggestions({
   if (!recipes.length) return null;
   return (
     <section id="recipes" className="px-5 md:px-10 py-12 max-w-7xl mx-auto">
-      <p className="text-xs tracking-[0.16em] uppercase text-olive-deep font-semibold mb-3">
-        Recipes & serving ideas
-      </p>
       <h2 className="font-headline text-3xl md:text-4xl text-heading mb-8">
-        Ways to use this product
+        Recipes & serving ideas
       </h2>
       <div
         className={`grid gap-6 ${recipes.length > 1 ? "md:grid-cols-2" : ""}`}
@@ -74,13 +71,10 @@ export default function RecipeSuggestions({
                     className={`mt-5 border-t border-on-surface/20 pt-4 ${recipes.length === 1 ? "md:mt-0" : ""}`}
                   >
                     <summary className="cursor-pointer min-h-11 text-sm font-semibold text-olive-deep">
-                      {complete
-                        ? "View ingredients & method"
-                        : "See all ingredients"}{" "}
-                      ({recipe.ingredients.length})
+                      {complete ? "Ingredients & method" : "Ingredients"}
                     </summary>
                     <h4 className="font-semibold mt-3 mb-3 text-sm">
-                      {complete ? "Ingredients" : "Ingredients"}
+                      Ingredients
                     </h4>
                     <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed">
                       {recipe.ingredients.map((ingredient, index) => (

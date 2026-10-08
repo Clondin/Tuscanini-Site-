@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { categories } from "../../data/products";
-import { isMissingProductImage } from "../../lib/productImage";
 import SectionHeading from "../ui/SectionHeading";
 import CollectionTile from "../category/CollectionTile";
 
@@ -20,13 +19,6 @@ export default function CollectionsGrid() {
     const category = categories.find((entry) => entry.slug === slug);
     return category ? [category] : [];
   });
-  const productCount = categories.reduce(
-    (total, category) =>
-      total +
-      category.products.filter((product) => !isMissingProductImage(product.image))
-        .length,
-    0,
-  );
   const last = featured.length - 1;
   return (
     <section
@@ -35,10 +27,9 @@ export default function CollectionsGrid() {
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          eyebrow="Shop by aisle"
-          title="Browse by category"
+          title="Shop by category"
           action={{
-            label: `All ${categories.length} collections`,
+            label: "All collections",
             to: "/products?view=collections",
           }}
           className="mb-8 md:mb-10"
@@ -61,7 +52,6 @@ export default function CollectionsGrid() {
           <Link
             id="more-collections"
             to="/products?view=collections"
-            aria-label={`View all ${categories.length} collections`}
             className="group col-span-2 scroll-mt-24 relative overflow-hidden bg-dark text-aged-cream p-6 md:p-8 flex flex-col justify-between"
           >
             <div
@@ -72,14 +62,14 @@ export default function CollectionsGrid() {
               aria-hidden="true"
               className="absolute -right-4 -top-4 w-40 h-40 rounded-full border border-gold/30 transition-transform duration-700 group-hover:scale-110"
             />
-            <p className="relative text-[11px] uppercase tracking-[0.22em] text-gold">
-              {categories.length} collections · {productCount} products
-            </p>
-            <div className="relative flex items-end justify-between gap-4">
+            <div className="relative mt-auto flex items-end justify-between gap-4">
               <p className="font-headline text-[clamp(1.6rem,2.6vw,2.4rem)] leading-tight max-w-[14ch]">
-                View all {categories.length} collections
+                See every collection
               </p>
-              <span className="shrink-0 w-12 h-12 rounded-full bg-gold text-dark flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="shrink-0 w-12 h-12 rounded-full bg-gold text-dark flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1"
+              >
                 <ArrowRight size={20} />
               </span>
             </div>

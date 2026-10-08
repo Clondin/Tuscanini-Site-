@@ -156,7 +156,7 @@ export default function ProductDossier({
                 {...getResponsiveImageProps(product.image, "(min-width: 1024px) 50vw, 100vw")}
                 alt={product.name}
                 fetchPriority="high"
-                className="relative max-h-full w-auto max-w-full object-contain mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transform-none"
+                className="relative h-full w-full object-contain object-bottom mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transform-none"
               />
               <span className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-surface/90 px-3.5 py-2 text-xs font-semibold text-olive-deep shadow-sm backdrop-blur transition-opacity lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus-visible:opacity-100">
                 <Expand size={14} />
@@ -219,11 +219,11 @@ export default function ProductDossier({
               {copied ? "Product link copied to clipboard" : ""}
             </span>
           </div>
-          <p className="mt-3 text-xs text-on-surface/75 leading-relaxed">
-            {frozen
-              ? "Explore Tuscanini’s website for more about the range."
-              : "Browse the Tuscanini brand store. Selection and availability vary."}
-          </p>
+          {!frozen && (
+            <p className="mt-3 text-xs text-on-surface/75 leading-relaxed">
+              Selection and availability vary.
+            </p>
+          )}
 
           {(product.ingredients ||
             product.preparation?.length ||

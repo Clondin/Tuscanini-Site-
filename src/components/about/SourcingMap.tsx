@@ -207,7 +207,7 @@ function InfoCard({
         to={`/category/${region.categorySlug}`}
         className="group mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-primary transition-colors hover:text-burnt-terracotta"
       >
-        Explore the collection
+        Shop the collection
         <ChevronRight
           className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
           aria-hidden="true"
@@ -1053,7 +1053,7 @@ export default function SourcingMap() {
           <TuscaniniLogo className="h-5 w-auto text-heading md:h-6" />
           <div className="mt-2 flex items-center gap-2 text-[8px] font-bold uppercase tracking-[0.26em] text-on-surface/80 md:text-[11px]">
             <Compass className="h-3 w-3 text-primary" aria-hidden="true" />
-            Atlas of Italian flavor
+            Regions of Italy
           </div>
         </div>
 

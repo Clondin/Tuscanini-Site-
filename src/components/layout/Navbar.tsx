@@ -157,7 +157,7 @@ export default function Navbar() {
                   onClick={closeMenus}
                   className="text-sm text-gold underline underline-offset-4"
                 >
-                  All {categories.length} collections
+                  All collections
                 </Link>
               </div>
               <div className="grid grid-cols-5 gap-7">
@@ -238,7 +238,7 @@ export default function Navbar() {
                 onClick={closeMenus}
                 className="flex min-h-12 items-center mt-4 text-gold"
               >
-                All {categories.length} collections
+                All collections
               </Link>
               <Link
                 to="/about"

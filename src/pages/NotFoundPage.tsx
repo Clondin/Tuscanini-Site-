@@ -11,18 +11,11 @@ export default function NotFoundPage() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="text-center max-w-xl"
       >
-        <span className="font-script italic text-gold text-lg tracking-widest block mb-4">
-          Mamma mia&hellip;
-        </span>
-        <h1 className="font-headline text-8xl md:text-9xl text-heading/15 leading-none mb-2 select-none">
-          404
+        <h1 className="font-headline text-3xl md:text-4xl text-heading italic mb-4">
+          Page not found
         </h1>
-        <h2 className="font-headline text-3xl md:text-4xl text-heading italic mb-4">
-          This page has wandered off the map
-        </h2>
         <p className="text-on-surface/70 leading-relaxed mb-10">
-          Like a lost traveler in the Tuscan hills, the page you're looking for
-          couldn't be found. Let us guide you back to the table.
+          This page doesn't exist or has moved.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
@@ -30,13 +23,13 @@ export default function NotFoundPage() {
             className="inline-flex min-h-11 items-center gap-3 px-8 py-3.5 bg-primary text-white font-body uppercase tracking-[0.16em] text-xs hover:bg-primary/85 transition-colors shadow-lg shadow-primary/20"
           >
             <Home className="w-4 h-4" />
-            Return Home
+            Back to home
           </Link>
           <Link
             to="/#collections"
             className="inline-flex min-h-11 items-center gap-2 px-8 py-3.5 border border-on-surface/20 text-on-surface/80 font-body uppercase tracking-[0.16em] text-xs hover:border-gold hover:text-gold transition-colors"
           >
-            Browse Collections
+            Browse collections
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

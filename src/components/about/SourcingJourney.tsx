@@ -36,9 +36,6 @@ export default function SourcingJourney() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <span className="block mb-3.5 text-[10px] font-bold uppercase tracking-[0.3em] text-burnt-terracotta">
-            Regional foods
-          </span>
           <h2 className="mb-4 font-headline font-normal italic text-heading text-[clamp(1.875rem,3.6vw,2.75rem)]">
             A map of Italian food
           </h2>
@@ -55,9 +52,6 @@ export default function SourcingJourney() {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <p className="mb-6 text-center text-[10px] uppercase tracking-[0.2em] text-on-surface/80">
-            Select a region or a pin
-          </p>
           <SourcingMap />
         </motion.div>
 

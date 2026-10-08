@@ -25,18 +25,15 @@ export default function AboutCTA() {
         viewport={{ once: true }}
         className="relative z-10 max-w-[820px] mx-auto text-center"
       >
-        <h2 className="mb-5 font-headline font-normal text-italia-white text-[clamp(2.25rem,4.6vw,3.625rem)] leading-[1.1]">
+        <h2 className="mb-10 font-headline font-normal text-italia-white text-[clamp(2.25rem,4.6vw,3.625rem)] leading-[1.1]">
           Browse our products
         </h2>
-        <p className="mx-auto mb-10 max-w-[600px] font-serif-alt italic text-xl leading-[1.65] text-italia-white/70">
-          See the full range of pasta, sauces, olive oils, drinks, and snacks.
-        </p>
         <MagneticButton className="inline-block">
           <Link
             to="/products?view=collections"
             className="inline-flex items-center gap-3 px-10 py-[19px] bg-gold text-dark text-[11px] font-semibold uppercase tracking-[0.2em] hover:bg-gold-light transition-colors"
           >
-            Explore our collections
+            See all collections
             <ArrowRight className="w-[15px] h-[15px]" />
           </Link>
         </MagneticButton>

@@ -7,19 +7,19 @@ const values = [
     icon: Award,
     title: "Italian food",
     description:
-      "Pasta, olive oil, chocolate, and sparkling drinks. See each product for its country of origin.",
+      "Pasta, olive oil, chocolate, and sparkling drinks.",
   },
   {
     icon: ShieldCheck,
     title: "Product information",
     description:
-      "Find pack sizes, ingredients, and certification details on product pages. Check the packaging for the latest information.",
+      "Pack sizes, ingredients, and certifications are on each product page.",
   },
   {
     icon: Landmark,
     title: "Regional foods",
     description:
-      "The map below introduces Italian regions and their foods, with links to related products.",
+      "Use the map below to explore Italy's regions and their foods.",
   },
 ];
 
@@ -28,8 +28,7 @@ export default function ValuesPillars() {
     <section className="bg-aged-cream py-20 md:py-22 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          eyebrow="About the range"
-          title="Food and product details"
+          title="About the range"
           className="mb-12"
         />
 

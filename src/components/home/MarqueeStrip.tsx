@@ -1,11 +1,10 @@
 const phrases = [
-  "Autentico Italiano",
-  "Made in Italy",
-  "Certified Kosher",
-  "Bronze-Cut Pasta",
-  "Sun-Ripened Tomatoes",
-  "First-Press Olive Oil",
-  "Benvenuti alla Tavola",
+  "Tuscanini",
+  "Pasta",
+  "Sauces",
+  "Olive Oil",
+  "Chocolate",
+  "Buon appetito",
 ];
 
 function PhraseRun() {

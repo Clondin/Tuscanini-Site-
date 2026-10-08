@@ -8,7 +8,7 @@ import PackFan from "../ui/PackFan";
 
 /**
  * A collection as a tinted display case: its own accent color, a small fan of
- * its pack shots, and the live product count. `feature` is the oversized
+ * its pack shots. `feature` is the oversized
  * homepage variant that also shows the collection tagline.
  */
 export default function CollectionTile({
@@ -25,7 +25,6 @@ export default function CollectionTile({
   );
   if (!products.length) return null;
   const accent = getCategoryAccent(category.slug);
-  const count = products.length;
   return (
     <Link
       to={`/category/${category.slug}`}
@@ -63,9 +62,6 @@ export default function CollectionTile({
               {category.tagline}
             </p>
           )}
-          <p className="mt-1.5 text-xs md:text-sm font-semibold text-[var(--tile-accent)]">
-            {count} {count === 1 ? "product" : "products"}
-          </p>
         </div>
         <span
           aria-hidden="true"

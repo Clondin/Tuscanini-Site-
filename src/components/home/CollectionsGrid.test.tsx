@@ -8,8 +8,8 @@ afterEach(() => { cleanup(); setCatalogCategories(bundledCatalog); });
 describe("CollectionsGrid", () => {
  it("links to the complete collection browser from featured categories", () => {
   render(<MemoryRouter><CollectionsGrid /></MemoryRouter>);
-  expect(screen.getByRole('link', { name: `All ${bundledCatalog.length} collections →` })).toHaveAttribute('href', '/products?view=collections');
-  expect(screen.getByRole('link', { name: `View all ${bundledCatalog.length} collections` })).toHaveAttribute('href', '/products?view=collections');
+  expect(screen.getByRole('link', { name: 'All collections →' })).toHaveAttribute('href', '/products?view=collections');
+  expect(screen.getByRole('link', { name: 'See every collection' })).toHaveAttribute('href', '/products?view=collections');
   const featured = screen.getAllByRole('link').filter(link => link.getAttribute('href')?.startsWith('/category/'));
   expect(featured).toHaveLength(6);
   for (const link of featured) expect(bundledCatalog.some(category => `/category/${category.slug}` === link.getAttribute('href'))).toBe(true);

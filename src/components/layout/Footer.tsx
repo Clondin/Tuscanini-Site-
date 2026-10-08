@@ -67,7 +67,7 @@ export default function Footer() {
                 to="/products?view=collections"
                 className="inline-block mt-3 text-xs text-gold/70 hover:text-gold transition-colors uppercase tracking-[0.15em]"
               >
-                View All Categories &rarr;
+                All collections &rarr;
               </Link>
             )}
           </div>

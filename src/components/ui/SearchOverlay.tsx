@@ -98,7 +98,7 @@ export default function SearchOverlay({
                 onClick={close}
                 className="inline-flex min-h-11 items-center gap-2 mt-5 text-olive-deep font-semibold"
               >
-                Explore all collections <ArrowRight size={17} />
+                All collections <ArrowRight size={17} />
               </Link>
             </>
           ) : (
@@ -173,7 +173,7 @@ export default function SearchOverlay({
                     No products found for “{query}”
                   </h3>
                   <p className="text-sm mt-3">
-                    Try a shorter name, or explore a collection below.
+                    Try a shorter search, or pick a collection.
                   </p>
                   <div className="flex flex-wrap gap-3 mt-4">
                     {categories.slice(0, 4).map((category) => (
@@ -198,8 +198,7 @@ export default function SearchOverlay({
             onClick={close}
             className="flex items-center justify-between gap-3 bg-olive-deep text-white px-5 py-4 font-semibold text-sm"
           >
-            View all {products.length}{" "}
-            {products.length === 1 ? "result" : "results"}{" "}
+            See all results
             <ArrowRight size={18} />
           </Link>
         )}

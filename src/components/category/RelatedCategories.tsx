@@ -34,12 +34,10 @@ function MiniShelf({ category }: { category: Category }) {
         </Link>
         <Link
           to={`/category/${category.slug}`}
-          aria-label={`View all ${category.products.length} ${category.name} products`}
+          aria-label={`Shop ${category.name}`}
           className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-[10px] uppercase tracking-[0.2em] text-on-surface/80 hover:text-primary transition-colors"
         >
-          {category.products.length > PREVIEW_COUNT ? "View all " : ""}
-          {category.products.length}{" "}
-          {category.products.length === 1 ? "item" : "items"}
+          Shop
           <ArrowRight size={12} aria-hidden="true" />
         </Link>
       </div>
@@ -106,7 +104,7 @@ export default function RelatedCategories({
           title="More collections"
           rule="ink"
           action={{
-            label: `All ${allCategories.length}`,
+            label: "All collections",
             to: "/products?view=collections",
           }}
         />

@@ -28,7 +28,6 @@ export default function PhotoGallery() {
     <section className="bg-surface py-20 md:py-22 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          eyebrow="Photos"
           title="Scenes from Italian life"
           className="mb-10"
         />

@@ -5,11 +5,9 @@ import CatalogCard from "../category/CatalogCard";
 export default function RelatedProducts({
   products,
   categorySlug,
-  totalInCategory,
 }: {
   products: Product[];
   categorySlug: string;
-  totalInCategory: number;
 }) {
   const visible = products.filter((product) => product.image).slice(0, 4);
   if (!visible.length) return null;
@@ -24,7 +22,7 @@ export default function RelatedProducts({
             to={`/category/${categorySlug}`}
             className="min-h-11 inline-flex items-center text-sm font-semibold text-olive-deep underline underline-offset-4"
           >
-            View all {totalInCategory} products
+            Shop the collection
           </Link>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">

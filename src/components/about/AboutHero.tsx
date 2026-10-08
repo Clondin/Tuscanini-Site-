@@ -9,7 +9,7 @@ export default function AboutHero() {
   const body =
     typeof cms?.body === "string"
       ? cms.body
-      : "Italian pasta, sauces, olive oils, drinks, and more. This is Tuscanini.";
+      : "Italian pasta, sauces, olive oils, drinks, and more.";
 
   return (
     <section className="relative h-[62vh] min-h-[520px] flex items-center justify-center overflow-hidden bg-dark">
@@ -30,11 +30,6 @@ export default function AboutHero() {
         transition={{ duration: 1, ease: "easeOut" }}
         className="relative z-10 text-center px-6 md:px-10 max-w-[900px] mx-auto"
       >
-        <div className="inline-block px-6 py-2 border border-gold/45 mb-[30px]">
-          <p className="font-serif-alt italic tracking-[0.12em] text-gold text-sm">
-            La Nostra Storia
-          </p>
-        </div>
         <h1 className="font-headline font-normal text-italia-white text-[clamp(3.25rem,7.5vw,6rem)] leading-none">
           {headline}
         </h1>

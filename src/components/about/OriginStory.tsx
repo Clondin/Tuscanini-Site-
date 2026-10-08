@@ -30,9 +30,6 @@ export default function OriginStory() {
           transition={{ duration: 0.8 }}
           className="min-w-0"
         >
-          <span className="block mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-burnt-terracotta">
-            Tuscanini
-          </span>
           <h2 className="mb-6 font-headline font-normal text-heading text-[clamp(2.125rem,4.2vw,3.375rem)] leading-[1.1] max-w-[20ch]">
             What we make
           </h2>
@@ -40,10 +37,6 @@ export default function OriginStory() {
             <p className="text-pretty">
               Our range includes pasta, sauces, olive oils, sparkling drinks,
               snacks, chocolate, and frozen foods.
-            </p>
-            <p className="text-pretty">
-              Choose from different pasta shapes, sauce varieties, drink
-              flavors, and pack sizes. Each product page has the details.
             </p>
           </div>
         </motion.div>

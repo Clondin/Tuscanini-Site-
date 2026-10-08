@@ -46,12 +46,9 @@ export default function CatalogBrowser({
           : !isFrozenProduct(result.product))) &&
       (!glutenFree || isGlutenFreeProduct(result.product)),
   );
-  const collectionCounts = new Map<string, number>();
-  for (const result of matches)
-    collectionCounts.set(
-      result.category.slug,
-      (collectionCounts.get(result.category.slug) ?? 0) + 1,
-    );
+  const matchedCollections = new Set(
+    matches.map((result) => result.category.slug),
+  );
   const results = matches.filter(
     (result) =>
       !selectedCategory ||
@@ -87,7 +84,7 @@ export default function CatalogBrowser({
   const remaining = Math.max(results.length - limit, 0);
   const chips = categories.filter(
     (entry) =>
-      collectionCounts.has(entry.slug) || entry.slug === selectedCategory,
+      matchedCollections.has(entry.slug) || entry.slug === selectedCategory,
   );
   const chipClass = (active: boolean) =>
     `shrink-0 snap-start inline-flex items-center gap-2 min-h-11 px-4 border text-sm whitespace-nowrap transition-colors ${
@@ -205,7 +202,6 @@ export default function CatalogBrowser({
             className={chipClass(!selectedCategory)}
           >
             All
-            <span className="text-xs opacity-75">{matches.length}</span>
           </button>
           {chips.map((entry) => {
             const active = entry.slug === selectedCategory;
@@ -218,9 +214,6 @@ export default function CatalogBrowser({
                 className={chipClass(active)}
               >
                 {entry.name}
-                <span className="text-xs opacity-75">
-                  {collectionCounts.get(entry.slug) ?? 0}
-                </span>
               </button>
             );
           })}
@@ -277,25 +270,13 @@ export default function CatalogBrowser({
               ))}
             </div>
             {remaining > 0 && (
-              <div className="mt-10 flex flex-col items-center gap-4">
-                <p className="text-sm text-on-surface/80">
-                  Showing {limit} of {results.length}
-                </p>
-                <div
-                  aria-hidden="true"
-                  className="h-1 w-48 bg-on-surface/10 overflow-hidden"
-                >
-                  <div
-                    className="h-full bg-olive-accent"
-                    style={{ width: `${(limit / results.length) * 100}%` }}
-                  />
-                </div>
+              <div className="mt-10 flex justify-center">
                 <button
                   type="button"
                   onClick={showMore}
                   className="min-h-12 px-8 border border-olive-deep text-olive-deep text-sm font-semibold hover:bg-olive-deep hover:text-white transition-colors"
                 >
-                  Show {Math.min(remaining, CATALOG_PAGE_SIZE)} more products
+                  Show more products
                 </button>
               </div>
             )}

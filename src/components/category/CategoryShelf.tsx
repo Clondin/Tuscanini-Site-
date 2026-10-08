@@ -60,10 +60,7 @@ export default function CategoryShelf({
     });
   return (
     <section aria-label={`${category.name} shelf`} className="py-5">
-      <div className="flex items-center justify-between gap-4 mb-5">
-        <p className="text-sm text-on-surface/85">
-          Choose a product to see the details.
-        </p>
+      <div className="flex items-center justify-end gap-4 mb-5">
         <div className="flex gap-2">
           <button
             onClick={() => move(-1)}

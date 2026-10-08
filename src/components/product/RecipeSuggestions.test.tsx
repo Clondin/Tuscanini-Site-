@@ -31,7 +31,7 @@ describe("recipe completeness", () => {
         <RecipeSuggestions productId="spaghetti" />
       </MemoryRouter>,
     );
-    await userEvent.click(screen.getByText("View ingredients & method (6)"));
+    await userEvent.click(screen.getByText("Ingredients & method"));
     expect(screen.getByText("Oil")).toBeVisible();
     expect(screen.getByText("Cook pasta and combine.")).toBeVisible();
     expect(screen.getByText("Recipe", { exact: true })).toBeInTheDocument();

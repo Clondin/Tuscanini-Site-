@@ -3,9 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import { categories } from "../../data/products";
+import { isMissingProductImage } from "../../lib/productImage";
 import CatalogBrowser, { CATALOG_PAGE_SIZE } from "./CatalogBrowser";
 
-const SHOW_MORE = /^Show \d+ more products$/;
+const SHOW_MORE = /^Show more products$/;
 
 function Location() {
   return <output data-testid="location">{useLocation().search}</output>;
@@ -127,7 +128,7 @@ describe("catalog filters", () => {
     expect(productLinks().length).toBeGreaterThan(CATALOG_PAGE_SIZE);
     expect(document.activeElement).toBe(productLinks()[CATALOG_PAGE_SIZE]);
   });
-  it("filters by collection chip with live counts and toggles back to all", async () => {
+  it("filters by collection chip and toggles back to all", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/products"]}>
@@ -136,10 +137,12 @@ describe("catalog filters", () => {
       </MemoryRouter>,
     );
     const group = screen.getByRole("group", { name: "Filter by collection" });
-    const chip = Array.from(group.querySelectorAll("button")).find((button) =>
-      button.textContent?.startsWith("Pasta & Gnocchi"),
+    const chip = Array.from(group.querySelectorAll("button")).find(
+      (button) => button.textContent === "Pasta & Gnocchi",
     )!;
-    const count = Number(chip.querySelector("span")!.textContent);
+    const count = pasta.products.filter(
+      (product) => !isMissingProductImage(product.image),
+    ).length;
     await user.click(chip);
     expect(screen.getByTestId("location").textContent).toBe(
       "?category=pasta-gnocchi",

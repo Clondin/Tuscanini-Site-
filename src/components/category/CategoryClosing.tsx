@@ -9,7 +9,7 @@ interface CategoryClosingProps {
 /** Only claims what the catalogue actually records for every item on the shelf. */
 function closingLine(category: Category): string {
   const products = category.products;
-  if (products.length === 0) return "Browse more Tuscanini products.";
+  if (products.length === 0) return "More from Tuscanini.";
 
   const allItalian = products.every((p) => p.madeInItaly);
   const allKosher = products.every((p) => p.kosher);
@@ -19,7 +19,7 @@ function closingLine(category: Category): string {
   }
   if (allItalian) return "Everything on this shelf is made in Italy.";
   if (allKosher) return "Everything on this shelf is certified kosher.";
-  return "Browse more Tuscanini products.";
+  return "More from Tuscanini.";
 }
 
 export default function CategoryClosing({ category }: CategoryClosingProps) {

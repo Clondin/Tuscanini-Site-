@@ -35,7 +35,6 @@ export default function FeaturedProducts() {
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          eyebrow="On the table"
           title="Pantry favorites"
           action={{ label: "Shop all products", to: "/products" }}
           className="mb-10"
@@ -61,7 +60,7 @@ export default function FeaturedProducts() {
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="relative max-h-full w-auto object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transform-none"
+                    className="relative h-full w-full object-contain object-bottom mix-blend-multiply transition-transform duration-500 ease-out group-hover:-translate-y-2 motion-reduce:transform-none"
                   />
                 </div>
                 {collection && (

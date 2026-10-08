@@ -49,19 +49,15 @@ export default function ServingIdeas() {
               className="absolute inset-0 ring-1 ring-inset ring-heading/10"
             />
           </div>
-          <figcaption className="mt-3 text-xs text-on-surface/70">
-            Ideas for pasta night, antipasti, and dessert.
-          </figcaption>
         </figure>
 
         <div className="lg:col-span-7">
           <SectionHeading
-            eyebrow="From the kitchen"
             title="Serving ideas"
             className="mb-2"
           />
           <ol>
-            {ideas.map(({ recipe, product }, index) => {
+            {ideas.map(({ recipe, product }) => {
               const complete = Boolean(
                 recipe.instructions?.length && recipe.ingredients.length,
               );
@@ -69,21 +65,15 @@ export default function ServingIdeas() {
                 <li key={recipe.id} className="border-b border-on-surface/15">
                   <Link
                     to={`/product/${product.id}#recipes`}
-                    className="group grid grid-cols-[2.25rem_1fr_auto] md:grid-cols-[3rem_1fr_auto] gap-x-4 md:gap-x-6 items-start py-7 md:py-8"
+                    className="group grid grid-cols-[1fr_auto] gap-x-4 md:gap-x-6 items-start py-7 md:py-8"
                   >
-                    <span
-                      aria-hidden="true"
-                      className="font-headline italic text-2xl md:text-3xl text-gold leading-none pt-1 tabular-nums"
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
                     <span className="min-w-0">
-                      <span className="block text-[11px] uppercase tracking-[0.18em] text-burnt-terracotta">
-                        {complete ? "Recipe" : "Serving idea"}
-                        {recipe.ingredients.length > 0 &&
-                          ` · ${recipe.ingredients.length} ingredients`}
-                      </span>
-                      <span className="mt-2 block font-headline text-2xl md:text-[1.75rem] leading-snug text-heading group-hover:text-olive-accent transition-colors">
+                      {complete && (
+                        <span className="mb-2 block text-[11px] uppercase tracking-[0.18em] text-burnt-terracotta">
+                          Recipe
+                        </span>
+                      )}
+                      <span className="block font-headline text-2xl md:text-[1.75rem] leading-snug text-heading group-hover:text-olive-accent transition-colors">
                         {recipe.name}
                       </span>
                       <span className="mt-2 block text-sm md:text-base leading-relaxed text-on-surface/80 max-w-[58ch]">
