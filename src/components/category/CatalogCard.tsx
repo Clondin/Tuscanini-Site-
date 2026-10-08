@@ -4,17 +4,22 @@ import type { Product } from "../../data/products";
 import { isFrozenProduct } from "../../lib/catalog-search";
 import { getResponsiveImageProps, isMissingProductImage } from '../../lib/productImage';
 import { formatProductSize } from '../../lib/formatProductSize';
+import { getCategoryAccent } from "../../data/category-accents";
 
 export default function CatalogCard({ product }: { product: Product }) {
   if (isMissingProductImage(product.image)) return null;
+  const accent = getCategoryAccent(product.categoryId);
   return (
     <Link
       to={`/product/${product.id}`}
-      className="group block h-full border border-on-surface/15 bg-surface hover:border-olive-accent transition-colors"
+      className="group block h-full bg-surface ring-1 ring-on-surface/12 transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_-20px_rgba(42,31,22,0.5)] motion-reduce:hover:translate-y-0"
     >
-      <div className="relative aspect-square flex items-center justify-center bg-aged-cream/50 p-5 sm:p-8">
+      <div
+        style={{ backgroundColor: accent.soft }}
+        className="relative aspect-square flex items-center justify-center p-5 sm:p-8"
+      >
         {isFrozenProduct(product) && (
-          <span className="absolute top-3 left-3 text-xs text-olive-deep bg-surface px-2 py-1">
+          <span className="absolute top-3 left-3 rounded-full text-xs text-olive-deep bg-surface/90 px-2.5 py-1">
             Frozen
           </span>
         )}

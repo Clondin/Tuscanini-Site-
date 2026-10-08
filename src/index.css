@@ -144,6 +144,35 @@
   to { transform: translateX(-50%); }
 }
 
+/* Slow push-in on hero photography. */
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.animate-ken-burns {
+  animation: ken-burns 24s ease-out both;
+  transform-origin: 60% 50%;
+}
+
+/* Staggered entrance for hero copy; set animation-delay per element. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.hero-rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Soft fade between routes. Opacity only: a transform here would become the
+   containing block for fixed descendants such as the mobile buy bar. */
+@keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.page-enter {
+  animation: page-enter 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

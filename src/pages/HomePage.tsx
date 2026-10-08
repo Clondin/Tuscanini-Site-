@@ -3,7 +3,7 @@ import MarqueeStrip from "../components/home/MarqueeStrip";
 import HeritageSection from "../components/home/HeritageSection";
 import CollectionsGrid from "../components/home/CollectionsGrid";
 import FeaturedProducts from "../components/home/FeaturedProducts";
-import TrustBadges from "../components/home/TrustBadges";
+import ServingIdeas from "../components/home/ServingIdeas";
 import NewsletterSignup from "../components/home/NewsletterSignup";
 
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
       <CollectionsGrid />
       <FeaturedProducts />
       <HeritageSection />
-      <TrustBadges />
+      <ServingIdeas />
       <NewsletterSignup />
     </div>
   );

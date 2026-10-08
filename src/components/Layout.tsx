@@ -48,7 +48,9 @@ export default function Layout() {
       <Navbar />
 
       <main id="main-content" tabIndex={-1} className="flex-1 pt-[75px]">
-        <Outlet />
+        <div key={location.pathname} className="page-enter">
+          <Outlet />
+        </div>
       </main>
 
       <Footer />

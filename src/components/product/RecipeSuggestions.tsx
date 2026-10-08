@@ -15,7 +15,7 @@ export default function RecipeSuggestions({
     .filter((product): product is Product => Boolean(product?.image));
   if (!recipes.length) return null;
   return (
-    <section className="px-5 md:px-10 py-12 max-w-7xl mx-auto">
+    <section id="recipes" className="px-5 md:px-10 py-12 max-w-7xl mx-auto">
       <p className="text-xs tracking-[0.16em] uppercase text-olive-deep font-semibold mb-3">
         Recipes & serving ideas
       </p>
