@@ -1,22 +1,9 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Columns3, Grid2X2 } from "lucide-react";
 import type { Category } from "../../data/products";
 import { isMissingProductImage } from "../../lib/productImage";
 import CatalogCard from "./CatalogCard";
 import CategoryShelf from "./CategoryShelf";
-import PantryShelf from "./PantryShelf";
-import GalleryShelf from "./GalleryShelf";
-
-/**
- * Design review only: `?shelf=pantry|gallery` previews alternative shelf
- * styles; without it the store shelf renders and no switcher appears.
- */
-const shelfStyles = {
-  store: { label: "A · Store", Component: CategoryShelf },
-  pantry: { label: "B · Pantry", Component: PantryShelf },
-  gallery: { label: "C · Gallery", Component: GalleryShelf },
-} as const;
-type ShelfStyle = keyof typeof shelfStyles;
 
 /**
  * A collection's products with a Shelf/Grid switch. Shelf is the default;
@@ -25,12 +12,6 @@ type ShelfStyle = keyof typeof shelfStyles;
 export default function CategoryProducts({ category }: { category: Category }) {
   const [params, setParams] = useSearchParams();
   const grid = params.get("view") === "grid";
-  const requestedShelf = params.get("shelf");
-  const shelfStyle: ShelfStyle =
-    requestedShelf && requestedShelf in shelfStyles
-      ? (requestedShelf as ShelfStyle)
-      : "store";
-  const Shelf = shelfStyles[shelfStyle].Component;
   const products = category.products.filter(
     (product) => !isMissingProductImage(product.image),
   );
@@ -83,27 +64,7 @@ export default function CategoryProducts({ category }: { category: Category }) {
           ))}
         </div>
       ) : (
-        <Shelf category={category} />
-      )}
-      {requestedShelf !== null && (
-        <nav
-          aria-label="Shelf style options"
-          className="fixed z-40 left-1/2 -translate-x-1/2 bottom-6 flex gap-1 rounded-full bg-ink/90 p-1 shadow-2xl backdrop-blur"
-        >
-          {(Object.keys(shelfStyles) as ShelfStyle[]).map((key) => (
-            <Link
-              key={key}
-              to={`?shelf=${key}`}
-              replace
-              aria-current={key === shelfStyle ? "page" : undefined}
-              className={`whitespace-nowrap rounded-full px-3 sm:px-4 py-2 text-xs font-semibold ${
-                key === shelfStyle ? "bg-paper text-ink" : "text-paper/85 hover:text-paper"
-              }`}
-            >
-              {shelfStyles[key].label}
-            </Link>
-          ))}
-        </nav>
+        <CategoryShelf category={category} />
       )}
     </div>
   );
