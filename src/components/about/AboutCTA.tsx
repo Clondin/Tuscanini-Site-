@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
 import { getResponsiveImageProps } from "../../lib/productImage";
@@ -19,12 +18,7 @@ export default function AboutCTA() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/70 to-dark/95" />
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="relative z-10 max-w-[820px] mx-auto text-center"
-      >
+      <div className="relative z-10 max-w-[820px] mx-auto text-center">
         <h2 className="mb-10 font-headline font-normal text-italia-white text-[clamp(2.25rem,4.6vw,3.625rem)] leading-[1.1]">
           Browse our products
         </h2>
@@ -37,10 +31,7 @@ export default function AboutCTA() {
             <ArrowRight className="w-[15px] h-[15px]" />
           </Link>
         </MagneticButton>
-        <p className="mt-14 font-script italic text-[26px] tracking-wide text-gold">
-          Taste Tuscanini. Know Italy.
-        </p>
-      </motion.div>
+      </div>
     </section>
   );
 }

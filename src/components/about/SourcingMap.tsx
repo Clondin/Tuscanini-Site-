@@ -8,19 +8,16 @@ import {
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
 } from "react";
-import { Link } from "react-router-dom";
 import {
-  ChevronRight,
   Compass,
-  MapPin,
   Minus,
   Move,
   Plus,
   RotateCcw,
   Sparkles,
-  X,
 } from "lucide-react";
 import TuscaniniLogo from "../TuscaniniLogo";
+import RegionPanel from "./RegionPanel";
 import {
   ITALY_REGIONS,
   LAKES,
@@ -55,6 +52,10 @@ const DEFAULT_VIEW: View = { k: 1, cx: MAP_W / 2, cy: MAP_H / 2 };
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 6;
 const PIN_STEM = "M0 0 L-2.2-8.4 L2.2-8.4 Z";
+/** How long the guided tour lingers on each region. */
+const TOUR_STEP_MS = 5200;
+const IS_MAC =
+  typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
 
 const LONGITUDES = [6, 8, 10, 12, 14, 16, 18, 20];
 const LATITUDES = [36, 38, 40, 42, 44, 46, 48];
@@ -138,85 +139,6 @@ function clampView(view: View): View {
   };
 }
 
-function InfoCard({
-  region,
-  compact = false,
-  onBack,
-}: {
-  region: SourcingRegion;
-  compact?: boolean;
-  onBack?: () => void;
-}) {
-  return (
-    <article
-      className={`overflow-hidden rounded-2xl border border-on-surface/10 bg-aged-cream/95 shadow-2xl backdrop-blur-md ${
-        compact ? "p-5" : "p-6"
-      }`}
-    >
-      <div className="mb-4 flex items-start justify-between gap-5">
-        <div>
-          <span className="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.28em] text-primary">
-            {region.eyebrow}
-          </span>
-          <h3 className="font-headline text-2xl font-semibold text-heading">
-            {region.name}
-          </h3>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <span
-            className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-on-surface/10 bg-white/50"
-            style={{ color: region.color }}
-          >
-            <MapPin className="h-4 w-4" aria-hidden="true" />
-          </span>
-          {onBack && (
-            <button
-              type="button"
-              onClick={onBack}
-              aria-label="Back to the full map of Italy"
-              title="Back to Italy"
-              className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-on-surface/10 bg-white/50 text-on-surface/80 transition-colors hover:bg-white hover:text-heading"
-            >
-              <X className="h-4 w-4" aria-hidden="true" />
-            </button>
-          )}
-        </div>
-      </div>
-
-      <p className="font-serif-alt text-sm italic leading-relaxed text-on-surface/80">
-        {region.description}
-      </p>
-
-      <div className="mt-5 border-t border-on-surface/10 pt-4">
-        <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.24em] text-on-surface/80">
-          Regional specialties
-        </span>
-        <div className="flex flex-wrap gap-1.5">
-          {region.products.map((product) => (
-            <span
-              key={product}
-              className="rounded-full bg-white/65 px-2.5 py-1 text-[11px] font-semibold text-on-surface/70"
-            >
-              {product}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <Link
-        to={`/category/${region.categorySlug}`}
-        className="group mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-primary transition-colors hover:text-burnt-terracotta"
-      >
-        Shop the collection
-        <ChevronRight
-          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </Link>
-    </article>
-  );
-}
-
 function ControlButton({
   label,
   onClick,
@@ -262,6 +184,9 @@ export default function SourcingMap() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [hoverTip, setHoverTip] = useState<HoverTip | null>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const [touring, setTouring] = useState(false);
+  const [wheelHint, setWheelHint] = useState(false);
+  const wheelHintTimer = useRef<number | undefined>(undefined);
 
   const selectedRegion = useMemo(
     () => sourcingRegions.find((region) => region.id === selectedId) ?? null,
@@ -371,12 +296,6 @@ export default function SourcingMap() {
       setSelectedId(region.id);
       setHoveredId(null);
       setHoverTip(null);
-      containerRef.current?.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
-        block: "center",
-      });
       setView(
         clampView({
           k: nextZoom,
@@ -399,8 +318,19 @@ export default function SourcingMap() {
     resizeObserver.observe(element);
 
     const handleWheel = (event: WheelEvent) => {
+      if (!event.ctrlKey && !event.metaKey) {
+        setWheelHint(true);
+        window.clearTimeout(wheelHintTimer.current);
+        wheelHintTimer.current = window.setTimeout(
+          () => setWheelHint(false),
+          1400,
+        );
+        return;
+      }
       event.preventDefault();
+      setWheelHint(false);
       setHoverTip(null);
+      setTouring(false);
       zoomAt(Math.exp(-event.deltaY * 0.0016), event.clientX, event.clientY);
     };
 
@@ -408,11 +338,42 @@ export default function SourcingMap() {
     return () => {
       resizeObserver.disconnect();
       element.removeEventListener("wheel", handleWheel);
+      window.clearTimeout(wheelHintTimer.current);
     };
   }, [zoomAt]);
 
+  // Guided tour: step north to south, lingering on each region, then return to Italy.
+  useEffect(() => {
+    if (!touring) return;
+    const index = sourcingRegions.findIndex((region) => region.id === selectedId);
+    const next = sourcingRegions[index + 1];
+    const timer = window.setTimeout(
+      () => {
+        if (next) {
+          selectRegion(next, false);
+        } else {
+          setTouring(false);
+          resetMap();
+        }
+      },
+      index < 0 ? 0 : TOUR_STEP_MS,
+    );
+    return () => window.clearTimeout(timer);
+  }, [touring, selectedId, selectRegion, resetMap]);
+
+  /** Any direct interaction takes over from the tour. */
+  const chooseRegion = (region: SourcingRegion, toggle = true) => {
+    setTouring(false);
+    selectRegion(region, toggle);
+  };
+  const resetByUser = () => {
+    setTouring(false);
+    resetMap();
+  };
+
   const handlePointerDown = (event: ReactPointerEvent<SVGSVGElement>) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    setTouring(false);
     pointersRef.current.set(event.pointerId, {
       x: event.clientX,
       y: event.clientY,
@@ -523,13 +484,13 @@ export default function SourcingMap() {
         setHoverTip(null);
         setHoveredId(null);
       } else if (selectedId) {
-        resetMap();
+        resetByUser();
       } else {
         setView(DEFAULT_VIEW);
       }
     } else if (event.key === "0") {
       event.preventDefault();
-      resetMap();
+      resetByUser();
     }
   };
 
@@ -586,13 +547,14 @@ export default function SourcingMap() {
   const hoverTipBelow = hoverTipY < (hoverTip?.kind === "marker" ? 205 : 180);
 
   return (
-    <div className="mx-auto w-full max-w-6xl">
+    <div className="w-full">
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(340px,0.75fr)] lg:gap-6">
       <div
         ref={containerRef}
         tabIndex={0}
         onKeyDown={handleMapKeyDown}
         aria-label="Interactive map of Italian food regions. Use arrow keys to pan, plus and minus to zoom, and zero to reset."
-        className="sourcing-atlas group relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-on-surface/10 bg-aged-cream shadow-[0_35px_90px_rgba(59,44,32,0.16)] outline-none focus-visible:ring-2 focus-visible:ring-primary md:aspect-[16/10]"
+        className="sourcing-atlas group relative scroll-mt-24 aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-on-surface/10 bg-aged-cream shadow-[0_35px_90px_rgba(59,44,32,0.16)] outline-none focus-visible:ring-2 focus-visible:ring-primary md:aspect-[5/4] lg:aspect-auto lg:h-[min(760px,calc(100svh-120px))]"
       >
         <svg
           viewBox={`0 0 ${MAP_W} ${MAP_H}`}
@@ -608,7 +570,7 @@ export default function SourcingMap() {
           onClick={() => {
             if (ignoreClickRef.current) return;
             clearHover();
-            if (selectedId) resetMap();
+            if (selectedId) resetByUser();
           }}
         >
           <defs>
@@ -767,19 +729,23 @@ export default function SourcingMap() {
                     key={geometry.name}
                     d={geometry.d}
                     fill={
-                      selected
-                        ? "url(#atlas-selected)"
+                      selected && source
+                        ? source.color
                         : interactive
                           ? "url(#atlas-active)"
                           : "#f8f4eb"
                     }
-                    stroke={selected ? "#71301d" : "#a79e91"}
+                    stroke={selected ? "#3b2c20" : "#a79e91"}
                     strokeWidth={selected ? 1.8 : 0.9}
                     vectorEffect="non-scaling-stroke"
                     className={`sourcing-atlas__region ${
                       interactive ? "sourcing-atlas__region--active" : ""
                     } ${selected ? "sourcing-atlas__region--selected" : ""} ${
                       hovered ? "sourcing-atlas__region--hovered" : ""
+                    } ${
+                      selectedId && !selected && interactive && !hovered
+                        ? "sourcing-atlas__region--muted"
+                        : ""
                     }`}
                     tabIndex={interactive ? 0 : undefined}
                     role={interactive ? "button" : undefined}
@@ -803,7 +769,7 @@ export default function SourcingMap() {
                       source
                         ? (event) => {
                             event.stopPropagation();
-                            selectRegion(source);
+                            chooseRegion(source);
                           }
                         : undefined
                     }
@@ -813,7 +779,7 @@ export default function SourcingMap() {
                             if (event.key === "Enter" || event.key === " ") {
                               event.preventDefault();
                               event.stopPropagation();
-                              selectRegion(source);
+                              chooseRegion(source);
                             }
                           }
                         : undefined
@@ -1003,13 +969,13 @@ export default function SourcingMap() {
                       onBlur={clearHover}
                       onClick={(event) => {
                         event.stopPropagation();
-                        selectRegion(region, false);
+                        chooseRegion(region, false);
                       }}
                       onKeyDown={(event) => {
                         if (event.key === "Enter" || event.key === " ") {
                           event.preventDefault();
                           event.stopPropagation();
-                          selectRegion(region, false);
+                          chooseRegion(region, false);
                         }
                       }}
                     />
@@ -1053,15 +1019,10 @@ export default function SourcingMap() {
           <TuscaniniLogo className="h-5 w-auto text-heading md:h-6" />
           <div className="mt-2 flex items-center gap-2 text-[8px] font-bold uppercase tracking-[0.26em] text-on-surface/80 md:text-[11px]">
             <Compass className="h-3 w-3 text-primary" aria-hidden="true" />
-            Regions of Italy
+            {selectedRegion ? selectedRegion.name : "Regions of Italy"}
           </div>
         </div>
 
-        {selectedRegion && (
-          <div className="absolute right-5 top-5 hidden w-[285px] md:block">
-            <InfoCard region={selectedRegion} compact onBack={resetMap} />
-          </div>
-        )}
 
         {hoverTip && (
           <div
@@ -1099,7 +1060,18 @@ export default function SourcingMap() {
 
         <div className="absolute bottom-4 left-4 hidden items-center gap-2 rounded-full border border-white/60 bg-aged-cream/80 px-3 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface/80 shadow-md backdrop-blur md:flex">
           <Sparkles className="h-3 w-3 text-primary" aria-hidden="true" />
-          Click a region · hover a pin · scroll to zoom
+          Click a region · {IS_MAC ? "⌘" : "Ctrl"} + scroll to zoom
+        </div>
+
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-heading/35 transition-opacity duration-300 ${
+            wheelHint ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span className="rounded-full bg-heading/90 px-5 py-3 text-sm font-semibold text-aged-cream shadow-xl">
+            Hold {IS_MAC ? "⌘" : "Ctrl"} and scroll to zoom the map
+          </span>
         </div>
 
         {k > 2.15 && (
@@ -1152,7 +1124,7 @@ export default function SourcingMap() {
               <Minus className="h-4 w-4" aria-hidden="true" />
             </ControlButton>
             <span className="h-px bg-on-surface/10" />
-            <ControlButton label="Reset map" onClick={resetMap}>
+            <ControlButton label="Reset map" onClick={resetByUser}>
               <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
             </ControlButton>
           </div>
@@ -1164,27 +1136,41 @@ export default function SourcingMap() {
         </div>
       </div>
 
-      <div className="mt-4 flex snap-x gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:justify-center">
-        {sourcingRegions.map((region) => (
-          <button
-            key={region.id}
-            type="button"
-            onClick={() => selectRegion(region)}
-            className={`shrink-0 snap-start rounded-full border px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.16em] transition-all ${
-              selectedId === region.id
-                ? "border-primary bg-primary text-white shadow-md"
-                : "border-on-surface/10 bg-white/45 text-on-surface/80 hover:border-primary/30 hover:bg-white/70 hover:text-heading"
-            }`}
-          >
-            {region.name}
-          </button>
-        ))}
-      </div>
-
-      <div className="mt-3 min-h-[1px] md:hidden">
-        {selectedRegion && (
-          <InfoCard region={selectedRegion} onBack={resetMap} />
-        )}
+      <aside
+        aria-label="Food regions"
+        className="rounded-[28px] border border-on-surface/10 bg-aged-cream/80 p-5 md:p-6 lg:h-[min(760px,calc(100svh-120px))] lg:overflow-y-auto"
+      >
+        <RegionPanel
+          regions={sourcingRegions}
+          selected={selectedRegion}
+          hoveredId={hoveredId}
+          touring={touring}
+          onSelect={(region) => {
+            chooseRegion(region, false);
+            // Stacked layout: the list sits below the map, so bring the map into view.
+            if (window.matchMedia("(max-width: 1023px)").matches) {
+              containerRef.current?.scrollIntoView({
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+                  .matches
+                  ? "auto"
+                  : "smooth",
+                block: "start",
+              });
+            }
+          }}
+          onHover={setHoveredId}
+          onReset={resetByUser}
+          onToggleTour={() => {
+            if (touring) {
+              setTouring(false);
+            } else {
+              setHoverTip(null);
+              if (selectedId) resetMap();
+              setTouring(true);
+            }
+          }}
+        />
+      </aside>
       </div>
 
       <p className="mt-4 text-center text-[11px] leading-relaxed tracking-wide text-on-surface/80">

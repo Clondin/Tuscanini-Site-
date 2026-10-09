@@ -7,6 +7,12 @@ export interface SourcingRegion {
   products: string[];
   coordinates: [longitude: number, latitude: number];
   categorySlug: string;
+  /**
+   * Collections whose food type matches the region's specialties, shown as
+   * related products. This links food types only; it is not a statement of
+   * where any product is made. The first entry should equal `categorySlug`.
+   */
+  related: string[];
   color: string;
 }
 
@@ -24,6 +30,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Chocolate", "Hazelnuts", "Truffles"],
     coordinates: [7.8, 45.05],
     categorySlug: "chocolate",
+    related: ["chocolate"],
     color: "#8c3b24",
   },
   {
@@ -36,6 +43,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Pesto", "Basil", "Olive Oil"],
     coordinates: [8.75, 44.3],
     categorySlug: "pesto",
+    related: ["pesto"],
     color: "#596536",
   },
   {
@@ -48,6 +56,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Pasta", "Sauces", "Balsamic"],
     coordinates: [11.05, 44.55],
     categorySlug: "vinegars-glazes",
+    related: ["vinegars-glazes", "pasta-gnocchi"],
     color: "#a75834",
   },
   {
@@ -60,6 +69,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Olive Oil", "Beans", "Cooking Wines"],
     coordinates: [11.0, 43.35],
     categorySlug: "olive-oil",
+    related: ["olive-oil"],
     color: "#6c713d",
   },
   {
@@ -72,6 +82,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Tomatoes", "Pizza", "Pasta"],
     coordinates: [14.75, 40.85],
     categorySlug: "canned-tomatoes",
+    related: ["canned-tomatoes", "pasta-sauces", "pizza"],
     color: "#a83e2c",
   },
   {
@@ -84,6 +95,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Olives", "Olive Oil", "Crackers"],
     coordinates: [16.65, 41.05],
     categorySlug: "olives",
+    related: ["olives"],
     color: "#737443",
   },
   {
@@ -96,6 +108,7 @@ export const sourcingRegions: SourcingRegion[] = [
     products: ["Citrus", "Olives", "Seafood"],
     coordinates: [14.2, 37.6],
     categorySlug: "tuna-seafood",
+    related: ["tuna-seafood", "olives"],
     color: "#b26332",
   },
 ];
