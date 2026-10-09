@@ -57,33 +57,44 @@
 }
 
 @theme {
-  --font-headline: "Playfair Display", serif;
+  /* Italian modernism: one Bodoni display face, one grotesk for everything else.
+     The former script and alternate serif roles now resolve to the same Bodoni. */
+  --font-headline: "Bodoni Moda Variable", "Bodoni 72", Didot, serif;
   --font-body: "Manrope", sans-serif;
-  --font-serif-alt: "Noto Serif", serif;
-  --font-script: "Cormorant Garamond", serif;
+  --font-serif-alt: "Bodoni Moda Variable", "Bodoni 72", Didot, serif;
+  --font-script: "Bodoni Moda Variable", "Bodoni 72", Didot, serif;
 
-  --color-earth-dark: #f0e8db;
-  --color-hearth-stone: #e0d5c5;
-  --color-burnt-terracotta: #8c3b24;
-  --color-olive-deep: #3d4230;
-  --color-aged-cream: #f5efe4;
-  --color-surface: #faf7f2;
-  --color-on-surface: #3b2c20;
-  --color-primary: #b85c38;
-  --color-heading: #2a1f16;
-  --color-gold: #c9a84c;
-  --color-gold-light: #d4b966;
-  --color-tuscanini-red: #c0392b;
-  --color-dark: #1a1209;
-  --color-dark-surface: #2a1f16;
+  /* Paper and ink, taken from the black-label packaging. */
+  --color-earth-dark: #ece6db;
+  --color-hearth-stone: #ddd4c6;
+  --color-burnt-terracotta: #b8281f;
+  --color-olive-deep: #1f4a2b;
+  --color-aged-cream: #f1ece3;
+  --color-surface: #f7f4ee;
+  --color-on-surface: #2b2621;
+  --color-primary: #c8302a;
+  --color-heading: #141210;
+  --color-gold: #f0be2c;
+  --color-gold-light: #f6cf55;
+  --color-tuscanini-red: #c8302a;
+  --color-dark: #141210;
+  --color-dark-surface: #1d1a17;
+
+  /* Full-strength brand colors for poster moments. */
+  --color-tomato: #c8302a;
+  --color-basil: #2f6b3a;
+  --color-lemon: #f0be2c;
+  --color-sky: #3e63a8;
+  --color-paper: #f7f4ee;
+  --color-ink: #141210;
   --color-italia-green: #1a6b37;
   --color-italia-red: #ce2b37;
   --color-italia-white: #f0ede8;
 
   /* v2 accents */
-  --color-olive-accent: #5e6226;
-  --color-olive-accent-dark: #4c4f1f;
-  --color-olive-wash: #eff0dd;
+  --color-olive-accent: #2f6b3a;
+  --color-olive-accent-dark: #1f4a2b;
+  --color-olive-wash: #e7efe3;
 }
 
 @layer utilities {
@@ -192,8 +203,8 @@ html {
 
 /* Global selection color */
 ::selection {
-  background-color: #8c3b24;
-  color: #f5efe4;
+  background-color: #c8302a;
+  color: #f7f4ee;
 }
 
 /* Scrollbar styling */
@@ -224,6 +235,12 @@ html {
 body {
   @apply bg-surface font-body text-on-surface;
   overflow-x: clip;
+}
+
+/* Bodoni wants tight leading and slightly closed tracking at display sizes. */
+.font-headline {
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -23,7 +23,7 @@ export default function Footer() {
       ? cms.body
       : "Pasta, sauces, olive oils, drinks, snacks, and frozen foods from Tuscanini.";
   return (
-    <footer className="bg-dark-surface text-italia-white">
+    <footer className="bg-ink text-paper">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
@@ -41,7 +41,7 @@ export default function Footer() {
             <p className="mt-4 text-italia-white/85 text-sm leading-relaxed max-w-xs">
               {body}
             </p>
-            <p className="mt-3.5 font-script italic text-gold text-lg">
+            <p className="mt-4 font-headline italic text-lemon text-xl">
               {tagline}
             </p>
           </div>
@@ -125,7 +125,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      <div className="italia-stripe w-full" />
+      <div className="h-[3px] w-full bg-tomato" />
     </footer>
   );
 }

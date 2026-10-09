@@ -5,6 +5,8 @@ import { MotionConfig } from "motion/react";
 import Layout from "./components/Layout";
 import RouteMetadata from "./components/RouteMetadata";
 import { initializeCmsContent } from "./data/cms";
+import "@fontsource-variable/bodoni-moda/opsz.css";
+import "@fontsource-variable/bodoni-moda/opsz-italic.css";
 import "./index.css";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
