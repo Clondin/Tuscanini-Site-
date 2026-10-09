@@ -60,7 +60,7 @@ export default function HeroSection() {
   return (
     <section className="bg-tomato text-paper">
       <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:min-h-[min(820px,calc(100svh-75px))]">
-        <div className="relative order-2 lg:order-1 flex flex-col justify-between gap-10 px-5 md:px-10 lg:pl-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] lg:pr-12 py-12 md:py-16">
+        <div className="relative order-2 lg:order-1 flex flex-col justify-between gap-10 px-5 md:px-10 lg:pl-[max(2.5rem,calc((100vw_-_80rem)/2_+_2.5rem))] lg:pr-12 py-12 md:py-16">
           <p className="hero-rise flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-paper">
             <span aria-hidden="true" className="h-px w-10 bg-paper/60" />
             Tuscanini

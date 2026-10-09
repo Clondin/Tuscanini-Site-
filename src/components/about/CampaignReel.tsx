@@ -104,7 +104,7 @@ export default function CampaignReel() {
         ref={rail}
         tabIndex={0}
         aria-label="Campaign images, scroll horizontally"
-        className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-px-5 md:scroll-px-10 px-5 md:px-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))] pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-px-5 md:scroll-px-[max(2.5rem,calc((100vw_-_80rem)/2_+_2.5rem))] px-5 md:px-[max(2.5rem,calc((100vw_-_80rem)/2_+_2.5rem))] pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {campaigns.map((campaign) => {
           const linked = known.has(campaign.categorySlug);
