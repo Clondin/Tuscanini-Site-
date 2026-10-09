@@ -9,9 +9,8 @@ describe("CollectionsGrid", () => {
  it("links to the complete collection browser from featured categories", () => {
   render(<MemoryRouter><CollectionsGrid /></MemoryRouter>);
   expect(screen.getByRole('link', { name: 'All collections' })).toHaveAttribute('href', '/products?view=collections');
-  expect(screen.getByRole('link', { name: 'See every collection' })).toHaveAttribute('href', '/products?view=collections');
   const featured = screen.getAllByRole('link').filter(link => link.getAttribute('href')?.startsWith('/category/'));
-  expect(featured).toHaveLength(6);
+  expect(featured).toHaveLength(5);
   for (const link of featured) expect(bundledCatalog.some(category => `/category/${category.slug}` === link.getAttribute('href'))).toBe(true);
  });
  it("does not link to removed categories when published content replaces the catalog", () => {

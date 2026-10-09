@@ -70,7 +70,7 @@ The API response has top-level `slug`, `title`, and `description` values plus th
 
 | Public component | CMS type and slug | Fields consumed | Missing-value behavior |
 | --- | --- | --- | --- |
-| Homepage hero | `page:home` | `data.headline`, `data.body`, `data.hero_image`, `data.cta_label`, `data.cta_url` | Uses bundled headline/body/CTA. A missing image uses the bundled optimized poster; the compressed bundled film loads only after a desktop visitor presses Play. The hero search field (submits to `/products?q=…`) and the aisle shortcut links are code-managed; a shortcut whose category slug is not published is hidden. |
+| Homepage hero | `page:home` | `data.headline`, `data.body`, `data.hero_image`, `data.cta_label`, `data.cta_url` | Uses bundled headline/body/CTA. A missing image uses the bundled optimized poster; the compressed bundled film loads only after a desktop visitor presses Play. The hero is the full-bleed coast photo (or `data.hero_image`) with the headline, body, CTA, an **Our story** link, and the film button; it has no search field or aisle shortcuts. |
 | About hero | `page:about` | `data.headline`, `data.body` | Uses bundled headline and body. The background image, eyebrow, and on-page chapter links remain hardcoded. |
 | Navbar and document metadata | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo`, `data.primary_color` | Uses the Tuscanini wordmark/title and existing CSS color. |
 | Footer branding | `site_settings:general` | `data.site_title`, `data.tagline`, `data.logo` | Uses the Tuscanini wordmark, title, and bundled tagline. |
@@ -107,7 +107,7 @@ All published category entries are sorted by `data.display_order`, ascending.
 | `data.hero_image` | Category metadata and editorial image fallback |
 | `data.display_order` | Catalog order, mega-menu order, related categories, and the first eight footer categories |
 
-Collection tiles (homepage and `/products?view=collections`) and the category-page header show up to three distinct product images from the merged catalog on the category's accent color from `src/data/category-accents.ts` (unknown slugs use the terracotta fallback). The category hero image remains available for metadata; it is not required to render tiles or headers.
+Collection tiles on `/products?view=collections` and the category-page header show up to three distinct product images from the merged catalog on the category's accent color from `src/data/category-accents.ts` (unknown slugs use the terracotta fallback). The category hero image remains available for metadata; it is not required to render tiles or headers.
 
 Desktop and mobile navigation share `src/data/collection-groups.ts`: Pasta & Sauces, Pantry, Snacks & Sweets, Drinks, and Frozen. Unknown CMS categories default to Pantry. Homepage featured collection selection remains code-managed; every image-bearing collection appears at `/products?view=collections`.
 
@@ -173,7 +173,7 @@ Only recipe-linked products form **Products used here** recommendations. Product
 Do not tell an editor these areas are CMS-managed without first changing the code and content contract:
 
 - The homepage sections below the hero: marquee, collections heading and tiles, Pantry favorites, the brand story band, Serving ideas, and newsletter copy. The former trust-badge row has been removed.
-- Homepage collections feature six code-selected categories in a mixed-size grid (the first is the large tile and shows the CMS category `tagline`). Names and representative product images come from the merged catalog. Tiles show no product counts. All collections use the same tile on `/products?view=collections`.
+- Homepage **Shop by aisle** (`src/components/home/CollectionsGrid.tsx`) shows five code-selected categories as photo tiles (Pasta & Gnocchi, Pasta Sauces, Olive Oil, Beverages, Pizza), each paired with a bundled campaign or editorial image from `public/assets/`. Category names come from the merged catalog; a tile whose slug is not published is hidden. Tiles show no taglines or product counts. The **All collections** link opens `/products?view=collections`.
 - The homepage hero contains no product cards.
 - The homepage **Pantry favorites** spotlight (`src/components/home/FeaturedProducts.tsx`) shows four code-selected product IDs: `evoo-750ml`, `napoletana-pasta-sauce`, `sparkling-lemonade`, and `chocolate-truffle-pistachio`. Names, images, sizes, and collection labels come from the merged catalog. An unknown ID or a product without a photo is skipped. The heading and selection are code-managed; the section adds no taglines or origin claims.
 - `/products` catalog presentation: collection filter chips and progressive loading of 24 products per step ("Show more products"). Chips list collections that have matching products with photos, and use the same category list and URL parameter (`?category={slug}`) as before. The result count excludes products without photos.
@@ -262,7 +262,7 @@ Presentation or component changes do require a public-site deployment. The Verce
 2. Add its title, tagline, body, hero image, and display order.
 3. Publish it before publishing products that reference it.
 4. If it belongs outside The Pantry, update the hardcoded group data in this repository and deploy the site.
-5. The category automatically becomes available through the homepage's **See every collection** tile and the **All collections** links. Update the curated slug priority in `CollectionsGrid.tsx` only if it should receive a specific featured position.
+5. The category automatically becomes available through the homepage's **All collections** link and `/products?view=collections`. Add it to the photo tiles in `CollectionsGrid.tsx` (with a suitable image) only if it should be featured on the homepage.
 
 ### Add a product
 
