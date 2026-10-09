@@ -1,124 +1,90 @@
-import { getResponsiveImageProps } from "../../lib/productImage";
-import type { ImgHTMLAttributes } from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Category } from "../../data/products";
+import { getCategoryAccent, getPosterColor } from "../../data/category-accents";
 import { shelfSizing } from "../../lib/packSize";
 import { formatProductSize } from "../../lib/formatProductSize";
+import ShelfImage from "./ShelfImage";
+import {
+  getResponsiveImageProps,
+  isMissingProductImage,
+} from "../../lib/productImage";
 
-/** Settles each pack onto the shelf as it arrives instead of popping in. */
-function ShelfImage({ className = "", ...props }: ImgHTMLAttributes<HTMLImageElement>) {
-  const [loaded, setLoaded] = useState(false);
-  return (
-    <img
-      {...props}
-      ref={(image) => {
-        if (image?.complete && image.naturalWidth > 0) setLoaded(true);
-      }}
-      onLoad={() => setLoaded(true)}
-      className={`${className} transition duration-500 ease-out motion-reduce:transition-none ${loaded ? "opacity-100" : "opacity-0 translate-y-2"}`}
-    />
-  );
-}
-
-export default function CategoryShelf({
-  category,
-}: {
-  category: Category;
-  compact?: boolean;
-}) {
-  const rail = useRef<HTMLDivElement>(null);
-  const [edges, setEdges] = useState({ start: true, end: false });
-  const sizing = useMemo(
-    () => shelfSizing(category.products, { base: 185, min: 130, max: 240 }),
+/**
+ * The collection as a lit store shelf: every pack visible on wrapping rows,
+ * scaled by its stated pack size, with a shelf tag naming it underneath.
+ */
+export default function CategoryShelf({ category }: { category: Category }) {
+  const products = useMemo(
+    () =>
+      category.products.filter(
+        (product) => !isMissingProductImage(product.image),
+      ),
     [category.products],
   );
-  useEffect(() => {
-    const element = rail.current;
-    if (!element) return;
-    const update = () =>
-      setEdges({
-        start: element.scrollLeft < 2,
-        end:
-          element.scrollLeft + element.clientWidth >= element.scrollWidth - 2,
-      });
-    element.addEventListener("scroll", update, { passive: true });
-    const observer = new ResizeObserver(update);
-    observer.observe(element);
-    return () => {
-      observer.disconnect();
-      element.removeEventListener("scroll", update);
-    };
-  }, []);
-  const move = (direction: number) =>
-    rail.current?.scrollBy({
-      left: direction * rail.current.clientWidth * 0.8,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-    });
+  const sizing = useMemo(
+    () => shelfSizing(products, { base: 175, min: 110, max: 230 }),
+    [products],
+  );
+  const accent = getCategoryAccent(category.slug);
+  const poster = getPosterColor(category.slug);
+
   return (
-    <section aria-label={`${category.name} shelf`} className="py-5">
-      <div className="flex items-center justify-end gap-4 mb-5">
-        <div className="flex gap-2">
-          <button
-            onClick={() => move(-1)}
-            disabled={edges.start}
-            aria-label="Previous products"
-            className="w-11 h-11 flex items-center justify-center border border-on-surface/30 disabled:opacity-35"
-          >
-            <ArrowLeft size={18} />
-          </button>
-          <button
-            onClick={() => move(1)}
-            disabled={edges.end}
-            aria-label="Next products"
-            className="w-11 h-11 flex items-center justify-center border border-on-surface/30 disabled:opacity-35"
-          >
-            <ArrowRight size={18} />
-          </button>
-        </div>
-      </div>
+    <section
+      aria-label={`${category.name} shelf`}
+      style={
+        {
+          backgroundColor: accent.soft,
+          "--tag-stripe": poster.background,
+        } as CSSProperties
+      }
+      className="relative overflow-hidden pt-10 pb-12"
+    >
       <div
-        ref={rail}
-        className="overflow-x-auto snap-x snap-proximity pb-5"
-        tabIndex={0}
-        aria-label="Product shelf, scroll horizontally"
-      >
-        <div className="flex w-max min-w-full">
-          {category.products
-            .filter((product) => product.image)
-            .map((product) => (
-              <Link
-                key={product.id}
-                to={`/product/${product.id}`}
-                style={{ width: sizing[product.id].width }}
-                className="group shrink-0 snap-start text-center"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),rgba(255,255,255,0)_45%)]"
+      />
+      <ul className="relative grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(176px,1fr))] gap-y-10">
+        {products.map((product, index) => (
+          <li key={product.id}>
+            <Link to={`/product/${product.id}`} className="group block h-full">
+              <div className="flex h-[210px] md:h-[236px] items-end justify-center px-4 pb-1">
+                <ShelfImage
+                  {...getResponsiveImageProps(product.image, "200px")}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  style={{ maxHeight: sizing[product.id].height }}
+                  className="max-w-full w-auto object-contain object-bottom mix-blend-multiply group-hover:-translate-y-2 motion-reduce:transform-none"
+                />
+              </div>
+              {/* Adjacent cells join their planks into one continuous shelf per row;
+                  the last pack's plank runs on so a short final row is still a full shelf. */}
+              <div
+                aria-hidden="true"
+                className={`relative h-3 bg-ink shadow-[0_12px_16px_-8px_rgba(20,18,16,0.55)] ${
+                  index === products.length - 1
+                    ? "after:absolute after:left-full after:top-0 after:h-full after:w-screen after:bg-ink after:shadow-[0_12px_16px_-8px_rgba(20,18,16,0.55)]"
+                    : ""
+                }`}
               >
-                <div className="h-[270px] px-5 flex items-end justify-center pb-3">
-                  <ShelfImage
-                    {...getResponsiveImageProps(product.image, "100vw")}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    style={{ maxHeight: sizing[product.id].height }}
-                    className="max-w-full w-auto object-contain mix-blend-multiply group-hover:-translate-y-2 motion-reduce:transform-none"
-                  />
-                </div>
-                <div className="h-4 shelf-edge" />
-                <div className="px-4 pt-5">
-                  <h3 className="font-headline text-lg text-heading leading-snug group-hover:text-olive-accent">
-                    {product.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-on-surface/80">
+                <div className="absolute inset-x-0 top-0 h-px bg-white/25" />
+              </div>
+              <div className="mx-2 sm:mx-3 mt-3 min-h-[68px] border-t-4 border-[var(--tag-stripe)] bg-paper px-3 py-2.5 shadow-[0_6px_14px_-8px_rgba(20,18,16,0.4)] transition-transform duration-300 origin-top group-hover:-rotate-1 motion-reduce:transform-none">
+                <p className="font-headline text-[15px] md:text-base leading-tight text-ink line-clamp-2 group-hover:underline underline-offset-2">
+                  {product.name}
+                </p>
+                {product.size && (
+                  <p className="mt-1 text-xs text-on-surface/75 tabular-nums">
                     {formatProductSize(product.size)}
                   </p>
-                </div>
-              </Link>
-            ))}
-        </div>
-      </div>
+                )}
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { Search, Grid2X2, Columns3, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import type { Category } from "../../data/products";
 import {
   isFrozenProduct,
@@ -9,17 +9,15 @@ import {
 } from "../../lib/catalog-search";
 import { isMissingProductImage } from "../../lib/productImage";
 import CatalogCard from "./CatalogCard";
-import CategoryShelf from "./CategoryShelf";
 
 /** Cards revealed per step, so the full catalog is not one endless wall. */
 export const CATALOG_PAGE_SIZE = 24;
 
+/** The all-products browser: search, collection chips, filters, and paging. */
 export default function CatalogBrowser({
   categories,
-  category,
 }: {
   categories: Category[];
-  category?: Category;
 }) {
   const [params, setParams] = useSearchParams();
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -28,14 +26,13 @@ export default function CatalogBrowser({
   const format = params.get("format") || "";
   const glutenFree = params.get("diet") === "gluten-free";
   const sort = params.get("sort") || "featured";
-  const shelf = Boolean(category && params.get("view") !== "grid");
   const update = (name: string, value: string) => {
     const next = new URLSearchParams(params);
     if (value) next.set(name, value);
     else next.delete(name);
     setParams(next, { replace: true });
   };
-  const base = category ? [category] : categories;
+  const base = categories;
   // Cards without a photo are not rendered, so they must not be counted either.
   const matches = searchCatalog(base, query).filter(
     (result) =>
@@ -51,9 +48,7 @@ export default function CatalogBrowser({
   );
   const results = matches.filter(
     (result) =>
-      !selectedCategory ||
-      category ||
-      result.category.slug === selectedCategory,
+      !selectedCategory || result.category.slug === selectedCategory,
   );
   if (sort === "az")
     results.sort((a, b) => a.product.name.localeCompare(b.product.name));
@@ -102,7 +97,7 @@ export default function CatalogBrowser({
         <div className="grid gap-4 md:grid-cols-[minmax(220px,1fr)_2fr]">
           <label className="block">
             <span className="block text-xs font-semibold text-on-surface mb-2">
-              Search {category ? "this collection" : "products"}
+              Search products
             </span>
             <span className="flex items-center gap-2 border border-on-surface/25 px-3 min-h-11">
               <Search size={18} aria-hidden="true" />
@@ -177,9 +172,7 @@ export default function CatalogBrowser({
           {filtered && (
             <button
               onClick={() =>
-                setParams(category && !shelf ? { view: "grid" } : {}, {
-                  replace: true,
-                })
+                setParams({}, { replace: true })
               }
               className="inline-flex items-center gap-2 min-h-11 text-sm underline underline-offset-4"
             >
@@ -189,8 +182,7 @@ export default function CatalogBrowser({
           )}
         </div>
       </div>
-      {!category && (
-        <div
+      <div
           role="group"
           aria-label="Filter by collection"
           className="-mx-5 md:mx-0 mb-6 flex gap-2 overflow-x-auto snap-x scroll-px-5 md:scroll-px-0 px-5 md:px-0 pb-2 md:[mask-image:linear-gradient(to_right,black_calc(100%-48px),transparent)]"
@@ -218,48 +210,14 @@ export default function CatalogBrowser({
             );
           })}
         </div>
-      )}
       <div className="flex flex-wrap gap-4 justify-between items-center mb-6">
         <p role="status" className="text-sm text-on-surface/85">
           {results.length} {results.length === 1 ? "product" : "products"}
           {query && <> for “{query}”</>}
           {approximate && " · Includes close matches"}
         </p>
-        {category && (
-          <div
-            className="flex border border-on-surface/25"
-            aria-label="Product view"
-          >
-            <button
-              aria-pressed={!shelf}
-              onClick={() => update("view", "grid")}
-              className={`inline-flex items-center gap-2 px-4 min-h-11 text-sm ${!shelf ? "bg-olive-deep text-white" : ""}`}
-            >
-              <Grid2X2 size={16} />
-              Grid
-            </button>
-            <button
-              aria-pressed={shelf}
-              onClick={() => update("view", "")}
-              className={`inline-flex items-center gap-2 px-4 min-h-11 text-sm ${shelf ? "bg-olive-deep text-white" : ""}`}
-            >
-              <Columns3 size={16} />
-              Shelf
-            </button>
-          </div>
-        )}
       </div>
       {results.length ? (
-        shelf && category ? (
-          <CategoryShelf
-            key={results.map((result) => result.product.id).join(",")}
-            category={{
-              ...category,
-              products: results.map((result) => result.product),
-            }}
-            compact
-          />
-        ) : (
           <>
             <div
               ref={grid}
@@ -281,7 +239,6 @@ export default function CatalogBrowser({
               </div>
             )}
           </>
-        )
       ) : (
         <div className="border border-on-surface/20 bg-surface py-14 px-6 text-center">
           <h2 className="font-headline text-3xl">No products found</h2>

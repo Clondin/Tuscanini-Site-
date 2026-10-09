@@ -25,63 +25,6 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe("catalog filters", () => {
-  const pasta = categories.find(
-    (category) => category.slug === "pasta-gnocchi",
-  )!;
-
-  it.each([
-    ["", true],
-    ["?view=shelf", true],
-    ["?view=grid", false],
-  ])("restores the category view from %s", (search, shelf) => {
-    render(
-      <MemoryRouter initialEntries={[`/category/pasta-gnocchi${search}`]}>
-        <CatalogBrowser categories={categories} category={pasta} />
-      </MemoryRouter>,
-    );
-    expect(screen.getByRole("button", { name: "Shelf" })).toHaveAttribute(
-      "aria-pressed",
-      String(shelf),
-    );
-    expect(screen.getByRole("button", { name: "Grid" })).toHaveAttribute(
-      "aria-pressed",
-      String(!shelf),
-    );
-    if (shelf)
-      expect(
-        screen.getByRole("region", { name: "Pasta & Gnocchi shelf" }),
-      ).toBeInTheDocument();
-    else
-      expect(
-        screen.queryByRole("region", { name: "Pasta & Gnocchi shelf" }),
-      ).not.toBeInTheDocument();
-  });
-
-  it("keeps Grid selected when clearing filters and returns to the default Shelf", async () => {
-    const user = userEvent.setup();
-    render(
-      <MemoryRouter initialEntries={["/category/pasta-gnocchi"]}>
-        <CatalogBrowser categories={categories} category={pasta} />
-        <Location />
-      </MemoryRouter>,
-    );
-    await user.click(screen.getByRole("button", { name: "Grid" }));
-    await user.selectOptions(
-      screen.getByRole("combobox", { name: "Storage" }),
-      "frozen",
-    );
-    await user.click(screen.getByRole("button", { name: "Clear filters" }));
-    expect(screen.getByTestId("location").textContent).toBe("?view=grid");
-    expect(screen.getByRole("button", { name: "Grid" })).toHaveAttribute(
-      "aria-pressed",
-      "true",
-    );
-    await user.click(screen.getByRole("button", { name: "Shelf" }));
-    expect(screen.getByTestId("location").textContent).toBe("");
-    expect(
-      screen.getByRole("region", { name: "Pasta & Gnocchi shelf" }),
-    ).toBeInTheDocument();
-  });
   it("restores filters from a shareable URL and clears them without losing products", async () => {
     const user = userEvent.setup();
     render(
@@ -140,6 +83,7 @@ describe("catalog filters", () => {
     const chip = Array.from(group.querySelectorAll("button")).find(
       (button) => button.textContent === "Pasta & Gnocchi",
     )!;
+    const pasta = categories.find((category) => category.slug === "pasta-gnocchi")!;
     const count = pasta.products.filter(
       (product) => !isMissingProductImage(product.image),
     ).length;

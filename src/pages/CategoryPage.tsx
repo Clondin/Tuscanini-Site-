@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { getCategoryBySlug, categories } from "../data/products";
 import { getPosterColor } from "../data/category-accents";
 import CategoryNotFound from "../components/category/CategoryNotFound";
-import CatalogBrowser from "../components/category/CatalogBrowser";
+import CategoryProducts from "../components/category/CategoryProducts";
 import CategoryBreadcrumbs from "../components/category/CategoryBreadcrumbs";
 import CategoryDescription from "../components/category/CategoryDescription";
 import RelatedCategories from "../components/category/RelatedCategories";
@@ -45,11 +45,7 @@ export default function CategoryPage() {
         </div>
       </header>
       <div className="max-w-7xl mx-auto px-5 md:px-10 pt-8 pb-16">
-        <CatalogBrowser
-          key={category.id}
-          categories={categories}
-          category={category}
-        />
+        <CategoryProducts key={category.id} category={category} />
       </div>
       <CategoryDescription category={category} />
       <RelatedCategories
