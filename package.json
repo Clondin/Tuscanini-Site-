@@ -15,6 +15,7 @@
     "test": "vitest run",
     "kayco:images:audit": "tsx scripts/kayco-images/audit.ts",
     "kayco:images:stage": "tsx scripts/kayco-images/audit.ts --download",
+    "images:opaque": "tsx scripts/find-opaque-pack-shots.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
   },
   "dependencies": {

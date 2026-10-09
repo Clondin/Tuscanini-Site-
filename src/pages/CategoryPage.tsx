@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { getCategoryBySlug, categories } from "../data/products";
-import { getCategoryAccent } from "../data/category-accents";
+import { getPosterColor } from "../data/category-accents";
 import CategoryNotFound from "../components/category/CategoryNotFound";
 import CatalogBrowser from "../components/category/CatalogBrowser";
 import CategoryBreadcrumbs from "../components/category/CategoryBreadcrumbs";
@@ -16,29 +16,30 @@ export default function CategoryPage() {
   if (!category) {
     return <CategoryNotFound />;
   }
-  const accent = getCategoryAccent(category.slug);
+  const poster = getPosterColor(category.slug);
 
   return (
-    <div className="min-h-screen bg-earth-dark selection:bg-burnt-terracotta selection:text-white">
+    <div className="min-h-screen bg-paper selection:bg-tomato selection:text-paper">
       <header
-        style={{ backgroundColor: accent.soft }}
-        className="relative overflow-hidden"
+        style={{ backgroundColor: poster.background }}
+        className={`relative overflow-hidden ${poster.ink ? "text-ink" : "text-paper"}`}
       >
-        <div className="max-w-7xl mx-auto px-5 md:px-10 pt-6 md:pt-8 grid md:grid-cols-[1.15fr_0.85fr] gap-6 items-end">
-          <div className="pb-8 md:pb-14">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 pt-7 md:pt-10 grid md:grid-cols-[1.2fr_0.8fr] gap-6 items-end">
+          <div className="pb-10 md:pb-16">
             <CategoryBreadcrumbs categoryName={category.name} />
-            <h1 className="font-headline text-[clamp(2.5rem,6vw,4.75rem)] leading-[1] text-heading">
+            <h1 className="font-headline font-medium text-[clamp(3rem,7vw,6.5rem)] leading-[0.9] tracking-[-0.03em]">
               {category.name}
             </h1>
-            <p className="mt-4 max-w-2xl text-base md:text-lg text-on-surface/85 leading-relaxed">
+            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed">
               {category.description}
             </p>
           </div>
-          <div className="hidden md:block h-[280px] lg:h-[330px]">
+          <div className="hidden md:block h-[300px] lg:h-[360px]">
             <PackFan
               products={category.products}
               eager
-              sizes="(min-width: 1024px) 300px, 30vw"
+              onColor
+              sizes="(min-width: 1024px) 320px, 30vw"
             />
           </div>
         </div>

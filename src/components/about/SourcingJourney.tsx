@@ -8,7 +8,7 @@ export default function SourcingJourney() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-10 md:mb-12 grid gap-4 md:grid-cols-2 md:items-end">
-          <h2 className="font-headline text-heading text-[clamp(2.25rem,4.6vw,4rem)] leading-[1.02]">
+          <h2 className="font-headline font-medium text-ink text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.92] tracking-[-0.03em]">
             Italy, region by region
           </h2>
           <p className="max-w-[46ch] text-base md:text-lg leading-relaxed text-on-surface/80 md:justify-self-end">

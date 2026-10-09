@@ -3,20 +3,17 @@ import { ChevronRight } from "lucide-react";
 
 interface CategoryBreadcrumbsProps {
   categoryName: string;
-  inverted?: boolean;
 }
 
-export default function CategoryBreadcrumbs({ categoryName, inverted = false }: CategoryBreadcrumbsProps) {
+/** Inherits the surrounding text color, so it reads on paper and on aisle colors alike. */
+export default function CategoryBreadcrumbs({ categoryName }: CategoryBreadcrumbsProps) {
   return (
-    <nav className="flex items-center gap-2 text-sm mb-6">
-      <Link
-        to="/"
-        className={`${inverted ? "text-white/70 hover:text-white" : "text-on-surface/80 hover:text-primary"} transition-colors font-body uppercase tracking-widest text-[10px]`}
-      >
+    <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-6 text-[11px] uppercase tracking-[0.2em]">
+      <Link to="/" className="opacity-90 hover:opacity-100 hover:underline underline-offset-4 transition-opacity">
         Home
       </Link>
-      <ChevronRight className={`w-3 h-3 ${inverted ? "text-white/45" : "text-on-surface/80"}`} />
-      <span className={`${inverted ? "text-white/85" : "text-primary"} font-body uppercase tracking-widest text-[10px]`}>
+      <ChevronRight aria-hidden="true" className="w-3 h-3 opacity-80" />
+      <span aria-current="page" className="font-semibold">
         {categoryName}
       </span>
     </nav>

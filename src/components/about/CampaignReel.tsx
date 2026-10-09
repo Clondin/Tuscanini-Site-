@@ -76,7 +76,7 @@ export default function CampaignReel() {
       className="bg-dark text-aged-cream py-20 md:py-28 scroll-mt-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 mb-10 flex flex-wrap items-end justify-between gap-6">
-        <h2 className="font-headline text-white text-[clamp(2.25rem,4.6vw,4rem)] leading-[1.02]">
+        <h2 className="font-headline font-medium text-paper text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.92] tracking-[-0.03em]">
           From our campaigns
         </h2>
         <div className="flex gap-2">

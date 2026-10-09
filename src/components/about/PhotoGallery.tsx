@@ -23,7 +23,7 @@ export default function PhotoGallery() {
       className="bg-surface py-20 md:py-28 px-5 md:px-10 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-headline text-heading text-[clamp(2.25rem,4.6vw,4rem)] leading-[1.02] mb-10 md:mb-12">
+        <h2 className="font-headline font-medium text-ink text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.92] tracking-[-0.03em] mb-10 md:mb-12">
           At the table
         </h2>
         <div className="grid gap-4 md:gap-5 md:grid-cols-3 md:grid-rows-2 md:h-[min(720px,80svh)]">

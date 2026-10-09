@@ -1,4 +1,5 @@
 import type { Product } from "../../data/products";
+import { opaquePackShots } from "../../data/opaque-pack-shots.generated";
 import {
   getResponsiveImageProps,
   isMissingProductImage,
@@ -23,6 +24,12 @@ export default function PackFan({
 }) {
   const packs = products
     .filter((product) => !isMissingProductImage(product.image))
+    // On color, opaque photos show as boxes; put transparent pack shots first.
+    .sort((a, b) =>
+      onColor
+        ? Number(opaquePackShots.has(a.image)) - Number(opaquePackShots.has(b.image))
+        : 0,
+    )
     .filter(
       (product, index, list) =>
         list.findIndex((other) => other.image === product.image) === index,

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../../data/products";
 import { getCategoryAccent, getPosterColor } from "../../data/category-accents";
+import { opaquePackShots } from "../../data/opaque-pack-shots.generated";
 import { useProductDossier } from "./useProductDossier";
 import {
   AffiliateNote,
@@ -24,7 +25,13 @@ export default function ProductDossier({
   categorySlug: string;
 }) {
   const { state, buyingRef } = useProductDossier(product, categoryName);
-  const poster = getPosterColor(categorySlug);
+  // An opaque photo would sit in a box on the full aisle color, so those
+  // products use the collection's soft tint and blend the photo into it.
+  const opaque = opaquePackShots.has(product.image);
+  const accent = getCategoryAccent(categorySlug);
+  const poster = opaque
+    ? { background: accent.soft, ink: true }
+    : getPosterColor(categorySlug);
   return (
     <>
       <section className="grid lg:grid-cols-2 items-start">
@@ -46,9 +53,9 @@ export default function ProductDossier({
             <ProductImage
               product={product}
               state={state}
-              multiply={false}
+              multiply={opaque}
               className="w-full h-[320px] sm:h-[440px] lg:h-[min(560px,calc(100svh-260px))]"
-              imageClassName="drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
+              imageClassName={opaque ? "" : "drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"}
             />
           </div>
         </div>
@@ -86,7 +93,7 @@ export default function ProductDossier({
       <DossierOverlays
         product={product}
         state={state}
-        swatch={getCategoryAccent(categorySlug).soft}
+        swatch={accent.soft}
       />
     </>
   );
