@@ -52,3 +52,28 @@ export function getCategoryAccent(slugOrId: string | undefined): CategoryAccent 
   if (!slugOrId) return FALLBACK;
   return categoryAccents[slugOrId] ?? FALLBACK;
 }
+
+/** Full-strength "poster" field for a collection, with the text color that reads on it. */
+export interface PosterColor {
+  background: string;
+  /** True when ink (dark) text is needed for contrast; otherwise use paper text. */
+  ink: boolean;
+}
+
+const posterColors: Record<string, PosterColor> = {
+  "pasta-gnocchi": { background: "#f0be2c", ink: true },
+  "pasta-sauces": { background: "#c8302a", ink: false },
+  "canned-tomatoes": { background: "#c8302a", ink: false },
+  pizza: { background: "#e8743b", ink: true },
+  "olive-oil": { background: "#2f6b3a", ink: false },
+  pesto: { background: "#2f6b3a", ink: false },
+  olives: { background: "#3f5a2c", ink: false },
+  chocolate: { background: "#3a2a20", ink: false },
+  beverages: { background: "#3e63a8", ink: false },
+  "tuna-seafood": { background: "#2c5a73", ink: false },
+};
+
+export function getPosterColor(slugOrId: string | undefined): PosterColor {
+  const poster = slugOrId ? posterColors[slugOrId] : undefined;
+  return poster ?? { background: getCategoryAccent(slugOrId).deep, ink: false };
+}
