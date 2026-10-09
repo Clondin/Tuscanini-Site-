@@ -1,7 +1,6 @@
-import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import type { Product } from "../../data/products";
-import { getCategoryAccent } from "../../data/category-accents";
+import { getCategoryAccent, getPosterColor } from "../../data/category-accents";
 import { useProductDossier } from "./useProductDossier";
 import {
   AffiliateNote,
@@ -11,7 +10,10 @@ import {
   ProductImage,
 } from "./ProductParts";
 
-/** Default product layout: tinted image panel beside the details. */
+/**
+ * Product detail "poster": the pack on a full-bleed field in its aisle's
+ * poster color (sticky on desktop), with name, facts, and buying on paper.
+ */
 export default function ProductDossier({
   product,
   categoryName,
@@ -22,71 +24,70 @@ export default function ProductDossier({
   categorySlug: string;
 }) {
   const { state, buyingRef } = useProductDossier(product, categoryName);
-  const accent = getCategoryAccent(categorySlug);
+  const poster = getPosterColor(categorySlug);
   return (
     <>
-      <section
-        style={{ "--product-accent": accent.deep } as CSSProperties}
-        className="max-w-7xl mx-auto px-5 md:px-10 py-6 md:py-10 grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] gap-x-14 gap-y-6 items-start"
-      >
-        <div className="lg:col-start-2 lg:row-start-1">
+      <section className="grid lg:grid-cols-2 items-start">
+        <div
+          style={{ backgroundColor: poster.background }}
+          className={`relative lg:sticky lg:top-[75px] lg:h-[calc(100svh-75px)] flex flex-col ${poster.ink ? "text-ink" : "text-paper"}`}
+        >
           <Link
             to={`/category/${categorySlug}`}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-[var(--product-accent)] hover:underline underline-offset-4"
+            className="relative z-10 m-5 md:m-8 self-start text-xs font-semibold uppercase tracking-[0.28em] underline-offset-4 hover:underline"
           >
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[var(--product-accent)]" />
             {categoryName}
           </Link>
-          <h1 className="font-headline text-[clamp(2.25rem,4.4vw,3.75rem)] leading-[1.04] text-heading mt-4 mb-3">
+          <div className="relative flex-1 flex items-end justify-center px-10 pb-12 md:pb-16">
+            <span
+              aria-hidden="true"
+              className="absolute bottom-10 md:bottom-14 left-1/2 h-8 w-1/2 -translate-x-1/2 rounded-[50%] bg-black/35 blur-xl"
+            />
+            <ProductImage
+              product={product}
+              state={state}
+              multiply={false}
+              className="w-full h-[320px] sm:h-[440px] lg:h-[min(560px,calc(100svh-260px))]"
+              imageClassName="drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
+            />
+          </div>
+        </div>
+
+        <div className="bg-paper px-5 md:px-12 xl:px-16 py-10 md:py-16 lg:min-h-[calc(100svh-75px)] flex flex-col justify-center">
+          <h1 className="font-headline font-medium text-ink text-[clamp(3rem,5.6vw,5.75rem)] leading-[0.9] tracking-[-0.03em]">
             {product.name}
           </h1>
-          {state.size && <p className="text-lg text-on-surface/80">{state.size}</p>}
-        </div>
-
-        <div
-          style={{ backgroundColor: accent.soft }}
-          className="relative lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-24 overflow-hidden ring-1 ring-inset ring-heading/5"
-        >
-          <ProductImage
-            product={product}
-            state={state}
-            className="w-full h-[300px] sm:h-[400px] lg:h-[min(620px,calc(100svh-140px))] px-10 pt-10 pb-12"
-          />
-        </div>
-
-        <div className="lg:col-start-2 lg:row-start-2">
-          <p className="text-base md:text-lg text-on-surface/85 leading-relaxed">
+          {state.size && (
+            <p className="mt-5 text-xl text-on-surface/80">{state.size}</p>
+          )}
+          <p className="mt-8 max-w-[52ch] text-lg leading-relaxed text-on-surface/90">
             {product.description}
           </p>
-          <dl className="mt-7 grid grid-cols-2 gap-px bg-on-surface/12 border border-on-surface/12">
+          <dl className="mt-8 max-w-xl border-t border-ink">
             {state.facts.map((fact) => (
-              <div key={fact.label} className="bg-surface p-4 md:p-5">
-                <fact.icon
-                  size={18}
-                  aria-hidden="true"
-                  className="mb-3 text-[var(--product-accent)]"
-                />
-                <dt className="text-[11px] uppercase tracking-[0.16em] text-on-surface/70">
+              <div
+                key={fact.label}
+                className="flex items-baseline justify-between gap-6 border-b border-ink/15 py-3.5"
+              >
+                <dt className="text-xs uppercase tracking-[0.2em] text-on-surface/70">
                   {fact.label}
                 </dt>
-                <dd className="mt-1 text-sm md:text-base font-semibold text-heading">
+                <dd className="text-base font-semibold text-ink text-right">
                   {fact.value}
                 </dd>
               </div>
             ))}
           </dl>
-          <BuyActions state={state} buyRef={buyingRef} className="mt-7" />
-          <ProductDisclosures product={product} className="mt-8" />
+          <BuyActions state={state} buyRef={buyingRef} className="mt-9" />
+          <ProductDisclosures product={product} className="mt-10 max-w-xl" />
           <AffiliateNote state={state} />
-          <Link
-            to={`/category/${categorySlug}`}
-            className="inline-flex min-h-11 mt-3 items-center text-sm font-semibold text-olive-deep underline underline-offset-4"
-          >
-            Back to {categoryName}
-          </Link>
         </div>
       </section>
-      <DossierOverlays product={product} state={state} swatch={accent.soft} />
+      <DossierOverlays
+        product={product}
+        state={state}
+        swatch={getCategoryAccent(categorySlug).soft}
+      />
     </>
   );
 }
