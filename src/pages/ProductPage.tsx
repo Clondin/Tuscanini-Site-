@@ -6,13 +6,16 @@ import ProductDossier from "../components/product/ProductDossier";
 import ProductStudio from "../components/product/ProductStudio";
 import ProductShelfTag from "../components/product/ProductShelfTag";
 import ProductCover from "../components/product/ProductCover";
+import ProductSpecSheet from "../components/product/ProductSpecSheet";
+import ProductSpotlight from "../components/product/ProductSpotlight";
+import ProductLabel from "../components/product/ProductLabel";
 import ProductStory from "../components/product/ProductStory";
 import RelatedProducts from "../components/product/RelatedProducts";
 import RecipeSuggestions from "../components/product/RecipeSuggestions";
 import NewsletterSignup from "../components/home/NewsletterSignup";
 
 /**
- * Design review only: ?layout=studio|shelf|cover previews alternative
+ * Design review only: ?layout=studio|shelf|cover|spec|spotlight|label previews alternative
  * product layouts. Without the parameter the current poster renders and no
  * switcher appears. Remove once a layout is chosen.
  */
@@ -21,6 +24,9 @@ const layouts = {
   studio: { label: "H · Studio", Component: ProductStudio },
   shelf: { label: "I · Shelf", Component: ProductShelfTag },
   cover: { label: "J · Cover", Component: ProductCover },
+  spec: { label: "K · Spec", Component: ProductSpecSheet },
+  spotlight: { label: "L · Dark", Component: ProductSpotlight },
+  label: { label: "M · Label", Component: ProductLabel },
 } as const;
 type LayoutKey = keyof typeof layouts;
 
@@ -67,7 +73,7 @@ export default function ProductPage() {
       {requested !== null && (
         <nav
           aria-label="Product layout options"
-          className="fixed z-40 left-1/2 -translate-x-1/2 bottom-24 lg:bottom-6 flex gap-1 rounded-full bg-ink/90 p-1 shadow-2xl backdrop-blur"
+          className="fixed z-40 left-1/2 -translate-x-1/2 bottom-24 lg:bottom-6 flex max-w-[calc(100vw-24px)] overflow-x-auto gap-1 rounded-full bg-ink/90 p-1 shadow-2xl backdrop-blur"
         >
           {(Object.keys(layouts) as LayoutKey[]).map((key) => (
             <Link
