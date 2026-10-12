@@ -6,7 +6,11 @@ import ProductDossier from "../components/product/ProductDossier";
 import ProductStudio from "../components/product/ProductStudio";
 import ProductShelfTag from "../components/product/ProductShelfTag";
 import ProductCover from "../components/product/ProductCover";
-import ProductSpecSheet from "../components/product/ProductSpecSheet";
+import ProductSpecSheet, {
+  ProductSpecLabelSheet,
+  ProductSpecMasthead,
+  ProductSpecTint,
+} from "../components/product/ProductSpecSheet";
 import ProductSpotlight from "../components/product/ProductSpotlight";
 import ProductLabel from "../components/product/ProductLabel";
 import ProductStory from "../components/product/ProductStory";
@@ -25,6 +29,9 @@ const layouts = {
   shelf: { label: "I · Shelf", Component: ProductShelfTag },
   cover: { label: "J · Cover", Component: ProductCover },
   spec: { label: "K · Spec", Component: ProductSpecSheet },
+  "spec-tint": { label: "K2 · Tint", Component: ProductSpecTint },
+  "spec-masthead": { label: "K3 · Masthead", Component: ProductSpecMasthead },
+  "spec-sheet": { label: "K4 · Label sheet", Component: ProductSpecLabelSheet },
   spotlight: { label: "L · Dark", Component: ProductSpotlight },
   label: { label: "M · Label", Component: ProductLabel },
 } as const;
