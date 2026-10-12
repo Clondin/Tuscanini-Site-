@@ -1,5 +1,5 @@
-import type { ReactNode, RefObject } from "react";
-import { ArrowUpRight, Check, Expand, Plus, Share2 } from "lucide-react";
+import type { RefObject } from "react";
+import { ArrowUpRight, Check, Expand, Share2 } from "lucide-react";
 import type { Product } from "../../data/products";
 import { getResponsiveImageProps } from "../../lib/productImage";
 import ImageLightbox from "../ui/ImageLightbox";
@@ -107,91 +107,6 @@ export function BuyActions({
         <p className={`mt-3 text-xs leading-relaxed ${onDark ? "opacity-80" : "text-on-surface/75"}`}>
           Selection and availability vary.
         </p>
-      )}
-    </div>
-  );
-}
-
-function Disclosure({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <details className="group py-1">
-      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-heading [&::-webkit-details-marker]:hidden">
-        {title}
-        <Plus
-          size={18}
-          aria-hidden="true"
-          className="shrink-0 transition-transform duration-300 group-open:rotate-45"
-        />
-      </summary>
-      <div className="pb-5">{children}</div>
-    </details>
-  );
-}
-
-/** Ingredients, preparation, and nutrition, each shown only when recorded. */
-export function ProductDisclosures({
-  product,
-  className = "",
-}: {
-  product: Product;
-  className?: string;
-}) {
-  const hasNutrition = Boolean(
-    product.nutritionImage ||
-      product.nutritionFacts?.length ||
-      product.nutritionServing ||
-      product.nutritionCalories,
-  );
-  const hasPrep = Boolean(product.preparation?.length || product.storage);
-  if (!product.ingredients && !hasPrep && !hasNutrition) return null;
-  return (
-    <div className={`border-y border-on-surface/20 divide-y divide-on-surface/20 ${className}`}>
-      {product.ingredients && (
-        <Disclosure title="Ingredients">
-          <p className="text-sm leading-relaxed">{product.ingredients}</p>
-          <p className="mt-3 text-xs text-on-surface/80">
-            Check the packaging for the latest ingredient and allergen
-            information.
-          </p>
-        </Disclosure>
-      )}
-      {hasPrep && (
-        <Disclosure title="Preparation & storage">
-          {product.preparation?.map((step, index) => (
-            <p key={index} className="mt-3 first:mt-0 text-sm leading-relaxed">
-              {step.replace(/\s*\|\s*/, ": ")}
-            </p>
-          ))}
-          {product.storage && (
-            <p className="mt-4 text-sm leading-relaxed">{product.storage}</p>
-          )}
-        </Disclosure>
-      )}
-      {hasNutrition && (
-        <Disclosure title="Nutrition facts">
-          {product.nutritionServing && (
-            <p className="text-sm">Serving size: {product.nutritionServing}</p>
-          )}
-          {product.nutritionCalories && (
-            <p className="mt-3 text-sm">Calories: {product.nutritionCalories}</p>
-          )}
-          {product.nutritionFacts?.map((fact, index) => (
-            <p key={index} className="mt-3 text-sm">
-              {fact.replace(/\s*\|\s*/, ": ")}
-            </p>
-          ))}
-          {product.nutritionImage && (
-            <img
-              {...getResponsiveImageProps(product.nutritionImage, "100vw")}
-              alt={`Nutrition facts for ${product.name}`}
-              loading="lazy"
-              className="mt-4 w-full max-w-md h-auto"
-            />
-          )}
-          <p className="mt-4 text-xs leading-relaxed">
-            Refer to the packaging for the latest nutrition information.
-          </p>
-        </Disclosure>
       )}
     </div>
   );

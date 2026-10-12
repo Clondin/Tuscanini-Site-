@@ -57,4 +57,28 @@ describe("ProductDossier", () => {
     expect(screen.queryByRole("link", { name: "Pending product" })).not.toBeInTheDocument();
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
+
+  it("prints recorded label details open and omits the row when none exist", () => {
+    const view = render(
+      <MemoryRouter>
+        <ProductDossier
+          product={{ ...product, ingredients: "Basil, olive oil", nutritionCalories: "80" }}
+          categoryName="Pesto"
+          categorySlug="pesto"
+        />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole("heading", { name: "Ingredients" }).parentElement).toHaveTextContent("Basil, olive oil");
+    expect(screen.getByRole("heading", { name: "Nutrition" }).parentElement).toHaveTextContent("Calories: 80");
+    expect(screen.queryByRole("heading", { name: /Preparation/ })).not.toBeInTheDocument();
+
+    view.rerender(
+      <MemoryRouter>
+        <ProductDossier product={product} categoryName="Pesto" categorySlug="pesto" />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByRole("heading", { name: "Ingredients" })).not.toBeInTheDocument();
+  });
 });
