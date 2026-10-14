@@ -101,6 +101,11 @@ const amazonProductAsins: Record<string, string> = {
   "chocolate-truffle-pistachio": "B0GFCK4JFP",
   "assorted-chocolate-truffles-gift-box": "B0G7SQG3M7",
   "chocolate-bar-collection": "B0FR59Q965",
+  "caramel-balsamic-glaze-modena": "B0DTJF76XX",
+  "peeled-tomatoes": "B0DPGHS5BG",
+  "spelt-sea-salt-crostini-crackers": "B0C5YDPHLN",
+  "rosemary-grissini": "B0C5N8C6WH",
+  "chocolate-gianduiotti": "B0FR5CB4LL",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
