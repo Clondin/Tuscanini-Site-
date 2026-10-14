@@ -1,5 +1,5 @@
 import type { Category, Product } from './products';
-import { canonicalProductId } from '../lib/productAliases';
+import { canonicalProductId } from '../lib/productAliases.js';
 
 /** The only product fields allowed across the private API boundary. */
 export interface KaycoProduct {

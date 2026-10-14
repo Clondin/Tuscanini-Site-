@@ -1,5 +1,7 @@
-import { kaycoSnapshot } from '../src/data/kayco-catalog.generated';
-import { isKaycoImage, type KaycoProduct } from '../src/data/kayco-catalog';
+// Relative imports carry .js: Vercel runs this function as native Node ESM (package.json "type": "module"),
+// which does not resolve extensionless paths (ERR_MODULE_NOT_FOUND -> FUNCTION_INVOCATION_FAILED).
+import { kaycoSnapshot } from '../src/data/kayco-catalog.generated.js';
+import { isKaycoImage, type KaycoProduct } from '../src/data/kayco-catalog.js';
 
 const itemsUrl = 'https://kayco-planning-dashboard.clondinski1234.workers.dev/api/v1/items?range=Tuscanini';
 const nonRetail = /\b(?:BULK|FOODSERVICE|SHIPPER|EMPTY|DUMP|CLUB|COSTCO|CANADA)\b|AR-TUSCANINI/i;
