@@ -9,6 +9,7 @@ import {
 } from "../../lib/catalog-search";
 import { isMissingProductImage } from "../../lib/productImage";
 import CatalogCard from "./CatalogCard";
+import AmazonDisclosure from "../ui/AmazonDisclosure";
 
 /** Cards revealed per step, so the full catalog is not one endless wall. */
 export const CATALOG_PAGE_SIZE = 24;
@@ -238,6 +239,7 @@ export default function CatalogBrowser({
                 </button>
               </div>
             )}
+            <AmazonDisclosure className="mt-8" />
           </>
       ) : (
         <div className="border border-on-surface/20 bg-surface py-14 px-6 text-center">

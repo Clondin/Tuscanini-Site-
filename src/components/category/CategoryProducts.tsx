@@ -4,6 +4,7 @@ import type { Category } from "../../data/products";
 import { isMissingProductImage } from "../../lib/productImage";
 import CatalogCard from "./CatalogCard";
 import CategoryShelf from "./CategoryShelf";
+import AmazonDisclosure from "../ui/AmazonDisclosure";
 
 /**
  * A collection's products with a Shelf/Grid switch. Shelf is the default;
@@ -58,11 +59,14 @@ export default function CategoryProducts({ category }: { category: Category }) {
         </div>
       </div>
       {grid ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-          {products.map((product) => (
-            <CatalogCard key={product.id} product={product} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+            {products.map((product) => (
+              <CatalogCard key={product.id} product={product} />
+            ))}
+          </div>
+          <AmazonDisclosure className="mt-8" />
+        </>
       ) : (
         <CategoryShelf category={category} />
       )}
