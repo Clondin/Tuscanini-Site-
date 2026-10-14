@@ -6,6 +6,8 @@ import { getCategoryAccent, getPosterColor } from "../../data/category-accents";
 import { shelfSizing } from "../../lib/packSize";
 import { formatProductSize } from "../../lib/formatProductSize";
 import ShelfImage from "./ShelfImage";
+import { ShoppingCart } from "lucide-react";
+import { getAmazonProductLink } from "../../lib/productPurchaseLink";
 import {
   getResponsiveImageProps,
   isMissingProductImage,
@@ -46,9 +48,11 @@ export default function CategoryShelf({ category }: { category: Category }) {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),rgba(255,255,255,0)_45%)]"
       />
       <ul className="relative grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(176px,1fr))] gap-y-10">
-        {products.map((product, index) => (
+        {products.map((product, index) => {
+          const amazon = getAmazonProductLink(product);
+          return (
           <li key={product.id}>
-            <Link to={`/product/${product.id}`} className="group block h-full">
+            <Link to={`/product/${product.id}`} className="group block">
               <div className="flex h-[210px] md:h-[236px] items-end justify-center px-4 pb-1">
                 <ShelfImage
                   {...getResponsiveImageProps(product.image, "200px")}
@@ -82,8 +86,23 @@ export default function CategoryShelf({ category }: { category: Category }) {
                 )}
               </div>
             </Link>
+            {amazon && (
+              <div className="mx-2 sm:mx-3 mt-2">
+                <a
+                  href={amazon.href}
+                  target="_blank"
+                  rel="sponsored noopener"
+                  aria-label={`Buy ${product.name} on Amazon`}
+                  className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-ink/15 bg-paper px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+                >
+                  <ShoppingCart size={13} aria-hidden="true" />
+                  Buy on Amazon
+                </a>
+              </div>
+            )}
           </li>
-        ))}
+          );
+        })}
       </ul>
     </section>
   );

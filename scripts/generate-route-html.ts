@@ -3,7 +3,9 @@ import { dirname, resolve } from "node:path";
 import { productRouteTitle } from "../src/lib/routeTitle";
 import { getOptimizedImageUrl, isMissingProductImage } from "../src/lib/productImage";
 import { renderSitemap } from "./sitemap-xml";
-import type { Category } from "../src/data/products";
+import { productSchemaFields } from "../src/lib/productSchema";
+import { recipePages, recipeDescription, recipeStructuredData, recipesIndexDescription } from "../src/data/recipe-pages";
+import type { Category, Product } from "../src/data/products";
 import { readBuildCatalog } from "./load-build-catalog";
 
 interface RouteHtml {
@@ -101,7 +103,7 @@ function catalogRoutes(categories: Category[]): RouteHtml[] {
         description: product.description,
         type: "product",
         image: product.image,
-        structuredData: productStructuredData(product.name, product.description, product.image, product.id, category.name, category.slug),
+        structuredData: productStructuredData(product, category.name, category.slug),
       });
     }
   }
@@ -109,22 +111,21 @@ function catalogRoutes(categories: Category[]): RouteHtml[] {
 }
 
 function productStructuredData(
-  name: string,
-  description: string,
-  image: string | undefined,
-  id: string,
+  product: Product,
   categoryName: string,
   categorySlug: string,
 ): unknown {
+  const { name, image, id } = product;
   return [
     {
       "@context": "https://schema.org",
       "@type": "Product",
       name,
-      description,
+      ...productSchemaFields(product),
       image: image && !isMissingProductImage(image) ? [absoluteUrl(image)] : undefined,
       category: categoryName,
       brand: { "@type": "Brand", name: "Tuscanini" },
+      url: `${siteUrl}/product/${id}`,
     },
     {
       "@context": "https://schema.org",
@@ -167,7 +168,44 @@ const about: RouteHtml = {
   },
 };
 
-const routes = catalogRoutes(await readBuildCatalog());
+function recipeRoutes(categories: Category[]): RouteHtml[] {
+  const productsById = new Map<string, Product>();
+  for (const category of categories) for (const product of category.products) productsById.set(product.id, product);
+  const imagesFor = (ids: string[]) => ids
+    .map((id) => productsById.get(id)?.image)
+    .filter((image): image is string => Boolean(image) && !isMissingProductImage(image))
+    .map((image) => absoluteUrl(image));
+  const routes: RouteHtml[] = [{
+    path: "/recipes",
+    title: "Recipes | Tuscanini",
+    description: recipesIndexDescription(),
+    type: "website",
+    image: productsById.get(recipePages[0]?.products[0] ?? "")?.image,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Recipes",
+      description: recipesIndexDescription(),
+      url: `${siteUrl}/recipes`,
+      hasPart: recipePages.map((recipe) => ({ "@type": "Recipe", name: recipe.title, url: `${siteUrl}/recipes/${recipe.slug}` })),
+    },
+  }];
+  for (const recipe of recipePages) {
+    routes.push({
+      path: `/recipes/${recipe.slug}`,
+      title: `${recipe.title} | Tuscanini Recipes`,
+      description: recipeDescription(recipe),
+      type: "website",
+      image: productsById.get(recipe.products[0])?.image,
+      structuredData: recipeStructuredData(recipe, siteUrl, imagesFor(recipe.products)),
+    });
+  }
+  return routes;
+}
+
+const buildCatalog = await readBuildCatalog();
+const routes = catalogRoutes(buildCatalog);
+routes.push(...recipeRoutes(buildCatalog));
 routes.push(about);
 routes.push({ path: '/terms', title: 'Terms & Conditions | Tuscanini', description: 'Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.', type: 'website', structuredData: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Terms & Conditions', url: `${siteUrl}/terms` } });
 routes.push({ path: '/products', title: 'Explore Our Products | Tuscanini', description: 'Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.', type: 'website', structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });

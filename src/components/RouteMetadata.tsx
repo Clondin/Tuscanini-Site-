@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { getCmsData } from "../data/cms";
 import { getCategoryBySlug, getCategoryForProduct, getProductById } from "../data/products";
 import { productRouteTitle } from "../lib/routeTitle";
+import { productSchemaFields } from "../lib/productSchema";
+import { getRecipePage, recipeDescription, recipePages, recipeStructuredData, recipesIndexDescription } from "../data/recipe-pages";
 import { getOptimizedImageUrl, isMissingProductImage } from "../lib/productImage";
 
 const defaultSiteUrl = "https://tuscanini-site.vercel.app";
@@ -113,6 +115,43 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
         title: `Terms & Conditions | ${siteTitle}`,
         description: "Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.",
       };
+    } else if (pathname === "/recipes") {
+      const first = getProductById(recipePages[0]?.products[0] ?? "");
+      metadata = {
+        title: `Recipes | ${siteTitle}`,
+        description: recipesIndexDescription(),
+        image: first && !isMissingProductImage(first.image) ? first.image : undefined,
+        structuredData: {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Recipes",
+          description: recipesIndexDescription(),
+          url: `${siteUrl}/recipes`,
+          hasPart: recipePages.map((recipe) => ({
+            "@type": "Recipe",
+            name: recipe.title,
+            url: `${siteUrl}/recipes/${recipe.slug}`,
+          })),
+        },
+      };
+    } else if (pathname.startsWith("/recipes/")) {
+      const recipe = getRecipePage(decodeURIComponent(pathname.slice("/recipes/".length)));
+      const images = (recipe?.products ?? [])
+        .map((id) => getProductById(id)?.image)
+        .filter((image): image is string => Boolean(image) && !isMissingProductImage(image))
+        .map((image) => absoluteUrl(getOptimizedImageUrl(image), siteUrl));
+      metadata = recipe
+        ? {
+            title: `${recipe.title} | ${siteTitle} Recipes`,
+            description: recipeDescription(recipe),
+            image: getProductById(recipe.products[0])?.image,
+            structuredData: recipeStructuredData(recipe, siteUrl, images),
+          }
+        : {
+            title: `Recipe Not Found | ${siteTitle}`,
+            description: tagline,
+            robots: "noindex, nofollow",
+          };
     } else if (pathname.startsWith("/category/")) {
       const slug = decodeURIComponent(pathname.slice("/category/".length));
       const category = getCategoryBySlug(slug);
@@ -150,10 +189,11 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
                 "@context": "https://schema.org",
                 "@type": "Product",
                 name: product.name,
-                description: product.description,
+                ...productSchemaFields(product),
                 image: !isMissingProductImage(product.image) ? [absoluteUrl(getOptimizedImageUrl(product.image), siteUrl)] : undefined,
                 category: category?.name,
-                brand: { "@type": "Brand", name: siteTitle },
+                brand: { "@type": "Brand", name: "Tuscanini" },
+                url: `${siteUrl}${canonicalPath}`,
               },
               {
                 "@context": "https://schema.org",

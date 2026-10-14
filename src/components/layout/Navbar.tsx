@@ -13,6 +13,7 @@ const topNavLinks = [
   { label: "Pasta", to: "/category/pasta-gnocchi" },
   { label: "Olive Oil", to: "/category/olive-oil" },
   { label: "Chocolate", to: "/category/chocolate" },
+  { label: "Recipes", to: "/recipes" },
   { label: "Our Story", to: "/about" },
 ];
 export default function Navbar() {
@@ -36,7 +37,11 @@ export default function Navbar() {
       : "Tuscanini";
   const logo = typeof settings?.logo === "string" ? settings.logo : "";
   const cmsLinks = getCmsLinks("navigation", "primary");
-  const links = cmsLinks.length ? cmsLinks : topNavLinks;
+  const links = cmsLinks.length
+    ? cmsLinks.some((link) => link.to === "/recipes")
+      ? cmsLinks
+      : [...cmsLinks, { label: "Recipes", to: "/recipes" }]
+    : topNavLinks;
   const groups = collectionGroups(categories);
   const closeMenus = () => {
     setMegaOpen(false);
@@ -239,6 +244,13 @@ export default function Navbar() {
                 className="flex min-h-12 items-center mt-4 text-tomato"
               >
                 All collections
+              </Link>
+              <Link
+                to="/recipes"
+                onClick={closeMenus}
+                className="flex min-h-12 items-center"
+              >
+                Recipes
               </Link>
               <Link
                 to="/about"

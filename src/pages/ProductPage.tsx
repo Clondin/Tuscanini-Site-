@@ -6,6 +6,7 @@ import ProductDossier from "../components/product/ProductDossier";
 import ProductStory from "../components/product/ProductStory";
 import RelatedProducts from "../components/product/RelatedProducts";
 import RecipeSuggestions from "../components/product/RecipeSuggestions";
+import RecipePageLinks from "../components/product/RecipePageLinks";
 import NewsletterSignup from "../components/home/NewsletterSignup";
 
 export default function ProductPage() {
@@ -41,6 +42,7 @@ export default function ProductPage() {
         products={siblings}
         categorySlug={category.slug}
       />
+      <RecipePageLinks productId={product.id} />
       <RecipeSuggestions productId={product.id} />
       <NewsletterSignup />
     </div>

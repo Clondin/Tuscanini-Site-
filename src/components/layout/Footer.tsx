@@ -100,6 +100,12 @@ export default function Footer() {
               TuscaniniFoods.com
             </p>
             <Link
+              to="/recipes"
+              className="mt-2 flex min-h-6 items-center text-xs text-italia-white/85 hover:text-gold transition-colors"
+            >
+              Recipes
+            </Link>
+            <Link
               to="/terms"
               className="mt-2 inline-flex min-h-6 items-center text-xs text-italia-white/85 hover:text-gold transition-colors"
             >
