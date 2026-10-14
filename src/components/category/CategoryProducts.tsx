@@ -4,7 +4,6 @@ import type { Category } from "../../data/products";
 import { isMissingProductImage } from "../../lib/productImage";
 import CatalogCard from "./CatalogCard";
 import CategoryShelf from "./CategoryShelf";
-import AmazonDisclosure from "../ui/AmazonDisclosure";
 
 /**
  * A collection's products with a Shelf/Grid switch. Shelf is the default;
@@ -65,7 +64,6 @@ export default function CategoryProducts({ category }: { category: Category }) {
               <CatalogCard key={product.id} product={product} />
             ))}
           </div>
-          <AmazonDisclosure className="mt-8" />
         </>
       ) : (
         <CategoryShelf category={category} />

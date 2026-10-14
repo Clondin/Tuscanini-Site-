@@ -169,6 +169,7 @@ const about: RouteHtml = {
 
 const routes = catalogRoutes(await readBuildCatalog());
 routes.push(about);
+routes.push({ path: '/terms', title: 'Terms & Conditions | Tuscanini', description: 'Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.', type: 'website', structuredData: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Terms & Conditions', url: `${siteUrl}/terms` } });
 routes.push({ path: '/products', title: 'Explore Our Products | Tuscanini', description: 'Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.', type: 'website', structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });
 
 await writeFile(resolve("dist/index.html"), renderRouteHtml(baseHtml, home), "utf8");

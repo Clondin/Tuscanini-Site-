@@ -99,6 +99,12 @@ export default function Footer() {
             <p className="mt-5 text-xs text-italia-white/85">
               TuscaniniFoods.com
             </p>
+            <Link
+              to="/terms"
+              className="mt-2 inline-flex min-h-6 items-center text-xs text-italia-white/85 hover:text-gold transition-colors"
+            >
+              Terms &amp; Conditions
+            </Link>
             {cmsLinks.length > 0 ? (
               <ul className="mt-4 space-y-2">
                 {cmsLinks.map((link) => (

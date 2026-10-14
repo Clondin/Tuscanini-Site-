@@ -130,12 +130,6 @@ export default function ProductHero({ product, categoryName, accent, children }:
             {purchaseLink.label}
           </motion.a>
 
-          {purchaseLink.sponsored && (
-            <p className="text-on-surface/45 text-[10px] leading-relaxed">
-              As an Amazon Associate, Tuscanini may earn from qualifying purchases.
-            </p>
-          )}
-
           {children}
         </motion.div>
       </div>

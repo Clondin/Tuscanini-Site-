@@ -112,15 +112,6 @@ export function BuyActions({
   );
 }
 
-export function AffiliateNote({ state }: { state: ProductDossierState }) {
-  if (!state.purchase.sponsored) return null;
-  return (
-    <p className="mt-5 text-xs leading-relaxed text-on-surface/75">
-      As an Amazon Associate, Tuscanini may earn from qualifying purchases.
-    </p>
-  );
-}
-
 /** Mobile buy bar plus the lightbox; render once per layout. */
 export function DossierOverlays({
   product,

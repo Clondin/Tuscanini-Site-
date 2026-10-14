@@ -14,6 +14,7 @@ const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage"));
 const ProductPage = lazy(() => import("./pages/ProductPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function AdminRedirect() {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/terms" element={<TermsPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

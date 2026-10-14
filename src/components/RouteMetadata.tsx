@@ -108,6 +108,11 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
             ? page.body
             : "Learn about Tuscanini pasta, sauces, olive oils, drinks, and other Italian foods.",
       };
+    } else if (pathname === "/terms") {
+      metadata = {
+        title: `Terms & Conditions | ${siteTitle}`,
+        description: "Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.",
+      };
     } else if (pathname.startsWith("/category/")) {
       const slug = decodeURIComponent(pathname.slice("/category/".length));
       const category = getCategoryBySlug(slug);

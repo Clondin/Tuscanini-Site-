@@ -5,7 +5,6 @@ import { getCategoryAccent, getPosterColor } from "../../data/category-accents";
 import { getResponsiveImageProps } from "../../lib/productImage";
 import { useProductDossier } from "./useProductDossier";
 import {
-  AffiliateNote,
   BuyActions,
   DossierOverlays,
   ProductImage,
@@ -84,7 +83,6 @@ export default function ProductDossier({ product, categoryName, categorySlug }: 
                   ))}
               </dl>
               <BuyActions state={state} buyRef={buyingRef} className="mt-8 lg:mt-auto lg:pt-10" />
-              <AffiliateNote state={state} />
             </div>
           </div>
           <LabelDetails product={product} />
