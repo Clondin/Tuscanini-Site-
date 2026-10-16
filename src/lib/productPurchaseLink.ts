@@ -106,6 +106,8 @@ const amazonProductAsins: Record<string, string> = {
   "spelt-sea-salt-crostini-crackers": "B0C5YDPHLN",
   "rosemary-grissini": "B0C5N8C6WH",
   "chocolate-gianduiotti": "B0FR5CB4LL",
+  "forest-fruits-fruit-spread-preserves": "B08JZGV47V",
+  "tomato-puree": "B0C5N9W6BD",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
