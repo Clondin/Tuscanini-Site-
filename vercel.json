@@ -7,6 +7,9 @@
     { "source": "/product/spelt-white-flour-2-27kg", "destination": "/product/spelt-white-flour-5lb", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/drop", "destination": "https://tuscanini-drop.vercel.app/drop" },
+    { "source": "/drop/", "destination": "https://tuscanini-drop.vercel.app/drop/" },
+    { "source": "/drop/:path+", "destination": "https://tuscanini-drop.vercel.app/drop/:path+" },
     { "source": "/admin", "destination": "/" }
   ],
   "headers": [
