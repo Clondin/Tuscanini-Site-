@@ -2,7 +2,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { sha256 } from './gallery-provenance';
 import { productGalleries } from '../src/data/product-galleries.generated';
-import { readStoryJson, requireStory } from './product-story-contract';
+import { readStoryJson, requireStory, storyFiles, validateStoryAcceptanceCoverage, validateStoryAcceptedSets, type StoryAcceptanceSnapshot } from './product-story-contract';
+import { isDeepStrictEqual } from 'node:util';
 
 interface Asset {
   sku: string; productId: string; productionVersion: string; src: string; thumbnail: string; label: string;
@@ -12,6 +13,7 @@ interface Snapshot {
   schema: string; name: string; origin: string; generatedAt: string; targetSkus: number; targetImages: number;
   readySkus: number; readyImages: number; readySkuList: string[]; totalDisplayedSkus: number;
   finalReleaseValidated: boolean; verifiedAcceptedSets: boolean; images: Asset[];
+  acceptedSets?: StoryAcceptanceSnapshot[];
 }
 const jobRoot = resolve('output/tuscanini-product-stories-20261019');
 const [command, name] = process.argv.slice(2);
@@ -22,9 +24,10 @@ const snapshotPath = join(directory, `${name}.snapshot.json`);
 const canonical = 'https://tuscanini-site.vercel.app';
 
 function validateSnapshot(snapshot: Snapshot) {
-  requireStory(snapshot.schema === 'tuscanini-product-story-release/v1' && snapshot.origin === canonical && snapshot.targetSkus === 207 && snapshot.targetImages === 828 && snapshot.verifiedAcceptedSets === true, 'Unexpected or unverified product-story release');
+  requireStory(['tuscanini-product-story-release/v1', 'tuscanini-product-story-release/v2'].includes(snapshot.schema) && snapshot.origin === canonical && snapshot.targetSkus === 207 && snapshot.targetImages === 828 && snapshot.verifiedAcceptedSets === true, 'Unexpected or unverified product-story release');
   requireStory(snapshot.readySkus > 0 && snapshot.readySkus <= 207 && snapshot.readyImages === snapshot.readySkus * 4 && snapshot.readySkuList.length === snapshot.readySkus && new Set(snapshot.readySkuList).size === snapshot.readySkus, 'New-role accepted-set coverage does not match the snapshot');
   requireStory(snapshot.images.length === snapshot.totalDisplayedSkus * 4 && snapshot.totalDisplayedSkus <= 207, 'Displayed gallery coverage does not match the snapshot');
+  if (snapshot.schema === 'tuscanini-product-story-release/v2') validateStoryAcceptanceCoverage(snapshot.acceptedSets, snapshot.readySkuList);
   const groups = new Map<string, Asset[]>();
   for (const image of snapshot.images) {
     const prefix = `/assets/products/generated/${image.sku}/`;
@@ -36,7 +39,17 @@ function validateSnapshot(snapshot: Snapshot) {
   requireStory(groups.size === snapshot.totalDisplayedSkus, 'Repeated or missing displayed SKU');
   for (const [sku, images] of groups) {
     requireStory(images.length === 4 && new Set(images.map(image => image.src)).size === 4 && new Set(images.map(image => image.productId)).size === 1, 'A release must contain complete ordered exact-SKU galleries');
-    if (snapshot.readySkuList.includes(sku)) requireStory(images.map(image => image.label).join(',') === 'Product,In use,Occasion,Product family', 'New gallery role order is incorrect');
+    if (snapshot.readySkuList.includes(sku)) {
+      requireStory(images.map(image => image.label).join(',') === 'Product,In use,Occasion,Product family', 'New gallery role order is incorrect');
+      if (snapshot.schema === 'tuscanini-product-story-release/v2') {
+        const accepted = snapshot.acceptedSets!.find(entry => entry.sku === sku)!;
+        requireStory(images.every((image, index) => {
+          const stem = `${storyFiles[index].replace('.png', '')}-${accepted.finalHashes[storyFiles[index]].slice(0, 16)}`;
+          return image.src === `/assets/products/generated/${sku}/${stem}.webp`
+            && image.thumbnail === `/assets/products/generated/${sku}/${stem}-320.webp`;
+        }), 'Release derivatives are not bound to the accepted canonical PNG hashes');
+      }
+    }
   }
   requireStory(snapshot.readySkuList.every(sku => groups.has(sku)), 'Accepted new set missing from deployed snapshot');
   if (snapshot.finalReleaseValidated) requireStory(snapshot.readySkus === 207 && snapshot.readyImages === 828 && groups.size === 207 && snapshot.images.every(image => image.productionVersion === 'product-stories-v1'), 'Final release requires all 207 revised sets; no network requests made');
@@ -44,21 +57,28 @@ function validateSnapshot(snapshot: Snapshot) {
 }
 
 if (command === 'freeze') {
-  const evidence = await readStoryJson<Snapshot & { productionVersion: string; pendingSkus: string[]; blocked: unknown[] }>(join(jobRoot, 'gallery-assets.json'));
+  const evidencePath = join(jobRoot, 'gallery-assets.json'), latestPath = join(jobRoot, 'import-report.json');
+  const evidenceBytes = await readFile(evidencePath), latestBytes = await readFile(latestPath);
+  const evidence = JSON.parse(evidenceBytes.toString('utf8').replace(/^\uFEFF/, '')) as Snapshot & { productionVersion: string; pendingSkus: string[]; blocked: unknown[] };
   requireStory(evidence.productionVersion === 'product-stories-v1' && evidence.blocked.length === 0, 'Only a clean verified new-role import may be frozen');
-  const latest = await readStoryJson<{ generatedAt: string; blocked: unknown[]; readySkuList: string[] }>(join(jobRoot, 'import-report.json'));
-  requireStory(latest.blocked.length === 0 && latest.generatedAt === evidence.generatedAt && JSON.stringify(latest.readySkuList) === JSON.stringify(evidence.readySkuList), 'The latest import failed or no longer matches this asset manifest');
+  const latest = JSON.parse(latestBytes.toString('utf8').replace(/^\uFEFF/, '')) as { generatedAt: string; blocked: unknown[]; readySkuList: string[]; acceptedSets?: StoryAcceptanceSnapshot[] };
+  validateStoryAcceptanceCoverage(evidence.acceptedSets, evidence.readySkuList);
+  validateStoryAcceptanceCoverage(latest.acceptedSets, latest.readySkuList);
+  requireStory(latest.blocked.length === 0 && latest.generatedAt === evidence.generatedAt && JSON.stringify(latest.readySkuList) === JSON.stringify(evidence.readySkuList)
+    && isDeepStrictEqual(latest.acceptedSets, evidence.acceptedSets), 'The latest import failed or its exact accepted receipts/PNGs no longer match this asset manifest');
   try {
     const holds = await readStoryJson<{ holds: Array<{ sku: string; status: string }> }>(join(jobRoot, 'release-holds.json'));
     requireStory(!holds.holds.some(hold => hold.status === 'held' && evidence.readySkuList.includes(hold.sku)), 'A current coordinator hold excludes an accepted gallery from publication');
   } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
-  const snapshot: Snapshot = { schema: 'tuscanini-product-story-release/v1', name, origin: canonical, generatedAt: new Date().toISOString(), targetSkus: 207, targetImages: 828, readySkus: evidence.readySkus, readyImages: evidence.readyImages, readySkuList: evidence.readySkuList, totalDisplayedSkus: evidence.totalDisplayedSkus, finalReleaseValidated: evidence.finalReleaseValidated, verifiedAcceptedSets: evidence.verifiedAcceptedSets, images: evidence.images };
+  const snapshot: Snapshot = { schema: 'tuscanini-product-story-release/v2', name, origin: canonical, generatedAt: new Date().toISOString(), targetSkus: 207, targetImages: 828, readySkus: evidence.readySkus, readyImages: evidence.readyImages, readySkuList: evidence.readySkuList, acceptedSets: evidence.acceptedSets, totalDisplayedSkus: evidence.totalDisplayedSkus, finalReleaseValidated: evidence.finalReleaseValidated, verifiedAcceptedSets: evidence.verifiedAcceptedSets, images: evidence.images };
   const groups = validateSnapshot(snapshot);
   requireStory(Object.keys(productGalleries).length === groups.size && [...groups].every(([sku, images]) => productGalleries[sku]?.length === 4 && images.every((image, index) => productGalleries[sku][index].src === image.src && productGalleries[sku][index].thumbnail === image.thumbnail && productGalleries[sku][index].label === image.label)), 'Current site gallery index differs from the verified asset manifest');
   for (const image of snapshot.images) {
     const full = await readFile(resolve('public', image.src.slice(1))), thumbnail = await readFile(resolve('public', image.thumbnail.slice(1)));
     requireStory(full.length === image.bytes && sha256(full) === image.sha256 && thumbnail.length === image.thumbnailBytes && sha256(thumbnail) === image.thumbnailSha256, 'Local derivative changed after verified import');
   }
+  await validateStoryAcceptedSets({ jobRoot, acceptedSets: snapshot.acceptedSets, readySkuList: snapshot.readySkuList });
+  requireStory(sha256(await readFile(evidencePath)) === sha256(evidenceBytes) && sha256(await readFile(latestPath)) === sha256(latestBytes), 'Latest import or asset manifest changed during release freeze');
   await writeFile(snapshotPath, JSON.stringify(snapshot, null, 2) + '\n', { flag: 'wx' });
   const code = ['docs/cms-integration.md', 'scripts/source-preserving-stories-v2.py', 'scripts/test_source_preserving_stories_v2.py', 'scripts/family-provenance.ts', 'scripts/family-provenance.test.ts', 'scripts/product-story-contract.ts', 'scripts/product-story-contract.test.ts', 'scripts/prepare-product-story-approval.ts', 'scripts/source-component-qualification.ts', 'scripts/source-component-qualification.test.ts', 'scripts/import-product-stories.ts', 'scripts/product-story-release.ts', 'src/data/product-galleries.generated.ts'];
   const paths = [...new Set([...code, ...snapshot.images.flatMap(image => [`public${image.src}`, `public${image.thumbnail}`])])];

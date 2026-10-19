@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { sha256 } from './gallery-provenance';
-import { storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, validateStoryStudioCorrection, type StoryImage, type StoryPlan, type StoryPlanItem, type StoryReceipt } from './product-story-contract';
+import { storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, validateStoryStudioCorrection, validateStoryAcceptanceCoverage, validateStoryAcceptanceSnapshot, validateStoryAcceptedSets, type StoryAcceptanceSnapshot, type StoryImage, type StoryPlan, type StoryPlanItem, type StoryReceipt } from './product-story-contract';
 
 const roots: string[] = [];
 afterEach(async () => { for (const root of roots.splice(0)) await rm(root, { recursive: true, force: true }); });
@@ -158,5 +158,104 @@ describe('new product stories', () => {
     await writeFile(otherRaw, 'different-native-generation');
     options.image.originalPath = otherRaw;
     await expect(validateStoryStudioCorrection(options)).rejects.toThrow('reuse the original native studio');
+  });
+});
+
+async function acceptanceFixture() {
+  const options = await fixture();
+  const receiptPath = join(options.skuRoot, 'receipt.json');
+  const saveReceipt = () => writeFile(receiptPath, JSON.stringify(options.receipt, null, 2));
+  await saveReceipt();
+  const snapshot: StoryAcceptanceSnapshot = {
+    sku: options.item.sku, receiptSha256: sha256(await readFile(receiptPath)),
+    finalHashes: { ...options.receipt.creativeReview.reviewedImageHashes } as StoryAcceptanceSnapshot['finalHashes'],
+  };
+  const repinReceipt = async () => { await saveReceipt(); snapshot.receiptSha256 = sha256(await readFile(receiptPath)); };
+  return { ...options, receiptPath, snapshot, saveReceipt, repinReceipt };
+}
+
+describe('publication acceptance snapshots', () => {
+  it('accepts the exact receipt bytes and four source/creative-reviewed canonical hashes without writes', async () => {
+    const f = await acceptanceFixture();
+    const paths = [f.receiptPath, ...storyFiles.map(file => join(f.skuRoot, file))];
+    const before = await Promise.all(paths.map(path => readFile(path)));
+    await expect(validateStoryAcceptedSets({ jobRoot: f.jobRoot, acceptedSets: [f.snapshot], readySkuList: [f.item.sku] })).resolves.toBeUndefined();
+    expect(await Promise.all(paths.map(path => readFile(path)))).toEqual(before);
+  });
+  it('blocks owner revocation to producing even when all four pixels stay identical', async () => {
+    const f = await acceptanceFixture();
+    f.receipt.status = 'producing'; await f.saveReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('receipt changed or was revoked');
+  });
+  it('refuses a non-ready receipt even if a caller tries to rebind its bytes', async () => {
+    const f = await acceptanceFixture();
+    f.receipt.status = 'producing'; await f.repinReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('ready four-image set');
+  });
+  it('requires exact imported bytes rather than silently re-accepting a semantically equivalent receipt', async () => {
+    const f = await acceptanceFixture();
+    await writeFile(f.receiptPath, JSON.stringify(f.receipt));
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('receipt changed or was revoked');
+  });
+  it('rejects receipt substitution from another SKU even with a rebound hash', async () => {
+    const f = await acceptanceFixture(); f.receipt.sku = '730101'; await f.repinReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('ready four-image set');
+  });
+  it('blocks canonical pixels changed after import with the accepted receipt unchanged', async () => {
+    const f = await acceptanceFixture(); await writeFile(join(f.skuRoot, storyFiles[0]), 'studio-corrected-after-import');
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('canonical pixels or source/creative review hash');
+  });
+  it('rejects a new PNG hash with stale source and creative reviews', async () => {
+    const f = await acceptanceFixture(); const path = join(f.skuRoot, storyFiles[1]); await writeFile(path, 'new-use-image');
+    f.snapshot.finalHashes[storyFiles[1]] = sha256(await readFile(path));
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('source/creative review hash');
+  });
+  it('rejects a stale creative-review hash even when source review agrees', async () => {
+    const f = await acceptanceFixture(); f.receipt.creativeReview.reviewedImageHashes[storyFiles[2]] = '0'.repeat(64); await f.repinReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('source/creative review hash');
+  });
+  it('rejects a stale source-review hash even when creative review agrees', async () => {
+    const f = await acceptanceFixture(); f.receipt.sourceArtworkReview.reviewedImageHashes![storyFiles[2]] = '0'.repeat(64); await f.repinReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('source/creative review hash');
+  });
+  it('rejects revoked creative acceptance with unchanged PNGs', async () => {
+    const f = await acceptanceFixture(); f.receipt.creativeReview.status = 'held'; await f.repinReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('source/creative review was revoked');
+  });
+  it('rejects revoked image QA with unchanged PNGs', async () => {
+    const f = await acceptanceFixture(); f.receipt.images[3].qa.accepted = false; await f.repinReceipt();
+    await expect(validateStoryAcceptanceSnapshot(f)).rejects.toThrow('visual review was revoked');
+  });
+  it('requires snapshots for every ready SKU', async () => {
+    const f = await acceptanceFixture();
+    expect(() => validateStoryAcceptanceCoverage([], [f.item.sku])).toThrow('coverage');
+    expect(() => validateStoryAcceptanceCoverage([f.snapshot], [f.item.sku, '730101'])).toThrow('coverage');
+  });
+  it('rejects duplicated or unexpected accepted SKUs', async () => {
+    const f = await acceptanceFixture();
+    expect(() => validateStoryAcceptanceCoverage([f.snapshot, f.snapshot], [f.item.sku, '730101'])).toThrow('Duplicate');
+    expect(() => validateStoryAcceptanceCoverage([f.snapshot], ['730101'])).toThrow('unexpected');
+    expect(() => validateStoryAcceptanceCoverage([f.snapshot, f.snapshot], [f.item.sku, f.item.sku])).toThrow('coverage');
+  });
+  it('requires exactly the four canonical hash bindings', async () => {
+    const f = await acceptanceFixture();
+    const missing = { ...f.snapshot, finalHashes: { '01-studio.png': f.snapshot.finalHashes['01-studio.png'] } };
+    expect(() => validateStoryAcceptanceCoverage([missing], [f.item.sku])).toThrow('all four canonical');
+    const extra = { ...f.snapshot, finalHashes: { ...f.snapshot.finalHashes, '02-kitchen.png': '0'.repeat(64) } };
+    expect(() => validateStoryAcceptanceCoverage([extra], [f.item.sku])).toThrow('all four canonical');
+  });
+  it('rejects invalid receipt or canonical SHA bindings', async () => {
+    const f = await acceptanceFixture();
+    expect(() => validateStoryAcceptanceCoverage([{ ...f.snapshot, receiptSha256: 'not-a-sha' }], [f.item.sku])).toThrow('all four canonical');
+    f.snapshot.finalHashes[storyFiles[3]] = 'not-a-sha';
+    expect(() => validateStoryAcceptanceCoverage([f.snapshot], [f.item.sku])).toThrow('all four canonical');
+  });
+  it('does not adopt a fresh owner acceptance behind an old imported snapshot', async () => {
+    const f = await acceptanceFixture();
+    const path = join(f.skuRoot, storyFiles[0]); await writeFile(path, 'actually-repaired-studio');
+    const digest = sha256(await readFile(path));
+    f.receipt.sourceArtworkReview.reviewedImageHashes![storyFiles[0]] = digest;
+    f.receipt.creativeReview.reviewedImageHashes[storyFiles[0]] = digest; await f.saveReceipt();
+    await expect(validateStoryAcceptedSets({ jobRoot: f.jobRoot, acceptedSets: [f.snapshot], readySkuList: [f.item.sku] })).rejects.toThrow('receipt changed or was revoked');
   });
 });

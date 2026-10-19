@@ -720,34 +720,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730128/01-studio-7c14c93c99f2ca63.webp",
       "thumbnail": "/assets/products/generated/730128/01-studio-7c14c93c99f2ca63-320.webp",
-      "alt": "Mini Margherita Calzones — enhanced original product photograph",
       "label": "Product",
+      "alt": "Mini Margherita Calzones — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730128/02-kitchen-3f3081e692f0d805.webp",
-      "thumbnail": "/assets/products/generated/730128/02-kitchen-3f3081e692f0d805-320.webp",
-      "alt": "Mini Margherita Calzones — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730128/02-use-85f2bd9f76107528.webp",
+      "thumbnail": "/assets/products/generated/730128/02-use-85f2bd9f76107528-320.webp",
+      "label": "In use",
+      "alt": "Mini Margherita Calzones — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730128/03-table-5b2acc9eb0ded0c8.webp",
-      "thumbnail": "/assets/products/generated/730128/03-table-5b2acc9eb0ded0c8-320.webp",
-      "alt": "Mini Margherita Calzones — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730128/03-occasion-aabd9d95b995c80d.webp",
+      "thumbnail": "/assets/products/generated/730128/03-occasion-aabd9d95b995c80d-320.webp",
+      "label": "Occasion",
+      "alt": "Mini Margherita Calzones — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730128/04-environment-dd06d7ec6dd57877.webp",
-      "thumbnail": "/assets/products/generated/730128/04-environment-dd06d7ec6dd57877-320.webp",
-      "alt": "Mini Margherita Calzones — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730128/04-family-42bff9dc319fbe07.webp",
+      "thumbnail": "/assets/products/generated/730128/04-family-42bff9dc319fbe07-320.webp",
+      "label": "Product family",
+      "alt": "Mini Margherita Calzones — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730129": [
@@ -822,34 +822,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730141/01-studio-b63181a29a15dd1a.webp",
       "thumbnail": "/assets/products/generated/730141/01-studio-b63181a29a15dd1a-320.webp",
-      "alt": "Breaded Mozzarella Sticks Family Pack — enhanced original product photograph",
       "label": "Product",
+      "alt": "Breaded Mozzarella Sticks Family Pack — enhanced original product photograph",
       "width": 1476,
       "height": 1065
     },
     {
-      "src": "/assets/products/generated/730141/02-kitchen-85d929b5bdac4025.webp",
-      "thumbnail": "/assets/products/generated/730141/02-kitchen-85d929b5bdac4025-320.webp",
-      "alt": "Breaded Mozzarella Sticks Family Pack — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730141/02-use-a2f47a3df84e6170.webp",
+      "thumbnail": "/assets/products/generated/730141/02-use-a2f47a3df84e6170-320.webp",
+      "label": "In use",
+      "alt": "Breaded Mozzarella Sticks Family Pack — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730141/03-table-8fc4a94e69296541.webp",
-      "thumbnail": "/assets/products/generated/730141/03-table-8fc4a94e69296541-320.webp",
-      "alt": "Breaded Mozzarella Sticks Family Pack — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730141/03-occasion-d5c3c3aa797ac4ba.webp",
+      "thumbnail": "/assets/products/generated/730141/03-occasion-d5c3c3aa797ac4ba-320.webp",
+      "label": "Occasion",
+      "alt": "Breaded Mozzarella Sticks Family Pack — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730141/04-environment-9a4a64e0215df108.webp",
-      "thumbnail": "/assets/products/generated/730141/04-environment-9a4a64e0215df108-320.webp",
-      "alt": "Breaded Mozzarella Sticks Family Pack — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730141/04-family-143b89f2727296e4.webp",
+      "thumbnail": "/assets/products/generated/730141/04-family-143b89f2727296e4-320.webp",
+      "label": "Product family",
+      "alt": "Breaded Mozzarella Sticks Family Pack — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730142": [
@@ -924,100 +924,100 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730171/01-studio-e1639be5569a4448.webp",
       "thumbnail": "/assets/products/generated/730171/01-studio-e1639be5569a4448-320.webp",
-      "alt": "Parmesan Cheese Wedge 8.8oz — enhanced original product photograph",
       "label": "Product",
+      "alt": "Parmesan Cheese Wedge 8.8oz — enhanced original product photograph",
       "width": 619,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730171/02-kitchen-7521ed697f8753a6.webp",
-      "thumbnail": "/assets/products/generated/730171/02-kitchen-7521ed697f8753a6-320.webp",
-      "alt": "Parmesan Cheese Wedge 8.8oz — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730171/02-use-04ab45d5761ac159.webp",
+      "thumbnail": "/assets/products/generated/730171/02-use-04ab45d5761ac159-320.webp",
+      "label": "In use",
+      "alt": "Parmesan Cheese Wedge 8.8oz — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730171/03-table-f359f2c507f07ad2.webp",
-      "thumbnail": "/assets/products/generated/730171/03-table-f359f2c507f07ad2-320.webp",
-      "alt": "Parmesan Cheese Wedge 8.8oz — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730171/03-occasion-d9cc6d2722ddcc60.webp",
+      "thumbnail": "/assets/products/generated/730171/03-occasion-d9cc6d2722ddcc60-320.webp",
+      "label": "Occasion",
+      "alt": "Parmesan Cheese Wedge 8.8oz — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730171/04-environment-2bf5aecfe377e589.webp",
-      "thumbnail": "/assets/products/generated/730171/04-environment-2bf5aecfe377e589-320.webp",
-      "alt": "Parmesan Cheese Wedge 8.8oz — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730171/04-family-f9c2c57da1a09169.webp",
+      "thumbnail": "/assets/products/generated/730171/04-family-f9c2c57da1a09169-320.webp",
+      "label": "Product family",
+      "alt": "Parmesan Cheese Wedge 8.8oz — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730180": [
     {
       "src": "/assets/products/generated/730180/01-studio-15369f60f7610cf3.webp",
       "thumbnail": "/assets/products/generated/730180/01-studio-15369f60f7610cf3-320.webp",
-      "alt": "Sweet Sicilian Castelvetrano — enhanced original product photograph",
       "label": "Product",
+      "alt": "Sweet Sicilian Castelvetrano — enhanced original product photograph",
       "width": 1285,
       "height": 1224
     },
     {
-      "src": "/assets/products/generated/730180/02-kitchen-a634b646e9c358a5.webp",
-      "thumbnail": "/assets/products/generated/730180/02-kitchen-a634b646e9c358a5-320.webp",
-      "alt": "Sweet Sicilian Castelvetrano — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1285,
-      "height": 1224
+      "src": "/assets/products/generated/730180/02-use-410e0ad68cb94906.webp",
+      "thumbnail": "/assets/products/generated/730180/02-use-410e0ad68cb94906-320.webp",
+      "label": "In use",
+      "alt": "Sweet Sicilian Castelvetrano — being prepared, served or enjoyed",
+      "width": 1254,
+      "height": 1254
     },
     {
-      "src": "/assets/products/generated/730180/03-table-540d82982af13379.webp",
-      "thumbnail": "/assets/products/generated/730180/03-table-540d82982af13379-320.webp",
-      "alt": "Sweet Sicilian Castelvetrano — in a table setting",
-      "label": "At the table",
-      "width": 1285,
-      "height": 1224
+      "src": "/assets/products/generated/730180/03-occasion-a7acc2263adeaaff.webp",
+      "thumbnail": "/assets/products/generated/730180/03-occasion-a7acc2263adeaaff-320.webp",
+      "label": "Occasion",
+      "alt": "Sweet Sicilian Castelvetrano — in a relevant dining or lifestyle occasion",
+      "width": 1448,
+      "height": 1086
     },
     {
-      "src": "/assets/products/generated/730180/04-environment-175adb9e49ddf35f.webp",
-      "thumbnail": "/assets/products/generated/730180/04-environment-175adb9e49ddf35f-320.webp",
-      "alt": "Sweet Sicilian Castelvetrano — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1285,
-      "height": 1224
+      "src": "/assets/products/generated/730180/04-family-5189a5d539dab5d0.webp",
+      "thumbnail": "/assets/products/generated/730180/04-family-5189a5d539dab5d0-320.webp",
+      "label": "Product family",
+      "alt": "Sweet Sicilian Castelvetrano — with related Tuscanini products",
+      "width": 1254,
+      "height": 1254
     }
   ],
   "730181": [
     {
       "src": "/assets/products/generated/730181/01-studio-0772c78daac1fd24.webp",
       "thumbnail": "/assets/products/generated/730181/01-studio-0772c78daac1fd24-320.webp",
-      "alt": "Kalamata Olives — enhanced original product photograph",
       "label": "Product",
+      "alt": "Kalamata Olives — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730181/02-kitchen-fa7d77b15c1361fb.webp",
-      "thumbnail": "/assets/products/generated/730181/02-kitchen-fa7d77b15c1361fb-320.webp",
-      "alt": "Kalamata Olives — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730181/02-use-b814ea7f6243f134.webp",
+      "thumbnail": "/assets/products/generated/730181/02-use-b814ea7f6243f134-320.webp",
+      "label": "In use",
+      "alt": "Kalamata Olives — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730181/03-table-1afcaf90d1b4f906.webp",
-      "thumbnail": "/assets/products/generated/730181/03-table-1afcaf90d1b4f906-320.webp",
-      "alt": "Kalamata Olives — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730181/03-occasion-ccc09f826d3cf26b.webp",
+      "thumbnail": "/assets/products/generated/730181/03-occasion-ccc09f826d3cf26b-320.webp",
+      "label": "Occasion",
+      "alt": "Kalamata Olives — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730181/04-environment-17ebd2f5559f4f4c.webp",
-      "thumbnail": "/assets/products/generated/730181/04-environment-17ebd2f5559f4f4c-320.webp",
-      "alt": "Kalamata Olives — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730181/04-family-521de5271cc56995.webp",
+      "thumbnail": "/assets/products/generated/730181/04-family-521de5271cc56995-320.webp",
+      "label": "Product family",
+      "alt": "Kalamata Olives — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -1026,68 +1026,68 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730182/01-studio-6bb170ecd4306ac6.webp",
       "thumbnail": "/assets/products/generated/730182/01-studio-6bb170ecd4306ac6-320.webp",
-      "alt": "Pitted Bella Italia Mix Olives — enhanced original product photograph",
       "label": "Product",
+      "alt": "Pitted Bella Italia Mix Olives — enhanced original product photograph",
       "width": 1289,
       "height": 1221
     },
     {
-      "src": "/assets/products/generated/730182/02-kitchen-ab8a2680868494c0.webp",
-      "thumbnail": "/assets/products/generated/730182/02-kitchen-ab8a2680868494c0-320.webp",
-      "alt": "Pitted Bella Italia Mix Olives — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1288,
-      "height": 1221
+      "src": "/assets/products/generated/730182/02-use-6a4b9c960757c12a.webp",
+      "thumbnail": "/assets/products/generated/730182/02-use-6a4b9c960757c12a-320.webp",
+      "label": "In use",
+      "alt": "Pitted Bella Italia Mix Olives — being prepared, served or enjoyed",
+      "width": 1254,
+      "height": 1254
     },
     {
-      "src": "/assets/products/generated/730182/03-table-cb89f700a5f03f4f.webp",
-      "thumbnail": "/assets/products/generated/730182/03-table-cb89f700a5f03f4f-320.webp",
-      "alt": "Pitted Bella Italia Mix Olives — in a table setting",
-      "label": "At the table",
-      "width": 1288,
-      "height": 1221
+      "src": "/assets/products/generated/730182/03-occasion-e18a48dd1a5a0db3.webp",
+      "thumbnail": "/assets/products/generated/730182/03-occasion-e18a48dd1a5a0db3-320.webp",
+      "label": "Occasion",
+      "alt": "Pitted Bella Italia Mix Olives — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730182/04-environment-9740c166a4720a5e.webp",
-      "thumbnail": "/assets/products/generated/730182/04-environment-9740c166a4720a5e-320.webp",
-      "alt": "Pitted Bella Italia Mix Olives — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1288,
-      "height": 1221
+      "src": "/assets/products/generated/730182/04-family-50e7438c7c124ded.webp",
+      "thumbnail": "/assets/products/generated/730182/04-family-50e7438c7c124ded-320.webp",
+      "label": "Product family",
+      "alt": "Pitted Bella Italia Mix Olives — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730183": [
     {
       "src": "/assets/products/generated/730183/01-studio-99b45360654f309d.webp",
       "thumbnail": "/assets/products/generated/730183/01-studio-99b45360654f309d-320.webp",
-      "alt": "Pitted Olives with Crushed Garlic — enhanced original product photograph",
       "label": "Product",
+      "alt": "Pitted Olives with Crushed Garlic — enhanced original product photograph",
       "width": 1355,
       "height": 1160
     },
     {
-      "src": "/assets/products/generated/730183/02-kitchen-4e2f2e5deb98ce51.webp",
-      "thumbnail": "/assets/products/generated/730183/02-kitchen-4e2f2e5deb98ce51-320.webp",
-      "alt": "Pitted Olives with Crushed Garlic — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730183/02-use-732d81c34a6dc6f8.webp",
+      "thumbnail": "/assets/products/generated/730183/02-use-732d81c34a6dc6f8-320.webp",
+      "label": "In use",
+      "alt": "Pitted Olives with Crushed Garlic — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730183/03-table-3a0c313c2f6bd1f5.webp",
-      "thumbnail": "/assets/products/generated/730183/03-table-3a0c313c2f6bd1f5-320.webp",
-      "alt": "Pitted Olives with Crushed Garlic — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730183/03-occasion-198b33f5df81f36a.webp",
+      "thumbnail": "/assets/products/generated/730183/03-occasion-198b33f5df81f36a-320.webp",
+      "label": "Occasion",
+      "alt": "Pitted Olives with Crushed Garlic — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730183/04-environment-469b022a268925ac.webp",
-      "thumbnail": "/assets/products/generated/730183/04-environment-469b022a268925ac-320.webp",
-      "alt": "Pitted Olives with Crushed Garlic — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730183/04-family-38d4e4dd295c0fe9.webp",
+      "thumbnail": "/assets/products/generated/730183/04-family-38d4e4dd295c0fe9-320.webp",
+      "label": "Product family",
+      "alt": "Pitted Olives with Crushed Garlic — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730184": [
@@ -1162,34 +1162,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730190/01-studio-c6bd99fdb53208cf.webp",
       "thumbnail": "/assets/products/generated/730190/01-studio-c6bd99fdb53208cf-320.webp",
-      "alt": "Pitted Green Castelvetrano Olives — enhanced original product photograph",
       "label": "Product",
+      "alt": "Pitted Green Castelvetrano Olives — enhanced original product photograph",
       "width": 968,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730190/02-kitchen-6c355c7a7bbbeee3.webp",
-      "thumbnail": "/assets/products/generated/730190/02-kitchen-6c355c7a7bbbeee3-320.webp",
-      "alt": "Pitted Green Castelvetrano Olives — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730190/02-use-1f8e6a67752b1dfc.webp",
+      "thumbnail": "/assets/products/generated/730190/02-use-1f8e6a67752b1dfc-320.webp",
+      "label": "In use",
+      "alt": "Pitted Green Castelvetrano Olives — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730190/03-table-6b570d9b54bd4e58.webp",
-      "thumbnail": "/assets/products/generated/730190/03-table-6b570d9b54bd4e58-320.webp",
-      "alt": "Pitted Green Castelvetrano Olives — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730190/03-occasion-c7174b1f2bcb3088.webp",
+      "thumbnail": "/assets/products/generated/730190/03-occasion-c7174b1f2bcb3088-320.webp",
+      "label": "Occasion",
+      "alt": "Pitted Green Castelvetrano Olives — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730190/04-environment-f9f701486beaacb8.webp",
-      "thumbnail": "/assets/products/generated/730190/04-environment-f9f701486beaacb8-320.webp",
-      "alt": "Pitted Green Castelvetrano Olives — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730190/04-family-53edc9ebdb9bb495.webp",
+      "thumbnail": "/assets/products/generated/730190/04-family-53edc9ebdb9bb495-320.webp",
+      "label": "Product family",
+      "alt": "Pitted Green Castelvetrano Olives — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730191": [
@@ -1230,32 +1230,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730192/01-studio-1f28a30b30077034.webp",
       "thumbnail": "/assets/products/generated/730192/01-studio-1f28a30b30077034-320.webp",
-      "alt": "Pitted Kalamata Olives — enhanced original product photograph",
       "label": "Product",
+      "alt": "Pitted Kalamata Olives — enhanced original product photograph",
       "width": 953,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730192/02-kitchen-5bd4721bbfd4d3d1.webp",
-      "thumbnail": "/assets/products/generated/730192/02-kitchen-5bd4721bbfd4d3d1-320.webp",
-      "alt": "Pitted Kalamata Olives — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730192/02-use-4c463a488fa0127f.webp",
+      "thumbnail": "/assets/products/generated/730192/02-use-4c463a488fa0127f-320.webp",
+      "label": "In use",
+      "alt": "Pitted Kalamata Olives — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730192/03-table-a6fe02c01504e609.webp",
-      "thumbnail": "/assets/products/generated/730192/03-table-a6fe02c01504e609-320.webp",
-      "alt": "Pitted Kalamata Olives — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730192/03-occasion-652667320286cf36.webp",
+      "thumbnail": "/assets/products/generated/730192/03-occasion-652667320286cf36-320.webp",
+      "label": "Occasion",
+      "alt": "Pitted Kalamata Olives — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730192/04-environment-6fa39c663bfabfcc.webp",
-      "thumbnail": "/assets/products/generated/730192/04-environment-6fa39c663bfabfcc-320.webp",
-      "alt": "Pitted Kalamata Olives — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730192/04-family-00e3aeb960953dfc.webp",
+      "thumbnail": "/assets/products/generated/730192/04-family-00e3aeb960953dfc-320.webp",
+      "label": "Product family",
+      "alt": "Pitted Kalamata Olives — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -1298,40 +1298,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730197/01-studio-e0893eec55f8e3f0.webp",
       "thumbnail": "/assets/products/generated/730197/01-studio-e0893eec55f8e3f0-320.webp",
-      "alt": "Original Pitted Olives Pouch — enhanced original product photograph",
       "label": "Product",
+      "alt": "Original Pitted Olives Pouch — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730197/02-kitchen-5bcc67153930aac8.webp",
-      "thumbnail": "/assets/products/generated/730197/02-kitchen-5bcc67153930aac8-320.webp",
-      "alt": "Original Pitted Olives Pouch — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730197/02-use-5d010d36af1f5725.webp",
+      "thumbnail": "/assets/products/generated/730197/02-use-5d010d36af1f5725-320.webp",
+      "label": "In use",
+      "alt": "Original Pitted Olives Pouch — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730197/03-table-918023739f4cbf43.webp",
-      "thumbnail": "/assets/products/generated/730197/03-table-918023739f4cbf43-320.webp",
-      "alt": "Original Pitted Olives Pouch — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730197/03-occasion-948066ea83fd4df0.webp",
+      "thumbnail": "/assets/products/generated/730197/03-occasion-948066ea83fd4df0-320.webp",
+      "label": "Occasion",
+      "alt": "Original Pitted Olives Pouch — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730197/04-environment-5db8ae47eb97d6d6.webp",
-      "thumbnail": "/assets/products/generated/730197/04-environment-5db8ae47eb97d6d6-320.webp",
-      "alt": "Original Pitted Olives Pouch — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730197/04-family-1e17815d2667efca.webp",
+      "thumbnail": "/assets/products/generated/730197/04-family-1e17815d2667efca-320.webp",
+      "label": "Product family",
+      "alt": "Original Pitted Olives Pouch — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730198": [
     {
-      "src": "/assets/products/generated/730198/01-studio-2e35fd24f5f648b5.webp",
-      "thumbnail": "/assets/products/generated/730198/01-studio-2e35fd24f5f648b5-320.webp",
+      "src": "/assets/products/generated/730198/01-studio-1d6b1223dfd404a6.webp",
+      "thumbnail": "/assets/products/generated/730198/01-studio-1d6b1223dfd404a6-320.webp",
       "label": "Product",
       "alt": "Spicy Pitted Olives Pouch — enhanced original product photograph",
       "width": 1254,
@@ -1468,32 +1468,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730207/01-studio-4d53d05ef190646e.webp",
       "thumbnail": "/assets/products/generated/730207/01-studio-4d53d05ef190646e-320.webp",
-      "alt": "Classic Marinara Sauce — enhanced original product photograph",
       "label": "Product",
+      "alt": "Classic Marinara Sauce — enhanced original product photograph",
       "width": 785,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730207/02-kitchen-1d78dec345e64b84.webp",
-      "thumbnail": "/assets/products/generated/730207/02-kitchen-1d78dec345e64b84-320.webp",
-      "alt": "Classic Marinara Sauce — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730207/02-use-a941483cd22ee9d7.webp",
+      "thumbnail": "/assets/products/generated/730207/02-use-a941483cd22ee9d7-320.webp",
+      "label": "In use",
+      "alt": "Classic Marinara Sauce — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730207/03-table-03a702beb84a3d60.webp",
-      "thumbnail": "/assets/products/generated/730207/03-table-03a702beb84a3d60-320.webp",
-      "alt": "Classic Marinara Sauce — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730207/03-occasion-3c18b0c0c101029a.webp",
+      "thumbnail": "/assets/products/generated/730207/03-occasion-3c18b0c0c101029a-320.webp",
+      "label": "Occasion",
+      "alt": "Classic Marinara Sauce — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730207/04-environment-b731f2082e8ea615.webp",
-      "thumbnail": "/assets/products/generated/730207/04-environment-b731f2082e8ea615-320.webp",
-      "alt": "Classic Marinara Sauce — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730207/04-family-1da39f01a6275fa6.webp",
+      "thumbnail": "/assets/products/generated/730207/04-family-1da39f01a6275fa6-320.webp",
+      "label": "Product family",
+      "alt": "Classic Marinara Sauce — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -1502,68 +1502,68 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730208/01-studio-4fa1212c1ac6762b.webp",
       "thumbnail": "/assets/products/generated/730208/01-studio-4fa1212c1ac6762b-320.webp",
-      "alt": "Zesty Marinara Sauce — enhanced original product photograph",
       "label": "Product",
+      "alt": "Zesty Marinara Sauce — enhanced original product photograph",
       "width": 1024,
       "height": 1536
     },
     {
-      "src": "/assets/products/generated/730208/02-kitchen-bcd396dd0936f360.webp",
-      "thumbnail": "/assets/products/generated/730208/02-kitchen-bcd396dd0936f360-320.webp",
-      "alt": "Zesty Marinara Sauce — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730208/02-use-78b1f22242c69e83.webp",
+      "thumbnail": "/assets/products/generated/730208/02-use-78b1f22242c69e83-320.webp",
+      "label": "In use",
+      "alt": "Zesty Marinara Sauce — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730208/03-table-c1ba079c076ec600.webp",
-      "thumbnail": "/assets/products/generated/730208/03-table-c1ba079c076ec600-320.webp",
-      "alt": "Zesty Marinara Sauce — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730208/03-occasion-f84b6a1acf26b930.webp",
+      "thumbnail": "/assets/products/generated/730208/03-occasion-f84b6a1acf26b930-320.webp",
+      "label": "Occasion",
+      "alt": "Zesty Marinara Sauce — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730208/04-environment-d4f4ccb887010b18.webp",
-      "thumbnail": "/assets/products/generated/730208/04-environment-d4f4ccb887010b18-320.webp",
-      "alt": "Zesty Marinara Sauce — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730208/04-family-7e32b6a773db3f40.webp",
+      "thumbnail": "/assets/products/generated/730208/04-family-7e32b6a773db3f40-320.webp",
+      "label": "Product family",
+      "alt": "Zesty Marinara Sauce — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730210": [
     {
       "src": "/assets/products/generated/730210/01-studio-2542f27b33a00f93.webp",
       "thumbnail": "/assets/products/generated/730210/01-studio-2542f27b33a00f93-320.webp",
-      "alt": "Tomato Passata — enhanced original product photograph",
       "label": "Product",
+      "alt": "Tomato Passata — enhanced original product photograph",
       "width": 1026,
       "height": 1532
     },
     {
-      "src": "/assets/products/generated/730210/02-kitchen-ba6b653fd0557471.webp",
-      "thumbnail": "/assets/products/generated/730210/02-kitchen-ba6b653fd0557471-320.webp",
-      "alt": "Tomato Passata — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730210/02-use-d63bf1d0305c93f7.webp",
+      "thumbnail": "/assets/products/generated/730210/02-use-d63bf1d0305c93f7-320.webp",
+      "label": "In use",
+      "alt": "Tomato Passata — being prepared, served or enjoyed",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730210/03-table-e70645780ded9328.webp",
-      "thumbnail": "/assets/products/generated/730210/03-table-e70645780ded9328-320.webp",
-      "alt": "Tomato Passata — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730210/03-occasion-5e42d0353b447b70.webp",
+      "thumbnail": "/assets/products/generated/730210/03-occasion-5e42d0353b447b70-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Passata — in a relevant dining or lifestyle occasion",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730210/04-environment-eca4ac0c9fee68d3.webp",
-      "thumbnail": "/assets/products/generated/730210/04-environment-eca4ac0c9fee68d3-320.webp",
-      "alt": "Tomato Passata — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1536,
-      "height": 1024
+      "src": "/assets/products/generated/730210/04-family-4ac40c2eaa9fb2d9.webp",
+      "thumbnail": "/assets/products/generated/730210/04-family-4ac40c2eaa9fb2d9-320.webp",
+      "label": "Product family",
+      "alt": "Tomato Passata — with related Tuscanini products",
+      "width": 1312,
+      "height": 1199
     }
   ],
   "730211": [
@@ -1672,32 +1672,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730215/01-studio-ffb40217b1e44d0c.webp",
       "thumbnail": "/assets/products/generated/730215/01-studio-ffb40217b1e44d0c-320.webp",
-      "alt": "Whole Peeled Tomatoes Large — enhanced original product photograph",
       "label": "Product",
+      "alt": "Whole Peeled Tomatoes Large — enhanced original product photograph",
       "width": 1132,
       "height": 1389
     },
     {
-      "src": "/assets/products/generated/730215/02-kitchen-512a202792d339ca.webp",
-      "thumbnail": "/assets/products/generated/730215/02-kitchen-512a202792d339ca-320.webp",
-      "alt": "Whole Peeled Tomatoes Large — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730215/02-use-daf30ad4a992cced.webp",
+      "thumbnail": "/assets/products/generated/730215/02-use-daf30ad4a992cced-320.webp",
+      "label": "In use",
+      "alt": "Whole Peeled Tomatoes Large — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730215/03-table-fdc304efafe2d796.webp",
-      "thumbnail": "/assets/products/generated/730215/03-table-fdc304efafe2d796-320.webp",
-      "alt": "Whole Peeled Tomatoes Large — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730215/03-occasion-d587009d26fb8722.webp",
+      "thumbnail": "/assets/products/generated/730215/03-occasion-d587009d26fb8722-320.webp",
+      "label": "Occasion",
+      "alt": "Whole Peeled Tomatoes Large — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730215/04-environment-4b105676f3d1cf50.webp",
-      "thumbnail": "/assets/products/generated/730215/04-environment-4b105676f3d1cf50-320.webp",
-      "alt": "Whole Peeled Tomatoes Large — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730215/04-family-a9e54e35b72cbc74.webp",
+      "thumbnail": "/assets/products/generated/730215/04-family-a9e54e35b72cbc74-320.webp",
+      "label": "Product family",
+      "alt": "Whole Peeled Tomatoes Large — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -1766,6 +1766,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "thumbnail": "/assets/products/generated/730218/04-family-1b4ad5c169645923-320.webp",
       "label": "Product family",
       "alt": "Tomato Puree — with related Tuscanini products",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "730220": [
+    {
+      "src": "/assets/products/generated/730220/01-studio-717bd0cc422db387.webp",
+      "thumbnail": "/assets/products/generated/730220/01-studio-717bd0cc422db387-320.webp",
+      "label": "Product",
+      "alt": "Peeled Tomatoes — enhanced original product photograph",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730220/02-use-fefd0b753eb81823.webp",
+      "thumbnail": "/assets/products/generated/730220/02-use-fefd0b753eb81823-320.webp",
+      "label": "In use",
+      "alt": "Peeled Tomatoes — being prepared, served or enjoyed",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730220/03-occasion-ded031af707df818.webp",
+      "thumbnail": "/assets/products/generated/730220/03-occasion-ded031af707df818-320.webp",
+      "label": "Occasion",
+      "alt": "Peeled Tomatoes — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730220/04-family-f54cc3f7d3ca7040.webp",
+      "thumbnail": "/assets/products/generated/730220/04-family-f54cc3f7d3ca7040-320.webp",
+      "label": "Product family",
+      "alt": "Peeled Tomatoes — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -1978,32 +2012,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730228/01-studio-2ccebc72c157ff12.webp",
       "thumbnail": "/assets/products/generated/730228/01-studio-2ccebc72c157ff12-320.webp",
-      "alt": "Vodka Sauce — enhanced original product photograph",
       "label": "Product",
+      "alt": "Vodka Sauce — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730228/02-kitchen-22aa0516d511c67a.webp",
-      "thumbnail": "/assets/products/generated/730228/02-kitchen-22aa0516d511c67a-320.webp",
-      "alt": "Vodka Sauce — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730228/02-use-ce397c190b66a3d8.webp",
+      "thumbnail": "/assets/products/generated/730228/02-use-ce397c190b66a3d8-320.webp",
+      "label": "In use",
+      "alt": "Vodka Sauce — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730228/03-table-3bd8cd488e2a2993.webp",
-      "thumbnail": "/assets/products/generated/730228/03-table-3bd8cd488e2a2993-320.webp",
-      "alt": "Vodka Sauce — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730228/03-occasion-0815f172be9ef33a.webp",
+      "thumbnail": "/assets/products/generated/730228/03-occasion-0815f172be9ef33a-320.webp",
+      "label": "Occasion",
+      "alt": "Vodka Sauce — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730228/04-environment-cb6599c057bb196c.webp",
-      "thumbnail": "/assets/products/generated/730228/04-environment-cb6599c057bb196c-320.webp",
-      "alt": "Vodka Sauce — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730228/04-family-ffc75206661fa898.webp",
+      "thumbnail": "/assets/products/generated/730228/04-family-ffc75206661fa898-320.webp",
+      "label": "Product family",
+      "alt": "Vodka Sauce — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -2046,32 +2080,66 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730231/01-studio-bb7338cd803c74eb.webp",
       "thumbnail": "/assets/products/generated/730231/01-studio-bb7338cd803c74eb-320.webp",
-      "alt": "Basil Pesto — enhanced original product photograph",
       "label": "Product",
+      "alt": "Basil Pesto — enhanced original product photograph",
       "width": 837,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730231/02-kitchen-40e9fc79e5ab5a70.webp",
-      "thumbnail": "/assets/products/generated/730231/02-kitchen-40e9fc79e5ab5a70-320.webp",
-      "alt": "Basil Pesto — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730231/02-use-e04b78cf594db294.webp",
+      "thumbnail": "/assets/products/generated/730231/02-use-e04b78cf594db294-320.webp",
+      "label": "In use",
+      "alt": "Basil Pesto — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730231/03-table-e22ccbf434902aee.webp",
-      "thumbnail": "/assets/products/generated/730231/03-table-e22ccbf434902aee-320.webp",
-      "alt": "Basil Pesto — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730231/03-occasion-48c4819a073deb1d.webp",
+      "thumbnail": "/assets/products/generated/730231/03-occasion-48c4819a073deb1d-320.webp",
+      "label": "Occasion",
+      "alt": "Basil Pesto — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730231/04-environment-381ece43cab1f2d8.webp",
-      "thumbnail": "/assets/products/generated/730231/04-environment-381ece43cab1f2d8-320.webp",
-      "alt": "Basil Pesto — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730231/04-family-751b1bf892706a2f.webp",
+      "thumbnail": "/assets/products/generated/730231/04-family-751b1bf892706a2f-320.webp",
+      "label": "Product family",
+      "alt": "Basil Pesto — with related Tuscanini products",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "730236": [
+    {
+      "src": "/assets/products/generated/730236/01-studio-6c17892730cf37fd.webp",
+      "thumbnail": "/assets/products/generated/730236/01-studio-6c17892730cf37fd-320.webp",
+      "label": "Product",
+      "alt": "Tomato Juice Small — enhanced original product photograph",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730236/02-use-3de60708b07fcc0c.webp",
+      "thumbnail": "/assets/products/generated/730236/02-use-3de60708b07fcc0c-320.webp",
+      "label": "In use",
+      "alt": "Tomato Juice Small — being prepared, served or enjoyed",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730236/03-occasion-4e17f1438690ca96.webp",
+      "thumbnail": "/assets/products/generated/730236/03-occasion-4e17f1438690ca96-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Juice Small — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730236/04-family-e73192b62b426934.webp",
+      "thumbnail": "/assets/products/generated/730236/04-family-e73192b62b426934-320.webp",
+      "label": "Product family",
+      "alt": "Tomato Juice Small — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -2114,32 +2182,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730242/01-studio-95a8f1bc192a7133.webp",
       "thumbnail": "/assets/products/generated/730242/01-studio-95a8f1bc192a7133-320.webp",
-      "alt": "Calabrian Chili Hot Pepper Jam — enhanced original product photograph",
       "label": "Product",
+      "alt": "Calabrian Chili Hot Pepper Jam — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730242/02-kitchen-698434a3559bf056.webp",
-      "thumbnail": "/assets/products/generated/730242/02-kitchen-698434a3559bf056-320.webp",
-      "alt": "Calabrian Chili Hot Pepper Jam — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730242/02-use-48cc19742a45255e.webp",
+      "thumbnail": "/assets/products/generated/730242/02-use-48cc19742a45255e-320.webp",
+      "label": "In use",
+      "alt": "Calabrian Chili Hot Pepper Jam — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730242/03-table-2cd09c16475e0efd.webp",
-      "thumbnail": "/assets/products/generated/730242/03-table-2cd09c16475e0efd-320.webp",
-      "alt": "Calabrian Chili Hot Pepper Jam — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730242/03-occasion-27adde5d6b79c1bd.webp",
+      "thumbnail": "/assets/products/generated/730242/03-occasion-27adde5d6b79c1bd-320.webp",
+      "label": "Occasion",
+      "alt": "Calabrian Chili Hot Pepper Jam — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730242/04-environment-21fb449e16eed324.webp",
-      "thumbnail": "/assets/products/generated/730242/04-environment-21fb449e16eed324-320.webp",
-      "alt": "Calabrian Chili Hot Pepper Jam — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730242/04-family-75157889c3dfae93.webp",
+      "thumbnail": "/assets/products/generated/730242/04-family-75157889c3dfae93-320.webp",
+      "label": "Product family",
+      "alt": "Calabrian Chili Hot Pepper Jam — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -2352,34 +2420,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730254/01-studio-39b2976d3231e2b4.webp",
       "thumbnail": "/assets/products/generated/730254/01-studio-39b2976d3231e2b4-320.webp",
-      "alt": "Extra Virgin Olive Oil with Garlic — enhanced original product photograph",
       "label": "Product",
+      "alt": "Extra Virgin Olive Oil with Garlic — enhanced original product photograph",
       "width": 777,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730254/02-kitchen-6ac4b18ac9384eb5.webp",
-      "thumbnail": "/assets/products/generated/730254/02-kitchen-6ac4b18ac9384eb5-320.webp",
-      "alt": "Extra Virgin Olive Oil with Garlic — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730254/02-use-f2158441ab3efcb5.webp",
+      "thumbnail": "/assets/products/generated/730254/02-use-f2158441ab3efcb5-320.webp",
+      "label": "In use",
+      "alt": "Extra Virgin Olive Oil with Garlic — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730254/03-table-22cdf82f3fae15e6.webp",
-      "thumbnail": "/assets/products/generated/730254/03-table-22cdf82f3fae15e6-320.webp",
-      "alt": "Extra Virgin Olive Oil with Garlic — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730254/03-occasion-4f64b72cf8d3d394.webp",
+      "thumbnail": "/assets/products/generated/730254/03-occasion-4f64b72cf8d3d394-320.webp",
+      "label": "Occasion",
+      "alt": "Extra Virgin Olive Oil with Garlic — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730254/04-environment-811fea4a0a29db37.webp",
-      "thumbnail": "/assets/products/generated/730254/04-environment-811fea4a0a29db37-320.webp",
-      "alt": "Extra Virgin Olive Oil with Garlic — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730254/04-family-c95dc8fa0ff12508.webp",
+      "thumbnail": "/assets/products/generated/730254/04-family-c95dc8fa0ff12508-320.webp",
+      "label": "Product family",
+      "alt": "Extra Virgin Olive Oil with Garlic — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730256": [
@@ -2522,34 +2590,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730264/01-studio-897165721f3622ca.webp",
       "thumbnail": "/assets/products/generated/730264/01-studio-897165721f3622ca-320.webp",
-      "alt": "Balsamic Vinegar of Modena 500ml — enhanced original product photograph",
       "label": "Product",
+      "alt": "Balsamic Vinegar of Modena 500ml — enhanced original product photograph",
       "width": 887,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730264/02-kitchen-7eb4503d6ec9bdc4.webp",
-      "thumbnail": "/assets/products/generated/730264/02-kitchen-7eb4503d6ec9bdc4-320.webp",
-      "alt": "Balsamic Vinegar of Modena 500ml — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730264/02-use-d5f85db1c96eb891.webp",
+      "thumbnail": "/assets/products/generated/730264/02-use-d5f85db1c96eb891-320.webp",
+      "label": "In use",
+      "alt": "Balsamic Vinegar of Modena 500ml — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730264/03-table-ad7245ef37a32a5d.webp",
-      "thumbnail": "/assets/products/generated/730264/03-table-ad7245ef37a32a5d-320.webp",
-      "alt": "Balsamic Vinegar of Modena 500ml — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730264/03-occasion-ae5ac86d0336387f.webp",
+      "thumbnail": "/assets/products/generated/730264/03-occasion-ae5ac86d0336387f-320.webp",
+      "label": "Occasion",
+      "alt": "Balsamic Vinegar of Modena 500ml — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730264/04-environment-930cbe74a93c357b.webp",
-      "thumbnail": "/assets/products/generated/730264/04-environment-930cbe74a93c357b-320.webp",
-      "alt": "Balsamic Vinegar of Modena 500ml — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730264/04-family-4f5535a8b75665cd.webp",
+      "thumbnail": "/assets/products/generated/730264/04-family-4f5535a8b75665cd-320.webp",
+      "label": "Product family",
+      "alt": "Balsamic Vinegar of Modena 500ml — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730265": [
@@ -2590,34 +2658,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730266/01-studio-d6eb75896a95f3b2.webp",
       "thumbnail": "/assets/products/generated/730266/01-studio-d6eb75896a95f3b2-320.webp",
-      "alt": "White Cooking Wine — enhanced original product photograph",
       "label": "Product",
+      "alt": "White Cooking Wine — enhanced original product photograph",
       "width": 535,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730266/02-kitchen-9a503081e778394c.webp",
-      "thumbnail": "/assets/products/generated/730266/02-kitchen-9a503081e778394c-320.webp",
-      "alt": "White Cooking Wine — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730266/02-use-5a2be228a4fdabe0.webp",
+      "thumbnail": "/assets/products/generated/730266/02-use-5a2be228a4fdabe0-320.webp",
+      "label": "In use",
+      "alt": "White Cooking Wine — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730266/03-table-35474f8884ddb2cb.webp",
-      "thumbnail": "/assets/products/generated/730266/03-table-35474f8884ddb2cb-320.webp",
-      "alt": "White Cooking Wine — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730266/03-occasion-0d08e93bde3d88ef.webp",
+      "thumbnail": "/assets/products/generated/730266/03-occasion-0d08e93bde3d88ef-320.webp",
+      "label": "Occasion",
+      "alt": "White Cooking Wine — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730266/04-environment-d0fb1592c20327f7.webp",
-      "thumbnail": "/assets/products/generated/730266/04-environment-d0fb1592c20327f7-320.webp",
-      "alt": "White Cooking Wine — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730266/04-family-cd3d93bd42ecc8ba.webp",
+      "thumbnail": "/assets/products/generated/730266/04-family-cd3d93bd42ecc8ba-320.webp",
+      "label": "Product family",
+      "alt": "White Cooking Wine — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730270": [
@@ -2692,34 +2760,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730273/01-studio-d4a85e8ea19757aa.webp",
       "thumbnail": "/assets/products/generated/730273/01-studio-d4a85e8ea19757aa-320.webp",
-      "alt": "Strawberry Fruit Spread Preserves — enhanced original product photograph",
       "label": "Product",
+      "alt": "Strawberry Fruit Spread Preserves — enhanced original product photograph",
       "width": 1098,
       "height": 1433
     },
     {
-      "src": "/assets/products/generated/730273/02-kitchen-eaf68bb1fa697891.webp",
-      "thumbnail": "/assets/products/generated/730273/02-kitchen-eaf68bb1fa697891-320.webp",
-      "alt": "Strawberry Fruit Spread Preserves — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730273/02-use-686447b81d80fcf2.webp",
+      "thumbnail": "/assets/products/generated/730273/02-use-686447b81d80fcf2-320.webp",
+      "label": "In use",
+      "alt": "Strawberry Fruit Spread Preserves — being prepared, served or enjoyed",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730273/03-table-54f8a13af1033d0a.webp",
-      "thumbnail": "/assets/products/generated/730273/03-table-54f8a13af1033d0a-320.webp",
-      "alt": "Strawberry Fruit Spread Preserves — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730273/03-occasion-a499b20733a7995a.webp",
+      "thumbnail": "/assets/products/generated/730273/03-occasion-a499b20733a7995a-320.webp",
+      "label": "Occasion",
+      "alt": "Strawberry Fruit Spread Preserves — in a relevant dining or lifestyle occasion",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730273/04-environment-baf8fb2e792c6791.webp",
-      "thumbnail": "/assets/products/generated/730273/04-environment-baf8fb2e792c6791-320.webp",
-      "alt": "Strawberry Fruit Spread Preserves — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1374,
-      "height": 1145
+      "src": "/assets/products/generated/730273/04-family-d65660db1a69e350.webp",
+      "thumbnail": "/assets/products/generated/730273/04-family-d65660db1a69e350-320.webp",
+      "label": "Product family",
+      "alt": "Strawberry Fruit Spread Preserves — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730274": [
@@ -2758,36 +2826,36 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
   ],
   "730275": [
     {
-      "src": "/assets/products/generated/730275/01-studio-66f6b791227efd50.webp",
-      "thumbnail": "/assets/products/generated/730275/01-studio-66f6b791227efd50-320.webp",
-      "alt": "Raspberry Fruit Spread Preserves — enhanced original product photograph",
+      "src": "/assets/products/generated/730275/01-studio-ec40e1e0ee62c585.webp",
+      "thumbnail": "/assets/products/generated/730275/01-studio-ec40e1e0ee62c585-320.webp",
       "label": "Product",
+      "alt": "Raspberry Fruit Spread Preserves — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730275/02-kitchen-5beb4b8b75a5043f.webp",
-      "thumbnail": "/assets/products/generated/730275/02-kitchen-5beb4b8b75a5043f-320.webp",
-      "alt": "Raspberry Fruit Spread Preserves — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1098,
-      "height": 1432
+      "src": "/assets/products/generated/730275/02-use-9e7e39410d390849.webp",
+      "thumbnail": "/assets/products/generated/730275/02-use-9e7e39410d390849-320.webp",
+      "label": "In use",
+      "alt": "Raspberry Fruit Spread Preserves — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730275/03-table-4c58c7cca888d390.webp",
-      "thumbnail": "/assets/products/generated/730275/03-table-4c58c7cca888d390-320.webp",
-      "alt": "Raspberry Fruit Spread Preserves — in a table setting",
-      "label": "At the table",
-      "width": 1312,
-      "height": 1199
+      "src": "/assets/products/generated/730275/03-occasion-d6476e947c2ef9ed.webp",
+      "thumbnail": "/assets/products/generated/730275/03-occasion-d6476e947c2ef9ed-320.webp",
+      "label": "Occasion",
+      "alt": "Raspberry Fruit Spread Preserves — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730275/04-environment-9efe8822f1fd1c9b.webp",
-      "thumbnail": "/assets/products/generated/730275/04-environment-9efe8822f1fd1c9b-320.webp",
-      "alt": "Raspberry Fruit Spread Preserves — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1098,
-      "height": 1432
+      "src": "/assets/products/generated/730275/04-family-8f29a68200ef399b.webp",
+      "thumbnail": "/assets/products/generated/730275/04-family-8f29a68200ef399b-320.webp",
+      "label": "Product family",
+      "alt": "Raspberry Fruit Spread Preserves — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730276": [
@@ -3066,32 +3134,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730288/01-studio-e932ac172c2913db.webp",
       "thumbnail": "/assets/products/generated/730288/01-studio-e932ac172c2913db-320.webp",
-      "alt": "Lime Juice — enhanced original product photograph",
       "label": "Product",
+      "alt": "Lime Juice — enhanced original product photograph",
       "width": 1015,
       "height": 1550
     },
     {
-      "src": "/assets/products/generated/730288/02-kitchen-aa27c76e75cdd18f.webp",
-      "thumbnail": "/assets/products/generated/730288/02-kitchen-aa27c76e75cdd18f-320.webp",
-      "alt": "Lime Juice — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730288/02-use-9b051b0540fcf7e4.webp",
+      "thumbnail": "/assets/products/generated/730288/02-use-9b051b0540fcf7e4-320.webp",
+      "label": "In use",
+      "alt": "Lime Juice — being prepared, served or enjoyed",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730288/03-table-a1e82177e6bf4b11.webp",
-      "thumbnail": "/assets/products/generated/730288/03-table-a1e82177e6bf4b11-320.webp",
-      "alt": "Lime Juice — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730288/03-occasion-afa6520e07d13329.webp",
+      "thumbnail": "/assets/products/generated/730288/03-occasion-afa6520e07d13329-320.webp",
+      "label": "Occasion",
+      "alt": "Lime Juice — in a relevant dining or lifestyle occasion",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730288/04-environment-4b878423cde4216e.webp",
-      "thumbnail": "/assets/products/generated/730288/04-environment-4b878423cde4216e-320.webp",
-      "alt": "Lime Juice — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730288/04-family-f276aef5030b3eb8.webp",
+      "thumbnail": "/assets/products/generated/730288/04-family-f276aef5030b3eb8-320.webp",
+      "label": "Product family",
+      "alt": "Lime Juice — with related Tuscanini products",
       "width": 1536,
       "height": 1024
     }
@@ -5242,32 +5310,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730438/01-studio-16ecac2c21a68b75.webp",
       "thumbnail": "/assets/products/generated/730438/01-studio-16ecac2c21a68b75-320.webp",
-      "alt": "Calabrian Chili Peppers in Oil — enhanced original product photograph",
       "label": "Product",
+      "alt": "Calabrian Chili Peppers in Oil — enhanced original product photograph",
       "width": 937,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730438/02-kitchen-23713102b07700bd.webp",
-      "thumbnail": "/assets/products/generated/730438/02-kitchen-23713102b07700bd-320.webp",
-      "alt": "Calabrian Chili Peppers in Oil — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 937,
-      "height": 1600
-    },
-    {
-      "src": "/assets/products/generated/730438/03-table-f2ba33172df44c19.webp",
-      "thumbnail": "/assets/products/generated/730438/03-table-f2ba33172df44c19-320.webp",
-      "alt": "Calabrian Chili Peppers in Oil — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730438/02-use-f15e75990b0fcef0.webp",
+      "thumbnail": "/assets/products/generated/730438/02-use-f15e75990b0fcef0-320.webp",
+      "label": "In use",
+      "alt": "Calabrian Chili Peppers in Oil — being prepared, served or enjoyed",
       "width": 1024,
       "height": 1536
     },
     {
-      "src": "/assets/products/generated/730438/04-environment-b6844931b0320441.webp",
-      "thumbnail": "/assets/products/generated/730438/04-environment-b6844931b0320441-320.webp",
-      "alt": "Calabrian Chili Peppers in Oil — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730438/03-occasion-913f3ee71049bf7a.webp",
+      "thumbnail": "/assets/products/generated/730438/03-occasion-913f3ee71049bf7a-320.webp",
+      "label": "Occasion",
+      "alt": "Calabrian Chili Peppers in Oil — in a relevant dining or lifestyle occasion",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730438/04-family-344797b2ce2a420b.webp",
+      "thumbnail": "/assets/products/generated/730438/04-family-344797b2ce2a420b-320.webp",
+      "label": "Product family",
+      "alt": "Calabrian Chili Peppers in Oil — with related Tuscanini products",
       "width": 1024,
       "height": 1536
     }
@@ -5922,32 +5990,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730533/01-studio-b51f6aa6f27afd64.webp",
       "thumbnail": "/assets/products/generated/730533/01-studio-b51f6aa6f27afd64-320.webp",
-      "alt": "Lemon Sorbetto — enhanced original product photograph",
       "label": "Product",
+      "alt": "Lemon Sorbetto — enhanced original product photograph",
       "width": 1144,
       "height": 1375
     },
     {
-      "src": "/assets/products/generated/730533/02-kitchen-911c749612a1fbc1.webp",
-      "thumbnail": "/assets/products/generated/730533/02-kitchen-911c749612a1fbc1-320.webp",
-      "alt": "Lemon Sorbetto — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730533/02-use-79053a7786d70e9c.webp",
+      "thumbnail": "/assets/products/generated/730533/02-use-79053a7786d70e9c-320.webp",
+      "label": "In use",
+      "alt": "Lemon Sorbetto — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730533/03-table-2c9586d7fd13047b.webp",
-      "thumbnail": "/assets/products/generated/730533/03-table-2c9586d7fd13047b-320.webp",
-      "alt": "Lemon Sorbetto — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730533/03-occasion-39928de02ff6b157.webp",
+      "thumbnail": "/assets/products/generated/730533/03-occasion-39928de02ff6b157-320.webp",
+      "label": "Occasion",
+      "alt": "Lemon Sorbetto — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730533/04-environment-75668abfa723a5c8.webp",
-      "thumbnail": "/assets/products/generated/730533/04-environment-75668abfa723a5c8-320.webp",
-      "alt": "Lemon Sorbetto — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730533/04-family-f8fd50c359bf2a0b.webp",
+      "thumbnail": "/assets/products/generated/730533/04-family-f8fd50c359bf2a0b-320.webp",
+      "label": "Product family",
+      "alt": "Lemon Sorbetto — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -5956,34 +6024,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730540/01-studio-09826f116dc8037e.webp",
       "thumbnail": "/assets/products/generated/730540/01-studio-09826f116dc8037e-320.webp",
-      "alt": "Classic Potato Chips — enhanced original product photograph",
       "label": "Product",
+      "alt": "Classic Potato Chips — enhanced original product photograph",
       "width": 1024,
       "height": 1536
     },
     {
-      "src": "/assets/products/generated/730540/02-kitchen-88cc4f31dfef321c.webp",
-      "thumbnail": "/assets/products/generated/730540/02-kitchen-88cc4f31dfef321c-320.webp",
-      "alt": "Classic Potato Chips — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730540/02-use-25be04aa880591b8.webp",
+      "thumbnail": "/assets/products/generated/730540/02-use-25be04aa880591b8-320.webp",
+      "label": "In use",
+      "alt": "Classic Potato Chips — being prepared, served or enjoyed",
+      "width": 1024,
+      "height": 1536
     },
     {
-      "src": "/assets/products/generated/730540/03-table-52c283615c10e5fb.webp",
-      "thumbnail": "/assets/products/generated/730540/03-table-52c283615c10e5fb-320.webp",
-      "alt": "Classic Potato Chips — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730540/03-occasion-576b89d84959d78e.webp",
+      "thumbnail": "/assets/products/generated/730540/03-occasion-576b89d84959d78e-320.webp",
+      "label": "Occasion",
+      "alt": "Classic Potato Chips — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730540/04-environment-74e9bafc40ce7824.webp",
-      "thumbnail": "/assets/products/generated/730540/04-environment-74e9bafc40ce7824-320.webp",
-      "alt": "Classic Potato Chips — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730540/04-family-67322061f8f2a72a.webp",
+      "thumbnail": "/assets/products/generated/730540/04-family-67322061f8f2a72a-320.webp",
+      "label": "Product family",
+      "alt": "Classic Potato Chips — with related Tuscanini products",
+      "width": 1374,
+      "height": 1145
     }
   ],
   "730541": [
@@ -6330,32 +6398,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730585/01-studio-b2a8fdccdead49dc.webp",
       "thumbnail": "/assets/products/generated/730585/01-studio-b2a8fdccdead49dc-320.webp",
-      "alt": "Sliced Black Truffle — enhanced original product photograph",
       "label": "Product",
+      "alt": "Sliced Black Truffle — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730585/02-kitchen-9ce09db32823ef67.webp",
-      "thumbnail": "/assets/products/generated/730585/02-kitchen-9ce09db32823ef67-320.webp",
-      "alt": "Sliced Black Truffle — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730585/02-use-01c08117696b5b25.webp",
+      "thumbnail": "/assets/products/generated/730585/02-use-01c08117696b5b25-320.webp",
+      "label": "In use",
+      "alt": "Sliced Black Truffle — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730585/03-table-97634d1b1f540166.webp",
-      "thumbnail": "/assets/products/generated/730585/03-table-97634d1b1f540166-320.webp",
-      "alt": "Sliced Black Truffle — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730585/03-occasion-3406c24cc489f2d0.webp",
+      "thumbnail": "/assets/products/generated/730585/03-occasion-3406c24cc489f2d0-320.webp",
+      "label": "Occasion",
+      "alt": "Sliced Black Truffle — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730585/04-environment-6882833f9b063c68.webp",
-      "thumbnail": "/assets/products/generated/730585/04-environment-6882833f9b063c68-320.webp",
-      "alt": "Sliced Black Truffle — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730585/04-family-3f361b2efa83df16.webp",
+      "thumbnail": "/assets/products/generated/730585/04-family-3f361b2efa83df16-320.webp",
+      "label": "Product family",
+      "alt": "Sliced Black Truffle — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -6874,32 +6942,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730621/01-studio-4abcc549611be96f.webp",
       "thumbnail": "/assets/products/generated/730621/01-studio-4abcc549611be96f-320.webp",
-      "alt": "Caramel Dessert Sauce — enhanced original product photograph",
       "label": "Product",
+      "alt": "Caramel Dessert Sauce — enhanced original product photograph",
       "width": 550,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730621/02-kitchen-ca4a912a712c3ee3.webp",
-      "thumbnail": "/assets/products/generated/730621/02-kitchen-ca4a912a712c3ee3-320.webp",
-      "alt": "Caramel Dessert Sauce — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730621/02-use-f940518422a33070.webp",
+      "thumbnail": "/assets/products/generated/730621/02-use-f940518422a33070-320.webp",
+      "label": "In use",
+      "alt": "Caramel Dessert Sauce — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730621/03-table-e7c2396559d0a3e9.webp",
-      "thumbnail": "/assets/products/generated/730621/03-table-e7c2396559d0a3e9-320.webp",
-      "alt": "Caramel Dessert Sauce — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730621/03-occasion-8f116ee97e16968f.webp",
+      "thumbnail": "/assets/products/generated/730621/03-occasion-8f116ee97e16968f-320.webp",
+      "label": "Occasion",
+      "alt": "Caramel Dessert Sauce — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730621/04-environment-cd60b05c85cfa7d2.webp",
-      "thumbnail": "/assets/products/generated/730621/04-environment-cd60b05c85cfa7d2-320.webp",
-      "alt": "Caramel Dessert Sauce — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730621/04-family-4b49ba8876d019b6.webp",
+      "thumbnail": "/assets/products/generated/730621/04-family-4b49ba8876d019b6-320.webp",
+      "label": "Product family",
+      "alt": "Caramel Dessert Sauce — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }

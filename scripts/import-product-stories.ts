@@ -6,7 +6,7 @@ import type { ProductGalleryImage } from '../src/data/product-galleries';
 import { productGalleries as currentGalleries } from '../src/data/product-galleries.generated';
 import { sha256 } from './gallery-provenance';
 import { validateStoryCompositeProvenance, type StoryCompositeImage } from './family-provenance';
-import { insideStoryRoot, readStoryJson, requireStory, storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, validateStoryStudioCorrection, type StoryPlan, type StoryReceipt } from './product-story-contract';
+import { insideStoryRoot, readStoryJson, requireStory, storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, validateStoryStudioCorrection, validateStoryAcceptedSets, type StoryAcceptanceSnapshot, type StoryPlan, type StoryReceipt } from './product-story-contract';
 
 const jobRoot = resolve(process.argv.find(arg => !arg.startsWith('-') && arg !== process.argv[0] && arg !== process.argv[1]) ?? 'output/tuscanini-product-stories-20261019');
 const requireComplete = process.argv.includes('--require-complete');
@@ -29,6 +29,7 @@ for (const [sku, images] of Object.entries(baseline)) {
 }
 const galleries = { ...baseline };
 const ready: string[] = [], pending: string[] = [], blocked: Array<{ sku: string; reason: string }> = [];
+const acceptedSets: StoryAcceptanceSnapshot[] = [];
 const owners = new Map<string, string>();
 let heldSkus: Array<{ sku: string; status: string; reason: string }> = [];
 try {
@@ -44,7 +45,12 @@ for (const item of plan.items) {
   if (heldSkus.some(hold => hold.sku === item.sku)) { pending.push(item.sku); continue; }
   const skuRoot = join(jobRoot, 'skus', item.sku);
   let receipt: StoryReceipt;
-  try { receipt = await readStoryJson<StoryReceipt>(join(skuRoot, 'receipt.json')); }
+  let receiptSha256: string;
+  try {
+    const receiptBytes = await readFile(join(skuRoot, 'receipt.json'));
+    receiptSha256 = sha256(receiptBytes);
+    receipt = JSON.parse(receiptBytes.toString('utf8').replace(/^\uFEFF/, '')) as StoryReceipt;
+  }
   catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') pending.push(item.sku);
     else blocked.push({ sku: item.sku, reason: String(error) });
@@ -55,11 +61,13 @@ for (const item of plan.items) {
     await validateStoryReview({ jobRoot, skuRoot, item, plan, receipt });
     const images: ProductGalleryImage[] = [];
     const hashes = new Set<string>();
+    const finalHashes = {} as StoryAcceptanceSnapshot['finalHashes'];
     for (const [index, file] of storyFiles.entries()) {
       const image = receipt.images.find(entry => entry.file === file)!;
       const path = await realpath(join(skuRoot, file));
       requireStory(insideStoryRoot(await realpath(skuRoot), path), 'Final image escapes its exact SKU folder');
       const bytes = await readFile(path), hash = sha256(bytes);
+      finalHashes[file] = hash;
       const originalPath = await realpath(image.originalPath);
       requireStory(insideStoryRoot(imageGenRoot, originalPath) && dirname(originalPath) === join(imageGenRoot, item.owner.threadId), 'Generated image does not belong to the original SKU agent');
       if (index === 0 && item.retainedStudio.acceptedInOldReceipt && image.provenance?.kind !== 'source-preserving-story-composite') {
@@ -100,10 +108,11 @@ for (const item of plan.items) {
     }
     galleries[item.sku] = images;
     ready.push(item.sku);
+    acceptedSets.push({ sku: item.sku, receiptSha256, finalHashes });
   } catch (error) { blocked.push({ sku: item.sku, reason: error instanceof Error ? error.message : String(error) }); }
 }
 
-const report = { generatedAt: new Date().toISOString(), productionVersion: 'product-stories-v1', targetSkus: 207, targetImages: 828, readySkus: ready.length, readyImages: ready.length * 4, readySkuList: ready, pendingSkus: pending, heldSkus, blocked, totalDisplayedSkus: Object.keys(galleries).length, preservedLegacySkus: Object.keys(galleries).filter(sku => !ready.includes(sku)), finalReleaseValidated: requireComplete && ready.length === 207 && !pending.length && !blocked.length };
+const report = { generatedAt: new Date().toISOString(), productionVersion: 'product-stories-v1', targetSkus: 207, targetImages: 828, readySkus: ready.length, readyImages: ready.length * 4, readySkuList: ready, acceptedSets, pendingSkus: pending, heldSkus, blocked, totalDisplayedSkus: Object.keys(galleries).length, preservedLegacySkus: Object.keys(galleries).filter(sku => !ready.includes(sku)), finalReleaseValidated: requireComplete && ready.length === 207 && !pending.length && !blocked.length };
 await writeFile(join(jobRoot, 'import-report.json'), JSON.stringify(report, null, 2) + '\n');
 if (blocked.length || (requireComplete && ready.length !== 207)) throw new Error(`Story release held: ${ready.length}/207 new sets, ${blocked.length} invalid ready receipts. See import-report.json.`);
 requireStory(ready.length > 0, 'No new complete product story is ready; preserved index was not changed');
@@ -116,5 +125,13 @@ for (const [sku, images] of Object.entries(galleries)) for (const image of image
 await writeFile(join(jobRoot, 'gallery-assets.json'), JSON.stringify({ ...report, publicationStatus: 'local-only', verifiedAcceptedSets: true, images: evidence }, null, 2) + '\n');
 const target = resolve('src/data/product-galleries.generated.ts');
 await writeFile(target + '.tmp', `// Generated from complete reviewed galleries by scripts/import-product-stories.ts.\nimport type { ProductGalleryImage } from './product-galleries';\n\nexport const productGalleries: Record<string, ProductGalleryImage[]> = ${JSON.stringify(galleries, null, 2)};\n`);
+try {
+  await validateStoryAcceptedSets({ jobRoot, acceptedSets, readySkuList: ready });
+} catch (error) {
+  report.finalReleaseValidated = false;
+  blocked.push({ sku: 'publication-recheck', reason: error instanceof Error ? error.message : String(error) });
+  await writeFile(join(jobRoot, 'import-report.json'), JSON.stringify(report, null, 2) + '\n');
+  throw new Error('Story index was not replaced: receipt acceptance or canonical pixels changed during import.', { cause: error });
+}
 await rename(target + '.tmp', target);
 console.log(JSON.stringify({ newReadySkus: ready.length, newReadyImages: ready.length * 4, totalDisplayedSkus: report.totalDisplayedSkus, finalReleaseValidated: report.finalReleaseValidated }));

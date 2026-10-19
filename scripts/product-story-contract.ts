@@ -37,12 +37,80 @@ export interface StoryPlanItem {
   sourceAuthority: { primaryReferencePath: string; excludedApiReferencePath?: string; packageSizeAuthority?: unknown };
 }
 export interface StoryPlan { oldJobRoot: string; items: StoryPlanItem[] }
+export interface StoryAcceptanceSnapshot {
+  sku: string;
+  receiptSha256: string;
+  finalHashes: Record<typeof storyFiles[number], string>;
+}
 export const readStoryJson = async <T>(path: string): Promise<T> => JSON.parse((await readFile(path, 'utf8')).replace(/^\uFEFF/, '')) as T;
 export function requireStory(condition: unknown, message: string): asserts condition { if (!condition) throw new Error(message); }
 const exactSet = (first: string[], second: readonly string[]) => first.length === second.length && new Set(first).size === first.length && first.every(value => second.includes(value));
 export function insideStoryRoot(root: string, path: string): boolean {
   const value = relative(root, path);
   return !!value && value !== '..' && !value.startsWith(`..${process.platform === 'win32' ? '\\' : '/'}`) && !isAbsolute(value);
+}
+
+/** Coverage and hash shape are checked independently of mutable receipt state. */
+export function validateStoryAcceptanceCoverage(acceptedSets: unknown, readySkuList: readonly string[]): asserts acceptedSets is StoryAcceptanceSnapshot[] {
+  requireStory(Array.isArray(acceptedSets) && Array.isArray(readySkuList)
+    && readySkuList.every(sku => typeof sku === 'string' && /^\d{6}$/.test(sku))
+    && new Set(readySkuList).size === readySkuList.length
+    && acceptedSets.length === readySkuList.length, 'Accepted-set snapshot coverage differs from ready SKUs');
+  const seen = new Set<string>();
+  for (const entry of acceptedSets) {
+    requireStory(entry && typeof entry === 'object' && /^\d{6}$/.test(entry.sku)
+      && readySkuList.includes(entry.sku) && !seen.has(entry.sku), 'Duplicate, missing or unexpected accepted SKU snapshot');
+    requireStory(typeof entry.receiptSha256 === 'string' && /^[a-f0-9]{64}$/.test(entry.receiptSha256)
+      && entry.finalHashes && typeof entry.finalHashes === 'object' && !Array.isArray(entry.finalHashes)
+      && exactSet(Object.keys(entry.finalHashes), storyFiles)
+      && storyFiles.every(file => typeof entry.finalHashes[file] === 'string' && /^[a-f0-9]{64}$/.test(entry.finalHashes[file])), 'Accepted-set snapshot must bind receipt and all four canonical PNG hashes');
+    seen.add(entry.sku);
+  }
+}
+
+/** Recheck the exact acceptance validated at import; a revoked/replaced receipt is never inherited. */
+export async function validateStoryAcceptanceSnapshot(options: { jobRoot: string; snapshot: StoryAcceptanceSnapshot }): Promise<void> {
+  const { snapshot } = options;
+  validateStoryAcceptanceCoverage([snapshot], [snapshot.sku]);
+  const jobRoot = await realpath(options.jobRoot);
+  const expectedRoot = join(jobRoot, 'skus', snapshot.sku), skuRoot = await realpath(expectedRoot);
+  requireStory(skuRoot === expectedRoot, `Accepted SKU folder escapes or aliases its own job: ${snapshot.sku}`);
+  const expectedReceipt = join(skuRoot, 'receipt.json'), receiptPath = await realpath(expectedReceipt);
+  requireStory(receiptPath === expectedReceipt, `Accepted receipt escapes or aliases its own SKU: ${snapshot.sku}`);
+  const bytes = await readFile(receiptPath);
+  requireStory(sha256(bytes) === snapshot.receiptSha256, `Accepted story receipt changed or was revoked: ${snapshot.sku}`);
+  const receipt = JSON.parse(bytes.toString('utf8').replace(/^\uFEFF/, '')) as StoryReceipt;
+  const owner = `/root/sku_${snapshot.sku}`;
+  requireStory(receipt.schema_version === 'tuscanini-product-story-receipt/v1' && receipt.sku === snapshot.sku && receipt.status === 'ready'
+    && Array.isArray(receipt.images) && exactSet(receipt.images.map(image => image.file), storyFiles), `Accepted receipt is no longer an exact ready four-image set: ${snapshot.sku}`);
+  requireStory(receipt.sourceArtworkReview && ['matched', 'matched-components', 'different-revision'].includes(receipt.sourceArtworkReview.status)
+    && receipt.sourceArtworkReview.reviewedBy === owner && exactSet(receipt.sourceArtworkReview.reviewedImages ?? [], storyFiles)
+    && receipt.creativeReview?.status === 'accepted' && receipt.creativeReview.reviewedBy === owner
+    && exactSet(receipt.creativeReview.reviewedImages ?? [], storyFiles), `Accepted source/creative review was revoked: ${snapshot.sku}`);
+  for (const [index, file] of storyFiles.entries()) {
+    const image = receipt.images.find(entry => entry.file === file)!;
+    requireStory(image.role === storyRoles[index] && image.qa?.accepted === true && image.qa.visuallyInspected === true,
+      `Accepted final visual review was revoked: ${snapshot.sku}/${file}`);
+    const expectedPath = join(skuRoot, file), actualPath = await realpath(expectedPath);
+    requireStory(actualPath === expectedPath, `Accepted canonical PNG escapes or aliases its own file: ${snapshot.sku}/${file}`);
+    const actualHash = sha256(await readFile(actualPath));
+    requireStory(actualHash === snapshot.finalHashes[file]
+      && receipt.sourceArtworkReview.reviewedImageHashes?.[file] === actualHash
+      && receipt.creativeReview.reviewedImageHashes?.[file] === actualHash,
+    `Accepted canonical pixels or source/creative review hash changed: ${snapshot.sku}/${file}`);
+  }
+  requireStory(sha256(await readFile(receiptPath)) === snapshot.receiptSha256, `Accepted receipt changed during pixel recheck: ${snapshot.sku}`);
+}
+
+/** Used at both publication boundaries, never as a substitute for the full import validation. */
+export async function validateStoryAcceptedSets(options: { jobRoot: string; acceptedSets: unknown; readySkuList: readonly string[] }): Promise<void> {
+  validateStoryAcceptanceCoverage(options.acceptedSets, options.readySkuList);
+  for (const snapshot of options.acceptedSets) await validateStoryAcceptanceSnapshot({ jobRoot: options.jobRoot, snapshot });
+  // Catch a receipt revoked while later sets' PNGs were being checked.
+  for (const snapshot of options.acceptedSets) {
+    requireStory(sha256(await readFile(join(options.jobRoot, 'skus', snapshot.sku, 'receipt.json'))) === snapshot.receiptSha256,
+      `Accepted story receipt changed before publication: ${snapshot.sku}`);
+  }
 }
 
 /** Review identity, roles, labels and hash bindings before exporting a complete new set. */
