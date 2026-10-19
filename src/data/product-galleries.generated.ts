@@ -2416,6 +2416,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1536
     }
   ],
+  "730265": [
+    {
+      "src": "/assets/products/generated/730265/01-studio-854e797d143dde5f.webp",
+      "thumbnail": "/assets/products/generated/730265/01-studio-854e797d143dde5f-320.webp",
+      "alt": "Red Cooking Wine — enhanced original product photograph",
+      "label": "Product",
+      "width": 535,
+      "height": 1600
+    },
+    {
+      "src": "/assets/products/generated/730265/02-kitchen-0767c7a84f352898.webp",
+      "thumbnail": "/assets/products/generated/730265/02-kitchen-0767c7a84f352898-320.webp",
+      "alt": "Red Cooking Wine — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730265/03-table-4ac6011ffe017612.webp",
+      "thumbnail": "/assets/products/generated/730265/03-table-4ac6011ffe017612-320.webp",
+      "alt": "Red Cooking Wine — in a table setting",
+      "label": "At the table",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730265/04-environment-cab720413b7c22d2.webp",
+      "thumbnail": "/assets/products/generated/730265/04-environment-cab720413b7c22d2-320.webp",
+      "alt": "Red Cooking Wine — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1024,
+      "height": 1536
+    }
+  ],
   "730266": [
     {
       "src": "/assets/products/generated/730266/01-studio-d6eb75896a95f3b2.webp",
