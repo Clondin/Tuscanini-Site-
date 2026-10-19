@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { sha256 } from './gallery-provenance';
-import { storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, type StoryImage, type StoryPlan, type StoryPlanItem, type StoryReceipt } from './product-story-contract';
+import { storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, validateStoryStudioCorrection, type StoryImage, type StoryPlan, type StoryPlanItem, type StoryReceipt } from './product-story-contract';
 
 const roots: string[] = [];
 afterEach(async () => { for (const root of roots.splice(0)) await rm(root, { recursive: true, force: true }); });
@@ -47,6 +47,28 @@ async function fixture() {
     creativeReview: { status: 'accepted', reviewedBy: owner, reviewedAt, evidenceFile, reviewedImages: [...storyFiles], reviewedImageHashes: { ...hashes }, companionSkus: ['730101', '730102'], checks: { productIdentifiable: true, meaningfulUseAction: true, foodOrUseLeads: true, distinctOccasion: true, realProductFamily: true, heroLeadsFamily: true, distinctThumbnailRoles: true } },
   };
   return { root, jobRoot, oldJobRoot, skuRoot, imageGenRoot, item, plan, receipt };
+}
+
+async function correctionFixture() {
+  const options = await fixture();
+  const authorizationPath = join(options.jobRoot, 'user-authorization.json');
+  await writeFile(authorizationPath, JSON.stringify({ approved: true, approvedBy: 'user' }));
+  const evidenceFile = join(options.skuRoot, 'studio-label-issue.json');
+  await writeFile(evidenceFile, JSON.stringify({ sourceCompared: true, wrongCaptionObserved: true }));
+  const approval = {
+    schema_version: 'tuscanini-reviewed-studio-correction/v1', approved: true, reviewedBy: '/root', reviewedAt: '2026-10-19T21:00:00Z',
+    sku: options.item.sku, owner: options.item.owner.taskName, ownerThreadId: options.item.owner.threadId,
+    method: 'source-photo-only-existing-native-studio', nativeStudioCallsAllowed: 0,
+    oldStudioSha256: options.item.retainedStudio.sha256, sourcePath: options.item.sourceAuthority.primaryReferencePath,
+    sourceSha256: sha256(await readFile(options.item.sourceAuthority.primaryReferencePath)), issueEvidenceFile: evidenceFile,
+    issueEvidenceSha256: sha256(await readFile(evidenceFile)), userAuthorizationSha256: sha256(await readFile(authorizationPath)),
+    reason: 'Root viewed source and studio crops and confirmed a newly discovered caption mismatch.',
+  };
+  const approvalPath = join(options.skuRoot, 'studio-correction-authorization.json');
+  await writeFile(approvalPath, JSON.stringify(approval));
+  const image = { ...options.receipt.images[0], provenance: { kind: 'source-preserving-story-composite' } };
+  await writeFile(join(options.skuRoot, storyFiles[0]), 'new-source-photo-studio-candidate');
+  return { ...options, image, approval, approvalPath, owners: new Map<string, string>(), toolkitPath: join(options.root, 'unused-pure-image-toolkit.py') };
 }
 
 describe('new product stories', () => {
@@ -113,5 +135,28 @@ describe('new product stories', () => {
     const options = await fixture();
     await writeFile(join(options.skuRoot, storyFiles[0]), 'newly-replaced-studio');
     await expect(validateRetainedStoryStudio({ ...options, image: options.receipt.images[0], owners: new Map(), toolkitPath: join(options.root, 'unused-pure-image-toolkit.py') })).rejects.toThrow('pixels changed');
+  });
+  it('allows a root-reviewed source-photo studio correction while validating its full original chain', async () => {
+    await expect(validateStoryStudioCorrection(await correctionFixture())).resolves.toBeUndefined();
+  });
+  it('refuses studio correction approval borrowed from another SKU', async () => {
+    const options = await correctionFixture();
+    await writeFile(options.approvalPath, JSON.stringify({ ...options.approval, sku: '730101' }));
+    await expect(validateStoryStudioCorrection(options)).rejects.toThrow('exact-SKU root authorization');
+  });
+  it('rejects changing the original accepted studio behind a correction authorization', async () => {
+    const options = await correctionFixture();
+    await writeFile(options.item.retainedStudio.path, 'modified-old-evidence');
+    await expect(validateStoryStudioCorrection(options)).rejects.toThrow('original accepted pixels changed');
+  });
+  it('rejects changed issue evidence and additional native studio generations', async () => {
+    const options = await correctionFixture();
+    await writeFile(options.approvalPath, JSON.stringify({ ...options.approval, issueEvidenceSha256: '0'.repeat(64) }));
+    await expect(validateStoryStudioCorrection(options)).rejects.toThrow('issue evidence changed');
+    await writeFile(options.approvalPath, JSON.stringify(options.approval));
+    const otherRaw = join(options.imageGenRoot, options.item.owner.threadId, 'another-native-studio.png');
+    await writeFile(otherRaw, 'different-native-generation');
+    options.image.originalPath = otherRaw;
+    await expect(validateStoryStudioCorrection(options)).rejects.toThrow('reuse the original native studio');
   });
 });

@@ -2,6 +2,7 @@ import { access, mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
 import { galleryFiles, sha256 } from './gallery-provenance';
 import { readStoryJson, requireStory, type StoryPlan } from './product-story-contract';
+import { readSourceComponentQualifications } from './source-component-qualification';
 
 const jobRoot = resolve('output/tuscanini-product-stories-20261019');
 const version = process.argv[2];
@@ -59,6 +60,10 @@ for (const item of plan.items) {
     for (const reference of image.provenance?.reviewedSources ?? []) await add(reference);
     for (const reference of image.provenance?.parentImage?.provenance?.reviewedSources ?? []) await add(reference);
   }
+  for (const reference of await readSourceComponentQualifications({
+    jobRoot, oldJobRoot: plan.oldJobRoot, sku: item.sku, owner: item.owner,
+    primaryPath: sourcePath, primarySha256: sourceHash,
+  })) await add(reference);
   sourceCatalog[item.sku] = references;
   if (!primaryNotes) missingSources.push(item.sku);
   const components = join(plan.oldJobRoot, 'artwork-source-recovery', item.sku);

@@ -126,3 +126,32 @@ export async function validateRetainedStoryStudio(options: { item: StoryPlanItem
   requireStory(sha256(oldBytes) === record.sha256 && sha256(await readFile(join(skuRoot, image.file))) === record.sha256, 'Retained studio pixels changed');
   await validateGalleryProvenance({ jobRoot: oldJobRoot, skuRoot: oldSkuRoot, sku: item.sku, image: oldImage, imageGenRoot, toolkitPath, artworkReview: oldReceipt.sourceArtworkReview, owners });
 }
+
+/** A newly discovered studio label error needs a separate, hash-bound root review. */
+export async function validateStoryStudioCorrection(options: { jobRoot: string; item: StoryPlanItem; plan: StoryPlan; skuRoot: string; image: StoryImage; imageGenRoot: string; owners: Map<string, string>; toolkitPath: string }): Promise<void> {
+  const { jobRoot, item, plan, skuRoot, image } = options;
+  requireStory(image.file === storyFiles[0] && image.role === 'product' && image.provenance?.kind === 'source-preserving-story-composite', 'Studio correction requires the source-photo composite contract');
+  const approval = await readStoryJson<{
+    schema_version: string; approved: boolean; reviewedBy: string; reviewedAt: string; sku: string;
+    owner: string; ownerThreadId: string; method: string; nativeStudioCallsAllowed: number;
+    oldStudioSha256: string; sourcePath: string; sourceSha256: string;
+    issueEvidenceFile: string; issueEvidenceSha256: string; userAuthorizationSha256: string; reason: string;
+  }>(join(skuRoot, 'studio-correction-authorization.json'));
+  requireStory(approval.schema_version === 'tuscanini-reviewed-studio-correction/v1' && approval.approved === true && approval.reviewedBy === '/root'
+    && Number.isFinite(Date.parse(approval.reviewedAt)) && approval.sku === item.sku && approval.owner === item.owner.taskName && approval.ownerThreadId === item.owner.threadId
+    && approval.method === 'source-photo-only-existing-native-studio' && approval.nativeStudioCallsAllowed === 0 && !!approval.reason?.trim(), 'Missing exact-SKU root authorization for the discovered studio error');
+  const authorizationPath = join(jobRoot, 'user-authorization.json');
+  const authorization = await readStoryJson<{ approved: boolean; approvedBy: string }>(authorizationPath);
+  requireStory(authorization.approved === true && authorization.approvedBy === 'user' && sha256(await readFile(authorizationPath)) === approval.userAuthorizationSha256, 'Studio correction lost the user commission authorization');
+  const source = await realpath(item.sourceAuthority.primaryReferencePath);
+  requireStory(await realpath(approval.sourcePath) === source && sha256(await readFile(source)) === approval.sourceSha256, 'Studio correction primary source changed');
+  const evidence = await realpath(resolve(skuRoot, approval.issueEvidenceFile));
+  requireStory(insideStoryRoot(await realpath(skuRoot), evidence) && (await readFile(evidence)).length > 0 && sha256(await readFile(evidence)) === approval.issueEvidenceSha256, 'Studio correction issue evidence changed or escapes its SKU');
+  requireStory(approval.oldStudioSha256 === item.retainedStudio.sha256 && sha256(await readFile(item.retainedStudio.path)) === approval.oldStudioSha256, 'Studio correction original accepted pixels changed');
+  const oldSkuRoot = await realpath(join(plan.oldJobRoot, 'skus', item.sku));
+  const oldReceipt = await readStoryJson<{ images: GalleryReceiptImage[] }>(item.retainedStudio.oldReceiptPath);
+  const oldImage = oldReceipt.images.find(entry => entry.file === storyFiles[0]);
+  requireStory(oldImage?.originalPath && await realpath(image.originalPath) === await realpath(oldImage.originalPath), 'Studio correction must reuse the original native studio without another generation');
+  await validateRetainedStoryStudio({ ...options, skuRoot: oldSkuRoot, image: { ...image, provenance: { kind: 'retained-reviewed-studio', oldJobRoot: plan.oldJobRoot, oldSkuRoot, oldReceiptPath: item.retainedStudio.oldReceiptPath, oldImage } } });
+  requireStory(sha256(await readFile(join(skuRoot, image.file))) !== approval.oldStudioSha256, 'Unchanged studio must retain its original provenance');
+}

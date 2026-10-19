@@ -6,7 +6,7 @@ import type { ProductGalleryImage } from '../src/data/product-galleries';
 import { productGalleries as currentGalleries } from '../src/data/product-galleries.generated';
 import { sha256 } from './gallery-provenance';
 import { validateStoryCompositeProvenance, type StoryCompositeImage } from './family-provenance';
-import { insideStoryRoot, readStoryJson, requireStory, storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, type StoryPlan, type StoryReceipt } from './product-story-contract';
+import { insideStoryRoot, readStoryJson, requireStory, storyFiles, storyRoles, validateRetainedStoryStudio, validateStoryReview, validateStoryStudioCorrection, type StoryPlan, type StoryReceipt } from './product-story-contract';
 
 const jobRoot = resolve(process.argv.find(arg => !arg.startsWith('-') && arg !== process.argv[0] && arg !== process.argv[1]) ?? 'output/tuscanini-product-stories-20261019');
 const requireComplete = process.argv.includes('--require-complete');
@@ -62,10 +62,10 @@ for (const item of plan.items) {
       const bytes = await readFile(path), hash = sha256(bytes);
       const originalPath = await realpath(image.originalPath);
       requireStory(insideStoryRoot(imageGenRoot, originalPath) && dirname(originalPath) === join(imageGenRoot, item.owner.threadId), 'Generated image does not belong to the original SKU agent');
-      if (index === 0 && item.retainedStudio.acceptedInOldReceipt) {
+      if (index === 0 && item.retainedStudio.acceptedInOldReceipt && image.provenance?.kind !== 'source-preserving-story-composite') {
         await validateRetainedStoryStudio({ item, plan, skuRoot, image, imageGenRoot, owners, toolkitPath: resolve('scripts/source-preserving-composite.py') });
       } else if (image.provenance?.kind === 'source-preserving-story-composite') {
-        requireStory(index !== 0 || !item.retainedStudio.acceptedInOldReceipt, 'An accepted studio cannot be replaced by a new composite');
+        if (index === 0 && item.retainedStudio.acceptedInOldReceipt) await validateStoryStudioCorrection({ jobRoot, item, plan, skuRoot, image, imageGenRoot, owners, toolkitPath: resolve('scripts/source-preserving-composite.py') });
         await validateStoryCompositeProvenance({ jobRoot, skuRoot, sku: item.sku, role: storyRoles[index], image: image as StoryCompositeImage, imageGenRoot, toolkitPath: resolve('scripts/source-preserving-stories-v2.py'), owners, artworkReview: receipt.sourceArtworkReview, expectedFiles: [...storyFiles] });
       } else {
         requireStory(!image.provenance, 'Unknown or misplaced story provenance');
