@@ -36,6 +36,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730011": [
+    {
+      "src": "/assets/products/generated/730011/01-studio-e2dd571e4da4ae7c.webp",
+      "thumbnail": "/assets/products/generated/730011/01-studio-e2dd571e4da4ae7c-320.webp",
+      "alt": "Pizza Crust — enhanced original product photograph",
+      "label": "Product",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730011/02-kitchen-14527a085ff8013d.webp",
+      "thumbnail": "/assets/products/generated/730011/02-kitchen-14527a085ff8013d-320.webp",
+      "alt": "Pizza Crust — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730011/03-table-16794ea78817f7c8.webp",
+      "thumbnail": "/assets/products/generated/730011/03-table-16794ea78817f7c8-320.webp",
+      "alt": "Pizza Crust — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730011/04-environment-dbaa9aca1d733991.webp",
+      "thumbnail": "/assets/products/generated/730011/04-environment-dbaa9aca1d733991-320.webp",
+      "alt": "Pizza Crust — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730012": [
     {
       "src": "/assets/products/generated/730012/01-studio-1683021f365547df.webp",
@@ -3198,6 +3232,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730322": [
+    {
+      "src": "/assets/products/generated/730322/01-studio-975febe0eed31785.webp",
+      "thumbnail": "/assets/products/generated/730322/01-studio-975febe0eed31785-320.webp",
+      "alt": "Penne Pasta — enhanced original product photograph",
+      "label": "Product",
+      "width": 1131,
+      "height": 1391
+    },
+    {
+      "src": "/assets/products/generated/730322/02-kitchen-e4f6226b21472880.webp",
+      "thumbnail": "/assets/products/generated/730322/02-kitchen-e4f6226b21472880-320.webp",
+      "alt": "Penne Pasta — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730322/03-table-8562f5a7e7abb5b3.webp",
+      "thumbnail": "/assets/products/generated/730322/03-table-8562f5a7e7abb5b3-320.webp",
+      "alt": "Penne Pasta — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730322/04-environment-33e4085948bec4df.webp",
+      "thumbnail": "/assets/products/generated/730322/04-environment-33e4085948bec4df-320.webp",
+      "alt": "Penne Pasta — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730323": [
     {
       "src": "/assets/products/generated/730323/01-studio-5586ba5d4a32368a.webp",
@@ -5510,6 +5578,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730542": [
+    {
+      "src": "/assets/products/generated/730542/01-studio-90e686f17f842737.webp",
+      "thumbnail": "/assets/products/generated/730542/01-studio-90e686f17f842737-320.webp",
+      "alt": "Ketchup Potato Chips — enhanced original product photograph",
+      "label": "Product",
+      "width": 824,
+      "height": 1600
+    },
+    {
+      "src": "/assets/products/generated/730542/02-kitchen-04d0b2f94710771b.webp",
+      "thumbnail": "/assets/products/generated/730542/02-kitchen-04d0b2f94710771b-320.webp",
+      "alt": "Ketchup Potato Chips — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730542/03-table-e05ba7c58cb90d6a.webp",
+      "thumbnail": "/assets/products/generated/730542/03-table-e05ba7c58cb90d6a-320.webp",
+      "alt": "Ketchup Potato Chips — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730542/04-environment-e83ac84e5c503c43.webp",
+      "thumbnail": "/assets/products/generated/730542/04-environment-e83ac84e5c503c43-320.webp",
+      "alt": "Ketchup Potato Chips — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730544": [
     {
       "src": "/assets/products/generated/730544/01-studio-a17d8090e37ce7e2.webp",
@@ -6083,6 +6185,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "src": "/assets/products/generated/730600/04-environment-a5d56ad653fe107a.webp",
       "thumbnail": "/assets/products/generated/730600/04-environment-a5d56ad653fe107a-320.webp",
       "alt": "Bronze Cut Spaghetti — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1024,
+      "height": 1536
+    }
+  ],
+  "730601": [
+    {
+      "src": "/assets/products/generated/730601/01-studio-a316019e7911e9b9.webp",
+      "thumbnail": "/assets/products/generated/730601/01-studio-a316019e7911e9b9-320.webp",
+      "alt": "Bronze Cut Fettuccine — enhanced original product photograph",
+      "label": "Product",
+      "width": 622,
+      "height": 1600
+    },
+    {
+      "src": "/assets/products/generated/730601/02-kitchen-a38340f24d085f00.webp",
+      "thumbnail": "/assets/products/generated/730601/02-kitchen-a38340f24d085f00-320.webp",
+      "alt": "Bronze Cut Fettuccine — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730601/03-table-4840a4125e1cfdb3.webp",
+      "thumbnail": "/assets/products/generated/730601/03-table-4840a4125e1cfdb3-320.webp",
+      "alt": "Bronze Cut Fettuccine — in a table setting",
+      "label": "At the table",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730601/04-environment-d47e24e94d889d9f.webp",
+      "thumbnail": "/assets/products/generated/730601/04-environment-d47e24e94d889d9f-320.webp",
+      "alt": "Bronze Cut Fettuccine — in a lifestyle setting",
       "label": "Inspiration",
       "width": 1024,
       "height": 1536
