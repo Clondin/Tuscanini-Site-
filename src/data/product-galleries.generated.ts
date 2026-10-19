@@ -2926,6 +2926,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730286": [
+    {
+      "src": "/assets/products/generated/730286/01-studio-3f078278d759499a.webp",
+      "thumbnail": "/assets/products/generated/730286/01-studio-3f078278d759499a-320.webp",
+      "alt": "Lemon Juice Large — enhanced original product photograph",
+      "label": "Product",
+      "width": 900,
+      "height": 1600
+    },
+    {
+      "src": "/assets/products/generated/730286/02-kitchen-3e26e841a3097de8.webp",
+      "thumbnail": "/assets/products/generated/730286/02-kitchen-3e26e841a3097de8-320.webp",
+      "alt": "Lemon Juice Large — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730286/03-table-174a11aece025ad1.webp",
+      "thumbnail": "/assets/products/generated/730286/03-table-174a11aece025ad1-320.webp",
+      "alt": "Lemon Juice Large — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730286/04-environment-5787f7883e908279.webp",
+      "thumbnail": "/assets/products/generated/730286/04-environment-5787f7883e908279-320.webp",
+      "alt": "Lemon Juice Large — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730288": [
     {
       "src": "/assets/products/generated/730288/01-studio-e932ac172c2913db.webp",
@@ -4655,6 +4689,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "src": "/assets/products/generated/730405/04-environment-4ff3026afc01ef30.webp",
       "thumbnail": "/assets/products/generated/730405/04-environment-4ff3026afc01ef30-320.webp",
       "alt": "Extra Virgin Olive Oil — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "730406": [
+    {
+      "src": "/assets/products/generated/730406/01-studio-3ef4903506ef0461.webp",
+      "thumbnail": "/assets/products/generated/730406/01-studio-3ef4903506ef0461-320.webp",
+      "alt": "Sicilian Extra Virgin Olive Oil — enhanced original product photograph",
+      "label": "Product",
+      "width": 541,
+      "height": 1600
+    },
+    {
+      "src": "/assets/products/generated/730406/02-kitchen-3303aae9abee23b1.webp",
+      "thumbnail": "/assets/products/generated/730406/02-kitchen-3303aae9abee23b1-320.webp",
+      "alt": "Sicilian Extra Virgin Olive Oil — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730406/03-table-c78d97ba66dedf98.webp",
+      "thumbnail": "/assets/products/generated/730406/03-table-c78d97ba66dedf98-320.webp",
+      "alt": "Sicilian Extra Virgin Olive Oil — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730406/04-environment-d78ac46c18b4ea94.webp",
+      "thumbnail": "/assets/products/generated/730406/04-environment-d78ac46c18b4ea94-320.webp",
+      "alt": "Sicilian Extra Virgin Olive Oil — in a lifestyle setting",
       "label": "Inspiration",
       "width": 1254,
       "height": 1254
