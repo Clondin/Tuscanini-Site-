@@ -750,6 +750,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730129": [
+    {
+      "src": "/assets/products/generated/730129/01-studio-58f42813fbfdb7f4.webp",
+      "thumbnail": "/assets/products/generated/730129/01-studio-58f42813fbfdb7f4-320.webp",
+      "alt": "Mini Mushroom Pizza Calzones — enhanced original product photograph",
+      "label": "Product",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730129/02-kitchen-31619959cc061cab.webp",
+      "thumbnail": "/assets/products/generated/730129/02-kitchen-31619959cc061cab-320.webp",
+      "alt": "Mini Mushroom Pizza Calzones — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730129/03-table-66482ffded4b0d0e.webp",
+      "thumbnail": "/assets/products/generated/730129/03-table-66482ffded4b0d0e-320.webp",
+      "alt": "Mini Mushroom Pizza Calzones — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730129/04-environment-9238e7715c00b436.webp",
+      "thumbnail": "/assets/products/generated/730129/04-environment-9238e7715c00b436-320.webp",
+      "alt": "Mini Mushroom Pizza Calzones — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730140": [
     {
       "src": "/assets/products/generated/730140/01-studio-38d5e08691402897.webp",
