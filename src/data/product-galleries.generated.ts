@@ -2212,6 +2212,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730252": [
+    {
+      "src": "/assets/products/generated/730252/01-studio-4effb0c975c0a323.webp",
+      "thumbnail": "/assets/products/generated/730252/01-studio-4effb0c975c0a323-320.webp",
+      "alt": "Raspberry Balsamic Vinegar Glaze of Modena — enhanced original product photograph",
+      "label": "Product",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "src": "/assets/products/generated/730252/02-kitchen-78aab6d9110c7b33.webp",
+      "thumbnail": "/assets/products/generated/730252/02-kitchen-78aab6d9110c7b33-320.webp",
+      "alt": "Raspberry Balsamic Vinegar Glaze of Modena — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1374,
+      "height": 1145
+    },
+    {
+      "src": "/assets/products/generated/730252/03-table-3928d35b75cfe340.webp",
+      "thumbnail": "/assets/products/generated/730252/03-table-3928d35b75cfe340-320.webp",
+      "alt": "Raspberry Balsamic Vinegar Glaze of Modena — in a table setting",
+      "label": "At the table",
+      "width": 1312,
+      "height": 1199
+    },
+    {
+      "src": "/assets/products/generated/730252/04-environment-72648e41ae8a7806.webp",
+      "thumbnail": "/assets/products/generated/730252/04-environment-72648e41ae8a7806-320.webp",
+      "alt": "Raspberry Balsamic Vinegar Glaze of Modena — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1024,
+      "height": 1536
+    }
+  ],
   "730254": [
     {
       "src": "/assets/products/generated/730254/01-studio-39b2976d3231e2b4.webp",
