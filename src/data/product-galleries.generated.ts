@@ -5034,6 +5034,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 905
     }
   ],
+  "730428": [
+    {
+      "src": "/assets/products/generated/730428/01-studio-f51b00cdb6bbe32b.webp",
+      "thumbnail": "/assets/products/generated/730428/01-studio-f51b00cdb6bbe32b-320.webp",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — enhanced original product photograph",
+      "label": "Product",
+      "width": 1600,
+      "height": 822
+    },
+    {
+      "src": "/assets/products/generated/730428/02-kitchen-e66c5a3f41c451ea.webp",
+      "thumbnail": "/assets/products/generated/730428/02-kitchen-e66c5a3f41c451ea-320.webp",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "src": "/assets/products/generated/730428/03-table-8b54c77a6c8205fa.webp",
+      "thumbnail": "/assets/products/generated/730428/03-table-8b54c77a6c8205fa-320.webp",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a table setting",
+      "label": "At the table",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "src": "/assets/products/generated/730428/04-environment-22ddbe2b50c1bc62.webp",
+      "thumbnail": "/assets/products/generated/730428/04-environment-22ddbe2b50c1bc62-320.webp",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1536,
+      "height": 1024
+    }
+  ],
   "730430": [
     {
       "src": "/assets/products/generated/730430/01-studio-4f9080643472eaf9.webp",
