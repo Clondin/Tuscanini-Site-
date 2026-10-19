@@ -1022,6 +1022,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730184": [
+    {
+      "src": "/assets/products/generated/730184/01-studio-522b9939e3d79d58.webp",
+      "thumbnail": "/assets/products/generated/730184/01-studio-522b9939e3d79d58-320.webp",
+      "alt": "Cracked Marinated Olives — enhanced original product photograph",
+      "label": "Product",
+      "width": 1230,
+      "height": 1278
+    },
+    {
+      "src": "/assets/products/generated/730184/02-kitchen-0b13c1c27d309f31.webp",
+      "thumbnail": "/assets/products/generated/730184/02-kitchen-0b13c1c27d309f31-320.webp",
+      "alt": "Cracked Marinated Olives — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730184/03-table-7387869295fa8803.webp",
+      "thumbnail": "/assets/products/generated/730184/03-table-7387869295fa8803-320.webp",
+      "alt": "Cracked Marinated Olives — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730184/04-environment-11b46b77206a3472.webp",
+      "thumbnail": "/assets/products/generated/730184/04-environment-11b46b77206a3472-320.webp",
+      "alt": "Cracked Marinated Olives — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730185": [
     {
       "src": "/assets/products/generated/730185/01-studio-2fc353df34ae93ee.webp",
@@ -3567,6 +3601,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "src": "/assets/products/generated/730334/04-environment-57d100b0826b0dc2.webp",
       "thumbnail": "/assets/products/generated/730334/04-environment-57d100b0826b0dc2-320.webp",
       "alt": "Original Parchment Crackers Small — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "730335": [
+    {
+      "src": "/assets/products/generated/730335/01-studio-4accf43c130e77e5.webp",
+      "thumbnail": "/assets/products/generated/730335/01-studio-4accf43c130e77e5-320.webp",
+      "alt": "Oregano Parchment Crackers Small — enhanced original product photograph",
+      "label": "Product",
+      "width": 1600,
+      "height": 617
+    },
+    {
+      "src": "/assets/products/generated/730335/02-kitchen-43024a3d190f0851.webp",
+      "thumbnail": "/assets/products/generated/730335/02-kitchen-43024a3d190f0851-320.webp",
+      "alt": "Oregano Parchment Crackers Small — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "src": "/assets/products/generated/730335/03-table-e43f1dd7656e6972.webp",
+      "thumbnail": "/assets/products/generated/730335/03-table-e43f1dd7656e6972-320.webp",
+      "alt": "Oregano Parchment Crackers Small — in a table setting",
+      "label": "At the table",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "src": "/assets/products/generated/730335/04-environment-6bca1a2e58b4e18e.webp",
+      "thumbnail": "/assets/products/generated/730335/04-environment-6bca1a2e58b4e18e-320.webp",
+      "alt": "Oregano Parchment Crackers Small — in a lifestyle setting",
       "label": "Inspiration",
       "width": 1536,
       "height": 1024
