@@ -5,12 +5,14 @@ import { foodserviceCategories } from "./categories-foodservice";
 import { mergeKaycoCatalog } from "./kayco-catalog";
 import { kaycoSnapshot } from "./kayco-catalog.generated";
 import { canonicalProductId } from '../lib/productAliases';
+import type { ProductGalleryImage } from './product-galleries';
 
 export interface Product {
   id: string;
   name: string;
   description: string;
   image: string;
+  imageGallery?: ProductGalleryImage[];
   categoryId: string;
   details?: string;
   ingredients?: string;

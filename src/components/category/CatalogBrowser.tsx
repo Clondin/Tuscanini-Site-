@@ -69,8 +69,9 @@ export default function CatalogBrowser({
   useEffect(() => {
     if (focusIndex.current === null) return;
     const card = grid.current?.children[focusIndex.current];
+    const productLink = card?.querySelector<HTMLAnchorElement>('a[href^="/product/"]');
     focusIndex.current = null;
-    if (card instanceof HTMLElement) card.focus({ preventScroll: true });
+    productLink?.focus({ preventScroll: true });
   }, [limit]);
   const showMore = () => {
     focusIndex.current = limit;

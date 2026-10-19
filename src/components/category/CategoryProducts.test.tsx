@@ -31,8 +31,10 @@ describe("CategoryProducts", () => {
     renderAt();
     expect(screen.getByRole("button", { name: "Shelf" })).toHaveAttribute("aria-pressed", "true");
     const shelf = screen.getByRole("region", { name: "Pasta & Gnocchi shelf" });
-    const links = within(shelf).getAllByRole("link");
-    expect(links).toHaveLength(withPhotos.length);
+    const links = within(shelf).getAllByRole("link")
+      .filter(link => link.getAttribute("href")?.startsWith("/product/"));
+    expect(links.map(link => link.getAttribute("href")))
+      .toEqual(withPhotos.map(product => `/product/${product.id}`));
     expect(links[0]).toHaveAttribute("href", `/product/${withPhotos[0].id}`);
     expect(links[0]).toHaveTextContent(withPhotos[0].name);
     expect(screen.queryByRole("searchbox")).not.toBeInTheDocument();

@@ -3,6 +3,7 @@ import { catalogResponse, fetchKaycoCatalog, publicCatalog } from './kayco-catal
 import { kaycoSnapshot } from '../src/data/kayco-catalog.generated';
 import { isKaycoImage, mergeKaycoCatalog } from '../src/data/kayco-catalog';
 import { bundledCategories } from '../src/data/products';
+import { getProductGallery } from '../src/data/product-galleries';
 
 const sample = kaycoSnapshot.find(item => !item.existing)!;
 const source = {
@@ -64,7 +65,11 @@ describe('catalog and stable links', () => {
     expect(new Set(products.map(product => product.id)).size).toBe(products.length);
     const added = products.filter(product => !originalIds.includes(product.id));
     expect(added.length).toBe(67);
-    expect(added.every(product => isKaycoImage(product.image))).toBe(true);
+    for (const product of added) {
+      const source = kaycoSnapshot.find(item => item.id === product.id)!;
+      expect(isKaycoImage(source.image)).toBe(true);
+      expect(product.image).toBe(getProductGallery(source.sku)?.[0].src ?? source.image);
+    }
     expect(added.every(product => product.kosher === undefined)).toBe(true);
   });
 
@@ -83,7 +88,11 @@ describe('catalog and stable links', () => {
     const product = merged[0].products.find(item => item.id === first.id)!;
     expect(product.description).toBe('CMS story');
     expect(product.ingredients).toBe('CMS ingredients');
-    expect(isKaycoImage(product.image)).toBe(true);
+    const source = kaycoSnapshot.find(item => item.id === first.id)!;
+    expect(isKaycoImage(source.image)).toBe(true);
+    expect(product.image).toBe(getProductGallery(source.sku)?.[0].src ?? source.image);
+    expect(product.size).toBe(source.size);
+    expect(product.frozen).toBe(source.frozen);
     expect(product.id).toBe(first.id);
   });
 });

@@ -190,7 +190,11 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
                 "@type": "Product",
                 name: product.name,
                 ...productSchemaFields(product),
-                image: !isMissingProductImage(product.image) ? [absoluteUrl(getOptimizedImageUrl(product.image), siteUrl)] : undefined,
+                image: product.imageGallery?.length
+                  ? product.imageGallery.map((image) => absoluteUrl(image.src, siteUrl))
+                  : !isMissingProductImage(product.image)
+                    ? [absoluteUrl(getOptimizedImageUrl(product.image), siteUrl)]
+                    : undefined,
                 category: category?.name,
                 brand: { "@type": "Brand", name: "Tuscanini" },
                 url: `${siteUrl}${canonicalPath}`,

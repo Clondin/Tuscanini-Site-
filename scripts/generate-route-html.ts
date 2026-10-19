@@ -122,7 +122,11 @@ function productStructuredData(
       "@type": "Product",
       name,
       ...productSchemaFields(product),
-      image: image && !isMissingProductImage(image) ? [absoluteUrl(image)] : undefined,
+      image: product.imageGallery?.length
+        ? product.imageGallery.map((galleryImage) => absoluteUrl(galleryImage.src))
+        : image && !isMissingProductImage(image)
+          ? [absoluteUrl(image)]
+          : undefined,
       category: categoryName,
       brand: { "@type": "Brand", name: "Tuscanini" },
       url: `${siteUrl}/product/${id}`,

@@ -1,5 +1,7 @@
 import type { Category, Product } from './products';
 import { canonicalProductId } from '../lib/productAliases.js';
+import { getProductGallery } from './product-galleries.js';
+import { legacyProductSkus } from './legacy-product-skus.js';
 
 /** The only product fields allowed across the private API boundary. */
 export interface KaycoProduct {
@@ -57,7 +59,15 @@ export function isKaycoProduct(value: unknown): value is KaycoProduct {
 }
 
 export function mergeKaycoCatalog(base: Category[], products: KaycoProduct[]): Category[] {
-  const result = base.map(category => ({ ...category, products: [...category.products] }));
+  const result = base.map(category => ({ ...category, products: category.products.map(product => {
+    const sku = product.sku || legacyProductSkus[canonicalProductId(product.id)];
+    const imageGallery = sku ? getProductGallery(sku) : undefined;
+    return {
+      ...product,
+      ...(sku ? { sku } : {}),
+      ...(imageGallery ? { image: imageGallery[0].src, imageGallery } : {}),
+    };
+  }) }));
   const seen = new Set<string>();
   for (const source of [...products].sort((a, b) => Number(a.id !== canonicalProductId(a.id)) - Number(b.id !== canonicalProductId(b.id)))) {
     const item = { ...source, id: canonicalProductId(source.id) };
@@ -75,13 +85,15 @@ export function mergeKaycoCatalog(base: Category[], products: KaycoProduct[]): C
     }
     const index = category.products.findIndex(product => product.id === item.id);
     const previous = category.products[index];
+    const imageGallery = getProductGallery(item.sku);
     const product: Product = {
       ...previous,
       id: item.id,
       name: item.name,
       categoryId: category.slug,
       description: previous?.description || `${item.name}${item.size ? ` in a ${item.size} pack` : ''}.`,
-      image: item.image,
+      image: imageGallery?.[0].src ?? item.image,
+      imageGallery,
       size: item.size || previous?.size,
       madeInItaly: item.madeInItaly,
       frozen: item.frozen,

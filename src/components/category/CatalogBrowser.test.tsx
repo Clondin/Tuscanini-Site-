@@ -27,11 +27,13 @@ afterEach(() => {
 describe("catalog filters", () => {
   it("restores filters from a shareable URL and clears them without losing products", async () => {
     const user = userEvent.setup();
+    // One real collection covers both filter cases; pagination has its own test.
+    const catalog = categories.filter(category => category.slug === "pasta-gnocchi");
     render(
       <MemoryRouter
         initialEntries={["/products?format=frozen&diet=gluten-free"]}
       >
-        <CatalogBrowser categories={categories} />
+        <CatalogBrowser categories={catalog} />
         <Location />
       </MemoryRouter>,
     );
@@ -40,7 +42,7 @@ describe("catalog filters", () => {
       screen.getByRole("link", { name: /Frozen Gluten Free Potato Gnocchi/ }),
     ).toBeInTheDocument();
     expect(
-      screen.queryByRole("link", { name: /Bronze Cut Spaghetti/ }),
+      screen.queryByRole("link", { name: /Bronze Cut Spaghetti.*View product/ }),
     ).not.toBeInTheDocument();
     await user.click(screen.getByRole("button", { name: "Clear filters" }));
     expect(screen.getByTestId("location").textContent).toBe("");
@@ -50,8 +52,14 @@ describe("catalog filters", () => {
       more = screen.queryByRole("button", { name: SHOW_MORE });
     }
     expect(
-      screen.getByRole("link", { name: /Bronze Cut Spaghetti/ }),
-    ).toBeInTheDocument();
+      screen.getByRole("link", { name: /Bronze Cut Spaghetti.*View product/ }),
+    ).toHaveAttribute("href", "/product/spaghetti");
+    expect(screen.getAllByRole("link")
+      .filter(link => link.getAttribute("href")?.startsWith("/product/"))
+      .map(link => link.getAttribute("href")))
+      .toEqual(catalog.flatMap(category => category.products
+        .filter(product => !isMissingProductImage(product.image))
+        .map(product => `/product/${product.id}`)));
   });
   it("reveals the catalog in pages and moves focus to the first new product", async () => {
     const user = userEvent.setup();

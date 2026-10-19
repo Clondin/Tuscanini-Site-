@@ -11,6 +11,9 @@ scripts/.geo-cache/
 !.env.example
 package-lock.json
 
+# Local ImageGen originals and review receipts. Publish reviewed WebP assets only.
+/output/tuscanini-imagegen-20261016/
+
 # Design source files - not needed for the website
 *.ai
 *.psd

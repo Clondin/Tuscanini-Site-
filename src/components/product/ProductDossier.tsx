@@ -4,10 +4,10 @@ import type { Product } from "../../data/products";
 import { getCategoryAccent, getPosterColor } from "../../data/category-accents";
 import { getResponsiveImageProps } from "../../lib/productImage";
 import { useProductDossier } from "./useProductDossier";
+import ProductGallery from './ProductGallery';
 import {
   BuyActions,
   DossierOverlays,
-  ProductImage,
 } from "./ProductParts";
 
 interface Props {
@@ -61,12 +61,12 @@ export default function ProductDossier({ product, categoryName, categorySlug }: 
             </div>
             <div
               style={{ backgroundColor: accent.soft }}
-              className="border-y lg:border-y-0 lg:border-x border-ink/20 flex items-end justify-center px-8 py-10"
+              className="border-y lg:border-y-0 lg:border-x border-ink/20 flex items-end justify-center px-4 py-5 sm:px-8 sm:py-10"
             >
-              <ProductImage
+              <ProductGallery
+                key={product.id}
                 product={product}
                 state={state}
-                className="w-full h-[320px] sm:h-[420px] lg:h-[520px]"
               />
             </div>
             <div className="py-8 lg:py-12 lg:pl-10 flex flex-col">

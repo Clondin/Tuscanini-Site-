@@ -5,7 +5,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["**/dist/**", "tmp", "public", ".artifacts/**", "scripts/.geo-cache/**"] },
+  { ignores: ["**/dist/**", "tmp", "public", ".artifacts/**", "scripts/.geo-cache/**", ".claude/**", ".codex/**", "output/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

@@ -14,6 +14,72 @@ The public endpoint is `/api/catalog`; its private key is the server-only `KAYCO
 
 This integration needs a public-site deployment and server-side key configuration for live refresh, with no CMS publish required. The configured CMS hostname failed to resolve from the development machine during this work; bundled editorial fallback behavior was verified.
 
+### Commissioned product photography
+
+When a sharper company front-photo candidate is staged for a SKU, the final `--require-complete` import also requires a recorded comparison of all four images against that candidate. The SKU reviewer must verify that its package revision matches the API image or document why the candidate differs; a filename alone does not establish identity. Newly visible label errors remain held for correction.
+
+Every import compares each accepted PNG with its recorded original in the local ImageGen output folder and rejects reuse across SKUs, including mixed pure-image/composite imports in either order. Pure ImageGen images must remain byte-identical to that original. Explicitly user-approved source-preserving composites instead require the separate provenance checks below. `gallery-assets.json` in the private job folder records the generated WebP and thumbnail hashes for subsequent deployment verification; it is not itself publication evidence.
+
+Use `--verify-ready` during production to apply the same reference-review and ImageGen provenance checks to the currently accepted sets while other SKUs remain in progress. This does not satisfy the full-catalog `--require-complete` gate.
+
+The user-authorized website publication may proceed in verified incremental batches. Each published SKU must have all four accepted images; unfinished SKUs keep their existing image. Preserve a fixed asset/index snapshot for each deployment and verify the deployed bytes and product pages for that batch. An incremental deployment never establishes completion of the full 207-SKU / 828-image commission; the final release still requires `--require-complete` and verification of the entire catalog.
+
+SKUs listed in the private job's `source-artwork-pilots.json` also require `receipt.sourceArtworkReview` with a recorded status (`matched`, `matched-components`, or `different-revision`) and `reviewedImages` naming all four stable files. This records the original owner's final comparison against recovered flat-art details, including unchanged earlier images; a successful repair of one image does not clear the other three automatically. Keep detailed source paths, hashes, crop provenance and legibility limits in the SKU's evidence file.
+
+#### Approved source-preserving composites
+
+The October 17 user approval permits original product/label pixels to be placed into ImageGen scenes with the repository's deterministic `scripts/source-preserving-composite.py` toolkit. This permission does not establish package identity or final visual acceptance. The existing owner for each SKU still reviews its source revision and all four final images; previously reviewed package-reference overrides remain authoritative where the API reference is wrong.
+
+The job-root `source-preserving-approval.json` must contain `schema_version: "source-preserving-approval/v1"`, `approved: true`, `approvedBy: "user"`, an ISO `approvedAt`, `method: "deterministic-original-photo-homography"`, a `toolkit` object with the actual repository script's absolute `path` and pinned `sha256`, an explicit `skus` array, and `owners` mapping each approved SKU to its existing `/root/sku_<SKU>` owner. Changing toolkit bytes requires a new coordinator-reviewed pin in that approval record.
+
+For each composite, its normal image entry keeps `originalPath` pointing to the actual raw ImageGen base under `CODEX_HOME/generated_images`, retains `qa.accepted: true`, and adds `qa.visuallyInspected: true` plus:
+
+```json
+{
+  "provenance": {
+    "kind": "source-preserving-composite",
+    "receiptPath": "<absolute path to toolkit receipt inside this SKU folder>",
+    "promotedFrom": "<absolute preserved candidate path, when copied into a canonical final>",
+    "reviewedSources": [{
+      "path": "<absolute original source path>",
+      "sha256": "<actual source SHA-256>",
+      "scope": "exact-package",
+      "status": "matched",
+      "reviewer": "/root/sku_730116",
+      "notes": "<actual package revision comparison or component qualification>"
+    }]
+  }
+}
+```
+
+`exact-package` sources must be that SKU's `source.*`, `source-original.*`, `source-detail-*`, or `api-reference.*` image. A `qualified-component` may also come from `artwork-source-recovery/<same SKU>/`; its review records precisely which component matches, using status `matched` or `matched-components`. A different SKU's file or an unreviewed file is refused. A filename alone never qualifies a source.
+
+`reviewedSources` lists exactly the sources used by the toolkit's patches, one entry per `receipt.sources` item. Keep reviews of additional comparison references in the source-artwork evidence file or a separate `additionalReferenceReviews` field; they are not patch inputs.
+
+`sourceArtworkReview.reviewedBy`, every `reviewedSources[].reviewer`, and the toolkit configuration's `review.reviewer` must equal the approved existing owner. The normal all-four `reviewedImages` gate remains, and composite sets additionally record `sourceArtworkReview.reviewedImageHashes` mapping each canonical filename (`01-studio.png`, `02-kitchen.png`, `03-table.png`, `04-environment.png`) to its actual final SHA-256. Replacing any final after review invalidates that review.
+
+The toolkit receipt uses `source-preserving-composite-receipt/v1`. The importer validates its SKU, method, actual configuration and toolkit paths/hashes, ImageGen base path/hash/dimensions, every reviewed source path/hash/dimensions, patch source/transformation records, and final path/hash/dimensions. The toolkit may write directly to a new canonical final or create a new immutable candidate within the same SKU folder. For promotion, the owner visually reviews the candidate first, preserves the previous stable file, then copies the candidate byte-for-byte to the canonical filename and records `provenance.promotedFrom`. The candidate must remain present and hash-identical to both the toolkit receipt and canonical final; its configuration continues to name that candidate. It cannot alias a base, source, configuration, toolkit or receipt. Never retouch the candidate after the toolkit has produced its receipt.
+
+Raw bases and finals cannot be reused across SKUs. These checks apply whenever a composite is claimed, including incremental imports; composites do not bypass the studio transparency, minimum resolution, four-distinct-files, pilot review, or full-release gates. Public output remains ordinary full-size and thumbnail WebP files, with no CMS schema change.
+
+#### Bounded restoration of original photograph transparency
+
+For a separately approved studio correction, `scripts/source-photo-alpha.py` can restore the actual transparency channel from the reviewed original product photograph onto an existing v1 composite. It preserves every decoded RGB pixel of the original composite; the only change is a deterministic homography of the complete original photograph's alpha channel. There is no painted contour, invented mask, color correction, or replacement of the v1 provenance. This method is limited to `01-studio.png` and requires genuine varying source and final transparency.
+
+The root coordinator records the existing user approval and reviewed helper hash in the separate job-root `source-photo-alpha-approval.json`. Its fields are `schema_version: "source-photo-alpha-approval/v1"`, `approved: true`, `approvedBy: "user"`, an ISO `approvedAt`, `method: "deterministic-original-photo-alpha-homography"`, the fixed sibling helper's actual `toolkit.path` and `toolkit.sha256`, the explicitly approved `skus`, and the canonical existing `owners` map. The bounded initial approval is SKU `730100`. Both this approval and the original `source-preserving-approval.json` remain required; the original v1 script and its pin remain unchanged.
+
+The final image entry uses `provenance.kind: "source-photo-alpha-restoration"`, the alpha `receiptPath`, and `promotedFrom` pointing to its preserved same-SKU alpha candidate. `reviewedSources` contains exactly one source: the actual own-SKU `source.*`, `source-original.*`, `api-reference.*`, or `source-detail-*` photograph, its actual hash, `scope: "exact-package"`, `status: "matched"`, the existing owner as `reviewer`, and the documented package/outline comparison. Qualified artwork components cannot supply alpha. `provenance.parentImage` retains the complete original v1 image provenance, QA and raw `originalPath`; its `file` names the immutable parent candidate directly in the SKU folder. The outer and parent entries must name the same original raw ImageGen output.
+
+The alpha configuration uses `source-photo-alpha/v1`; its receipt uses `source-photo-alpha-receipt/v1`. Both bind the original v1 parent receipt and candidate paths/hashes. The importer recursively validates that v1 chain, then validates the alpha configuration, separate helper pin, source and final files, owner review, quads, dimensions, and decoded RGB/alpha channel hashes. The final stable studio must remain byte-identical to the preserved alpha candidate. The normal all-four owner review and final-hash bindings still apply after promotion.
+
+For proof of the transformation, the importer invokes only the pinned sibling helper with `--verify CONFIG RECEIPT CANDIDATE` using the bundled Windows Python runtime (or `python3` on other systems). This read-only replay independently reconstructs the expected alpha and compares the complete decoded RGBA output. Missing runtime support, changed helper/configuration/evidence, altered RGB pixels, or a mismatched alpha transformation blocks import. It writes no source, candidate, or receipt files.
+
+Incremental local imports can leave superseded, untracked WebP versions in the generated asset directory. Stage only the full-size and thumbnail files named by the final accepted index and hash manifest, together with the source changes. Production uses the Git `main` deployment from a clean checkout; do not upload the local production folder with its untracked preview assets. Confirm the deployed commit and every referenced asset after publication.
+
+The October 16 ImageGen production creates four photographs per exact SKU: one faithful higher-quality version of the original API pack shot, preserving its clean background/transparency and package artwork, and three environmental placements. The enhanced pack shot replaces the original as the site's main product image. These are intentionally code-managed website assets, separate from the API's original package reference and from editable CMS media. Originals, source references, prompts, and visual acceptance receipts remain in `output/tuscanini-imagegen-20261016/`; the reviewed public WebP derivatives live in `public/assets/products/generated/{sku}/`.
+
+`scripts/import-product-galleries.ts` accepts a SKU only when its receipt marks all four distinct files visually accepted. It creates `src/data/product-galleries.generated.ts`; `--require-complete` refuses an incomplete release. The catalog merge selects a completed gallery by exact SKU and uses its studio image across cards and social metadata. Product structured data lists all four full-size images in both the generated route HTML and the browser metadata. `ProductGallery` presents the four images as labeled thumbnails with an enlarge control. Until a complete accepted set exists, the original API/CMS image continues to render. No CMS field or API-owned source image is changed. A public-site deployment publishes this commissioned photography; a CMS publish does not. Changing these galleries through the CMS would require a separate editor and content-contract change.
+
 ## Connection
 
 | Setting | Value |
@@ -141,7 +207,7 @@ Stable product IDs matter. Recipe `related_products`, the homepage **Pantry favo
 
 Size labels are formatted for display only: unit spacing/case is normalized across cards, shelves, quick views, and product details without changing the stored amount or converting units. Origin text and badges remain conditional on `made_in_italy`; the public UI does not add a universal bottled-origin claim.
 
-Product buying links are currently code-managed in `src/lib/productPurchaseLink.ts`. Three canonical flour SKUs use direct Amazon links verified on Tuscanini's official flour page. Other products use accurately named Amazon brand-store or Tuscanini Foods links. No `purchase_url` or other new CMS field is introduced by this audit change.
+Product buying links are code-managed in `src/lib/productPurchaseLink.ts`. Products with a configured Amazon listing use that direct listing and the label **Buy on Amazon**. Other non-frozen products use the Amazon brand store, and frozen products without a configured listing use Tuscanini Foods. No `purchase_url` or other new CMS field is introduced by the commissioned image work.
 
 ### Recipes
 
@@ -204,8 +270,8 @@ Changing a hardcoded area requires a public-site code deployment. To make it edi
 - On `/products`, search and filters use URL state (`q`, `category`, `format`, `diet`, `sort`); category pages use only `view`. Search normalizes accents and punctuation, accepts common shorthand, includes size/SKU and frozen attributes, and marks approximate spelling matches. The overlay previews six products and links to all results.
 - Frozen classification uses the API flag or established frozen category. The Gluten-free filter matches explicit gluten-free product names, not missing certification fields. `kosher` is displayed only for confirmed product values; no partial category certification fraction is rendered.
 - Products without images do not render in the new browsing cards or search. The upstream image-required addition rule remains unchanged.
-- Product pages show only the current product image in the main image area. Siblings are clearly labeled separate product cards. Mobile pages put the title and size before the image and show a sticky retailer action after the main action scrolls away.
-- The current retailer destinations are general stores: **Visit Amazon store** for non-frozen items, **Visit Tuscanini** for frozen items. They are not represented as exact listings or a store locator. Exact retailer listings still require verified data and a coordinated CMS field if added later.
+- Product pages show the current product's commissioned four-image gallery when available, otherwise its original product image. Gallery thumbnails select the main image and its enlarged view; siblings remain separate product cards. Mobile pages put the title and size before the image and show a sticky retailer action after the main action scrolls away.
+- Retailer actions follow the existing code-managed listing map: **Buy on Amazon** for a configured direct listing, **Visit our Amazon store** for other non-frozen products, and **Visit Tuscanini** for other frozen products. The commissioned gallery work does not change these destinations.
 - `VITE_NEWSLETTER_ENDPOINT`, when configured, enables the existing labeled signup and success/error handling. Without it, the section links directly to Instagram; it no longer advertises an unavailable signup.
 - Section hash navigation waits for lazy-rendered destinations and respects the fixed header offset.
 

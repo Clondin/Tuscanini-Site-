@@ -117,7 +117,7 @@ describe("RouteMetadata", () => {
 
   it("does not advertise an unavailable pack shot as a product image", async () => {
     const original = categories;
-    setCatalogCategories(categories.map(category => ({ ...category, products: category.products.map(product => product.id === 'fries-gondola' ? { ...product, image: '/assets/placeholders/pack-shot-pending.svg' } : product) })));
+    setCatalogCategories(categories.map(category => ({ ...category, products: category.products.map(product => product.id === 'fries-gondola' ? { ...product, image: '/assets/placeholders/pack-shot-pending.svg', imageGallery: undefined } : product) })));
     render(
       <MemoryRouter initialEntries={["/product/fries-gondola"]}>
         <RouteMetadata contentVersion={0} />

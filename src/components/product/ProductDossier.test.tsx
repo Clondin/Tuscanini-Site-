@@ -1,4 +1,5 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it } from "vitest";
 import type { Product } from "../../data/products";
@@ -27,7 +28,7 @@ describe("ProductDossier", () => {
     expect(screen.getByText("Origin").parentElement).toHaveTextContent("Made in Italy");
     expect(screen.getByText("Pack size").parentElement).toHaveTextContent("250 mL");
     expect(screen.queryByText(/bottled/i)).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Visit our Amazon store" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Buy on Amazon" })).toHaveAttribute(
       "rel", "sponsored noopener noreferrer",
     );
 
@@ -80,5 +81,33 @@ describe("ProductDossier", () => {
     );
 
     expect(screen.queryByRole("heading", { name: "Ingredients" })).not.toBeInTheDocument();
+  });
+
+  it('enlarges the selected placement rather than the original pack shot', async () => {
+    const user = userEvent.setup();
+    const imageGallery = ['Product', 'Kitchen', 'At the table', 'Inspiration'].map((label, index) => ({
+      src: `/assets/products/generated/730231/image-${index}.webp`,
+      thumbnail: `/assets/products/generated/730231/thumb-${index}.webp`,
+      label,
+      alt: `Basil Pesto — ${label.toLowerCase()}`,
+      width: 1254,
+      height: 1254,
+    }));
+    render(
+      <MemoryRouter>
+        <ProductDossier product={{ ...product, image: imageGallery[0].src, imageGallery }} categoryName="Pesto" categorySlug="pesto" />
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole('img', { name: 'Basil Pesto — product' })).toHaveAttribute('src', imageGallery[0].src);
+    const kitchenButton = screen.getByRole('button', { name: 'Show kitchen image of Basil Pesto' });
+    await user.click(kitchenButton);
+    expect(kitchenButton).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('img', { name: 'Basil Pesto — kitchen' })).toHaveAttribute('src', imageGallery[1].src);
+    await user.click(screen.getByRole('button', { name: 'Enlarge kitchen image of Basil Pesto' }));
+    const dialog = screen.getByRole('dialog', { name: 'Expanded image: Basil Pesto — kitchen' });
+    expect(within(dialog).getByRole('img')).toHaveAttribute('src', imageGallery[1].src);
+    await user.click(within(dialog).getByRole('button', { name: 'Close lightbox' }));
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Basil Pesto — kitchen' })).toBeInTheDocument();
   });
 });

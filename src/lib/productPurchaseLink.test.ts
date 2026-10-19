@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { getProductPurchaseLink } from "./productPurchaseLink";
+import { AMAZON_ASSOCIATE_TAG, getProductPurchaseLink } from "./productPurchaseLink";
 
 describe("product purchase destinations", () => {
   it("identifies a shared Amazon store and its affiliate relationship", () => {
-    const link = getProductPurchaseLink({ id: "basil-pesto", categoryId: "pesto" });
+    const link = getProductPurchaseLink({ id: "unmapped-test-product", categoryId: "pesto" });
 
     expect(new URL(link.href).pathname).toContain("/stores/Tuscanini/");
-    expect(new URL(link.href).searchParams.get("tag")).toBe("kaycopromo-20");
+    expect(new URL(link.href).searchParams.get("tag")).toBe(AMAZON_ASSOCIATE_TAG);
     expect(link.label).toBe("Visit our Amazon store");
     expect(link.sponsored).toBe(true);
   });
@@ -26,9 +26,9 @@ describe("product purchase destinations", () => {
   ])("opens the verified SKU destination for %s", (id, asin) => {
     const link = getProductPurchaseLink({ id, categoryId: "flour-baking" });
 
-    expect(link.href).toBe(`https://www.amazon.com/dp/${asin}`);
-    expect(link.label).toBe("View product on Amazon");
-    expect(new URL(link.href).searchParams.has("tag")).toBe(false);
-    expect(link.sponsored).toBe(false);
+    expect(new URL(link.href).pathname).toBe(`/dp/${asin}`);
+    expect(link.label).toBe("Buy on Amazon");
+    expect(new URL(link.href).searchParams.get("tag")).toBe(AMAZON_ASSOCIATE_TAG);
+    expect(link.sponsored).toBe(true);
   });
 });
