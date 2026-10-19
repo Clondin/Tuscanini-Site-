@@ -614,6 +614,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     }
   ],
+  "730116": [
+    {
+      "src": "/assets/products/generated/730116/01-studio-21bb26de8be8ad2e.webp",
+      "thumbnail": "/assets/products/generated/730116/01-studio-21bb26de8be8ad2e-320.webp",
+      "alt": "Bianca White Thin Crust Pizza — enhanced original product photograph",
+      "label": "Product",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730116/02-kitchen-b44f2dbbf4deba8f.webp",
+      "thumbnail": "/assets/products/generated/730116/02-kitchen-b44f2dbbf4deba8f-320.webp",
+      "alt": "Bianca White Thin Crust Pizza — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730116/03-table-ef3023860070dea1.webp",
+      "thumbnail": "/assets/products/generated/730116/03-table-ef3023860070dea1-320.webp",
+      "alt": "Bianca White Thin Crust Pizza — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730116/04-environment-4a187004d37dfdee.webp",
+      "thumbnail": "/assets/products/generated/730116/04-environment-4a187004d37dfdee-320.webp",
+      "alt": "Bianca White Thin Crust Pizza — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
   "730126": [
     {
       "src": "/assets/products/generated/730126/01-studio-3698e5b861b93f1a.webp",
@@ -1833,6 +1867,40 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "src": "/assets/products/generated/730228/04-environment-cb6599c057bb196c.webp",
       "thumbnail": "/assets/products/generated/730228/04-environment-cb6599c057bb196c-320.webp",
       "alt": "Vodka Sauce — in a lifestyle setting",
+      "label": "Inspiration",
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "730230": [
+    {
+      "src": "/assets/products/generated/730230/01-studio-9c884ac4a2c2f748.webp",
+      "thumbnail": "/assets/products/generated/730230/01-studio-9c884ac4a2c2f748-320.webp",
+      "alt": "Sun-Dried Tomato Pesto — enhanced original product photograph",
+      "label": "Product",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730230/02-kitchen-eb2fbf4707fd530d.webp",
+      "thumbnail": "/assets/products/generated/730230/02-kitchen-eb2fbf4707fd530d-320.webp",
+      "alt": "Sun-Dried Tomato Pesto — in a kitchen setting",
+      "label": "Kitchen",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730230/03-table-390b0563e1032d5e.webp",
+      "thumbnail": "/assets/products/generated/730230/03-table-390b0563e1032d5e-320.webp",
+      "alt": "Sun-Dried Tomato Pesto — in a table setting",
+      "label": "At the table",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "src": "/assets/products/generated/730230/04-environment-1d4246ad15eb772c.webp",
+      "thumbnail": "/assets/products/generated/730230/04-environment-1d4246ad15eb772c-320.webp",
+      "alt": "Sun-Dried Tomato Pesto — in a lifestyle setting",
       "label": "Inspiration",
       "width": 1254,
       "height": 1254
