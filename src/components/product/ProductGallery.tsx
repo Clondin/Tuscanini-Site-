@@ -38,7 +38,6 @@ export default function ProductGallery({ product, state }: { product: Product; s
             className={`min-w-0 overflow-hidden border-2 bg-paper transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${selected === index ? 'border-ink' : 'border-transparent hover:border-ink/40'}`}
           >
             <img src={entry.thumbnail} alt="" width={160} height={160} loading="lazy" className="aspect-square w-full object-contain" />
-            <span className="block px-1 py-2 text-[10px] sm:text-xs text-ink">{entry.label}</span>
           </button>
         ))}
       </div>
