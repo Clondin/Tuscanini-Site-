@@ -4188,32 +4188,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730342/01-studio-b7fd7e3cf0bfe55b.webp",
       "thumbnail": "/assets/products/generated/730342/01-studio-b7fd7e3cf0bfe55b-320.webp",
-      "alt": "Rippled Olive Oil Potato Chips — enhanced original product photograph",
       "label": "Product",
+      "alt": "Rippled Olive Oil Potato Chips — enhanced original product photograph",
       "width": 826,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730342/02-kitchen-fc9e99823f2d053a.webp",
-      "thumbnail": "/assets/products/generated/730342/02-kitchen-fc9e99823f2d053a-320.webp",
-      "alt": "Rippled Olive Oil Potato Chips — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730342/02-use-a9a0f5fe3ff78c5d.webp",
+      "thumbnail": "/assets/products/generated/730342/02-use-a9a0f5fe3ff78c5d-320.webp",
+      "label": "In use",
+      "alt": "Rippled Olive Oil Potato Chips — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730342/03-table-39bf753ca789efdd.webp",
-      "thumbnail": "/assets/products/generated/730342/03-table-39bf753ca789efdd-320.webp",
-      "alt": "Rippled Olive Oil Potato Chips — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730342/03-occasion-8613f47dcaa2d8c1.webp",
+      "thumbnail": "/assets/products/generated/730342/03-occasion-8613f47dcaa2d8c1-320.webp",
+      "label": "Occasion",
+      "alt": "Rippled Olive Oil Potato Chips — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730342/04-environment-97a117b64c4e05d7.webp",
-      "thumbnail": "/assets/products/generated/730342/04-environment-97a117b64c4e05d7-320.webp",
-      "alt": "Rippled Olive Oil Potato Chips — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730342/04-family-6341c319d29602a9.webp",
+      "thumbnail": "/assets/products/generated/730342/04-family-6341c319d29602a9-320.webp",
+      "label": "Product family",
+      "alt": "Rippled Olive Oil Potato Chips — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -5072,32 +5072,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730423/01-studio-061cc3f9514caf64.webp",
       "thumbnail": "/assets/products/generated/730423/01-studio-061cc3f9514caf64-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — enhanced original product photograph",
       "label": "Product",
+      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — enhanced original product photograph",
       "width": 1600,
       "height": 535
     },
     {
-      "src": "/assets/products/generated/730423/02-kitchen-ad6177d7b89b028b.webp",
-      "thumbnail": "/assets/products/generated/730423/02-kitchen-ad6177d7b89b028b-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730423/02-use-1bcf9c8dd7ab23d3.webp",
+      "thumbnail": "/assets/products/generated/730423/02-use-1bcf9c8dd7ab23d3-320.webp",
+      "label": "In use",
+      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — being prepared, served or enjoyed",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730423/03-table-146848db57d4f304.webp",
-      "thumbnail": "/assets/products/generated/730423/03-table-146848db57d4f304-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730423/03-occasion-639c4b1f167ab39c.webp",
+      "thumbnail": "/assets/products/generated/730423/03-occasion-639c4b1f167ab39c-320.webp",
+      "label": "Occasion",
+      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — in a relevant dining or lifestyle occasion",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730423/04-environment-47ceec1e9343da8d.webp",
-      "thumbnail": "/assets/products/generated/730423/04-environment-47ceec1e9343da8d-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730423/04-family-263a43aee55d20a3.webp",
+      "thumbnail": "/assets/products/generated/730423/04-family-263a43aee55d20a3-320.webp",
+      "label": "Product family",
+      "alt": "Solid Light Tuna in Olive Oil with Chili Peppers - Three Pack — with related Tuscanini products",
       "width": 1536,
       "height": 1024
     }
@@ -5242,32 +5242,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730428/01-studio-f51b00cdb6bbe32b.webp",
       "thumbnail": "/assets/products/generated/730428/01-studio-f51b00cdb6bbe32b-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil — Six Pack — enhanced original product photograph",
       "label": "Product",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — enhanced original product photograph",
       "width": 1600,
       "height": 822
     },
     {
-      "src": "/assets/products/generated/730428/02-kitchen-e66c5a3f41c451ea.webp",
-      "thumbnail": "/assets/products/generated/730428/02-kitchen-e66c5a3f41c451ea-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730428/02-use-ad4be286a7755229.webp",
+      "thumbnail": "/assets/products/generated/730428/02-use-ad4be286a7755229-320.webp",
+      "label": "In use",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — being prepared, served or enjoyed",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730428/03-table-8b54c77a6c8205fa.webp",
-      "thumbnail": "/assets/products/generated/730428/03-table-8b54c77a6c8205fa-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730428/03-occasion-857d1d2d532dbf5f.webp",
+      "thumbnail": "/assets/products/generated/730428/03-occasion-857d1d2d532dbf5f-320.webp",
+      "label": "Occasion",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a relevant dining or lifestyle occasion",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730428/04-environment-22ddbe2b50c1bc62.webp",
-      "thumbnail": "/assets/products/generated/730428/04-environment-22ddbe2b50c1bc62-320.webp",
-      "alt": "Solid Light Tuna in Olive Oil — Six Pack — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730428/04-family-31efe1254e29739d.webp",
+      "thumbnail": "/assets/products/generated/730428/04-family-31efe1254e29739d-320.webp",
+      "label": "Product family",
+      "alt": "Solid Light Tuna in Olive Oil — Six Pack — with related Tuscanini products",
       "width": 1536,
       "height": 1024
     }
@@ -5412,34 +5412,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730443/01-studio-552c27e575cdc54a.webp",
       "thumbnail": "/assets/products/generated/730443/01-studio-552c27e575cdc54a-320.webp",
-      "alt": "Chopped Calabrian Chili Peppers in Oil — enhanced original product photograph",
       "label": "Product",
+      "alt": "Chopped Calabrian Chili Peppers in Oil — enhanced original product photograph",
       "width": 955,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730443/02-kitchen-a2d3556058b54fcd.webp",
-      "thumbnail": "/assets/products/generated/730443/02-kitchen-a2d3556058b54fcd-320.webp",
-      "alt": "Chopped Calabrian Chili Peppers in Oil — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730443/02-use-074b61c4a535daa9.webp",
+      "thumbnail": "/assets/products/generated/730443/02-use-074b61c4a535daa9-320.webp",
+      "label": "In use",
+      "alt": "Chopped Calabrian Chili Peppers in Oil — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730443/03-table-3b7d2b9291ebb96c.webp",
-      "thumbnail": "/assets/products/generated/730443/03-table-3b7d2b9291ebb96c-320.webp",
-      "alt": "Chopped Calabrian Chili Peppers in Oil — in a table setting",
-      "label": "At the table",
-      "width": 954,
-      "height": 1600
+      "src": "/assets/products/generated/730443/03-occasion-08f29f9a6a0f35f9.webp",
+      "thumbnail": "/assets/products/generated/730443/03-occasion-08f29f9a6a0f35f9-320.webp",
+      "label": "Occasion",
+      "alt": "Chopped Calabrian Chili Peppers in Oil — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730443/04-environment-fe2b7ddc4677cd6f.webp",
-      "thumbnail": "/assets/products/generated/730443/04-environment-fe2b7ddc4677cd6f-320.webp",
-      "alt": "Chopped Calabrian Chili Peppers in Oil — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 955,
-      "height": 1600
+      "src": "/assets/products/generated/730443/04-family-d69a7f8ce8615925.webp",
+      "thumbnail": "/assets/products/generated/730443/04-family-d69a7f8ce8615925-320.webp",
+      "label": "Product family",
+      "alt": "Chopped Calabrian Chili Peppers in Oil — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730455": [
@@ -5480,34 +5480,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730460/01-studio-f5fa55281e2972e1.webp",
       "thumbnail": "/assets/products/generated/730460/01-studio-f5fa55281e2972e1-320.webp",
-      "alt": "Roasted Chestnuts — enhanced original product photograph",
       "label": "Product",
+      "alt": "Roasted Chestnuts — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730460/02-kitchen-1ba7b7b9910d6fab.webp",
-      "thumbnail": "/assets/products/generated/730460/02-kitchen-1ba7b7b9910d6fab-320.webp",
-      "alt": "Roasted Chestnuts — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730460/02-use-901c43f053a0bc19.webp",
+      "thumbnail": "/assets/products/generated/730460/02-use-901c43f053a0bc19-320.webp",
+      "label": "In use",
+      "alt": "Roasted Chestnuts — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730460/03-table-1c4247f75115bf0a.webp",
-      "thumbnail": "/assets/products/generated/730460/03-table-1c4247f75115bf0a-320.webp",
-      "alt": "Roasted Chestnuts — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730460/03-occasion-8aa038abf2d999fc.webp",
+      "thumbnail": "/assets/products/generated/730460/03-occasion-8aa038abf2d999fc-320.webp",
+      "label": "Occasion",
+      "alt": "Roasted Chestnuts — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730460/04-environment-42e744611d55160d.webp",
-      "thumbnail": "/assets/products/generated/730460/04-environment-42e744611d55160d-320.webp",
-      "alt": "Roasted Chestnuts — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730460/04-family-04b01cdfdd54fad8.webp",
+      "thumbnail": "/assets/products/generated/730460/04-family-04b01cdfdd54fad8-320.webp",
+      "label": "Product family",
+      "alt": "Roasted Chestnuts — with related Tuscanini products",
+      "width": 1600,
+      "height": 800
     }
   ],
   "730461": [
@@ -5752,34 +5752,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730480/01-studio-51997e7089cdcb22.webp",
       "thumbnail": "/assets/products/generated/730480/01-studio-51997e7089cdcb22-320.webp",
-      "alt": "Milk Chocolate Truffles — enhanced original product photograph",
       "label": "Product",
+      "alt": "Milk Chocolate Truffles — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730480/02-kitchen-fa51af48a2fb0c35.webp",
-      "thumbnail": "/assets/products/generated/730480/02-kitchen-fa51af48a2fb0c35-320.webp",
-      "alt": "Milk Chocolate Truffles — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730480/02-use-46e671bc53d71608.webp",
+      "thumbnail": "/assets/products/generated/730480/02-use-46e671bc53d71608-320.webp",
+      "label": "In use",
+      "alt": "Milk Chocolate Truffles — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730480/03-table-56a4d3eb9274e4fc.webp",
-      "thumbnail": "/assets/products/generated/730480/03-table-56a4d3eb9274e4fc-320.webp",
-      "alt": "Milk Chocolate Truffles — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730480/03-occasion-a9cc335d2e40b4cd.webp",
+      "thumbnail": "/assets/products/generated/730480/03-occasion-a9cc335d2e40b4cd-320.webp",
+      "label": "Occasion",
+      "alt": "Milk Chocolate Truffles — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730480/04-environment-7a8fc83289b1af6d.webp",
-      "thumbnail": "/assets/products/generated/730480/04-environment-7a8fc83289b1af6d-320.webp",
-      "alt": "Milk Chocolate Truffles — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730480/04-family-2d844dcdf92e98f4.webp",
+      "thumbnail": "/assets/products/generated/730480/04-family-2d844dcdf92e98f4-320.webp",
+      "label": "Product family",
+      "alt": "Milk Chocolate Truffles — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730481": [
@@ -5922,32 +5922,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730495/01-studio-32194bb83eb10e88.webp",
       "thumbnail": "/assets/products/generated/730495/01-studio-32194bb83eb10e88-320.webp",
-      "alt": "Chili Pepper Paste — enhanced original product photograph",
       "label": "Product",
+      "alt": "Chili Pepper Paste — enhanced original product photograph",
       "width": 1024,
       "height": 1536
     },
     {
-      "src": "/assets/products/generated/730495/02-kitchen-7ad76a4a9d4dde52.webp",
-      "thumbnail": "/assets/products/generated/730495/02-kitchen-7ad76a4a9d4dde52-320.webp",
-      "alt": "Chili Pepper Paste — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730495/02-use-376664dbc1ab9569.webp",
+      "thumbnail": "/assets/products/generated/730495/02-use-376664dbc1ab9569-320.webp",
+      "label": "In use",
+      "alt": "Chili Pepper Paste — being prepared, served or enjoyed",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730495/03-table-e33177ec654a9349.webp",
-      "thumbnail": "/assets/products/generated/730495/03-table-e33177ec654a9349-320.webp",
-      "alt": "Chili Pepper Paste — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730495/03-occasion-1aeb705dadfe4a85.webp",
+      "thumbnail": "/assets/products/generated/730495/03-occasion-1aeb705dadfe4a85-320.webp",
+      "label": "Occasion",
+      "alt": "Chili Pepper Paste — in a relevant dining or lifestyle occasion",
       "width": 1536,
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730495/04-environment-85bba9e2ff50946c.webp",
-      "thumbnail": "/assets/products/generated/730495/04-environment-85bba9e2ff50946c-320.webp",
-      "alt": "Chili Pepper Paste — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730495/04-family-cd9e9a5ad27e10d3.webp",
+      "thumbnail": "/assets/products/generated/730495/04-family-cd9e9a5ad27e10d3-320.webp",
+      "label": "Product family",
+      "alt": "Chili Pepper Paste — with related Tuscanini products",
       "width": 1536,
       "height": 1024
     }
@@ -6126,34 +6126,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730542/01-studio-90e686f17f842737.webp",
       "thumbnail": "/assets/products/generated/730542/01-studio-90e686f17f842737-320.webp",
-      "alt": "Ketchup Potato Chips — enhanced original product photograph",
       "label": "Product",
+      "alt": "Ketchup Potato Chips — enhanced original product photograph",
       "width": 824,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730542/02-kitchen-04d0b2f94710771b.webp",
-      "thumbnail": "/assets/products/generated/730542/02-kitchen-04d0b2f94710771b-320.webp",
-      "alt": "Ketchup Potato Chips — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730542/02-use-97cb8490919f4cfe.webp",
+      "thumbnail": "/assets/products/generated/730542/02-use-97cb8490919f4cfe-320.webp",
+      "label": "In use",
+      "alt": "Ketchup Potato Chips — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730542/03-table-e05ba7c58cb90d6a.webp",
-      "thumbnail": "/assets/products/generated/730542/03-table-e05ba7c58cb90d6a-320.webp",
-      "alt": "Ketchup Potato Chips — in a table setting",
-      "label": "At the table",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730542/03-occasion-957b048454579a4f.webp",
+      "thumbnail": "/assets/products/generated/730542/03-occasion-957b048454579a4f-320.webp",
+      "label": "Occasion",
+      "alt": "Ketchup Potato Chips — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730542/04-environment-e83ac84e5c503c43.webp",
-      "thumbnail": "/assets/products/generated/730542/04-environment-e83ac84e5c503c43-320.webp",
-      "alt": "Ketchup Potato Chips — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730542/04-family-eb4eaf096b2dfcfe.webp",
+      "thumbnail": "/assets/products/generated/730542/04-family-eb4eaf096b2dfcfe-320.webp",
+      "label": "Product family",
+      "alt": "Ketchup Potato Chips — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730544": [
@@ -6296,32 +6296,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730552/01-studio-a8ea2ab58c639b42.webp",
       "thumbnail": "/assets/products/generated/730552/01-studio-a8ea2ab58c639b42-320.webp",
-      "alt": "Frozen Potato Gnocchi with Spinach — enhanced original product photograph",
       "label": "Product",
+      "alt": "Frozen Potato Gnocchi with Spinach — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730552/02-kitchen-360407a1034bf143.webp",
-      "thumbnail": "/assets/products/generated/730552/02-kitchen-360407a1034bf143-320.webp",
-      "alt": "Frozen Potato Gnocchi with Spinach — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730552/02-use-15fcd2607be57fef.webp",
+      "thumbnail": "/assets/products/generated/730552/02-use-15fcd2607be57fef-320.webp",
+      "label": "In use",
+      "alt": "Frozen Potato Gnocchi with Spinach — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730552/03-table-6cb7c763c9dcc4e6.webp",
-      "thumbnail": "/assets/products/generated/730552/03-table-6cb7c763c9dcc4e6-320.webp",
-      "alt": "Frozen Potato Gnocchi with Spinach — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730552/03-occasion-b56cdaf3e3fce38b.webp",
+      "thumbnail": "/assets/products/generated/730552/03-occasion-b56cdaf3e3fce38b-320.webp",
+      "label": "Occasion",
+      "alt": "Frozen Potato Gnocchi with Spinach — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730552/04-environment-44b107920f2f4dae.webp",
-      "thumbnail": "/assets/products/generated/730552/04-environment-44b107920f2f4dae-320.webp",
-      "alt": "Frozen Potato Gnocchi with Spinach — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730552/04-family-fa7d39de7890ca6a.webp",
+      "thumbnail": "/assets/products/generated/730552/04-family-fa7d39de7890ca6a-320.webp",
+      "label": "Product family",
+      "alt": "Frozen Potato Gnocchi with Spinach — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -6398,32 +6398,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730581/01-studio-d715d9eb888277d1.webp",
       "thumbnail": "/assets/products/generated/730581/01-studio-d715d9eb888277d1-320.webp",
-      "alt": "Black Truffle Sauce — enhanced original product photograph",
       "label": "Product",
+      "alt": "Black Truffle Sauce — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730581/02-kitchen-9615b07b41162aa4.webp",
-      "thumbnail": "/assets/products/generated/730581/02-kitchen-9615b07b41162aa4-320.webp",
-      "alt": "Black Truffle Sauce — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730581/02-use-74ff697eb7ce9c31.webp",
+      "thumbnail": "/assets/products/generated/730581/02-use-74ff697eb7ce9c31-320.webp",
+      "label": "In use",
+      "alt": "Black Truffle Sauce — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730581/03-table-af6bea08681d31b1.webp",
-      "thumbnail": "/assets/products/generated/730581/03-table-af6bea08681d31b1-320.webp",
-      "alt": "Black Truffle Sauce — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730581/03-occasion-fb00a599bc6e6eda.webp",
+      "thumbnail": "/assets/products/generated/730581/03-occasion-fb00a599bc6e6eda-320.webp",
+      "label": "Occasion",
+      "alt": "Black Truffle Sauce — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730581/04-environment-83d03ae8b00d1237.webp",
-      "thumbnail": "/assets/products/generated/730581/04-environment-83d03ae8b00d1237-320.webp",
-      "alt": "Black Truffle Sauce — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730581/04-family-4dbcc2df07da61f8.webp",
+      "thumbnail": "/assets/products/generated/730581/04-family-4dbcc2df07da61f8-320.webp",
+      "label": "Product family",
+      "alt": "Black Truffle Sauce — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -6488,8 +6488,8 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730586/04-family-e193fc19fd0342ff.webp",
-      "thumbnail": "/assets/products/generated/730586/04-family-e193fc19fd0342ff-320.webp",
+      "src": "/assets/products/generated/730586/04-family-650164bfbc5cc991.webp",
+      "thumbnail": "/assets/products/generated/730586/04-family-650164bfbc5cc991-320.webp",
       "label": "Product family",
       "alt": "Minced Black Truffle — with related Tuscanini products",
       "width": 1254,
@@ -6500,32 +6500,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730587/01-studio-938c37c27a3cb28d.webp",
       "thumbnail": "/assets/products/generated/730587/01-studio-938c37c27a3cb28d-320.webp",
-      "alt": "Large Black Truffle Sauce — enhanced original product photograph",
       "label": "Product",
+      "alt": "Large Black Truffle Sauce — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730587/02-kitchen-1f481e6917f688aa.webp",
-      "thumbnail": "/assets/products/generated/730587/02-kitchen-1f481e6917f688aa-320.webp",
-      "alt": "Large Black Truffle Sauce — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730587/02-use-4836fac192a0f65e.webp",
+      "thumbnail": "/assets/products/generated/730587/02-use-4836fac192a0f65e-320.webp",
+      "label": "In use",
+      "alt": "Large Black Truffle Sauce — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730587/03-table-fdee4d0f5e813f0d.webp",
-      "thumbnail": "/assets/products/generated/730587/03-table-fdee4d0f5e813f0d-320.webp",
-      "alt": "Large Black Truffle Sauce — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730587/03-occasion-14d65160d9d01d6f.webp",
+      "thumbnail": "/assets/products/generated/730587/03-occasion-14d65160d9d01d6f-320.webp",
+      "label": "Occasion",
+      "alt": "Large Black Truffle Sauce — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730587/04-environment-137be09d5cab72e9.webp",
-      "thumbnail": "/assets/products/generated/730587/04-environment-137be09d5cab72e9-320.webp",
-      "alt": "Large Black Truffle Sauce — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730587/04-family-e6e5d9d28b562d13.webp",
+      "thumbnail": "/assets/products/generated/730587/04-family-e6e5d9d28b562d13-320.webp",
+      "label": "Product family",
+      "alt": "Large Black Truffle Sauce — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -6534,66 +6534,66 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730590/01-studio-8fd192459a71f88f.webp",
       "thumbnail": "/assets/products/generated/730590/01-studio-8fd192459a71f88f-320.webp",
-      "alt": "Dark & Smooth Chocolate Bar — enhanced original product photograph",
       "label": "Product",
+      "alt": "Dark & Smooth Chocolate Bar — enhanced original product photograph",
       "width": 1024,
       "height": 1536
     },
     {
-      "src": "/assets/products/generated/730590/02-kitchen-a30b9fc78ef1cb4c.webp",
-      "thumbnail": "/assets/products/generated/730590/02-kitchen-a30b9fc78ef1cb4c-320.webp",
-      "alt": "Dark & Smooth Chocolate Bar — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730590/02-use-395b5c6ca814ccd0.webp",
+      "thumbnail": "/assets/products/generated/730590/02-use-395b5c6ca814ccd0-320.webp",
+      "label": "In use",
+      "alt": "Dark & Smooth Chocolate Bar — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730590/03-table-4f0445deedd1dc3f.webp",
-      "thumbnail": "/assets/products/generated/730590/03-table-4f0445deedd1dc3f-320.webp",
-      "alt": "Dark & Smooth Chocolate Bar — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730590/03-occasion-a54f4226e064aafd.webp",
+      "thumbnail": "/assets/products/generated/730590/03-occasion-a54f4226e064aafd-320.webp",
+      "label": "Occasion",
+      "alt": "Dark & Smooth Chocolate Bar — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730590/04-environment-8267d98e0e9a4aaf.webp",
-      "thumbnail": "/assets/products/generated/730590/04-environment-8267d98e0e9a4aaf-320.webp",
-      "alt": "Dark & Smooth Chocolate Bar — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730590/04-family-73712ea51f30a4ae.webp",
+      "thumbnail": "/assets/products/generated/730590/04-family-73712ea51f30a4ae-320.webp",
+      "label": "Product family",
+      "alt": "Dark & Smooth Chocolate Bar — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730591": [
     {
       "src": "/assets/products/generated/730591/01-studio-80580a577a622c74.webp",
       "thumbnail": "/assets/products/generated/730591/01-studio-80580a577a622c74-320.webp",
-      "alt": "Chocolate Bar with Almonds — enhanced original product photograph",
       "label": "Product",
+      "alt": "Chocolate Bar with Almonds — enhanced original product photograph",
       "width": 993,
       "height": 1584
     },
     {
-      "src": "/assets/products/generated/730591/02-kitchen-2fab3924fd39fa08.webp",
-      "thumbnail": "/assets/products/generated/730591/02-kitchen-2fab3924fd39fa08-320.webp",
-      "alt": "Chocolate Bar with Almonds — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730591/02-use-b335137cdbd52401.webp",
+      "thumbnail": "/assets/products/generated/730591/02-use-b335137cdbd52401-320.webp",
+      "label": "In use",
+      "alt": "Chocolate Bar with Almonds — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730591/03-table-e8a3a95bc5853483.webp",
-      "thumbnail": "/assets/products/generated/730591/03-table-e8a3a95bc5853483-320.webp",
-      "alt": "Chocolate Bar with Almonds — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730591/03-occasion-5a127d049b12dd6a.webp",
+      "thumbnail": "/assets/products/generated/730591/03-occasion-5a127d049b12dd6a-320.webp",
+      "label": "Occasion",
+      "alt": "Chocolate Bar with Almonds — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730591/04-environment-bab29f62f2d7ca6a.webp",
-      "thumbnail": "/assets/products/generated/730591/04-environment-bab29f62f2d7ca6a-320.webp",
-      "alt": "Chocolate Bar with Almonds — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730591/04-family-6f13304e643d3b63.webp",
+      "thumbnail": "/assets/products/generated/730591/04-family-6f13304e643d3b63-320.webp",
+      "label": "Product family",
+      "alt": "Chocolate Bar with Almonds — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -6670,32 +6670,32 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730598/01-studio-4c9d3eef9c77705c.webp",
       "thumbnail": "/assets/products/generated/730598/01-studio-4c9d3eef9c77705c-320.webp",
-      "alt": "Chocolate Gianduiotti — enhanced original product photograph",
       "label": "Product",
+      "alt": "Chocolate Gianduiotti — enhanced original product photograph",
       "width": 831,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730598/02-kitchen-cd2bdd80c119797e.webp",
-      "thumbnail": "/assets/products/generated/730598/02-kitchen-cd2bdd80c119797e-320.webp",
-      "alt": "Chocolate Gianduiotti — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730598/02-use-5f3184df10c5b638.webp",
+      "thumbnail": "/assets/products/generated/730598/02-use-5f3184df10c5b638-320.webp",
+      "label": "In use",
+      "alt": "Chocolate Gianduiotti — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730598/03-table-7e92cc37f1d74b54.webp",
-      "thumbnail": "/assets/products/generated/730598/03-table-7e92cc37f1d74b54-320.webp",
-      "alt": "Chocolate Gianduiotti — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730598/03-occasion-2b2048ddcc96d1a2.webp",
+      "thumbnail": "/assets/products/generated/730598/03-occasion-2b2048ddcc96d1a2-320.webp",
+      "label": "Occasion",
+      "alt": "Chocolate Gianduiotti — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730598/04-environment-7c62b930c0ef0c8d.webp",
-      "thumbnail": "/assets/products/generated/730598/04-environment-7c62b930c0ef0c8d-320.webp",
-      "alt": "Chocolate Gianduiotti — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730598/04-family-c16970ac4544a626.webp",
+      "thumbnail": "/assets/products/generated/730598/04-family-c16970ac4544a626-320.webp",
+      "label": "Product family",
+      "alt": "Chocolate Gianduiotti — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
@@ -6704,34 +6704,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
     {
       "src": "/assets/products/generated/730600/01-studio-7c165c5ebc2fc086.webp",
       "thumbnail": "/assets/products/generated/730600/01-studio-7c165c5ebc2fc086-320.webp",
-      "alt": "Bronze Cut Spaghetti — enhanced original product photograph",
       "label": "Product",
+      "alt": "Bronze Cut Spaghetti — enhanced original product photograph",
       "width": 622,
       "height": 1600
     },
     {
-      "src": "/assets/products/generated/730600/02-kitchen-d3cb7c50e09f6bf2.webp",
-      "thumbnail": "/assets/products/generated/730600/02-kitchen-d3cb7c50e09f6bf2-320.webp",
-      "alt": "Bronze Cut Spaghetti — in a kitchen setting",
-      "label": "Kitchen",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730600/02-use-b7ed5fd9c73ecd5a.webp",
+      "thumbnail": "/assets/products/generated/730600/02-use-b7ed5fd9c73ecd5a-320.webp",
+      "label": "In use",
+      "alt": "Bronze Cut Spaghetti — being prepared, served or enjoyed",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730600/03-table-64af338055aadaaf.webp",
-      "thumbnail": "/assets/products/generated/730600/03-table-64af338055aadaaf-320.webp",
-      "alt": "Bronze Cut Spaghetti — in a table setting",
-      "label": "At the table",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730600/03-occasion-e577c767e47bea51.webp",
+      "thumbnail": "/assets/products/generated/730600/03-occasion-e577c767e47bea51-320.webp",
+      "label": "Occasion",
+      "alt": "Bronze Cut Spaghetti — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
-      "src": "/assets/products/generated/730600/04-environment-a5d56ad653fe107a.webp",
-      "thumbnail": "/assets/products/generated/730600/04-environment-a5d56ad653fe107a-320.webp",
-      "alt": "Bronze Cut Spaghetti — in a lifestyle setting",
-      "label": "Inspiration",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730600/04-family-be6b447a3c838c4a.webp",
+      "thumbnail": "/assets/products/generated/730600/04-family-be6b447a3c838c4a-320.webp",
+      "label": "Product family",
+      "alt": "Bronze Cut Spaghetti — with related Tuscanini products",
+      "width": 1536,
+      "height": 1024
     }
   ],
   "730601": [

@@ -178,8 +178,10 @@ export async function validateStoryCompositeProvenance(options: StoryProvenanceO
   for (const value of [receipt.base.sha256, receipt.final.sha256]) check(!owners.has(value) || owners.get(value) === sku, 'Story raw/final reused across hero SKUs');
   const python = process.platform === 'win32'
     ? join(homedir(), '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe') : 'python3';
+  // Detailed label restorations can replay hundreds of full-canvas patches.
+  // Keep verification bounded while allowing those exact pixel checks to finish.
   const { stdout } = await promisify(execFile)(python, [toolkitPath, '--verify', configPath, receiptPath, candidatePath], {
-    windowsHide: true, timeout: 120_000, maxBuffer: 64 * 1024,
+    windowsHide: true, timeout: 300_000, maxBuffer: 64 * 1024,
   });
   const replay = JSON.parse(stdout) as { verified: boolean; sku: string; role: string; writes: number; final_sha256: string; decoded_rgba_sha256: string };
   check(replay.verified === true && replay.sku === sku && replay.role === role && replay.writes === 0
