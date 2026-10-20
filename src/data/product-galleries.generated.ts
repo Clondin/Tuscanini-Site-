@@ -5852,34 +5852,34 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
   ],
   "730484": [
     {
-      "src": "/assets/products/generated/730484/01-studio-593319b79d9fa3c8.webp",
-      "thumbnail": "/assets/products/generated/730484/01-studio-593319b79d9fa3c8-320.webp",
-      "alt": "Pistachio Chocolate Truffles — enhanced original product photograph",
+      "src": "/assets/products/generated/730484/01-studio-c0411b82ba93da1f.webp",
+      "thumbnail": "/assets/products/generated/730484/01-studio-c0411b82ba93da1f-320.webp",
       "label": "Product",
+      "alt": "Pistachio Chocolate Truffles — enhanced original product photograph",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730484/02-kitchen-33dd9d507b49a276.webp",
-      "thumbnail": "/assets/products/generated/730484/02-kitchen-33dd9d507b49a276-320.webp",
-      "alt": "Pistachio Chocolate Truffles — in a kitchen setting",
-      "label": "Kitchen",
+      "src": "/assets/products/generated/730484/02-use-c32f94f977e89277.webp",
+      "thumbnail": "/assets/products/generated/730484/02-use-c32f94f977e89277-320.webp",
+      "label": "In use",
+      "alt": "Pistachio Chocolate Truffles — being prepared, served or enjoyed",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730484/03-table-314888a55a70e6f3.webp",
-      "thumbnail": "/assets/products/generated/730484/03-table-314888a55a70e6f3-320.webp",
-      "alt": "Pistachio Chocolate Truffles — in a table setting",
-      "label": "At the table",
+      "src": "/assets/products/generated/730484/03-occasion-65cb69ed25cc47f2.webp",
+      "thumbnail": "/assets/products/generated/730484/03-occasion-65cb69ed25cc47f2-320.webp",
+      "label": "Occasion",
+      "alt": "Pistachio Chocolate Truffles — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730484/04-environment-0429804fe5c9d229.webp",
-      "thumbnail": "/assets/products/generated/730484/04-environment-0429804fe5c9d229-320.webp",
-      "alt": "Pistachio Chocolate Truffles — in a lifestyle setting",
-      "label": "Inspiration",
+      "src": "/assets/products/generated/730484/04-family-e6a44cd4ff714720.webp",
+      "thumbnail": "/assets/products/generated/730484/04-family-e6a44cd4ff714720-320.webp",
+      "label": "Product family",
+      "alt": "Pistachio Chocolate Truffles — with related Tuscanini products",
       "width": 1254,
       "height": 1254
     }
