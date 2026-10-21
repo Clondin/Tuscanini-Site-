@@ -11,7 +11,7 @@
         }
       ],
       "destination": "https://tuscaninifoods.com/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/:path*",
@@ -22,7 +22,7 @@
         }
       ],
       "destination": "https://tuscaninifoods.com/:path*",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/product/all-purpose-flour-1kg",
