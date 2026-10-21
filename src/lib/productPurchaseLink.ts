@@ -108,6 +108,7 @@ const amazonProductAsins: Record<string, string> = {
   "chocolate-gianduiotti": "B0FR5CB4LL",
   "forest-fruits-fruit-spread-preserves": "B08JZGV47V",
   "tomato-puree": "B0C5N9W6BD",
+  "tuna-solid-light-olive-oil-can": "B08Z1PN9QJ",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
