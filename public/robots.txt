@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tuscanini-site.vercel.app/sitemap.xml
+Sitemap: https://tuscaninifoods.com/sitemap.xml

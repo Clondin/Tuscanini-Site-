@@ -6,7 +6,7 @@ Agents and developers changing content, images, catalog behavior, navigation, or
 
 ## Production
 
-- Website: <https://tuscanini-site.vercel.app>
+- Website: <https://tuscaninifoods.com>
 - Admin: <https://kayco-sites-admin.vercel.app>
 - Content API: <https://qkatfirzwukmgdrytbue.supabase.co/functions/v1/content-api>
 

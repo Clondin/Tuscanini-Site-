@@ -7,6 +7,7 @@ import { productSchemaFields } from "../src/lib/productSchema";
 import { recipePages, recipeDescription, recipeStructuredData, recipesIndexDescription } from "../src/data/recipe-pages";
 import type { Category, Product } from "../src/data/products";
 import { readBuildCatalog } from "./load-build-catalog";
+import { resolveSiteUrl } from "../src/lib/siteUrl";
 
 interface RouteHtml {
   path: string;
@@ -17,7 +18,7 @@ interface RouteHtml {
   structuredData: unknown;
 }
 
-const siteUrl = (process.env.VITE_SITE_URL || "https://tuscanini-site.vercel.app").replace(/\/+$/, "");
+const siteUrl = resolveSiteUrl(process.env.VITE_SITE_URL);
 const defaultImage = `${siteUrl}/assets/Photos/backgrounds/italian-coast.jpg`;
 
 function safeSlug(value: string): string | null {

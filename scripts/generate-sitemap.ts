@@ -2,9 +2,10 @@ import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { prepareBuildCatalog } from "./load-build-catalog";
 import { renderSitemap } from "./sitemap-xml";
+import { resolveSiteUrl } from "../src/lib/siteUrl";
 import { recipePages } from "../src/data/recipe-pages";
 
-const siteUrl = (process.env.VITE_SITE_URL || "https://tuscanini-site.vercel.app").replace(/\/+$/, "");
+const siteUrl = resolveSiteUrl(process.env.VITE_SITE_URL);
 
 const paths = new Set<string>(["/", "/about", "/products", "/terms", "/recipes"]);
 for (const recipe of recipePages) paths.add(`/recipes/${recipe.slug}`);

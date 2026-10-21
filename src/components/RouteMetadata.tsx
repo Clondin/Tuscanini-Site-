@@ -6,8 +6,8 @@ import { productRouteTitle } from "../lib/routeTitle";
 import { productSchemaFields } from "../lib/productSchema";
 import { getRecipePage, recipeDescription, recipePages, recipeStructuredData, recipesIndexDescription } from "../data/recipe-pages";
 import { getOptimizedImageUrl, isMissingProductImage } from "../lib/productImage";
+import { resolveSiteUrl } from "../lib/siteUrl";
 
-const defaultSiteUrl = "https://tuscanini-site.vercel.app";
 const defaultBrand = "Tuscanini";
 const defaultDescription = "Taste Tuscanini. Know Italy.";
 
@@ -53,9 +53,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
     typeof settings?.tagline === "string" && settings.tagline.trim()
       ? settings.tagline.trim()
       : defaultDescription;
-  const siteUrl = (
-    import.meta.env.VITE_SITE_URL?.trim() || defaultSiteUrl
-  ).replace(/\/+$/, "");
+  const siteUrl = resolveSiteUrl(import.meta.env.VITE_SITE_URL);
 
   useEffect(() => {
     const pathname = location.pathname.replace(/\/+$/, "") || "/";
