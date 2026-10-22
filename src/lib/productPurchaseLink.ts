@@ -109,6 +109,17 @@ const amazonProductAsins: Record<string, string> = {
   "forest-fruits-fruit-spread-preserves": "B08JZGV47V",
   "tomato-puree": "B0C5N9W6BD",
   "tuna-solid-light-olive-oil-can": "B08Z1PN9QJ",
+  "vodka-sauce-730228": "B0H2WJPWDQ",
+  "mushroom-alfredo-sauce-730227": "B0H2WKVXCT",
+  "lime-juice-730288": "B0GCFP895R",
+  "lime-juice-large-730289": "B0GCFQZSDR",
+  "sicilian-extra-virgin-olive-oil-730406": "B0GNNHJ4XS",
+  "oregano-parchment-crackers-small-730335": "B0H5LWGR57",
+  "truffle-parchment-crackers-small-730337": "B0H5MD8D5R",
+  "sparkling-malvasia-grape-juice-730472": "B0GN9F545R",
+  "sparkling-blood-orange-aranciata-730386": "B0H72CT67P",
+  "sparkling-blood-orange-aranciata-large-730387": "B0H72M8VDD",
+  "garlic-paste-730496": "B0GNB2QD83",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
