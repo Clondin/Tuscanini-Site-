@@ -315,7 +315,10 @@ function recipeRoutes(categories: Category[]): RouteHtml[] {
       name: "Recipes",
       description: recipesIndexDescription(),
       url: `${siteUrl}/recipes`,
-      hasPart: recipePages.map((recipe) => ({ "@type": "Recipe", name: recipe.title, url: `${siteUrl}/recipes/${recipe.slug}` })),
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: recipePages.map((recipe, index) => ({ "@type": "ListItem", position: index + 1, name: recipe.title, url: `${siteUrl}/recipes/${recipe.slug}` })),
+      },
     },
   }];
   for (const recipe of recipePages) {
