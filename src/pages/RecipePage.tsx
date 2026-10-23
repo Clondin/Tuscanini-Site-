@@ -320,7 +320,7 @@ export default function RecipePage() {
         </div>
 
         <div id="recipe" className="max-w-7xl mx-auto scroll-mt-24 px-5 md:px-10 pt-12 md:pt-20 pb-14 md:pb-20 grid gap-10 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-16 xl:gap-24 items-start">
-          <div className="lg:sticky lg:top-[100px]">
+          <div className="lg:sticky lg:top-[100px] lg:max-h-[calc(100vh-120px)] lg:overflow-y-auto [scrollbar-width:thin]">
             <Ingredients recipe={recipe} />
           </div>
           <div>
