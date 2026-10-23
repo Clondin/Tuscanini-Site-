@@ -120,6 +120,7 @@ const amazonProductAsins: Record<string, string> = {
   "sparkling-blood-orange-aranciata-730386": "B0H72CT67P",
   "sparkling-blood-orange-aranciata-large-730387": "B0H72M8VDD",
   "garlic-paste-730496": "B0GNB2QD83",
+  "bronze-cut-pappardelle-730606": "B0H2BCH1GG",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
