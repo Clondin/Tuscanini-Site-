@@ -9,6 +9,7 @@ import RelatedCategories from "../components/category/RelatedCategories";
 import CategoryClosing from "../components/category/CategoryClosing";
 import KosherCategoryStrip from "../components/category/KosherCategoryStrip";
 import PackFan from "../components/ui/PackFan";
+import CategoryLifestyleBanner from "../components/category/CategoryLifestyleBanner";
 
 export default function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -45,6 +46,7 @@ export default function CategoryPage() {
           </div>
         </div>
       </header>
+      <CategoryLifestyleBanner slug={category.slug} />
       <div className="max-w-7xl mx-auto px-5 md:px-10 pt-8 pb-16">
         <CategoryProducts key={category.id} category={category} />
       </div>
