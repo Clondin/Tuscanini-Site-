@@ -341,6 +341,7 @@ routes.push(...recipeRoutes(buildCatalog));
 routes.push(about);
 routes.push({ path: '/terms', title: 'Terms & Conditions | Tuscanini', description: 'Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.', type: 'website', content: simpleContent('Terms & Conditions', 'Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.'), structuredData: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Terms & Conditions', url: `${siteUrl}/terms` } });
 routes.push({ path: '/products', title: 'Explore Our Products | Tuscanini', description: 'Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.', type: 'website', content: productsContent(buildCatalog), structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });
+routes.push({ path: '/search', title: 'Search | Tuscanini', description: 'Search Tuscanini pasta, sauces, olive oils, recipes and videos.', type: 'website', content: simpleContent('Search', 'Search Tuscanini pasta, sauces, olive oils, recipes and videos.', '<p><a href="/products">Browse all products</a></p>'), structuredData: { '@context': 'https://schema.org', '@type': 'SearchResultsPage', name: 'Search', url: `${siteUrl}/search` } });
 
 home.content = homeContent(buildCatalog);
 await writeFile(resolve("dist/index.html"), renderRouteHtml(baseHtml, home), "utf8");
