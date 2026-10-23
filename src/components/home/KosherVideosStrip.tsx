@@ -1,49 +1,37 @@
-import { useState } from "react";
 import { tuscaniniKosherVideos } from "../../data/kosherBrandVideos";
-import KosherVideoCard from "../kosher/KosherVideoCard";
-import KosherCredit from "../kosher/KosherCredit";
+import KosherVideoRail from "../kosher/KosherVideoRail";
+import { KOSHER_COM_HOME } from "../../lib/kosherVideo";
 
-const FIRST = 6;
-
-/** "Videos from Kosher.com": the Tuscanini-sponsored kosher.com episodes, playable right here. */
+/** "Videos from Kosher.com": the Tuscanini-sponsored kosher.com episodes in a swipeable row; each plays in a lightbox. */
 export default function KosherVideosStrip() {
-  const [showAll, setShowAll] = useState(false);
-  const videos = showAll ? tuscaniniKosherVideos : tuscaniniKosherVideos.slice(0, FIRST);
-  const more = tuscaniniKosherVideos.length - FIRST;
+  const videos = tuscaniniKosherVideos;
   if (!videos.length) return null;
 
   return (
-    <section aria-labelledby="kosher-videos-heading" className="bg-aged-cream">
-      <div className="max-w-7xl mx-auto px-5 md:px-10 py-14 md:py-20">
-        <div className="mb-8 md:mb-10 max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-olive-deep font-semibold">Watch &amp; cook</p>
-          <h2 id="kosher-videos-heading" className="mt-3 font-headline text-3xl md:text-5xl text-heading">
+    <section aria-labelledby="kosher-videos-heading" className="bg-dark-surface text-paper">
+      <div className="max-w-7xl mx-auto px-5 md:px-10 py-14 md:py-24">
+        <div className="mb-8 md:mb-12 max-w-2xl md:pr-32">
+          <p className="text-[11px] uppercase tracking-[0.24em] text-gold font-semibold">Watch &amp; cook</p>
+          <h2 id="kosher-videos-heading" className="mt-3 font-headline text-[2.1rem] leading-[1.05] md:text-5xl text-paper">
             Videos from Kosher.com
           </h2>
-          <p className="mt-3 text-sm md:text-base leading-relaxed text-on-surface/80">
+          <p className="mt-4 text-sm md:text-base leading-relaxed text-paper/70">
             Tuscanini-sponsored episodes from the Kosher.com kitchen: better pasta, better pizza, capers, tuna and more.
             Press play to watch right here.
           </p>
-          <KosherCredit className="mt-2" />
         </div>
-        <ul className="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {videos.map((video) => (
-            <li key={video.jw}>
-              <KosherVideoCard video={video} label="Sponsored by Tuscanini" />
-            </li>
-          ))}
-        </ul>
-        {!showAll && more > 0 && (
-          <div className="mt-8 text-center">
-            <button
-              type="button"
-              onClick={() => setShowAll(true)}
-              className="inline-flex min-h-11 items-center rounded-full border border-ink/20 bg-paper px-6 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
-            >
-              Show {more} more videos
-            </button>
-          </div>
-        )}
+        <KosherVideoRail videos={videos} label="Sponsored by Tuscanini" tone="dark" ariaLabel="Tuscanini videos on Kosher.com" />
+        <p className="mt-8 text-xs md:text-sm text-paper/55">
+          {videos.length} episodes &middot; Recipes &amp; stories from{" "}
+          <a
+            href={KOSHER_COM_HOME}
+            target="_blank"
+            rel="noopener"
+            className="font-semibold text-paper/80 underline decoration-paper/25 underline-offset-4 hover:text-paper hover:decoration-paper"
+          >
+            Kosher.com
+          </a>
+        </p>
       </div>
     </section>
   );

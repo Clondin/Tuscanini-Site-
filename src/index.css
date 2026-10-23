@@ -255,3 +255,63 @@ body {
 /* Keep section destinations clear of the fixed navigation. */
 [id] { scroll-margin-top: 96px; }
 input::placeholder { color: #74685b; opacity: 1; }
+
+/* Kosher.com video rail + lightbox (recipes & videos v3) */
+.kv-rail {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.kv-rail::-webkit-scrollbar {
+  display: none;
+}
+.kv-modal {
+  animation: kv-fade 200ms ease-out both;
+}
+.kv-modal-panel {
+  animation: kv-rise 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes kv-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes kv-rise {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kv-modal,
+  .kv-modal-panel {
+    animation: none;
+  }
+}
+
+/* Recipe pages print as a clean recipe card: no site chrome, no shop rows. */
+@media print {
+  body:has(.recipe-article) nav[aria-label="Primary navigation"],
+  body:has(.recipe-article) footer,
+  body:has(.recipe-article) a[href="#main-content"] {
+    display: none !important;
+  }
+  body:has(.recipe-article) main {
+    padding-top: 0 !important;
+  }
+  body:has(.recipe-article) button[aria-label*="top" i] {
+    display: none !important;
+  }
+  .recipe-article figure img {
+    max-height: 3.2in;
+    object-fit: cover;
+  }
+  .recipe-article #recipe {
+    display: block !important;
+    padding-top: 0.3in !important;
+  }
+  .recipe-article #recipe > div {
+    position: static !important;
+    margin-bottom: 0.3in;
+  }
+  .recipe-article .line-clamp-3 {
+    -webkit-line-clamp: unset !important;
+    display: block !important;
+  }
+}

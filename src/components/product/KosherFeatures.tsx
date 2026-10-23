@@ -3,6 +3,7 @@ import type { KosherVideo } from "../../lib/kosherVideo";
 import { useKosherData } from "./useKosherData";
 import KosherVideoCard from "../kosher/KosherVideoCard";
 import KosherCredit from "../kosher/KosherCredit";
+import KosherVideoRail from "../kosher/KosherVideoRail";
 
 const TYPE_LABEL: Record<KosherFeatureType, string> = {
   recipe: "Recipe",
@@ -69,7 +70,7 @@ export default function KosherFeatures({ productId }: { productId: string }) {
 
   return (
     <section aria-labelledby="kosher-features-heading" className="px-5 md:px-10 py-12 max-w-7xl mx-auto">
-      <div className="mb-6">
+      <div className="mb-8 md:pr-32">
         <h2 id="kosher-features-heading" className="font-headline text-3xl md:text-4xl text-heading">
           Featured on Kosher.com
         </h2>
@@ -78,17 +79,24 @@ export default function KosherFeatures({ productId }: { productId: string }) {
         </p>
         <KosherCredit className="mt-1" />
       </div>
-      {videos.length > 0 && (
-        <ul
-          aria-label="Videos on Kosher.com"
-          className={`grid gap-4 md:gap-6 mb-8 ${videos.length > 1 ? "sm:grid-cols-2" : "max-w-2xl"} ${videos.length > 2 ? "lg:grid-cols-3" : ""}`}
-        >
+      {videos.length === 1 && (
+        <div aria-label="Video on Kosher.com" className="mb-10 max-w-4xl">
+          <KosherVideoCard video={videos[0]} label="Episode" size="lg" />
+        </div>
+      )}
+      {videos.length === 2 && (
+        <ul aria-label="Videos on Kosher.com" className="mb-10 grid gap-6 md:gap-8 sm:grid-cols-2">
           {videos.map((video) => (
             <li key={video.jw}>
               <KosherVideoCard video={video} label="Episode" />
             </li>
           ))}
         </ul>
+      )}
+      {videos.length > 2 && (
+        <div className="mb-10 md:pt-2">
+          <KosherVideoRail videos={videos} label="Episode" ariaLabel="Videos on Kosher.com" />
+        </div>
       )}
       {cards.length > 0 && (
         <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
