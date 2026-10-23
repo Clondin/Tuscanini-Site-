@@ -23,10 +23,10 @@ export default function OriginStory() {
           <figure className="absolute right-0 top-0 w-[72%] h-[82%] overflow-hidden">
             <img
               {...getResponsiveImageProps(
-                "/assets/Photos/backgrounds/italian-village-hero.webp",
+                "/assets/Photos/story/village-produce-market.webp",
                 "(min-width: 1024px) 30vw, 70vw",
               )}
-              alt="Market stalls with tomatoes along a sunlit stone lane in an Italian village."
+              alt="Market vendor arranging lemons and tomatoes for shoppers on a stone village lane."
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover"

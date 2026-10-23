@@ -768,12 +768,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730129/01-studio-58f42813fbfdb7f4.webp#product",
-      "thumbnail": "/assets/products/generated/730129/01-studio-58f42813fbfdb7f4-320.webp",
-      "label": "Product",
-      "alt": "Mini Mushroom Pizza Calzones — enhanced original product photograph",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730129/03-occasion-74ca10bf2d0e824b.webp",
+      "thumbnail": "/assets/products/generated/730129/03-occasion-74ca10bf2d0e824b-320.webp",
+      "label": "Occasion",
+      "alt": "Mini Mushroom Pizza Calzones — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730129/04-family-c247e4de25897f4a.webp",
@@ -1210,12 +1210,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730190/01-studio-c6bd99fdb53208cf.webp#product",
-      "thumbnail": "/assets/products/generated/730190/01-studio-c6bd99fdb53208cf-320.webp",
-      "label": "Product",
-      "alt": "Pitted Green Castelvetrano Olives — enhanced original product photograph",
-      "width": 968,
-      "height": 1600
+      "src": "/assets/products/generated/730190/03-occasion-c7174b1f2bcb3088.webp",
+      "thumbnail": "/assets/products/generated/730190/03-occasion-c7174b1f2bcb3088-320.webp",
+      "label": "Occasion",
+      "alt": "Pitted Green Castelvetrano Olives — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730190/04-family-53edc9ebdb9bb495.webp",
@@ -1244,12 +1244,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730191/01-studio-90a753e6870f8f98.webp#product",
-      "thumbnail": "/assets/products/generated/730191/01-studio-90a753e6870f8f98-320.webp",
-      "label": "Product",
-      "alt": "Green Cerignola Olives — enhanced original product photograph",
-      "width": 963,
-      "height": 1600
+      "src": "/assets/products/generated/730191/03-occasion-774de08874f297a9.webp",
+      "thumbnail": "/assets/products/generated/730191/03-occasion-774de08874f297a9-320.webp",
+      "label": "Occasion",
+      "alt": "Green Cerignola Olives — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730191/04-family-8aa79da620a8448c.webp",
@@ -1380,10 +1380,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730198/01-studio-1d6b1223dfd404a6.webp#product",
-      "thumbnail": "/assets/products/generated/730198/01-studio-1d6b1223dfd404a6-320.webp",
-      "label": "Product",
-      "alt": "Spicy Pitted Olives Pouch — enhanced original product photograph",
+      "src": "/assets/products/generated/730198/03-occasion-95cb9e7e3c01ced5.webp",
+      "thumbnail": "/assets/products/generated/730198/03-occasion-95cb9e7e3c01ced5-320.webp",
+      "label": "Occasion",
+      "alt": "Spicy Pitted Olives Pouch — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -1448,12 +1448,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730205/01-studio-76d3583b720f603d.webp#product",
-      "thumbnail": "/assets/products/generated/730205/01-studio-76d3583b720f603d-320.webp",
-      "label": "Product",
-      "alt": "Traditional Pizza Sauce — enhanced original product photograph",
-      "width": 784,
-      "height": 1600
+      "src": "/assets/products/generated/730205/03-occasion-6927a98c6f95090a.webp",
+      "thumbnail": "/assets/products/generated/730205/03-occasion-6927a98c6f95090a-320.webp",
+      "label": "Occasion",
+      "alt": "Traditional Pizza Sauce — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730205/04-family-cc9b7c153a4dde3e.webp",
@@ -1584,12 +1584,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730210/01-studio-2542f27b33a00f93.webp#product",
-      "thumbnail": "/assets/products/generated/730210/01-studio-2542f27b33a00f93-320.webp",
-      "label": "Product",
-      "alt": "Tomato Passata — enhanced original product photograph",
-      "width": 1026,
-      "height": 1532
+      "src": "/assets/products/generated/730210/03-occasion-5e42d0353b447b70.webp",
+      "thumbnail": "/assets/products/generated/730210/03-occasion-5e42d0353b447b70-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Passata — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730210/04-family-4ac40c2eaa9fb2d9.webp",
@@ -1618,12 +1618,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730211/01-studio-1ca32e942c27ad07.webp#product",
-      "thumbnail": "/assets/products/generated/730211/01-studio-1ca32e942c27ad07-320.webp",
-      "label": "Product",
-      "alt": "Tomato Paste Tube — enhanced original product photograph",
-      "width": 800,
-      "height": 1600
+      "src": "/assets/products/generated/730211/03-occasion-d0e3d052abcf4f77.webp",
+      "thumbnail": "/assets/products/generated/730211/03-occasion-d0e3d052abcf4f77-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Paste Tube — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730211/04-family-182a84117ce92ff4.webp",
@@ -1652,12 +1652,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730212/01-studio-43bd81f8ed00b88f.webp#product",
-      "thumbnail": "/assets/products/generated/730212/01-studio-43bd81f8ed00b88f-320.webp",
-      "label": "Product",
-      "alt": "Crushed Tomatoes 24.7oz — enhanced original product photograph",
-      "width": 810,
-      "height": 1600
+      "src": "/assets/products/generated/730212/03-occasion-1b4d01e54acebab5.webp",
+      "thumbnail": "/assets/products/generated/730212/03-occasion-1b4d01e54acebab5-320.webp",
+      "label": "Occasion",
+      "alt": "Crushed Tomatoes 24.7oz — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730212/04-family-dccf26614095a08e.webp",
@@ -1686,12 +1686,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730213/01-studio-ee279f48e8d03b8b.webp#product",
-      "thumbnail": "/assets/products/generated/730213/01-studio-ee279f48e8d03b8b-320.webp",
-      "label": "Product",
-      "alt": "Diced Tomatoes 24.3oz — enhanced original product photograph",
-      "width": 535,
-      "height": 1600
+      "src": "/assets/products/generated/730213/03-occasion-0226f871984a92e9.webp",
+      "thumbnail": "/assets/products/generated/730213/03-occasion-0226f871984a92e9-320.webp",
+      "label": "Occasion",
+      "alt": "Diced Tomatoes 24.3oz — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730213/04-family-385cd61081fc344d.webp",
@@ -1720,12 +1720,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730215/01-studio-ffb40217b1e44d0c.webp#product",
-      "thumbnail": "/assets/products/generated/730215/01-studio-ffb40217b1e44d0c-320.webp",
-      "label": "Product",
-      "alt": "Whole Peeled Tomatoes Large — enhanced original product photograph",
-      "width": 1132,
-      "height": 1389
+      "src": "/assets/products/generated/730215/03-occasion-d587009d26fb8722.webp",
+      "thumbnail": "/assets/products/generated/730215/03-occasion-d587009d26fb8722-320.webp",
+      "label": "Occasion",
+      "alt": "Whole Peeled Tomatoes Large — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730215/04-family-a9e54e35b72cbc74.webp",
@@ -1754,12 +1754,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730216/01-studio-f273ce1d28f72f0c.webp#product",
-      "thumbnail": "/assets/products/generated/730216/01-studio-f273ce1d28f72f0c-320.webp",
-      "label": "Product",
-      "alt": "Organic Tomato Paste Tube — enhanced original product photograph",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730216/03-occasion-e4e842b78bd90709.webp",
+      "thumbnail": "/assets/products/generated/730216/03-occasion-e4e842b78bd90709-320.webp",
+      "label": "Occasion",
+      "alt": "Organic Tomato Paste Tube — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730216/04-family-814b8cca223ed6be.webp",
@@ -1788,12 +1788,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730218/01-studio-0d437e7e239a74df.webp#product",
-      "thumbnail": "/assets/products/generated/730218/01-studio-0d437e7e239a74df-320.webp",
-      "label": "Product",
-      "alt": "Tomato Puree — enhanced original product photograph",
-      "width": 547,
-      "height": 1600
+      "src": "/assets/products/generated/730218/03-occasion-ddca22fb9466153b.webp",
+      "thumbnail": "/assets/products/generated/730218/03-occasion-ddca22fb9466153b-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Puree — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730218/04-family-1b4ad5c169645923.webp",
@@ -1890,10 +1890,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730223/01-studio-4eebeeb4b8eaac9b.webp#product",
-      "thumbnail": "/assets/products/generated/730223/01-studio-4eebeeb4b8eaac9b-320.webp",
-      "label": "Product",
-      "alt": "Crushed Tomatoes 14.1oz — enhanced original product photograph",
+      "src": "/assets/products/generated/730223/03-occasion-d582c9e137c85e01.webp",
+      "thumbnail": "/assets/products/generated/730223/03-occasion-d582c9e137c85e01-320.webp",
+      "label": "Occasion",
+      "alt": "Crushed Tomatoes 14.1oz — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -1924,12 +1924,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730224/01-studio-e547a400338e03da.webp#product",
-      "thumbnail": "/assets/products/generated/730224/01-studio-e547a400338e03da-320.webp",
-      "label": "Product",
-      "alt": "Diced Tomatoes 14.1oz — enhanced original product photograph",
-      "width": 981,
-      "height": 1600
+      "src": "/assets/products/generated/730224/03-occasion-ef5fbb4b3748ffe5.webp",
+      "thumbnail": "/assets/products/generated/730224/03-occasion-ef5fbb4b3748ffe5-320.webp",
+      "label": "Occasion",
+      "alt": "Diced Tomatoes 14.1oz — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730224/04-family-5f29af1bf5e22384.webp",
@@ -2026,12 +2026,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730227/01-studio-ecbb07d53ee5f62f.webp#product",
-      "thumbnail": "/assets/products/generated/730227/01-studio-ecbb07d53ee5f62f-320.webp",
-      "label": "Product",
-      "alt": "Mushroom Alfredo Sauce — enhanced original product photograph",
-      "width": 1013,
-      "height": 1552
+      "src": "/assets/products/generated/730227/03-occasion-9ec6239263780261.webp",
+      "thumbnail": "/assets/products/generated/730227/03-occasion-9ec6239263780261-320.webp",
+      "label": "Occasion",
+      "alt": "Mushroom Alfredo Sauce — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730227/04-family-37953b2acfa730f5.webp",
@@ -2196,10 +2196,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730237/01-studio-9ba0928863504b9b.webp#product",
-      "thumbnail": "/assets/products/generated/730237/01-studio-9ba0928863504b9b-320.webp",
-      "label": "Product",
-      "alt": "Tomato Juice — enhanced original product photograph",
+      "src": "/assets/products/generated/730237/03-occasion-17a350fb0f9f80f8.webp",
+      "thumbnail": "/assets/products/generated/730237/03-occasion-17a350fb0f9f80f8-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Juice — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -2264,12 +2264,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730245/01-studio-8fca0ff2d6fe5364.webp#product",
-      "thumbnail": "/assets/products/generated/730245/01-studio-8fca0ff2d6fe5364-320.webp",
-      "label": "Product",
-      "alt": "Organic Apple Cider Vinegar — enhanced original product photograph",
-      "width": 535,
-      "height": 1600
+      "src": "/assets/products/generated/730245/03-occasion-08446cafaa276a9c.webp",
+      "thumbnail": "/assets/products/generated/730245/03-occasion-08446cafaa276a9c-320.webp",
+      "label": "Occasion",
+      "alt": "Organic Apple Cider Vinegar — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730245/04-family-06072aa046e14ea2.webp",
@@ -2332,10 +2332,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730248/01-studio-e12540d33bd9ad5f.webp#product",
-      "thumbnail": "/assets/products/generated/730248/01-studio-e12540d33bd9ad5f-320.webp",
-      "label": "Product",
-      "alt": "Red Wine Vinegar — enhanced original product photograph",
+      "src": "/assets/products/generated/730248/03-occasion-dea36e1111dee233.webp",
+      "thumbnail": "/assets/products/generated/730248/03-occasion-dea36e1111dee233-320.webp",
+      "label": "Occasion",
+      "alt": "Red Wine Vinegar — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -2536,12 +2536,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730257/01-studio-38e29147a7682d27.webp#product",
-      "thumbnail": "/assets/products/generated/730257/01-studio-38e29147a7682d27-320.webp",
-      "label": "Product",
-      "alt": "Extra Virgin Olive Oil with Black Truffle — enhanced original product photograph",
-      "width": 1086,
-      "height": 1448
+      "src": "/assets/products/generated/730257/03-occasion-23f05b6fbeed5d9c.webp",
+      "thumbnail": "/assets/products/generated/730257/03-occasion-23f05b6fbeed5d9c-320.webp",
+      "label": "Occasion",
+      "alt": "Extra Virgin Olive Oil with Black Truffle — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730257/04-family-b2fed6d0e8e9129d.webp",
@@ -2706,12 +2706,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730266/01-studio-d6eb75896a95f3b2.webp#product",
-      "thumbnail": "/assets/products/generated/730266/01-studio-d6eb75896a95f3b2-320.webp",
-      "label": "Product",
-      "alt": "White Cooking Wine — enhanced original product photograph",
-      "width": 535,
-      "height": 1600
+      "src": "/assets/products/generated/730266/03-occasion-0d08e93bde3d88ef.webp",
+      "thumbnail": "/assets/products/generated/730266/03-occasion-0d08e93bde3d88ef-320.webp",
+      "label": "Occasion",
+      "alt": "White Cooking Wine — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730266/04-family-cd3d93bd42ecc8ba.webp",
@@ -2842,12 +2842,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1086
     },
     {
-      "src": "/assets/products/generated/730274/01-studio-9754daf8869ab260.webp#product",
-      "thumbnail": "/assets/products/generated/730274/01-studio-9754daf8869ab260-320.webp",
-      "label": "Product",
-      "alt": "Forest Fruits Fruit Spread Preserves — enhanced original product photograph",
-      "width": 1097,
-      "height": 1434
+      "src": "/assets/products/generated/730274/03-occasion-21bc4fa259d1ee42.webp",
+      "thumbnail": "/assets/products/generated/730274/03-occasion-21bc4fa259d1ee42-320.webp",
+      "label": "Occasion",
+      "alt": "Forest Fruits Fruit Spread Preserves — in a relevant dining or lifestyle occasion",
+      "width": 1448,
+      "height": 1086
     },
     {
       "src": "/assets/products/generated/730274/04-family-f8671559455305ce.webp",
@@ -2910,10 +2910,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730276/01-studio-c0ad792289f1ef20.webp#product",
-      "thumbnail": "/assets/products/generated/730276/01-studio-c0ad792289f1ef20-320.webp",
-      "label": "Product",
-      "alt": "Tomato Savory Jam — enhanced original product photograph",
+      "src": "/assets/products/generated/730276/03-occasion-7bfc8298e93abcc7.webp",
+      "thumbnail": "/assets/products/generated/730276/03-occasion-7bfc8298e93abcc7-320.webp",
+      "label": "Occasion",
+      "alt": "Tomato Savory Jam — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -3046,10 +3046,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730283/01-studio-5a34f3934d12f242.webp#product",
-      "thumbnail": "/assets/products/generated/730283/01-studio-5a34f3934d12f242-320.webp",
-      "label": "Product",
-      "alt": "Smoked Sea Salt Flakes — enhanced original product photograph",
+      "src": "/assets/products/generated/730283/03-occasion-f36ab9ee9597848c.webp",
+      "thumbnail": "/assets/products/generated/730283/03-occasion-f36ab9ee9597848c-320.webp",
+      "label": "Occasion",
+      "alt": "Smoked Sea Salt Flakes — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -3182,12 +3182,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730288/01-studio-e932ac172c2913db.webp#product",
-      "thumbnail": "/assets/products/generated/730288/01-studio-e932ac172c2913db-320.webp",
-      "label": "Product",
-      "alt": "Lime Juice — enhanced original product photograph",
-      "width": 1015,
-      "height": 1550
+      "src": "/assets/products/generated/730288/03-occasion-afa6520e07d13329.webp",
+      "thumbnail": "/assets/products/generated/730288/03-occasion-afa6520e07d13329-320.webp",
+      "label": "Occasion",
+      "alt": "Lime Juice — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730288/04-family-f276aef5030b3eb8.webp",
@@ -3216,12 +3216,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730289/01-studio-a149ccc7b6aea272.webp#product",
-      "thumbnail": "/assets/products/generated/730289/01-studio-a149ccc7b6aea272-320.webp",
-      "label": "Product",
-      "alt": "Lime Juice Large — enhanced original product photograph",
-      "width": 900,
-      "height": 1600
+      "src": "/assets/products/generated/730289/03-occasion-4cfce16099474504.webp",
+      "thumbnail": "/assets/products/generated/730289/03-occasion-4cfce16099474504-320.webp",
+      "label": "Occasion",
+      "alt": "Lime Juice Large — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730289/04-family-407db661db624c83.webp",
@@ -3284,12 +3284,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730291/01-studio-7b17ddda18af8dd3.webp#product",
-      "thumbnail": "/assets/products/generated/730291/01-studio-7b17ddda18af8dd3-320.webp",
-      "label": "Product",
-      "alt": "Peppercorn Medley Spice Grinder — enhanced original product photograph",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730291/03-occasion-981536eb5ff2302a.webp",
+      "thumbnail": "/assets/products/generated/730291/03-occasion-981536eb5ff2302a-320.webp",
+      "label": "Occasion",
+      "alt": "Peppercorn Medley Spice Grinder — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730291/04-family-daa1cb08d5bfe05d.webp",
@@ -3352,12 +3352,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730295/01-studio-be4f21dee2cbd21e.webp#product",
-      "thumbnail": "/assets/products/generated/730295/01-studio-be4f21dee2cbd21e-320.webp",
-      "label": "Product",
-      "alt": "Italian Medley Spice Grinder — enhanced original product photograph",
-      "width": 764,
-      "height": 1600
+      "src": "/assets/products/generated/730295/03-occasion-05a61e1f295d35ea.webp",
+      "thumbnail": "/assets/products/generated/730295/03-occasion-05a61e1f295d35ea-320.webp",
+      "label": "Occasion",
+      "alt": "Italian Medley Spice Grinder — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730295/04-family-e713b3d0c3d37725.webp",
@@ -3386,12 +3386,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730306/01-studio-907a8f7430f2670b.webp#product",
-      "thumbnail": "/assets/products/generated/730306/01-studio-907a8f7430f2670b-320.webp",
-      "label": "Product",
-      "alt": "All Purpose Flour 2.2LB — enhanced original product photograph",
-      "width": 930,
-      "height": 1600
+      "src": "/assets/products/generated/730306/03-occasion-8935d3b80d0ba8ae.webp",
+      "thumbnail": "/assets/products/generated/730306/03-occasion-8935d3b80d0ba8ae-320.webp",
+      "label": "Occasion",
+      "alt": "All Purpose Flour 2.2LB — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730306/04-family-5c79ec5884942804.webp",
@@ -3522,12 +3522,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730312/01-studio-6ee158dc47146dd3.webp#product",
-      "thumbnail": "/assets/products/generated/730312/01-studio-6ee158dc47146dd3-320.webp",
-      "label": "Product",
-      "alt": "Mini Gnocchi — enhanced original product photograph",
-      "width": 1453,
-      "height": 1083
+      "src": "/assets/products/generated/730312/03-occasion-05bec2e762dd86ef.webp",
+      "thumbnail": "/assets/products/generated/730312/03-occasion-05bec2e762dd86ef-320.webp",
+      "label": "Occasion",
+      "alt": "Mini Gnocchi — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730312/04-family-9e6de0591a143e15.webp",
@@ -3556,12 +3556,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1086
     },
     {
-      "src": "/assets/products/generated/730313/01-studio-34746bdbdbd6b1ee.webp#product",
-      "thumbnail": "/assets/products/generated/730313/01-studio-34746bdbdbd6b1ee-320.webp",
-      "label": "Product",
-      "alt": "Potato Gnocchi — enhanced original product photograph",
-      "width": 1450,
-      "height": 1085
+      "src": "/assets/products/generated/730313/03-occasion-9d747548934d572b.webp",
+      "thumbnail": "/assets/products/generated/730313/03-occasion-9d747548934d572b-320.webp",
+      "label": "Occasion",
+      "alt": "Potato Gnocchi — in a relevant dining or lifestyle occasion",
+      "width": 1448,
+      "height": 1086
     },
     {
       "src": "/assets/products/generated/730313/04-family-f4fb810a6b1575a6.webp",
@@ -3624,12 +3624,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 900
     },
     {
-      "src": "/assets/products/generated/730320/01-studio-9f4491f8c035f02f.webp#product",
-      "thumbnail": "/assets/products/generated/730320/01-studio-9f4491f8c035f02f-320.webp",
-      "label": "Product",
-      "alt": "Spaghetti Pasta — enhanced original product photograph",
+      "src": "/assets/products/generated/730320/03-occasion-7790776e57b4d1d0.webp",
+      "thumbnail": "/assets/products/generated/730320/03-occasion-7790776e57b4d1d0-320.webp",
+      "label": "Occasion",
+      "alt": "Spaghetti Pasta — in a relevant dining or lifestyle occasion",
       "width": 1600,
-      "height": 592
+      "height": 600
     },
     {
       "src": "/assets/products/generated/730320/04-family-a490922319a1ea73.webp",
@@ -3658,12 +3658,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730321/01-studio-af471fb9eedd2463.webp#product",
-      "thumbnail": "/assets/products/generated/730321/01-studio-af471fb9eedd2463-320.webp",
-      "label": "Product",
-      "alt": "Fettuccine Pasta — enhanced original product photograph",
-      "width": 1600,
-      "height": 535
+      "src": "/assets/products/generated/730321/03-occasion-cc1bd7965c287007.webp",
+      "thumbnail": "/assets/products/generated/730321/03-occasion-cc1bd7965c287007-320.webp",
+      "label": "Occasion",
+      "alt": "Fettuccine Pasta — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730321/04-family-f90d040cc3ae5b92.webp",
@@ -3862,12 +3862,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730330/01-studio-b7bddc7e6bf78698.webp#product",
-      "thumbnail": "/assets/products/generated/730330/01-studio-b7bddc7e6bf78698-320.webp",
-      "label": "Product",
-      "alt": "Original Parchment Crackers — enhanced original product photograph",
-      "width": 1294,
-      "height": 1216
+      "src": "/assets/products/generated/730330/03-occasion-752b0afa232304e5.webp",
+      "thumbnail": "/assets/products/generated/730330/03-occasion-752b0afa232304e5-320.webp",
+      "label": "Occasion",
+      "alt": "Original Parchment Crackers — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730330/04-family-245f360ae8ba88d6.webp",
@@ -3964,10 +3964,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730333/01-studio-58588677003e9f83.webp#product",
-      "thumbnail": "/assets/products/generated/730333/01-studio-58588677003e9f83-320.webp",
-      "label": "Product",
-      "alt": "Truffle Parchment Crackers — enhanced original product photograph",
+      "src": "/assets/products/generated/730333/03-occasion-549913032c1dbc0f.webp",
+      "thumbnail": "/assets/products/generated/730333/03-occasion-549913032c1dbc0f-320.webp",
+      "label": "Occasion",
+      "alt": "Truffle Parchment Crackers — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -4032,12 +4032,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730335/01-studio-4accf43c130e77e5.webp#product",
-      "thumbnail": "/assets/products/generated/730335/01-studio-4accf43c130e77e5-320.webp",
-      "label": "Product",
-      "alt": "Oregano Parchment Crackers Small — enhanced original product photograph",
-      "width": 1600,
-      "height": 617
+      "src": "/assets/products/generated/730335/03-occasion-137556393f43994c.webp",
+      "thumbnail": "/assets/products/generated/730335/03-occasion-137556393f43994c-320.webp",
+      "label": "Occasion",
+      "alt": "Oregano Parchment Crackers Small — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730335/04-family-3b29d2c81c37ec66.webp",
@@ -4066,12 +4066,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730336/01-studio-80fd5de266d49ab7.webp#product",
-      "thumbnail": "/assets/products/generated/730336/01-studio-80fd5de266d49ab7-320.webp",
-      "label": "Product",
-      "alt": "Rosemary Parchment Crackers Small — enhanced original product photograph",
-      "width": 1600,
-      "height": 617
+      "src": "/assets/products/generated/730336/03-occasion-a30c21c1246b6565.webp",
+      "thumbnail": "/assets/products/generated/730336/03-occasion-a30c21c1246b6565-320.webp",
+      "label": "Occasion",
+      "alt": "Rosemary Parchment Crackers Small — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730336/04-family-9c1d4da8771110d5.webp",
@@ -4100,12 +4100,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730337/01-studio-7375e42bad060d68.webp#product",
-      "thumbnail": "/assets/products/generated/730337/01-studio-7375e42bad060d68-320.webp",
-      "label": "Product",
-      "alt": "Truffle Parchment Crackers Small — enhanced original product photograph",
-      "width": 1600,
-      "height": 617
+      "src": "/assets/products/generated/730337/03-occasion-eb522f715b0f1b1a.webp",
+      "thumbnail": "/assets/products/generated/730337/03-occasion-eb522f715b0f1b1a-320.webp",
+      "label": "Occasion",
+      "alt": "Truffle Parchment Crackers Small — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730337/04-family-61b8b4e0f983840c.webp",
@@ -4168,12 +4168,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730341/01-studio-9d8ac486c2a2d6e7.webp#product",
-      "thumbnail": "/assets/products/generated/730341/01-studio-9d8ac486c2a2d6e7-320.webp",
-      "label": "Product",
-      "alt": "Rosemary Olive Oil Potato Chips — enhanced original product photograph",
-      "width": 959,
-      "height": 1600
+      "src": "/assets/products/generated/730341/03-occasion-2b0e0f858808ae4f.webp",
+      "thumbnail": "/assets/products/generated/730341/03-occasion-2b0e0f858808ae4f-320.webp",
+      "label": "Occasion",
+      "alt": "Rosemary Olive Oil Potato Chips — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730341/04-family-cb391890e18acdfd.webp",
@@ -4304,10 +4304,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730365/01-studio-f27dc2df826a9b37.webp#product",
-      "thumbnail": "/assets/products/generated/730365/01-studio-f27dc2df826a9b37-320.webp",
-      "label": "Product",
-      "alt": "Blood Orange Juice — enhanced original product photograph",
+      "src": "/assets/products/generated/730365/03-occasion-1a58f484b971b4af.webp",
+      "thumbnail": "/assets/products/generated/730365/03-occasion-1a58f484b971b4af-320.webp",
+      "label": "Occasion",
+      "alt": "Blood Orange Juice — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -4610,12 +4610,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730382/01-studio-a3ededc4f893d0a5.webp#product",
-      "thumbnail": "/assets/products/generated/730382/01-studio-a3ededc4f893d0a5-320.webp",
-      "label": "Product",
-      "alt": "Organic Italian Cola — enhanced original product photograph",
-      "width": 665,
-      "height": 1600
+      "src": "/assets/products/generated/730382/03-occasion-e300319b60b1f2d7.webp",
+      "thumbnail": "/assets/products/generated/730382/03-occasion-e300319b60b1f2d7-320.webp",
+      "label": "Occasion",
+      "alt": "Organic Italian Cola — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730382/04-family-d6d385f167a41b67.webp",
@@ -4644,12 +4644,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730383/01-studio-b42f911b1627e735.webp#product",
-      "thumbnail": "/assets/products/generated/730383/01-studio-b42f911b1627e735-320.webp",
-      "label": "Product",
-      "alt": "Diet Cola — enhanced original product photograph",
-      "width": 664,
-      "height": 1600
+      "src": "/assets/products/generated/730383/03-occasion-269bb87c4c492bba.webp",
+      "thumbnail": "/assets/products/generated/730383/03-occasion-269bb87c4c492bba-320.webp",
+      "label": "Occasion",
+      "alt": "Diet Cola — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730383/04-family-62f053af96687450.webp",
@@ -5528,12 +5528,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730461/01-studio-734c0908a988afa2.webp#product",
-      "thumbnail": "/assets/products/generated/730461/01-studio-734c0908a988afa2-320.webp",
-      "label": "Product",
-      "alt": "Roasted Chestnuts with Salt & Black Pepper — enhanced original product photograph",
-      "width": 1254,
-      "height": 1254
+      "src": "/assets/products/generated/730461/03-occasion-e66b6fed25497b9d.webp",
+      "thumbnail": "/assets/products/generated/730461/03-occasion-e66b6fed25497b9d-320.webp",
+      "label": "Occasion",
+      "alt": "Roasted Chestnuts with Salt & Black Pepper — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730461/04-family-3af9eab023ce327d.webp",
@@ -5630,10 +5630,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730472/01-studio-f5378f4d1ad7a4ef.webp#product",
-      "thumbnail": "/assets/products/generated/730472/01-studio-f5378f4d1ad7a4ef-320.webp",
-      "label": "Product",
-      "alt": "Sparkling Malvasia Grape Juice — enhanced original product photograph",
+      "src": "/assets/products/generated/730472/03-occasion-1523218f2c993bd4.webp",
+      "thumbnail": "/assets/products/generated/730472/03-occasion-1523218f2c993bd4-320.webp",
+      "label": "Occasion",
+      "alt": "Sparkling Malvasia Grape Juice — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -5664,12 +5664,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730473/01-studio-e7b1f05f64e66ea1.webp#product",
-      "thumbnail": "/assets/products/generated/730473/01-studio-e7b1f05f64e66ea1-320.webp",
-      "label": "Product",
-      "alt": "Sparkling Apple Cider — enhanced original product photograph",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730473/03-occasion-66047d1f5b0660aa.webp",
+      "thumbnail": "/assets/products/generated/730473/03-occasion-66047d1f5b0660aa-320.webp",
+      "label": "Occasion",
+      "alt": "Sparkling Apple Cider — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730473/04-family-44277d1b0bd73883.webp",
@@ -5698,12 +5698,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730474/01-studio-c6a34199da573d07.webp#product",
-      "thumbnail": "/assets/products/generated/730474/01-studio-c6a34199da573d07-320.webp",
-      "label": "Product",
-      "alt": "Sparkling Bianco Grape Juice — enhanced original product photograph",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730474/03-occasion-7bc5972f0c2cac59.webp",
+      "thumbnail": "/assets/products/generated/730474/03-occasion-7bc5972f0c2cac59-320.webp",
+      "label": "Occasion",
+      "alt": "Sparkling Bianco Grape Juice — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730474/04-family-0da9d6fd9d5a2436.webp",
@@ -6106,10 +6106,10 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730541/01-studio-128f3a20612fd5a4.webp#product",
-      "thumbnail": "/assets/products/generated/730541/01-studio-128f3a20612fd5a4-320.webp",
-      "label": "Product",
-      "alt": "Rippled Potato Chips — enhanced original product photograph",
+      "src": "/assets/products/generated/730541/03-occasion-db954ff90d2d1989.webp",
+      "thumbnail": "/assets/products/generated/730541/03-occasion-db954ff90d2d1989-320.webp",
+      "label": "Occasion",
+      "alt": "Rippled Potato Chips — in a relevant dining or lifestyle occasion",
       "width": 1254,
       "height": 1254
     },
@@ -6174,12 +6174,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730544/01-studio-a17d8090e37ce7e2.webp#product",
-      "thumbnail": "/assets/products/generated/730544/01-studio-a17d8090e37ce7e2-320.webp",
-      "label": "Product",
-      "alt": "Salt & Vinegar Potato Chips — enhanced original product photograph",
-      "width": 863,
-      "height": 1600
+      "src": "/assets/products/generated/730544/03-occasion-ee66553bb45d177d.webp",
+      "thumbnail": "/assets/products/generated/730544/03-occasion-ee66553bb45d177d-320.webp",
+      "label": "Occasion",
+      "alt": "Salt & Vinegar Potato Chips — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730544/04-family-d8ef84c6dca759f4.webp",
@@ -6242,12 +6242,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730550/01-studio-79d4670134278274.webp#product",
-      "thumbnail": "/assets/products/generated/730550/01-studio-79d4670134278274-320.webp",
-      "label": "Product",
-      "alt": "Frozen Potato Gnocchi — enhanced original product photograph",
-      "width": 1230,
-      "height": 1278
+      "src": "/assets/products/generated/730550/03-occasion-5fe7bc246351d680.webp",
+      "thumbnail": "/assets/products/generated/730550/03-occasion-5fe7bc246351d680-320.webp",
+      "label": "Occasion",
+      "alt": "Frozen Potato Gnocchi — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730550/04-family-db7532801534b916.webp",
@@ -6344,12 +6344,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730553/01-studio-e30e62fa21da7688.webp#product",
-      "thumbnail": "/assets/products/generated/730553/01-studio-e30e62fa21da7688-320.webp",
-      "label": "Product",
-      "alt": "Frozen Cauliflower Gnocchi — enhanced original product photograph",
-      "width": 1236,
-      "height": 1272
+      "src": "/assets/products/generated/730553/03-occasion-d8307c29357683cc.webp",
+      "thumbnail": "/assets/products/generated/730553/03-occasion-d8307c29357683cc-320.webp",
+      "label": "Occasion",
+      "alt": "Frozen Cauliflower Gnocchi — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730553/04-family-62ed8f60dd63a386.webp",
@@ -6480,12 +6480,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730586/01-studio-08ddefe1adc50bf7.webp#product",
-      "thumbnail": "/assets/products/generated/730586/01-studio-08ddefe1adc50bf7-320.webp",
-      "label": "Product",
-      "alt": "Minced Black Truffle — enhanced original product photograph",
-      "width": 1227,
-      "height": 1281
+      "src": "/assets/products/generated/730586/03-occasion-48998e66c895a17b.webp",
+      "thumbnail": "/assets/products/generated/730586/03-occasion-48998e66c895a17b-320.webp",
+      "label": "Occasion",
+      "alt": "Minced Black Truffle — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730586/04-family-650164bfbc5cc991.webp",
@@ -6548,12 +6548,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1024
     },
     {
-      "src": "/assets/products/generated/730590/01-studio-8fd192459a71f88f.webp#product",
-      "thumbnail": "/assets/products/generated/730590/01-studio-8fd192459a71f88f-320.webp",
-      "label": "Product",
-      "alt": "Dark & Smooth Chocolate Bar — enhanced original product photograph",
-      "width": 1024,
-      "height": 1536
+      "src": "/assets/products/generated/730590/03-occasion-a54f4226e064aafd.webp",
+      "thumbnail": "/assets/products/generated/730590/03-occasion-a54f4226e064aafd-320.webp",
+      "label": "Occasion",
+      "alt": "Dark & Smooth Chocolate Bar — in a relevant dining or lifestyle occasion",
+      "width": 1536,
+      "height": 1024
     },
     {
       "src": "/assets/products/generated/730590/04-family-73712ea51f30a4ae.webp",
@@ -6684,12 +6684,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730598/01-studio-4c9d3eef9c77705c.webp#product",
-      "thumbnail": "/assets/products/generated/730598/01-studio-4c9d3eef9c77705c-320.webp",
-      "label": "Product",
-      "alt": "Chocolate Gianduiotti — enhanced original product photograph",
-      "width": 831,
-      "height": 1600
+      "src": "/assets/products/generated/730598/03-occasion-2b2048ddcc96d1a2.webp",
+      "thumbnail": "/assets/products/generated/730598/03-occasion-2b2048ddcc96d1a2-320.webp",
+      "label": "Occasion",
+      "alt": "Chocolate Gianduiotti — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730598/04-family-c16970ac4544a626.webp",
@@ -6888,12 +6888,12 @@ export const productGalleries: Record<string, ProductGalleryImage[]> = {
       "height": 1254
     },
     {
-      "src": "/assets/products/generated/730605/01-studio-1b986cadf388d548.webp#product",
-      "thumbnail": "/assets/products/generated/730605/01-studio-1b986cadf388d548-320.webp",
-      "label": "Product",
-      "alt": "Bronze Cut Farfalle — enhanced original product photograph",
-      "width": 986,
-      "height": 1594
+      "src": "/assets/products/generated/730605/03-occasion-f8994effd3b57dcf.webp",
+      "thumbnail": "/assets/products/generated/730605/03-occasion-f8994effd3b57dcf-320.webp",
+      "label": "Occasion",
+      "alt": "Bronze Cut Farfalle — in a relevant dining or lifestyle occasion",
+      "width": 1254,
+      "height": 1254
     },
     {
       "src": "/assets/products/generated/730605/04-family-1ebb189884985fe5.webp",
