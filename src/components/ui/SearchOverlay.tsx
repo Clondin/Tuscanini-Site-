@@ -184,7 +184,7 @@ export default function SearchOverlay({
         className="w-full h-[100dvh] sm:h-auto sm:max-w-3xl mx-auto sm:mt-[9vh] bg-surface sm:shadow-2xl sm:max-h-[78dvh] flex flex-col"
       >
         <div className="flex items-center gap-2 border-b border-on-surface/15 px-3 sm:px-5 py-3">
-          <label className="flex flex-1 min-w-0 items-center gap-3 bg-aged-cream/70 border border-on-surface/15 focus-within:border-olive-deep px-3 sm:px-4 h-14">
+          <label className="flex flex-1 min-w-0 items-center gap-3 bg-aged-cream/70 border border-on-surface/15 focus-within:border-olive-deep focus-within:ring-1 focus-within:ring-olive-deep px-3 sm:px-4 h-14">
             <Search size={20} aria-hidden="true" className="shrink-0 text-olive-deep" />
             <span className="sr-only">Search products, recipes and videos</span>
             <input
@@ -203,7 +203,7 @@ export default function SearchOverlay({
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={onKeyDown}
               placeholder="Search pasta, olive oil, recipes…"
-              className="min-w-0 w-full bg-transparent text-lg sm:text-xl text-heading placeholder:text-on-surface/45 outline-none [&::-webkit-search-cancel-button]:hidden"
+              className="min-w-0 w-full bg-transparent text-lg sm:text-xl text-heading placeholder:text-on-surface/45 outline-none focus:outline-none focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
             />
             {query && (
               <button

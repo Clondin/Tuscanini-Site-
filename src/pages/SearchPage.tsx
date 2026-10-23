@@ -72,7 +72,7 @@ export default function SearchPage() {
           }}
           className="mt-6 max-w-2xl"
         >
-          <label className="flex items-center gap-3 bg-surface border border-on-surface/25 focus-within:border-olive-deep px-4 h-14">
+          <label className="flex items-center gap-3 bg-surface border border-on-surface/25 focus-within:border-olive-deep focus-within:ring-1 focus-within:ring-olive-deep px-4 h-14">
             <Search size={20} aria-hidden="true" className="text-olive-deep shrink-0" />
             <span className="sr-only">Search products, recipes and videos</span>
             <input
@@ -81,7 +81,7 @@ export default function SearchPage() {
               onChange={(event) => setDraft(event.target.value)}
               placeholder="Search pasta, olive oil, recipes…"
               enterKeyHint="search"
-              className="min-w-0 w-full bg-transparent text-lg outline-none [&::-webkit-search-cancel-button]:hidden"
+              className="min-w-0 w-full bg-transparent text-lg outline-none focus:outline-none focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
             />
             {draft && (
               <button
