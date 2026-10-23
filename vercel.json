@@ -38,6 +38,66 @@
       "source": "/product/spelt-white-flour-2-27kg",
       "destination": "/product/spelt-white-flour-5lb",
       "permanent": true
+    },
+    {
+      "source": "/recipes/pesto-gnocchi-cherry-tomatoes",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/black-truffle-fettuccine",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/balsamic-roasted-vegetables",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/spaghetti-garlic-oil-calabrian-chili",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/penne-marinara-olives-capers",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/sun-dried-tomato-pesto-pasta-salad",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/tuna-white-bean-salad-lemon",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/eggs-in-spicy-tomato-sauce",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/crispy-cauliflower-gnocchi-garlic-lemon",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/easy-vegetable-lasagna",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/strawberries-raspberry-balsamic-glaze",
+      "destination": "/recipes",
+      "permanent": true
+    },
+    {
+      "source": "/recipes/homemade-margherita-pizza",
+      "destination": "/recipes",
+      "permanent": true
     }
   ],
   "rewrites": [

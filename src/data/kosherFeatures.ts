@@ -2,6 +2,7 @@
 // kosher.com recipes, articles and episodes that name a specific Tuscanini product.
 // Public fields only (title, link, image, type, date).
 import { canonicalProductId } from "../lib/productAliases.js";
+import type { KosherVideo } from "../lib/kosherVideo";
 
 export type KosherFeatureType = "recipe" | "article" | "episode";
 
@@ -554,6 +555,195 @@ const abs = (path: string, base: string) => (!path ? undefined : /^https?:/.test
 
 function toFeature([type, title, path, image, thumb, date]: (typeof rows)[number]): KosherFeature {
   return { type: TYPES[type], title, url: abs(path, SITE)!, image: abs(image, IMG), thumb: abs(thumb, IMG), date };
+}
+
+export type { KosherVideo };
+
+/** [JW media id, title, path on kosher.com, seconds, mp4 file name on cdn.jwplayer.com/videos/, date] */
+const videoRows: [string, string, string, number, string, string][] = [
+["Kz3Y50ul","Chestnut Gnocchi with Mushrooms","video/chestnut-gnocchi-with-mushrooms/",1227,"Kz3Y50ul-tmb8rlSH.mp4","2025-11-20"],
+["YD9IYaBa","Khinkali Dumplings With Tamar From Marani Restaurant","video/khinkali-dumplings-with-tamar-from-marani-restaurant/",1149,"YD9IYaBa-tmb8rlSH.mp4","2025-11-19"],
+["s3cdI46n","Restaurant-Style Sukkos Starter: Maple-Orange Lamb and Crispy Gnocchi","video/restaurant-style-sukkos-starter-maple-orange-lamb-and-crispy-gnocchi/",936,"s3cdI46n-tmb8rlSH.mp4","2026-09-16"],
+["zi3NhMgN","Sticky Corned Beef","video/sticky-corned-beef/",333,"zi3NhMgN-tmb8rlSH.mp4","2024-07-01"],
+["ISSgXdj7","Mushky’s Asparagus and Goat Cheese Pizza","video/mushkys-asparagus-and-goat-cheese-pizza-1050/",209,"ISSgXdj7-tmb8rlSH.mp4","2022-03-03"],
+["PFdt2fe7","Apricot Chicken Is the Sensation Your Pita Was Missing","video/apricot-chicken-is-the-sensation-your-pita-was-missing-142/",71,"PFdt2fe7-tmb8rlSH.mp4","2017-08-09"],
+["KMq4ng7Y","Easiest Roasted Tomato Soup with Grilled Cheese","video/easiest-roasted-tomato-soup-with-grilled-cheese-1283/",378,"KMq4ng7Y-tmb8rlSH.mp4","2023-01-18"],
+["rNtKLMQ4","Sabrina’s Bruschetta with Crumbled Feta","video/sabrina-bruschetta-with-crumbled-feta-1140/",66,"rNtKLMQ4-tmb8rlSH.mp4","2022-06-01"],
+["D7rWZWWm","Caprese Pasta Salad","video/caprese-pasta-salad-510/",163,"D7rWZWWm-tmb8rlSH.mp4","2019-05-02"],
+["Awc3JKzM","Perfectly Roasted Brussel Sprouts","video/perfectly-roasted-brussel-sprouts/",273,"Awc3JKzM-tmb8rlSH.mp4","2025-11-25"],
+["60oWAHzZ","The Game Changer All-Purpose Marinade","video/all-purpose-balsamic-marinade-and-dressing/",283,"60oWAHzZ-tmb8rlSH.mp4","2023-08-21"],
+["bP5yrX4C","Pesto Pargiyot: The Easiest Schnitzel Ever","video/pesto-pargiyot-the-easiest-schnitzel-ever-254/",309,"bP5yrX4C-tmb8rlSH.mp4","2018-02-19"],
+["ltjVQEOB","Gluten-Free Fresh Pasta with Penina Kunstler","video/gluten-free-fresh-pasta-with-penina-kunstler/",977,"ltjVQEOB-tmb8rlSH.mp4","2026-01-26"],
+["6ffF5kpu","From Scratch with Shushy: Fresh Mozzarella & Pasta","video/from-scratch-with-shushy-mozzarella-pasta/",341,"6ffF5kpu-tmb8rlSH.mp4","2025-09-03"],
+["gWbXBoJd","Israeli-Inspired Harissa Fish and Summer Corn Salad with Adeena Sussman","video/israeli-inspired-harissa-fish-and-summer-corn-salad-with-adeena-sussman/",1691,"gWbXBoJd-tmb8rlSH.mp4","2026-08-18"],
+["kRBfcUw9","Italian Summer Salad with Staci Segal","video/italian-summer-salad-with-staci-segal/",1122,"kRBfcUw9-tmb8rlSH.mp4","2026-07-15"],
+["b1Hi93rW","Ashira’s Simpli’fried’ Eggplant Parmesan","video/simplefried-eggplant-parmesan-975/",146,"b1Hi93rW-23guaR9r.mp4","2021-11-25"],
+["9hCE5K2H","Malkie’s Crispy Farfalle Pasta Salad","video/malkies-crispy-farfalle-pasta-salad/",68,"9hCE5K2H-tmb8rlSH.mp4","2026-08-20"],
+["0z7tGv1C","Ruhama’s Moroccan Roasted Carrots","video/ruhamas-moroccan-roasted-carrots/",101,"0z7tGv1C-tmb8rlSH.mp4","2024-04-15"],
+["T3kBUNFJ","Salami Hash","video/salami-hash-1071/",277,"T3kBUNFJ-tmb8rlSH.mp4","2022-03-29"],
+["J29lPo3h","The Tuna Tartare Showdown","video/the-tuna-tartare-showdown-1262/",784,"J29lPo3h-tmb8rlSH.mp4","2023-01-03"],
+["QH5GSzqY","The Glaze that Changes Everything","video/the-glaze-that-changes-everything/",373,"QH5GSzqY-tmb8rlSH.mp4","2025-03-12"],
+["UMaN6DDe","Chicken Al Pastor With Dani Goldblatt","video/chicken-al-pastor-with-dani-goldblatt/",1365,"UMaN6DDe-tmb8rlSH.mp4","2025-09-01"],
+["zFGEqSal","Lunchbox Protein Pizza Rolls","video/lunchbox-protein-pizza-rolls/",247,"zFGEqSal-tmb8rlSH.mp4","2026-08-30"],
+["GDujS4tn","Rolled Eggplant with Beef","video/rolled-eggplant-with-beef/",432,"GDujS4tn-tmb8rlSH.mp4","2024-10-10"],
+["u4eqrQXg","Air-Fried Gnocchi","video/air-fried-gnocchi/",49,"u4eqrQXg-iXscyFkJ.mp4","2024-08-22"],
+["U094V4Cy","The Ultimate Simanim Appetizer: Honey-Pomegranate Glazed Stuffed Leeks","video/the-ultimate-simanim-appetizer-honey-pomegranate-glazed-stuffed-leeks/",657,"U094V4Cy-tmb8rlSH.mp4","2026-09-03"],
+["6GPFqwXR","Bold Beet Salad","video/bold-beet-salad/",543,"6GPFqwXR-tmb8rlSH.mp4","2025-08-07"],
+["EfGaC3bS","Pesach Chuck Eye Roast","video/pesach-chuck-eye-roast/",532,"EfGaC3bS-tmb8rlSH.mp4","2025-04-01"],
+["5n6UtNrQ","Gluten-Free Cheesy Vegetable Dish","video/gluten-free-cheesy-vegetable-dish/",439,"5n6UtNrQ-tmb8rlSH.mp4","2023-07-19"],
+["mwulhDv7","Cornbread-Topped Chili","video/cornbread-topped-chili-1192/",262,"mwulhDv7-tmb8rlSH.mp4","2022-08-31"],
+["2WLv4lwr","Mac ‘n Cheese Pizza with Daniella Shor","video/mac-n-cheese-pizza-with-daniella-schor/",484,"2WLv4lwr-tmb8rlSH.mp4","2025-10-20"],
+["TTBlGS5b","Crispy Salmon with Broccoli and One-Pot Creamy Pasta","video/crispy-salmon-with-broccoli-and-one-pot-creamy-pasta-1164/",236,"TTBlGS5b-tmb8rlSH.mp4","2022-07-13"],
+["3PbYXAQb","Roasted Rack of Lamb with Spring Salad","video/roasted-rack-of-lamb-with-spring-salad/",1125,"3PbYXAQb-tmb8rlSH.mp4","2026-02-13"],
+["LkRexMxb","Squash Agnolotti with Parve “Brown Butter” Sauce","video/squash-agnolotti-with-parve-brown-butter-sauce/",1116,"LkRexMxb-tmb8rlSH.mp4","2025-10-21"],
+["1bwLP2Wr","Elevate Your Purim Table with Yussi’s Salmon Dish","video/elevate-your-purim-table-with-yussis-salmon-dish/",456,"1bwLP2Wr-tmb8rlSH.mp4","2025-03-11"],
+["hS42iUSU","One Pan Chicken & Gnocchi","video/one-pan-chicken-gnocchi-941/",259,"hS42iUSU-tmb8rlSH.mp4","2021-10-20"],
+["86lJKgWn","Parmesan Crusted Potatoes","video/parmesan-crusted-potatoes/",432,"86lJKgWn-tmb8rlSH.mp4","2025-07-23"],
+["8lxgXHk4","Breaking Down the Ingredients for Sea Bass & Gnocchi","video/sea-bass-1128/",130,"8lxgXHk4-tmb8rlSH.mp4","2022-05-24"],
+["E9JDNlwV","No-Patchke Pulled Beef","video/no-patchke-pulled-beef/",490,"E9JDNlwV-tmb8rlSH.mp4","2024-12-19"],
+["K03DcJ94","Caramelized Leek and Potato Soup","video/caramelized-leek-and-potato-soup/",586,"K03DcJ94-tmb8rlSH.mp4","2024-11-25"],
+["VsW3VR4d","The Great Flour Showdown","video/the-great-flour-showdown/",808,"VsW3VR4d-tmb8rlSH.mp4","2025-09-07"],
+["vTHpe53H","Halloumi Greek Salad","video/halloumi-greek-salad/",326,"vTHpe53H-tmb8rlSH.mp4","2024-12-30"],
+["x5mQ4IVy","One-Pot Pargiyot Pasta","video/one-pot-pargiyot-pasta/",205,"x5mQ4IVy-tmb8rlSH.mp4","2023-05-29"],
+["7IwYog84","Breaking Bread: Green Shakshuka with Rudy Rochman","video/breaking-bread-green-shakshuka-with-rudy-rochman-969/",1496,"7IwYog84-tmb8rlSH.mp4","2021-11-23"],
+["tOiGB1De","Naomi’s Lemon-Ginger Crusted Fish","video/naomis-lemon-ginger-crusted-fish-1243/",119,"tOiGB1De-tmb8rlSH.mp4","2022-12-07"],
+["fzZ58k7S","The Fine Chop","video/the-fine-chop/",72,"fzZ58k7S-tmb8rlSH.mp4","2024-05-14"],
+["sPSY9fFY","Fondi di Carciofi with Rebetzin Shachar Banin","video/artichokes-with-rebetzin-shachar-banin/",1069,"sPSY9fFY-tmb8rlSH.mp4","2024-05-14"],
+["aDqdDFXb","Think Beyond The Crouton","video/think-beyond-the-crouton/",141,"aDqdDFXb-tmb8rlSH.mp4","2024-02-13"],
+["82L6oG2Q","Seared Tuna with Tropical Salsa Appetizer","video/seared-tuna-with-tropical-salsa-appetizer-1120/",203,"82L6oG2Q-tmb8rlSH.mp4","2022-05-17"],
+["EQiBS4Go","The Basics of Grain Bowls with Rivki Rabinowitz","video/the-basics-of-grain-bowls-455/",578,"EQiBS4Go-tmb8rlSH.mp4","2021-04-20"],
+["JN9dDA6K","Sea Bass with Potato Gnocchi and Truffle Parmesan Velouté","video/sea-bass-with-potato-gnocchi-and-truffle-parmesan-veloute/",1852,"JN9dDA6K-tmb8rlSH.mp4","2026-05-20"],
+["Dh8J5YDn","One Pot Creamy Chicken and Gnocchi","video/one-pot-creamy-chicken-and-gnocchi/",191,"Dh8J5YDn-tmb8rlSH.mp4","2024-01-03"],
+["MrcFOB0U","Passover Bagels","video/passover-bagels/",142,"MrcFOB0U-tmb8rlSH.mp4","2024-04-17"],
+["C6wwr0Lv","Piñata and Bourbon Chicken Challah With Mandy Silverman","video/pinata-and-bourbon-chicken-challah-1328/",1372,"C6wwr0Lv-tmb8rlSH.mp4","2023-02-20"],
+["IlElnqBj","Mushroom Meat Lasagna and Easy Caesar","video/mushroom-meat-lasagna-and-easy-caesar-1333/",310,"IlElnqBj-tmb8rlSH.mp4","2023-02-22"],
+["KcFkc3Jp","Best Lasagna","video/best-lasagna/",324,"KcFkc3Jp-tmb8rlSH.mp4","2023-07-18"],
+["2v2G8Xdh","Brazilian Cheese Rolls (Gluten-Free)","video/brazilian-cheese-rolls-gluten-free/",349,"2v2G8Xdh-tmb8rlSH.mp4","2025-12-14"],
+["Vz6rM0RV","Pumpkin Baked Ziti","video/pumpkin-baked-ziti/",147,"Vz6rM0RV-tmb8rlSH.mp4","2023-11-22"],
+["V1ITMGy0","“Faked Ziti”","video/faked-ziti-53/",121,"V1ITMGy0-tmb8rlSH.mp4","2017-03-14"],
+["zRjDe3Bs","Tamburello di Melanzane with Gabi","video/tamburello-di-melanzane-810/",598,"zRjDe3Bs-tmb8rlSH.mp4","2020-11-26"],
+["pVOusTmI","Sficha Squares","video/sficha-squares/",332,"pVOusTmI-tmb8rlSH.mp4","2024-10-15"],
+["EzSBz3qB","Raspberry Roll with Piña Colada Sauce","video/raspberry-roll-with-pina-colada-sauce-1061/",84,"EzSBz3qB-tmb8rlSH.mp4","2022-03-22"],
+["chyKMPJz","Better Breakfast For JAMMIN Days","video/better-breakfast-and-snacking-starts-here/",442,"chyKMPJz-tmb8rlSH.mp4","2026-02-22"],
+["qswgcHUc","Rachelli’s Moroccan Inspired RH Chicken","video/rachellis-moroccan-inspired-rh-chicken-1203/",78,"qswgcHUc-tmb8rlSH.mp4","2022-09-20"],
+["E6ETRZQG","Grilled Flat Iron with Braised Leeks and Harissa Date Puree","video/grilled-flat-iron-with-braised-leeks-and-harissa-date-puree/",922,"E6ETRZQG-tmb8rlSH.mp4","2025-09-16"],
+["nezV2gaA","Grilled Yellowtail Burger","video/grilled-yellowtail-burger/",565,"nezV2gaA-tmb8rlSH.mp4","2025-06-24"],
+["fCYv0LOI","Cookie Date","video/cookie-date/",69,"fCYv0LOI-iXscyFkJ.mp4","2025-01-27"],
+["dLhTsPjy","The Creamiest Risotto with Shushy Turin","video/creamy-risotto-with-shushy-turin/",198,"dLhTsPjy-tmb8rlSH.mp4","2026-05-20"],
+["D8spWoC3","Pesach Lemon Curd Dessert Board","video/pesach-lemon-curd-dessert-board/",347,"D8spWoC3-tmb8rlSH.mp4","2026-03-25"],
+["YZFD0LLN","Truffle Mushroom Risotto (Dairy)","video/truffle-mushroom-risotto-dairy/",556,"YZFD0LLN-tmb8rlSH.mp4","2024-06-10"],
+["tzHtYTMd","Super-Shabbos Grilled Wings and Hasselback Salami","video/super-shabbos-wings-and-hasselback-salami/",552,"tzHtYTMd-tmb8rlSH.mp4","2025-02-05"],
+["Wpo3QI45","One-Pot Chicken Lo Mein","video/one-pot-chicken-lo-mein-1110/",234,"Wpo3QI45-tmb8rlSH.mp4","2022-04-27"],
+["K3MgiVjw","Spaghetti & Cheatballs","video/spaghetti-cheatballs-1224/",325,"K3MgiVjw-tmb8rlSH.mp4","2022-11-01"],
+["Ne9HviAb","Strawberries and Cream Pie","video/strawberries-and-cream-pie-478/",246,"Ne9HviAb-tmb8rlSH.mp4","2019-04-04"],
+["m70OMPSZ","Sufganiyot Focaccia","video/sufganiyot-focaccia/",476,"m70OMPSZ-tmb8rlSH.mp4","2024-12-23"],
+["E059dV41","Spontaneous Salad","video/spontaneous-salad/",83,"E059dV41-tmb8rlSH.mp4","2024-01-15"],
+["K6RTenFS","Italian Salad x3","video/italian-salad-x3/",134,"K6RTenFS-tmb8rlSH.mp4","2023-05-16"],
+["ODh4qyKC","How to Make the Perfect Cheese Board","video/cheese-board-1127/",461,"ODh4qyKC-tmb8rlSH.mp4","2022-05-24"],
+["IUsSduyy","Hidden Veggie Meatball Soup","video/hidden-veggie-meatball-soup/",418,"IUsSduyy-tmb8rlSH.mp4","2025-09-03"],
+["cXzlb5Zu","Hamburgers Stuck on a Bun","video/hamburgers-stuck-on-a-bun/",105,"cXzlb5Zu-tmb8rlSH.mp4","2024-07-24"],
+["1GyCH8KI","Chicken Paprikash and Nokedli with Agi Schwartz","video/chicken-paprikash-and-nokedli-with-agi-schwartz/",1152,"1GyCH8KI-tmb8rlSH.mp4","2024-06-04"],
+["PgHwzPL4","Amy Stopnicki’s Sukkot “Stoup”","video/amy-stopnickis-sukkot-stoup-930/",404,"PgHwzPL4-tmb8rlSH.mp4","2021-09-14"],
+["p5u25B0e","Mom’s Stuffed Cabbage","video/moms-stuffed-cabbage-791/",947,"p5u25B0e-tmb8rlSH.mp4","2020-09-24"],
+["3NFfxukV","Chic Shakshuka","video/chic-shakshuka-479/",556,"3NFfxukV-tmb8rlSH.mp4","2019-04-04"],
+["Wn1M6V5U","Salad Burritos","video/salad-burritos-1148/",139,"Wn1M6V5U-tmb8rlSH.mp4","2022-06-20"],
+["PfqP4y58","Dobby Baum’s Chicken and Potatoes","video/dobbys-chicken-and-potatoes/",857,"PfqP4y58-tmb8rlSH.mp4","2024-11-26"],
+["64OzjRIz","Estee’s Honey Soy Steamed White Fish","video/estees-honey-soy-steamed-white-fish-1197/",61,"64OzjRIz-tmb8rlSH.mp4","2022-09-12"],
+["5YgHuOWW","Estee’s Seared Chicken & Mushroom Orzo","video/estees-seared-chicken-mushroom-orzo-1172/",159,"5YgHuOWW-tmb8rlSH.mp4","2022-07-25"],
+["u9wgPdda","Pastrami Zucchini Ravioli","video/zucchini-ravioli-for-pesach-86/",90,"u9wgPdda-tmb8rlSH.mp4","2017-03-30"],
+["v6pviFQ7","A Salad Surprise","video/a-salad-surprise-1232/",113,"v6pviFQ7-tmb8rlSH.mp4","2022-11-21"],
+["54ihtMEP","What No One Tells You About Rehydrating After a Fast","video/electrolyte-rich-stuffed-sweet-potatoes/",185,"54ihtMEP-tmb8rlSH.mp4","2025-07-29"],
+["zp3ZEnM7","Restaurant-Style Za’atar Crusted Branzino","video/restaurant-style-zaatar-crusted-branzino/",459,"zp3ZEnM7-tmb8rlSH.mp4","2025-05-28"],
+["2LIEQeQG","Garlic Dill Potatoes","video/garlic-dill-potatoes-851/",249,"2LIEQeQG-tmb8rlSH.mp4","2021-03-14"],
+["RL1R4duP","One Pan Lemon Herb Chicken","video/one-pan-lemon-herb-chicken/",179,"RL1R4duP-tmb8rlSH.mp4","2023-04-03"],
+];
+
+/** product id -> video row indexes (best first) */
+const videosByProduct: Record<string, number[]> = {
+  "all-purpose-flour-2-2lb": [0, 1, 2],
+  "apricot-fruit-spread-preserves": [3, 4, 5],
+  "balsamic-glaze-modena": [6, 7, 8],
+  "balsamic-vinegar-modena-500ml": [9, 10, 6],
+  "balsamic-vinegar-modena-8oz": [9, 10, 6],
+  "basil-pesto": [11, 12, 13],
+  "black-pepper-grinder": [14, 15],
+  "breaded-mozzarella-sticks-730140": [16],
+  "breaded-mozzarella-sticks-family-pack-730141": [16],
+  "bronze-cut-farfalle-730605": [17],
+  "calabrian-chili-hot-pepper-jam": [18],
+  "calabrian-chili-peppers": [19, 20],
+  "capers-in-brine": [15],
+  "caramel-balsamic-glaze-modena": [21],
+  "chopped-calabrian-chili-peppers": [22],
+  "classic-marinara-sauce": [23, 24, 25],
+  "coarse-mediterranean-sea-salt": [26, 15, 27],
+  "crushed-tomatoes-14oz": [28, 29, 30],
+  "crushed-tomatoes-24oz": [28, 29, 30],
+  "elbows": [31, 32],
+  "evoo-750ml": [33, 34, 27],
+  "evoo-black-truffle-250ml": [35, 36, 37],
+  "evoo-lemon-250ml": [38],
+  "extra-light-olive-oil-1l": [35, 39, 40],
+  "extra-light-olive-oil-2l": [35, 39, 40],
+  "extra-light-olive-oil-3l": [35, 39, 40],
+  "fine-mediterranean-sea-salt": [26, 15, 27],
+  "high-gluten-flour-5lb": [41],
+  "kalamata-olives-14oz": [42, 43, 44],
+  "lemon-ginger-fruit-spread-preserves": [45],
+  "lemon-juice-16oz": [35, 46, 47],
+  "lemon-juice-6oz": [35, 46, 47],
+  "lime-juice-730288": [48, 49, 50],
+  "lime-juice-large-730289": [48, 49, 50],
+  "minced-black-truffle": [51],
+  "mini-gnocchi": [36, 52],
+  "organic-apple-cider-vinegar": [22, 53, 54],
+  "oven-ready-lasagna": [55, 56],
+  "parmesan-cheese-wedge-5oz": [17, 57, 37],
+  "parmesan-cheese-wedge-8oz": [17, 57, 37],
+  "penne": [58, 59, 60],
+  "penne-pasta-730322": [58, 59, 60],
+  "pitted-kalamata": [42, 43, 44],
+  "pomegranate-juice": [61],
+  "raspberry-balsamic-glaze-modena": [21],
+  "raspberry-fruit-spread-preserves": [62, 63],
+  "red-cooking-wine": [64],
+  "red-wine-vinegar": [65, 66],
+  "roasted-chestnuts-salt-black-pepper": [20],
+  "sea-salt-flakes": [67, 2, 21],
+  "sicilian-extra-virgin-olive-oil-730406": [68, 69],
+  "sliced-black-truffle": [70],
+  "smoked-sea-salt-flakes": [71],
+  "spaghetti": [72, 73],
+  "spaghetti-pasta-730320": [72, 73],
+  "strawberry-fruit-spread-preserves": [74, 75],
+  "sun-dried-tomatoes": [76, 77, 78],
+  "tomato-paste-tube": [79, 80, 81],
+  "tomato-sauce-box": [82, 83, 84],
+  "tomato-savory-jam": [28],
+  "tuna-ventresca-olive-oil-tall-jar": [85, 78],
+  "white-cooking-wine": [86, 87, 88],
+};
+
+const JW = "https://cdn.jwplayer.com/";
+
+export function kosherVideoPoster(video: Pick<KosherVideo, "jw">, width = 720): string {
+  return JW + "v2/media/" + video.jw + "/poster.jpg?width=" + width;
+}
+
+export function kosherVideoHls(video: Pick<KosherVideo, "jw">): string {
+  return JW + "manifests/" + video.jw + ".m3u8";
+}
+
+export function getKosherVideosForProduct(id: string): KosherVideo[] {
+  return (videosByProduct[canonicalProductId(id)] ?? []).map((i) => videoRows[i]).map(([jw, title, path, duration, mp4, date]) => ({
+    jw, title, url: abs(path, SITE)!, duration, mp4: JW + "videos/" + mp4, date,
+  }));
+}
+
+/** The playable video behind a kosher.com episode page, when there is one. */
+export function getKosherVideoForUrl(url: string): KosherVideo | undefined {
+  const row = videoRows.find(([, , path]) => abs(path, SITE) === url);
+  return row && { jw: row[0], title: row[1], url: abs(row[2], SITE)!, duration: row[3], mp4: JW + "videos/" + row[4], date: row[5] };
 }
 
 export function getKosherFeaturesForProduct(id: string): KosherFeature[] {

@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { ChevronRight, ShoppingCart, ArrowUpRight } from "lucide-react";
-import { getRecipePage, recipePages } from "../data/recipe-pages";
+import { getRecipePage, recipePages, KOSHER_COM_URL } from "../data/recipe-pages";
 import { getProductById, type Product } from "../data/products";
 import { getCategoryAccent } from "../data/category-accents";
 import { getAmazonProductLink } from "../lib/productPurchaseLink";
@@ -75,10 +75,12 @@ export default function RecipePage() {
   const main = products[0];
   const accent = getCategoryAccent(main?.categoryId ?? "");
   const more = recipePages.filter((other) => other.slug !== recipe.slug).slice(0, 3);
+  const hours = Math.floor(recipe.totalMinutes / 60);
+  const minutes = recipe.totalMinutes % 60;
   const facts = [
-    ["Prep", `${recipe.prepMinutes} min`],
-    ["Cook", recipe.cookMinutes ? `${recipe.cookMinutes} min` : "No cooking"],
-    ["Serves", String(recipe.servings)],
+    ["Time", hours ? `${hours}h${minutes ? ` ${minutes}m` : ""}` : `${minutes} min`],
+    ["Serves", recipe.servings],
+    ["Level", recipe.difficulty ?? "Easy"],
     ["Kosher", recipe.kosher],
   ];
 
@@ -107,7 +109,14 @@ export default function RecipePage() {
             <h1 className="mt-3 font-headline font-medium text-heading text-[clamp(2.25rem,5vw,4.25rem)] leading-[0.95] tracking-[-0.02em]">
               {recipe.title}
             </h1>
-            <p className="mt-5 max-w-xl text-base md:text-lg leading-relaxed text-on-surface/85">{recipe.intro}</p>
+            <p className="mt-4 text-sm text-on-surface/80">
+              Recipe from{" "}
+              <a href={KOSHER_COM_URL} target="_blank" rel="noopener" className="font-semibold text-olive-deep underline decoration-olive-deep/30 underline-offset-4 hover:decoration-olive-deep">
+                Kosher.com
+              </a>{" "}
+              by {recipe.author}
+            </p>
+            <p className="mt-4 max-w-xl text-base md:text-lg leading-relaxed text-on-surface/85">{recipe.intro}</p>
             <dl className="mt-7 grid grid-cols-4 max-w-lg border-y border-on-surface/15">
               {facts.map(([label, value]) => (
                 <div key={label} className="py-3 pr-2">
@@ -117,16 +126,19 @@ export default function RecipePage() {
               ))}
             </dl>
           </div>
-          {main && !isMissingProductImage(main.image) && (
-            <div style={{ backgroundColor: accent.soft }} className="flex aspect-[4/3] md:aspect-square items-center justify-center p-8 md:p-12">
-              <img
-                {...getResponsiveImageProps(main.image, "(min-width: 768px) 40vw, 90vw")}
-                alt={main.name}
-                decoding="async"
-                className="h-full w-auto max-w-full object-contain mix-blend-multiply"
-              />
-            </div>
-          )}
+          <figure className="relative aspect-[4/3] overflow-hidden" style={{ backgroundColor: accent.soft }}>
+            <img
+              src={recipe.image}
+              srcSet={`${recipe.imageThumb} 300w, ${recipe.image} 1024w`}
+              sizes="(min-width: 768px) 40vw, 92vw"
+              alt={recipe.title}
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+            <figcaption className="absolute bottom-0 right-0 bg-ink/70 px-2 py-1 text-[11px] text-paper">
+              Photo: Kosher.com
+            </figcaption>
+          </figure>
         </header>
 
         <div className="max-w-7xl mx-auto px-5 md:px-10 pb-12 grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16">
@@ -135,8 +147,8 @@ export default function RecipePage() {
               Ingredients
             </h2>
             <ul className="divide-y divide-on-surface/12 border-y border-on-surface/12">
-              {recipe.ingredients.map((ingredient) => (
-                <li key={ingredient} className="py-3 text-[15px] leading-relaxed text-on-surface/90">
+              {recipe.ingredients.map((ingredient, index) => (
+                <li key={index} className="py-3 text-[15px] leading-relaxed text-on-surface/90">
                   {ingredient}
                 </li>
               ))}
@@ -155,9 +167,17 @@ export default function RecipePage() {
               ))}
             </ol>
             <p className="mt-8 text-xs leading-relaxed text-on-surface/70">
-              {recipe.kosher === "Dairy" ? "Dairy recipe." : "Pareve recipe: no meat or dairy ingredients."} Check each
+              {recipe.kosher === "Pareve" ? "Pareve recipe: no meat or dairy ingredients." : `${recipe.kosher} recipe.`} Check each
               package for its kosher certification.
             </p>
+            <a
+              href={recipe.sourceUrl}
+              target="_blank"
+              rel="noopener"
+              className="mt-6 inline-flex min-h-11 items-center gap-1.5 rounded-full border border-ink/15 bg-paper px-5 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+            >
+              View this recipe on Kosher.com <span aria-hidden="true">&rarr;</span>
+            </a>
           </section>
         </div>
 

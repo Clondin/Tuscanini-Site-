@@ -307,8 +307,8 @@ function recipeRoutes(categories: Category[]): RouteHtml[] {
     title: "Recipes | Tuscanini",
     description: recipesIndexDescription(),
     type: "website",
-    image: productsById.get(recipePages[0]?.products[0] ?? "")?.image,
-    content: simpleContent("Recipes", recipesIndexDescription(), `<ul>${recipePages.map((recipe) => `<li><a href="/recipes/${escapeHtml(recipe.slug)}">${escapeHtml(recipe.title)}</a></li>`).join("")}</ul>`),
+    image: recipePages[0]?.image,
+    content: simpleContent("Recipes", recipesIndexDescription(), `<ul>${recipePages.map((recipe) => `<li><a href="/recipes/${escapeHtml(recipe.slug)}">${escapeHtml(recipe.title)}</a> &middot; by ${escapeHtml(recipe.author)} (<a href="${escapeHtml(recipe.sourceUrl)}">Kosher.com</a>)</li>`).join("")}</ul><p>Recipes &amp; stories from <a href="https://www.kosher.com/">Kosher.com</a>.</p>`),
     structuredData: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -327,8 +327,8 @@ function recipeRoutes(categories: Category[]): RouteHtml[] {
       title: `${recipe.title} | Tuscanini Recipes`,
       description: recipeDescription(recipe),
       type: "website",
-      image: productsById.get(recipe.products[0])?.image,
-      content: simpleContent(recipe.title, recipeDescription(recipe), `<h2>Tuscanini products in this recipe</h2><ul class="pr-grid">${recipe.products.map((id) => productsById.get(id)).filter((product): product is Product => Boolean(product)).map(productCardHtml).join("")}</ul>`),
+      image: recipe.image,
+      content: simpleContent(recipe.title, recipeDescription(recipe), `<p>Recipe from <a href="https://www.kosher.com/">Kosher.com</a> by ${escapeHtml(recipe.author)}. <a href="${escapeHtml(recipe.sourceUrl)}">View this recipe on Kosher.com</a>.</p><h2>Ingredients</h2><ul>${recipe.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul><h2>Method</h2><ol>${recipe.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol><h2>Tuscanini products in this recipe</h2><ul class="pr-grid">${recipe.products.map((id) => productsById.get(id)).filter((product): product is Product => Boolean(product)).map(productCardHtml).join("")}</ul>`),
       structuredData: recipeStructuredData(recipe, siteUrl, imagesFor(recipe.products)),
     });
   }

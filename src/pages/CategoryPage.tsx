@@ -7,6 +7,7 @@ import CategoryBreadcrumbs from "../components/category/CategoryBreadcrumbs";
 import CategoryDescription from "../components/category/CategoryDescription";
 import RelatedCategories from "../components/category/RelatedCategories";
 import CategoryClosing from "../components/category/CategoryClosing";
+import KosherCategoryStrip from "../components/category/KosherCategoryStrip";
 import PackFan from "../components/ui/PackFan";
 
 export default function CategoryPage() {
@@ -51,6 +52,10 @@ export default function CategoryPage() {
       <RelatedCategories
         currentCategoryId={category.id}
         allCategories={categories}
+      />
+      <KosherCategoryStrip
+        productIds={category.products.map((product) => product.id)}
+        categoryName={category.name}
       />
       <CategoryClosing category={category} />
     </div>

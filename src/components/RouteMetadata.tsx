@@ -114,11 +114,10 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
         description: "Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.",
       };
     } else if (pathname === "/recipes") {
-      const first = getProductById(recipePages[0]?.products[0] ?? "");
       metadata = {
         title: `Recipes | ${siteTitle}`,
         description: recipesIndexDescription(),
-        image: first && !isMissingProductImage(first.image) ? first.image : undefined,
+        image: recipePages[0]?.image,
         structuredData: {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
@@ -146,7 +145,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
         ? {
             title: `${recipe.title} | ${siteTitle} Recipes`,
             description: recipeDescription(recipe),
-            image: getProductById(recipe.products[0])?.image,
+            image: recipe.image,
             structuredData: recipeStructuredData(recipe, siteUrl, images),
           }
         : {

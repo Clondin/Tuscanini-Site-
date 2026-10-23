@@ -26,6 +26,7 @@ export default function RecipePageLinks({ productId }: { productId: string }) {
               <span className="text-xs uppercase tracking-wider text-olive-deep font-semibold">
                 {recipe.course} · {recipe.kosher}
               </span>
+              <span className="mt-1 text-xs text-on-surface/70">Recipe from Kosher.com by {recipe.author}</span>
               <span className="mt-2 font-headline text-xl leading-snug text-heading group-hover:text-olive-accent">
                 {recipe.title}
               </span>

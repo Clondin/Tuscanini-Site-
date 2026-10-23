@@ -3,6 +3,7 @@ import CollectionsGrid from "../components/home/CollectionsGrid";
 import FeaturedProducts from "../components/home/FeaturedProducts";
 import CampaignPoster from "../components/home/CampaignPoster";
 import ServingIdeas from "../components/home/ServingIdeas";
+import KosherVideosStrip from "../components/home/KosherVideosStrip";
 import HeritageSection from "../components/home/HeritageSection";
 import NewsletterSignup from "../components/home/NewsletterSignup";
 
@@ -14,6 +15,7 @@ export default function HomePage() {
       <FeaturedProducts />
       <CampaignPoster />
       <ServingIdeas />
+      <KosherVideosStrip />
       <HeritageSection />
       <NewsletterSignup />
     </div>
