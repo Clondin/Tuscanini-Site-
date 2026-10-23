@@ -178,7 +178,7 @@ export const snackCategories: Category[] = [
     tagline: "Potato chips",
     description:
       "Potato chips cooked in olive oil, available in full-size and snack bags.",
-    heroImage: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
+    heroImage: "/assets/brand-banners/potato-chips-1e6edf7f5f.webp",
     products: [
       {
         id: "classic-olive-oil-potato-chips",

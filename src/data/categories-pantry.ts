@@ -238,7 +238,7 @@ export const pantryCategories: Category[] = [
     tagline: "Cooking wines and citrus juices",
     description:
       "Cooking wines, lemon juice, and lime juice for sauces, marinades, and baking.",
-    heroImage: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
+    heroImage: "/assets/brand-banners/cooking-wines-citrus-ce9ea5be03.webp",
     products: [
       {
         id: "red-cooking-wine",
@@ -646,7 +646,7 @@ export const pantryCategories: Category[] = [
     tagline: "Tomatoes and tomato paste",
     description:
       "Whole, chopped, and crushed tomatoes, passata, and tomato paste for sauces, soups, and stews.",
-    heroImage: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
+    heroImage: "/assets/brand-banners/canned-tomatoes-410858dc00.webp",
     products: [
       {
         id: "tomato-sauce-box",
