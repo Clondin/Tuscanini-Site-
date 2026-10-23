@@ -98,6 +98,13 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
           url: `${siteUrl}/products`,
         },
       };
+    } else if (pathname === "/search") {
+      const q = new URLSearchParams(location.search).get("q")?.trim();
+      metadata = {
+        title: `${q ? `“${q}” – Search` : "Search"} | ${siteTitle}`,
+        description: "Search Tuscanini pasta, sauces, olive oils, recipes and videos.",
+        robots: "noindex, follow",
+      };
     } else if (pathname === "/about") {
       const page = getCmsData("page", "about");
       metadata = {

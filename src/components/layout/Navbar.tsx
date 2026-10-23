@@ -1,5 +1,5 @@
 import { getResponsiveImageProps } from "../../lib/productImage";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Search, ChevronDown, ArrowRight } from "lucide-react";
 import { categories } from "../../data/products";
@@ -20,6 +20,20 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  // "/" or Cmd/Ctrl+K opens search from anywhere that is not a text field.
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const typing = target?.closest("input, textarea, select, [contenteditable='true']");
+      if ((event.key === "k" && (event.metaKey || event.ctrlKey)) || (event.key === "/" && !typing && !event.metaKey && !event.ctrlKey && !event.altKey)) {
+        event.preventDefault();
+        setMegaOpen(false);
+        setSearchOpen(true);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const desktopMenuButtonRef = useRef<HTMLButtonElement>(null);
   const closeMobileMenu = useCallback(() => setMobileOpen(false), []);
@@ -119,6 +133,9 @@ export default function Navbar() {
             >
               <Search size={17} />
               Search
+              <kbd aria-hidden="true" className="hidden xl:inline-flex items-center justify-center min-w-5 h-5 px-1 rounded border border-paper/30 text-[11px] text-paper/70 font-sans">
+                /
+              </kbd>
             </button>
           </div>
           <div className="lg:hidden flex items-center gap-1">
