@@ -11,7 +11,7 @@ import { getResponsiveImageProps } from "../../lib/productImage";
 const tiles = [
   { slug: "pasta-gnocchi", src: "/assets/ads/gnocchi-recipe.jpg", position: "50% 50%" },
   { slug: "pasta-sauces", src: "/assets/ads/tomato-group-tuscanini-web.jpg", position: "60% 55%" },
-  { slug: "olive-oil", src: "/assets/Photos/story/olive-harvest.webp", position: "50% 40%" },
+  { slug: "olive-oil", src: "/assets/products/generated/730406/03-occasion-1a05b3cf704c01be.webp", position: "50% 40%" },
   { slug: "beverages", src: "/assets/ads/beverages-wide.jpg", position: "65% 50%" },
   { slug: "pizza", src: "/assets/ads/pizza-banner.jpg", position: "50% 75%" },
 ];

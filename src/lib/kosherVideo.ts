@@ -1,3 +1,5 @@
+import { tzniusPoster } from "../data/tznius.js";
+
 /** A kosher.com episode whose video is served from the public JW Player CDN. */
 export interface KosherVideo {
   jw: string;
@@ -14,6 +16,8 @@ export interface KosherVideo {
 const JW = "https://cdn.jwplayer.com/";
 
 export function kosherVideoPosterUrl(jw: string, width = 720): string {
+  const safe = tzniusPoster(jw);
+  if (safe) return safe;
   return `${JW}v2/media/${jw}/poster.jpg?width=${width}`;
 }
 

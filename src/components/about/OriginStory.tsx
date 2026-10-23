@@ -23,10 +23,10 @@ export default function OriginStory() {
           <figure className="absolute right-0 top-0 w-[72%] h-[82%] overflow-hidden">
             <img
               {...getResponsiveImageProps(
-                "/assets/Photos/story/village-produce-market.webp",
+                "/assets/Photos/backgrounds/italian-village-hero.webp",
                 "(min-width: 1024px) 30vw, 70vw",
               )}
-              alt="Market vendor arranging lemons and tomatoes for shoppers on a stone village lane."
+              alt="Market stalls with tomatoes along a sunlit stone lane in an Italian village."
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover"
@@ -35,10 +35,10 @@ export default function OriginStory() {
           <figure className="absolute left-0 bottom-0 w-[52%] aspect-square overflow-hidden ring-8 ring-surface">
             <img
               {...getResponsiveImageProps(
-                "/assets/Photos/story/olive-harvest.webp",
+                "/assets/Photos/backgrounds/italian-coast-hero.webp",
                 "(min-width: 1024px) 22vw, 50vw",
               )}
-              alt="Two people harvesting olives by hand in a sunlit grove."
+              alt="Colourful houses above the sea on the Italian coast."
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover"

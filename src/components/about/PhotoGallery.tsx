@@ -1,14 +1,14 @@
 import { getResponsiveImageProps } from "../../lib/productImage";
 
 const lead = {
-  src: "/assets/Photos/story/terrace-family-table.webp",
-  alt: "Family and friends sharing pasta on a terrace overlooking olive-covered hills.",
+  src: "/assets/ads/gnocchi-recipe.jpg",
+  alt: "Tuscanini mini gnocchi with mushrooms served on a rustic wooden table.",
 };
 
 const supporting = [
   {
-    src: "/assets/Photos/story/hillside-aperitivo.webp",
-    alt: "Friends sharing an evening aperitivo on a hillside terrace.",
+    src: "/assets/ads/beverages-wide.jpg",
+    alt: "Tuscanini blood orange sparkling soda with sliced oranges for aperitivo.",
   },
   {
     src: "/assets/Photos/story/coastal-craftsperson-lead.webp",
