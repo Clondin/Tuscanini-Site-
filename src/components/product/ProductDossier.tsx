@@ -18,7 +18,8 @@ interface Props {
 
 /**
  * Product detail as a printed spec sheet: a Tuscanini/collection/size strip,
- * then name, description and the "About this product" write-up, the pack on its
+ * then name and the "About this product" write-up (or the short description when
+ * there is no write-up), the pack on its
  * aisle tint, and facts with the buy link in three columns between hairline rules. Label details recorded in
  * the CMS (ingredients, preparation, nutrition) print open beneath.
  */
@@ -64,15 +65,13 @@ export default function ProductDossier({ product, categoryName, categorySlug }: 
             >
               {category}
               {title}
-              <p
-                className={
-                  story
-                    ? "mt-6 text-base leading-relaxed text-on-surface/90"
-                    : "mt-6 text-base leading-relaxed text-on-surface/90 lg:mt-auto lg:pt-10"
-                }
-              >
-                {product.description}
-              </p>
+              {/* The short description repeats the About write-up, so it only
+                  prints when there is no write-up (no page is left blank). */}
+              {!story && (
+                <p className="mt-6 text-base leading-relaxed text-on-surface/90 lg:mt-auto lg:pt-10">
+                  {product.description}
+                </p>
+              )}
             </div>
             <div
               style={{ backgroundColor: accent.soft }}
