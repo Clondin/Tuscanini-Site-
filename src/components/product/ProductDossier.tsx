@@ -18,14 +18,17 @@ interface Props {
 
 /**
  * Product detail as a printed spec sheet: a Tuscanini/collection/size strip,
- * then name and description, the pack on its aisle tint, and facts with the
- * buy link in three columns between hairline rules. Label details recorded in
+ * then name, description and the "About this product" write-up, the pack on its
+ * aisle tint, and facts with the buy link in three columns between hairline rules. Label details recorded in
  * the CMS (ingredients, preparation, nutrition) print open beneath.
  */
 export default function ProductDossier({ product, categoryName, categorySlug }: Props) {
   const { state, buyingRef } = useProductDossier(product, categoryName);
   const accent = getCategoryAccent(categorySlug);
   const poster = getPosterColor(categorySlug);
+  // The long write-up sits in the showcase's left column, beside the image on
+  // desktop and after the image and facts when the columns stack on phones.
+  const story = product.details && product.details !== product.description ? product.details : undefined;
 
   const category = (
     <Link
@@ -51,17 +54,29 @@ export default function ProductDossier({ product, categoryName, categorySlug }: 
             <span>{categoryName}</span>
             {state.size && <span>{state.size}</span>}
           </div>
-          <div className="grid lg:grid-cols-[1fr_1.15fr_1fr] border-b border-ink">
-            <div className="py-8 lg:py-12 lg:pr-10 flex flex-col">
+          <div className="grid lg:grid-cols-[1fr_1.15fr_1fr] lg:grid-rows-[auto_1fr] border-b border-ink">
+            <div
+              className={
+                story
+                  ? "pt-8 pb-6 lg:pt-12 lg:pb-8 lg:pr-10 lg:col-start-1 lg:row-start-1 flex flex-col"
+                  : "py-8 lg:py-12 lg:pr-10 lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col"
+              }
+            >
               {category}
               {title}
-              <p className="mt-6 text-base leading-relaxed text-on-surface/90 lg:mt-auto lg:pt-10">
+              <p
+                className={
+                  story
+                    ? "mt-6 text-base leading-relaxed text-on-surface/90"
+                    : "mt-6 text-base leading-relaxed text-on-surface/90 lg:mt-auto lg:pt-10"
+                }
+              >
                 {product.description}
               </p>
             </div>
             <div
               style={{ backgroundColor: accent.soft }}
-              className="border-y lg:border-y-0 lg:border-x border-ink/20 flex items-end justify-center px-4 py-5 sm:px-8 sm:py-10"
+              className="lg:col-start-2 lg:row-start-1 lg:row-span-2 border-y lg:border-y-0 lg:border-x border-ink/20 flex items-end justify-center px-4 py-5 sm:px-8 sm:py-10"
             >
               <ProductGallery
                 key={product.id}
@@ -69,7 +84,7 @@ export default function ProductDossier({ product, categoryName, categorySlug }: 
                 state={state}
               />
             </div>
-            <div className="py-8 lg:py-12 lg:pl-10 flex flex-col">
+            <div className="py-8 lg:py-12 lg:pl-10 lg:col-start-3 lg:row-start-1 lg:row-span-2 flex flex-col">
               <dl className="border-t border-ink">
                 {state.facts
                   .filter((fact) => fact.label !== "Collection")
@@ -84,6 +99,16 @@ export default function ProductDossier({ product, categoryName, categorySlug }: 
               </dl>
               <BuyActions state={state} buyRef={buyingRef} className="mt-8 lg:mt-auto lg:pt-10" />
             </div>
+            {story && (
+              <div className="pb-8 lg:pb-12 lg:pr-10 lg:col-start-1 lg:row-start-2">
+                <div className="border-t border-ink pt-4">
+                  <h2 className="text-[11px] font-semibold uppercase tracking-[0.28em] text-ink">
+                    About this product
+                  </h2>
+                  <p className="mt-3 text-[15px] leading-relaxed text-on-surface/90">{story}</p>
+                </div>
+              </div>
+            )}
           </div>
           <LabelDetails product={product} />
         </div>

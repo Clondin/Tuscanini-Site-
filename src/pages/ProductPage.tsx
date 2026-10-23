@@ -3,7 +3,6 @@ import { getProductById, getCategoryForProduct } from "../data/products";
 import ProductNotFound from "../components/product/ProductNotFound";
 import ProductBreadcrumb from "../components/product/ProductBreadcrumb";
 import ProductDossier from "../components/product/ProductDossier";
-import ProductStory from "../components/product/ProductStory";
 import RelatedProducts from "../components/product/RelatedProducts";
 import RecipeSuggestions from "../components/product/RecipeSuggestions";
 import RecipePageLinks from "../components/product/RecipePageLinks";
@@ -38,7 +37,6 @@ export default function ProductPage() {
         categoryName={category.name}
         categorySlug={category.slug}
       />
-      {product.details && product.details !== product.description && <ProductStory details={product.details} />}
       <RelatedProducts
         products={siblings}
         categorySlug={category.slug}
