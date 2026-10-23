@@ -3,6 +3,7 @@ import { mealCategories } from "./categories-meals";
 import { snackCategories } from "./categories-snacks";
 import { foodserviceCategories } from "./categories-foodservice";
 import { mergeKaycoCatalog } from "./kayco-catalog";
+import { productStories } from "./product-stories";
 import { kaycoSnapshot } from "./kayco-catalog.generated";
 import { canonicalProductId } from '../lib/productAliases';
 import type { ProductGalleryImage } from './product-galleries';
@@ -350,10 +351,21 @@ export const bundledCategories: Category[] = catalogCategories
     ),
   }));
 
-export let categories: Category[] = mergeKaycoCatalog(bundledCategories, kaycoSnapshot);
+/** Longer write-ups from product-stories.ts replace the short catalog details. */
+function withProductStories(list: Category[]): Category[] {
+  return list.map((category) => ({
+    ...category,
+    products: category.products.map((product) => {
+      const story = productStories[product.id];
+      return story ? { ...product, details: story } : product;
+    }),
+  }));
+}
+
+export let categories: Category[] = withProductStories(mergeKaycoCatalog(bundledCategories, kaycoSnapshot));
 
 export function setCatalogCategories(nextCategories: Category[]): void {
-  if (nextCategories.length > 0) categories = nextCategories;
+  if (nextCategories.length > 0) categories = withProductStories(nextCategories);
 }
 
 // The metric and imperial flour listings used the same retail packages.
