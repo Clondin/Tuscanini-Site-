@@ -10,10 +10,6 @@ export default function OriginStory() {
             sauces, olive oils and vinegars, sparkling drinks, chocolate,
             snacks, and frozen pizza.
           </p>
-          <p className="mt-8 max-w-[52ch] text-base md:text-lg leading-relaxed text-on-surface/80">
-            Most of the range is made in Italy, and much of it is certified
-            kosher.
-          </p>
           <p className="mt-8 font-script italic text-2xl text-burnt-terracotta">
             Taste Tuscanini. Know Italy.
           </p>

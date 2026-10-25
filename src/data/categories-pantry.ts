@@ -27,7 +27,7 @@ export const pantryCategories: Category[] = [
         id: "extra-light-olive-oil-2l",
         name: "Extra Light Olive Oil 2L",
         description:
-          "The same refined, mild olive oil in a generous two-liter bottle for everyday cooking needs. Perfect for busy kitchens that go through oil quickly.",
+          "The same refined, mild olive oil in a two-liter bottle for everyday cooking.",
         image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-2L-730410.png",
         categoryId: "olive-oil",
         details:
@@ -40,7 +40,7 @@ export const pantryCategories: Category[] = [
         id: "extra-light-olive-oil-3l",
         name: "Extra Light Olive Oil 3L",
         description:
-          "Our largest extra light olive oil for households and entertaining enthusiasts who demand quality in every dish. An Italian pantry staple in a value-sized bottle.",
+          "Our largest bottle of extra light olive oil.",
         image: "/assets/Olive Oil/Tuscanini-Olive-Oil-Extra-Light-3L-730415.png",
         categoryId: "olive-oil",
         details:
@@ -53,7 +53,7 @@ export const pantryCategories: Category[] = [
         id: "evoo-750ml",
         name: "Extra Virgin Olive Oil",
         description:
-          "Cold-pressed extra virgin olive oil with a robust, peppery finish and golden-green hue. The cornerstone of authentic Italian cooking.",
+          "Cold-pressed extra virgin olive oil with a peppery finish.",
         image: "/assets/Olive Oil/730406 Large.png",
         categoryId: "olive-oil",
         details:
@@ -66,7 +66,7 @@ export const pantryCategories: Category[] = [
         id: "evoo-garlic-250ml",
         name: "Extra Virgin Olive Oil with Garlic",
         description:
-          "Premium extra virgin olive oil naturally infused with aromatic Italian garlic. Adds instant depth to pasta, bruschetta, and roasted vegetables.",
+          "Extra virgin olive oil flavored with garlic. Use it on pasta, bruschetta, and roasted vegetables.",
         image: "/assets/Olive Oil/730254.png",
         categoryId: "olive-oil",
         details:
@@ -116,7 +116,7 @@ export const pantryCategories: Category[] = [
         id: "balsamic-vinegar-modena-8oz",
         name: "Balsamic Vinegar of Modena",
         description:
-          "Aged balsamic vinegar from Modena with a rich, complex sweetness and velvety texture. A timeless Italian condiment.",
+          "Balsamic vinegar of Modena for dressings, marinades, and finishing.",
         image: "/assets/Vinegar/Tuscanini-Balsamic-Vinegar-8.45-oz.png",
         categoryId: "vinegars-glazes",
         details:
@@ -129,7 +129,7 @@ export const pantryCategories: Category[] = [
         id: "balsamic-vinegar-modena-500ml",
         name: "Balsamic Vinegar of Modena 500ml",
         description:
-          "A generous bottle of our authentic Modena balsamic vinegar for those who use this Italian essential every day. Rich, nuanced, and endlessly versatile.",
+          "A larger bottle of our balsamic vinegar of Modena.",
         image: "/assets/Vinegar/730260.png",
         categoryId: "vinegars-glazes",
         details:
@@ -142,7 +142,7 @@ export const pantryCategories: Category[] = [
         id: "balsamic-glaze-modena",
         name: "Balsamic Vinegar Glaze of Modena",
         description:
-          "A thick, syrupy reduction of balsamic vinegar perfect for drizzling over salads, grilled meats, and fresh fruit. Beautiful presentation and intense flavor.",
+          "A thick balsamic reduction for drizzling over salads, grilled meats, and fruit.",
         image: "/assets/Vinegar/730261.png",
         categoryId: "vinegars-glazes",
         details:
@@ -155,7 +155,7 @@ export const pantryCategories: Category[] = [
         id: "balsamic-vinegar-spray",
         name: "Balsamic Vinegar Spray",
         description:
-          "Authentic Modena balsamic vinegar in a convenient spray bottle for effortless, even drizzling. Perfect for salads, grilled meats, and finishing touches.",
+          "Balsamic vinegar of Modena in a spray bottle, for salads, grilled meats, and finishing.",
         image: "/assets/Vinegar/730247.png",
         categoryId: "vinegars-glazes",
         details:
@@ -194,7 +194,7 @@ export const pantryCategories: Category[] = [
         id: "organic-apple-cider-vinegar",
         name: "Organic Apple Cider Vinegar",
         description:
-          "Organic, unfiltered apple cider vinegar with a tangy, crisp flavor. Made in Italy from premium organic apples.",
+          "Organic, unfiltered apple cider vinegar with a tangy flavor.",
         image: "/assets/Vinegar/Tuscanini-Apple-Cider-Vinegar-with-Mother-730245.png",
         categoryId: "vinegars-glazes",
         details:
@@ -270,7 +270,7 @@ export const pantryCategories: Category[] = [
         id: "lemon-juice-6oz",
         name: "Lemon Juice",
         description:
-          "Pure squeezed lemon juice from sun-ripened Sicilian lemons. Bright, tart, and ready to add a burst of citrus to any dish.",
+          "Lemon juice for cooking, dressings, and drinks.",
         image: "/assets/Lemon Juice/730285-PRIMARY-SHOT.png",
         categoryId: "cooking-wines-citrus",
         details:
@@ -283,7 +283,7 @@ export const pantryCategories: Category[] = [
         id: "lemon-juice-16oz",
         name: "Lemon Juice Large",
         description:
-          "A larger bottle of pure Sicilian lemon juice for kitchens that can't get enough citrus. Same bright, authentic flavor in a value size.",
+          "A larger bottle of our lemon juice.",
         image: "/assets/Lemon Juice/730286.png",
         categoryId: "cooking-wines-citrus",
         details:
@@ -307,7 +307,7 @@ export const pantryCategories: Category[] = [
         id: "pitted-green-castelvetrano",
         name: "Pitted Green Castelvetrano Olives",
         description:
-          "Buttery, mild Castelvetrano olives from Sicily, carefully pitted for effortless snacking. Their bright green color and sweet flavor make them a crowd favorite.",
+          "Pitted Castelvetrano olives with a mild, buttery flavor.",
         image: "/assets/Olive/730190.png",
         categoryId: "olives",
         details:
@@ -320,7 +320,7 @@ export const pantryCategories: Category[] = [
         id: "green-cerignola",
         name: "Green Cerignola Olives",
         description:
-          "Large, plump Cerignola olives from Puglia with a crisp bite and subtly sweet flavor. A showstopper on any olive board.",
+          "Large Cerignola olives with a crisp bite and mild flavor.",
         image: "/assets/Olive/730191-PRIMARY-SHOT.png",
         categoryId: "olives",
         details:
@@ -359,7 +359,7 @@ export const pantryCategories: Category[] = [
         id: "kalamata-olives-14oz",
         name: "Kalamata Olives",
         description:
-          "Premium Kalamata olives in a larger jar, perfect for families and olive lovers. Deep, rich flavor with a satisfying meaty texture.",
+          "Kalamata olives in a larger jar.",
         image: "/assets/Olive/Tuscanini-Kalamata-Olives-730181.png",
         categoryId: "olives",
         details:
@@ -372,7 +372,7 @@ export const pantryCategories: Category[] = [
         id: "pitted-bella-italia-mix",
         name: "Pitted Bella Italia Mix Olives",
         description:
-          "A colorful medley of premium Italian olive varieties, pitted and ready to enjoy. A taste of Italy in every handful.",
+          "A mix of pitted Italian olive varieties.",
         image: "/assets/Olive/Tuscanini-Bella-Italia-Mix-Pitted-Olives-730182.png",
         categoryId: "olives",
         details:
@@ -385,7 +385,7 @@ export const pantryCategories: Category[] = [
         id: "pitted-olives-crushed-garlic",
         name: "Pitted Olives with Crushed Garlic",
         description:
-          "Savory Italian olives marinated with crushed garlic for an irresistible flavor combination. Bold, aromatic, and ready to serve.",
+          "Italian olives marinated with crushed garlic. Ready to serve.",
         image: "/assets/Olive/730183 - Pitted Olives w-Crushed Garlic.jpg",
         categoryId: "olives",
         details:
@@ -398,7 +398,7 @@ export const pantryCategories: Category[] = [
         id: "cracked-marinated-olives",
         name: "Cracked Marinated Olives",
         description:
-          "Traditional cracked olives marinated in herbs and olive oil. The cracking allows the marinade to penetrate for maximum flavor.",
+          "Cracked olives marinated in herbs and olive oil.",
         image: "/assets/Olive/730184 -Cracked Marinated Olives.jpg",
         categoryId: "olives",
         details:
@@ -411,7 +411,7 @@ export const pantryCategories: Category[] = [
         id: "italian-olives-trio-platter",
         name: "Italian Olives Trio Platter",
         description:
-          "Three varieties of premium Italian olives presented in an elegant divided platter. The perfect ready-to-serve appetizer for any occasion.",
+          "Three varieties of Italian olives in a divided platter, ready to serve.",
         image: "/assets/Olive/Tuscanini-Italian-Olive-Trio-Platter-730185.png",
         categoryId: "olives",
         details:
@@ -437,7 +437,7 @@ export const pantryCategories: Category[] = [
         id: "original-pitted-olives-pouch",
         name: "Original Pitted Olives Pouch",
         description:
-          "Convenient single-serve pouches of premium pitted Italian olives. A healthy, flavorful snack for on-the-go enjoyment.",
+          "Single-serve pouches of pitted Italian olives.",
         image: "/assets/Olive/Pouches/olive_origin.jpg",
         categoryId: "olives",
         details:
@@ -463,7 +463,7 @@ export const pantryCategories: Category[] = [
         id: "garlic-pitted-olives-pouch",
         name: "Garlic Pitted Olives Pouch",
         description:
-          "Single-serve pouches of garlic-seasoned Italian olives. Savory, aromatic, and perfectly portable.",
+          "Single-serve pouches of garlic-seasoned Italian olives.",
         image: "/assets/Olive/Pouches/olive_garlic.jpg",
         categoryId: "olives",
         details:
@@ -526,7 +526,7 @@ export const pantryCategories: Category[] = [
         id: "calabrian-chili-hot-pepper-jam",
         name: "Calabrian Chili Hot Pepper Jam",
         description:
-          "A sweet and spicy jam made from Calabrian chili peppers, perfect for glazing, spreading, and pairing with cheese. Addictively delicious.",
+          "A sweet and spicy jam made from Calabrian chili peppers, for glazing, spreading, and serving with cheese.",
         image: "/assets/Jam/730242.png",
         categoryId: "italian-condiments",
         details:
@@ -717,7 +717,7 @@ export const pantryCategories: Category[] = [
         id: "crushed-tomatoes-24oz",
         name: "Crushed Tomatoes 24.7oz",
         description:
-          "Coarsely crushed Italian tomatoes with a hearty, rustic texture. Perfect for chunky sauces, chili, and baked dishes.",
+          "Coarsely crushed Italian tomatoes for chunky sauces, chili, and baked dishes.",
         image: "/assets/Sauces/Tuscanini-Crushed-Tomatoes-730212.png",
         categoryId: "canned-tomatoes",
         details:
@@ -743,7 +743,7 @@ export const pantryCategories: Category[] = [
         id: "peeled-tomatoes",
         name: "Peeled Tomatoes",
         description:
-          "Whole peeled Italian tomatoes, hand-selected for ripeness and packed at peak flavor. The gold standard for homemade sauces.",
+          "Whole peeled Italian tomatoes for homemade sauces.",
         image: "/assets/Sauces/Tuscanini-Peeled-Tomatoes-28.png",
         categoryId: "canned-tomatoes",
         details:
@@ -756,7 +756,7 @@ export const pantryCategories: Category[] = [
         id: "diced-tomatoes-14oz",
         name: "Diced Tomatoes 14.1oz",
         description:
-          "Perfectly diced Italian tomatoes in a convenient smaller can. Great for quick sauces, side dishes, and recipes that call for a measured amount.",
+          "Diced Italian tomatoes in a smaller can, for quick sauces and side dishes.",
         image: "/assets/Sauces/730221-PRIMARY-SHOT.png",
         categoryId: "canned-tomatoes",
         details:
@@ -782,7 +782,7 @@ export const pantryCategories: Category[] = [
         id: "crushed-tomatoes-14oz",
         name: "Crushed Tomatoes 14.1oz",
         description:
-          "Rustic crushed Italian tomatoes in a handy smaller can. Perfect for personal-sized batches of sauce and quick meals.",
+          "Crushed Italian tomatoes in a smaller can, for small batches of sauce.",
         image: "/assets/Sauces/730223-PRIMARY-SHOT.png",
         categoryId: "canned-tomatoes",
         details:
@@ -795,7 +795,7 @@ export const pantryCategories: Category[] = [
         id: "tomato-juice",
         name: "Tomato Juice",
         description:
-          "Pure Italian tomato juice made from sun-ripened tomatoes. Refreshing on its own or as a base for cocktails and cooking.",
+          "Italian tomato juice. Drink it on its own or use it in cooking.",
         image: "/assets/Sauces/Tomato-Juice-2.png",
         categoryId: "canned-tomatoes",
         details:
@@ -819,7 +819,7 @@ export const pantryCategories: Category[] = [
         id: "coarse-mediterranean-sea-salt",
         name: "Coarse Mediterranean Sea Salt",
         description:
-          "Naturally harvested coarse sea salt from the Mediterranean, perfect for salt mills, finishing, and brining. Pure and mineral-rich.",
+          "Coarse sea salt for salt mills, finishing, and brining.",
         image: "/assets/Salt/730280.png",
         categoryId: "seasonings-truffles",
         details:
@@ -871,7 +871,7 @@ export const pantryCategories: Category[] = [
         id: "kosher-salt-bulk",
         name: "Kosher Salt Bulk",
         description:
-          "Premium Italian kosher salt in a generous three-pound bag. The versatile, all-purpose salt for serious home cooks and professionals.",
+          "Italian kosher salt in a three-pound bag.",
         image: "/assets/Salt/730284.png",
         categoryId: "seasonings-truffles",
         details:
@@ -975,7 +975,7 @@ export const pantryCategories: Category[] = [
         id: "black-truffle-sauce",
         name: "Black Truffle Sauce",
         description:
-          "A rich, savory sauce made from Italian black truffles and mushrooms. Stir into pasta, spread on crostini, or use as a luxurious condiment.",
+          "A sauce made from black truffles and mushrooms. Stir it into pasta or spread it on crostini.",
         image: "/assets/Truffles/730581.png",
         categoryId: "seasonings-truffles",
         details:
@@ -1014,7 +1014,7 @@ export const pantryCategories: Category[] = [
         id: "large-black-truffle-sauce",
         name: "Large Black Truffle Sauce",
         description:
-          "Our signature black truffle sauce in a generous professional-sized jar. Perfect for restaurants, caterers, and devoted truffle enthusiasts.",
+          "Our black truffle sauce in a large jar for restaurants and caterers.",
         image: "/assets/Truffles/730587.png",
         categoryId: "seasonings-truffles",
         details:
@@ -1027,7 +1027,7 @@ export const pantryCategories: Category[] = [
         id: "large-sliced-black-truffle",
         name: "Large Sliced Black Truffle",
         description:
-          "Premium sliced Italian black truffles in a large jar for professional kitchens and serious home cooks. Luxurious and versatile.",
+          "Sliced black truffles in a large jar for professional kitchens.",
         image: "/assets/Truffles/730588.png",
         categoryId: "seasonings-truffles",
         details:
@@ -1113,7 +1113,7 @@ export const pantryCategories: Category[] = [
       {
         id: "basil-pesto",
         name: "Basil Pesto",
-        description: "Classic Ligurian basil pesto made with fresh basil, Parmigiano-Reggiano, pine nuts, and extra virgin olive oil. Rich, aromatic, and authentically Italian.",
+        description: "Basil pesto made with basil, Parmigiano-Reggiano, pine nuts, and extra virgin olive oil.",
         image: "/assets/Pesto/730231.png",
         categoryId: "pesto",
         details: "Our Basil Pesto follows the traditional Ligurian recipe, blending fresh Italian basil with aged Parmigiano-Reggiano, toasted pine nuts, and cold-pressed extra virgin olive oil. A versatile sauce that transforms pasta, pizza, and sandwiches in seconds.",

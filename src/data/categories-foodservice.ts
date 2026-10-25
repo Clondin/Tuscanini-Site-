@@ -98,7 +98,7 @@ export const foodserviceCategories: Category[] = [
     name: "Foodservice Vinegar & Citrus",
     slug: "foodservice-vinegar-citrus",
     tagline: "Kitchen Essentials in Larger Formats",
-    description: "Cooking wines, vinegar, and real citrus juices for professional kitchens and high-volume preparation.",
+    description: "Cooking wines, vinegar, and citrus juices in larger formats for professional kitchens.",
     heroImage: "/assets/Vinegar/730265-PRIMARY-SHOT.png",
     products: makeProducts("foodservice-vinegar-citrus", [
       ["red-wine-vinegar-bulk", "Red Wine Vinegar Bulk", "5 L", "/assets/Foodservice/730267-red-bulk.webp"],

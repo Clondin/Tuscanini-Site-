@@ -100,7 +100,7 @@ function homeContent(categories: Category[]): string {
   const list = categories
     .map((category) => `<li><a href="/category/${escapeHtml(category.slug)}">${escapeHtml(category.name)}</a> &mdash; ${escapeHtml(category.tagline || category.description)}</li>`)
     .join("");
-  return wrap(`<h1>Tuscanini &mdash; Italian Food</h1><p>Taste Tuscanini. Know Italy. Pasta, sauces, olive oils, drinks, snacks, and frozen foods imported from Italy.</p><p><a href="/products">Explore all products</a> &middot; <a href="/recipes">Recipes</a> &middot; <a href="/about">Our story</a></p><h2>Shop by category</h2><ul>${list}</ul>`);
+  return wrap(`<h1>Tuscanini &mdash; Italian Food</h1><p>Taste Tuscanini. Know Italy. Pasta, sauces, olive oils, drinks, snacks, and frozen foods.</p><p><a href="/products">Explore all products</a> &middot; <a href="/recipes">Recipes</a> &middot; <a href="/about">Our story</a></p><h2>Shop by category</h2><ul>${list}</ul>`);
 }
 
 function productsContent(categories: Category[]): string {

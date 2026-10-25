@@ -15,7 +15,7 @@ export const snackCategories: Category[] = [
         id: "original-parchment-crackers",
         name: "Original Parchment Crackers",
         description:
-          "Delicate and flaky parchment crackers with a light, crispy texture. A versatile Italian cracker perfect for pairing with cheeses, spreads, or enjoying on their own.",
+          "Thin, crisp parchment crackers. Serve with cheese, spreads, or on their own.",
         image: "/assets/Crackers/730330.png",
         categoryId: "crackers-breadsticks",
         details:
@@ -54,7 +54,7 @@ export const snackCategories: Category[] = [
         id: "truffle-parchment-crackers",
         name: "Truffle Parchment Crackers",
         description:
-          "Luxurious truffle-flavored parchment crackers with an earthy, umami-rich taste. An elegant Italian snack for special occasions.",
+          "Truffle-flavored parchment crackers.",
         image: "/assets/Crackers/730333.png",
         categoryId: "crackers-breadsticks",
         details:
@@ -68,7 +68,7 @@ export const snackCategories: Category[] = [
         id: "spelt-sea-salt-crostini-crackers",
         name: "Spelt Sea Salt Crostini Crackers",
         description:
-          "Crunchy spelt crostini seasoned with natural sea salt. A wholesome Italian cracker with a satisfying nutty bite.",
+          "Crunchy spelt crostini seasoned with sea salt.",
         image: "/assets/Crackers/730560.png",
         categoryId: "crackers-breadsticks",
         details:
@@ -94,7 +94,7 @@ export const snackCategories: Category[] = [
         id: "spelt-truffle-crostini-crackers",
         name: "Spelt Truffle Crostini Crackers",
         description:
-          "Decadent truffle-infused spelt crostini with an earthy depth of flavor. A gourmet Italian snack crafted from ancient grains.",
+          "Truffle-flavored spelt crostini.",
         image: "/assets/Crackers/730562.png",
         categoryId: "crackers-breadsticks",
         details:
@@ -107,7 +107,7 @@ export const snackCategories: Category[] = [
         id: "spelt-sea-salt-crostini-multipack",
         name: "Spelt Sea Salt Crostini Multipack",
         description:
-          "Convenient individually wrapped portions of our beloved spelt sea salt crostini. Perfect for lunchboxes, on-the-go snacking, and portion control.",
+          "Individually wrapped portions of our spelt sea salt crostini.",
         image: "/assets/Crackers/730565.png",
         categoryId: "crackers-breadsticks",
         details:
@@ -134,7 +134,7 @@ export const snackCategories: Category[] = [
         id: "sea-salt-grissini",
         name: "Sea Salt Grissini",
         description:
-          "Classic Italian breadstick grissini with a delicate sea salt finish. Slim, crispy, and perfect for the aperitivo hour.",
+          "Italian grissini breadsticks with sea salt.",
         image: "/assets/Crackers/730570.png",
         categoryId: "crackers-breadsticks",
         details:
@@ -184,7 +184,7 @@ export const snackCategories: Category[] = [
         id: "classic-olive-oil-potato-chips",
         name: "Classic Olive Oil Potato Chips",
         description:
-          "Premium Italian potato chips cooked in extra virgin olive oil for a rich, golden flavor. Simply seasoned and perfectly crispy.",
+          "Italian potato chips cooked in extra virgin olive oil.",
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Classic-4.6oz-730340.png",
         categoryId: "potato-chips",
         details:
@@ -197,7 +197,7 @@ export const snackCategories: Category[] = [
         id: "rosemary-olive-oil-potato-chips",
         name: "Rosemary Olive Oil Potato Chips",
         description:
-          "Italian potato chips infused with fragrant rosemary and cooked in extra virgin olive oil. Herbaceous, crispy, and irresistible.",
+          "Italian potato chips with rosemary, cooked in extra virgin olive oil.",
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rosemary-4.6oz-730341.png",
         categoryId: "potato-chips",
         details:
@@ -223,7 +223,7 @@ export const snackCategories: Category[] = [
         id: "classic-potato-chips-snack-bag",
         name: "Classic Potato Chips Snack Bag",
         description:
-          "A perfectly portioned snack bag of our classic olive oil potato chips. Ideal for lunchboxes and on-the-go enjoyment.",
+          "A snack bag of our classic olive oil potato chips.",
         image: "/assets/Chips/Tuscanini-Classic-Potato-Chips-1oz-730350.png",
         categoryId: "potato-chips",
         details:
@@ -236,7 +236,7 @@ export const snackCategories: Category[] = [
         id: "rippled-potato-chips-snack-bag",
         name: "Rippled Potato Chips Snack Bag",
         description:
-          "A grab-and-go snack bag of our extra-crunchy rippled olive oil chips. Big flavor in a perfectly portioned pack.",
+          "A snack bag of our rippled olive oil potato chips.",
         image: "/assets/Chips/Tuscanini-Rippled-Potato-Chips-1oz-730351.png",
         categoryId: "potato-chips",
         details:
@@ -260,7 +260,7 @@ export const snackCategories: Category[] = [
         id: "roasted-chestnuts",
         name: "Roasted Chestnuts",
         description:
-          "Tender, naturally sweet Italian roasted chestnuts ready to enjoy straight from the pouch. A wholesome and comforting snack.",
+          "Italian roasted chestnuts, ready to eat from the pouch.",
         image: "/assets/Chestnuts/Tuscanini Chestnuts_Original.png",
         categoryId: "chestnuts",
         details:
@@ -386,7 +386,7 @@ export const snackCategories: Category[] = [
         id: "apricot-fruit-spread-preserves",
         name: "Apricot Fruit Spread Preserves",
         description:
-          "Velvety apricot preserves made from sun-ripened Italian apricots. Naturally sweet with a luscious, spreadable texture.",
+          "Apricot preserves.",
         image: "/assets/Jam/730270.png",
         categoryId: "fruit-spreads",
         details:
@@ -412,7 +412,7 @@ export const snackCategories: Category[] = [
         id: "strawberry-fruit-spread-preserves",
         name: "Strawberry Fruit Spread Preserves",
         description:
-          "Classic strawberry preserves bursting with the flavor of ripe Italian strawberries. Sweet, fruity, and irresistibly fresh.",
+          "Strawberry preserves.",
         image: "/assets/Jam/730273.png",
         categoryId: "fruit-spreads",
         details:
@@ -438,7 +438,7 @@ export const snackCategories: Category[] = [
         id: "raspberry-fruit-spread-preserves",
         name: "Raspberry Fruit Spread Preserves",
         description:
-          "Bright and tangy raspberry preserves with a vibrant color and bold berry flavor. Made from premium Italian raspberries.",
+          "Tangy raspberry preserves.",
         image: "/assets/Jam/730275.png",
         categoryId: "fruit-spreads",
         details:
@@ -462,7 +462,7 @@ export const snackCategories: Category[] = [
         id: "solid-light-tuna-olive-oil-small-jar",
         name: "Solid Light Tuna in Olive Oil - Small Jar",
         description:
-          "Premium solid light tuna packed in Italian olive oil in a convenient glass jar. Tender, flavorful, and ready to enjoy.",
+          "Solid light tuna in olive oil, in a glass jar.",
         image: "/assets/Tuna/Tuscanini tuna in Olive Oil.png",
         categoryId: "tuna-seafood",
         details:
@@ -488,7 +488,7 @@ export const snackCategories: Category[] = [
         id: "tuna-solid-light-olive-oil-can",
         name: "Tuna Solid Light in Olive Oil - Can",
         description:
-          "Classic Italian solid light tuna packed in olive oil. A versatile pantry staple with premium quality and flavor.",
+          "Italian solid light tuna packed in olive oil.",
         image: "/assets/Tuna/Tuscanini Yellowfin Tuna in Olive Oil.jpg",
         categoryId: "tuna-seafood",
         details:
@@ -501,7 +501,7 @@ export const snackCategories: Category[] = [
         id: "tuna-solid-light-water-can",
         name: "Tuna Solid Light in Water - Can",
         description:
-          "Lean and protein-rich solid light tuna packed in water. Clean flavor and a lighter option for health-conscious meals.",
+          "Solid light tuna packed in water.",
         image: "/assets/Tuna/Tuscanini Tuna in Water.png",
         categoryId: "tuna-seafood",
         details:
@@ -514,7 +514,7 @@ export const snackCategories: Category[] = [
         id: "tuna-fillet-olive-oil-tall-jar",
         name: "Tuna Fillet in Olive Oil - Tall Jar",
         description:
-          "Hand-packed tuna fillets in Italian olive oil presented in an elegant tall glass jar. A premium cut for refined palates.",
+          "Tuna fillets in olive oil in a tall glass jar.",
         image: "/assets/Tuna/Tusc_Tuna_Fillet_Final.png",
         categoryId: "tuna-seafood",
         details:
@@ -527,7 +527,7 @@ export const snackCategories: Category[] = [
         id: "tuna-ventresca-olive-oil-tall-jar",
         name: "Tuna Ventresca in Olive Oil - Tall Jar",
         description:
-          "The prized belly cut of tuna — silky, rich, and melt-in-your-mouth tender. Packed in olive oil in a stunning glass jar.",
+          "Tuna belly (ventresca) packed in olive oil in a tall glass jar.",
         image: "/assets/Tuna/Tuscanini Ventresca Tuna.jpg",
         categoryId: "tuna-seafood",
         details:
@@ -540,7 +540,7 @@ export const snackCategories: Category[] = [
         id: "solid-light-tuna-olive-oil-three-pack",
         name: "Solid Light Tuna in Olive Oil - Three Pack",
         description:
-          "A convenient three-pack of our premium solid light tuna in olive oil. Stock your pantry with Italian quality.",
+          "A three-pack of our solid light tuna in olive oil.",
         image: "/assets/Tuna/730430.png",
         categoryId: "tuna-seafood",
         details:

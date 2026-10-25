@@ -131,7 +131,7 @@ export const mealCategories: Category[] = [
         id: "potato-gnocchi",
         name: "Potato Gnocchi",
         description:
-          "Classic Italian potato gnocchi made with real potatoes for a soft, pillowy texture. A comforting staple ready in minutes.",
+          "Italian potato gnocchi made with potatoes. Ready in minutes.",
         image: "/assets/Pasta/Tuscanini Classic Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
@@ -168,7 +168,7 @@ export const mealCategories: Category[] = [
         id: "four-cheese-pizza",
         name: "Four Cheese Pizza",
         description:
-          "A generous blend of four Italian cheeses melted over a crispy crust with savory tomato sauce. Rich, gooey, and irresistible.",
+          "Four cheeses over a crisp crust with tomato sauce.",
         image: "/assets/Pizza/730100.png",
         categoryId: "pizza",
         details:
@@ -220,7 +220,7 @@ export const mealCategories: Category[] = [
         id: "personal-pie-thin-crust-pizza",
         name: "Personal Pie Thin Crust Pizza",
         description:
-          "A perfectly portioned thin-crust pizza for one, with a satisfying crunch and classic Italian toppings.",
+          "A thin-crust pizza for one, with tomato sauce and mozzarella.",
         image: "/assets/Pizza/730115.png",
         categoryId: "pizza",
         details:
@@ -259,7 +259,7 @@ export const mealCategories: Category[] = [
         id: "reserve-margherita-pizza",
         name: "Reserve Margherita Pizza",
         description:
-          "Margherita pizza with hand-stretched dough, tomato sauce, and mozzarella.",
+          "Margherita pizza with tomato sauce and mozzarella.",
         image: "/assets/Pizza/730126.png",
         categoryId: "pizza",
         details:
@@ -285,7 +285,7 @@ export const mealCategories: Category[] = [
         id: "mini-margherita-calzones",
         name: "Mini Margherita Calzones",
         description:
-          "Bite-sized calzones stuffed with mozzarella and tomato sauce. Perfect as appetizers or a fun snack.",
+          "Bite-sized calzones stuffed with mozzarella and tomato sauce. Serve as an appetizer or snack.",
         image: "/assets/Frozen/Mini Calzones/730128.png",
         categoryId: "pizza",
         details:
@@ -311,7 +311,7 @@ export const mealCategories: Category[] = [
         id: "reserve-bbq-pulled-brisket-pizza",
         name: "Reserve BBQ Pulled Brisket Meat Pizza",
         description:
-          "Tender pulled brisket with smoky BBQ sauce on hand-stretched dough. A bold fusion of Italian craft and American flavor.",
+          "Pulled brisket with BBQ sauce on a pizza crust.",
         image: "/assets/Pizza/730500.png",
         categoryId: "pizza",
         details:
@@ -324,7 +324,7 @@ export const mealCategories: Category[] = [
         id: "reserve-bbq-ground-beef-pizza",
         name: "Reserve BBQ Ground Beef Meat Pizza",
         description:
-          "Seasoned ground beef with tangy BBQ sauce on hand-stretched dough. Hearty, smoky, and satisfying.",
+          "Seasoned ground beef with BBQ sauce on a pizza crust.",
         image: "/assets/Pizza/730501.png",
         categoryId: "pizza",
         details:
@@ -374,7 +374,7 @@ export const mealCategories: Category[] = [
         id: "dairy-hazelnut-gelato",
         name: "Dairy Hazelnut Gelato",
         description:
-          "Luscious hazelnut gelato made with roasted Italian hazelnuts. A beloved flavor straight from the gelaterias of Piedmont.",
+          "Hazelnut gelato made with roasted hazelnuts.",
         image: "/assets/Gelato/730522-hazelnut-gelato.png",
         categoryId: "gelato",
         details:
@@ -387,7 +387,7 @@ export const mealCategories: Category[] = [
         id: "dairy-strawberry-banana-gelato",
         name: "Dairy Strawberry Banana Gelato",
         description:
-          "A refreshing blend of sweet strawberries and ripe bananas in creamy Italian gelato. Bright, fruity, and irresistible.",
+          "Strawberry and banana gelato.",
         image: "/assets/Gelato/730523-strawberry-banana-gelato.png",
         categoryId: "gelato",
         details:
@@ -426,7 +426,7 @@ export const mealCategories: Category[] = [
         id: "parve-lemon-sorbet",
         name: "Parve Lemon Sorbet",
         description:
-          "Bright, tangy Italian lemon sorbetto made with real Sicilian lemons. A refreshing palate cleanser and dairy-free delight.",
+          "Italian lemon sorbetto. Dairy-free.",
         image: "/assets/Gelato/Sorbetto/730533-lemon-sorbetto.png",
         categoryId: "gelato",
         details:
@@ -439,7 +439,7 @@ export const mealCategories: Category[] = [
         id: "strawberry-sorbet",
         name: "Strawberry Sorbet",
         description:
-          "A vibrant, fruity Italian strawberry sorbetto bursting with the flavor of sun-ripened strawberries. Naturally dairy-free and refreshingly sweet.",
+          "Italian strawberry sorbetto. Dairy-free.",
         image: "/assets/Gelato/Sorbetto/730532-strawberry-sorbetto.png",
         categoryId: "gelato",
         details:
@@ -463,7 +463,7 @@ export const mealCategories: Category[] = [
         id: "parmesan-cheese-wedge-5oz",
         name: "Parmesan Cheese Wedge 5.29oz",
         description:
-          "A hand-cut wedge of authentic Italian Parmesan cheese, aged for rich, complex flavor. A timeless Italian staple for grating, shaving, and snacking.",
+          "A wedge of Italian Parmesan cheese for grating, shaving, and snacking.",
         image: "/assets/Parmesan Cheese/730170.png",
         categoryId: "cheese",
         details:
@@ -476,7 +476,7 @@ export const mealCategories: Category[] = [
         id: "parmesan-cheese-wedge-8oz",
         name: "Parmesan Cheese Wedge 8.8oz",
         description:
-          "A generous wedge of premium Italian Parmesan cheese for families and cooking enthusiasts. Rich, nutty, and endlessly versatile.",
+          "A larger wedge of Italian Parmesan cheese for grating and cooking.",
         image: "/assets/Parmesan Cheese/730171.png",
         categoryId: "cheese",
         details:
