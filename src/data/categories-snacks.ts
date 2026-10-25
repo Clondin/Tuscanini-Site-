@@ -399,7 +399,7 @@ export const snackCategories: Category[] = [
         id: "lemon-ginger-fruit-spread-preserves",
         name: "Lemon Ginger Fruit Spread Preserves",
         description:
-          "A zesty and warming blend of Sicilian lemons and spicy ginger. A uniquely vibrant Italian preserve.",
+          "A lemon and ginger fruit spread.",
         image: "/assets/Jam/730271-PRIMARY-SHOT.png",
         categoryId: "fruit-spreads",
         details:

@@ -181,7 +181,7 @@ export const mealCategories: Category[] = [
         id: "classico-margherita-pizza",
         name: "Classico Margherita Pizza",
         description:
-          "The timeless Neapolitan classic with tomato sauce, fresh mozzarella, and fragrant basil on a golden crust.",
+          "Margherita pizza with tomato sauce, mozzarella, and basil.",
         image: "/assets/Pizza/730101.png",
         categoryId: "pizza",
         details:

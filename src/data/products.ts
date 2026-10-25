@@ -78,7 +78,7 @@ const catalogCategories: Category[] = [
       {
         id: "sparkling-lemonade",
         name: "Sparkling Lemonade",
-        description: "Sparkling lemonade made with Sicilian lemons.",
+        description: "Sparkling lemonade.",
         image: "/assets/Beverage/730380.png",
         categoryId: "beverages",
         details: "",
@@ -131,7 +131,7 @@ const catalogCategories: Category[] = [
       {
         id: "natural-water",
         name: "Natural Mineral Water",
-        description: "Italian natural mineral water from alpine springs.",
+        description: "Italian natural mineral water.",
         image: "/assets/Beverage/Mineral-Water-Still-1L-730395.png",
         categoryId: "beverages",
         details: "Natural mineral water from Italian alpine springs, in still and sparkling varieties.",

@@ -79,7 +79,7 @@ export const pantryCategories: Category[] = [
         id: "evoo-lemon-250ml",
         name: "Extra Virgin Olive Oil with Lemon",
         description:
-          "Bright and zesty extra virgin olive oil infused with fresh Sicilian lemons. A vibrant finishing oil for seafood, salads, and grilled dishes.",
+          "Extra virgin olive oil flavored with lemon, for seafood, salads, and grilled dishes.",
         image: "/assets/Olive Oil/730256-PRIMARY-SHOT.png",
         categoryId: "olive-oil",
         details:
@@ -181,7 +181,7 @@ export const pantryCategories: Category[] = [
         id: "raspberry-balsamic-glaze-modena",
         name: "Raspberry Balsamic Vinegar Glaze of Modena",
         description:
-          "A fruity, tangy balsamic glaze infused with bright Italian raspberries. A vibrant finishing drizzle for salads, desserts, and cheese boards.",
+          "A raspberry balsamic glaze for salads, desserts, and cheese boards.",
         image: "/assets/Vinegar/730252.png",
         categoryId: "vinegars-glazes",
         details:
@@ -346,7 +346,7 @@ export const pantryCategories: Category[] = [
         id: "sweet-sicilian-castelvetrano",
         name: "Sweet Sicilian Castelvetrano",
         description:
-          "Generously sized Sicilian Castelvetrano olives in a larger jar, marinated for a sweeter, more complex flavor profile.",
+          "Castelvetrano olives in a larger jar.",
         image: "/assets/Olive/Tuscanini-Sweet-Sicilian-Castelvetrano-Olives-730180.png",
         categoryId: "olives",
         details:
@@ -487,7 +487,7 @@ export const pantryCategories: Category[] = [
         id: "calabrian-chili-peppers",
         name: "Calabrian Chili Peppers in Oil",
         description:
-          "Fiery Calabrian chili peppers preserved in olive oil, bringing the bold heat of Southern Italy to your kitchen. Smoky, fruity, and intensely flavorful.",
+          "Calabrian chili peppers preserved in olive oil.",
         image: "/assets/Peppers/730438.png",
         categoryId: "italian-condiments",
         details:
@@ -602,7 +602,7 @@ export const pantryCategories: Category[] = [
         id: "napoletana-pasta-sauce",
         name: "Napoletana Pasta Sauce",
         description:
-          "A rich, slow-simmered Neapolitan-style pasta sauce with the deep, sweet flavor of San Marzano-style tomatoes. The taste of Naples in every spoonful.",
+          "A Neapolitan-style pasta sauce made with San Marzano-style tomatoes.",
         image: "/assets/Sauces/730206 Napoletana Pasta Sauce.jpg",
         categoryId: "pasta-sauces",
         details:
@@ -628,7 +628,7 @@ export const pantryCategories: Category[] = [
         id: "zesty-marinara-sauce",
         name: "Zesty Marinara Sauce",
         description:
-          "Our classic marinara kicked up with a lively blend of spices and a hint of heat. Bold, vibrant, and full of character.",
+          "Our marinara with added spices and a little heat.",
         image: "/assets/Sauces/730208 Zesty Marinara Sauce.jpg",
         categoryId: "pasta-sauces",
         details:
@@ -936,7 +936,7 @@ export const pantryCategories: Category[] = [
         id: "chili-pepper-grinder",
         name: "Chili Pepper Spice Grinder",
         description:
-          "Dried Italian chili peppers in a built-in grinder for freshly ground heat whenever you need it. Vibrant, fruity spice with a lingering warmth.",
+          "Dried chili peppers in a built-in grinder.",
         image: "/assets/Spice Grinder/730294.png",
         categoryId: "seasonings-truffles",
         details:
@@ -1124,7 +1124,7 @@ export const pantryCategories: Category[] = [
       {
         id: "sun-dried-tomato-pesto",
         name: "Sun-Dried Tomato Pesto",
-        description: "Intensely flavored pesto made from Italian sun-dried tomatoes, olive oil, and herbs. A vibrant, boldly savory sauce with a deep Mediterranean character.",
+        description: "Pesto made from sun-dried tomatoes, olive oil, and herbs.",
         image: "/assets/Pesto/730230.png",
         categoryId: "pesto",
         details: "Our Sun-Dried Tomato Pesto captures the concentrated sweetness and umami depth of slow-dried Italian tomatoes, blended with olive oil, garlic, and herbs. Swirl it into pasta, spread on bruschetta, or use as a bold pizza sauce.",
