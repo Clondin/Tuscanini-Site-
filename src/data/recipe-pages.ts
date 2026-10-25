@@ -276,3 +276,19 @@ export function recipeStructuredData(recipe: RecipePage, siteUrl: string, imageU
 export function recipesIndexDescription(): string {
   return "Kosher recipes made with Tuscanini olive oil, truffle salt, tomatoes and more, from the cooks at Kosher.com.";
 }
+
+/** Recipe structured data plus its breadcrumb trail (Home > Recipes > recipe), as one JSON-LD array. */
+export function recipePageStructuredData(recipe: RecipePage, siteUrl: string, imageUrls: string[]) {
+  return [
+    recipeStructuredData(recipe, siteUrl, imageUrls),
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "Recipes", item: `${siteUrl}/recipes` },
+        { "@type": "ListItem", position: 3, name: recipe.title, item: `${siteUrl}/recipes/${recipe.slug}` },
+      ],
+    },
+  ];
+}

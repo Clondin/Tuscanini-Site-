@@ -1,11 +1,11 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
-import { productRouteTitle } from "../src/lib/routeTitle";
+import { productSeoTitle } from "../src/lib/routeTitle";
 import { getOptimizedImageUrl, isMissingProductImage } from "../src/lib/productImage";
 import { renderSitemap } from "./sitemap-xml";
 import { productSchemaFields } from "../src/lib/productSchema";
 import { formatProductSize } from "../src/lib/formatProductSize";
-import { recipePages, recipeDescription, recipeStructuredData, recipesIndexDescription } from "../src/data/recipe-pages";
+import { recipePages, recipeDescription, recipePageStructuredData, recipesIndexDescription } from "../src/data/recipe-pages";
 import type { Category, Product } from "../src/data/products";
 import { readBuildCatalog } from "./load-build-catalog";
 import { resolveSiteUrl } from "../src/lib/siteUrl";
@@ -218,7 +218,7 @@ function catalogRoutes(categories: Category[]): RouteHtml[] {
     for (const product of category.products) {
       routes.push({
         path: `/product/${product.id}`,
-        title: productRouteTitle(product.name),
+        title: productSeoTitle(product),
         description: product.description,
         type: "product",
         image: product.image,
@@ -329,7 +329,7 @@ function recipeRoutes(categories: Category[]): RouteHtml[] {
       type: "website",
       image: recipe.image,
       content: simpleContent(recipe.title, recipeDescription(recipe), `<p>Recipe from <a href="https://www.kosher.com/">Kosher.com</a> by ${escapeHtml(recipe.author)}. <a href="${escapeHtml(recipe.sourceUrl)}">View this recipe on Kosher.com</a>.</p><h2>Ingredients</h2><ul>${recipe.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul><h2>Method</h2><ol>${recipe.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol><h2>Tuscanini products in this recipe</h2><ul class="pr-grid">${recipe.products.map((id) => productsById.get(id)).filter((product): product is Product => Boolean(product)).map(productCardHtml).join("")}</ul>`),
-      structuredData: recipeStructuredData(recipe, siteUrl, imagesFor(recipe.products)),
+      structuredData: recipePageStructuredData(recipe, siteUrl, imagesFor(recipe.products)),
     });
   }
   return routes;

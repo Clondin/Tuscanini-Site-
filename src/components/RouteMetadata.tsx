@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getCmsData } from "../data/cms";
 import { getCategoryBySlug, getCategoryForProduct, getProductById } from "../data/products";
-import { productRouteTitle } from "../lib/routeTitle";
+import { productSeoTitle } from "../lib/routeTitle";
 import { productSchemaFields } from "../lib/productSchema";
-import { getRecipePage, recipeDescription, recipePages, recipeStructuredData, recipesIndexDescription } from "../data/recipe-pages";
+import { getRecipePage, recipeDescription, recipePages, recipePageStructuredData, recipesIndexDescription } from "../data/recipe-pages";
 import { getOptimizedImageUrl, isMissingProductImage } from "../lib/productImage";
 import { resolveSiteUrl } from "../lib/siteUrl";
 
@@ -153,7 +153,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
             title: `${recipe.title} | ${siteTitle} Recipes`,
             description: recipeDescription(recipe),
             image: recipe.image,
-            structuredData: recipeStructuredData(recipe, siteUrl, images),
+            structuredData: recipePageStructuredData(recipe, siteUrl, images),
           }
         : {
             title: `Recipe Not Found | ${siteTitle}`,
@@ -188,7 +188,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
       if (product) canonicalPath = `/product/${product.id}`;
       metadata = product
         ? {
-            title: productRouteTitle(product.name, siteTitle),
+            title: productSeoTitle(product, siteTitle),
             description: product.description,
             image: isMissingProductImage(product.image) ? undefined : product.image,
             type: "product",
