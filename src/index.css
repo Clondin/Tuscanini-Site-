@@ -317,8 +317,8 @@ input::placeholder { color: #74685b; opacity: 1; }
 }
 
 /* Phone buy bar on product pages: shown at 768px and narrower, 64px tall plus the
-   home-indicator safe area. While a product page is open, the footer grows by the
-   same height so the end of the page always scrolls clear of the bar. */
+   home-indicator safe area. While a product page is open, the page gains the same
+   room at its foot so the end of the page always scrolls clear of the bar. */
 .buy-bar {
   display: none;
 }
@@ -326,10 +326,8 @@ input::placeholder { color: #74685b; opacity: 1; }
   .buy-bar {
     display: block;
   }
-  html.has-buy-bar footer::after {
-    content: "";
-    display: block;
-    height: calc(64px + env(safe-area-inset-bottom));
+  html.has-buy-bar body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
 }
 @media print {

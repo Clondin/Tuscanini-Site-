@@ -129,7 +129,7 @@ export function DossierOverlays({
     <>
       {state.showSticky && (
         <div className="buy-bar fixed bottom-0 inset-x-0 z-30 bg-paper/95 backdrop-blur border-t border-ink/15 shadow-[0_-10px_30px_-12px_rgba(20,18,16,0.35)] pb-[env(safe-area-inset-bottom)]">
-          <div className="flex h-16 items-center gap-3 px-4">
+          <div className="flex h-[63px] items-center gap-3 px-4">
             {state.hasImage && (
               <img
                 {...getResponsiveImageProps(product.image, "40px")}
