@@ -19,7 +19,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730330.png",
         categoryId: "crackers-breadsticks",
         details:
-          "Our Original Parchment Crackers are baked to a delicate crispness using traditional Italian methods. Their light, flaky texture makes them the ideal companion for artisan cheeses, charcuterie boards, and gourmet dips.",
+          "",
         size: "3.5 oz",
         kosher: true,
         madeInItaly: true,
@@ -45,7 +45,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730332.png",
         categoryId: "crackers-breadsticks",
         details:
-          "Fresh rosemary lends its woodsy, pine-like aroma to these ultra-thin parchment crackers. Baked in Italy to a perfect golden crispness, they pair beautifully with soft cheeses, olive tapenade, or a glass of wine.",
+          "Fresh rosemary lends its woodsy, pine-like aroma to these ultra-thin parchment crackers.",
         size: "3.5 oz",
         kosher: true,
         madeInItaly: true,
@@ -72,7 +72,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730560.png",
         categoryId: "crackers-breadsticks",
         details:
-          "Made with ancient spelt grain and a touch of sea salt, these crostini crackers offer a hearty crunch and subtle nuttiness. They are twice-baked in the Italian tradition for an irresistibly crispy texture.",
+          "",
         size: "6.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -85,7 +85,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730561.png",
         categoryId: "crackers-breadsticks",
         details:
-          "These spelt crostini combine the wholesome nuttiness of ancient grain with fragrant Italian rosemary. Twice-baked for a satisfying crunch, they bring rustic Italian flavor to your snacking moments.",
+          "",
         size: "6.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -98,7 +98,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730562.png",
         categoryId: "crackers-breadsticks",
         details:
-          "The rich earthiness of Italian truffles meets the wholesome character of spelt in these twice-baked crostini. Each bite delivers a luxurious umami richness that pairs perfectly with aged cheeses and fine wines.",
+          "",
         size: "6.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -138,7 +138,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730570.png",
         categoryId: "crackers-breadsticks",
         details:
-          "Our Sea Salt Grissini are hand-stretched and baked in the Piedmontese tradition, yielding slender breadsticks with a satisfying snap. Lightly dusted with sea salt, they are the quintessential Italian appetizer accompaniment.",
+          "",
         size: "4.4 oz",
         kosher: true,
         madeInItaly: true,
@@ -151,7 +151,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730571.png",
         categoryId: "crackers-breadsticks",
         details:
-          "These aromatic grissini are infused with fresh Italian rosemary, lending a woodsy herbal note to every crispy bite. Hand-stretched and baked in the traditional style, they bring authentic Piedmontese flair to your table.",
+          "",
         size: "4.4 oz",
         kosher: true,
         madeInItaly: true,
@@ -164,7 +164,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Crackers/730572.png",
         categoryId: "crackers-breadsticks",
         details:
-          "Generously coated with toasted sesame seeds, these grissini offer a rich, nutty flavor and irresistible crunch. Baked in the Italian tradition, they pair beautifully with hummus, soft cheeses, or prosciutto.",
+          "",
         size: "4.4 oz",
         kosher: true,
         madeInItaly: true,
@@ -201,7 +201,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rosemary-4.6oz-730341.png",
         categoryId: "potato-chips",
         details:
-          "The aromatic warmth of Italian rosemary meets the richness of extra virgin olive oil in these premium kettle-style chips. Each golden chip is packed with herbal flavor and a deeply satisfying crunch.",
+          "",
         size: "4.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -214,7 +214,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Chips/Tuscanini-Potato-Chips-with-Olive-Oil-Rippled-4.6oz-730342-web.png",
         categoryId: "potato-chips",
         details:
-          "Our rippled chips feature deep ridges that deliver an extra-satisfying crunch and hold onto every bit of olive oil flavor. Cooked in premium Italian extra virgin olive oil for a chip that stands above the rest.",
+          "Our rippled chips feature deep ridges that deliver an extra-satisfying crunch and hold onto every bit of olive oil flavor.",
         size: "4.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -227,7 +227,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Chips/Tuscanini-Classic-Potato-Chips-1oz-730350.png",
         categoryId: "potato-chips",
         details:
-          "All the premium quality of our classic olive oil potato chips in a convenient single-serve bag. Perfect for tucking into a lunchbox, backpack, or desk drawer for an Italian snacking moment anytime.",
+          "",
         size: "1 oz",
         kosher: true,
         madeInItaly: true,
@@ -290,7 +290,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Chestnuts/730462.png",
         categoryId: "chestnuts",
         details:
-          "Fragrant cinnamon transforms our tender Italian chestnuts into an irresistible sweet snack. Each chestnut is gently roasted and dusted with warm cinnamon, evoking the charm of a European autumn market.",
+          "",
         size: "3.5 oz",
         kosher: true,
         madeInItaly: true,
@@ -314,7 +314,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Biscotti/730575.png",
         categoryId: "biscotti",
         details:
-          "Our Almond Biscotti honor the timeless Italian original with premium whole almonds baked into a tender, semi-soft dough. Perfect for dipping in espresso or enjoying alongside an afternoon tea.",
+          "",
         size: "8.8 oz",
         kosher: true,
         madeInItaly: true,
@@ -340,7 +340,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Biscotti/730577.png",
         categoryId: "biscotti",
         details:
-          "Plump, tart cranberries are folded into our traditional semi-soft biscotti dough, creating a beautiful contrast of sweet and tangy flavors. Their vibrant color and bright taste make them a favorite for holiday gatherings.",
+          "",
         size: "8.8 oz",
         kosher: true,
         madeInItaly: true,
@@ -366,7 +366,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Biscotti/730579.png",
         categoryId: "biscotti",
         details:
-          "Sweet blueberries and vibrant lemon zest come together in these delightful semi-soft biscotti. The sunny citrus aroma and juicy berry flavor make them a perfect pairing with your morning coffee or afternoon tea.",
+          "",
         size: "8.8 oz",
         kosher: true,
         madeInItaly: true,
@@ -403,7 +403,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Jam/730271-PRIMARY-SHOT.png",
         categoryId: "fruit-spreads",
         details:
-          "Bright Sicilian lemons meet the warming spice of ginger in this invigorating fruit spread. It adds a lively kick to morning toast, and doubles as an elegant glaze for baked goods and savory dishes alike.",
+          "",
         size: "11.64 oz",
         kosher: true,
         madeInItaly: true,
@@ -416,7 +416,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Jam/730273.png",
         categoryId: "fruit-spreads",
         details:
-          "Made from hand-selected Italian strawberries, this fruit spread delivers the pure, sun-kissed sweetness of summer in every spoonful. Enjoy it on fresh bread, swirled into yogurt, or as a topping for your favorite desserts.",
+          "",
         size: "11.64 oz",
         kosher: true,
         madeInItaly: true,
@@ -442,7 +442,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Jam/730275.png",
         categoryId: "fruit-spreads",
         details:
-          "Our Raspberry Fruit Spread showcases the intense, tangy-sweet flavor of Italian raspberries. Its jewel-toned color and bold berry taste make it a stunning addition to breakfast tables, cheese boards, and baked creations.",
+          "",
         size: "11.64 oz",
         kosher: true,
         madeInItaly: true,
@@ -479,7 +479,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/730420.png",
         categoryId: "tuna-seafood",
         details:
-          "For those who crave a little heat, this solid light tuna is packed in olive oil with Italian chili peppers. The gentle spice complements the rich tuna perfectly, adding a Mediterranean warmth to sandwiches, pastas, and salads.",
+          "",
         size: "5.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -492,7 +492,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/Tuscanini Yellowfin Tuna in Olive Oil.jpg",
         categoryId: "tuna-seafood",
         details:
-          "This everyday essential features premium solid light tuna packed in Italian olive oil for a rich, satisfying flavor. Keep a few cans on hand for quick pasta dishes, hearty salads, and satisfying sandwiches.",
+          "",
         size: "5.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -505,7 +505,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/Tuscanini Tuna in Water.png",
         categoryId: "tuna-seafood",
         details:
-          "Our solid light tuna in water offers a lean, clean-tasting option without sacrificing quality. Packed with protein and ready to use, it is a wholesome choice for salads, wraps, and light Italian dishes.",
+          "",
         size: "5.6 oz",
         kosher: true,
         madeInItaly: true,
@@ -518,7 +518,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/Tusc_Tuna_Fillet_Final.png",
         categoryId: "tuna-seafood",
         details:
-          "These carefully hand-packed tuna fillets are immersed in premium Italian olive oil inside an elegant tall jar. The superior cut and beautiful presentation make this a centerpiece for antipasto platters and gourmet preparations.",
+          "",
         size: "6 oz",
         kosher: true,
         madeInItaly: true,
@@ -531,7 +531,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/Tuscanini Ventresca Tuna.jpg",
         categoryId: "tuna-seafood",
         details:
-          "Ventresca is the most coveted cut of tuna, taken from the belly where the flesh is richest and most tender. Our ventresca is hand-packed in Italian olive oil, delivering an unparalleled silky texture and depth of flavor.",
+          "",
         size: "6 oz",
         kosher: true,
         madeInItaly: true,
@@ -544,7 +544,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/730430.png",
         categoryId: "tuna-seafood",
         details:
-          "Three perfectly portioned cans of our solid light tuna in Italian olive oil, bundled for convenience and value. Always have premium Italian tuna on hand for quick weeknight meals and impromptu entertaining.",
+          "",
         size: "3 x 2.82 oz",
         kosher: true,
         madeInItaly: true,
@@ -557,7 +557,7 @@ export const snackCategories: Category[] = [
         image: "/assets/Tuna/730431.png",
         categoryId: "tuna-seafood",
         details:
-          "Three cans of our fiery chili pepper tuna in olive oil, ready to add a kick of Italian heat to any meal. A must-have pantry trio for spice lovers who appreciate premium quality and convenience.",
+          "Three cans of our fiery chili pepper tuna in olive oil, ready to add a kick of Italian heat to any meal.",
         size: "3 x 2.82 oz",
         kosher: true,
         madeInItaly: true,

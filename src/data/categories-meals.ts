@@ -122,7 +122,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gnocchi/Tuscanini-Mi-ni-Gnocchi-16oz-730312.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our Mini Gnocchi are small, tender potato dumplings crafted in Italy using traditional methods. Their petite size makes them ideal for adding hearty substance to soups, tossing into salads, or quickly sautéing with butter and sage.",
+          "",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -135,7 +135,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pasta/Tuscanini Classic Gnocci Mockup.png",
         categoryId: "pasta-gnocchi",
         details:
-          "Our shelf-stable Potato Gnocchi are made with premium Italian potatoes and flour, delivering the same soft, melt-in-your-mouth texture as homemade. Simply boil until they float and toss with your favorite sauce for an authentic Italian meal.",
+          "",
         size: "16 oz",
         kosher: true,
         madeInItaly: true,
@@ -172,7 +172,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730100.png",
         categoryId: "pizza",
         details:
-          "Our Four Cheese Pizza layers mozzarella, fontina, gorgonzola, and Parmigiano-Reggiano over a perfectly baked Italian crust with traditional tomato sauce. Each slice delivers a harmonious medley of creamy, tangy, and sharp flavors.",
+          "",
         size: "14.1 oz",
         kosher: true,
         madeInItaly: true,
@@ -185,7 +185,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730101.png",
         categoryId: "pizza",
         details:
-          "Our Classico Margherita honors the original Neapolitan recipe with San Marzano-style tomato sauce, creamy mozzarella, and aromatic basil on a crispy Italian crust. Simple perfection that lets each premium ingredient shine.",
+          "",
         size: "14.1 oz",
         kosher: true,
         madeInItaly: true,
@@ -211,7 +211,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730103.png",
         categoryId: "pizza",
         details:
-          "Our Grilled Vegetable Pizza showcases a vibrant mix of char-grilled peppers, zucchini, eggplant, and onions over mozzarella and tomato sauce. The smoky grilled flavor adds depth to this hearty vegetarian pizza crafted in Italy.",
+          "Our Grilled Vegetable Pizza showcases a vibrant mix of char-grilled peppers, zucchini, eggplant, and onions over mozzarella and tomato sauce.",
         size: "15 oz",
         kosher: true,
         madeInItaly: true,
@@ -224,7 +224,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730115.png",
         categoryId: "pizza",
         details:
-          "Our Personal Pie Thin Crust Pizza delivers all the flavor of a full-sized pizza in a perfectly portioned individual serving. The ultra-thin, crispy crust is topped with tomato sauce and melted mozzarella for a quick and satisfying meal.",
+          "The ultra-thin, crispy crust is topped with tomato sauce and melted mozzarella for a quick and satisfying meal.",
         size: "8.3 oz",
         kosher: true,
         madeInItaly: true,
@@ -263,7 +263,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730126.png",
         categoryId: "pizza",
         details:
-          "The Reserve Margherita has hand-stretched dough, San Marzano-style tomato sauce, and mozzarella.",
+          "",
         size: "16.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -276,7 +276,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730127.png",
         categoryId: "pizza",
         details:
-          "The Reserve Supermargherita adds extra mozzarella, cherry tomatoes, and basil to hand-stretched dough and tomato sauce.",
+          "",
         size: "17.28 oz",
         kosher: true,
         madeInItaly: true,
@@ -289,7 +289,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Frozen/Mini Calzones/730128.png",
         categoryId: "pizza",
         details:
-          "Our Mini Margherita Calzones wrap golden Italian dough around a filling of melted mozzarella and savory tomato sauce. These perfectly portioned pockets of pizza flavor are ideal for appetizers, parties, or anytime snacking.",
+          "Our Mini Margherita Calzones wrap golden Italian dough around a filling of melted mozzarella and savory tomato sauce.",
         size: "8.47 oz",
         kosher: true,
         madeInItaly: true,
@@ -315,7 +315,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730500.png",
         categoryId: "pizza",
         details:
-          "Pulled brisket and smoky barbecue sauce on hand-stretched pizza dough.",
+          "",
         size: "13.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -328,7 +328,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Pizza/730501.png",
         categoryId: "pizza",
         details:
-          "Our Reserve BBQ Ground Beef Pizza tops hand-stretched Italian dough with seasoned ground beef and a tangy BBQ sauce. The result is a hearty, flavor-packed pizza that combines Italian artistry with bold, smoky barbecue character.",
+          "",
         size: "13.2 oz",
         kosher: true,
         madeInItaly: true,
@@ -365,7 +365,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/730521-vanilla-gelato.png",
         categoryId: "gelato",
         details:
-          "Our Dairy Vanilla Gelato showcases the beauty of simplicity, crafted with real vanilla and premium Italian dairy. The slow-churned process creates a dense, creamy texture that lets the warm, aromatic vanilla flavor take center stage.",
+          "",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -378,7 +378,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/730522-hazelnut-gelato.png",
         categoryId: "gelato",
         details:
-          "Our Dairy Hazelnut Gelato celebrates the prized hazelnuts of Piedmont, roasted to perfection and blended into a luxuriously smooth, nutty gelato. Each scoop delivers the toasty, buttery richness that makes this flavor an Italian gelateria staple.",
+          "",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -391,7 +391,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/730523-strawberry-banana-gelato.png",
         categoryId: "gelato",
         details:
-          "Our Dairy Strawberry Banana Gelato combines the sweetness of ripe strawberries with the mellow creaminess of banana in a smooth, luscious gelato base. This fruity combination is crafted in Italy for a refreshing, naturally flavored frozen treat.",
+          "",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -404,7 +404,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/730531-vanilla-gelato-p.png",
         categoryId: "gelato",
         details:
-          "Our Parve Vanilla Gelato delivers all the creamy, aromatic pleasure of traditional vanilla gelato without any dairy. Crafted in Italy with premium ingredients, it offers a luscious frozen dessert that fits seamlessly into dairy-free and parve meals.",
+          "",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -430,7 +430,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/Sorbetto/730533-lemon-sorbetto.png",
         categoryId: "gelato",
         details:
-          "Lemon sorbet made with Sicilian lemons. Serve on its own or between courses.",
+          "",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -443,7 +443,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Gelato/Sorbetto/730532-strawberry-sorbetto.png",
         categoryId: "gelato",
         details:
-          "Our Strawberry Sorbet is crafted from ripe Italian strawberries for a naturally sweet, intensely fruity frozen treat. Dairy-free and refreshing, it captures the essence of summer in every scoop.",
+          "",
         size: "1 pt",
         kosher: true,
         madeInItaly: true,
@@ -467,7 +467,7 @@ export const mealCategories: Category[] = [
         image: "/assets/Parmesan Cheese/730170.png",
         categoryId: "cheese",
         details:
-          "Our Parmesan Cheese Wedge is crafted in Italy using traditional methods, aged to develop a deep, nutty complexity and granular texture. Perfect for grating over pasta, shaving onto salads, or enjoying on its own with a drizzle of balsamic.",
+          "",
         size: "5.29 oz",
         kosher: true,
         madeInItaly: true,
