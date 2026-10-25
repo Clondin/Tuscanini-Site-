@@ -7,7 +7,7 @@ import { shelfSizing } from "../../lib/packSize";
 import { formatProductSize } from "../../lib/formatProductSize";
 import ShelfImage from "./ShelfImage";
 import { ShoppingCart } from "lucide-react";
-import { getAmazonProductLink } from "../../lib/productPurchaseLink";
+import { getAmazonBuyLink } from "../../lib/productPurchaseLink";
 import {
   getResponsiveImageProps,
   isMissingProductImage,
@@ -49,7 +49,7 @@ export default function CategoryShelf({ category }: { category: Category }) {
       />
       <ul className="relative grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(176px,1fr))] gap-y-10">
         {products.map((product, index) => {
-          const amazon = getAmazonProductLink(product);
+          const amazon = getAmazonBuyLink(product);
           return (
           <li key={product.id}>
             <Link to={`/product/${product.id}`} className="group block">
@@ -92,11 +92,14 @@ export default function CategoryShelf({ category }: { category: Category }) {
                   href={amazon.href}
                   target="_blank"
                   rel="sponsored noopener"
-                  aria-label={`Buy ${product.name} on Amazon`}
+                  data-aff-placement="card"
+                  data-aff-kind={amazon.kind}
+                  data-aff-slug={product.id}
+                  aria-label={`${amazon.kind === "dp" ? "Buy" : "Find"} ${product.name} on Amazon`}
                   className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-ink/15 bg-paper px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
                 >
                   <ShoppingCart size={13} aria-hidden="true" />
-                  Buy on Amazon
+                  {amazon.label}
                 </a>
               </div>
             )}

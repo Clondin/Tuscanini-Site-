@@ -75,6 +75,9 @@ export function BuyActions({
           href={state.purchase.href}
           target="_blank"
           rel={state.purchase.rel}
+          data-aff-placement="product"
+          data-aff-kind={state.purchase.kind}
+          data-aff-slug={state.purchase.slug}
           className={`group inline-flex flex-1 sm:flex-none justify-center min-h-13 items-center gap-3 rounded-full px-8 py-4 text-sm font-semibold transition-colors ${
             onDark
               ? "bg-paper text-ink hover:bg-lemon"
@@ -125,28 +128,33 @@ export function DossierOverlays({
   return (
     <>
       {state.showSticky && (
-        <div className="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-paper/95 backdrop-blur border-t border-ink/15 px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))] shadow-[0_-10px_30px_-12px_rgba(20,18,16,0.35)] flex items-center gap-3">
-          {state.hasImage && (
-            <img
-              {...getResponsiveImageProps(product.image, "48px")}
-              alt=""
-              style={{ backgroundColor: swatch }}
-              className="h-12 w-12 shrink-0 object-contain p-1"
-            />
-          )}
-          <div className="min-w-0 flex-1">
-            <p className="text-sm text-heading truncate">{product.name}</p>
-            <p className="text-xs text-on-surface/80">{state.size}</p>
+        <div className="buy-bar fixed bottom-0 inset-x-0 z-30 bg-paper/95 backdrop-blur border-t border-ink/15 shadow-[0_-10px_30px_-12px_rgba(20,18,16,0.35)] pb-[env(safe-area-inset-bottom)]">
+          <div className="flex h-16 items-center gap-3 px-4">
+            {state.hasImage && (
+              <img
+                {...getResponsiveImageProps(product.image, "40px")}
+                alt=""
+                style={{ backgroundColor: swatch }}
+                className="h-10 w-10 shrink-0 object-contain p-1"
+              />
+            )}
+            <div className="min-w-0 flex-1">
+              <p className="text-sm text-heading truncate">{product.name}</p>
+              {state.size && <p className="text-xs text-on-surface/80 truncate">{state.size}</p>}
+            </div>
+            <a
+              href={state.purchase.href}
+              target="_blank"
+              rel={state.purchase.rel}
+              data-aff-placement="sticky"
+              data-aff-kind={state.purchase.kind}
+              data-aff-slug={state.purchase.slug}
+              className="min-h-11 shrink-0 inline-flex items-center gap-2 rounded-full bg-ink text-paper px-4 text-xs font-semibold"
+            >
+              {state.purchase.label}
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
           </div>
-          <a
-            href={state.purchase.href}
-            target="_blank"
-            rel={state.purchase.rel}
-            className="min-h-11 shrink-0 inline-flex items-center gap-2 rounded-full bg-ink text-paper px-4 text-xs font-semibold"
-          >
-            {state.purchase.label}
-            <ArrowUpRight size={15} />
-          </a>
         </div>
       )}
       {state.lightboxOpen && state.hasImage && (

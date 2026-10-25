@@ -47,6 +47,13 @@ export function useProductDossier(product: Product, categoryName: string) {
     return () => observer.disconnect();
   }, []);
 
+  // While a product page is open, phones reserve room under the page for the fixed buy
+  // bar (see .has-buy-bar in index.css), so the footer's last line never sits beneath it.
+  useEffect(() => {
+    document.documentElement.classList.add("has-buy-bar");
+    return () => document.documentElement.classList.remove("has-buy-bar");
+  }, []);
+
   useEffect(() => {
     if (!copied) return;
     const timer = window.setTimeout(() => setCopied(false), 2400);
@@ -98,6 +105,8 @@ export function useProductDossier(product: Product, categoryName: string) {
     purchase: {
       href: purchaseLink.href,
       label: purchaseLink.label,
+      kind: purchaseLink.kind,
+      slug: product.id,
       sponsored: purchaseLink.sponsored,
       rel: purchaseLink.sponsored
         ? "sponsored noopener noreferrer"

@@ -4,13 +4,13 @@ import type { Product } from "../../data/products";
 import { isFrozenProduct } from "../../lib/catalog-search";
 import { getResponsiveImageProps, isMissingProductImage } from '../../lib/productImage';
 import { formatProductSize } from '../../lib/formatProductSize';
-import { getAmazonProductLink } from "../../lib/productPurchaseLink";
+import { getAmazonBuyLink } from "../../lib/productPurchaseLink";
 import { getCategoryAccent } from "../../data/category-accents";
 
 export default function CatalogCard({ product }: { product: Product }) {
   if (isMissingProductImage(product.image)) return null;
   const accent = getCategoryAccent(product.categoryId);
-  const amazon = getAmazonProductLink(product);
+  const amazon = getAmazonBuyLink(product);
   return (
     <div className="group flex h-full flex-col bg-surface ring-1 ring-on-surface/12 transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_-20px_rgba(42,31,22,0.5)] motion-reduce:hover:translate-y-0">
       <Link to={`/product/${product.id}`} className="block flex-1">
@@ -49,11 +49,14 @@ export default function CatalogCard({ product }: { product: Product }) {
             href={amazon.href}
             target="_blank"
             rel="sponsored noopener"
-            aria-label={`Buy ${product.name} on Amazon`}
+            data-aff-placement="card"
+            data-aff-kind={amazon.kind}
+            data-aff-slug={product.id}
+            aria-label={`${amazon.kind === "dp" ? "Buy" : "Find"} ${product.name} on Amazon`}
             className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-ink/15 bg-paper px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
           >
             <ShoppingCart size={13} aria-hidden="true" />
-            Buy on Amazon
+            {amazon.label}
           </a>
         </div>
       )}

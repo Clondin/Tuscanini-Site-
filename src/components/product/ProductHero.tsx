@@ -120,6 +120,9 @@ export default function ProductHero({ product, categoryName, accent, children }:
           <motion.a
             href={purchaseLink.href}
             target="_blank"
+            data-aff-placement="product"
+            data-aff-kind={purchaseLink.kind}
+            data-aff-slug={product.id}
             rel={purchaseLink.sponsored ? "sponsored noopener noreferrer" : "noopener noreferrer"}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

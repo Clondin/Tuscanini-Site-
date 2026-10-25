@@ -5,6 +5,7 @@ import { MotionConfig } from "motion/react";
 import Layout from "./components/Layout";
 import RouteMetadata from "./components/RouteMetadata";
 import { initializeCmsContent } from "./data/cms";
+import { installAffiliateClickTracking } from "./lib/affiliateClicks";
 import "@fontsource-variable/bodoni-moda/opsz.css";
 import "@fontsource-variable/bodoni-moda/opsz-italic.css";
 import "./index.css";
@@ -29,6 +30,7 @@ function AdminRedirect() {
 }
 
 const cmsInitialization = initializeCmsContent();
+installAffiliateClickTracking();
 
 function App() {
   const [cmsVersion, setCmsVersion] = useState(0);

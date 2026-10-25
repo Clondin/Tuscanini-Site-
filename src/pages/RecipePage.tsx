@@ -4,7 +4,7 @@ import { ChevronRight, Clock, Users, ListChecks, Printer, ShoppingCart, ArrowRig
 import { getRecipePage, recipePages, type RecipePage as Recipe } from "../data/recipe-pages";
 import { getProductById, type Product } from "../data/products";
 import { getCategoryAccent } from "../data/category-accents";
-import { getAmazonProductLink } from "../lib/productPurchaseLink";
+import { getAmazonBuyLink, getAmazonCartLink } from "../lib/productPurchaseLink";
 import { formatProductSize } from "../lib/formatProductSize";
 import { getResponsiveImageProps, isMissingProductImage } from "../lib/productImage";
 import { formatRecipeTime } from "../lib/recipeTime";
@@ -147,7 +147,7 @@ function Steps({ recipe }: { recipe: Recipe }) {
 
 function RecipeProduct({ product }: { product: Product }) {
   const accent = getCategoryAccent(product.categoryId);
-  const amazon = getAmazonProductLink(product);
+  const amazon = getAmazonBuyLink(product);
   return (
     <li className="group flex flex-col">
       <Link
@@ -182,10 +182,13 @@ function RecipeProduct({ product }: { product: Product }) {
             href={amazon.href}
             target="_blank"
             rel="sponsored noopener"
-            aria-label={`Buy ${product.name} on Amazon`}
+            data-aff-placement="recipe"
+            data-aff-kind={amazon.kind}
+            data-aff-slug={product.id}
+            aria-label={`${amazon.kind === "dp" ? "Buy" : "Find"} ${product.name} on Amazon`}
             className="inline-flex min-h-9 items-center gap-1 text-xs font-semibold text-on-surface/70 hover:text-ink"
           >
-            <ShoppingCart size={13} aria-hidden="true" /> Amazon
+            <ShoppingCart size={13} aria-hidden="true" /> {amazon.kind === "dp" ? "Amazon" : "Find on Amazon"}
           </a>
         )}
       </div>
@@ -228,6 +231,7 @@ export default function RecipePage() {
   const products = recipe.products
     .map((id) => getProductById(id))
     .filter((product): product is Product => Boolean(product));
+  const cart = getAmazonCartLink(products);
   const more = recipePages.filter((other) => other.slug !== recipe.slug).slice(0, 3);
   const facts: { icon: typeof Clock; label: string; value: string }[] = [
     { icon: Clock, label: "Total time", value: formatRecipeTime(recipe.totalMinutes) },
@@ -358,6 +362,24 @@ export default function RecipePage() {
                   <RecipeProduct key={product.id} product={product} />
                 ))}
               </ul>
+              {cart && (
+                <div className="mt-10 flex flex-col items-start gap-2 border-t border-on-surface/15 pt-6">
+                  <a
+                    href={cart.href}
+                    target="_blank"
+                    rel="sponsored noopener"
+                    data-aff-placement="recipe-cart"
+                    data-aff-kind="cart"
+                    data-aff-slug={recipe.slug}
+                    className="inline-flex min-h-11 items-center gap-2 bg-ink px-6 text-sm font-semibold text-paper transition-colors hover:bg-olive-deep"
+                  >
+                    <ShoppingCart size={16} aria-hidden="true" /> Shop the ingredients on Amazon
+                  </a>
+                  <p className="text-xs text-on-surface/65">
+                    Adds {cart.asins.length === 1 ? "the Tuscanini product" : `the ${cart.asins.length} Tuscanini products`} above to your Amazon cart. As an Amazon Associate, Tuscanini earns from qualifying purchases.
+                  </p>
+                </div>
+              )}
             </div>
           </section>
         )}

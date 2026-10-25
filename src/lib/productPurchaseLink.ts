@@ -1,10 +1,7 @@
 import type { Product } from "../data/products";
 
-const frozenCategoryIds = new Set(["pizza", "gelato", "bread-frozen-appetizers"]);
-
 /** Amazon Associates tracking ID (kaycobrands-20, created October 14, 2026). Every amazon.com link carries it. */
 export const AMAZON_ASSOCIATE_TAG = "kaycobrands-20";
-const amazonStoreUrl = `https://www.amazon.com/stores/Tuscanini/page/63CC7208-7FF4-4C25-B5F7-CAC5D4CA1C9A?tag=${AMAZON_ASSOCIATE_TAG}`;
 
 // Product -> ASIN of that exact product's live amazon.com listing (brand, product and size
 // checked against the Amazon product page on October 14, 2026). Where Amazon only sells a
@@ -129,31 +126,48 @@ export function getAmazonProductLink(product: Pick<Product, "id">) {
   return { asin, href: `https://www.amazon.com/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}` };
 }
 
-// Product-specific destinations go to the product's own Amazon listing. Shared destinations
-// keep store/site labels so visitors know what the link will open.
-export function getProductPurchaseLink(product: Pick<Product, "id" | "categoryId">) {
+/**
+ * Amazon search for a product with no verified listing: "Tuscanini <name> <size>",
+ * tagged, so the visitor lands on Amazon's own results instead of a dead end.
+ */
+export function getAmazonSearchLink(product: Pick<Product, "name" | "size">) {
+  const name = product.name.replace(/^tuscanini\s+/i, "").replace(/\s+/g, " ").trim();
+  const size = (product.size ?? "").replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
+  const query = ["Tuscanini", name, size].filter(Boolean).join(" ");
+  const k = encodeURIComponent(query).replace(/%20/g, "+");
+  return { query, href: `https://www.amazon.com/s?k=${k}&tag=${AMAZON_ASSOCIATE_TAG}` };
+}
+
+export type AmazonLinkKind = "dp" | "search";
+
+/** The Amazon button for any product: its own listing when verified, otherwise an Amazon search. */
+export function getAmazonBuyLink(product: Pick<Product, "id" | "name" | "size">) {
   const direct = getAmazonProductLink(product);
   if (direct) {
-    return {
-      href: direct.href,
-      label: "Buy on Amazon",
-      amazon: true,
-      sponsored: true,
-    };
+    return { href: direct.href, label: "Buy on Amazon", kind: "dp" as AmazonLinkKind, asin: direct.asin };
   }
+  return { href: getAmazonSearchLink(product).href, label: "Find on Amazon", kind: "search" as AmazonLinkKind, asin: undefined };
+}
 
-  if (frozenCategoryIds.has(product.categoryId)) {
-    return {
-      href: "https://tuscaninifoods.com",
-      label: "Visit Tuscanini Foods",
-      amazon: false,
-      sponsored: false,
-    };
-  }
+/**
+ * One multi-item add-to-cart link for every product in the list that has a verified
+ * listing (Amazon's cart-add form, quantity 1 each). Null when none has one.
+ */
+export function getAmazonCartLink(products: Pick<Product, "id">[]) {
+  const asins = [...new Set(products.map((product) => amazonProductAsins[product.id]).filter(Boolean))];
+  if (!asins.length) return null;
+  const items = asins.map((asin, index) => `ASIN.${index + 1}=${asin}&Quantity.${index + 1}=1`).join("&");
+  return { asins, href: `https://www.amazon.com/gp/aws/cart/add.html?${items}&AssociateTag=${AMAZON_ASSOCIATE_TAG}` };
+}
 
+// Every product gets an Amazon destination: its own listing when verified, otherwise an
+// Amazon search for the product (labelled "Find on Amazon" so the visitor knows).
+export function getProductPurchaseLink(product: Pick<Product, "id" | "categoryId" | "name" | "size">) {
+  const link = getAmazonBuyLink(product);
   return {
-    href: amazonStoreUrl,
-    label: "Visit our Amazon store",
+    href: link.href,
+    label: link.label,
+    kind: link.kind,
     amazon: true,
     sponsored: true,
   };
