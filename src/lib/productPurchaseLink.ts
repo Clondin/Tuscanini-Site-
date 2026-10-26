@@ -118,6 +118,13 @@ const amazonProductAsins: Record<string, string> = {
   "sparkling-blood-orange-aranciata-large-730387": "B0H72M8VDD",
   "garlic-paste-730496": "B0GNB2QD83",
   "bronze-cut-pappardelle-730606": "B0H2BCH1GG",
+  "mac-cheese-sauce-730225": "B0H2WMBK3M",
+  "chili-pepper-paste-730495": "B0GN9Z2G8S",
+  "caramel-dessert-sauce-730621": "B0GCBBHYKY",
+  "chocolate-bar-with-almonds-730591": "B0FQCNZGRX",
+  "chocolate-bar-with-cacao-nibs-730592": "B0FQCR43SZ",
+  "tomato-juice-small-730236": "B0CQKN5QQM",
+  "sparkling-lemonade-large-730385": "B0C7CZ9S3X",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
