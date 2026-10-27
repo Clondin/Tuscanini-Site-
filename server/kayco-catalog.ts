@@ -1,7 +1,7 @@
 // Relative imports carry .js: Vercel runs this function as native Node ESM (package.json "type": "module"),
 // which does not resolve extensionless paths (ERR_MODULE_NOT_FOUND -> FUNCTION_INVOCATION_FAILED).
 import { kaycoSnapshot } from '../src/data/kayco-catalog.generated.js';
-import { isKaycoImage, type KaycoProduct } from '../src/data/kayco-catalog.js';
+import { isKaycoImage, isReviewedPackShot, type KaycoProduct } from '../src/data/kayco-catalog.js';
 
 const itemsUrl = 'https://kayco-planning-dashboard.clondinski1234.workers.dev/api/v1/items?range=Tuscanini';
 const nonRetail = /\b(?:BULK|FOODSERVICE|SHIPPER|EMPTY|DUMP|CLUB|COSTCO|CANADA)\b|AR-TUSCANINI/i;
@@ -16,22 +16,25 @@ export function publicCatalog(payload: unknown): KaycoProduct[] {
     if (!value || typeof value !== 'object') continue;
     const item = value as SourceItem;
     if (typeof item.id !== 'string' || typeof item.name !== 'string'
-      || item.range !== 'Tuscanini' || item.status !== 'A' || nonRetail.test(item.name)
-      || !isKaycoImage(item.imageUrl)) continue;
+      || item.range !== 'Tuscanini' || item.status !== 'A' || nonRetail.test(item.name)) continue;
     if (eligible.has(item.id)) throw new Error('Duplicate catalog item');
     eligible.set(item.id, item);
   }
   // Only reviewed SKU mappings are exposed. Unknown SKUs require a route rebuild.
   const products = kaycoSnapshot.flatMap(definition => {
     const item = eligible.get(definition.sku);
-    if (!item) return [];
+    // An API image wins; a reviewed bundled pack shot covers a SKU the API has no image for yet.
+    const apiImage = item?.imageUrl;
+    const image = isKaycoImage(apiImage) ? apiImage
+      : isReviewedPackShot(definition.image) ? definition.image : undefined;
+    if (!item || !image) return [];
     const sourceName = item.name as string;
     const size = sourceName.match(/(?<![\d.])(?:\d+\s*x\s*)?(?:\d+(?:\.\d+)?|\.\d+)\s*(?:FL\s*OZ|OZ|ML|KG|LB|LT|L|PT)\b/i)?.[0]
       .replace(/(\d)([a-z])/ig, '$1 $2').replace(/\s*x\s*/gi, ' × ').toLowerCase();
     return [{
       id: definition.id, sku: definition.sku, name: definition.name,
       categoryId: definition.categoryId, size: size || definition.size,
-      image: item.imageUrl as string, madeInItaly: item.countryOfOriginCode === 'IT',
+      image, madeInItaly: item.countryOfOriginCode === 'IT',
       frozen: definition.frozen, existing: definition.existing,
     }];
   });

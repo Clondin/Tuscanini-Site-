@@ -36,7 +36,7 @@ The reviewed API mapping then supplies readable product names and stable categor
 
 Raw ERP names contain internal codes and abbreviations and are not displayed. Public names are reviewed in the mapping. An upstream name/category change needs a mapping review and deployment. API images are hosted at `https://kayco-planning-dashboard.pages.dev/product-images/…`; they are not editable CMS uploads. Editing `data.image`, title, size, or origin in the CMS does not override an API-mapped field. Editorial images still use CMS `site-media` uploads.
 
-A missing or invalid API image cannot add a product. Existing products retain their original image if no eligible replacement is available. On a successful live read, inactive or imageless additions are omitted. On an outage, the last successful response or reviewed snapshot remains available.
+A missing or invalid API image cannot add a product, with one reviewed exception: a mapping may point `image` at a bundled pack shot at `/assets/products/packshots/{sku}.webp` (`isReviewedPackShot`) when the API has no image for an otherwise eligible active SKU. A valid API image still wins whenever the API supplies one. The pack shot must be the actual current package art for that exact SKU. Mini Focaccia Bread (730013, 10.5 oz) uses this path; its pack shot comes from the Kayco item image share that NetSuite references (`\\KAY-MOBIAPP\SHAREPOINTKAYCO\730013.PNG`, October 16, 2026), converted to WebP. Existing products retain their original image if no eligible replacement is available. On a successful live read, inactive or imageless additions are omitted. On an outage, the last successful response or reviewed snapshot remains available.
 
 ## Rendering and caching
 

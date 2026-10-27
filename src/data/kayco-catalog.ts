@@ -46,6 +46,15 @@ export function isKaycoImage(value: unknown): value is string {
   }
 }
 
+/** A reviewed pack shot bundled in this repository for a SKU whose API image is not yet available. */
+export function isReviewedPackShot(value: unknown): value is string {
+  return typeof value === 'string' && /^\/assets\/products\/packshots\/\d{6}\.webp$/.test(value);
+}
+
+export function isProductImage(value: unknown): value is string {
+  return isKaycoImage(value) || isReviewedPackShot(value);
+}
+
 export function isKaycoProduct(value: unknown): value is KaycoProduct {
   if (!value || typeof value !== 'object') return false;
   const item = value as Record<string, unknown>;
@@ -53,7 +62,7 @@ export function isKaycoProduct(value: unknown): value is KaycoProduct {
     && typeof item.sku === 'string' && /^\d{6}$/.test(item.sku)
     && typeof item.name === 'string' && item.name.length > 0
     && typeof item.categoryId === 'string' && /^[a-z0-9][a-z0-9-]*$/.test(item.categoryId)
-    && typeof item.size === 'string' && isKaycoImage(item.image)
+    && typeof item.size === 'string' && isProductImage(item.image)
     && typeof item.madeInItaly === 'boolean' && typeof item.frozen === 'boolean'
     && typeof item.existing === 'boolean';
 }
@@ -72,7 +81,7 @@ export function mergeKaycoCatalog(base: Category[], products: KaycoProduct[]): C
   for (const source of [...products].sort((a, b) => Number(a.id !== canonicalProductId(a.id)) - Number(b.id !== canonicalProductId(b.id)))) {
     const item = { ...source, id: canonicalProductId(source.id) };
     // An image is mandatory for every API addition; keep originals on missing data.
-    if (!isKaycoImage(item.image)) continue;
+    if (!isProductImage(item.image)) continue;
     if (seen.has(item.id)) continue;
     seen.add(item.id);
     let category = result.find(entry => entry.products.some(product => product.id === item.id));

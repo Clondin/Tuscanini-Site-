@@ -1533,6 +1533,17 @@ export const kaycoSnapshot: KaycoProduct[] = [
     "existing": false
   },
   {
+    "id": "mini-focaccia-bread-730013",
+    "sku": "730013",
+    "name": "Mini Focaccia Bread",
+    "categoryId": "bread-frozen-appetizers",
+    "size": "10.5 oz",
+    "image": "/assets/products/packshots/730013.webp",
+    "madeInItaly": true,
+    "frozen": true,
+    "existing": false
+  },
+  {
     "id": "alfredo-sauce-730226",
     "sku": "730226",
     "name": "Alfredo Sauce",

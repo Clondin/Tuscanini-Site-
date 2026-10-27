@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { catalogResponse, fetchKaycoCatalog, publicCatalog } from './kayco-catalog';
 import { kaycoSnapshot } from '../src/data/kayco-catalog.generated';
-import { isKaycoImage, mergeKaycoCatalog } from '../src/data/kayco-catalog';
+import { isProductImage, mergeKaycoCatalog } from '../src/data/kayco-catalog';
 import { bundledCategories } from '../src/data/products';
 import { getProductGallery } from '../src/data/product-galleries';
 
@@ -27,6 +27,14 @@ describe('public product boundary', () => {
     { imageUrl: `${sample.image}?token=private` }, { id: 'unreviewed-sku' },
   ])('rejects ineligible additions: %j', patch => {
     expect(() => publicCatalog({ data: [{ ...source, ...patch }] })).toThrow('Empty catalog');
+  });
+
+  it('uses a reviewed bundled pack shot only for a mapped SKU the API has no image for', () => {
+    const packShot = kaycoSnapshot.find(item => item.image.startsWith('/assets/products/packshots/'))!;
+    const [product] = publicCatalog({ data: [{ ...source, id: packShot.sku, name: 'BREAD 10.5OZ TUSCANINI', imageUrl: null }] });
+    expect(product.image).toBe(packShot.image);
+    const [fromApi] = publicCatalog({ data: [{ ...source, id: packShot.sku, name: 'BREAD 10.5OZ TUSCANINI' }] });
+    expect(fromApi.image).toBe(sample.image);
   });
 
   it('rejects malformed and duplicate upstream responses', () => {
@@ -64,10 +72,10 @@ describe('catalog and stable links', () => {
     expect(originalIds.every(id => products.some(product => product.id === id))).toBe(true);
     expect(new Set(products.map(product => product.id)).size).toBe(products.length);
     const added = products.filter(product => !originalIds.includes(product.id));
-    expect(added.length).toBe(67);
+    expect(added.length).toBe(68);
     for (const product of added) {
       const source = kaycoSnapshot.find(item => item.id === product.id)!;
-      expect(isKaycoImage(source.image)).toBe(true);
+      expect(isProductImage(source.image)).toBe(true);
       expect(product.image).toBe(getProductGallery(source.sku)?.[0].src ?? source.image);
     }
     expect(added.every(product => product.kosher === undefined)).toBe(true);
@@ -89,7 +97,7 @@ describe('catalog and stable links', () => {
     expect(product.description).toBe('CMS story');
     expect(product.ingredients).toBe('CMS ingredients');
     const source = kaycoSnapshot.find(item => item.id === first.id)!;
-    expect(isKaycoImage(source.image)).toBe(true);
+    expect(isProductImage(source.image)).toBe(true);
     expect(product.image).toBe(getProductGallery(source.sku)?.[0].src ?? source.image);
     expect(product.size).toBe(source.size);
     expect(product.frozen).toBe(source.frozen);
