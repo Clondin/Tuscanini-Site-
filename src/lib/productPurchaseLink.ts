@@ -128,6 +128,9 @@ const amazonProductAsins: Record<string, string> = {
   "dark-smooth-chocolate-bar-730590": "B0FQ9GX3BL",
   "original-parchment-crackers-small-730334": "B0H5LZ5DYM",
   "rosemary-parchment-crackers-small-730336": "B0H5M26Q7Q",
+  "original-parchment-crackers-730330": "B076PG3Y8N",
+  "rosemary-parchment-crackers-730332": "B076PKDZTZ",
+  "truffle-parchment-crackers-730333": "B0C5RWW4Q2",
 };
 
 export function getAmazonProductLink(product: Pick<Product, "id">) {
