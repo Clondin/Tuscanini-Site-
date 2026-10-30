@@ -23,7 +23,6 @@ import {
   HOME_SPOTLIGHT_PRODUCT_IDS,
   PAGE_DESCRIPTIONS,
   PAGE_TITLES,
-  WHERE_TO_BUY,
   categoryTitle,
   organizationStructuredData,
   productMetaDescription,
@@ -146,8 +145,7 @@ function homeContent(categories: Category[]): string {
     `<p>Taste Tuscanini. Know Italy.</p><h1>Italy at Your Table</h1><p>Pasta, sauces, olive oils, drinks, and more from Tuscanini.</p>` +
     `<p><a href="/products">Explore products</a> &middot; <a href="/about">Our story</a></p>`;
   const intro =
-    `<h2>${escapeHtml(HOME_INTRO.heading)}</h2><p>${copyHtml(HOME_INTRO.paragraph)}</p>` +
-    `<h3>${escapeHtml(WHERE_TO_BUY.heading)}</h3><p>${copyHtml(WHERE_TO_BUY.paragraph)}</p>`;
+    `<h2>${escapeHtml(HOME_INTRO.heading)}</h2><p>${copyHtml(HOME_INTRO.paragraph)}</p>`;
   const aisleHtml = aisles.length
     ? `<h2>Shop by aisle</h2><p><a href="/products?view=collections">All collections</a></p><ul>${aisles
         .map((category) => `<li><a href="/category/${escapeHtml(category.slug)}"><h3>${escapeHtml(category.name)}</h3></a> ${escapeHtml(category.tagline || category.description)}</li>`)
@@ -186,7 +184,6 @@ function aboutContent(categories: Category[]): string {
     `<p>Tuscanini brings Italian pantry foods to your table: pasta and sauces, olive oils and vinegars, sparkling drinks, chocolate, snacks, and frozen pizza.</p><p><em>Taste Tuscanini. Know Italy.</em></p>`;
   const story =
     `<h2>${escapeHtml(ABOUT_STORY.heading)}</h2>${ABOUT_STORY.paragraphs.map((paragraph) => `<p>${copyHtml(paragraph)}</p>`).join("")}` +
-    `<h3>${escapeHtml(WHERE_TO_BUY.heading)}</h3><p>${copyHtml(WHERE_TO_BUY.paragraph)}</p>` +
     `<p class="pr-facts">Sources: ${ABOUT_STORY.sources.map((source) => `<a href="${escapeHtml(source.url)}">${escapeHtml(source.label)}</a>`).join(" &middot; ")}</p>`;
   const range = `<h2 id="range">The range</h2>${collectionGroups(categories)
     .map((group) => `<h3>${escapeHtml(group.label)}</h3><ul>${group.items.map((category) => `<li><a href="/category/${escapeHtml(category.slug)}">${escapeHtml(category.name)}</a></li>`).join("")}</ul>`)

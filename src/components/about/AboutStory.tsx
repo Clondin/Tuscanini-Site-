@@ -1,4 +1,4 @@
-import { ABOUT_STORY, WHERE_TO_BUY } from "../../data/seo-copy";
+import { ABOUT_STORY } from "../../data/seo-copy";
 import CopyText from "../ui/CopyText";
 
 const link = "underline decoration-heading/30 underline-offset-4 hover:decoration-heading";
@@ -17,10 +17,6 @@ export default function AboutStory() {
               <CopyText paragraph={paragraph} linkClassName={link} />
             </p>
           ))}
-          <h3 className="pt-4 text-xs font-semibold uppercase tracking-[0.2em] text-heading/80">{WHERE_TO_BUY.heading}</h3>
-          <p className="text-sm md:text-base">
-            <CopyText paragraph={WHERE_TO_BUY.paragraph} linkClassName={link} />
-          </p>
           <p className="text-xs text-on-surface/60">
             Sources:{" "}
             {ABOUT_STORY.sources.map((source, index) => (

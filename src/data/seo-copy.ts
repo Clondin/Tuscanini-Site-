@@ -29,7 +29,7 @@ export const PAGE_TITLES = {
 
 export const PAGE_DESCRIPTIONS = {
   home: "Tuscanini is Kayco's Italian food brand: pasta and gnocchi, pasta sauces, olive oils, balsamic vinegar, sparkling drinks, chocolate, snacks and frozen pizza.",
-  about: "Tuscanini is the Italian food brand of Kayco, a family-owned kosher food company in Bayonne, New Jersey. Our range, recipes, and where to buy.",
+  about: "Tuscanini is the Italian food brand of Kayco, a family-owned kosher food company. Our story, our range, and recipes.",
 } as const;
 
 /** "<Category> | Tuscanini Italian Foods", or "<Category> | Tuscanini" when that would pass 60 characters. */
@@ -64,13 +64,6 @@ export function productMetaDescription(product: {
 export const KAYCO = {
   name: "Kayco",
   url: "https://www.kayco.com/",
-  telephone: "718-369-4600",
-  telephoneE164: "+1-718-369-4600",
-  email: "customercare@kayco.com",
-  streetAddress: "72 New Hook Road",
-  addressLocality: "Bayonne",
-  addressRegion: "NJ",
-  postalCode: "07002",
 } as const;
 
 /** Official Tuscanini profiles. Each was checked to load (not 404) on Oct 30, 2026. */
@@ -92,27 +85,10 @@ export function organizationStructuredData(siteUrl: string): Record<string, unkn
     logo: `${base}/favicon.svg`,
     description: PAGE_DESCRIPTIONS.home,
     sameAs: Object.values(SOCIAL_PROFILES),
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer service",
-      telephone: KAYCO.telephoneE164,
-      email: KAYCO.email,
-      areaServed: "US",
-    },
     parentOrganization: {
       "@type": "Organization",
       name: KAYCO.name,
       url: KAYCO.url,
-      telephone: KAYCO.telephoneE164,
-      email: KAYCO.email,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: KAYCO.streetAddress,
-        addressLocality: KAYCO.addressLocality,
-        addressRegion: KAYCO.addressRegion,
-        postalCode: KAYCO.postalCode,
-        addressCountry: "US",
-      },
     },
   };
 }
@@ -129,7 +105,7 @@ export const HOME_SPOTLIGHT_PRODUCT_IDS = [
 export const HOME_INTRO = {
   heading: "Kosher Italian foods from Tuscanini",
   paragraph: [
-    "Tuscanini is the Italian food brand of Kayco, the family-owned kosher food company based in Bayonne, New Jersey. The range covers the everyday Italian pantry: dry pasta and potato gnocchi, tomato and cream sauces, pesto, extra virgin and extra light olive oils, balsamic vinegar of Modena and glazes, olives, capers and Calabrian chili peppers, sparkling drinks and juices, chocolate, crackers and potato chips, and frozen pizza. Sizes run from 9.3 oz sparkling drinks to 3-liter extra light olive oil. Almost every item in our catalog is listed as made in Italy, and each product page shows the package size and the details we have on file. Start with ",
+    "Tuscanini is the Italian food brand of Kayco, the family-owned kosher food company. The range covers the everyday Italian pantry: dry pasta and potato gnocchi, tomato and cream sauces, pesto, extra virgin and extra light olive oils, balsamic vinegar of Modena and glazes, olives, capers and Calabrian chili peppers, sparkling drinks and juices, chocolate, crackers and potato chips, and frozen pizza. Sizes run from 9.3 oz sparkling drinks to 3-liter extra light olive oil. Almost every item in our catalog is listed as made in Italy, and each product page shows the package size and the details we have on file. Start with ",
     { text: "pasta and gnocchi", to: "/category/pasta-gnocchi" },
     ", ",
     { text: "pasta sauces", to: "/category/pasta-sauces" },
@@ -147,18 +123,11 @@ export const HOME_INTRO = {
   ] as CopyParagraph,
 };
 
-export const WHERE_TO_BUY = {
-  heading: "Where to buy",
-  paragraph: [
-    "Many product pages have a Buy on Amazon button that opens that item's Amazon listing. Tuscanini is distributed by Kayco; for store availability, wholesale pricing or product questions, contact Kayco customer care at 718-369-4600 or customercare@kayco.com, 72 New Hook Road, Bayonne, NJ 07002.",
-  ] as CopyParagraph,
-};
-
 export const ABOUT_STORY = {
   heading: "Who we are",
   paragraphs: [
     [
-      "Tuscanini is the Italian food brand of Kayco, a family-owned kosher food company at 72 New Hook Road in Bayonne, New Jersey. Kayco has been in business since 1948, and its story began with the first bottle of Kedem grape juice, bottled in upstate New York. Its brands today include Kedem, Manischewitz and Tuscanini.",
+      "Tuscanini is the Italian food brand of Kayco, a family-owned kosher food company. Kayco has been in business since 1948, and its story began with the first bottle of Kedem grape juice, bottled in upstate New York. Its brands today include Kedem, Manischewitz and Tuscanini.",
     ],
     [
       "Kayco presented Tuscanini Foods to the specialty food trade at the 2024 Summer Fancy Food Show, describing a line of olive oils, aged balsamic vinegars, pasta, traditional sauces, and frozen and refrigerated foods. The same show introduced Tuscanini Reserve, starting with Margherita and Supermargherita frozen pizzas.",
