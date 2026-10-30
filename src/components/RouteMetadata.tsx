@@ -7,6 +7,8 @@ import { productSchemaFields } from "../lib/productSchema";
 import { getRecipePage, recipeDescription, recipePages, recipePageStructuredData, recipesIndexDescription } from "../data/recipe-pages";
 import { getOptimizedImageUrl, isMissingProductImage } from "../lib/productImage";
 import { resolveSiteUrl } from "../lib/siteUrl";
+import { formatProductSize } from "../lib/formatProductSize";
+import { PAGE_DESCRIPTIONS, PAGE_TITLES, categoryTitle, organizationStructuredData, productMetaDescription } from "../data/seo-copy";
 
 const defaultBrand = "Tuscanini";
 const defaultDescription = "Taste Tuscanini. Know Italy.";
@@ -62,32 +64,20 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
 
     if (pathname === "/") {
       const page = getCmsData("page", "home");
-      const headline =
-        typeof page?.headline === "string" ? page.headline : "Italian Food";
-      const body = typeof page?.body === "string" ? page.body : tagline;
       const image =
         typeof page?.hero_image === "string" && page.hero_image
           ? page.hero_image
           : "/assets/Photos/backgrounds/italian-coast.jpg";
       metadata = {
-        title: `${siteTitle} | ${headline}`,
-        description: body,
+        // Fixed SEO title and description (30-60 chars); the CMS headline stays the hero's H1.
+        title: PAGE_TITLES.home,
+        description: PAGE_DESCRIPTIONS.home,
         image,
-        structuredData: {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: siteTitle,
-          url: siteUrl,
-          logo: absoluteUrl("/favicon.svg", siteUrl),
-          sameAs: [
-            "https://www.instagram.com/tuscaninifoods/",
-            "https://www.youtube.com/@TuscaniniFoods",
-          ],
-        },
+        structuredData: organizationStructuredData(siteUrl),
       };
     } else if (pathname === "/products") {
       metadata = {
-        title: `Explore Our Products | ${siteTitle}`,
+        title: PAGE_TITLES.products,
         description:
           "Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.",
         robots: location.search ? "noindex, follow" : "index, follow",
@@ -106,14 +96,20 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
         robots: "noindex, follow",
       };
     } else if (pathname === "/about") {
-      const page = getCmsData("page", "about");
       metadata = {
-        title: `${typeof page?.headline === "string" ? page.headline : "Our Story"} | ${siteTitle}`,
+        title: PAGE_TITLES.about,
         image: "/assets/Photos/story/italian-hillside-village-hero.webp",
-        description:
-          typeof page?.body === "string"
-            ? page.body
-            : "Learn about Tuscanini pasta, sauces, olive oils, drinks, and other Italian foods.",
+        description: PAGE_DESCRIPTIONS.about,
+        structuredData: [
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            name: "Our Story",
+            url: `${siteUrl}/about`,
+            about: { "@id": `${siteUrl}/#organization` },
+          },
+          organizationStructuredData(siteUrl),
+        ],
       };
     } else if (pathname === "/terms") {
       metadata = {
@@ -122,7 +118,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
       };
     } else if (pathname === "/recipes") {
       metadata = {
-        title: `Recipes | ${siteTitle}`,
+        title: PAGE_TITLES.recipes,
         description: recipesIndexDescription(),
         image: recipePages[0]?.image,
         structuredData: {
@@ -165,7 +161,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
       const category = getCategoryBySlug(slug);
       metadata = category
         ? {
-            title: `${category.name} | ${siteTitle}`,
+            title: categoryTitle(category.name),
             description: category.description || category.tagline,
             image: category.heroImage,
             structuredData: {
@@ -189,7 +185,7 @@ export default function RouteMetadata({ contentVersion }: RouteMetadataProps) {
       metadata = product
         ? {
             title: productSeoTitle(product, siteTitle),
-            description: product.description,
+            description: productMetaDescription(product, formatProductSize(product.size), product.details && product.details !== product.description ? product.details : ""),
             image: isMissingProductImage(product.image) ? undefined : product.image,
             type: "product",
             structuredData: [

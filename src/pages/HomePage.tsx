@@ -1,4 +1,5 @@
 import HeroSection from "../components/home/HeroSection";
+import HomeIntro from "../components/home/HomeIntro";
 import CollectionsGrid from "../components/home/CollectionsGrid";
 import FeaturedProducts from "../components/home/FeaturedProducts";
 import CampaignPoster from "../components/home/CampaignPoster";
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <div className="selection:bg-tomato selection:text-paper">
       <HeroSection />
+      <HomeIntro />
       <CollectionsGrid />
       <FeaturedProducts />
       <CampaignPoster />

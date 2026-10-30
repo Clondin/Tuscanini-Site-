@@ -1,5 +1,6 @@
 import AboutHero from "../components/about/AboutHero";
 import OriginStory from "../components/about/OriginStory";
+import AboutStory from "../components/about/AboutStory";
 import AboutRange from "../components/about/AboutRange";
 import CampaignReel from "../components/about/CampaignReel";
 import SourcingJourney from "../components/about/SourcingJourney";
@@ -11,6 +12,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-surface">
       <AboutHero />
       <OriginStory />
+      <AboutStory />
       <AboutRange />
       <CampaignReel />
       <SourcingJourney />
