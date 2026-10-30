@@ -5,10 +5,30 @@ import { getOptimizedImageUrl, isMissingProductImage } from "../src/lib/productI
 import { renderSitemap } from "./sitemap-xml";
 import { productSchemaFields } from "../src/lib/productSchema";
 import { formatProductSize } from "../src/lib/formatProductSize";
-import { recipePages, recipeDescription, recipePageStructuredData, recipesIndexDescription } from "../src/data/recipe-pages";
+import { recipePages, recipeDescription, recipePageStructuredData, recipesIndexDescription, recipeTotalMinutes } from "../src/data/recipe-pages";
+import { formatRecipeTime } from "../src/lib/recipeTime";
 import type { Category, Product } from "../src/data/products";
 import { readBuildCatalog } from "./load-build-catalog";
 import { resolveSiteUrl } from "../src/lib/siteUrl";
+import { productStories } from "../src/data/product-stories";
+import { recipes } from "../src/data/recipes";
+import { tuscaniniKosherVideos } from "../src/data/kosherBrandVideos";
+import { sourcingRegions } from "../src/data/sourcing-regions";
+import { collectionGroups } from "../src/data/collection-groups";
+import {
+  ABOUT_STORY,
+  CATEGORY_INTROS,
+  HOME_AISLE_SLUGS,
+  HOME_INTRO,
+  HOME_SPOTLIGHT_PRODUCT_IDS,
+  PAGE_DESCRIPTIONS,
+  PAGE_TITLES,
+  WHERE_TO_BUY,
+  categoryTitle,
+  organizationStructuredData,
+  productMetaDescription,
+  type CopyParagraph,
+} from "../src/data/seo-copy";
 
 interface RouteHtml {
   path: string;
@@ -92,15 +112,99 @@ function productCardHtml(product: Product): string {
   return `<li>${thumb ? `<a href="/product/${escapeHtml(product.id)}"><img src="${escapeHtml(thumb)}" alt="${escapeHtml(product.name)}" loading="lazy" /></a>` : ""}<a href="/product/${escapeHtml(product.id)}">${escapeHtml(product.name)}</a>${size ? `<div class="pr-facts">${escapeHtml(size)}</div>` : ""}</li>`;
 }
 
+/** Shared copy (src/data/seo-copy.ts) as HTML: the same words and internal links the React page renders. */
+function copyHtml(paragraph: CopyParagraph): string {
+  return paragraph
+    .map((segment) => (typeof segment === "string" ? escapeHtml(segment) : `<a href="${escapeHtml(segment.to)}">${escapeHtml(segment.text)}</a>`))
+    .join("");
+}
+
 function wrap(inner: string): string {
   return `<div class="prerender" data-prerender="true">${inner}</div>`;
 }
 
 function homeContent(categories: Category[]): string {
-  const list = categories
-    .map((category) => `<li><a href="/category/${escapeHtml(category.slug)}">${escapeHtml(category.name)}</a> &mdash; ${escapeHtml(category.tagline || category.description)}</li>`)
-    .join("");
-  return wrap(`<h1>Tuscanini &mdash; Italian Food</h1><p>Taste Tuscanini. Know Italy. Pasta, sauces, olive oils, drinks, snacks, and frozen foods.</p><p><a href="/products">Explore all products</a> &middot; <a href="/recipes">Recipes</a> &middot; <a href="/about">Our story</a></p><h2>Shop by category</h2><ul>${list}</ul>`);
+  // Mirrors src/pages/HomePage.tsx section by section (hero, intro, aisles, favorites, serving ideas,
+  // Kosher.com videos, heritage, Instagram) so crawlers that do not run JavaScript read the same page.
+  const products = new Map<string, { product: Product; category: Category }>();
+  for (const category of categories) for (const product of category.products) products.set(product.id, { product, category });
+  const aisles = HOME_AISLE_SLUGS.flatMap((slug) => {
+    const category = categories.find((entry) => entry.slug === slug);
+    return category ? [category] : [];
+  });
+  const favorites = HOME_SPOTLIGHT_PRODUCT_IDS.flatMap((id) => {
+    const entry = products.get(id);
+    return entry && !isMissingProductImage(entry.product.image) ? [entry] : [];
+  });
+  const ideas = recipes
+    .flatMap((recipe) => {
+      const product = recipe.products.map((id) => products.get(id)?.product).find((match) => match && !isMissingProductImage(match.image));
+      return product ? [{ recipe, product }] : [];
+    })
+    .slice(0, 4);
+  const hero =
+    `<p>Taste Tuscanini. Know Italy.</p><h1>Italy at Your Table</h1><p>Pasta, sauces, olive oils, drinks, and more from Tuscanini.</p>` +
+    `<p><a href="/products">Explore products</a> &middot; <a href="/about">Our story</a></p>`;
+  const intro =
+    `<h2>${escapeHtml(HOME_INTRO.heading)}</h2><p>${copyHtml(HOME_INTRO.paragraph)}</p>` +
+    `<h3>${escapeHtml(WHERE_TO_BUY.heading)}</h3><p>${copyHtml(WHERE_TO_BUY.paragraph)}</p>`;
+  const aisleHtml = aisles.length
+    ? `<h2>Shop by aisle</h2><p><a href="/products?view=collections">All collections</a></p><ul>${aisles
+        .map((category) => `<li><a href="/category/${escapeHtml(category.slug)}"><h3>${escapeHtml(category.name)}</h3></a> ${escapeHtml(category.tagline || category.description)}</li>`)
+        .join("")}</ul>`
+    : "";
+  const favoritesHtml = favorites.length
+    ? `<h2>Pantry favorites</h2><p><a href="/products">Shop all products</a></p><ul class="pr-grid">${favorites
+        .map(({ product, category }) => {
+          const thumb = thumbnailSrc(product);
+          const size = formatProductSize(product.size);
+          return `<li>${thumb ? `<img src="${escapeHtml(thumb)}" alt="${escapeHtml(product.name)}" loading="lazy" />` : ""}<p class="pr-facts">${escapeHtml(category.name)}</p><h3><a href="/product/${escapeHtml(product.id)}">${escapeHtml(product.name)}</a></h3>${size ? `<p class="pr-facts">${escapeHtml(size)}</p>` : ""}<p><a href="/product/${escapeHtml(product.id)}">View product</a></p></li>`;
+        })
+        .join("")}</ul>`
+    : "";
+  const sparkling = categories.some((category) => category.slug === "beverages") ? `<p><a href="/category/beverages">Shop sparkling drinks</a></p>` : "";
+  const ideasHtml = ideas.length
+    ? `<h2>Serving ideas</h2><ol>${ideas
+        .map(({ recipe, product }) => `<li><h3><a href="/product/${escapeHtml(product.id)}#recipes">${escapeHtml(recipe.name)}</a></h3><p>${escapeHtml(recipe.description)}</p><p>With ${escapeHtml(product.name)}</p></li>`)
+        .join("")}</ol>`
+    : "";
+  const videosHtml = tuscaniniKosherVideos.length
+    ? `<p>Watch &amp; cook</p><h2>Videos from Kosher.com</h2><p>Tuscanini-sponsored episodes from the Kosher.com kitchen: better pasta, better pizza, capers, tuna and more. Press play to watch right here.</p><ul>${tuscaniniKosherVideos
+        .map((video) => `<li>${Math.floor(video.duration / 60)}:${String(video.duration % 60).padStart(2, "0")} &middot; Sponsored by Tuscanini &middot; ${escapeHtml(video.title)} &middot; <a href="${escapeHtml(video.url)}">Watch on Kosher.com</a></li>`)
+        .join("")}</ul><p>${tuscaniniKosherVideos.length} episodes &middot; Recipes &amp; stories from <a href="https://www.kosher.com/">Kosher.com</a></p>`
+    : "";
+  const heritage = `<h2>An Italian pantry.</h2><p>Pasta and sauces, olive oils and vinegars, sparkling drinks, chocolate, and frozen favorites.</p><p><a href="/about">Read our story</a></p>`;
+  const instagram = `<h2>Tuscanini on Instagram</h2><p>Follow us for recipes and product updates.</p><p><a href="https://www.instagram.com/tuscaninifoods/">Follow Tuscanini on Instagram</a></p>`;
+  return wrap(hero + intro + aisleHtml + favoritesHtml + sparkling + ideasHtml + videosHtml + heritage + instagram);
+}
+
+function aboutContent(categories: Category[]): string {
+  // Mirrors src/pages/AboutPage.tsx: hero, origin line, Who we are, the range, campaigns, regions, closing link.
+  const hero =
+    `${breadcrumbHtml([{ name: "Home", href: "/" }, { name: "Our Story" }])}<p>Tuscanini</p><h1>Our Story</h1><p>Italian pasta, sauces, olive oils, drinks, and more.</p>` +
+    `<p><a href="#range">The range</a> &middot; <a href="#campaigns">Campaigns</a> &middot; <a href="#regions">Regions</a> &middot; <a href="#table">At the table</a></p>` +
+    `<p>Tuscanini brings Italian pantry foods to your table: pasta and sauces, olive oils and vinegars, sparkling drinks, chocolate, snacks, and frozen pizza.</p><p><em>Taste Tuscanini. Know Italy.</em></p>`;
+  const story =
+    `<h2>${escapeHtml(ABOUT_STORY.heading)}</h2>${ABOUT_STORY.paragraphs.map((paragraph) => `<p>${copyHtml(paragraph)}</p>`).join("")}` +
+    `<h3>${escapeHtml(WHERE_TO_BUY.heading)}</h3><p>${copyHtml(WHERE_TO_BUY.paragraph)}</p>` +
+    `<p class="pr-facts">Sources: ${ABOUT_STORY.sources.map((source) => `<a href="${escapeHtml(source.url)}">${escapeHtml(source.label)}</a>`).join(" &middot; ")}</p>`;
+  const range = `<h2 id="range">The range</h2>${collectionGroups(categories)
+    .map((group) => `<h3>${escapeHtml(group.label)}</h3><ul>${group.items.map((category) => `<li><a href="/category/${escapeHtml(category.slug)}">${escapeHtml(category.name)}</a></li>`).join("")}</ul>`)
+    .join("")}`;
+  const campaigns = `<h2 id="campaigns">From our campaigns</h2><ul>${[
+    ["Organic sodas", "beverages"],
+    ["Balsamic vinegar and glaze", "vinegars-glazes"],
+    ["Pasta sauces", "pasta-sauces"],
+    ["Lemon juice", "cooking-wines-citrus"],
+    ["Sparkling drinks", "beverages"],
+  ]
+    .map(([caption, slug]) => `<li>${escapeHtml(caption)} &middot; <a href="/category/${slug}">Shop</a></li>`)
+    .join("")}</ul>`;
+  const regions = `<h2 id="regions">Italy, region by region</h2><p>Each region has its own foods. Pick one on the map, or take the tour from Piedmont down to Sicily.</p><ul>${sourcingRegions
+    .map((region) => `<li><strong>${escapeHtml(region.name)}</strong> &mdash; ${escapeHtml(region.eyebrow)}</li>`)
+    .join("")}</ul>`;
+  const closing = `<h2 id="table">Browse the range.</h2><p><a href="/products?view=collections">See all collections</a></p>`;
+  return wrap(hero + story + range + campaigns + regions + closing);
 }
 
 function productsContent(categories: Category[]): string {
@@ -116,7 +220,9 @@ function categoryContent(category: Category): string {
       `<h1>${escapeHtml(category.name)}</h1>` +
       (category.tagline ? `<p><em>${escapeHtml(category.tagline)}</em></p>` : "") +
       `<p>${escapeHtml(category.description)}</p>` +
-      `<h2>${category.products.length} products</h2><ul class="pr-grid">${category.products.map(productCardHtml).join("")}</ul>`,
+      `<h2>${category.products.length} products</h2><ul class="pr-grid">${category.products.map(productCardHtml).join("")}</ul>` +
+      (category.tagline ? `<h2>${escapeHtml(category.tagline)}</h2>` : "") +
+      (CATEGORY_INTROS[category.slug] ? `<p>${copyHtml(CATEGORY_INTROS[category.slug])}</p>` : ""),
   );
 }
 
@@ -132,12 +238,15 @@ function productContent(product: Product, category: Category): string {
     product.sku ? `SKU ${product.sku}` : "",
   ].filter(Boolean);
   const siblings = category.products.filter((other) => other.id !== product.id).slice(0, 8);
+  const details = productStories[product.id] ?? product.details;
+  const story = details && details !== product.description ? details : undefined;
   return wrap(
     `${breadcrumbHtml([{ name: "Home", href: "/" }, { name: "Products", href: "/products" }, { name: category.name, href: `/category/${category.slug}` }, { name: product.name }])}` +
       `<div class="pr-hero">${main ? `<img src="${escapeHtml(main)}" alt="${escapeHtml(alt)}" />` : "<div></div>"}<div>` +
       `<h1>${escapeHtml(product.name)}</h1>` +
       `<p>${escapeHtml(product.description)}</p>` +
-      (product.details ? `<p>${escapeHtml(product.details)}</p>` : "") +
+      // Same "About this product" write-up the client applies from product-stories.ts (src/data/products.ts).
+      (story ? `<h2>About this product</h2><p>${escapeHtml(story)}</p>` : "") +
       (product.ingredients ? `<p><strong>Ingredients:</strong> ${escapeHtml(product.ingredients)}</p>` : "") +
       (facts.length ? `<p class="pr-facts">${facts.map(escapeHtml).join(" &middot; ")}</p>` : "") +
       `<p>Part of <a href="/category/${escapeHtml(category.slug)}">${escapeHtml(category.name)}</a> &middot; <a href="/products">All products</a></p>` +
@@ -191,7 +300,7 @@ function catalogRoutes(categories: Category[]): RouteHtml[] {
   for (const category of categories) {
     routes.push({
       path: `/category/${category.slug}`,
-      title: `${category.name} | Tuscanini`,
+      title: categoryTitle(category.name),
       description: category.description || category.tagline,
       type: "website",
       image: category.heroImage,
@@ -219,7 +328,7 @@ function catalogRoutes(categories: Category[]): RouteHtml[] {
       routes.push({
         path: `/product/${product.id}`,
         title: productSeoTitle(product),
-        description: product.description,
+        description: productMetaDescription(product, formatProductSize(product.size), productStories[product.id] ?? ""),
         type: "product",
         image: product.image,
         content: productContent(product, category),
@@ -266,34 +375,49 @@ function productStructuredData(
 const baseHtml = await readFile(resolve("dist/index.html"), "utf8");
 const home: RouteHtml = {
   path: "/",
-  title: "Tuscanini | Italian Food",
-  description: "Pasta, sauces, olive oils, drinks, snacks, and frozen foods from Tuscanini.",
+  title: PAGE_TITLES.home,
+  description: PAGE_DESCRIPTIONS.home,
   type: "website",
   image: defaultImage,
   content: "",
-  structuredData: {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Tuscanini",
-    url: `${siteUrl}/`,
-    logo: `${siteUrl}/favicon.svg`,
-    sameAs: ["https://www.instagram.com/tuscaninifoods/", "https://www.youtube.com/@TuscaniniFoods"],
-  },
+  structuredData: organizationStructuredData(siteUrl),
 };
 const about: RouteHtml = {
   path: "/about",
-  title: "Our Story | Tuscanini",
+  title: PAGE_TITLES.about,
   image: `${siteUrl}/assets/Photos/story/italian-hillside-village-hero.webp`,
-  description: "Learn about Tuscanini pasta, sauces, olive oils, drinks, and other Italian foods.",
+  description: PAGE_DESCRIPTIONS.about,
   type: "website",
-  content: simpleContent("Our Story", "Learn about Tuscanini pasta, sauces, olive oils, drinks, and other Italian foods."),
-  structuredData: {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: "Our Story",
-    url: `${siteUrl}/about`,
-  },
+  content: "",
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "Our Story",
+      url: `${siteUrl}/about`,
+      about: { "@id": `${siteUrl}/#organization` },
+    },
+    organizationStructuredData(siteUrl),
+  ],
 };
+
+function recipesIndexContent(): string {
+  // Mirrors src/pages/RecipesPage.tsx: header, featured recipe with its intro, the recipe cards, and the Kosher.com credits.
+  const meta = (recipe: (typeof recipePages)[number]) => `<p class="pr-facts">${escapeHtml(formatRecipeTime(recipeTotalMinutes(recipe)))} &middot; Serves ${escapeHtml(recipe.servings.replace("-", "\u2013"))}</p>`;
+  const cards = recipePages
+    .map((recipe, index) =>
+      `<li><p class="pr-facts">${escapeHtml(recipe.course)} &middot; ${escapeHtml(recipe.kosher)}</p><h2><a href="/recipes/${escapeHtml(recipe.slug)}">${escapeHtml(recipe.title)}</a></h2><p>By ${escapeHtml(recipe.author)}</p>` +
+      (index === 0 ? `<p>${escapeHtml(recipe.intro)}</p>` : "") +
+      `${meta(recipe)}<p><a href="/recipes/${escapeHtml(recipe.slug)}">Get the recipe</a></p></li>`)
+    .join("");
+  return wrap(
+    `${breadcrumbHtml([{ name: "Home", href: "/" }, { name: "Recipes" }])}<p>From the Kosher.com kitchen</p><h1>Recipes</h1>` +
+      `<p>Kosher recipes made with Tuscanini olive oil, truffle salt, tomatoes and more, from the cooks at Kosher.com. Each one lists the Tuscanini products it uses and links back to the original.</p>` +
+      `<p>Recipes &amp; stories from <a href="https://www.kosher.com/">Kosher.com</a></p><ul>${cards}</ul>` +
+      `<p>Originals on Kosher.com: ${recipePages.map((recipe) => `<a href="${escapeHtml(recipe.sourceUrl)}">${escapeHtml(recipe.title)}</a>`).join(" &middot; ")}</p>` +
+      `<p><a href="/products">Explore our products</a></p>`,
+  );
+}
 
 function recipeRoutes(categories: Category[]): RouteHtml[] {
   const productsById = new Map<string, Product>();
@@ -304,11 +428,11 @@ function recipeRoutes(categories: Category[]): RouteHtml[] {
     .map((image) => absoluteUrl(image));
   const routes: RouteHtml[] = [{
     path: "/recipes",
-    title: "Recipes | Tuscanini",
+    title: PAGE_TITLES.recipes,
     description: recipesIndexDescription(),
     type: "website",
     image: recipePages[0]?.image,
-    content: simpleContent("Recipes", recipesIndexDescription(), `<ul>${recipePages.map((recipe) => `<li><a href="/recipes/${escapeHtml(recipe.slug)}">${escapeHtml(recipe.title)}</a> &middot; by ${escapeHtml(recipe.author)} (<a href="${escapeHtml(recipe.sourceUrl)}">Kosher.com</a>)</li>`).join("")}</ul><p>Recipes &amp; stories from <a href="https://www.kosher.com/">Kosher.com</a>.</p>`),
+    content: recipesIndexContent(),
     structuredData: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -340,10 +464,11 @@ const routes = catalogRoutes(buildCatalog);
 routes.push(...recipeRoutes(buildCatalog));
 routes.push(about);
 routes.push({ path: '/terms', title: 'Terms & Conditions | Tuscanini', description: 'Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.', type: 'website', content: simpleContent('Terms & Conditions', 'Terms and conditions for the Tuscanini website, including our Amazon Associates disclosure.'), structuredData: { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Terms & Conditions', url: `${siteUrl}/terms` } });
-routes.push({ path: '/products', title: 'Explore Our Products | Tuscanini', description: 'Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.', type: 'website', content: productsContent(buildCatalog), structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });
+routes.push({ path: '/products', title: PAGE_TITLES.products, description: 'Browse Tuscanini pasta, sauces, olive oils, drinks, snacks, and frozen foods.', type: 'website', content: productsContent(buildCatalog), structuredData: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Explore Our Products', url: `${siteUrl}/products` } });
 routes.push({ path: '/search', title: 'Search | Tuscanini', description: 'Search Tuscanini pasta, sauces, olive oils, recipes and videos.', type: 'website', content: simpleContent('Search', 'Search Tuscanini pasta, sauces, olive oils, recipes and videos.', '<p><a href="/products">Browse all products</a></p>'), structuredData: { '@context': 'https://schema.org', '@type': 'SearchResultsPage', name: 'Search', url: `${siteUrl}/search` } });
 
 home.content = homeContent(buildCatalog);
+about.content = aboutContent(buildCatalog);
 await writeFile(resolve("dist/index.html"), renderRouteHtml(baseHtml, home), "utf8");
 const writtenPaths = new Set<string>(["/"]);
 for (const route of routes) {

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 import { getCategoryForProduct, getProductById } from "../../data/products";
 import { formatProductSize } from "../../lib/formatProductSize";
+import { HOME_SPOTLIGHT_PRODUCT_IDS } from "../../data/seo-copy";
 import {
   getResponsiveImageProps,
   isMissingProductImage,
@@ -13,12 +14,7 @@ import {
  * sizes, and collections come from the merged catalog; an unknown or
  * photo-less ID is skipped rather than rendered as an empty card.
  */
-const SPOTLIGHT_PRODUCT_IDS = [
-  "evoo-750ml",
-  "napoletana-pasta-sauce",
-  "sparkling-lemonade",
-  "chocolate-truffle-pistachio",
-];
+const SPOTLIGHT_PRODUCT_IDS = HOME_SPOTLIGHT_PRODUCT_IDS;
 
 export default function FeaturedProducts() {
   const featured = SPOTLIGHT_PRODUCT_IDS.flatMap((id) => {

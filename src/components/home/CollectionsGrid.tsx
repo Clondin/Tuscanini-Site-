@@ -2,19 +2,22 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { categories } from "../../data/products";
 import { getResponsiveImageProps } from "../../lib/productImage";
+import { HOME_AISLE_SLUGS } from "../../data/seo-copy";
 
 /**
  * Homepage aisles told with photography: Tuscanini campaign images where they
  * exist; the olive grove is one of the About page editorial scenes. A tile is
  * hidden when its category slug is not published.
  */
-const tiles = [
-  { slug: "pasta-gnocchi", src: "/assets/ads/gnocchi-recipe.jpg", position: "50% 50%" },
-  { slug: "pasta-sauces", src: "/assets/ads/tomato-group-tuscanini-web.jpg", position: "60% 55%" },
-  { slug: "olive-oil", src: "/assets/products/generated/730406/03-occasion-1a05b3cf704c01be.webp", position: "50% 40%" },
-  { slug: "beverages", src: "/assets/ads/beverages-wide.jpg", position: "65% 50%" },
-  { slug: "pizza", src: "/assets/ads/pizza-banner.jpg", position: "50% 75%" },
-];
+const tileImages: Record<(typeof HOME_AISLE_SLUGS)[number], { src: string; position: string }> = {
+  "pasta-gnocchi": { src: "/assets/ads/gnocchi-recipe.jpg", position: "50% 50%" },
+  "pasta-sauces": { src: "/assets/ads/tomato-group-tuscanini-web.jpg", position: "60% 55%" },
+  "olive-oil": { src: "/assets/products/generated/730406/03-occasion-1a05b3cf704c01be.webp", position: "50% 40%" },
+  beverages: { src: "/assets/ads/beverages-wide.jpg", position: "65% 50%" },
+  pizza: { src: "/assets/ads/pizza-banner.jpg", position: "50% 75%" },
+};
+// The aisle order lives in seo-copy so the prerendered homepage lists the same tiles.
+const tiles = HOME_AISLE_SLUGS.map((slug) => ({ slug, ...tileImages[slug] }));
 
 export default function CollectionsGrid() {
   const shown = tiles.flatMap((tile) => {

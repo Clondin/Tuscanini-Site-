@@ -3,6 +3,7 @@ import { Instagram, Youtube } from "lucide-react";
 import { categories } from "../../data/products";
 import { getCmsData, getCmsLinks } from "../../data/cms";
 import TuscaniniLogo from "../TuscaniniLogo";
+import { SOCIAL_PROFILES } from "../../data/seo-copy";
 
 export default function Footer() {
   const footerCategories = categories.slice(0, 8);
@@ -87,7 +88,7 @@ export default function Footer() {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://www.youtube.com/@TuscaniniFoods"
+                href={SOCIAL_PROFILES.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-11 w-11 items-center justify-center border border-italia-white/18 text-italia-white/70 hover:text-gold hover:border-gold/50 transition-colors"
